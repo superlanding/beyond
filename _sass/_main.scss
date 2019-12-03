@@ -5,6 +5,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
+  margin-bottom: 8px;
 }
 
 ul {
@@ -31,4 +32,8 @@ p {
 
 th, td {
   padding: 7px;
+}
+
+.separator {
+  border: 1px solid #e5e5e5;
 }
