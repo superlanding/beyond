@@ -1,0 +1,11 @@
+.nav {
+  .nav-item {
+    color: #1a1f36;
+    text-decoration: none;
+    display: block;
+  }
+  .nav-item.active {
+    color: $bg-primary;
+    font-weight: 700;
+  }
+}
