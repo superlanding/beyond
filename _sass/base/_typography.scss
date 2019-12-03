@@ -1,6 +1,6 @@
 h1, h2, h3, h4, h5, h6 {
   color: #32325d;
-  font-weight: 500;
+  font-weight: 400;
 }
 h1 {
   font-size: 42px;
@@ -23,4 +23,48 @@ h6 {
 
 .txt-num {
   font-family: 'Roboto', sans-serif;
+}
+.txt-order-id {
+  font-family: 'Roboto', sans-serif;
+  color: #343a6a;
+}
+.txt-consignment-no {
+  font-family: Arial;
+  color: #424770;
+}
+.txt-xdelivery-id {
+  font-family: "PingFang TC";
+  color: #6382A3;
+}
+.txt-sticky-nickname {
+  font-family: "Helvetica Neue";
+  color: #000;
+  font-weight: 900;
+}
+.txt-money {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: #5c5f72;
+}
+.txt-receiver {
+  font-family: "PingFang TC";
+  color: #424770;
+}
+.txt-ip {
+  font-family: 'Roboto', sans-serif;
+  color: #424770;
+}
+.txt-invoice-no {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: #63a396;
+}
+.txt-part-no {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: #6772e5;
+}
+.txt-picking {
+  font-family: 'Roboto', sans-serif;
+  color: #4191d9;
 }
