@@ -1,0 +1,14 @@
+.avatar {
+  border-radius: 50%;
+  border: 1px solid #eaeaea;
+  vertical-align: middle;
+}
+.avatar.sm {
+  @include size(24px);
+}
+.avatar.md {
+  @include size(32px);
+}
+.avatar.lg {
+  @include size(40px);
+}
