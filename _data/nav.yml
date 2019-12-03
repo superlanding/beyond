@@ -1,6 +1,8 @@
 - name: Home
   link: /
-- name: Content
+- name: Typography
   link: /content/typography.html
+- name: Colors
+  link: /content/colors.html
 - name: Buttons
   link: /components/buttons.html
