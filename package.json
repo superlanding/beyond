@@ -1,0 +1,19 @@
+{
+  "name": "beyond",
+  "version": "0.0.1",
+  "description": "The best frontend framework for super-landing.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superlanding/beyond.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superlanding/beyond/issues"
+  },
+  "homepage": "https://github.com/superlanding/beyond#readme"
+}
