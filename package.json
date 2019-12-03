@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/superlanding/beyond/issues"
   },
-  "homepage": "https://github.com/superlanding/beyond#readme"
+  "homepage": "https://github.com/superlanding/beyond#readme",
+  "dependencies": {
+    "node.normalize.scss": "3.0.3"
+  }
 }
