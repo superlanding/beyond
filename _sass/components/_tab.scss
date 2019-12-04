@@ -7,12 +7,25 @@
 }
 
 .tab-box {
+  position: relative;
+  .js-slider {
+    position: absolute;
+    bottom: 0;
+    background-color: #858585;
+    height: 2px;
+    transition: all .3s;
+  }
   .select-box {
     display: inline-block;
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-bottom-color: #cdcdcd;
     select {
+      cursor: pointer;
+      &:hover {
+        color: #1d2638;
+        font-weight: 700;
+      }
       outline: 0;
       -webkit-appearance: none;
       -moz-appearance: none;
