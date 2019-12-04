@@ -23,6 +23,9 @@ ul {
 .container {
   display: flex;
 }
+.container-wrap {
+  flex-wrap: wrap;
+}
 
 p {
   line-height: 2.1em;
