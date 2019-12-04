@@ -1,0 +1,21 @@
+.page-colors {
+  .card-color {
+    width: 260px;
+    padding: 14px;
+    border-radius: 4px;
+  }
+  .palette {
+    overflow: hidden;
+    border-radius: 4px;
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+  }
+  .place {
+    height: 100%;
+  }
+  .label-card-color {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+}
