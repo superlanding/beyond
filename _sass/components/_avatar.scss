@@ -3,12 +3,12 @@
   border: 1px solid #eaeaea;
   vertical-align: middle;
 }
-.avatar.sm {
+.avatar.avatar-sm {
   @include size(24px);
 }
-.avatar.md {
+.avatar.avatar-md {
   @include size(32px);
 }
-.avatar.lg {
+.avatar.avatar-lg {
   @include size(40px);
 }
