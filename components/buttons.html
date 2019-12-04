@@ -2,62 +2,173 @@
 layout: default
 title: Buttons
 ---
-<div class="page-colors card card-shadow-sm">
-  <h1>按鈕 - Buttons</h1>
+<div class="page-btns">
 
-  <div>Default</div>
-  <div class="row-btns">
-    <button class="btn btn-primary">主要</button>
-    <button class="btn btn-secondary">次要</button>
-    <button class="btn btn-variant1">付錢</button>
-    <button class="btn btn-variant2">付錢</button>
-    <button class="btn btn-variant3">付錢</button>
-    <button class="btn btn-warn">警告</button>
-    <button class="btn btn-danger">危險</button>
-    <button class="btn btn-light">光明</button>
-    <button class="btn btn-dark">黑暗</button>
-    <a class="btn btn-link">超連結</a>
+  <div class="card card-shadow-sm">
+    <h1 class="card-heading">按鈕 - Buttons</h1>
+
+    <h2>按鈕樣式</h2>
+
+    <div>Default</div>
+    <div class="row-btns">
+      <button class="btn btn-primary">主要</button>
+      <button class="btn btn-secondary">次要</button>
+      <button class="btn btn-variant1">付錢</button>
+      <button class="btn btn-variant2">付錢</button>
+      <button class="btn btn-variant3">付錢</button>
+      <button class="btn btn-warn">警告</button>
+      <button class="btn btn-danger">危險</button>
+      <button class="btn btn-light">光明</button>
+      <button class="btn btn-dark">黑暗</button>
+      <a class="btn btn-link" tabindex="0">超連結</a>
+    </div>
+
+    <div>Hover</div>
+    <div class="row-btns">
+      <button class="btn btn-primary hover">主要</button>
+      <button class="btn btn-secondary hover">次要</button>
+      <button class="btn btn-variant1 hover">付錢</button>
+      <button class="btn btn-variant2 hover">付錢</button>
+      <button class="btn btn-variant3 hover">付錢</button>
+      <button class="btn btn-warn hover">警告</button>
+      <button class="btn btn-danger hover">危險</button>
+      <button class="btn btn-light hover">光明</button>
+      <button class="btn btn-dark hover">黑暗</button>
+      <a class="btn btn-link hover" tabindex="0">超連結</a>
+    </div>
+
+    <div>Active</div>
+    <div class="row-btns">
+      <button class="btn btn-primary active">主要</button>
+      <button class="btn btn-secondary active">次要</button>
+      <button class="btn btn-variant1 active">付錢</button>
+      <button class="btn btn-variant2 active">付錢</button>
+      <button class="btn btn-variant3 active">付錢</button>
+      <button class="btn btn-warn active">警告</button>
+      <button class="btn btn-danger active">危險</button>
+      <button class="btn btn-light active">光明</button>
+      <button class="btn btn-dark active">黑暗</button>
+      <a class="btn btn-link active" tabindex="0">超連結</a>
+    </div>
+
+    <div>Disabled</div>
+    <div class="row-btns">
+      <button class="btn btn-primary disabled">主要</button>
+      <button class="btn btn-secondary disabled">次要</button>
+      <button class="btn btn-variant1 disabled">付錢</button>
+      <button class="btn btn-variant2 disabled">付錢</button>
+      <button class="btn btn-variant3 disabled">付錢</button>
+      <button class="btn btn-warn disabled">警告</button>
+      <button class="btn btn-danger disabled">危險</button>
+      <button class="btn btn-light disabled">光明</button>
+      <button class="btn btn-dark disabled">黑暗</button>
+      <a class="btn btn-link disabled" tabindex="0">超連結</a>
+    </div>
+
+  </div><!-- .card end -->
+
+  <div class="container">
+
+    <div class="card card-shadow-sm card-col">
+      <h2 class="card-heading">按鈕尺寸</h2>
+      <div>
+        <div class="row-btns">
+          <button class="btn btn-primary btn-lg">大按鈕</button>
+          <button class="btn btn-secondary btn-lg">大按鈕</button>
+        </div>
+        <div class="row-btns">
+          <button class="btn btn-primary">中按鈕</button>
+          <button class="btn btn-secondary">中按鈕</button>
+        </div>
+        <div class="row-btns">
+          <button class="btn btn-primary btn-sm">小按鈕</button>
+          <button class="btn btn-secondary btn-sm">小按鈕</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-shadow-sm card-col">
+      <h2 class="card-heading">標籤</h2>
+      <div>
+        <span class="label label-new">新訂單</span>
+      </div>
+      <div>
+        <span class="label label-type1">等待中</span>
+        <span class="label label-type1">確認中</span>
+        <span class="label label-type1">已確認</span>
+      </div>
+      <div>
+        <span class="label label-type2">待出貨</span>
+        <span class="label label-type2">出貨中</span>
+        <span class="label label-type2">已出貨</span>
+      </div>
+      <div>
+        <span class="label label-type3">臨時</span>
+        <span class="label label-type3">其他</span>
+        <span class="label label-type3">延遲出貨</span>
+      </div>
+      <div>
+        <span class="label label-type4">退貨中</span>
+        <span class="label label-type4">換貨中</span>
+        <span class="label label-type4">已退貨</span>
+        <span class="label label-type4">已退款</span>
+      </div>
+      <div>
+        <span class="label label-invoice">未開發票</span>
+        <span class="label label-invoice">已開發票</span>
+        <span class="label label-invoice">發票折讓</span>
+        <span class="label label-invoice">發票作廢</span>
+      </div>
+      <div>
+        <span class="label label-others">其他裝態</span>
+      </div>
+      <div>
+        <span class="label label-coupon">優惠碼 KPLOVE</span>
+        <span class="label label-danger">狀態異常</span>
+      </div>
+      <div class="row-svgs">
+        <img src="/assets/img/circle-check.svg" alt="checkmark svg" />
+        <img src="/assets/img/circle-cross.svg" alt="cross svg" />
+      </div>
+    </div>
+
+  </div><!-- .container end -->
+
+  <div class="card card-shadow-sm">
+    <h2 class="card-heading">過濾按鈕</h2>
+    <div class="tab-box" data-tabbox>
+       <button class="tab-btn">全部</button><!--
+    --><button class="tab-btn tab-btn-new">新訂單</button><!--
+    --><button class="tab-btn tab-btn-type1">等待中</button><!--
+    --><button class="tab-btn tab-btn-type1">確認中</button><!--
+    --><button class="tab-btn tab-btn-type1">已確認</button><!--
+    --><button class="tab-btn tab-btn-type2">待出貨</button><!--
+    --><button class="tab-btn tab-btn-type2">出貨中</button><!--
+    --><button class="tab-btn tab-btn-type2">已出貨</button><!--
+    --><div class="select-box">
+         <select>
+           <option value="">其他</option>
+           <option value="temp">臨時</option>
+           <option value="others">其他</option>
+           <option value="cancelled">已取消</option>
+           <option value="deleted">已刪除</option>
+         </select>
+       </div><!--
+    --><div class="select-box">
+         <select>
+           <option value="">退換貨</option>
+           <option value="temp">退貨中</option>
+           <option value="others">換貨中</option>
+           <option value="cancelled">已退貨</option>
+           <option value="deleted">已退款</option>
+         </select>
+       </div><!--
+    --><button class="tab-btn tab-btn-invoice">未開發票</button><!--
+    --><button class="tab-btn tab-btn-invoice">已開發票</button><!--
+    --><button class="tab-btn tab-btn-invoice">發票折讓</button><!--
+    --><button class="tab-btn tab-btn-invoice">發票作廢</button><!--
+    --><button class="tab-btn tab-btn-others">七日內出貨</button>
+    </div>
   </div>
 
-  <div>Hover</div>
-  <div class="row-btns">
-    <button class="btn btn-primary hover">主要</button>
-    <button class="btn btn-secondary hover">次要</button>
-    <button class="btn btn-variant1 hover">付錢</button>
-    <button class="btn btn-variant2 hover">付錢</button>
-    <button class="btn btn-variant3 hover">付錢</button>
-    <button class="btn btn-warn hover">警告</button>
-    <button class="btn btn-danger hover">危險</button>
-    <button class="btn btn-light hover">光明</button>
-    <button class="btn btn-dark hover">黑暗</button>
-    <a class="btn btn-link hover">超連結</a>
-  </div>
-
-  <div>Active</div>
-  <div class="row-btns">
-    <button class="btn btn-primary active">主要</button>
-    <button class="btn btn-secondary active">次要</button>
-    <button class="btn btn-variant1 active">付錢</button>
-    <button class="btn btn-variant2 active">付錢</button>
-    <button class="btn btn-variant3 active">付錢</button>
-    <button class="btn btn-warn active">警告</button>
-    <button class="btn btn-danger active">危險</button>
-    <button class="btn btn-light active">光明</button>
-    <button class="btn btn-dark active">黑暗</button>
-    <a class="btn btn-link active">超連結</a>
-  </div>
-
-  <div>Disabled</div>
-  <div class="row-btns">
-    <button class="btn btn-primary disabled">主要</button>
-    <button class="btn btn-secondary disabled">次要</button>
-    <button class="btn btn-variant1 disabled">付錢</button>
-    <button class="btn btn-variant2 disabled">付錢</button>
-    <button class="btn btn-variant3 disabled">付錢</button>
-    <button class="btn btn-warn disabled">警告</button>
-    <button class="btn btn-danger disabled">危險</button>
-    <button class="btn btn-light disabled">光明</button>
-    <button class="btn btn-dark disabled">黑暗</button>
-    <a class="btn btn-link disabled">超連結</a>
-  </div>
 </div>
