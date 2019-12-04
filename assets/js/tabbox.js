@@ -41,9 +41,22 @@
       })
     }
 
+    removeCurrentClass() {
+      if (this.currentNode) {
+        this.currentNode.classList.remove('js-current')
+      }
+    }
+
+    addCurrentClass() {
+      if (this.currentNode) {
+        this.currentNode.classList.add('js-current')
+      }
+    }
+
     addEvents() {
       this.btns.forEach(btn => {
         const handleBtnClick = () => {
+          this.removeCurrentClass()
           this.clearSelects()
           this.moveSlider({
             left: btn.offsetLeft,
@@ -51,6 +64,7 @@
             color: btn.dataset.activeColor
           })
           this.currentNode = btn
+          this.addCurrentClass()
         }
         btn._handleBtnClick = handleBtnClick
         btn.addEventListener('click', handleBtnClick, false)
@@ -60,6 +74,7 @@
         const select = div.querySelector('select')
         const handleSelectChange = event => {
           if (event.target.value) {
+            this.removeCurrentClass()
             this.clearSelects({ except: select })
             this.moveSlider({
               left: div.offsetLeft,
@@ -67,10 +82,24 @@
               color: div.dataset.activeColor
             })
             this.currentNode = select
+            this.addCurrentClass()
           }
         }
-        div._handleSelectChange = handleSelectChange
+        select._handleSelectChange = handleSelectChange
         select.addEventListener('change', handleSelectChange, false)
+
+        const handleSelectFocus = () => {
+          console.log('focus')
+          select.parentNode.classList.add('js-focus')
+        }
+        select._handleSelectFocus = handleSelectFocus
+        select.addEventListener('focus', handleSelectFocus, false)
+
+        const handleSelectBlur = () => {
+          select.parentNode.classList.remove('js-focus')
+        }
+        select._handleSelectBlur = handleSelectBlur
+        select.addEventListener('blur', handleSelectBlur, false)
       })
     }
 
@@ -78,6 +107,11 @@
       this.currentNode = null
       this.slider.parentNode.removeChild(this.slider)
       this.btns.forEach(btn => btn.removeEventListener('click', btn._handleBtnClick, false))
+      this.selects.forEach(select => {
+        select.removeEventListener('change', select._handleSelectChange, false)
+        select.removeEventListener('focus', select._handleSelectFocus, false)
+        select.removeEventListener('blur', select._handleSelectBlur, false)
+      })
     }
   }
   const doms = document.querySelectorAll('[data-tabbox]')

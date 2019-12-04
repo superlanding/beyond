@@ -1,8 +1,18 @@
+@mixin tab-active-text {
+  color: #1d2638;
+  font-weight: 700;
+}
+@mixin tab-active-border {
+  border-bottom-color: rgb(77, 144, 254);
+}
 @mixin tab-focus-style {
+  &.js-current {
+    @include tab-active-text;
+  }
+  &.js-focus,
   &:focus {
-    color: #1d2638;
-    font-weight: 700;
-    border-bottom-color: rgb(77, 144, 254);
+    @include tab-active-text;
+    @include tab-active-border;
   }
 }
 
@@ -20,11 +30,16 @@
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-bottom-color: #cdcdcd;
+    &.js-focus {
+      select {
+        @include tab-active-text;
+      }
+      @include tab-active-border;
+    }
     select {
       cursor: pointer;
       &:hover {
-        color: #1d2638;
-        font-weight: 700;
+        @include tab-active-text;
       }
       outline: 0;
       -webkit-appearance: none;
