@@ -33,13 +33,30 @@ title: Typography
       </div>
     </div>
 
-    <div class="container-headings">
-      <h1>Heading 1</h1>
-      <h2>Heading 2</h2>
-      <h3>Heading 3</h3>
-      <h4>Heading 4</h4>
-      <h5>Heading 5</h5>
-      <h6>Heading 6</h6>
+    <div class="codebox last-codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
+        </div>
+        <div>
+          {% highlight html linenos %}
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>{% endhighlight %}
+        </div>
+      </div>
     </div>
   </div>
 
@@ -56,62 +73,134 @@ title: Typography
 
   <div class="card card-shadow-md">
     <h2 class="card-heading">表格文字</h2>
-    <table class="table-fonts">
-      <tr>
-        <th>訂單編號</th>
-        <td class="txt-order-id">SP12345678</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>托運單號</th>
-        <td class="txt-consignment-no">1002-6790-5721</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>發票號碼</th>
-        <td class="txt-invoice-no">MH-12345678</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>火箭快遞</th>
-        <td class="txt-xdelivery">439944</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>便利貼暱稱</th>
-        <td class="txt-sticky-nickname">
-          <img class="avatar avatar-sm avatar-eddie"
-               src="/assets/img/avatar-eddie.jpg"
-               alt="eddie's avatar" />
-          eddie
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>金額</th>
-        <td class="txt-money">NT$1,000</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>收件人</th>
-        <td class="txt-receiver">黃宏成</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>IP</th>
-        <td class="txt-ip">115.43.250.18</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>料號</th>
-        <td class="txt-part-no">88180101-010</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>撿貨編號</th>
-        <td class="txt-picking">婉婷全九</td>
-        <td></td>
-      </tr>
-    </table>
+
+    <div class="codebox last-codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          <table class="table-fonts">
+            <tr>
+              <th>訂單編號</th>
+              <td class="txt-order-id">SP12345678</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>托運單號</th>
+              <td class="txt-consignment-no">1002-6790-5721</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>發票號碼</th>
+              <td class="txt-invoice-no">MH-12345678</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>火箭快遞</th>
+              <td class="txt-xdelivery">439944</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>便利貼暱稱</th>
+              <td class="txt-sticky-nickname">
+                <img class="avatar avatar-sm avatar-eddie"
+                     src="/assets/img/avatar-eddie.jpg"
+                     alt="eddie's avatar" />
+                eddie
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>金額</th>
+              <td class="txt-money">NT$1,000</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>收件人</th>
+              <td class="txt-receiver">黃宏成</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>IP</th>
+              <td class="txt-ip">115.43.250.18</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>料號</th>
+              <td class="txt-part-no">88180101-010</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>撿貨編號</th>
+              <td class="txt-picking">婉婷全九</td>
+              <td></td>
+            </tr>
+          </table>
+        </div><!-- .codebox-result -->
+        <div>
+          {% highlight html linenos %}
+<table class="table-fonts">
+  <tr>
+    <th>訂單編號</th>
+    <td class="txt-order-id">SP12345678</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>托運單號</th>
+    <td class="txt-consignment-no">1002-6790-5721</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>發票號碼</th>
+    <td class="txt-invoice-no">MH-12345678</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>火箭快遞</th>
+    <td class="txt-xdelivery">439944</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>便利貼暱稱</th>
+    <td class="txt-sticky-nickname">
+      <img class="avatar avatar-sm avatar-eddie"
+           src="/assets/img/avatar-eddie.jpg"
+           alt="eddie's avatar" />
+      eddie
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>金額</th>
+    <td class="txt-money">NT$1,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>收件人</th>
+    <td class="txt-receiver">黃宏成</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>IP</th>
+    <td class="txt-ip">115.43.250.18</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>料號</th>
+    <td class="txt-part-no">88180101-010</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>撿貨編號</th>
+    <td class="txt-picking">婉婷全九</td>
+    <td></td>
+  </tr>
+</table>{% endhighlight %}
+        </div><!-- highlighthtml -->
+      </div><!-- div[data-panes] end -->
+    </div><!-- .codebox -->
+  </div><!-- .card -->
 </div>
 <script src="/assets/js/codebox.js"></script>
