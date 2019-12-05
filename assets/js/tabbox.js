@@ -20,8 +20,20 @@
       this.slider.classList.add('js-slider')
       this.dom.appendChild(this.slider)
       const [firstBtn] = this.btns
+      const defaultBtn = this.btns.find(btn => 'default' in btn.dataset)
+
       if (firstBtn) {
         this.slider.style.top = (firstBtn.offsetHeight - this.slider.offsetHeight) + 'px'
+      }
+      if (defaultBtn) {
+        this.moveSlider({
+          top: defaultBtn.top,
+          left: defaultBtn.left,
+          width: defaultBtn.offsetWidth,
+          color: defaultBtn.dataset.activeColor
+        })
+        this.currentNode = defaultBtn
+        this.addCurrentClass()
       }
     }
 
