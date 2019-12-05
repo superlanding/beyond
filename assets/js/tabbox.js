@@ -19,14 +19,18 @@
       this.slider = document.createElement('div')
       this.slider.classList.add('js-slider')
       this.dom.appendChild(this.slider)
+      const [firstBtn] = this.btns
+      if (firstBtn) {
+        this.slider.style.top = (firstBtn.offsetHeight - this.slider.offsetHeight) + 'px'
+      }
     }
 
     setSliderColor(color) {
       this.slider.style.backgroundColor = color
     }
 
-    moveSlider({ left, width, color = '#858585' }) {
-      this.slider.style.transform = `translateX(${left}px)`
+    moveSlider({ top, left, width, color = '#858585' }) {
+      this.slider.style.transform = `translate(${left}px, ${top}px)`
       this.slider.style.width = width + 'px'
       this.slider.style.backgroundColor = color
     }
@@ -59,6 +63,7 @@
           this.removeCurrentClass()
           this.clearSelects()
           this.moveSlider({
+            top: btn.offsetTop,
             left: btn.offsetLeft,
             width: btn.offsetWidth,
             color: btn.dataset.activeColor
@@ -77,6 +82,7 @@
             this.removeCurrentClass()
             this.clearSelects({ except: select })
             this.moveSlider({
+              top: div.offsetTop,
               left: div.offsetLeft,
               width: div.offsetWidth,
               color: div.dataset.activeColor
