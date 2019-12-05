@@ -89,7 +89,6 @@
         select.addEventListener('change', handleSelectChange, false)
 
         const handleSelectFocus = () => {
-          console.log('focus')
           select.parentNode.classList.add('js-focus')
         }
         select._handleSelectFocus = handleSelectFocus
