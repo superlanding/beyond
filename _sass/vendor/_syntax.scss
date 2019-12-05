@@ -220,13 +220,14 @@ figure {
   font-weight: 600;
 }
 .highlight {
+  overflow: auto;
   color: #f8f8f2;
   background-color: #4f566b;
   padding: 0 24px;
 }
 .highlight > pre {
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 pre.lineno {
   color: #bec5ca;
