@@ -9,6 +9,11 @@ body {
   box-sizing: inherit;
 }
 
+:focus {
+  outline: 3px solid #67a0f8;
+  outline-offset: 2px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 8px;

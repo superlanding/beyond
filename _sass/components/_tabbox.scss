@@ -41,13 +41,10 @@
         @include tab-active-text;
       }
       outline: 0;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
       font-size: 12px;
-      padding: 6px 12px;
+      padding: 6px 32px 6px 12px;
       border: 0;
-      background: #fff;
+      box-shadow: none;
     }
   }
   .tab-btn {

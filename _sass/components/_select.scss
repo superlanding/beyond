@@ -1,0 +1,12 @@
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(60, 66, 87, .12);
+  padding: 6px 34px 6px 10px;
+  background-image: url(/assets/img/arrow-select.svg);
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
