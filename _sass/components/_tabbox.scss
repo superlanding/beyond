@@ -3,7 +3,7 @@
   font-weight: 700;
 }
 @mixin tab-active-border {
-  border-bottom-color: rgb(77, 144, 254);
+  border-bottom-color: $bg-outline;
 }
 @mixin tab-focus-style {
   &.js-current {
