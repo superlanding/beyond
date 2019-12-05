@@ -48,10 +48,11 @@
       font-size: 12px;
       padding: 6px 12px;
       border: 0;
-      background: none;
+      background: #fff;
     }
   }
   .tab-btn {
+    background: #fff;
     display: inline-block;
     min-width: 60px;
     padding: 6px 12px;
@@ -65,8 +66,7 @@
     outline: 0;
     transition: all .3s;
     &:hover {
-      color: #1d2638;
-      font-weight: 700;
+      @include tab-active-text;
     }
     @include tab-focus-style;
     &.tab-btn-new {
