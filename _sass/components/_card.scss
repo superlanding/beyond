@@ -2,6 +2,9 @@
   background-color: #fff;
   color: #3c4257;
   padding: 30px 36px;
+  @media (max-width: $screen-xs) {
+    padding: 20px;
+  }
 }
 .card-shadow-sm {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .12);

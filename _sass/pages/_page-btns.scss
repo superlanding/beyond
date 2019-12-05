@@ -1,4 +1,9 @@
 .page-btns {
+  @media (max-width: $screen-md) {
+    .container {
+      display: block;
+    }
+  }
   .row-btns {
     margin-top: 10px;
     .btn {
@@ -12,6 +17,9 @@
   }
   .card-col {
     margin-right: 40px;
+    @media (max-width: $screen-md) {
+      margin-right: 0;
+    }
   }
   .label {
     margin-bottom: 14px;
