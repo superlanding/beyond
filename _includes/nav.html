@@ -3,9 +3,9 @@
     {% for item in site.data.nav %}
       <li>
         {% if page.url == item.link %}
-          <a href="{{ item.link }}" class="nav-item active">{{ item.name }}</a>
+          <a href="{{ item.link | relative_url }}" class="nav-item active">{{ item.name }}</a>
         {% else %}
-          <a href="{{ item.link }}" class="nav-item">{{ item.name }}</a>
+          <a href="{{ item.link | relative_url }}" class="nav-item">{{ item.name }}</a>
         {% endif %}
       </li>
     {% endfor %}
