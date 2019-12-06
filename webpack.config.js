@@ -8,6 +8,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.svg$/,
+        loader: 'svg-url-loader'
+      },
+      {
        test: /\.s[ac]ss$/i,
         use: [
           {
