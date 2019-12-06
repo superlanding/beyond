@@ -1,3 +1,5 @@
+# uncomment baseurl below to build github page
+# baseurl: beyond/
 sass:
   load_paths:
     - _sass
