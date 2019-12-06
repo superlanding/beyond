@@ -10,17 +10,19 @@ title: Buttons
     <h2>按鈕樣式</h2>
 
     <div>Default</div>
-    <div class="row-btns">
-      <button class="btn btn-primary">主要</button>
-      <button class="btn btn-secondary">次要</button>
-      <button class="btn btn-variant1">付錢</button>
-      <button class="btn btn-variant2">付錢</button>
-      <button class="btn btn-variant3">付錢</button>
-      <button class="btn btn-warn">警告</button>
-      <button class="btn btn-danger">危險</button>
-      <button class="btn btn-light">光明</button>
-      <button class="btn btn-dark">黑暗</button>
-      <a class="btn btn-link" tabindex="0">超連結</a>
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          {% include demos/btns-default.html %}
+        </div>
+        <div>
+          {% highlight html linenos %}{% include demos/btns-default.html %}{% endhighlight %}
+        </div>
+      </div>
     </div>
 
     <div>Hover</div>
