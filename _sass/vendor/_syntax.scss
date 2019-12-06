@@ -234,3 +234,6 @@ pre.lineno {
   text-align: right;
   margin-right: 14px;
 }
+td.code > pre {
+  white-space: pre-wrap;
+}
