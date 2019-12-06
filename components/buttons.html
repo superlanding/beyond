@@ -26,17 +26,19 @@ title: Buttons
     </div>
 
     <div>Hover</div>
-    <div class="row-btns">
-      <button class="btn btn-primary hover">主要</button>
-      <button class="btn btn-secondary hover">次要</button>
-      <button class="btn btn-variant1 hover">付錢</button>
-      <button class="btn btn-variant2 hover">付錢</button>
-      <button class="btn btn-variant3 hover">付錢</button>
-      <button class="btn btn-warn hover">警告</button>
-      <button class="btn btn-danger hover">危險</button>
-      <button class="btn btn-light hover">光明</button>
-      <button class="btn btn-dark hover">黑暗</button>
-      <a class="btn btn-link hover" tabindex="0">超連結</a>
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          {% include demos/btns-hover.html %}
+        </div>
+        <div>
+          {% highlight html linenos %}{% include demos/btns-hover.html %}{% endhighlight %}
+        </div>
+      </div>
     </div>
 
     <div>Active</div>
