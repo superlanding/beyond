@@ -1,4 +1,4 @@
-(function() {
+(function(beyond) {
   class Tabbox {
 
     constructor(dom) {
@@ -131,8 +131,5 @@
       })
     }
   }
-  const doms = document.querySelectorAll('[data-tabbox]')
-  doms.forEach(dom => {
-    const tabbox = new Tabbox(dom)
-  })
-})();
+  beyond.Tabbox = Tabbox
+})(window.beyond = window.beyond || {});

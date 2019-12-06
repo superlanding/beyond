@@ -1,4 +1,4 @@
-(function() {
+(function(beyond) {
   class Codebox {
 
     constructor(dom) {
@@ -36,8 +36,5 @@
       this.panesBox.style.height = this.panes[0].offsetHeight + 'px'
     }
   }
-  const doms = document.querySelectorAll('[data-codebox]')
-  doms.forEach(dom => {
-    const codebox = new Codebox(dom)
-  })
-})();
+  beyond.Codebox = Codebox
+})(window.beyond = window.beyond || {});
