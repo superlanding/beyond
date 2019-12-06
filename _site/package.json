@@ -1,0 +1,29 @@
+{
+  "name": "beyond",
+  "version": "0.0.1",
+  "description": "The best frontend framework for super-landing.com",
+  "main": "dist/beyond.js",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "./build.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superlanding/beyond.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superlanding/beyond/issues"
+  },
+  "homepage": "https://github.com/superlanding/beyond#readme",
+  "dependencies": {
+    "node.normalize.scss": "3.0.3"
+  },
+  "devDependencies": {
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10",
+    "webpack-dev-server": "3.9.0"
+  }
+}
