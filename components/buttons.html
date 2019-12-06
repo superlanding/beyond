@@ -9,7 +9,7 @@ title: Buttons
 
     <h2>按鈕樣式</h2>
 
-    <div>Default</div>
+    <div class="codebox-label">Default</div>
     <div class="codebox" data-codebox>
       <div class="codebox-tabs" data-tabs>
         <a>Result</a>
@@ -25,7 +25,7 @@ title: Buttons
       </div>
     </div>
 
-    <div>Hover</div>
+    <div class="codebox-label">Hover</div>
     <div class="codebox" data-codebox>
       <div class="codebox-tabs" data-tabs>
         <a>Result</a>
@@ -41,7 +41,7 @@ title: Buttons
       </div>
     </div>
 
-    <div>Active</div>
+    <div class="codebox-label">Active</div>
     <div class="codebox" data-codebox>
       <div class="codebox-tabs" data-tabs>
         <a>Result</a>
@@ -57,18 +57,20 @@ title: Buttons
       </div>
     </div>
 
-    <div>Disabled</div>
-    <div class="row-btns">
-      <button class="btn btn-primary disabled">主要</button>
-      <button class="btn btn-secondary disabled">次要</button>
-      <button class="btn btn-variant1 disabled">付錢</button>
-      <button class="btn btn-variant2 disabled">付錢</button>
-      <button class="btn btn-variant3 disabled">付錢</button>
-      <button class="btn btn-warn disabled">警告</button>
-      <button class="btn btn-danger disabled">危險</button>
-      <button class="btn btn-light disabled">光明</button>
-      <button class="btn btn-dark disabled">黑暗</button>
-      <a class="btn btn-link disabled" tabindex="0">超連結</a>
+    <div class="codebox-label">Disabled</div>
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          {% include demos/btns-disabled.html %}
+        </div>
+        <div>
+          {% highlight html linenos %}{% include demos/btns-disabled.html %}{% endhighlight %}
+        </div>
+      </div>
     </div>
 
   </div><!-- .card end -->
