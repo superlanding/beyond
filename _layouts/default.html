@@ -13,8 +13,12 @@
     <main class="main">
       {{ content }}
     </main>
+    {% if jekyll.environment == "development" %}
+      <script src="http://localhost:8080/beyond.js"></script>
+    {% else %}
+      <script src="{{ '/assets/js/beyond.js' | relative_url }}"></script>
+    {% endif %}
     <script src="{{ '/assets/js/codebox.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/tabbox.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/default.js' | relative_url }}"></script>
   </body>
 </html>
