@@ -2,7 +2,7 @@
   "name": "beyond",
   "version": "0.0.1",
   "description": "The best frontend framework for super-landing.com",
-  "main": "index.js",
+  "main": "dist/beyond.js",
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "./build.sh",
