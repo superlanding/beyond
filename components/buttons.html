@@ -75,87 +75,41 @@ title: Buttons
 
   </div><!-- .card end -->
 
-  <div class="container">
-
-    <div class="card card-shadow-sm card-col">
-      <h2 class="card-heading">按鈕尺寸</h2>
-      <div class="codebox" data-codebox>
-        <div class="codebox-tabs" data-tabs>
-          <a>Result</a>
-          <a>HTML</a>
+  <div class="card card-shadow-sm">
+    <h2 class="card-heading">按鈕尺寸</h2>
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          {% include demos/btns-size.html %}
         </div>
-        <div class="codebox-panes" data-panes>
-          <div class="codebox-result">
-            {% include demos/btns-size.html %}
-          </div>
-          <div>
-            {% highlight html linenos %}{% include demos/btns-size.html %}{% endhighlight %}
-          </div>
+        <div>
+          {% highlight html linenos %}{% include demos/btns-size.html %}{% endhighlight %}
         </div>
       </div>
-      <h2 class="heading-icon">Icon 按鈕</h2>
-      <div class="row-btns">
-        <button class="btn btn-outline btn-icon">
-          <img class="icon icon-plus" src="/assets/img/plus.svg" alt="+" />
-          新增便利貼
-        </button>
-        <button class="btn btn-warn btn-icon">
-          <img class="icon" src="/assets/img/exclamation-triangle.svg" alt="warning" />
-          單項折讓
-        </button>
-        <button class="btn btn-danger btn-icon">
-          <img class="icon" src="/assets/img/exclamation-triangle.svg" alt="danger" />
-          發票全額折讓
-        </button>
+    </div>
+  </div>
+
+  <div class="card card-shadow-sm">
+    <h2 class="card-heading">Icon 按鈕</h2>
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          {% include demos/btns-icon.html %}
+        </div>
+        <div>
+          {% highlight html linenos %}{% include demos/btns-icon.html %}{% endhighlight %}
+        </div>
       </div>
     </div>
-
-    <div class="card card-shadow-sm card-col">
-      <h2 class="card-heading">標籤</h2>
-      <div>
-        <span class="label label-new">新訂單</span>
-      </div>
-      <div>
-        <span class="label label-type1">等待中</span>
-        <span class="label label-type1">確認中</span>
-        <span class="label label-type1">已確認</span>
-      </div>
-      <div>
-        <span class="label label-type2">待出貨</span>
-        <span class="label label-type2">出貨中</span>
-        <span class="label label-type2">已出貨</span>
-      </div>
-      <div>
-        <span class="label label-type3">臨時</span>
-        <span class="label label-type3">其他</span>
-        <span class="label label-type3">延遲出貨</span>
-      </div>
-      <div>
-        <span class="label label-type4">退貨中</span>
-        <span class="label label-type4">換貨中</span>
-        <span class="label label-type4">已退貨</span>
-        <span class="label label-type4">已退款</span>
-      </div>
-      <div>
-        <span class="label label-invoice">未開發票</span>
-        <span class="label label-invoice">已開發票</span>
-        <span class="label label-invoice">發票折讓</span>
-        <span class="label label-invoice">發票作廢</span>
-      </div>
-      <div>
-        <span class="label label-others">其他裝態</span>
-      </div>
-      <div>
-        <span class="label label-coupon">優惠碼 KPLOVE</span>
-        <span class="label label-danger">狀態異常</span>
-      </div>
-      <div class="row-svgs">
-        <img src="/assets/img/check-circle.svg" alt="checkmark svg" />
-        <img src="/assets/img/cross-circle.svg" alt="cross svg" />
-      </div>
-    </div>
-
-  </div><!-- .container end -->
+  </div>
 
   <div class="card card-shadow-sm">
     <h2 class="card-heading">過濾按鈕</h2>
