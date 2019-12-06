@@ -1,0 +1,14 @@
+.nav {
+  width: 240px;
+  .nav-item {
+    color: #1a1f36;
+    text-decoration: none;
+    display: block;
+    padding: 7px 21px;
+    font-size: 14px;
+  }
+  .nav-item.active {
+    color: $color-primary;
+    font-weight: 700;
+  }
+}

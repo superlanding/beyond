@@ -1,3 +1,4 @@
+import './sass/index.scss'
 import Tabbox from './tabbox'
 
 if (typeof window !== 'undefined') {

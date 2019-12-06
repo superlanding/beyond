@@ -5,6 +5,11 @@
     <title>{{ page.title }} | Beyond</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+    {% if jekyll.environment == "development" %}
+      <link rel="stylesheet" href="http://localhost:8080/beyond.css">
+    {% else %}
+      <script src="{{ '/assets/css/beyond.css' | relative_url }}"></script>
+    {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
   </head>

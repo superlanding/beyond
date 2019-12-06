@@ -1,0 +1,60 @@
+.label {
+  cursor: default;
+  font-size: 12px;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc;
+  padding: 1px 9px;
+  display: inline-block;
+  text-align: center;
+  min-width: 56px;
+
+  &.label-btn {
+    background-color: transparent;
+    cursor: pointer;
+    &.hover,
+    &:hover {
+      box-shadow: 0 1px 3px 0 rgba(50, 50, 93, .11),
+        0 1px 3px 0 rgba(0, 0, 0, .08);
+    }
+    &.active,
+    &:active {
+      box-shadow: none;
+    }
+    &.disabled,
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &.label-new {
+    border-color: $bg-label-new;
+    color: $bg-label-new;
+  }
+
+  @for $i from 1 through length($bg-label-types) {
+    &.label-type#{$i} {
+      border-color: nth($bg-label-types, $i);
+      color: nth($bg-label-types, $i);
+    }
+  }
+
+  &.label-invoice {
+    border-color: $bg-label-invoice;
+    color: $bg-label-invoice;
+  }
+  &.label-others {
+    border-color: $bg-label-others;
+    color: $bg-label-others;
+  }
+  &.label-coupon {
+    border-color: $bg-label-coupon;
+    color: $bg-label-coupon;
+  }
+  &.label-danger {
+    border: 0;
+    background-color: $bg-label-danger;
+    color: $color-light;
+  }
+}

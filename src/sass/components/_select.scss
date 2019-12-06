@@ -1,0 +1,22 @@
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(60, 66, 87, .12);
+  padding: 6px 34px 6px 10px;
+  background-image: url(/assets/img/arrow-select.svg);
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.select.select-outline {
+  box-shadow: 0 0 0 1px rgba(60, 66, 87, .16);
+}
+
+.select.select-outline-strong {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12),
+    rgba(60, 66, 87, .16) 0 0 0 1px,
+    rgba(60, 66, 87, .12) 0 2px 5px 0;
+}
