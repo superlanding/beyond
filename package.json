@@ -4,6 +4,8 @@
   "description": "The best frontend framework for super-landing.com",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "NODE_ENV=production webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +20,10 @@
   "homepage": "https://github.com/superlanding/beyond#readme",
   "dependencies": {
     "node.normalize.scss": "3.0.3"
+  },
+  "devDependencies": {
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10",
+    "webpack-dev-server": "3.9.0"
   }
 }
