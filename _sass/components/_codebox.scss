@@ -1,0 +1,34 @@
+.codebox {
+  overflow: hidden;
+  background-color: #3c4257;
+  border-radius: 4px;
+  .codebox-tabs {
+    font-weight: 500;
+    padding: 7px 14px;
+    font-size: 13px;
+    display: flex;
+    color: #a3acb9;
+    > a {
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 18px;
+      &.js-active {
+        color: #7dabf8;
+      }
+    }
+  }
+  .codebox-result {
+    padding: 20px;
+    background-color: #f7f8f9;
+  }
+  .codebox-panes {
+    transition: .3s all;
+    display: flex;
+    align-items: start;
+    flex-wrap: nowrap;
+    > div {
+      width: 100%;
+      flex-shrink: 0;
+    }
+  }
+}
