@@ -1,4 +1,5 @@
 .dropdown {
+  display: inline-block;
   overflow: visible;
   position: relative;
   .dropdown-menu {
@@ -18,9 +19,13 @@
     box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
       0 15px 35px 0 rgba(49, 49, 93, .1),
       0 5px 15px 0 rgba(0, 0, 0, .08);
+    .dropdown-divider {
+      border-bottom: 1px solid #d8d8d8;
+      margin: 10px 0;
+    }
     .dropdown-item {
       min-width: 160px;
-      padding: 7px 12px;
+      padding: 7px 20px;
       font-size: 14px;
       color: #5469d4;
       display: block;
