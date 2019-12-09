@@ -1,0 +1,79 @@
+.icon {
+  display: inline-block;
+  $size-icon: 20px;
+  background-repeat: no-repeat;
+  background-size: $size-icon $size-icon;
+  background-position: center center;
+  @include size($size-icon);
+  padding: 7px;
+}
+
+.icon-lg {
+  $size: 30px;
+  background-size: $size $size;
+  @include size($size);
+}
+.icon-sm {
+  $size: 16px;
+  background-size: $size $size;
+  @include size($size);
+}
+
+.icon-blackcat {
+  background-image: url(../img/logo-blackcat.svg);
+}
+.icon-hct {
+  background-image: url(../img/logo-hct.svg);
+}
+.icon-pelican {
+  background-image: url(../img/logo-pelican.svg);
+}
+.icon-smilepay {
+  background-image: url(../img/logo-smilepay.svg);
+}
+.icon-ecpay {
+  background-image: url(../img/logo-ecpay.svg);
+}
+
+.icon-ellipsis-v {
+  background-image: url(../img/ellipsis-v.svg);
+}
+.icon-ellipsis-h {
+  background-image: url(../img/ellipsis-h.svg);
+}
+.icon-times {
+  background-image: url(../img/times.svg);
+}
+.icon-cog {
+  background-image: url(../img/cog.svg);
+}
+.icon-check {
+  background-image: url(../img/check.svg);
+}
+.icon-cross {
+  background-image: url(../img/cross.svg);
+}
+
+.btn-check-circle {
+  @include size(16px);
+  background-color: #1fa672;
+  border-radius: 50%;
+  border: 0;
+  display: inline-block;
+  padding: 0;
+  > .icon {
+    display: block;
+  }
+}
+
+.btn-cross-circle {
+  @include size(16px);
+  background-color: #e03953;
+  border-radius: 50%;
+  border: 0;
+  display: inline-block;
+  padding: 0;
+  > .icon {
+    display: block;
+  }
+}

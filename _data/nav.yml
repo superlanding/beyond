@@ -10,5 +10,7 @@
   link: /components/labels.html
 - name: Selects
   link: /components/selects.html
-- name: Inline Svgs
-  link: /components/inline-svgs.html
+- name: Dropdowns
+  link: /components/dropdowns.html
+- name: Icons
+  link: /components/icons.html
