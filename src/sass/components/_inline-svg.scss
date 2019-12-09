@@ -1,14 +1,11 @@
-.svg-ellipsis-h {
+.svg-ellipsis-h,
+.svg-ellipsis-v,
+.svg-times,
+.svg-gear {
   @include size(12px);
-  color: #8892b3;
+  color: $bg-icon;
   fill: currentColor;
   transform: translateY(1px);
-}
-
-.svg-ellipsis-v {
-  @include size(12px);
-  color: #8892b3;
-  fill: currentColor;
 }
 
 .svg-check-circle {
@@ -17,4 +14,32 @@
 
 .svg-cross-circle {
   vertical-align: middle;
+}
+
+.btn-check-circle {
+  border-radius: 50%;
+  @include size(21px);
+  background-color: #1fa672;
+  border: 0;
+  display: inline-block;
+  padding: 0;
+  .svg-check-circle {
+    @include size(18px);
+    display: inline-block;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-cross-circle {
+  border-radius: 50%;
+  @include size(21px);
+  background-color: #e03953;
+  border: 0;
+  display: inline-block;
+  padding: 0;
+  .svg-cross-circle {
+    @include size(20px);
+    display: inline-block;
+    transform: translateY(-2px);
+  }
 }
