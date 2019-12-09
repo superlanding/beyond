@@ -5,8 +5,20 @@
 ```bash
 bundle
 yarn
-jekyll serve
+foreman start
 # http://localhost:4000/
+```
+
+## Deploy
+
+```bash
+git co github
+git merge master --no-ff
+yarn build
+git add -f _site
+git subtree split --prefix _site -b gh-pages
+git co gh-pages
+git push -f origin gh-pages
 ```
 
 ## References
