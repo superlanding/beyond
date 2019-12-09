@@ -1,3 +1,32 @@
+.icon-blackcat,
+.icon-hct,
+.icon-pelican,
+.icon-smilepay,
+.icon-ecpay {
+  display: inline-block;
+  $size-icon: 40px;
+  background-repeat: no-repeat;
+  background-size: $size-icon $size-icon;
+  @include size($size-icon);
+  padding: 7px;
+}
+
+.icon-blackcat {
+  background-image: url(../img/logo-blackcat.svg);
+}
+.icon-hct {
+  background-image: url(../img/logo-hct.svg);
+}
+.icon-pelican {
+  background-image: url(../img/logo-pelican.svg);
+}
+.icon-smilepay {
+  background-image: url(../img/logo-smilepay.svg);
+}
+.icon-ecpay {
+  background-image: url(../img/logo-ecpay.svg);
+}
+
 .svg-ellipsis-h,
 .svg-ellipsis-v,
 .svg-times,
