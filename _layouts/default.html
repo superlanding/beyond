@@ -8,7 +8,7 @@
     {% if jekyll.environment == "development" %}
       <link rel="stylesheet" href="http://localhost:8080/beyond.css">
     {% else %}
-      <link rel="stylesheet" href="{{ '/assets/css/beyond.css' | relative_url }}">
+      <link rel="stylesheet" href="{{ '/dist/beyond.css' | relative_url }}">
     {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
@@ -21,7 +21,7 @@
     {% if jekyll.environment == "development" %}
       <script src="http://localhost:8080/beyond.js"></script>
     {% else %}
-      <script src="{{ '/assets/js/beyond.js' | relative_url }}"></script>
+      <script src="{{ '/dist/beyond.js' | relative_url }}"></script>
     {% endif %}
     <script src="{{ '/assets/js/codebox.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/default.js' | relative_url }}"></script>
