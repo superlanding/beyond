@@ -1,0 +1,32 @@
+---
+layout: default
+title: Modals
+---
+<div class="page-modals">
+
+  <div class="card card-shadow-sm">
+    <h1 class="card-heading">互動視窗 - Modals</h1>
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+        <a>JavaScript</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          <button type="button"
+                  class="btn btn-primary"
+                  data-modal-toggler="example-modal">打開視窗</button>
+        </div>
+        <div>
+          {% highlight html linenos %}{% include demos/modals.html %}{% endhighlight %}
+        </div>
+        <div>
+          {% highlight javascript linenos %}{% include demos/modals.js %}{% endhighlight %}
+        </div>
+      </div>
+    </div>
+  </div><!-- .card end -->
+</div>
+
+{% include demos/modal-content.html %}
