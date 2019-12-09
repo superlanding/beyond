@@ -1,0 +1,14 @@
+.svg-ellipsis-h {
+  @include size(12px);
+  color: #8892b3;
+  fill: currentColor;
+  transform: translateY(1px);
+}
+
+.svg-check-circle {
+  vertical-align: middle;
+}
+
+.svg-cross-circle {
+  vertical-align: middle;
+}
