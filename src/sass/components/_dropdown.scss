@@ -48,5 +48,12 @@
       left: 20px;
       transform: rotate(45deg);
     }
+    &.right {
+      right: 0;
+      &:after {
+        left: initial;
+        right: 20px;
+      }
+    }
   }
 }
