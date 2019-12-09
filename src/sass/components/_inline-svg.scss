@@ -5,6 +5,12 @@
   transform: translateY(1px);
 }
 
+.svg-ellipsis-v {
+  @include size(12px);
+  color: #8892b3;
+  fill: currentColor;
+}
+
 .svg-check-circle {
   vertical-align: middle;
 }
