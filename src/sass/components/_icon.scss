@@ -1,14 +1,22 @@
-.icon-blackcat,
-.icon-hct,
-.icon-pelican,
-.icon-smilepay,
-.icon-ecpay {
+.icon {
   display: inline-block;
-  $size-icon: 40px;
+  $size-icon: 20px;
   background-repeat: no-repeat;
   background-size: $size-icon $size-icon;
+  background-position: center center;
   @include size($size-icon);
   padding: 7px;
+}
+
+.icon-lg {
+  $size: 30px;
+  background-size: $size $size;
+  @include size($size);
+}
+.icon-sm {
+  $size: 16px;
+  background-size: $size $size;
+  @include size($size);
 }
 
 .icon-blackcat {
@@ -27,47 +35,45 @@
   background-image: url(../img/logo-ecpay.svg);
 }
 
-.svg-ellipsis-h,
-.svg-ellipsis-v,
-.svg-times,
-.svg-gear {
-  @include size(12px);
-  color: $bg-icon;
-  fill: currentColor;
-  transform: translateY(1px);
+.icon-ellipsis-v {
+  background-image: url(../img/ellipsis-v.svg);
 }
-
-.svg-check-circle {
-  vertical-align: middle;
+.icon-ellipsis-h {
+  background-image: url(../img/ellipsis-h.svg);
 }
-
-.svg-cross-circle {
-  vertical-align: middle;
+.icon-times {
+  background-image: url(../img/times.svg);
+}
+.icon-cog {
+  background-image: url(../img/cog.svg);
+}
+.icon-check {
+  background-image: url(../img/check.svg);
+}
+.icon-cross {
+  background-image: url(../img/cross.svg);
 }
 
 .btn-check-circle {
-  border-radius: 50%;
   @include size(16px);
   background-color: #1fa672;
+  border-radius: 50%;
   border: 0;
   display: inline-block;
   padding: 0;
-  .svg-check-circle {
-    @include size(16px);
-    display: inline-block;
-    vertical-align: top;
+  > .icon {
+    display: block;
   }
 }
 
 .btn-cross-circle {
-  border-radius: 50%;
   @include size(16px);
   background-color: #e03953;
+  border-radius: 50%;
   border: 0;
   display: inline-block;
   padding: 0;
-  .svg-cross-circle {
-    @include size(16px);
-    vertical-align: top;
+  > .icon {
+    display: block;
   }
 }

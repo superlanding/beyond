@@ -1,16 +1,12 @@
 .page-inline-svgs {
-  .btn.btn-outline,
-  .btn-check-circle,
-  .btn-cross-circle,
-  .icon-blackcat,
-  .icon-hct,
-  .icon-pelican,
-  .icon-smilepay,
-  .icon-ecpay {
-    margin-right: 20px;
-    margin-bottom: 20px;
-  }
-  .row {
-    margin-bottom: 10px;
+  .codebox-result {
+    .row {
+      margin-bottom: 10px;
+      > .icon,
+      > button {
+        margin-right: 20px;
+        margin-bottom: 20px;
+      }
+    }
   }
 }
