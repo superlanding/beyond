@@ -12,5 +12,5 @@
   link: /components/selects.html
 - name: Dropdowns
   link: /components/dropdowns.html
-- name: Inline Svgs & Icons
-  link: /components/inline-svgs.html
+- name: Icons
+  link: /components/icons.html
