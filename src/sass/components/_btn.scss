@@ -43,7 +43,7 @@
 }
 
 .btn.btn-outline {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   padding: 4px 7px;
   border: 1px solid #ccc;
@@ -53,6 +53,11 @@
     transform: translateY(-1px);
     box-shadow: 0 1px 2px 0 rgba(50, 50, 93, .11),
       0 3px 6px 0 rgba(0, 0, 0, .08);
+  }
+  .icon {
+    transform: translateY(-1px);
+    @include size(10px);
+    background-size: 10px 10px;
   }
 }
 
