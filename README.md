@@ -9,7 +9,7 @@ foreman start
 # http://localhost:4000/
 ```
 
-## Deploy
+## Deployment
 
 ```bash
 git co github
