@@ -53,6 +53,12 @@
 .icon-cross {
   background-image: url(../img/cross.svg);
 }
+.icon-plus {
+  background-image: url(../img/plus.svg);
+}
+.icon-exclamation-triangle {
+  background-image: url(../img/exclamation-triangle.svg);
+}
 
 .btn-check-circle {
   @include size(16px);
