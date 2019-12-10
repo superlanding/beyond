@@ -5,19 +5,23 @@ document.querySelectorAll('[data-codebox]').forEach(dom => {
 })
 
 document.querySelectorAll('[data-tabbox]').forEach(dom => {
-  const tabbox = new Tabbox(dom)
+  const tabbox = new Tabbox(dom, {
+    onChange(data) {
+      console.log('onChange', data)
+    }
+  })
 })
 
 document.querySelectorAll('[data-dropdown]').forEach(dom => {
   const dropdown = new Dropdown(dom)
 })
 
-document.querySelectorAll('[data-modal-toggler]').forEach(dom => {
+document.querySelectorAll('[data-modal-opener]').forEach(dom => {
   const modal = new Modal(dom, {
-    confirm() {
+    onConfirm() {
       console.log('confirmed')
     },
-    cancel(type) {
+    onCancel(type) {
       console.log('cancelled', type)
     }
   })

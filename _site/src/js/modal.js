@@ -9,7 +9,7 @@ export default class Modal {
   }
 
   init() {
-    this.modalId = this.dom.dataset.modalToggler
+    this.modalId = this.dom.dataset.modalOpener
     const selector = `[data-modal="${this.modalId}"]`
     this.modal = document.querySelector(selector)
     if (! this.modal) {
@@ -37,23 +37,31 @@ export default class Modal {
     }, 300)
   }
 
+  onConfirm() {
+    if (typeof this.options.onConfirm === 'function') {
+      this.options.onConfirm()
+    }
+  }
+
+  onCancel(type) {
+    if (typeof this.options.onCancel === 'function') {
+      this.options.onCancel(type)
+    }
+  }
+
   addEvents() {
-    this._handleTogglerClick = this.show.bind(this)
-    this.dom.addEventListener('click', this._handleTogglerClick, false)
+    this._handleOpenerClick = this.show.bind(this)
+    this.dom.addEventListener('click', this._handleOpenerClick, false)
 
     this._handleCloseBtnClick = () => {
       this.hide()
-      if (typeof this.options.cancel === 'function') {
-        this.options.cancel('close')
-      }
+      this.onCancel('close')
     }
     this.closeBtn.addEventListener('click', this._handleCloseBtnClick, false)
 
     this._handleCancelBtnClick = () => {
       this.hide()
-      if (typeof this.options.cancel === 'function') {
-        this.options.cancel('cancel')
-      }
+      this.onCancel('cancel')
     }
     this.cancelBtn.addEventListener('click', this._handleCancelBtnClick, false)
 
@@ -61,16 +69,14 @@ export default class Modal {
       // is backdrop
       if (event.target.dataset.modal === this.modalId) {
         this.hide()
-        if (typeof this.options.cancel === 'function') {
-          this.options.cancel('backdrop')
-        }
+        this.onCancel('backdrop')
       }
     }
     this.modal.addEventListener('click', this._handleModalClick, false)
 
     this._handleConfirmBtnClick = () => {
       if (typeof this.options.confirm === 'function') {
-        this.options.confirm()
+        this.onConfirm()
       }
       else {
         this.hide()
@@ -80,7 +86,7 @@ export default class Modal {
   }
 
   destroy() {
-    this.dom.removeEventListener('click', this._handleTogglerClick, false)
+    this.dom.removeEventListener('click', this._handleOpenerClick, false)
     this.closeBtn.removeEventListener('click', this._handleCloseBtnClick, false)
     this.cancelBtn.removeEventListener('click', this._handleCancelBtnClick, false)
     this.modal.removeEventListener('click', this._handleModalClick, false)

@@ -267,6 +267,7 @@ td.code > pre {
     display: flex;
     color: #a3acb9; }
     .codebox .codebox-tabs > a {
+      color: #a3acb9;
       cursor: pointer;
       display: inline-block;
       margin-right: 18px; }
@@ -339,14 +340,10 @@ td.code > pre {
   margin-bottom: 20px; }
 .page-btns .card {
   margin-bottom: 40px; }
-.page-btns .card-col {
-  margin-right: 40px; }
-  @media (max-width: 992px) {
-    .page-btns .card-col {
-      margin-right: 0; } }
-.page-btns .label {
-  margin-bottom: 14px;
-  margin-right: 14px; }
+
+.page-tags .tag {
+  margin-right: 14px;
+  margin-bottom: 14px; }
 
 .page-selects .row {
   margin-bottom: 30px; }
@@ -359,7 +356,10 @@ td.code > pre {
     margin-bottom: 20px; }
 
 .page-dropdowns .codebox-result {
-  min-height: 280px; }
+  min-height: 300px; }
   .page-dropdowns .codebox-result .dropdown {
     margin-right: 20px;
     margin-bottom: 20px; }
+
+.page-forms .card {
+  margin-bottom: 40px; }
