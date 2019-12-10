@@ -1,2 +1,2 @@
-client: webpack-dev-server --host 0.0.0.0
+client: yarn dev
 server: jekyll s --host 0.0.0.0

@@ -4,7 +4,7 @@
   "description": "The best frontend framework for super-landing.com",
   "main": "dist/beyond.js",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --host 0.0.0.0",
     "build": "./build.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
