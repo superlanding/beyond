@@ -1,8 +1,9 @@
 export default class Tabbox {
 
-  constructor(dom) {
+  constructor(dom, options = {}) {
     this.currentNode = null
     this.dom = dom
+    this.options = options
     this.init()
   }
 
@@ -68,19 +69,28 @@ export default class Tabbox {
     }
   }
 
+  onChange(data) {
+    if (typeof this.options.onChange === 'function') {
+      this.options.onChange(data)
+    }
+  }
+
   addEvents() {
     this.btns.forEach(btn => {
       const handleBtnClick = () => {
-        this.removeCurrentClass()
-        this.clearSelects()
-        this.moveSlider({
-          top: btn.offsetTop,
-          left: btn.offsetLeft,
-          width: btn.offsetWidth,
-          color: btn.dataset.activeColor
-        })
-        this.currentNode = btn
-        this.addCurrentClass()
+        if (btn !== this.currentNode) {
+          this.removeCurrentClass()
+          this.clearSelects()
+          this.moveSlider({
+            top: btn.offsetTop,
+            left: btn.offsetLeft,
+            width: btn.offsetWidth,
+            color: btn.dataset.activeColor
+          })
+          this.currentNode = btn
+          this.addCurrentClass()
+          this.onChange({ id: btn.dataset.tabboxItem, type: 'btn' })
+        }
       }
       btn._handleBtnClick = handleBtnClick
       btn.addEventListener('click', handleBtnClick, false)
@@ -100,6 +110,7 @@ export default class Tabbox {
           })
           this.currentNode = select
           this.addCurrentClass()
+          this.onChange({ id: event.target.value, type: 'select' })
         }
       }
       select._handleSelectChange = handleSelectChange

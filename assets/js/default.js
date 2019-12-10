@@ -5,7 +5,11 @@ document.querySelectorAll('[data-codebox]').forEach(dom => {
 })
 
 document.querySelectorAll('[data-tabbox]').forEach(dom => {
-  const tabbox = new Tabbox(dom)
+  const tabbox = new Tabbox(dom, {
+    onChange(data) {
+      console.log('onChange', data)
+    }
+  })
 })
 
 document.querySelectorAll('[data-dropdown]').forEach(dom => {
