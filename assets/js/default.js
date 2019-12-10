@@ -12,7 +12,7 @@ document.querySelectorAll('[data-dropdown]').forEach(dom => {
   const dropdown = new Dropdown(dom)
 })
 
-document.querySelectorAll('[data-modal-toggler]').forEach(dom => {
+document.querySelectorAll('[data-modal-opener]').forEach(dom => {
   const modal = new Modal(dom, {
     confirm() {
       console.log('confirmed')

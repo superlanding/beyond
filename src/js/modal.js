@@ -9,7 +9,8 @@ export default class Modal {
   }
 
   init() {
-    this.modalId = this.dom.dataset.modalToggler
+    this.modalId = this.dom.dataset.modalOpener
+    console.log('here', this.modalId)
     const selector = `[data-modal="${this.modalId}"]`
     this.modal = document.querySelector(selector)
     if (! this.modal) {
@@ -38,8 +39,8 @@ export default class Modal {
   }
 
   addEvents() {
-    this._handleTogglerClick = this.show.bind(this)
-    this.dom.addEventListener('click', this._handleTogglerClick, false)
+    this._handleOpenerClick = this.show.bind(this)
+    this.dom.addEventListener('click', this._handleOpenerClick, false)
 
     this._handleCloseBtnClick = () => {
       this.hide()
@@ -80,7 +81,7 @@ export default class Modal {
   }
 
   destroy() {
-    this.dom.removeEventListener('click', this._handleTogglerClick, false)
+    this.dom.removeEventListener('click', this._handleOpenerClick, false)
     this.closeBtn.removeEventListener('click', this._handleCloseBtnClick, false)
     this.cancelBtn.removeEventListener('click', this._handleCancelBtnClick, false)
     this.modal.removeEventListener('click', this._handleModalClick, false)
