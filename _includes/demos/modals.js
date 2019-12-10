@@ -1,6 +1,6 @@
 const { Modal } = window.beyond
 
-document.querySelectorAll('[data-modal-toggler]').forEach(dom => {
+document.querySelectorAll('[data-modal-opener]').forEach(dom => {
 
   const modal = new Modal(dom, {
     confirm() {

@@ -1,4 +1,4 @@
-.label {
+.tag {
   cursor: default;
   font-size: 12px;
   border-radius: 3px;
@@ -10,7 +10,7 @@
   text-align: center;
   min-width: 56px;
 
-  &.label-btn {
+  &.tag-btn {
     background-color: transparent;
     cursor: pointer;
     &.hover,
@@ -28,33 +28,33 @@
     }
   }
 
-  &.label-new {
-    border-color: $bg-label-new;
-    color: $bg-label-new;
+  &.tag-new {
+    border-color: $bg-tag-new;
+    color: $bg-tag-new;
   }
 
-  @for $i from 1 through length($bg-label-types) {
-    &.label-type#{$i} {
-      border-color: nth($bg-label-types, $i);
-      color: nth($bg-label-types, $i);
+  @for $i from 1 through length($bg-tag-types) {
+    &.tag-type#{$i} {
+      border-color: nth($bg-tag-types, $i);
+      color: nth($bg-tag-types, $i);
     }
   }
 
-  &.label-invoice {
-    border-color: $bg-label-invoice;
-    color: $bg-label-invoice;
+  &.tag-invoice {
+    border-color: $bg-tag-invoice;
+    color: $bg-tag-invoice;
   }
-  &.label-others {
-    border-color: $bg-label-others;
-    color: $bg-label-others;
+  &.tag-others {
+    border-color: $bg-tag-others;
+    color: $bg-tag-others;
   }
-  &.label-coupon {
-    border-color: $bg-label-coupon;
-    color: $bg-label-coupon;
+  &.tag-coupon {
+    border-color: $bg-tag-coupon;
+    color: $bg-tag-coupon;
   }
-  &.label-danger {
+  &.tag-danger {
     border: 0;
-    background-color: $bg-label-danger;
+    background-color: $bg-tag-danger;
     color: $color-light;
   }
 }

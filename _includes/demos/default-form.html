@@ -1,0 +1,120 @@
+<form class="form card-shadow-sm">
+  <div class="form-header">
+    <div class="form-heading">預設表單</div>
+    <div class="form-heading-desc">欄位名稱與輸入欄位水平對齊</div>
+  </div>
+  <div class="form-content">
+    <div class="field">
+      <label for="field-email" class="label">Email</label>
+      <div class="control">
+        <input id="field-email"
+               class="input"
+               type="email"
+               placeholder="範例: test@example.com" />
+        <span class="hint">提示文字</span>
+      </div>
+    </div>
+    <div class="field">
+      <label for="field-name" class="label">姓名</label>
+      <input id="field-name"
+             class="input"
+             type="text"
+             placeholder="範例: 王大明" />
+    </div>
+
+    <div class="field">
+      <div class="label">性別</div>
+      <div class="control">
+        <label class="label-radio">
+          <div class="radio">
+            <input type="radio" name="habit" value="male" />
+            <i class="icon-radio"></i>
+          </div>
+          <span>男</span>
+        </label>
+        <label class="label-checkbox">
+          <div class="radio">
+            <input type="radio" name="habit" value="female" />
+            <i class="icon-radio"></i>
+          </div>
+          <span>女</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="label">興趣</div>
+      <div class="control">
+        <label class="label-checkbox">
+          <div class="checkbox">
+            <input type="checkbox" name="habit" value="piano" />
+            <i class="icon-checkbox"></i>
+          </div>
+          <span>彈鋼琴</span>
+        </label>
+        <label class="label-checkbox">
+          <div class="checkbox">
+            <input type="checkbox" name="habit" value="workout" />
+            <i class="icon-checkbox"></i>
+          </div>
+          <span>健身</span>
+        </label>
+        <label class="label-checkbox">
+          <div class="checkbox">
+            <input type="checkbox" name="habit" value="food" />
+            <i class="icon-checkbox"></i>
+          </div>
+          <span>美食</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="field-phone" class="label">電話</label>
+      <div class="control">
+        <input id="field-phone"
+               class="input"
+               type="tel"
+               placeholder="範例: 0912-123456" />
+        <a href="">電話格式查詢</a>
+      </div>
+    </div>
+    <div class="field">
+      <label for="field-password" class="label">密碼</label>
+      <input id="field-password"
+             class="input"
+             type="password"
+             placeholder="請輸入密碼"
+             autocomplete />
+    </div>
+    <div class="field">
+      <div class="label">測試資料</div>
+      <div class="control">
+       <button type="button" class="btn btn-form">
+         <span>清除測試資料...</span>
+       </button>
+      </div>
+    </div>
+    <div class="field">
+      <label for="field-disabled" class="label">Disabled</label>
+      <input id="field-disabled"
+             class="input"
+             type="text"
+             placeholder="disabled 的 text input"
+             disabled="disabled" />
+    </div>
+    <div class="field">
+      <label for="field-required" class="label">Required</label>
+      <div class="control">
+        <input id="field-required"
+               class="input input-danger"
+               type="text"
+               placeholder="觸發必填狀態" />
+        <span class="hint hint-danger">這是必填欄位</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-footer">
+    <button class="btn btn-primary" type="submit">送出</button>
+  </div>
+</form>

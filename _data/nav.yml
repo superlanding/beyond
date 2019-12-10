@@ -6,10 +6,12 @@
   link: /content/colors.html
 - name: Buttons
   link: /components/buttons.html
-- name: Labels
-  link: /components/labels.html
+- name: Tags
+  link: /components/tags.html
 - name: Selects
   link: /components/selects.html
+- name: Forms
+  link: /components/forms.html
 - name: Dropdowns
   link: /components/dropdowns.html
 - name: Icons

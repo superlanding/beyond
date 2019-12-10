@@ -39,3 +39,12 @@ p {
 th, td {
   padding: 7px;
 }
+
+a {
+  color: #5469d4;
+  font-weight: 500;
+  text-decoration: none;
+  &:hover {
+    color: #1a1f36;
+  }
+}
