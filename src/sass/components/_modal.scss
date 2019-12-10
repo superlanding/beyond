@@ -8,6 +8,8 @@
   right: 0;
   bottom: 0;
   margin: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   background-color: rgba(82, 95, 127, .25);
   .modal-dialog {
     transition: .2s transform;
