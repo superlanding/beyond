@@ -10,7 +10,6 @@ export default class Modal {
 
   init() {
     this.modalId = this.dom.dataset.modalOpener
-    console.log('here', this.modalId)
     const selector = `[data-modal="${this.modalId}"]`
     this.modal = document.querySelector(selector)
     if (! this.modal) {
