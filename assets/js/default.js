@@ -18,10 +18,10 @@ document.querySelectorAll('[data-dropdown]').forEach(dom => {
 
 document.querySelectorAll('[data-modal-opener]').forEach(dom => {
   const modal = new Modal(dom, {
-    confirm() {
+    onConfirm() {
       console.log('confirmed')
     },
-    cancel(type) {
+    onCancel(type) {
       console.log('cancelled', type)
     }
   })
