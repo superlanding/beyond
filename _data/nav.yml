@@ -10,8 +10,8 @@
   link: /components/tags.html
 - name: Selects
   link: /components/selects.html
-- name: Inputs
-  link: /components/inputs.html
+- name: Forms
+  link: /components/forms.html
 - name: Dropdowns
   link: /components/dropdowns.html
 - name: Icons
