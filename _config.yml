@@ -2,3 +2,14 @@ sass:
   load_paths:
     - _sass
     - node_modules
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - Procfile
+  - build.sh
+  - package.json
+  - webpack.config.js
+  - yarn.lock
+  - src
+  - node_modules
