@@ -13,6 +13,13 @@
     padding-right: 34px;
   }
   .dropdown-menu {
+
+    .dropdown-menu-scrollable {
+      max-height: 186px;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+
     z-index: 1;
     padding: 8px 0;
     transform: translateY(14px);
