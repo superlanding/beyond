@@ -13,3 +13,4 @@ exclude:
   - webpack.config.js
   - yarn.lock
   - src
+  - node_modules
