@@ -12,6 +12,10 @@ module.exports = {
         loader: 'svg-url-loader'
       },
       {
+        test: /\.css$/,
+        use: ['postcss-loader']
+      },
+      {
        test: /\.s[ac]ss$/i,
         use: [
           {
@@ -20,7 +24,16 @@ module.exports = {
               hmr: (process.env.NODE_ENV === 'development')
             }
           },
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1 }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [require('autoprefixer')]
+            }
+          },
           'sass-loader'
         ]
       }
