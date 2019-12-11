@@ -60,7 +60,7 @@
   background-image: url(../img/exclamation-triangle.svg);
 }
 
-.btn-check-circle {
+.check-circle {
   @include size(16px);
   background-color: #1fa672;
   border-radius: 50%;
@@ -72,7 +72,7 @@
   }
 }
 
-.btn-cross-circle {
+.cross-circle {
   @include size(16px);
   background-color: #e03953;
   border-radius: 50%;
