@@ -12,6 +12,18 @@ module.exports = {
         loader: 'svg-url-loader'
       },
       {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
+      },
+      {
         test: /\.css$/,
         use: ['postcss-loader']
       },
@@ -49,5 +61,10 @@ module.exports = {
       chunkFilename: '[id].css',
       ignoreOrder: false
     })
-  ]
+  ],
+  devServer: {
+    headers: {
+      "Access-Control-Allow-Origin": "http://localhost:4000"
+    }
+  }
 }

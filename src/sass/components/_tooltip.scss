@@ -1,0 +1,12 @@
+.tooltip-box {
+  position: relative;
+  .tooltip {
+    z-index: 1;
+    bottom: -40px;
+    position: absolute;
+    display: block;
+    color: #fff;
+    padding: 7px 10px;
+    background-color: #555;
+  }
+}
