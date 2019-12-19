@@ -6,6 +6,9 @@
     [class^="icon-"], [class*=" icon-"] {
       font-size: 32px;
     }
+    .svg {
+      @include size(32px);
+    }
     .icon {
       @include size(72px);
       background-color: #fff;
