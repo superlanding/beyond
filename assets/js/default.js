@@ -1,4 +1,4 @@
-const { Codebox, Dropdown, Tabbox, Modal } = window.beyond
+const { Codebox, Dropdown, Tabbox, Modal, Tooltip } = window.beyond
 
 document.querySelectorAll('[data-codebox]')
   .forEach(dom => {
@@ -29,4 +29,9 @@ document.querySelectorAll('[data-modal-opener]')
         console.log('cancelled', type)
       }
     })
+  })
+
+document.querySelectorAll('[data-tooltip]')
+  .forEach(dom => {
+    const tooltip = new Tooltip(dom)
   })
