@@ -113,6 +113,7 @@ export default class Tooltip {
           }, 300)
         }, 200)
       }
+      this.dom.addEventListener('click', this.dom._handleMouseLeave, false)
       this.dom.addEventListener('mouseleave', this.dom._handleMouseLeave, false)
     }
   }
@@ -122,6 +123,7 @@ export default class Tooltip {
       this.dom.removeEventListener('mouseover', this.dom._handleMouseOver, false)
     }
     if ('onmouseleave' in this.dom) {
+      this.dom.removeEventListener('click', this.dom._handleMouseLeave, false)
       this.dom.removeEventListener('mouseleave', this.dom._handleMouseLeave, false)
     }
   }
