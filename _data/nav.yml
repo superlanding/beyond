@@ -24,3 +24,5 @@
   link: /components/tooltips.html
 - name: Toasts
   link: /components/toasts.html
+- name: Datepickers
+  link: /components/datepickers.html
