@@ -13,6 +13,10 @@
       display: inline-block;
       margin-right: 20px;
       margin-bottom: 20px;
+      @media (max-width: $screen-xs) {
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
     }
   }
 }
