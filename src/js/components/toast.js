@@ -44,7 +44,7 @@ class ToastItem {
   }
 
   createBtnCb() {
-    const { btn, dom } = this
+    const { btn } = this
     const { btnCb } = this.options
     btn._handleClick = () => {
       const res = {
