@@ -12,18 +12,18 @@
     {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
-  </head>
-  <body class="container-default container bg-admin">
-    {% include nav.html %}
-    <main class="main">
-      {{ content }}
-    </main>
     {% if jekyll.environment == "development" %}
       <script src="http://localhost:8080/beyond.js"></script>
     {% else %}
       <script src="{{ '/dist/beyond.js' | relative_url }}"></script>
     {% endif %}
     <script src="{{ '/assets/js/codebox.js' | relative_url }}"></script>
+  </head>
+  <body class="container-default container bg-admin">
+    {% include nav.html %}
+    <main class="main">
+      {{ content }}
+    </main>
     <script src="{{ '/assets/js/default.js' | relative_url }}"></script>
   </body>
 </html>
