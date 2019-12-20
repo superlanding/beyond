@@ -27,8 +27,8 @@ export default class Tooltip {
     this.tooltip = tooltip
   }
 
-  getPlacement() {
-    const str = this.dom.dataset.placement
+  getPlace() {
+    const str = this.dom.dataset.place
     return TOOLTIP_PLACEMENTS.includes(str) ? str : 'bottom'
   }
 
@@ -60,7 +60,7 @@ export default class Tooltip {
         const pos = getFloatedTargetPos({
           src: dom,
           target: tooltip,
-          placement: this.getPlacement(),
+          place: this.getPlace(),
           offset: this.getOffset()
         })
         tooltip.style.left = toPixel(pos.left)

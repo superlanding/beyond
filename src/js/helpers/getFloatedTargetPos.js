@@ -1,5 +1,5 @@
 // Calculate floated target position for tooltip and dropdown
-export default function getgetFloatedTargetPos({ src, target, placement, offset }) {
+export default function getgetFloatedTargetPos({ src, target, place, offset }) {
 
   const x1 = src.offsetLeft
   const y1 = src.offsetTop
@@ -9,7 +9,7 @@ export default function getgetFloatedTargetPos({ src, target, placement, offset 
   const w2 = target.offsetWidth
   const h2 = target.offsetHeight
 
-  switch (placement) {
+  switch (place) {
     case 'top': {
       const left = x1 + (w1 / 2) - (w2 / 2)
       const top = y1 - offset - h2
@@ -31,6 +31,6 @@ export default function getgetFloatedTargetPos({ src, target, placement, offset 
       return { left, top }
     }
     default:
-      throw new Error(`Unsupported Placement: ${placement}`)
+      throw new Error(`Unsupported Place: ${place}`)
   }
 }
