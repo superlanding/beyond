@@ -1,4 +1,5 @@
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
+import toPixel from '../helpers/toPixel'
 
 const TOOLTIP_PLACEMENTS = ['top', 'bottom', 'left', 'right']
 
@@ -36,10 +37,6 @@ export default class Tooltip {
     return Number.isInteger(num) ? num : 10
   }
 
-  toPixel(num) {
-    return parseInt(num, 10) + 'px'
-  }
-
   setTooltipMsg() {
     const { msg } = this.dom.dataset
     if (this.tooltip.innerHTML !== msg) {
@@ -66,8 +63,8 @@ export default class Tooltip {
           placement: this.getPlacement(),
           offset: this.getOffset()
         })
-        tooltip.style.left = this.toPixel(pos.left)
-        tooltip.style.top = this.toPixel(pos.top)
+        tooltip.style.left = toPixel(pos.left)
+        tooltip.style.top = toPixel(pos.top)
         tooltip.style.opacity = 1
       }
       dom.addEventListener('mouseover', dom._handleMouseOver, false)
