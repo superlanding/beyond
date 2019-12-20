@@ -7,7 +7,7 @@ class ToastItem {
 
   init() {
 
-    const { message, timeout, btnText, btnCb } = this.options
+    const { message, btnText, btnCb } = this.options
     const dom = document.createElement('div')
     dom.classList.add('toast-item')
     dom.style.transform = 'translateY(200%)'
@@ -48,15 +48,20 @@ class ToastItem {
     const { btnCb } = this.options
     btn._handleClick = () => {
       const res = {
-        clear() {
-          clearTimeout(dom._timer)
-          btn.removeEventListener('click', btn._handleClick, false)
-          dom.remove()
+        clear: () => {
+          this.destroy()
         }
       }
       btnCb(res)
     }
     btn.addEventListener('click', btn._handleClick, false)
+  }
+
+  destroy() {
+    const { dom, btn } = this
+    clearTimeout(dom._timer)
+    btn.removeEventListener('click', btn._handleClick, false)
+    dom.remove()
   }
 }
 
@@ -76,7 +81,10 @@ export default class Toast {
   send(options) {
     const toastItem = new ToastItem(options)
     this.toast.appendChild(toastItem.dom)
-    toastItem._timer = setTimeout(() => toastItem.show(), 50)
+    setTimeout(() => toastItem.show(), 50)
+    toastItem._timer = setTimeout(() => {
+      toastItem.destroy()
+    }, options.timer || 3000)
   }
 
   destroy() {
