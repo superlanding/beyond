@@ -1,3 +1,4 @@
+import throttle from 'lodash.throttle'
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import toPixel from '../helpers/toPixel'
 
@@ -43,6 +44,22 @@ export default class Dropdown {
     return this.isMenuVisible ? this.hideMenu() : this.showMenu()
   }
 
+  adjustMenuPos() {
+    if (! this.isMenuVisible) {
+      return
+    }
+    const { menu, dom } = this
+    const pos = getFloatedTargetPos({
+      src: dom,
+      target: menu,
+      place: menu.dataset.place,
+      align: menu.dataset.align,
+      offset: ('offset' in menu.dataset) ? menu.dataset.offset : 14
+    })
+    menu.style.left = toPixel(pos.left)
+    menu.style.top = toPixel(pos.top)
+  }
+
   addEvents() {
     this._handleClick = () => this.toggleMenu()
     this.dom.addEventListener('click', this._handleClick, false)
@@ -55,10 +72,13 @@ export default class Dropdown {
       }
     }
     document.addEventListener('click', this._handleBackdropClick, false)
+    this._handleWindowResize = throttle(() => this.adjustMenuPos(), 300)
+    window.addEventListener('resize', this._handleWindowResize, false)
   }
 
   destroy() {
     this.dom.removeEventListener('click', this._handleClick, false)
     document.removeEventListener('click', this._handleBackdropClick, false)
+    window.remmoveEventListener('resize', this._handleWindowResize, false)
   }
 }
