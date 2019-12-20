@@ -6,6 +6,9 @@
     [class^="icon-"], [class*=" icon-"] {
       font-size: 32px;
     }
+    .svg {
+      @include size(32px);
+    }
     .icon {
       @include size(72px);
       background-color: #fff;
@@ -13,6 +16,10 @@
       display: inline-block;
       margin-right: 20px;
       margin-bottom: 20px;
+      @media (max-width: $screen-xs) {
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
     }
   }
 }

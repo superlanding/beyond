@@ -8,6 +8,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader', 'eslint-loader']
+      },
+      {
         test: /\.svg$/,
         loader: 'svg-url-loader'
       },
@@ -18,10 +23,11 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'fonts/'
+              outputPath: 'fonts/',
             }
           }
-        ]
+        ],
+        exclude: /src\/sass\/img/
       },
       {
         test: /\.css$/,

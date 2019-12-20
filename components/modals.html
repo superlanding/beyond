@@ -14,9 +14,7 @@ title: Modals
       </div>
       <div class="codebox-panes" data-panes>
         <div class="codebox-result">
-          <button type="button"
-                  class="btn btn-primary"
-                  data-modal-opener="example-modal">打開視窗</button>
+          {% include demos/modal-btn.html %}
         </div>
         <div>
           {% highlight html linenos %}{% include demos/modals.html %}{% endhighlight %}
@@ -30,3 +28,4 @@ title: Modals
 </div>
 
 {% include demos/modal-content.html %}
+{% include demos/sub-modal-content.html %}

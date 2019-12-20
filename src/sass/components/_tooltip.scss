@@ -1,12 +1,11 @@
-.tooltip-box {
-  position: relative;
-  .tooltip {
-    z-index: 1;
-    bottom: -40px;
-    position: absolute;
-    display: block;
-    color: #fff;
-    padding: 7px 10px;
-    background-color: #555;
-  }
+.tooltip {
+  max-width: 400px;
+  border-radius: 4px;
+  transition: .3s all;
+  display: none;
+  z-index: 1;
+  position: absolute;
+  padding: 7px 10px;
+  color: #fff;
+  background-color: #555;
 }

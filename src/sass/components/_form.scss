@@ -60,11 +60,13 @@
           color: #3c4257;
           font-size: 13px;
           &.hint-danger {
-            background-image: url(../img/hint-exclamation-triangle.svg);
-            background-repeat: no-repeat;
-            background-position: left center;
-            background-size: 14px 14px;
-            padding-left: 20px;
+            &:before {
+              font-family: 'icomoon';
+              content: "\e92b";
+              margin-right: 4px;
+              display: inline-block;
+              transform: translateY(1px);
+            }
             color: #e03953;
           }
         }
