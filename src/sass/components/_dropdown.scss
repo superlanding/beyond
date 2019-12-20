@@ -1,66 +1,127 @@
-.dropdown {
-  display: inline-block;
-  overflow: visible;
-  position: relative;
-  .dropdown-menu {
-    display: none;
+.btn.btn-dropdown {
+  [class^="icon-"] {
+    font-size: 11px;
+    color: #4f566b;
+    margin-left: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateY(-1px);
   }
-  .btn.btn-dropdown-toggle {
-    background-color: #fff;
-    background-image: url(./img/arrow-dropdown.svg);
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 34px;
+  [class^="icon-"].no-text {
+    margin-left: 0;
   }
-  .dropdown-menu {
+}
+.dropdown-menu {
+  display: none;
 
-    .dropdown-menu-scrollable {
-      max-height: 186px;
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
+  .dropdown-menu-scrollable {
+    max-height: 186px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  z-index: 1;
+  padding: 8px 0;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
+    0 15px 35px 0 rgba(49, 49, 93, .1),
+    0 5px 15px 0 rgba(0, 0, 0, .08);
+  .dropdown-divider {
+    border-bottom: 1px solid #d8d8d8;
+    margin: 10px 0;
+  }
+  .dropdown-item {
+    min-width: 160px;
+    padding: 7px 20px;
+    font-size: 14px;
+    color: #5469d4;
+    display: block;
+    text-decoration: none;
+    &:hover {
+      background-color: #f7fafc;
     }
-
-    z-index: 1;
-    padding: 8px 0;
-    transform: translateY(14px);
+  }
+  &:after {
+    content: ' ';
+    display: block;
+    border: 0;
+    border-top-left-radius: 4px;
+    @include size(12px);
+    background-color: #fff;
     position: absolute;
-    background-color: #fff;
-    box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
-      0 15px 35px 0 rgba(49, 49, 93, .1),
-      0 5px 15px 0 rgba(0, 0, 0, .08);
-    .dropdown-divider {
-      border-bottom: 1px solid #d8d8d8;
-      margin: 10px 0;
-    }
-    .dropdown-item {
-      min-width: 160px;
-      padding: 7px 20px;
-      font-size: 14px;
-      color: #5469d4;
-      display: block;
-      text-decoration: none;
-      &:hover {
-        background-color: #f7fafc;
-      }
-    }
-    &:after {
-      content: ' ';
-      display: block;
-      border: 0;
-      border-top-left-radius: 4px;
-      @include size(12px);
-      background-color: #fff;
-      position: absolute;
-      top: -6px;
-      left: 20px;
-      transform: rotate(45deg);
-    }
-    &.right {
-      right: 0;
-      &:after {
-        left: initial;
-        right: 20px;
-      }
-    }
+    transform: rotate(45deg);
+  }
+  &[data-place="top"]:after {
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &[data-place="bottom"]:after {
+    top: -6px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &[data-place="left"]:after {
+    right: -6px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  &[data-place="right"]:after {
+    left: -6px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  &[data-place="top"][data-align="left"]:after {
+    bottom: -6px;
+    left: 20px;
+    right: initial;
+  }
+  &[data-place="bottom"][data-align="left"]:after {
+    top: -6px;
+    left: 20px;
+    right: initial;
+  }
+
+  &[data-place="top"][data-align="right"]:after {
+    bottom: -6px;
+    left: initial;
+    right: 20px;
+  }
+  &[data-place="bottom"][data-align="right"]:after {
+    top: -6px;
+    left: initial;
+    right: 20px;
+  }
+
+  &[data-place="left"][data-align="top"]:after {
+    right: -6px;
+    top: 14px;
+    bottom: initial;
+  }
+  &[data-place="right"][data-align="top"]:after {
+    left: -6px;
+    top: 14px;
+    bottom: initial;
+  }
+
+  &[data-place="left"][data-align="bottom"]:after {
+    right: -6px;
+    top: initial;
+    bottom: 14px;
+  }
+  &[data-place="right"][data-align="bottom"]:after {
+    left: -6px;
+    top: initial;
+    bottom: 14px;
   }
 }

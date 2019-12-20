@@ -1,3 +1,6 @@
+import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
+import toPixel from '../helpers/toPixel'
+
 export default class Dropdown {
 
   constructor(dom) {
@@ -7,29 +10,47 @@ export default class Dropdown {
   }
 
   init() {
-    this.dropdownToggle = this.dom.querySelector('[data-dropdown-toggle]')
-    this.dropdownMenu = this.dom.querySelector('[data-dropdown-menu]')
+    this.id = this.dom.dataset.dropdown
+    this.menu = document.querySelector(`[data-dropdown-menu="${this.id}"]`)
+    this.menu.remove()
     this.addEvents()
   }
 
   hideMenu() {
-    this.dropdownMenu.style.display = 'none'
+    this.menu.remove()
     this.isMenuVisible = false
   }
 
+  showMenu() {
+    const { menu } = this
+    menu.style.display = 'block'
+    menu.style.opacity = 0
+    document.body.append(menu)
+    const pos = getFloatedTargetPos({
+      src: this.dom,
+      target: menu,
+      place: menu.dataset.place || 'bottom',
+      align: menu.dataset.align,
+      offset: ('offset' in menu.dataset) ? menu.dataset.offset : 14
+    })
+    this.menu.style.opacity = 1
+    this.menu.style.left = toPixel(pos.left)
+    this.menu.style.top = toPixel(pos.top)
+    this.isMenuVisible = true
+  }
+
   toggleMenu() {
-    this.dropdownMenu.style.display = this.isMenuVisible ? 'none' : 'block'
-    this.isMenuVisible = (! this.isMenuVisible)
+    return this.isMenuVisible ? this.hideMenu() : this.showMenu()
   }
 
   addEvents() {
-    this._handleToggleClick = () => this.toggleMenu()
-    this.dropdownToggle.addEventListener('click', this._handleToggleClick, false)
+    this._handleClick = () => this.toggleMenu()
+    this.dom.addEventListener('click', this._handleClick, false)
     this._handleBackdropClick = event => {
       if (! this.isMenuVisible) {
         return
       }
-      if (event.target !== this.dropdownToggle) {
+      if ((event.target !== this.dom) && (! this.dom.contains(event.target))) {
         this.hideMenu()
       }
     }
@@ -37,7 +58,7 @@ export default class Dropdown {
   }
 
   destroy() {
-    this.dropdownToggle.removeEventListener('click', this._handleToggleClick, false)
+    this.dom.removeEventListener('click', this._handleClick, false)
     document.removeEventListener('click', this._handleBackdropClick, false)
   }
 }
