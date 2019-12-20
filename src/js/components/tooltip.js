@@ -38,23 +38,15 @@ export default class Tooltip {
     return parseInt(num, 10) + 'px'
   }
 
-  getPos() {
+  getPos({ src, target, placement, offset }) {
 
-    const { tooltip, dom } = this
+    const x1 = src.offsetLeft
+    const y1 = src.offsetTop
+    const w1 = src.offsetWidth
+    const h1 = src.offsetHeight
 
-    const x1 = dom.offsetLeft
-    const y1 = dom.offsetTop
-    const w1 = dom.offsetWidth
-    const h1 = dom.offsetHeight
-
-    const placement = this.getPlacement()
-    const offset = this.getOffset()
-
-    tooltip.style.opacity = 0
-    tooltip.style.display = 'block'
-
-    const w2 = tooltip.offsetWidth
-    const h2 = tooltip.offsetHeight
+    const w2 = target.offsetWidth
+    const h2 = target.offsetHeight
 
     switch (placement) {
       case 'top': {
@@ -90,31 +82,41 @@ export default class Tooltip {
   }
 
   addEvents() {
-    if ('onmouseover' in this.dom) {
-      this.dom._handleMouseOver = () => {
+    const { dom, tooltip } = this
+    if ('onmouseover' in dom) {
+      dom._handleMouseOver = () => {
         if (window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT) {
           clearTimeout(window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT)
           window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT = null
         }
         this.setTooltipMsg()
-        const pos = this.getPos()
-        this.tooltip.style.left = this.toPixel(pos.left)
-        this.tooltip.style.top = this.toPixel(pos.top)
-        this.tooltip.style.opacity = 1
+
+        tooltip.style.opacity = 0
+        tooltip.style.display = 'block'
+
+        const pos = this.getPos({
+          src: dom,
+          target: tooltip,
+          placement: this.getPlacement(),
+          offset: this.getOffset()
+        })
+        tooltip.style.left = this.toPixel(pos.left)
+        tooltip.style.top = this.toPixel(pos.top)
+        tooltip.style.opacity = 1
       }
-      this.dom.addEventListener('mouseover', this.dom._handleMouseOver, false)
+      dom.addEventListener('mouseover', dom._handleMouseOver, false)
     }
-    if ('onmouseleave' in this.dom) {
-      this.dom._handleMouseLeave = () => {
+    if ('onmouseleave' in dom) {
+      dom._handleMouseLeave = () => {
         window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT = setTimeout(() => {
-          this.tooltip.style.opacity = 0
+          tooltip.style.opacity = 0
           window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT = setTimeout(() => {
-            this.tooltip.style.display = 'none'
+            tooltip.style.display = 'none'
           }, 300)
         }, 200)
       }
-      this.dom.addEventListener('click', this.dom._handleMouseLeave, false)
-      this.dom.addEventListener('mouseleave', this.dom._handleMouseLeave, false)
+      dom.addEventListener('click', dom._handleMouseLeave, false)
+      dom.addEventListener('mouseleave', dom._handleMouseLeave, false)
     }
   }
 
