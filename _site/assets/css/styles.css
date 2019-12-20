@@ -352,6 +352,9 @@ td.code > pre {
   max-width: 840px; }
 .page-inline-svgs .codebox-result [class^="icon-"], .page-inline-svgs .codebox-result [class*=" icon-"] {
   font-size: 32px; }
+.page-inline-svgs .codebox-result .svg {
+  width: 32px;
+  height: 32px; }
 .page-inline-svgs .codebox-result .icon {
   width: 72px;
   height: 72px;
@@ -360,12 +363,14 @@ td.code > pre {
   display: inline-block;
   margin-right: 20px;
   margin-bottom: 20px; }
+  @media (max-width: 480px) {
+    .page-inline-svgs .codebox-result .icon {
+      margin-right: 10px;
+      margin-bottom: 10px; } }
 
-.page-dropdowns .codebox-result {
-  min-height: 300px; }
-  .page-dropdowns .codebox-result .dropdown {
-    margin-right: 20px;
-    margin-bottom: 20px; }
+.page-dropdowns .codebox-result .btn-dropdown-toggle {
+  margin-right: 20px;
+  margin-bottom: 20px; }
 
 .page-forms .card {
   margin-bottom: 40px; }
