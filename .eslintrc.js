@@ -16,6 +16,7 @@ module.exports = {
     "brace-style": ["error", "stroustrup"],
     "comma-dangle": "off",
     "object-curly-spacing": ["error", "always"],
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "no-unused-vars": "warn"
   }
 }
