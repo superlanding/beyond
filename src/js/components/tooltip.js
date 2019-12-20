@@ -70,7 +70,7 @@ export default class Tooltip {
         return { left, top }
       }
       default:
-        throw new Error(`Unsupported Tooltip Placement: ${placement}`)
+        throw new Error(`Unsupported Placement: ${placement}`)
     }
   }
 
