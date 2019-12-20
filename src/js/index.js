@@ -1,4 +1,5 @@
 import './../sass/index.scss'
+import './polyfills/node-remove'
 import Dropdown from './dropdown'
 import Tabbox from './tabbox'
 import Modal from './modal'
