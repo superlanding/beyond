@@ -87,12 +87,13 @@ export default class Tooltip {
   }
 
   destroy() {
-    if ('onmouseover' in this.dom) {
-      this.dom.removeEventListener('mouseover', this.dom._handleMouseOver, false)
+    const { dom } = this
+    if ('onmouseover' in dom) {
+      dom.removeEventListener('mouseover', dom._handleMouseOver, false)
     }
-    if ('onmouseleave' in this.dom) {
-      this.dom.removeEventListener('click', this.dom._handleMouseLeave, false)
-      this.dom.removeEventListener('mouseleave', this.dom._handleMouseLeave, false)
+    if ('onmouseleave' in dom) {
+      dom.removeEventListener('click', dom._handleMouseLeave, false)
+      dom.removeEventListener('mouseleave', dom._handleMouseLeave, false)
     }
   }
 }
