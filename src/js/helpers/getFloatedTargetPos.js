@@ -22,7 +22,7 @@ export default function getgetFloatedTargetPos({ src, target, placement, offset 
     }
     case 'left': {
       const left = x1 - offset - w2
-      const top = y1 + (w1 / 2) - (h2 / 2)
+      const top = y1 + (h1 / 2) - (h2 / 2)
       return { left, top }
     }
     case 'right': {
