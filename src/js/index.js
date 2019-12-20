@@ -1,9 +1,9 @@
 import './../sass/index.scss'
 import './polyfills/node-remove'
-import Dropdown from './dropdown'
-import Tabbox from './tabbox'
-import Modal from './modal'
-import Tooltip from './tooltip'
+import Dropdown from './components/dropdown'
+import Tabbox from './components/tabbox'
+import Modal from './components/modal'
+import Tooltip from './components/tooltip'
 
 if (typeof window !== 'undefined') {
   window.beyond = {
