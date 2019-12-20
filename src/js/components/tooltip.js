@@ -1,3 +1,5 @@
+import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
+
 const TOOLTIP_PLACEMENTS = ['top', 'bottom', 'left', 'right']
 
 export default class Tooltip {
@@ -38,42 +40,6 @@ export default class Tooltip {
     return parseInt(num, 10) + 'px'
   }
 
-  getPos({ src, target, placement, offset }) {
-
-    const x1 = src.offsetLeft
-    const y1 = src.offsetTop
-    const w1 = src.offsetWidth
-    const h1 = src.offsetHeight
-
-    const w2 = target.offsetWidth
-    const h2 = target.offsetHeight
-
-    switch (placement) {
-      case 'top': {
-        const left = x1 + (w1 / 2) - (w2 / 2)
-        const top = y1 - offset - h2
-        return { left, top }
-      }
-      case 'bottom': {
-        const left = x1 + (w1 / 2) - (w2 / 2)
-        const top = y1 + h1 + offset
-        return { left, top }
-      }
-      case 'left': {
-        const left = x1 - offset - w2
-        const top = y1 + (w1 / 2) - (h2 / 2)
-        return { left, top }
-      }
-      case 'right': {
-        const left = x1 + w1 + offset
-        const top = y1 + (h1 / 2) - (h2 / 2)
-        return { left, top }
-      }
-      default:
-        throw new Error(`Unsupported Placement: ${placement}`)
-    }
-  }
-
   setTooltipMsg() {
     const { msg } = this.dom.dataset
     if (this.tooltip.innerHTML !== msg) {
@@ -94,7 +60,7 @@ export default class Tooltip {
         tooltip.style.opacity = 0
         tooltip.style.display = 'block'
 
-        const pos = this.getPos({
+        const pos = getFloatedTargetPos({
           src: dom,
           target: tooltip,
           placement: this.getPlacement(),
