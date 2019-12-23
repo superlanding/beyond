@@ -142,7 +142,7 @@ export default class Datepicker {
       if ('dateTableCell' in event.target.dataset) {
         const year = getYear(this.currentDate)
         const month = getMonth(this.currentDate)
-        const date = parseInt(event.target.textContent, 10)
+        const date = parseInt(event.target.textContent.trim(), 10)
         if (this.triggeredByInputDateStart()) {
           const nextStartDate = set(this.startDate, { year, month, date })
           if (dateGt(startOfDay(nextStartDate), startOfDay(this.endDate))) {
@@ -321,14 +321,18 @@ export default class Datepicker {
     }
   }
 
-  handleInputBlur({ input, dateProp }) {
-    const nextDate = input._nextDate
-    const date = nextDate ? nextDate : this[dateProp]
-    input.value = this.formatDate(date)
-    if (nextDate) {
-      this[dateProp] = nextDate
+  handleInputBlur(type) {
+    const isStartType = this.isStart(type)
+    const input = isStartType ? this.inputDateStart : this.inputDateEnd
+    const dateProp = isStartType ? 'startDate' : 'endDate'
+    const date = isStartType ? this.startDate : this.endDate
+    const nextDate = input._nextDate ? input._nextDate : this[dateProp]
+    input.value = this.formatDate(nextDate)
+    if (input._nextDate) {
+      this[dateProp] = input._nextDate
       input._nextDate = null
     }
+    input.classList.remove('danger')
   }
 
   addEvents() {
@@ -346,12 +350,7 @@ export default class Datepicker {
     }
     this.inputDateStart.addEventListener('keyup', this.inputDateStart._handleStartInputKeyUp, false)
 
-    this.inputDateStart._handleStartInputBlur = () => {
-      return this.handleInputBlur({
-        input: this.inputDateStart,
-        dateProp: 'startDate'
-      })
-    }
+    this.inputDateStart._handleStartInputBlur = () => this.handleInputBlur(TYPE_START)
     this.inputDateStart.addEventListener('blur', this.inputDateStart._handleStartInputBlur, false)
 
     this.inputDateEnd._handleEndInputFocus = () => {
@@ -368,12 +367,7 @@ export default class Datepicker {
     }
     this.inputDateEnd.addEventListener('keyup', this.inputDateEnd._handleEndInputKeyUp, false)
 
-    this.inputDateEnd._handleEndInputBlur = () => {
-      return this.handleInputBlur({
-        input: this.inputDateEnd,
-        dateProp: 'endDate'
-      })
-    }
+    this.inputDateEnd._handleEndInputBlur = () => this.handleInputBlur(TYPE_END)
     this.inputDateEnd.addEventListener('blur', this.inputDateEnd._handleEndInputBlur, false)
 
     this._handleDocClick = event => {
