@@ -15,10 +15,12 @@
     border: 0;
     border-radius: 3px;
     font-size: 13px;
-    &:focus {
-      outline: 0;
+    &.active {
       background-color: #5469d4;
       color: #fff
+    }
+    &:focus {
+      outline: 0;
     }
   }
 
@@ -35,5 +37,78 @@
     background-color: transparent;
     font-size: 12px;
     border: 0;
+  }
+}
+
+.datepicker-menu {
+  display: none;
+  position: absolute;
+  box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
+    0 15px 35px 0 rgba(49, 49, 93, .1),
+    0 5px 15px 0 rgba(0, 0, 0, .08);
+  .datepicker-content {
+    background-color: #fff;
+    position: relative;
+    padding: 0 14px 14px 14px;
+  }
+  .datepicker-caption {
+    font-size: 15px;
+    color: #3c4257;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+  }
+  .datepicker-week-header {
+    li {
+      display: inline-block;
+      padding: 7px 14px;
+      font-size: 11px;
+      color: #8792a2;
+    }
+  }
+  .datepicker-btn-prev,
+  .datepicker-btn-next {
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    display: block;
+    @include size(50px);
+
+    .icon-chevron-left,
+    .icon-chevron-right {
+      font-size: 12px;
+    }
+  }
+  .datepicker-btn-prev {
+    left: 0;
+    top: 0;
+  }
+  .datepicker-btn-next {
+    right: 0;
+    top: 0;
+  }
+  .datepicker-date-table {
+    font-size: 14px;
+    width: 100%;
+    margin-top: 2px;
+    td {
+      text-align: center;
+      &.cell {
+        cursor: pointer;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #e3e8ee;
+      }
+      &.cell.selected {
+        background-color: #6c8eef;
+        color: #fff;
+        border-color: rgba(108, 142, 239, .16);
+      }
+      &.cell.selected-ex {
+        background-color: #5469d4;
+        color: #fff;
+        border-color: #5469d4;
+      }
+    }
   }
 }
