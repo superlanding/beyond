@@ -8,18 +8,25 @@
     0 1px 2px 0 rgba(0, 0, 0, .08),
     0 0 0 0 transparent;
   padding: 4px;
-  .datepicker-input {
+  .datepicker-date-input,
+  .datepicker-time-input {
     text-align: center;
-    width: 88px;
     height: 24px;
     border: 0;
-    border-radius: 4px;
+    border-radius: 3px;
     font-size: 13px;
     &:focus {
       outline: 0;
       background-color: #5469d4;
       color: #fff
     }
+  }
+
+  .datepicker-date-input {
+    width: 80px;
+  }
+  .datepicker-time-input {
+    width: 40px;
   }
   .icon-arrow-right {
     padding-left: 0;
