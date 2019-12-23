@@ -6,6 +6,7 @@ import Tabbox from './components/tabbox'
 import Modal from './components/modal'
 import Tooltip from './components/tooltip'
 import Toast from './components/toast'
+import Datepicker from './components/datepicker'
 
 if (typeof window !== 'undefined') {
   window.beyond = {
@@ -13,7 +14,8 @@ if (typeof window !== 'undefined') {
     Modal,
     Tabbox,
     Tooltip,
-    Toast
+    Toast,
+    Datepicker
   }
 }
 
@@ -22,5 +24,6 @@ export {
   Modal,
   Tabbox,
   Tooltip,
-  Toast
+  Toast,
+  Datepicker
 }
