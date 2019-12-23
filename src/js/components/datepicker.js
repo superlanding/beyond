@@ -98,6 +98,14 @@ export default class Datepicker {
     }
   }
 
+  triggeredByInputDateStart() {
+    return this.triggeredBy === TRIGGERED_BY_INPUT_DATE_START
+  }
+
+  triggeredByInputDateEnd() {
+    return this.triggeredBy === TRIGGERED_BY_INPUT_DATE_END
+  }
+
   appendMenu() {
     const menu = document.createElement('div')
     menu.className = 'datepicker-menu'
@@ -132,7 +140,7 @@ export default class Datepicker {
         const year = getYear(this.currentDate)
         const month = getMonth(this.currentDate)
         const date = parseInt(event.target.textContent, 10)
-        if (this.triggeredBy === TRIGGERED_BY_INPUT_DATE_START) {
+        if (this.triggeredByInputDateStart())
           const nextStartDate = set(this.startDate, { year, month, date })
           if (dateGt(startOfDay(nextStartDate), startOfDay(this.endDate))) {
             return
@@ -142,7 +150,7 @@ export default class Datepicker {
           this.setInput(this.inputDateStart, this.startDate)
           this.setInput(this.inputDateEnd, this.endDate)
         }
-        if (this.triggeredBy === TRIGGERED_BY_INPUT_DATE_END) {
+        if (this.triggeredByInputDateEnd()) {
           const nextEndDate = set(this.endDate, { year, month, date })
           if (dateLt(startOfDay(nextEndDate), startOfDay(this.startDate))) {
             return
