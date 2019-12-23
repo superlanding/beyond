@@ -140,7 +140,7 @@ export default class Datepicker {
         const year = getYear(this.currentDate)
         const month = getMonth(this.currentDate)
         const date = parseInt(event.target.textContent, 10)
-        if (this.triggeredByInputDateStart())
+        if (this.triggeredByInputDateStart()) {
           const nextStartDate = set(this.startDate, { year, month, date })
           if (dateGt(startOfDay(nextStartDate), startOfDay(this.endDate))) {
             return
