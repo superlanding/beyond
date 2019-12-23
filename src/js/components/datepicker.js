@@ -345,5 +345,12 @@ export default class Datepicker {
     this.menuBtnPrev.removeEventListener('click', this._handleMenuBtnPrevClick, false)
     this.menuBtnNext.removeEventListener('click', this._handleMenuBtnNextClick, false)
     this.menuTable.removeEventListener('click', this._handleMenuTableClick, false)
+
+    this.menuCaption = null
+    this.menuTable = null
+    this.menuBtnPrev = null
+    this.menuBtnNext = null
+    this.menu.remove()
+    this.menu = null
   }
 }
