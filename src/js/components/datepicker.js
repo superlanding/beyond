@@ -341,5 +341,9 @@ export default class Datepicker {
     this.inputDateEnd.removeEventListener('focus', this.inputDateEnd._handleEndInputFocus, false)
     this.inputDateEnd.removeEventListener('change', this.inputDateEnd._handleEndInputChange, false)
     document.removeEventListener('click', this._handleDocClick, false)
+
+    this.menuBtnPrev.removeEventListener('click', this._handleMenuBtnPrevClick, false)
+    this.menuBtnNext.removeEventListener('click', this._handleMenuBtnNextClick, false)
+    this.menuTable.removeEventListener('click', this._handleMenuTableClick, false)
   }
 }
