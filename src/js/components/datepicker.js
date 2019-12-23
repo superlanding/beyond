@@ -18,6 +18,7 @@ import getYear from 'date-fns/getYear'
 import set from 'date-fns/set'
 import compareAsc from 'date-fns/compareAsc'
 import dateGt from '../helpers/dateGt'
+import dateLt from '../helpers/dateLt'
 
 const TYPE_EMPTY_CELL = 'empty'
 const TYPE_DAY_CELL = 'day'
@@ -133,7 +134,7 @@ export default class Datepicker {
         const date = parseInt(event.target.textContent, 10)
         if (this.triggeredBy === TRIGGERED_BY_INPUT_DATE_START) {
           const nextStartDate = set(this.startDate, { year, month, date })
-          if (dateGt(nextStartDate, this.endDate)) {
+          if (dateGt(startOfDay(nextStartDate), startOfDay(this.endDate))) {
             return
           }
           this.startDate = nextStartDate
@@ -143,7 +144,7 @@ export default class Datepicker {
         }
         if (this.triggeredBy === TRIGGERED_BY_INPUT_DATE_END) {
           const nextEndDate = set(this.endDate, { year, month, date })
-          if (getDate(nextEndDate) < getDate(this.startDate)) {
+          if (dateLt(startOfDay(nextEndDate), startOfDay(this.startDate))) {
             return
           }
           this.endDate = nextEndDate
