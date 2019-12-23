@@ -13,18 +13,21 @@ import toPixel from '../helpers/toPixel'
 import subMonths from 'date-fns/subMonths'
 import addMonths from 'date-fns/addMonths'
 import getMonth from 'date-fns/getMonth'
-import getDate from 'date-fns/getDate'
 import getYear from 'date-fns/getYear'
 import set from 'date-fns/set'
 import compareAsc from 'date-fns/compareAsc'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
+import parse from 'date-fns/parse'
 
-const TYPE_EMPTY_CELL = 'empty'
-const TYPE_DAY_CELL = 'day'
+const TYPE_EMPTY_CELL = Symbol('type_empty_cell')
+const TYPE_DAY_CELL = Symbol('type_day_cell')
 
-const TRIGGERED_BY_INPUT_DATE_START = 'triggered_by_input_date_start'
-const TRIGGERED_BY_INPUT_DATE_END = 'triggered_by_input_date_end'
+const TRIGGERED_BY_INPUT_DATE_START = Symbol('triggered_by_input_date_start')
+const TRIGGERED_BY_INPUT_DATE_END = Symbol('triggered_by_input_date_end')
+
+const TYPE_START = Symbol('type_start')
+const TYPE_END = Symbol('type_end')
 
 const defaultWeekHeaderItems = [
   { id: 'monday', text: '一' },
@@ -286,6 +289,48 @@ export default class Datepicker {
     this.setMenuDate(addMonths(this.currentDate, 1))
   }
 
+  isStart(type) {
+    return TYPE_START === type
+  }
+
+  isEnd(type) {
+    return TYPE_END === type
+  }
+
+  handleInputKeyUp({ event, type }) {
+    const isStartType = this.isStart(type)
+    const isEndType = this.isEnd(type)
+    const date = isStartType ? this.startDate : this.endDate
+    const input = isStartType ? this.inputDateStart: this.inputDateEnd
+    const res = parse(event.target.value, this.datePattern, date)
+
+    input._nextDate = null
+
+    if (res.toString() === 'Invalid Date') {
+      input.classList.add('danger')
+    }
+    else if (isStartType && dateGt(startOfDay(res), startOfDay(this.endDate))) {
+      input.classList.add('danger')
+    }
+    else if (isEndType && dateLt(startOfDay(res), startOfDay(this.startDate))) {
+      input.classList.add('danger')
+    }
+    else {
+      input.classList.remove('danger')
+      input._nextDate = res
+    }
+  }
+
+  handleInputBlur({ input, dateProp }) {
+    const nextDate = input._nextDate
+    const date = nextDate ? nextDate : this[dateProp]
+    input.value = this.formatDate(date)
+    if (nextDate) {
+      this[dateProp] = nextDate
+      input._nextDate = null
+    }
+  }
+
   addEvents() {
     this.inputDateStart._handleStartInputFocus = () => {
       this.clearActiveClass()
@@ -296,10 +341,18 @@ export default class Datepicker {
     }
     this.inputDateStart.addEventListener('focus', this.inputDateStart._handleStartInputFocus, false)
 
-    this.inputDateStart._handleStartInputChange = () => {
+    this.inputDateStart._handleStartInputKeyUp = event => {
+      return this.handleInputKeyUp({ event, type: TYPE_START })
     }
-    this.inputDateStart.addEventListener('change', this.inputDateStart._handleStartInputChange, false)
+    this.inputDateStart.addEventListener('keyup', this.inputDateStart._handleStartInputKeyUp, false)
 
+    this.inputDateStart._handleStartInputBlur = () => {
+      return this.handleInputBlur({
+        input: this.inputDateStart,
+        dateProp: 'startDate'
+      })
+    }
+    this.inputDateStart.addEventListener('blur', this.inputDateStart._handleStartInputBlur, false)
 
     this.inputDateEnd._handleEndInputFocus = () => {
       this.clearActiveClass()
@@ -310,9 +363,18 @@ export default class Datepicker {
     }
     this.inputDateEnd.addEventListener('focus', this.inputDateEnd._handleEndInputFocus, false)
 
-    this.inputDateEnd._handleEndInputChange = () => {
+    this.inputDateEnd._handleEndInputKeyUp = event => {
+      return this.handleInputKeyUp({ event, type: TYPE_END })
     }
-    this.inputDateEnd.addEventListener('change', this.inputDateEnd._handleEndInputChange, false)
+    this.inputDateEnd.addEventListener('keyup', this.inputDateEnd._handleEndInputKeyUp, false)
+
+    this.inputDateEnd._handleEndInputBlur = () => {
+      return this.handleInputBlur({
+        input: this.inputDateEnd,
+        dateProp: 'endDate'
+      })
+    }
+    this.inputDateEnd.addEventListener('blur', this.inputDateEnd._handleEndInputBlur, false)
 
     this._handleDocClick = event => {
       const { dom, menu } = this
@@ -336,10 +398,10 @@ export default class Datepicker {
 
   destroy() {
     this.inputDateStart.removeEventListener('focus', this.inputDateStart._handleStartInputFocus, false)
-    this.inputDateStart.removeEventListener('change', this.inputDateStart._handleStartInputChange, false)
+    this.inputDateStart.removeEventListener('keyup', this.inputDateStart._handleStartInputKeyUp, false)
 
     this.inputDateEnd.removeEventListener('focus', this.inputDateEnd._handleEndInputFocus, false)
-    this.inputDateEnd.removeEventListener('change', this.inputDateEnd._handleEndInputChange, false)
+    this.inputDateEnd.removeEventListener('keyup', this.inputDateEnd._handleEndInputKeyUp, false)
     document.removeEventListener('click', this._handleDocClick, false)
 
     this.menuBtnPrev.removeEventListener('click', this._handleMenuBtnPrevClick, false)

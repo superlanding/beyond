@@ -19,6 +19,10 @@
       background-color: #5469d4;
       color: #fff
     }
+    &.active.danger {
+      background-color: #cd3d64;
+      color: #fff
+    }
     &:focus {
       outline: 0;
     }
