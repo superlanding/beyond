@@ -90,6 +90,8 @@ export default class DatepickerMenu {
   setDate({ date, startDate, endDate }) {
     if (date) {
       this.date = date
+      const options = { timezone: this.tz, locale: DEFAULT_LOCALE }
+      this.caption.textContent = format(date, this.captionPattern, options)
     }
     if (startDate) {
       this.startDate = startDate
@@ -97,8 +99,6 @@ export default class DatepickerMenu {
     if (endDate) {
       this.endDate = endDate
     }
-    const options = { timezone: this.tz, locale: DEFAULT_LOCALE }
-    this.caption.textContent = format(date, this.captionPattern, options)
     const rows = this.getTableRows()
     this.setTableHtml(rows)
   }
@@ -168,12 +168,12 @@ export default class DatepickerMenu {
 
   addEvents() {
     this._handlePrevBtnClick = event => {
-      this.setDate(subMonths(this.date, 1))
+      this.setDate({ date: subMonths(this.date, 1) })
     }
     this.btnPrev.addEventListener('click', this._handlePrevBtnClick, false)
 
     this._handleNextBtnClick = () => {
-      this.setDate(addMonths(this.date, 1))
+      this.setDate({ date: addMonths(this.date, 1) })
     }
     this.btnNext.addEventListener('click', this._handleNextBtnClick, false)
 

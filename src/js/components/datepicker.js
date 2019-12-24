@@ -112,16 +112,17 @@ export default class Datepicker {
   handleInputBlur({ input, isStart }) {
     const dateProp = isStart ? 'startDate' : 'endDate'
     const oldDate = this[dateProp]
+    const { nextDate } = this
 
-    if (this.nextDate) {
-      this[dateProp] = this.nextDate
-      input.setDate(this.nextDate)
+    if (nextDate) {
+      this[dateProp] = nextDate
+      input.setDate(nextDate)
+      this.menu.setDate({ [dateProp]: nextDate })
       this.nextDate = null
     }
     else {
       input.setDate(oldDate)
     }
-    input.clearStatus()
   }
 
   addEvents() {
@@ -208,6 +209,7 @@ export default class Datepicker {
       if (menuDom === event.target) {
         return
       }
+      this.clearInputStatus()
       menu.hide()
     }
     document.addEventListener('click', this._handleDocClick, false)
