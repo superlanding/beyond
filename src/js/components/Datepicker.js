@@ -46,12 +46,12 @@ export default class Datepicker {
     )
 
     this.inputTimeEnd = new DatepickerTimeInput(
-      dom.querySelector('[data-time-start]'),
+      dom.querySelector('[data-time-end]'),
       this.endDate,
       this.options
     )
 
-    this.menu = new DatepickerMenu({
+    this.dateMenu = new DatepickerMenu({
       date: this.currentDate,
       startDate: this.startDate,
       endDate: this.endDate,
@@ -73,15 +73,17 @@ export default class Datepicker {
 
   clearInputStatus() {
     this.inputDateStart.clearStatus()
+    this.inputTimeStart.clearStatus()
     this.inputDateEnd.clearStatus()
+    this.inputTimeEnd.clearStatus()
   }
 
   handleInputFocus(input) {
     this.clearInputStatus()
     input.setActive(true)
     this.lastTriggered = input
-    this.menu.setDate({ date: input.date })
-    this.menu.show(this.dom)
+    this.dateMenu.setDate({ date: input.date })
+    this.dateMenu.show(this.dom)
   }
 
   handleInputKeyUp({ event, input, date, isStart }) {
@@ -110,7 +112,7 @@ export default class Datepicker {
     if (nextDate) {
       this[dateProp] = nextDate
       input.setDate(nextDate)
-      this.menu.setDate({ [dateProp]: nextDate })
+      this.dateMenu.setDate({ [dateProp]: nextDate })
       this.nextDate = null
     }
     else {
@@ -135,6 +137,8 @@ export default class Datepicker {
       })
     })
 
+    this.inputTimeStart.on('focus', () => this.handleInputFocus(this.inputTimeStart))
+
     this.inputDateEnd.on('focus', () => this.handleInputFocus(this.inputDateEnd))
     this.inputDateEnd.on('keyup', event => {
       return this.handleInputKeyUp({
@@ -151,7 +155,7 @@ export default class Datepicker {
       })
     })
 
-    this.menu.on('td-click', (event, res) => {
+    this.dateMenu.on('td-click', (event, res) => {
       event.stopPropagation()
       event.preventDefault()
 
@@ -165,7 +169,7 @@ export default class Datepicker {
         }
         this.startDate = nextStartDate
         this.inputDateStart.setDate(nextStartDate)
-        this.menu.setDate({
+        this.dateMenu.setDate({
           date: this.startDate,
           startDate: this.startDate
         })
@@ -177,7 +181,7 @@ export default class Datepicker {
         }
         this.endDate = nextEndDate
         this.inputDateEnd.setDate(nextEndDate)
-        this.menu.setDate({
+        this.dateMenu.setDate({
           date: this.endDate,
           endDate: this.endDate
         })
@@ -186,11 +190,11 @@ export default class Datepicker {
     })
 
     this._handleDocClick = event => {
-      const { dom, menu } = this
+      const { dom, dateMenu } = this
       const { target } = event
-      const menuDom = menu.dom
+      const menuDom = dateMenu.dom
 
-      if (! menu.isVisible) {
+      if (! dateMenu.isVisible) {
         return
       }
       if (dom.contains(target)) {
@@ -203,7 +207,7 @@ export default class Datepicker {
         return
       }
       this.clearInputStatus()
-      menu.hide()
+      dateMenu.hide()
     }
     document.addEventListener('click', this._handleDocClick, false)
   }
@@ -212,6 +216,6 @@ export default class Datepicker {
     document.removeEventListener('click', this._handleDocClick, false)
     this.inputDateStart.destroy()
     this.inputDateEnd.destroy()
-    this.menu.destroy()
+    this.dateMenu.destroy()
   }
 }
