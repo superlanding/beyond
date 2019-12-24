@@ -9,13 +9,14 @@ import DatepickerDateMenu from './DatepickerDateMenu'
 import DatepickerTimeMenu from './DatepickerTimeMenu'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
+import { DEFAULT_TIMEZONE } from '../consts'
 
 export default class Datepicker {
 
   constructor(dom, options = {}) {
     this.dom = dom
     this.options = options
-    this.tz = options.tz || 'Asia/Taipei'
+    this.tz = options.tz || DEFAULT_TIMEZONE
     this.lastTriggered = null
     this.nextDate = null
     this.init()
