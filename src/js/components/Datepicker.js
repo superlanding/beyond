@@ -5,7 +5,7 @@ import set from 'date-fns/set'
 import startOfDay from 'date-fns/startOfDay'
 import DatepickerDateInput from './DatepickerDateInput'
 import DatepickerTimeInput from './DatepickerTimeInput'
-import DatepickerMenu from './DatepickerMenu'
+import DatepickerDateMenu from './DatepickerDateMenu'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
 
@@ -51,7 +51,7 @@ export default class Datepicker {
       this.options
     )
 
-    this.dateMenu = new DatepickerMenu({
+    this.dateMenu = new DatepickerDateMenu({
       date: this.currentDate,
       startDate: this.startDate,
       endDate: this.endDate,
@@ -82,8 +82,14 @@ export default class Datepicker {
     this.clearInputStatus()
     input.setActive(true)
     this.lastTriggered = input
-    this.dateMenu.setDate({ date: input.date })
-    this.dateMenu.show(this.dom)
+
+    if (input instanceof DatepickerDateInput) {
+      this.dateMenu.setDate({ date: input.date })
+      this.dateMenu.show(this.dom)
+    }
+    if (input instanceof DatepickerTimeInput) {
+      this.dateMenu.hide()
+    }
   }
 
   handleInputKeyUp({ event, input, date, isStart }) {

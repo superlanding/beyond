@@ -28,7 +28,7 @@ const DEFAULT_WEEK_HEADER_ITEMS = [
 const CELL_TYPE_EMPTY = Symbol('CELL_TYPE_EMPTY')
 const CELL_TYPE_DAY = Symbol('CELL_TYPE_DAY')
 
-export default class DatepickerMenu {
+export default class DatepickerDateMenu {
 
   constructor({ date, startDate, endDate, options = {} }) {
     this.date = date
