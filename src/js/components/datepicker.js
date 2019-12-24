@@ -20,14 +20,14 @@ import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import range from '../helpers/range'
 import toPixel from '../helpers/toPixel'
 
-const TYPE_EMPTY_CELL = Symbol('type_empty_cell')
-const TYPE_DAY_CELL = Symbol('type_day_cell')
+const TYPE_EMPTY_CELL = Symbol('TYPE_EMPTY_CELL')
+const TYPE_DAY_CELL = Symbol('TYPE_DAY_CELL')
 
-const TRIGGERED_BY_INPUT_DATE_START = Symbol('triggered_by_input_date_start')
-const TRIGGERED_BY_INPUT_DATE_END = Symbol('triggered_by_input_date_end')
+const TRIGGERED_BY_INPUT_DATE_START = Symbol('TRIGGERED_BY_INPUT_DATE_START')
+const TRIGGERED_BY_INPUT_DATE_END = Symbol('TRIGGERED_BY_INPUT_DATE_END')
 
-const TYPE_START = Symbol('type_start')
-const TYPE_END = Symbol('type_end')
+const TYPE_START = Symbol('TYPE_START')
+const TYPE_END = Symbol('TYPE_END')
 
 const defaultWeekHeaderItems = [
   { id: 'monday', text: '一' },
