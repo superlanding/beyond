@@ -17,7 +17,11 @@ export default class DatepickerTimeInput {
   }
 
   init() {
-    this.dom.value = this.format(this.date)
+    const { dom } = this
+    dom.value = this.format(this.date)
+    if (! dom.hasAttribute('placeholder')) {
+      dom.setAttribute('placeholder', this.timePattern.toUpperCase())
+    }
     this.addEvents()
   }
 

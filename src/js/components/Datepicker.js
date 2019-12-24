@@ -7,6 +7,7 @@ import DatepickerDateInput from './DatepickerDateInput'
 import DatepickerTimeInput from './DatepickerTimeInput'
 import DatepickerDateMenu from './DatepickerDateMenu'
 import DatepickerTimeMenu from './DatepickerTimeMenu'
+import DatepickerBtnArrow from './DatepickerBtnArrow'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
 import { DEFAULT_TIMEZONE } from '../consts'
@@ -39,6 +40,10 @@ export default class Datepicker {
       dom.querySelector('[data-time-start]'),
       this.startDate,
       this.options
+    )
+
+    this.btnArrow = new DatepickerBtnArrow(
+      dom.querySelector('[data-btn-arrow]')
     )
 
     this.inputDateEnd = new DatepickerDateInput(
@@ -280,11 +285,16 @@ export default class Datepicker {
     })
   }
 
+  addBtnArrowEvents() {
+    this.btnArrow.on('click', () => this.handleDateInputFocus(this.inputDateStart))
+  }
+
   addEvents() {
 
     this.addDateInputEvents()
     this.addTimeInputEvents()
     this.addMenuEvents()
+    this.addBtnArrowEvents()
 
     this._handleDocClick = event => {
       const { dom, dateMenu, timeMenu } = this
@@ -328,5 +338,6 @@ export default class Datepicker {
     this.inputTimeEnd.destroy()
     this.dateMenu.destroy()
     this.timeMenu.destroy()
+    this.btnArrow.destroy()
   }
 }
