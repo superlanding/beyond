@@ -2,8 +2,8 @@ import { utcToZonedTime, format } from 'date-fns-tz'
 import locale from 'date-fns/locale/zh-TW'
 import parse from 'date-fns/parse'
 import endOfDay from 'date-fns/endOfDay'
-import subMonths from 'date-fns/subMonths'
 import startOfDay from 'date-fns/startOfDay'
+import set from 'date-fns/set'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
 import DatepickerDateInput from './datepicker-date-input'
@@ -15,7 +15,7 @@ export default class Datepicker {
     this.dom = dom
     this.options = options
     this.tz = options.tz || 'Asia/Taipei'
-    this.triggeredBy = null
+    this.lastTriggered = null
     this.nextDate = null
     this.init()
   }
@@ -66,14 +66,6 @@ export default class Datepicker {
     }
   }
 
-  triggeredByInputDateStart() {
-    return this.triggeredBy === TRIGGERED_BY_INPUT_DATE_START
-  }
-
-  triggeredByInputDateEnd() {
-    return this.triggeredBy === TRIGGERED_BY_INPUT_DATE_END
-  }
-
   setMenuDate(date) {
     this.currentDate = date
     const options = { timezone: this.tz, locale }
@@ -91,19 +83,11 @@ export default class Datepicker {
     this.inputDateEnd.clearStatus()
   }
 
-  toPrevMonth() {
-    this.setMenuDate(subMonths(this.currentDate, 1))
-  }
-
-  toNextMonth() {
-    this.setMenuDate(addMonths(this.currentDate, 1))
-  }
-
   handleInputFocus(input) {
     this.clearInputStatus()
     input.setActive(true)
     this.lastTriggered = input
-    this.menu.setDate(input.date)
+    this.menu.setDate({ date: input.date })
     this.menu.show(this.dom)
   }
 
@@ -141,8 +125,7 @@ export default class Datepicker {
   }
 
   addEvents() {
-    this.inputDateStart.on('click', event => event.stopPropagation())
-    this.inputDateStart.on('focus', event => this.handleInputFocus(this.inputDateStart))
+    this.inputDateStart.on('focus', () => this.handleInputFocus(this.inputDateStart))
     this.inputDateStart.on('keyup', event => {
       return this.handleInputKeyUp({
         event,
@@ -158,8 +141,7 @@ export default class Datepicker {
       })
     })
 
-    this.inputDateEnd.on('click', event => event.stopPropagation())
-    this.inputDateEnd.on('focus', event => this.handleInputFocus(this.inputDateEnd))
+    this.inputDateEnd.on('focus', () => this.handleInputFocus(this.inputDateEnd))
     this.inputDateEnd.on('keyup', event => {
       return this.handleInputKeyUp({
         event,
@@ -173,6 +155,40 @@ export default class Datepicker {
         input: this.inputDateEnd,
         isStart: false
       })
+    })
+
+    this.menu.on('td-click', (event, res) => {
+      event.stopPropagation()
+      event.preventDefault()
+
+      const { lastTriggered } = this
+      const { year, month, date } = res
+
+      if (lastTriggered === this.inputDateStart) {
+        const nextStartDate = set(this.startDate, { year, month, date })
+        if (dateGt(startOfDay(nextStartDate), startOfDay(this.endDate))) {
+          return
+        }
+        this.startDate = nextStartDate
+        this.inputDateStart.setDate(nextStartDate)
+        this.menu.setDate({
+          date: this.startDate,
+          startDate: this.startDate
+        })
+      }
+      if (lastTriggered === this.inputDateEnd) {
+        const nextEndDate = set(this.endDate, { year, month, date })
+        if (dateLt(startOfDay(nextEndDate), startOfDay(this.startDate))) {
+          return
+        }
+        this.endDate = nextEndDate
+        this.inputDateEnd.setDate(nextEndDate)
+        this.menu.setDate({
+          date: this.endDate,
+          endDate: this.endDate
+        })
+      }
+      this.change()
     })
 
     this._handleDocClick = event => {
@@ -192,7 +208,6 @@ export default class Datepicker {
       if (menuDom === event.target) {
         return
       }
-      console.log('hide', target)
       menu.hide()
     }
     document.addEventListener('click', this._handleDocClick, false)

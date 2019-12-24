@@ -53,6 +53,7 @@ export default class DatepickerDateInput {
 
   addEvents() {
     const { dom } = this
+
     this._handleFocus = event => {
       this.listeners.filter(row => row.name === 'focus')
         .forEach(row => row.func.call(this, event))

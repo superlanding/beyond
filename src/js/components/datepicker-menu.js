@@ -9,6 +9,8 @@ import getYear from 'date-fns/getYear'
 import set from 'date-fns/set'
 import startOfDay from 'date-fns/startOfDay'
 import startOfMonth from 'date-fns/startOfMonth'
+import addMonths from 'date-fns/addMonths'
+import subMonths from 'date-fns/subMonths'
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import range from '../helpers/range'
 import toPixel from '../helpers/toPixel'
@@ -31,6 +33,8 @@ export default class DatepickerMenu {
 
   constructor({ date, startDate, endDate, options = {} }) {
     this.date = date
+    this.startDate = startDate
+    this.endDate = endDate
     this.options = options
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.captionPattern = options.captionPattern || 'yyyy MMMM'
@@ -83,10 +87,18 @@ export default class DatepickerMenu {
     return emptyHeadRows.concat(rows).concat(emptyTailRows)
   }
 
-  setDate(date) {
-    this.date = date
+  setDate({ date, startDate, endDate }) {
+    if (date) {
+      this.date = date
+    }
+    if (startDate) {
+      this.startDate = startDate
+    }
+    if (endDate) {
+      this.endDate = endDate
+    }
     const options = { timezone: this.tz, locale: DEFAULT_LOCALE }
-    this.menuCaption.textContent = format(date, this.captionPattern, options)
+    this.caption.textContent = format(date, this.captionPattern, options)
     const rows = this.getTableRows()
     this.setTableHtml(rows)
   }
@@ -97,7 +109,7 @@ export default class DatepickerMenu {
   }
 
   setTableHtml(rows) {
-    this.menuTable.innerHTML = rows.map((row, i) => {
+    this.table.innerHTML = rows.map((row, i) => {
       const rowHtml = this.getTdHtml(row)
       const r = i % 7
       if (r === 0) {
@@ -141,10 +153,10 @@ export default class DatepickerMenu {
         </button>
       </div>
     `
-    this.menuCaption = dom.querySelector('[data-menu-caption]')
-    this.menuTable = dom.querySelector('[data-date-table]')
-    this.menuBtnPrev = dom.querySelector('[data-btn-prev]')
-    this.menuBtnNext = dom.querySelector('[data-btn-next]')
+    this.caption = dom.querySelector('[data-menu-caption]')
+    this.table = dom.querySelector('[data-date-table]')
+    this.btnPrev = dom.querySelector('[data-btn-prev]')
+    this.btnNext = dom.querySelector('[data-btn-next]')
 
     document.body.appendChild(dom)
     this.dom = dom
@@ -155,42 +167,27 @@ export default class DatepickerMenu {
   }
 
   addEvents() {
-    this._handleMenuBtnPrevClick = () => this.toPrevMonth()
-    this._handleMenuBtnNextClick = () => this.toNextMonth()
+    this._handlePrevBtnClick = event => {
+      this.setDate(subMonths(this.date, 1))
+    }
+    this.btnPrev.addEventListener('click', this._handlePrevBtnClick, false)
 
-    this.menuBtnPrev.addEventListener('click', this._handleMenuBtnPrevClick, false)
-    this.menuBtnNext.addEventListener('click', this._handleMenuBtnNextClick, false)
+    this._handleNextBtnClick = () => {
+      this.setDate(addMonths(this.date, 1))
+    }
+    this.btnNext.addEventListener('click', this._handleNextBtnClick, false)
 
     this._handleMenuTableClick = event => {
       if ('dateTableCell' in event.target.dataset) {
-        const year = getYear(this.currentDate)
-        const month = getMonth(this.currentDate)
+        const year = getYear(this.date)
+        const month = getMonth(this.date)
         const date = parseInt(event.target.textContent.trim(), 10)
 
-        if (this.triggeredByInputDateStart()) {
-          const nextStartDate = set(this.startDate, { year, month, date })
-          if (dateGt(startOfDay(nextStartDate), startOfDay(this.endDate))) {
-            return
-          }
-          this.inputDateStart.setDate(nextStartDate)
-          this.setMenuDate(this.inputDateStart.date)
-        }
-        if (this.triggeredByInputDateEnd()) {
-          const nextEndDate = set(this.endDate, { year, month, date })
-          if (dateLt(startOfDay(nextEndDate), startOfDay(this.startDate))) {
-            return
-          }
-          this.endDate = nextEndDate
-          this.setMenuDate(this.inputDateEnd.date)
-          this.setInput(this.inputDateStart, this.startDate)
-          this.setInput(this.inputDateEnd, this.endDate)
-        }
-        this.change()
-        event.stopPropagation()
-        event.preventDefault()
+        this.listeners.filter(row => row.name === 'td-click')
+          .forEach(row => row.func(event, { year, month, date }))
       }
     }
-    this.menuTable.addEventListener('click', this._handleMenuTableClick, false)
+    this.table.addEventListener('click', this._handleMenuTableClick, false)
   }
 
   pos(src) {
@@ -221,16 +218,14 @@ export default class DatepickerMenu {
   }
 
   destroy() {
-    document.removeEventListener('click', this._handleDocClick, false)
+    this.btnPrev.removeEventListener('click', this._handlePrevBtnClick, false)
+    this.btnNext.removeEventListener('click', this._handleNextBtnClick, false)
+    this.table.removeEventListener('click', this._handleMenuTableClick, false)
 
-    this.menuBtnPrev.removeEventListener('click', this._handleMenuBtnPrevClick, false)
-    this.menuBtnNext.removeEventListener('click', this._handleMenuBtnNextClick, false)
-    this.menuTable.removeEventListener('click', this._handleMenuTableClick, false)
-
-    this.menuCaption = null
-    this.menuTable = null
-    this.menuBtnPrev = null
-    this.menuBtnNext = null
+    this.caption = null
+    this.btnPrev = null
+    this.btnNext = null
+    this.table = null
     this.dom.remove()
     this.menu = null
 
