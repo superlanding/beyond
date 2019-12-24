@@ -20,8 +20,8 @@ import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import range from '../helpers/range'
 import toPixel from '../helpers/toPixel'
 
-const TYPE_EMPTY_CELL = Symbol('TYPE_EMPTY_CELL')
-const TYPE_DAY_CELL = Symbol('TYPE_DAY_CELL')
+const CELL_TYPE_EMPTY = Symbol('CELL_TYPE_EMPTY')
+const CELL_TYPE_DAY = Symbol('CELL_TYPE_DAY')
 
 const TRIGGERED_BY_INPUT_DATE_START = Symbol('TRIGGERED_BY_INPUT_DATE_START')
 const TRIGGERED_BY_INPUT_DATE_END = Symbol('TRIGGERED_BY_INPUT_DATE_END')
@@ -182,7 +182,7 @@ export default class Datepicker {
 
     const daysInMonth = getDaysInMonth(menuDate)
     const firstDateOfMonth = startOfMonth(menuDate)
-    const toEmptyCell = () => ({ type: TYPE_EMPTY_CELL })
+    const toEmptyCell = () => ({ type: CELL_TYPE_EMPTY })
 
     const firstWeekday = getDay(startOfMonth(menuDate))
     const beforeWeekday = ((firstWeekday - 1) === -1) ? 6 : (firstWeekday - 1)
@@ -199,7 +199,7 @@ export default class Datepicker {
       const resCompareEnd = compareAsc(endOfEndDate, date)
 
       return {
-        type: TYPE_DAY_CELL,
+        type: CELL_TYPE_DAY,
         isStartDate: (resCompareStart === 0),
         isEndDate: (resCompareEnd === 0),
         isSelected: (resCompareStart === -1) && (resCompareEnd === 1),
@@ -215,7 +215,7 @@ export default class Datepicker {
   }
 
   getTableRowHtml(row) {
-    if (row.type === TYPE_EMPTY_CELL) {
+    if (row.type === CELL_TYPE_EMPTY) {
       return '<td></td>'
     }
     if (row.isStartDate || row.isEndDate) {
