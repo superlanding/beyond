@@ -1,12 +1,12 @@
 import './../sass/index.scss'
-import './polyfills/node-remove'
-import './polyfills/node-contains'
-import Dropdown from './components/dropdown'
-import Tabbox from './components/tabbox'
-import Modal from './components/modal'
-import Tooltip from './components/tooltip'
-import Toast from './components/toast'
-import Datepicker from './components/datepicker'
+import './polyfills/nodeRemove'
+import './polyfills/nodeContains'
+import Dropdown from './components/Dropdown'
+import Tabbox from './components/Tabbox'
+import Modal from './components/Modal'
+import Tooltip from './components/Tooltip'
+import Toast from './components/Toast'
+import Datepicker from './components/Datepicker'
 
 if (typeof window !== 'undefined') {
   window.beyond = {
