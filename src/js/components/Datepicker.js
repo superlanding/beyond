@@ -26,17 +26,17 @@ export default class Datepicker {
 
     this.currentDate = this.startDate
 
-    this.inputDateStart = new DatepickerDateInput({
-      dom: dom.querySelector('[data-date-start]'),
-      date: this.startDate,
-      options: this.options
-    })
+    this.inputDateStart = new DatepickerDateInput(
+      dom.querySelector('[data-date-start]'),
+      this.startDate,
+      this.options
+    )
 
-    this.inputDateEnd = new DatepickerDateInput({
-      dom: dom.querySelector('[data-date-end]'),
-      date: this.endDate,
-      options: this.options
-    })
+    this.inputDateEnd = new DatepickerDateInput(
+      dom.querySelector('[data-date-end]'),
+      this.endDate,
+      this.options
+    )
 
     this.menu = new DatepickerMenu({
       date: this.currentDate,
