@@ -17,6 +17,7 @@ module.exports = {
     "comma-dangle": "off",
     "object-curly-spacing": ["error", "always"],
     "space-before-function-paren": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "indent": ["warn", 2, { "SwitchCase": 1 }]
   }
 }
