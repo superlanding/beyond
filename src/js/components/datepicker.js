@@ -29,7 +29,7 @@ const TRIGGERED_BY_INPUT_DATE_END = Symbol('TRIGGERED_BY_INPUT_DATE_END')
 const TYPE_START = Symbol('TYPE_START')
 const TYPE_END = Symbol('TYPE_END')
 
-const defaultWeekHeaderItems = [
+const DEFAULT_WEEK_HEADER_ITEMS = [
   { id: 'monday', text: '一' },
   { id: 'tuesday', text: '二' },
   { id: 'wednesday', text: '三' },
@@ -56,7 +56,7 @@ export default class Datepicker {
     this.startDate = utcToZonedTime(new Date(), this.tz)
     this.endDate = utcToZonedTime(endOfDay(new Date()))
 
-    this.weekHeaderItems = this.options.weekHeaderItems || defaultWeekHeaderItems
+    this.weekHeaderItems = this.options.weekHeaderItems || DEFAULT_WEEK_HEADER_ITEMS
 
     this.inputDateStart = dom.querySelector('[data-date-start]')
     this.inputDateEnd = dom.querySelector('[data-date-end]')
