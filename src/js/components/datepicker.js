@@ -253,10 +253,8 @@ export default class Datepicker {
     this.setTableHtml(rows)
   }
 
-  showMenu() {
+  placeMenu() {
     const { menu } = this
-    menu.style.opacity = 0
-    menu.style.display = 'block'
     const pos = getFloatedTargetPos({
       src: this.dom,
       target: menu,
@@ -266,6 +264,13 @@ export default class Datepicker {
     })
     menu.style.left = toPixel(pos.left)
     menu.style.top = toPixel(pos.top)
+  }
+
+  showMenu() {
+    const { menu } = this
+    menu.style.opacity = 0
+    menu.style.display = 'block'
+    this.placeMenu()
     menu.style.opacity = 1
     this.isMenuVisible = true
   }
