@@ -76,7 +76,7 @@ export default class Datepicker {
     this.inputDateEnd.clearStatus()
   }
 
-  handleInputFocus(input) {
+  handleDateInputFocus(input) {
     this.clearInputStatus()
     input.setActive(true)
     this.lastTriggered = input
@@ -119,7 +119,7 @@ export default class Datepicker {
   }
 
   addEvents() {
-    this.inputDateStart.on('focus', () => this.handleInputFocus(this.inputDateStart))
+    this.inputDateStart.on('focus', () => this.handleDateInputFocus(this.inputDateStart))
     this.inputDateStart.on('keyup', event => {
       return this.handleInputKeyUp({
         event,
@@ -135,7 +135,7 @@ export default class Datepicker {
       })
     })
 
-    this.inputDateEnd.on('focus', () => this.handleInputFocus(this.inputDateEnd))
+    this.inputDateEnd.on('focus', () => this.handleDateInputFocus(this.inputDateEnd))
     this.inputDateEnd.on('keyup', event => {
       return this.handleInputKeyUp({
         event,
