@@ -74,6 +74,7 @@ export default class DatepickerDateInput {
   }
 
   destroy() {
+    const { dom } = this
     dom.removeEventListener('focus', this._handleFocus, false)
     dom.removeEventListener('keyup', this._handleKeyUp, false)
     dom.removeEventListener('blur', this._handleBlur, false)

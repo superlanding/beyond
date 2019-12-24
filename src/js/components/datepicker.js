@@ -1,13 +1,12 @@
-import { utcToZonedTime, format } from 'date-fns-tz'
-import locale from 'date-fns/locale/zh-TW'
-import parse from 'date-fns/parse'
+import { utcToZonedTime } from 'date-fns-tz'
 import endOfDay from 'date-fns/endOfDay'
-import startOfDay from 'date-fns/startOfDay'
+import parse from 'date-fns/parse'
 import set from 'date-fns/set'
-import dateGt from '../helpers/dateGt'
-import dateLt from '../helpers/dateLt'
+import startOfDay from 'date-fns/startOfDay'
 import DatepickerDateInput from './datepicker-date-input'
 import DatepickerMenu from './datepicker-menu'
+import dateGt from '../helpers/dateGt'
+import dateLt from '../helpers/dateLt'
 
 export default class Datepicker {
 
@@ -49,33 +48,14 @@ export default class Datepicker {
     this.addEvents()
   }
 
-  format(date, pattern) {
-    return format(date, pattern, { timezone: this.tz })
-  }
-
-  formatDate(date) {
-    return this.format(date, this.datePattern)
-  }
-
   change() {
-    if (typeof this.options.change === 'function') {
-      this.options.change({
+    const { change } = this.options
+    if (typeof change === 'function') {
+      change({
         startDate: this.startDate,
         endDate: this.endDate
       })
     }
-  }
-
-  setMenuDate(date) {
-    this.currentDate = date
-    const options = { timezone: this.tz, locale }
-    this.menuCaption.textContent = format(date, 'yyyy MMMM', options)
-    const rows = this.getTableRows({
-      menuDate: date,
-      startDate: this.inputDateStart.date,
-      endDate: this.inputDateEnd.date
-    })
-    this.setTableHtml(rows)
   }
 
   clearInputStatus() {
@@ -216,6 +196,7 @@ export default class Datepicker {
   }
 
   destroy() {
+    document.removeEventListener('click', this._handleDocClick, false)
     this.inputDateStart.destroy()
     this.inputDateEnd.destroy()
     this.menu.destroy()
