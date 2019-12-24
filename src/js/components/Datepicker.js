@@ -6,6 +6,7 @@ import startOfDay from 'date-fns/startOfDay'
 import DatepickerDateInput from './DatepickerDateInput'
 import DatepickerTimeInput from './DatepickerTimeInput'
 import DatepickerDateMenu from './DatepickerDateMenu'
+import DatepickerTimeMenu from './DatepickerTimeMenu'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
 
@@ -57,6 +58,7 @@ export default class Datepicker {
       endDate: this.endDate,
       options: this.options
     })
+    this.timeMenu = new DatepickerTimeMenu()
 
     this.addEvents()
   }
@@ -78,23 +80,43 @@ export default class Datepicker {
     this.inputTimeEnd.clearStatus()
   }
 
-  handleInputFocus(input) {
+  handleDateInputFocus(input) {
     this.clearInputStatus()
     input.setActive(true)
     this.lastTriggered = input
-
-    if (input instanceof DatepickerDateInput) {
-      this.dateMenu.setDate({ date: input.date })
-      this.dateMenu.show(this.dom)
-    }
-    if (input instanceof DatepickerTimeInput) {
-      this.dateMenu.hide()
-    }
+    this.dateMenu.setDate({ date: input.date })
+    this.dateMenu.show(this.dom)
+    this.timeMenu.hide()
   }
 
-  handleInputKeyUp({ event, input, date, isStart }) {
+  handleTimeInputFocus(input) {
+    this.clearInputStatus()
+    input.setActive(true)
+    this.lastTriggered = input
+    this.dateMenu.hide()
+    this.timeMenu.show({ src: this.dom, date: input.date })
+  }
+
+  handleDateInputKeyUp({ event, input, date, isStart }) {
 
     const res = parse(event.target.value, input.datePattern, date)
+    this.nextDate = null
+
+    if (res.toString() === 'Invalid Date') {
+      return input.setDanger(true)
+    }
+    if (isStart && dateGt(startOfDay(res), startOfDay(this.endDate))) {
+      return input.setDanger(true)
+    }
+    if ((! isStart) && dateLt(startOfDay(res), startOfDay(this.startDate))) {
+      return input.setDanger(true)
+    }
+    input.setDanger(false)
+    this.nextDate = res
+  }
+
+  handleTimeInputKeyUp({ event, input, date, isStart }) {
+    const res = parse(event.target.value, input.timePattern, date)
     this.nextDate = null
 
     if (res.toString() === 'Invalid Date') {
@@ -126,10 +148,25 @@ export default class Datepicker {
     }
   }
 
-  addEvents() {
-    this.inputDateStart.on('focus', () => this.handleInputFocus(this.inputDateStart))
+  handleTimeInputBlur({ input, isStart }) {
+    const dateProp = isStart ? 'startDate' : 'endDate'
+    const oldDate = this[dateProp]
+    const { nextDate } = this
+
+    if (nextDate) {
+      this[dateProp] = nextDate
+      input.setDate(nextDate)
+      this.nextDate = null
+    }
+    else {
+      input.setDate(oldDate)
+    }
+  }
+
+  addDateInputEvents() {
+    this.inputDateStart.on('focus', () => this.handleDateInputFocus(this.inputDateStart))
     this.inputDateStart.on('keyup', event => {
-      return this.handleInputKeyUp({
+      return this.handleDateInputKeyUp({
         event,
         input: this.inputDateStart,
         date: this.startDate,
@@ -143,11 +180,9 @@ export default class Datepicker {
       })
     })
 
-    this.inputTimeStart.on('focus', () => this.handleInputFocus(this.inputTimeStart))
-
-    this.inputDateEnd.on('focus', () => this.handleInputFocus(this.inputDateEnd))
+    this.inputDateEnd.on('focus', () => this.handleDateInputFocus(this.inputDateEnd))
     this.inputDateEnd.on('keyup', event => {
-      return this.handleInputKeyUp({
+      return this.handleDateInputKeyUp({
         event,
         input: this.inputDateEnd,
         date: this.endDate,
@@ -160,7 +195,43 @@ export default class Datepicker {
         isStart: false
       })
     })
+  }
 
+  addTimeInputEvents() {
+    this.inputTimeStart.on('focus', () => this.handleTimeInputFocus(this.inputTimeStart))
+    this.inputTimeStart.on('keyup', event => {
+      return this.handleTimeInputKeyUp({
+        event,
+        input: this.inputTimeStart,
+        date: this.startDate,
+        isStart: true
+      })
+    })
+    this.inputTimeStart.on('blur', event => {
+      return this.handleTimeInputBlur({
+        input: this.inputTimeStart,
+        isStart: true
+      })
+    })
+
+    this.inputTimeEnd.on('focus', () => this.handleTimeInputFocus(this.inputTimeEnd))
+    this.inputTimeEnd.on('keyup', event => {
+      return this.handleTimeInputKeyUp({
+        event,
+        input: this.inputTimeEnd,
+        date: this.startDate,
+        isStart: false
+      })
+    })
+    this.inputTimeEnd.on('blur', event => {
+      return this.handleTimeInputBlur({
+        input: this.inputTimeEnd,
+        isStart: false
+      })
+    })
+  }
+
+  addMenuEvents() {
     this.dateMenu.on('td-click', (event, res) => {
       event.stopPropagation()
       event.preventDefault()
@@ -195,25 +266,55 @@ export default class Datepicker {
       this.change()
     })
 
-    this._handleDocClick = event => {
-      const { dom, dateMenu } = this
-      const { target } = event
-      const menuDom = dateMenu.dom
+    this.timeMenu.on('click', (event, res) => {
+      const nextDate = set(this.lastTriggered.date, { hours: res.hour, minutes: res.minute })
+      if (this.lastTriggered === this.inputTimeStart) {
+        this.startDate = nextDate
+      }
+      if (this.lastTriggered === this.inputTimeEnd) {
+        this.endDate = nextDate
+      }
+      this.lastTriggered.setDate(nextDate)
+      this.timeMenu.hide()
+    })
+  }
 
-      if (! dateMenu.isVisible) {
+  addEvents() {
+
+    this.addDateInputEvents()
+    this.addTimeInputEvents()
+    this.addMenuEvents()
+
+    this._handleDocClick = event => {
+      const { dom, dateMenu, timeMenu } = this
+      const { target } = event
+      const dateMenuDom = dateMenu.dom
+      const timeMenuDom = timeMenu.dom
+
+      if ((! dateMenu.isVisible) && (! timeMenu.isVisible)) {
         return
       }
       if (dom.contains(target)) {
         return
       }
-      if (menuDom.contains(target)) {
+
+      if (dateMenuDom.contains(target)) {
         return
       }
-      if (menuDom === event.target) {
+      if (dateMenuDom === event.target) {
         return
       }
+
+      if (timeMenuDom.contains(target)) {
+        return
+      }
+      if (timeMenuDom === event.target) {
+        return
+      }
+
       this.clearInputStatus()
       dateMenu.hide()
+      timeMenu.hide()
     }
     document.addEventListener('click', this._handleDocClick, false)
   }
@@ -221,7 +322,10 @@ export default class Datepicker {
   destroy() {
     document.removeEventListener('click', this._handleDocClick, false)
     this.inputDateStart.destroy()
+    this.inputTimeStart.destroy()
     this.inputDateEnd.destroy()
+    this.inputTimeEnd.destroy()
     this.dateMenu.destroy()
+    this.timeMenu.destroy()
   }
 }

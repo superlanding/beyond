@@ -1,6 +1,7 @@
 import './../sass/index.scss'
 import './polyfills/nodeRemove'
 import './polyfills/nodeContains'
+import './polyfills/nodeHasAttribute'
 import Dropdown from './components/Dropdown'
 import Tabbox from './components/Tabbox'
 import Modal from './components/Modal'

@@ -10,6 +10,10 @@
   padding: 4px;
   .datepicker-date-input,
   .datepicker-time-input {
+    &::placeholder {
+      font-size: 11px;
+      color: hsla(0, 0%, 100%, .6);
+    }
     text-align: center;
     height: 24px;
     border: 0;
@@ -44,7 +48,7 @@
   }
 }
 
-.datepicker-menu {
+.datepicker-date-menu {
   display: none;
   position: absolute;
   box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
@@ -98,6 +102,7 @@
     td {
       text-align: center;
       &.cell {
+        background-color: #f7fafc;
         cursor: pointer;
         border-width: 1px;
         border-style: solid;
@@ -114,5 +119,29 @@
         border-color: #5469d4;
       }
     }
+  }
+}
+
+.datepicker-time-menu {
+  display: none;
+  box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
+    0 15px 35px 0 rgba(49, 49, 93, .1),
+    0 5px 15px 0 rgba(0, 0, 0, .08);
+  background-color: #fff;
+  position: absolute;
+  height: 200px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  .datepicker-time-menu-item {
+    color: #3c4257;
+    font-size: 14px;
+    &:hover {
+      background-color: #f7fafc;
+    }
+    &.active {
+      background-color: #eef0f3;
+    }
+    padding: 10px 14px;
+    width: 188px;
   }
 }

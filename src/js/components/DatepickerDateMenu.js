@@ -136,7 +136,7 @@ export default class DatepickerDateMenu {
 
   addMenu() {
     const dom = document.createElement('div')
-    dom.className = 'datepicker-menu'
+    dom.className = 'datepicker-date-menu'
     dom.innerHTML = `
       <div class="datepicker-content">
         <div class="datepicker-caption" data-menu-caption></div>
