@@ -4,6 +4,7 @@ import parse from 'date-fns/parse'
 import set from 'date-fns/set'
 import startOfDay from 'date-fns/startOfDay'
 import DatepickerDateInput from './DatepickerDateInput'
+import DatepickerTimeInput from './DatepickerTimeInput'
 import DatepickerMenu from './DatepickerMenu'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
@@ -32,8 +33,20 @@ export default class Datepicker {
       this.options
     )
 
+    this.inputTimeStart = new DatepickerTimeInput(
+      dom.querySelector('[data-time-start]'),
+      this.startDate,
+      this.options
+    )
+
     this.inputDateEnd = new DatepickerDateInput(
       dom.querySelector('[data-date-end]'),
+      this.endDate,
+      this.options
+    )
+
+    this.inputTimeEnd = new DatepickerTimeInput(
+      dom.querySelector('[data-time-start]'),
       this.endDate,
       this.options
     )

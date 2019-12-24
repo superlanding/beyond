@@ -1,7 +1,7 @@
 import { format } from 'date-fns-tz'
 import { DEFAULT_TIMEZONE } from '../consts'
 
-export default class DatepickerDateInput {
+export default class DatepickerTimeInput {
 
   constructor(dom, date, options = {}) {
     this.active = false
@@ -10,7 +10,7 @@ export default class DatepickerDateInput {
     this.date = date
     this.options = options
     this.tz = options.tz || DEFAULT_TIMEZONE
-    this.datePattern = options.datePattern || 'yyyy/MM/dd'
+    this.timePattern = options.timePattern || 'HH:mm'
     this.listeners = []
 
     this.init()
@@ -22,7 +22,7 @@ export default class DatepickerDateInput {
   }
 
   format(date) {
-    return format(date, this.datePattern, { timezone: this.tz })
+    return format(date, this.timePattern, { timezone: this.tz })
   }
 
   setDate(date) {
