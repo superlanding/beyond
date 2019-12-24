@@ -1,5 +1,5 @@
 // Calculate floated target position for tooltip and dropdown
-export default function getgetFloatedTargetPos(options) {
+export default function getFloatedTargetPos(options) {
 
   const { src, target, place, align, offset } = options
 
