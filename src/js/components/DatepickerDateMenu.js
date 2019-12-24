@@ -36,6 +36,7 @@ export default class DatepickerDateMenu {
     this.endDate = endDate
     this.options = options
     this.tz = options.tz || DEFAULT_TIMEZONE
+    this.locale = options.locale || DEFAULT_LOCALE
     this.captionPattern = options.captionPattern || 'yyyy MMMM'
     this.weekHeaderItems = options.weekHeaderItems || DEFAULT_WEEK_HEADER_ITEMS
     this.listeners = []
@@ -89,7 +90,7 @@ export default class DatepickerDateMenu {
   setDate({ date, startDate, endDate }) {
     if (date) {
       this.date = date
-      const options = { timezone: this.tz, locale: DEFAULT_LOCALE }
+      const options = { timezone: this.tz, locale: this.locale }
       this.caption.textContent = format(date, this.captionPattern, options)
     }
     if (startDate) {
