@@ -6,7 +6,7 @@ git add dist
 git commit -m "update dist/"
 
 git co github
-git merge master --no-ff
+git merge master --no-ff --no-edit
 
 git add -f _site
 git commit -m "update _site/"
