@@ -1,5 +1,5 @@
 {
-  "name": "beyond",
+  "name": "@superlanding/beyond",
   "version": "0.0.1",
   "description": "The best frontend framework for super-landing.com",
   "main": "dist/beyond.js",
