@@ -394,3 +394,5 @@ p {
 
 .page-datepickers .codebox-result {
   padding: 20px 0 20px 6px; }
+  .page-datepickers .codebox-result .datepicker {
+    white-space: nowrap; }
