@@ -1,15 +1,11 @@
 #!/bin/bash
 
-git co master
-yarn build
-git add dist
-git commit -m "update dist/"
-
 git co github
 git merge master --no-ff --no-edit
 
-git add -f _site
-git commit -m "update _site/"
+yarn build
+git add -f _site dist
+git commit -m "update _site/ and dist/"
 git subtree split --prefix _site -b gh-pages
 
 git push --all origin
