@@ -1,0 +1,63 @@
+<div class="doc">
+  <h2>Tooltip HTML</h2>
+  <div class="code">
+{% highlight html %}
+<button class="btn btn-outline"
+        data-tooltip
+        data-msg="上方出現"
+        data-place="top">
+  <i class="icon-chevron-up"></i>
+</button>
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-msg</td>
+        <td>tooltip 要顯示的文字，例如 <strong>data-msg="Hello ! How are you?"</strong></td>
+      </tr>
+      <tr>
+        <td>data-place</td>
+        <td>tooltip 要顯示的方向，支援上下左右 ( top, bottom, left, right )</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Tooltip JS</h2>
+  <h3>constructor</h3>
+  <div class="code">
+{% highlight js %}
+const tooltip = new Tooltip(dom)
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>需要顯示 tooltip 的元素</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>destroy</h3>
+  <p>移除 Tooltip 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+{% highlight js %}
+tooltip.destroy()
+{% endhighlight %}
+  </div>
+</div><!-- .doc -->

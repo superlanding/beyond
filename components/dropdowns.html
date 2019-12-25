@@ -11,6 +11,7 @@ title: Dropdowns
       <div class="codebox-tabs" data-tabs>
         <a>Result</a>
         <a>HTML</a>
+        <a>JavaScript</a>
       </div>
       <div class="codebox-panes" data-panes>
         <div class="codebox-result">
@@ -19,7 +20,12 @@ title: Dropdowns
         <div>
           {% highlight html linenos %}{% include demos/dropdowns.html %}{% endhighlight %}
         </div>
+        <div>
+          {% highlight js linenos %}{% include demos/dropdowns.js %}{% endhighlight %}
+        </div>
       </div>
-    </div>
+    </div><!-- .codebox -->
+    {% include docs/dropdowns.html %}
   </div>
+  <script>{% include demos/dropdowns.js %}</script>
 </div>

@@ -1,30 +1,33 @@
 import './../sass/index.scss'
-import './polyfills/nodeRemove'
 import './polyfills/nodeContains'
 import './polyfills/nodeHasAttribute'
-import Dropdown from './components/Dropdown'
-import Tabbox from './components/Tabbox'
-import Modal from './components/Modal'
-import Tooltip from './components/Tooltip'
-import Toast from './components/Toast'
+import './polyfills/nodeRemove'
 import Datepicker from './components/Datepicker'
+import Dropdown from './components/Dropdown'
+import Modal from './components/Modal'
+import Tabbox from './components/Tabbox'
+import Toast from './components/Toast'
+import Tooltip from './components/Tooltip'
 
-if (typeof window !== 'undefined') {
+const hasWindow = (typeof window !== 'undefined')
+const isCommonJs = ((typeof module === 'object') && (typeof module.exports === 'object'))
+
+if (hasWindow && (! isCommonJs)) {
   window.beyond = {
+    Datepicker,
     Dropdown,
     Modal,
     Tabbox,
-    Tooltip,
     Toast,
-    Datepicker
+    Tooltip
   }
 }
 
 export {
+  Datepicker,
   Dropdown,
   Modal,
   Tabbox,
-  Tooltip,
   Toast,
-  Datepicker
+  Tooltip
 }

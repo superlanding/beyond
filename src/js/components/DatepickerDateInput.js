@@ -1,6 +1,8 @@
 import { format } from 'date-fns-tz'
 import { DEFAULT_TIMEZONE } from '../consts'
+import supportDom from '../helpers/supportDom'
 
+@supportDom
 export default class DatepickerDateInput {
 
   constructor(dom, date, options = {}) {
@@ -11,8 +13,6 @@ export default class DatepickerDateInput {
     this.options = options
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.datePattern = options.datePattern || 'yyyy/MM/dd'
-    this.listeners = []
-
     this.init()
   }
 
@@ -32,10 +32,6 @@ export default class DatepickerDateInput {
   setDate(date) {
     this.date = date
     this.dom.value = this.format(date)
-  }
-
-  on(name, func) {
-    this.listeners.push({ name, func })
   }
 
   setActive(active) {
@@ -58,22 +54,13 @@ export default class DatepickerDateInput {
   addEvents() {
     const { dom } = this
 
-    this._handleFocus = event => {
-      this.listeners.filter(row => row.name === 'focus')
-        .forEach(row => row.func.call(this, event))
-    }
+    this._handleFocus = event => this.fire('focus', event)
     dom.addEventListener('focus', this._handleFocus, false)
 
-    this._handleKeyUp = event => {
-      this.listeners.filter(row => row.name === 'keyup')
-        .forEach(row => row.func.call(this, event))
-    }
+    this._handleKeyUp = event => this.fire('keyup', event)
     dom.addEventListener('keyup', this._handleKeyUp, false)
 
-    this._handleBlur = event => {
-      this.listeners.filter(row => row.name === 'blur')
-        .forEach(row => row.func.call(this, event))
-    }
+    this._handleBlur = event => this.fire('blur', event)
     dom.addEventListener('blur', this._handleBlur, false)
   }
 
@@ -82,6 +69,5 @@ export default class DatepickerDateInput {
     dom.removeEventListener('focus', this._handleFocus, false)
     dom.removeEventListener('keyup', this._handleKeyUp, false)
     dom.removeEventListener('blur', this._handleBlur, false)
-    this.listeners.length = 0
   }
 }

@@ -3,11 +3,12 @@ import getMinutes from 'date-fns/getMinutes'
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import toPixel from '../helpers/toPixel'
 import range from '../helpers/range'
+import supportDom from '../helpers/supportDom'
 
+@supportDom
 export default class DatepickerTimeMenu {
 
   constructor() {
-    this.listeners = []
     this.date = null
     this.isVisible = false
     this.init()
@@ -41,10 +42,6 @@ export default class DatepickerTimeMenu {
     this.dom = dom
   }
 
-  on(name, func) {
-    this.listeners.push({ name, func })
-  }
-
   addEvents() {
     this._handleMenuClick = event => {
       const { dataset } = event.target
@@ -53,8 +50,7 @@ export default class DatepickerTimeMenu {
           hour: parseInt(dataset.hour, 10),
           minute: parseInt(dataset.minute, 10)
         }
-        this.listeners.filter(row => row.name === 'click')
-          .forEach(row => row.func.call(this, event, res))
+        this.fire('click', event, res)
       }
     }
     this.dom.addEventListener('click', this._handleMenuClick, false)
@@ -117,6 +113,5 @@ export default class DatepickerTimeMenu {
   destroy() {
     this.dom.removeEventListener('click', this._handleMenuClick, false)
     this.dom.remove()
-    this.listeners.length = 0
   }
 }

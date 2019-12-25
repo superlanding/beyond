@@ -8,6 +8,22 @@
   margin-right: 50px;
   margin-bottom: 120px;
 }
+.code {
+  background-color: #4f556a;
+  padding: 14px 0;
+}
+.doc {
+  h2 {
+    margin-top: 30px;
+  }
+  h3 {
+    margin-top: 14px;
+  }
+  .table {
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: $screen-md) {
   .container-default {
     margin: 0;

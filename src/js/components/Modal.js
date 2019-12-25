@@ -37,15 +37,15 @@ export default class Modal {
     }, 300)
   }
 
-  onConfirm() {
-    if (typeof this.options.onConfirm === 'function') {
-      this.options.onConfirm()
+  confirm() {
+    if (typeof this.options.confirm === 'function') {
+      this.options.confirm()
     }
   }
 
-  onCancel(type) {
-    if (typeof this.options.onCancel === 'function') {
-      this.options.onCancel(type)
+  cancel(type) {
+    if (typeof this.options.cancel === 'function') {
+      this.options.cancel(type)
     }
   }
 
@@ -55,13 +55,13 @@ export default class Modal {
 
     this._handleCloseBtnClick = () => {
       this.hide()
-      this.onCancel('close')
+      this.cancel('close')
     }
     this.closeBtn.addEventListener('click', this._handleCloseBtnClick, false)
 
     this._handleCancelBtnClick = () => {
       this.hide()
-      this.onCancel('cancel')
+      this.cancel('cancel')
     }
     this.cancelBtn.addEventListener('click', this._handleCancelBtnClick, false)
 
@@ -69,14 +69,14 @@ export default class Modal {
       // is backdrop
       if (event.target.dataset.modal === this.modalId) {
         this.hide()
-        this.onCancel('backdrop')
+        this.cancel('backdrop')
       }
     }
     this.modal.addEventListener('click', this._handleModalClick, false)
 
     this._handleConfirmBtnClick = () => {
       if (typeof this.options.confirm === 'function') {
-        this.onConfirm()
+        this.confirm()
       }
       else {
         this.hide()

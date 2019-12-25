@@ -1,4 +1,4 @@
-const { Codebox, Dropdown, Tabbox, Modal, Tooltip } = window.beyond
+const { Codebox, Tabbox, Modal, Tooltip } = window.beyond
 
 document.querySelectorAll('[data-codebox]')
   .forEach(dom => {
@@ -14,18 +14,13 @@ document.querySelectorAll('[data-tabbox]')
     })
   })
 
-document.querySelectorAll('[data-dropdown]')
-  .forEach(dom => {
-    const dropdown = new Dropdown(dom)
-  })
-
 document.querySelectorAll('[data-modal-opener]')
   .forEach(dom => {
     const modal = new Modal(dom, {
-      onConfirm() {
+      confirm() {
         console.log('confirmed')
       },
-      onCancel(type) {
+      cancel(type) {
         console.log('cancelled', type)
       }
     })
