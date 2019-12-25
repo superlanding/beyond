@@ -116,6 +116,7 @@
       <div class="codebox-tabs" data-tabs>
         <a>Result</a>
         <a>HTML</a>
+        <a>JavaScript</a>
       </div>
       <div class="codebox-panes" data-panes>
         <div class="codebox-result">
@@ -661,9 +662,101 @@
 <span class="nt">&lt;/div&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
         </div>
+        <div>
+          <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="kd">const</span> <span class="p">{</span> <span class="nx">Dropdown</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-dropdown]</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">dropdown</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dropdown</span><span class="p">(</span><span class="nx">dom</span><span class="p">)</span>
+  <span class="p">})</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+        </div>
       </div>
-    </div>
+    </div><!-- .codebox -->
+    <div class="doc">
+  <h2>Dropdown HTML</h2>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-dropdown"</span> <span class="na">data-dropdown=</span><span class="s">"center-menu1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-up no-text"</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span>
+     <span class="na">data-dropdown-menu=</span><span class="s">"center-menu1"</span>
+    <span class="na">data-place=</span><span class="s">"top"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>選項1<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>選項2<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>選項3<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
   </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-dropdown</td>
+        <td>選單按鈕使用此屬性指定要打開的選單 ID，例如 <strong>data-dropdown="menu-id"</strong></td>
+      </tr>
+      <tr>
+        <td>data-dropdown-menu</td>
+        <td>設定自己的選單 ID，例如 <strong>data-dropdown-menu="menu-id"</strong></td>
+      </tr>
+      <tr>
+        <td>data-place</td>
+        <td>選單彈出的方向，支援上下左右四個方向 ( top, bottom, left, right )</td>
+      </tr>
+      <tr>
+        <td>data-align</td>
+        <td>選單要對齊的方向，data-place 為左或右時可以設定為 top 或 bottom，data-place 為上或下時，可以設為 left 或 right</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Dropdown JS</h2>
+  <h3>Constructor</h3>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">dropdown</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dropdown</span><span class="p">(</span><span class="nx">dom</span><span class="p">)</span></code></pre></figure>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>要被初始化的選單按鈕元素</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Instance Destroy Method</h3>
+  <p>移除 dropdown 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">dropdown</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+  </div>
+</div><!-- .doc -->
+
+  </div>
+  <script>const { Dropdown } = window.beyond
+
+document.querySelectorAll('[data-dropdown]')
+  .forEach(dom => {
+    const dropdown = new Dropdown(dom)
+  })
+</script>
 </div>
 
     </main>

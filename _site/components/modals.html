@@ -252,6 +252,122 @@
         </div>
       </div>
     </div>
+    <div class="doc">
+  <h2>Modal HTML</h2>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span>
+        <span class="na">data-modal-opener=</span><span class="s">"example-modal"</span><span class="nt">&gt;</span>打開視窗<span class="nt">&lt;/button&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal"</span> <span class="na">data-modal=</span><span class="s">"example-modal"</span> <span class="na">tabindex=</span><span class="s">"-1"</span>
+     <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"modalLabel"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span> <span class="na">role=</span><span class="s">"document"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">id=</span><span class="s">"modalLabel"</span><span class="nt">&gt;</span>視窗標題<span class="nt">&lt;/h5&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn-close"</span> <span class="na">data-close</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-cross"</span><span class="nt">&gt;&lt;/i&gt;</span>
+        <span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body bg-content"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div&gt;</span>
+          視窗內文
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">data-cancel</span> <span class="na">class=</span><span class="s">"btn btn-outline"</span><span class="nt">&gt;</span>取消<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">data-confirm</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>確認<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-modal-opener</td>
+        <td>指定 DOM 元素為打開 modal 的按鈕，並且設定要打開的 modal ID，例如 <strong>data-modal-opener="modal-id"</strong></td>
+      </tr>
+      <tr>
+        <td>data-modal</td>
+        <td>指定 DOM 元素為 modal，並且設定 ID，例如<strong>data-modal="modal-id"</strong></td>
+      </tr>
+      <tr>
+        <td>data-close</td>
+        <td>指定 DOM 元素為 modal 的關閉按鈕</td>
+      </tr>
+      <tr>
+        <td>data-cancel</td>
+        <td>指定 DOM 元素為 modal 的取消按鈕</td>
+      </tr>
+      <tr>
+        <td>data-confirm</td>
+        <td>指定 DOM 元素為 modal 的確認按鈕</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Modal JS</h2>
+  <h3>constructor</h3>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">modal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Modal</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span></code></pre></figure>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>要被初始化的按鈕元素</td>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>object</td>
+        <td>選填參數</td>
+      </tr>
+      <tr>
+        <td>options.cancel</td>
+        <td>function</td>
+        <td>modal 被取消時的 callback，callback 第一個參數為取消類型，<br>有關閉 ( close )、取消 ( cancel ) 與按下背景取消 ( backdrop )</td>
+      </tr>
+      <tr>
+        <td>options.confirm</td>
+        <td>function</td>
+        <td>modal 被確認時的 callback</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>show</h3>
+  <p>顯示 modal</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">()</span></code></pre></figure>
+  </div>
+
+  <h3>hide</h3>
+  <p>隱藏 modal</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">modal</span><span class="p">.</span><span class="nx">hide</span><span class="p">()</span></code></pre></figure>
+  </div>
+
+  <h3>destroy</h3>
+  <p>移除 Modal 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">modal</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+  </div>
+</div><!-- .doc -->
+
   </div><!-- .card end -->
 </div>
 

@@ -22,8 +22,10 @@
           this.removeCurrentClass()
           this.currentIndex = i
           a.classList.add('js-active')
-          const x = (i === 0) ? '0' : `-${i * 100}%`
-          this.panesBox.style.transform = `translateX(${x})`
+
+          const transform = (i === 0) ? 'none' : `translateX(-${i * 100}%)`
+          this.panesBox.style.transform = transform
+
           this.panesBox.style.height = this.panes[i].offsetHeight + 'px'
         }
         a.addEventListener('click', a._handleTabClick, false)

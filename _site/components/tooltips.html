@@ -238,6 +238,64 @@
         </div>
       </div>
     </div>
+    <div class="doc">
+  <h2>Tooltip HTML</h2>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline"</span>
+        <span class="na">data-tooltip</span>
+        <span class="na">data-msg=</span><span class="s">"上方出現"</span>
+        <span class="na">data-place=</span><span class="s">"top"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-up"</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/button&gt;</span></code></pre></figure>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-msg</td>
+        <td>tooltip 要顯示的文字，例如 <strong>data-msg="Hello ! How are you?"</strong></td>
+      </tr>
+      <tr>
+        <td>data-place</td>
+        <td>tooltip 要顯示的方向，支援上下左右 ( top, bottom, left, right )</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Tooltip JS</h2>
+  <h3>constructor</h3>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">tooltip</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tooltip</span><span class="p">(</span><span class="nx">dom</span><span class="p">)</span></code></pre></figure>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>需要顯示 tooltip 的元素</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>destroy</h3>
+  <p>移除 Tooltip 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">tooltip</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+  </div>
+</div><!-- .doc -->
+
   </div>
 </div>
 
