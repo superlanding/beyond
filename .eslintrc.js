@@ -1,11 +1,15 @@
 module.exports = {
+  parser: 'babel-eslint',
   env: {
     es6: true,
     browser: true
   },
   extends: 'google',
   parserOptions: {
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      legacyDecorators: true
+    }
   },
   rules: {
     "require-jsdoc": "off",
