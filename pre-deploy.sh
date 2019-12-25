@@ -11,3 +11,5 @@ git merge master --no-ff --no-edit
 git add -f _site
 git commit -m "update _site/"
 git subtree split --prefix _site -b gh-pages
+
+git push --all origin
