@@ -1,8 +1,10 @@
+import supportDom from '../helpers/supportDom'
+
+@supportDom
 export default class DatepickerBtnArrow {
 
   constructor(dom) {
     this.dom = dom
-    this.listeners = []
     this.init()
   }
 
@@ -10,21 +12,13 @@ export default class DatepickerBtnArrow {
     this.addEvents()
   }
 
-  on(name, func) {
-    this.listeners.push({ name, func })
-  }
-
   addEvents() {
     const { dom } = this
-    this._handleClick = event => {
-      this.listeners.filter(row => row.name === 'click')
-        .forEach(row => row.func.call(this, event))
-    }
+    this._handleClick = event => this.fire('click', event)
     dom.addEventListener('click', this._handleClick, false)
   }
 
   destroy() {
     this.dom.removeEventListener('click', this._handleClick, false)
-    this.listeners.length = 0
   }
 }

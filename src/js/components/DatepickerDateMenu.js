@@ -14,6 +14,7 @@ import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import range from '../helpers/range'
 import toPixel from '../helpers/toPixel'
 import { DEFAULT_TIMEZONE, DEFAULT_LOCALE } from '../consts'
+import supportDom from '../helpers/supportDom'
 
 const DEFAULT_WEEK_HEADER_ITEMS = [
   { id: 'monday', text: '一' },
@@ -28,6 +29,7 @@ const DEFAULT_WEEK_HEADER_ITEMS = [
 const CELL_TYPE_EMPTY = Symbol('CELL_TYPE_EMPTY')
 const CELL_TYPE_DAY = Symbol('CELL_TYPE_DAY')
 
+@supportDom
 export default class DatepickerDateMenu {
 
   constructor({ date, startDate, endDate, options = {} }) {
@@ -39,7 +41,6 @@ export default class DatepickerDateMenu {
     this.locale = options.locale || DEFAULT_LOCALE
     this.captionPattern = options.captionPattern || 'yyyy MMMM'
     this.weekHeaderItems = options.weekHeaderItems || DEFAULT_WEEK_HEADER_ITEMS
-    this.listeners = []
     this.isVisible = false
     this.init()
   }
@@ -162,10 +163,6 @@ export default class DatepickerDateMenu {
     this.dom = dom
   }
 
-  on(name, func) {
-    this.listeners.push({ name, func })
-  }
-
   addEvents() {
     this._handlePrevBtnClick = event => {
       this.setDate({ date: subMonths(this.date, 1) })
@@ -179,12 +176,12 @@ export default class DatepickerDateMenu {
 
     this._handleMenuTableClick = event => {
       if ('dateTableCell' in event.target.dataset) {
-        const year = getYear(this.date)
-        const month = getMonth(this.date)
-        const date = parseInt(event.target.textContent.trim(), 10)
-
-        this.listeners.filter(row => row.name === 'td-click')
-          .forEach(row => row.func(event, { year, month, date }))
+        const res = {
+          year: getYear(this.date),
+          month: getMonth(this.date),
+          date: parseInt(event.target.textContent.trim(), 10)
+        }
+        this.fire('td-click', event, res)
       }
     }
     this.table.addEventListener('click', this._handleMenuTableClick, false)
@@ -228,7 +225,5 @@ export default class DatepickerDateMenu {
     this.table = null
     this.dom.remove()
     this.menu = null
-
-    this.listeners.length = 0
   }
 }
