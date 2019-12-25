@@ -11,7 +11,7 @@
   .datepicker-date-input,
   .datepicker-time-input {
     &::placeholder {
-      font-size: 10px;
+      font-size: 11px;
       color: hsla(0, 0%, 100%, .6);
     }
     text-align: center;
@@ -33,10 +33,10 @@
   }
 
   .datepicker-date-input {
-    width: 76px;
+    width: 80px;
   }
   .datepicker-time-input {
-    width: 42px;
+    width: 48px;
   }
   .icon-arrow-right {
     padding-left: 0;
