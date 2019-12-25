@@ -1,0 +1,88 @@
+<div class="doc">
+  <h2>Dropdown HTML</h2>
+  <div class="code">
+{% highlight html %}
+<button class="btn btn-dropdown" data-dropdown="center-menu1">
+  <i class="icon-chevron-up no-text"></i>
+</button>
+<div class="dropdown-menu"
+     data-dropdown-menu="center-menu1"
+    data-place="top">
+  <a class="dropdown-item" href="#">選項1</a>
+  <a class="dropdown-item" href="#">選項2</a>
+  <a class="dropdown-item" href="#">選項3</a>
+</div>
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-dropdown</td>
+        <td>選單按鈕使用此屬性指定要打開的選單 ID，例如 <strong>data-dropdown="menu-id"</strong></td>
+      </tr>
+      <tr>
+        <td>data-dropdown-menu</td>
+        <td>設定自己的選單 ID，例如 <strong>data-dropdown-menu="menu-id"</strong></td>
+      </tr>
+      <tr>
+        <td>data-place</td>
+        <td>選單彈出的方向，支援上下左右四個方向 ( top, bottom, left, right )</td>
+      </tr>
+      <tr>
+        <td>data-align</td>
+        <td>選單要對齊的方向，data-place 為左或右時可以設定為 top 或 bottom，data-place 為上或下時，可以設為 left 或 right</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Dropdown JS</h2>
+  <h3>Constructor</h3>
+  <div class="code">
+{% highlight js %}
+const dropdown = new Dropdown(dom)
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>要被初始化的選單按鈕元素</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Instance Destroy Method</h3>
+  <div class="code">
+{% highlight js %}
+dropdown.destroy()
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>參數</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>無</td>
+        <td>移除 dropdown 產生的 dom 元素與 event listeners</td>
+      </tr>
+    </tbody>
+  </table>
+</div><!-- .doc -->
