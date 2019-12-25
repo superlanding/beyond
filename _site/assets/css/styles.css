@@ -261,7 +261,7 @@ td.code > pre {
   .container-default {
     margin: 0;
     display: block;
-    padding: 20px; }
+    padding: 20px 14px; }
 
   .main {
     margin-left: 0;
