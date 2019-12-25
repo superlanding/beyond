@@ -282,6 +282,7 @@ export default class Datepicker {
       }
       this.lastTriggered.setDate(nextDate)
       this.timeMenu.hide()
+      this.clearInputStatus()
     })
   }
 
