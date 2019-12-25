@@ -1,8 +1,0 @@
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-*.*.swp
-*.*.swo
-node_modules/
-yarn-error.log
