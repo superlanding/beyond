@@ -17,10 +17,10 @@ document.querySelectorAll('[data-tabbox]')
 document.querySelectorAll('[data-modal-opener]')
   .forEach(dom => {
     const modal = new Modal(dom, {
-      onConfirm() {
+      confirm() {
         console.log('confirmed')
       },
-      onCancel(type) {
+      cancel(type) {
         console.log('cancelled', type)
       }
     })
