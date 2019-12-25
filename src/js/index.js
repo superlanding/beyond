@@ -9,7 +9,10 @@ import Tooltip from './components/Tooltip'
 import Toast from './components/Toast'
 import Datepicker from './components/Datepicker'
 
-if (typeof window !== 'undefined') {
+const hasWindow = (typeof window !== 'undefined')
+const isCommonJs = ((typeof module === 'object') && (typeof module.exports === 'object'))
+
+if (hasWindow && (! isCommonJs)) {
   window.beyond = {
     Dropdown,
     Modal,
