@@ -13,9 +13,7 @@ foreman start
 ## Site Deployment
 
 ```bash
-yarn pre-deploy
-git co gh-pages
-git push origin gh-pages
+yarn deploy
 ```
 
 ## References

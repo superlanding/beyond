@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --host 0.0.0.0",
     "build": "./build.sh",
-    "pre-deploy": "./pre-deploy.sh",
+    "deploy": "./deploy.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
