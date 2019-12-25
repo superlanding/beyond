@@ -391,3 +391,6 @@ p {
 
 .page-forms .card {
   margin-bottom: 40px; }
+
+.page-datepickers .codebox-result {
+  padding: 20px 10px; }
