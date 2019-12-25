@@ -84,7 +84,7 @@ export default class Toast {
     setTimeout(() => toastItem.show(), 50)
     toastItem._timer = setTimeout(() => {
       toastItem.destroy()
-    }, options.timer || 3000)
+    }, options.duration || 3000)
   }
 
   destroy() {
