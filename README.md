@@ -1,6 +1,6 @@
 # Beyond
 
-## Development
+## Site Development
 
 ```bash
 bundle
@@ -9,16 +9,12 @@ foreman start
 # http://localhost:4000/
 ```
 
-## Deployment
+## Site Deployment
 
 ```bash
-git co github
-git merge master --no-ff
-yarn build
-git add -f _site
-git subtree split --prefix _site -b gh-pages
+yarn pre-deploy
 git co gh-pages
-git push -f origin gh-pages
+git push origin gh-pages
 ```
 
 ## References
