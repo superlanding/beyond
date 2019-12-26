@@ -69,9 +69,9 @@ export default class Tabbox {
     }
   }
 
-  onChange(data) {
-    if (typeof this.options.onChange === 'function') {
-      this.options.onChange(data)
+  change(data) {
+    if (typeof this.options.change === 'function') {
+      this.options.change(data)
     }
   }
 
@@ -89,7 +89,7 @@ export default class Tabbox {
           })
           this.currentNode = btn
           this.addCurrentClass()
-          this.onChange({ id: btn.dataset.tabboxItem, type: 'btn' })
+          this.change({ id: btn.dataset.tabboxItem, type: 'btn' })
         }
       }
       btn._handleBtnClick = handleBtnClick
@@ -110,7 +110,7 @@ export default class Tabbox {
           })
           this.currentNode = select
           this.addCurrentClass()
-          this.onChange({ id: event.target.value, type: 'select' })
+          this.change({ id: event.target.value, type: 'select' })
         }
       }
       select._handleSelectChange = handleSelectChange
