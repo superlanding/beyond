@@ -615,6 +615,92 @@
         </div>
       </div>
     </div>
+    <div class="doc">
+  <h2>Tabbox HTML</h2>
+  <p>按鈕 HTML 需要符合 button[data-tabbox-item]，select 元素須符合 div[data-tabbox-item] select</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tabbox"</span> <span class="na">data-tabbox</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span> <span class="na">data-tabbox-item=</span><span class="s">"all"</span> <span class="na">data-default</span><span class="nt">&gt;</span>全部<span class="nt">&lt;/button&gt;</span>
+   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-new"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"new"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>新訂單<span class="nt">&lt;/button&gt;</span>
+   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"waiting"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>等待中<span class="nt">&lt;/button&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"select-box"</span>
+        <span class="na">data-tabbox-item=</span><span class="s">"others"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>其他<span class="nt">&lt;/option&gt;</span>
+       <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"temp"</span><span class="nt">&gt;</span>臨時<span class="nt">&lt;/option&gt;</span>
+       <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"others"</span><span class="nt">&gt;</span>其他<span class="nt">&lt;/option&gt;</span>
+       <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"cancelled"</span><span class="nt">&gt;</span>已取消<span class="nt">&lt;/option&gt;</span>
+       <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"deleted"</span><span class="nt">&gt;</span>已刪除<span class="nt">&lt;/option&gt;</span>
+     <span class="nt">&lt;/select&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-default</td>
+        <td>預設要設定為 active 的項目</td>
+      </tr>
+      <tr>
+        <td>data-tabbox-item</td>
+        <td>tabbox 項目的 unique ID，會用在 options.change 的回傳，例如 <strong>data-tabbox-item="item1"</strong></td>
+      </tr>
+      <tr>
+        <td>data-active-color</td>
+        <td>指定項目 active 時的底線顏色</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Tabbox JS</h2>
+  <h3>constructor</h3>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">tabbox</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tabbox</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span></code></pre></figure>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>需要顯示 tabbox 的元素</td>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>object</td>
+        <td>tabbox 的選項</td>
+      </tr>
+      <tr>
+        <td>options.change</td>
+        <td>function</td>
+        <td>tabbox 被更新時的 callback</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>destroy</h3>
+  <p>移除 Tabbox 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">tabbox</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+  </div>
+</div><!-- .doc -->
+
   </div><!-- .card end -->
 
 </div>
