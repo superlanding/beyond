@@ -13,6 +13,13 @@
       }
     }
 
+    setBoxHeight() {
+      const i = this.currentIndex
+      const transform = (i === 0) ? 'none' : `translateX(-${i * 100}%)`
+      this.panesBox.style.transform = transform
+      this.panesBox.style.height = this.panes[i].offsetHeight + 'px'
+    }
+
     init() {
       this.tabs = this.dom.querySelectorAll('[data-tabs] > a')
       this.panes = this.dom.querySelectorAll('[data-panes] > div')
@@ -22,11 +29,7 @@
           this.removeCurrentClass()
           this.currentIndex = i
           a.classList.add('js-active')
-
-          const transform = (i === 0) ? 'none' : `translateX(-${i * 100}%)`
-          this.panesBox.style.transform = transform
-
-          this.panesBox.style.height = this.panes[i].offsetHeight + 'px'
+          this.setBoxHeight()
         }
         a.addEventListener('click', a._handleTabClick, false)
       })
@@ -35,7 +38,17 @@
       if (firstTab) {
         firstTab.classList.add('js-active')
       }
-      this.panesBox.style.height = this.panes[0].offsetHeight + 'px'
+      this.setBoxHeight()
+      this.addEvents()
+    }
+
+    addEvents() {
+      this._handleWindowResize = () => this.setBoxHeight()
+      window.addEventListener('resize', this._handleWindowResize, false)
+    }
+
+    destroy() {
+      window.removeEventListener('resize', this._handleWindowResize, false)
     }
   }
   beyond.Codebox = Codebox
