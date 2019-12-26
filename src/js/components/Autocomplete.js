@@ -7,7 +7,11 @@ export default class Autocomplete {
     this.options = options
     this.isCompositing = false
     this.rows = []
-    this.menu = new AutocompleteMenu({})
+
+    const offsetLeft = ('offsetLeft' in this.dom.dataset) ?
+      parseInt(this.dom.dataset.offsetLeft, 10) : 0
+
+    this.menu = new AutocompleteMenu({ offsetLeft })
     this.init()
   }
 

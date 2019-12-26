@@ -11,58 +11,68 @@ export default function getFloatedTargetPos(options) {
   const w2 = target.offsetWidth
   const h2 = target.offsetHeight
 
+  const offsetLeft = options.offsetLeft || 0
+  const offsetTop = options.offsetTop || 0
+
+  const addOffsets = (left, top) => {
+    return {
+      left: left + offsetLeft,
+      top: top + offsetTop
+    }
+  }
+
   switch (place) {
     case 'top': {
       const top = y1 - offset - h2
       if (align === 'left') {
         const left = x1
-        return { left, top }
+        return addOffsets(left, top)
       }
       if (align === 'right') {
         const left = x1 - (w2 - w1)
-        return { left, top }
+        return addOffsets(left, top)
       }
       const left = x1 + (w1 / 2) - (w2 / 2)
-      return { left, top }
+      return addOffsets(left, top)
     }
     case 'bottom': {
       const top = y1 + h1 + offset
       if (align === 'left') {
         const left = x1
-        return { left, top }
+        return addOffsets(left, top)
       }
       if (align === 'right') {
         const left = x1 - (w2 - w1)
-        return { left, top }
+        return addOffsets(left, top)
       }
       const left = x1 + (w1 / 2) - (w2 / 2)
-      return { left, top }
+      return addOffsets(left, top)
     }
     case 'left': {
       const left = x1 - offset - w2
       if (align === 'top') {
         const top = y1
-        return { left, top }
+        return addOffsets(left, top)
       }
       if (align === 'bottom') {
         const top = y1 - (h2 - h1)
-        return { left, top }
+        return addOffsets(left, top)
       }
       const top = y1 + (h1 / 2) - (h2 / 2)
-      return { left, top }
+      return addOffsets(left, top)
     }
     case 'right': {
       const left = x1 + w1 + offset
       if (align === 'top') {
         const top = y1
-        return { left, top }
+        return addOffsets(left, top)
       }
       if (align === 'bottom') {
         const top = y1 - (h2 - h1)
-        return { left, top }
+        return addOffsets(left, top)
       }
       const top = y1 + (h1 / 2) - (h2 / 2)
-      return { left, top }
+      return addOffsets(left, top)
     }
     default:
       throw new Error(`Unsupported Place: ${place}`)

@@ -6,6 +6,7 @@ import supportDom from '../helpers/supportDom'
 export default class AutocompleteMenu {
 
   constructor(options = {}) {
+    this.options = options
     this.isVisible = false
     this.lastSrc = null
     this.init()
@@ -17,12 +18,15 @@ export default class AutocompleteMenu {
   }
 
   pos(src) {
+    console.log('wtf', this.options.offsetLeft)
+    const offsetLeft = this.options.offsetLeft || 0
     const pos = getFloatedTargetPos({
       src,
       target: this.dom,
       place: 'bottom',
       align: 'left',
-      offset: 10
+      offset: 3,
+      offsetLeft
     })
     this.dom.style.left = toPixel(pos.left)
     this.dom.style.top = toPixel(pos.top)
