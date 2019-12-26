@@ -8,8 +8,8 @@ document.querySelectorAll('[data-codebox]')
 document.querySelectorAll('[data-tabbox]')
   .forEach(dom => {
     const tabbox = new Tabbox(dom, {
-      onChange(data) {
-        console.log('onChange', data)
+      change(data) {
+        console.log('change', data)
       }
     })
   })
