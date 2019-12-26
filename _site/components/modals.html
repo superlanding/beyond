@@ -103,6 +103,12 @@
         
       </li>
     
+      <li>
+        
+          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+        
+      </li>
+    
   </ul>
 </nav>
 
@@ -418,6 +424,20 @@
   </div>
 </div>
 
+<script>const { Modal } = window.beyond
+
+document.querySelectorAll('[data-modal-opener]').forEach(dom => {
+
+  const modal = new Modal(dom, {
+    confirm() {
+      console.log('confirmed')
+    },
+    cancel(type) {
+      console.log('cancelled', type)
+    }
+  })
+})
+</script>
 
     </main>
     <script src="/beyond/assets/js/default.js"></script>
