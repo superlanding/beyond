@@ -12,6 +12,7 @@
   font-size: 14px;
   padding: 6px 7px;
   outline: 0;
+  background-color: #fff;
   &:focus {
     box-shadow: 0 0 0 1px rgba(60, 66, 87, .16),
       0 1px 1px 0 rgba(0, 0, 0, .12),
@@ -23,5 +24,27 @@
   }
   &.input-danger {
     box-shadow: 0 0 0 1px #e03953;
+  }
+}
+
+.search-input {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(60, 66, 87, .16),
+    0 1px 1px 0 rgba(0, 0, 0, .12);
+
+  i:before {
+    color: #8892b3;
+    margin-left: 10px;
+    font-size: 12px;
+  }
+  .input {
+    width: 174px;
+    border: 0;
+    box-shadow: none;
+    &::placeholder {
+      color: #697396;
+    }
   }
 }

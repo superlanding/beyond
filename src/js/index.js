@@ -2,6 +2,7 @@ import './../sass/index.scss'
 import './polyfills/nodeContains'
 import './polyfills/nodeHasAttribute'
 import './polyfills/nodeRemove'
+import Autocomplete from './components/Autocomplete'
 import Datepicker from './components/Datepicker'
 import Dropdown from './components/Dropdown'
 import Modal from './components/Modal'
@@ -14,6 +15,7 @@ const isCommonJs = ((typeof module === 'object') && (typeof module.exports === '
 
 if (hasWindow && (! isCommonJs)) {
   window.beyond = {
+    Autocomplete,
     Datepicker,
     Dropdown,
     Modal,
@@ -24,6 +26,7 @@ if (hasWindow && (! isCommonJs)) {
 }
 
 export {
+  Autocomplete,
   Datepicker,
   Dropdown,
   Modal,

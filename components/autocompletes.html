@@ -1,0 +1,31 @@
+---
+layout: default
+title: Autocompletes
+---
+<div class="page-autocompletes">
+
+  <div class="card card-shadow-sm">
+    <h1 class="card-heading">自動完成 - Autocompletes</h1>
+
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+        <a>JavaScript</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          {% include demos/autocompletes.html %}
+        </div>
+        <div>
+          {% highlight html linenos %}{% include demos/autocompletes.html %}{% endhighlight %}
+        </div>
+        <div>
+          {% highlight js linenos %}{% include demos/autocompletes.js %}{% endhighlight %}
+        </div>
+      </div>
+    </div>
+    {% include docs/autocompletes.html %}
+  </div><!-- .card end -->
+  <script>{% include demos/autocompletes.js %}</script>
+</div>
