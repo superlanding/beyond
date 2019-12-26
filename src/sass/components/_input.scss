@@ -27,7 +27,7 @@
   }
 }
 
-.input-box {
+.search-input {
   display: inline-block;
   background-color: #fff;
   border-radius: 4px;
@@ -40,7 +40,11 @@
     font-size: 12px;
   }
   .input {
+    width: 174px;
     border: 0;
     box-shadow: none;
+    &::placeholder {
+      color: #697396;
+    }
   }
 }
