@@ -26,3 +26,5 @@
   link: /components/toasts.html
 - name: Datepickers
   link: /components/datepickers.html
+- name: Autocompletes
+  link: /components/autocompletes.html
