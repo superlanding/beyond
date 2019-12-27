@@ -1,3 +1,4 @@
+import debounce from 'lodash.debounce'
 import AutocompleteMenu from './AutocompleteMenu'
 
 export default class Autocomplete {
@@ -81,13 +82,13 @@ export default class Autocomplete {
     }
     dom.addEventListener('blur', this._handleBlur, false)
 
-    this._handleKeyUp = event => {
+    this._handleKeyUp = debounce(event => {
       if (this.isCompositing) {
         return
       }
       this.getData()
         .then(rows => this.handleData(rows))
-    }
+    }, 300)
     dom.addEventListener('keyup', this._handleKeyUp, false)
 
     this._handleCompositionStart = () => this.isCompositing = true
