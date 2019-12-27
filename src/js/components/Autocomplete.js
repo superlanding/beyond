@@ -46,10 +46,14 @@ export default class Autocomplete {
     this.renderMenu()
 
     if (rows.length > 0) {
-      menu.show(this.dom)
+      this.showMenu()
       return
     }
     menu.hide()
+  }
+
+  showMenu() {
+    this.menu.show(this.dom)
   }
 
   addEvents() {
@@ -70,7 +74,7 @@ export default class Autocomplete {
         this.getData()
       }
       else {
-        this.menu.show(this.dom)
+        this.showMenu()
       }
     }
     dom.addEventListener('focus', this._handleFocus, false)
