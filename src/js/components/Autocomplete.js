@@ -35,26 +35,21 @@ export default class Autocomplete {
     })
   }
 
-  handleData(rows) {
+  async getData() {
+    const lastKeyword = this.dom.value
+    const rows = await this.options.getData({ keyword: lastKeyword })
+    if (lastKeyword !== this.dom.value) {
+      return
+    }
     const { menu } = this
     this.rows = rows
+    this.renderMenu()
+
     if (rows.length > 0) {
       menu.show(this.dom)
+      return
     }
-    else {
-      menu.hide()
-    }
-    this.renderMenu()
-  }
-
-  showData() {
-    const lastKeyword = this.dom.value
-    this.options.getData({ keyword: lastKeyword })
-      .then(rows => {
-        if (lastKeyword === this.dom.value) {
-          this.handleData(rows)
-        }
-      })
+    menu.hide()
   }
 
   addEvents() {
@@ -72,7 +67,7 @@ export default class Autocomplete {
 
     this._handleFocus = () => {
       if (this.rows.length === 0) {
-        this.showData()
+        this.getData()
       }
       else {
         this.menu.show(this.dom)
@@ -89,7 +84,7 @@ export default class Autocomplete {
       if (this.isCompositing) {
         return
       }
-      this.showData()
+      this.getData()
     }, 300)
     dom.addEventListener('keyup', this._handleKeyUp, false)
 
@@ -97,7 +92,7 @@ export default class Autocomplete {
     dom.addEventListener('compositionstart', this._handleCompositionStart, false)
 
     this._handleCompositionEnd = () => {
-      this.showData()
+      this.getData()
       this.isCompositing = false
     }
     dom.addEventListener('compositionend', this._handleCompositionEnd, false)
