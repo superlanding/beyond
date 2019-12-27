@@ -21,13 +21,13 @@ export default class Autocomplete {
     this.addEvents()
   }
 
-  getData() {
+  getData(keyword) {
     return new Promise(resolve => {
       const { getData } = this.options
       if (typeof getData !== 'function') {
         throw new Error('options.getData must be defined')
       }
-      const res = getData({ keyword: this.dom.value })
+      const res = getData({ keyword })
       if (res instanceof Promise) {
         res.then(data => resolve(data))
         return
@@ -59,6 +59,16 @@ export default class Autocomplete {
     this.renderMenu()
   }
 
+  showData() {
+    const lastKeyword = this.dom.value
+    this.getData(lastKeyword)
+      .then(rows => {
+        if (lastKeyword === this.dom.value) {
+          this.handleData(rows)
+        }
+      })
+  }
+
   addEvents() {
     const { dom, menu } = this
 
@@ -72,10 +82,7 @@ export default class Autocomplete {
       }
     })
 
-    this._handleFocus = () => {
-      this.getData()
-        .then(rows => this.handleData(rows))
-    }
+    this._handleFocus = () => this.showData()
     dom.addEventListener('focus', this._handleFocus, false)
 
     this._handleBlur = () => {
@@ -87,8 +94,7 @@ export default class Autocomplete {
       if (this.isCompositing) {
         return
       }
-      this.getData()
-        .then(rows => this.handleData(rows))
+      this.showData()
     }, 300)
     dom.addEventListener('keyup', this._handleKeyUp, false)
 
@@ -96,8 +102,7 @@ export default class Autocomplete {
     dom.addEventListener('compositionstart', this._handleCompositionStart, false)
 
     this._handleCompositionEnd = () => {
-      this.getData()
-        .then(rows => this.handleData(rows))
+      this.showAsyncData()
       this.isCompositing = false
     }
     dom.addEventListener('compositionend', this._handleCompositionEnd, false)
