@@ -102,7 +102,7 @@ export default class Autocomplete {
     dom.addEventListener('compositionstart', this._handleCompositionStart, false)
 
     this._handleCompositionEnd = () => {
-      this.showAsyncData()
+      this.showData()
       this.isCompositing = false
     }
     dom.addEventListener('compositionend', this._handleCompositionEnd, false)
