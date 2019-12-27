@@ -82,7 +82,14 @@ export default class Autocomplete {
       }
     })
 
-    this._handleFocus = () => this.showData()
+    this._handleFocus = () => {
+      if (this.rows.length === 0) {
+        this.showData()
+      }
+      else {
+        this.menu.show(this.dom)
+      }
+    }
     dom.addEventListener('focus', this._handleFocus, false)
 
     this._handleBlur = () => {
