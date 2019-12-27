@@ -3,15 +3,15 @@ export default function supportDom(target) {
 
     constructor(...args) {
       super(...args)
-      this._listeners = []
+      this._externalListeners = []
     }
 
     on(name, func) {
-      this._listeners.push({ name, func })
+      this._externalListeners.push({ name, func })
     }
 
     fire(name, ...args) {
-      this._listeners.filter(row => row.name === name)
+      this._externalListeners.filter(row => row.name === name)
         .forEach(row => row.func.apply(this, args))
     }
 
@@ -19,7 +19,7 @@ export default function supportDom(target) {
       if (typeof super.destroy === 'function') {
         super.destroy()
       }
-      this._listeners.length = 0
+      this._externalListeners.length = 0
     }
   }
 }
