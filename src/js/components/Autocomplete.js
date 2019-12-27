@@ -9,10 +9,11 @@ export default class Autocomplete {
     this.isCompositing = false
     this.rows = []
 
-    const offsetLeft = ('offsetLeft' in this.dom.dataset) ?
-      parseInt(this.dom.dataset.offsetLeft, 10) : 0
+    const { dataset } = dom
+    const offsetLeft = ('offsetLeft' in dataset) ? parseInt(dataset.offsetLeft, 10) : 0
+    const offsetTop = ('offsetTop' in dataset) ? parseInt(dataset.offsetTop, 10) : 0
 
-    this.menu = new AutocompleteMenu({ offsetLeft })
+    this.menu = new AutocompleteMenu({ offsetLeft, offsetTop })
     this.init()
   }
 
