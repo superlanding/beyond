@@ -1,4 +1,5 @@
 import './../sass/index.scss'
+import '@babel/polyfill'
 import './polyfills/nodeContains'
 import './polyfills/nodeHasAttribute'
 import './polyfills/nodeRemove'
