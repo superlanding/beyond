@@ -18,7 +18,6 @@ export default class AutocompleteMenu {
   }
 
   pos(src) {
-    console.log('wtf', this.options.offsetLeft)
     const offsetLeft = this.options.offsetLeft || 0
     const pos = getFloatedTargetPos({
       src,
