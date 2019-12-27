@@ -1,11 +1,14 @@
 import debounce from 'lodash.debounce'
 import AutocompleteMenu from './AutocompleteMenu'
+import promisify from '../helpers/promisify'
+import noop from 'lodash.noop'
 
 export default class Autocomplete {
 
   constructor(dom, options = {}) {
     this.dom = dom
     this.options = options
+    this.options.getData = promisify(this.options.getData || noop)
     this.isCompositing = false
     this.rows = []
 
@@ -19,21 +22,6 @@ export default class Autocomplete {
 
   init() {
     this.addEvents()
-  }
-
-  getData(keyword) {
-    return new Promise(resolve => {
-      const { getData } = this.options
-      if (typeof getData !== 'function') {
-        throw new Error('options.getData must be defined')
-      }
-      const res = getData({ keyword })
-      if (res instanceof Promise) {
-        res.then(data => resolve(data))
-        return
-      }
-      resolve(res)
-    })
   }
 
   renderMenu() {
@@ -61,7 +49,7 @@ export default class Autocomplete {
 
   showData() {
     const lastKeyword = this.dom.value
-    this.getData(lastKeyword)
+    this.options.getData({ keyword: lastKeyword })
       .then(rows => {
         if (lastKeyword === this.dom.value) {
           this.handleData(rows)
