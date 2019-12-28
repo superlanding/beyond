@@ -43,7 +43,7 @@ export default class DatepickerTimeMenu {
   }
 
   addEvents() {
-    this._handleMenuClick = event => {
+    this.addEvent(this.dom, 'click', event => {
       const { dataset } = event.target
       if ('hour' in dataset) {
         const res = {
@@ -52,8 +52,7 @@ export default class DatepickerTimeMenu {
         }
         this.fire('click', event, res)
       }
-    }
-    this.dom.addEventListener('click', this._handleMenuClick, false)
+    })
   }
 
   pos(src) {
@@ -111,7 +110,6 @@ export default class DatepickerTimeMenu {
   }
 
   destroy() {
-    this.dom.removeEventListener('click', this._handleMenuClick, false)
     this.dom.remove()
   }
 }
