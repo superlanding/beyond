@@ -1,3 +1,6 @@
+import supportDom from '../helpers/supportDom'
+
+@supportDom
 export default class Modal {
 
   constructor(dom, options = {}) {
@@ -50,46 +53,33 @@ export default class Modal {
   }
 
   addEvents() {
-    this._handleOpenerClick = this.show.bind(this)
-    this.dom.addEventListener('click', this._handleOpenerClick, false)
+    this.addEvent(this.dom, 'click', () => this.show())
 
-    this._handleCloseBtnClick = () => {
+    this.addEvent(this.closeBtn, 'click', () => {
       this.hide()
       this.cancel('close')
-    }
-    this.closeBtn.addEventListener('click', this._handleCloseBtnClick, false)
+    })
 
-    this._handleCancelBtnClick = () => {
+    this.addEvent(this.cancelBtn, 'click', () => {
       this.hide()
       this.cancel('cancel')
-    }
-    this.cancelBtn.addEventListener('click', this._handleCancelBtnClick, false)
+    })
 
-    this._handleModalClick = event => {
+    this.addEvent(this.modal, 'click', event => {
       // is backdrop
       if (event.target.dataset.modal === this.modalId) {
         this.hide()
         this.cancel('backdrop')
       }
-    }
-    this.modal.addEventListener('click', this._handleModalClick, false)
+    })
 
-    this._handleConfirmBtnClick = () => {
+    this.addEvent(this.confirmBtn, 'click', () => {
       if (typeof this.options.confirm === 'function') {
         this.confirm()
       }
       else {
         this.hide()
       }
-    }
-    this.confirmBtn.addEventListener('click', this._handleConfirmBtnClick, false)
-  }
-
-  destroy() {
-    this.dom.removeEventListener('click', this._handleOpenerClick, false)
-    this.closeBtn.removeEventListener('click', this._handleCloseBtnClick, false)
-    this.cancelBtn.removeEventListener('click', this._handleCancelBtnClick, false)
-    this.modal.removeEventListener('click', this._handleModalClick, false)
-    this.confirmBtn.removeEventListener('click', this._handleConfirmBtnClick, false)
+    })
   }
 }
