@@ -164,17 +164,15 @@ export default class DatepickerDateMenu {
   }
 
   addEvents() {
-    this._handlePrevBtnClick = event => {
+    this.addEvent(this.btnPrev, 'click', event => {
       this.setDate({ date: subMonths(this.date, 1) })
-    }
-    this.btnPrev.addEventListener('click', this._handlePrevBtnClick, false)
+    })
 
-    this._handleNextBtnClick = () => {
+    this.addEvent(this.btnNext, 'click', () => {
       this.setDate({ date: addMonths(this.date, 1) })
-    }
-    this.btnNext.addEventListener('click', this._handleNextBtnClick, false)
+    })
 
-    this._handleMenuTableClick = event => {
+    this.addEvent(this.table, 'click', event => {
       if ('dateTableCell' in event.target.dataset) {
         const res = {
           year: getYear(this.date),
@@ -183,8 +181,7 @@ export default class DatepickerDateMenu {
         }
         this.fire('td-click', event, res)
       }
-    }
-    this.table.addEventListener('click', this._handleMenuTableClick, false)
+    })
   }
 
   pos(src) {
@@ -215,10 +212,6 @@ export default class DatepickerDateMenu {
   }
 
   destroy() {
-    this.btnPrev.removeEventListener('click', this._handlePrevBtnClick, false)
-    this.btnNext.removeEventListener('click', this._handleNextBtnClick, false)
-    this.table.removeEventListener('click', this._handleMenuTableClick, false)
-
     this.caption = null
     this.btnPrev = null
     this.btnNext = null
