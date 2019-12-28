@@ -10,8 +10,10 @@ import DatepickerTimeMenu from './DatepickerTimeMenu'
 import DatepickerBtnArrow from './DatepickerBtnArrow'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
+import supportDom from '../helpers/supportDom'
 import { DEFAULT_TIMEZONE } from '../consts'
 
+@supportDom
 export default class Datepicker {
 
   constructor(dom, options = {}) {
@@ -297,7 +299,7 @@ export default class Datepicker {
     this.addMenuEvents()
     this.addBtnArrowEvents()
 
-    this._handleDocClick = event => {
+    this.addEvent(document, 'click', event => {
       const { dom, dateMenu, timeMenu } = this
       const { target } = event
       const dateMenuDom = dateMenu.dom
@@ -327,12 +329,10 @@ export default class Datepicker {
       this.clearInputStatus()
       dateMenu.hide()
       timeMenu.hide()
-    }
-    document.addEventListener('click', this._handleDocClick, false)
+    })
   }
 
   destroy() {
-    document.removeEventListener('click', this._handleDocClick, false)
     this.inputDateStart.destroy()
     this.inputTimeStart.destroy()
     this.inputDateEnd.destroy()
