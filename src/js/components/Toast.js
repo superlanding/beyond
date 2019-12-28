@@ -1,6 +1,9 @@
+import supportDom from '../helpers/supportDom'
+
+@supportDom
 class ToastItem {
 
-  constructor(options) {
+  constructor(options = {}) {
     this.options = options
     this.init()
   }
@@ -44,23 +47,18 @@ class ToastItem {
   }
 
   createBtnCb() {
-    const { btn } = this
-    const { btnCb } = this.options
-    btn._handleClick = () => {
-      const res = {
+    this.addEvent(this.btn, 'click', () => {
+      this.options.btnCb({
         clear: () => {
           this.destroy()
         }
-      }
-      btnCb(res)
-    }
-    btn.addEventListener('click', btn._handleClick, false)
+      })
+    })
   }
 
   destroy() {
-    const { dom, btn } = this
+    const { dom } = this
     clearTimeout(dom._timer)
-    btn.removeEventListener('click', btn._handleClick, false)
     dom.remove()
   }
 }
