@@ -34,11 +34,11 @@ export default function supportDom(target) {
     }
 
     destroy() {
+      this._externalListeners.length = 0
+      this.removeEvents()
       if (isFunction(super.destroy)) {
         super.destroy()
       }
-      this._externalListeners.length = 0
-      this.removeEvents()
     }
   }
 }
