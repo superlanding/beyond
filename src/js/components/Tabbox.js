@@ -1,3 +1,4 @@
+import noop from 'lodash.noop'
 import supportDom from '../helpers/supportDom'
 
 @supportDom
@@ -7,6 +8,7 @@ export default class Tabbox {
     this.currentNode = null
     this.dom = dom
     this.options = options
+    this.options.change = options.change || noop
     this.init()
   }
 
@@ -72,12 +74,6 @@ export default class Tabbox {
     }
   }
 
-  change(data) {
-    if (typeof this.options.change === 'function') {
-      this.options.change(data)
-    }
-  }
-
   addEvents() {
     this.btns.forEach(btn => {
       this.addEvent(btn, 'click', () => {
@@ -92,7 +88,7 @@ export default class Tabbox {
           })
           this.currentNode = btn
           this.addCurrentClass()
-          this.change({ id: btn.dataset.tabboxItem, type: 'btn' })
+          this.options.change({ id: btn.dataset.tabboxItem, type: 'btn' })
         }
       })
     })
@@ -112,7 +108,7 @@ export default class Tabbox {
           })
           this.currentNode = select
           this.addCurrentClass()
-          this.change({ id: event.target.value, type: 'select' })
+          this.options.change({ id: event.target.value, type: 'select' })
         }
       })
 
