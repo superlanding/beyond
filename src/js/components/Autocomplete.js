@@ -1,8 +1,10 @@
 import debounce from 'lodash.debounce'
 import AutocompleteMenu from './AutocompleteMenu'
 import promisify from '../helpers/promisify'
+import supportDom from '../helpers/supportDom'
 import noop from 'lodash.noop'
 
+@supportDom
 export default class Autocomplete {
 
   constructor(dom, options = {}) {
@@ -69,46 +71,37 @@ export default class Autocomplete {
       }
     })
 
-    this._handleFocus = () => {
+    this.addEvent(dom, 'focus', () => {
       if (this.rows.length === 0) {
         this.getData()
       }
       else {
         this.showMenu()
       }
-    }
-    dom.addEventListener('focus', this._handleFocus, false)
+    })
 
-    this._handleBlur = () => {
-      this._blurTimer = setTimeout(() => this.menu.hide(), 300)
-    }
-    dom.addEventListener('blur', this._handleBlur, false)
+    this.addEvent(dom, 'blur', () => {
+      this._blurTimer = setTimeout(() => this.menu.hide(), 50)
+    })
 
-    this._handleKeyUp = debounce(event => {
+    this.addEvent(dom, 'keyup', debounce(() => {
       if (this.isCompositing) {
         return
       }
       this.getData()
-    }, 300)
-    dom.addEventListener('keyup', this._handleKeyUp, false)
+    }, 200))
 
-    this._handleCompositionStart = () => this.isCompositing = true
-    dom.addEventListener('compositionstart', this._handleCompositionStart, false)
+    this.addEvent(dom, 'compositionstart', () => {
+      this.isCompositing = true
+    })
 
-    this._handleCompositionEnd = () => {
+    this.addEvent(dom, 'compositionend', () => {
       this.getData()
       this.isCompositing = false
-    }
-    dom.addEventListener('compositionend', this._handleCompositionEnd, false)
+    })
   }
 
   destroy() {
-    const { dom, menu } = this
-    menu.destroy()
-    dom.removeEventListener('focus', this._handleFocus, false)
-    dom.removeEventListener('blur', this._handleBlur, false)
-    dom.removeEventListener('keyup', this._handleKeyUp, false)
-    dom.removeEventListener('compositionstart', this._handleCompositionStart, false)
-    dom.removeEventListener('compositionend', this._handleCompositionEnd, false)
+    this.menu.destroy()
   }
 }
