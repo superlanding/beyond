@@ -1,3 +1,4 @@
+import noop from 'lodash.noop'
 import supportDom from '../helpers/supportDom'
 
 @supportDom
@@ -7,7 +8,8 @@ export default class Modal {
     this.dom = dom
     this.isVisible = false
     this.modalId = null
-    this.options = options
+    this.options.cancel = options.cancel || noop
+    this.options.confirm = options.confirm || noop
     this.init()
   }
 
@@ -40,42 +42,30 @@ export default class Modal {
     }, 300)
   }
 
-  confirm() {
-    if (typeof this.options.confirm === 'function') {
-      this.options.confirm()
-    }
-  }
-
-  cancel(type) {
-    if (typeof this.options.cancel === 'function') {
-      this.options.cancel(type)
-    }
-  }
-
   addEvents() {
     this.addEvent(this.dom, 'click', () => this.show())
 
     this.addEvent(this.closeBtn, 'click', () => {
       this.hide()
-      this.cancel('close')
+      this.options.cancel('close')
     })
 
     this.addEvent(this.cancelBtn, 'click', () => {
       this.hide()
-      this.cancel('cancel')
+      this.options.cancel('cancel')
     })
 
     this.addEvent(this.modal, 'click', event => {
       // is backdrop
       if (event.target.dataset.modal === this.modalId) {
         this.hide()
-        this.cancel('backdrop')
+        this.options.cancel('backdrop')
       }
     })
 
     this.addEvent(this.confirmBtn, 'click', () => {
       if (typeof this.options.confirm === 'function') {
-        this.confirm()
+        this.options.confirm()
       }
       else {
         this.hide()
