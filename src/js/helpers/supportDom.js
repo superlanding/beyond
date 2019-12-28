@@ -1,3 +1,5 @@
+import isFunction from 'lodash.isfunction'
+
 export default function supportDom(target) {
 
   return class extends target {
@@ -5,7 +7,9 @@ export default function supportDom(target) {
     init() {
       this._listeners = []
       this._externalListeners = []
-      super.init()
+      if (isFunction(super.init)) {
+        super.init()
+      }
     }
 
     on(name, func) {
@@ -30,7 +34,7 @@ export default function supportDom(target) {
     }
 
     destroy() {
-      if (typeof super.destroy === 'function') {
+      if (isFunction(super.destroy)) {
         super.destroy()
       }
       this._externalListeners.length = 0
