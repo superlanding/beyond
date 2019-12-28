@@ -1,7 +1,9 @@
 import throttle from 'lodash.throttle'
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import toPixel from '../helpers/toPixel'
+import supportDom from '../helpers/supportDom'
 
+@supportDom
 export default class Dropdown {
 
   constructor(dom) {
@@ -61,24 +63,18 @@ export default class Dropdown {
   }
 
   addEvents() {
-    this._handleClick = () => this.toggleMenu()
-    this.dom.addEventListener('click', this._handleClick, false)
-    this._handleBackdropClick = event => {
+    this.addEvent(this.dom, 'click', () => this.toggleMenu())
+
+    this.addEvent(document, 'click', event => {
       if (! this.isMenuVisible) {
         return
       }
+      // is backdrop
       if ((event.target !== this.dom) && (! this.dom.contains(event.target))) {
         this.hideMenu()
       }
-    }
-    document.addEventListener('click', this._handleBackdropClick, false)
-    this._handleWindowResize = throttle(() => this.adjustMenuPos(), 300)
-    window.addEventListener('resize', this._handleWindowResize, false)
-  }
+    })
 
-  destroy() {
-    this.dom.removeEventListener('click', this._handleClick, false)
-    document.removeEventListener('click', this._handleBackdropClick, false)
-    window.remmoveEventListener('resize', this._handleWindowResize, false)
+    this.addEvent(window, 'resize', throttle(() => this.adjustMenuPos(), 300))
   }
 }
