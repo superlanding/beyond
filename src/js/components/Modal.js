@@ -8,6 +8,7 @@ export default class Modal {
     this.dom = dom
     this.isVisible = false
     this.modalId = null
+    this.options = options
     this.options.cancel = options.cancel || noop
     this.options.confirm = options.confirm || noop
     this.init()
