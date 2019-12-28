@@ -67,28 +67,22 @@ export default class AutocompleteMenu {
   }
 
   addEvents() {
-    this._handleClick = event => {
+    this.addEvent(this.dom, 'click', () => {
       let node = event.target
       while (node.parentNode !== this.dom) {
         node = node.parentNode
       }
-      const children = Array.from(this.dom.children)
-      const index = children.indexOf(node)
+      const index = Array.from(this.dom.children).indexOf(node)
       this.fire('click', index)
-    }
-    this.dom.addEventListener('click', this._handleClick, false)
-    this._handleWindowResize = () => {
+    })
+    this.addEvent(window, 'resize', () => {
       if (this.isVisible && this.lastSrc) {
         this.pos(this.lastSrc)
       }
-    }
-    window.addEventListener('resize', this._handleWindowResize, false)
+    })
   }
 
   destroy() {
-    const { dom } = this
-    window.removeEventListener('resize', this._handleWindowResize, false)
-    dom.removeEventListener('click', this._handleClick, false)
-    dom.remove()
+    this.dom.remove()
   }
 }
