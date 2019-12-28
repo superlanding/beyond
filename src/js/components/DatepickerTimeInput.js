@@ -54,21 +54,8 @@ export default class DatepickerTimeInput {
 
   addEvents() {
     const { dom } = this
-
-    this._handleFocus = event => this.fire('focus', event)
-    dom.addEventListener('focus', this._handleFocus, false)
-
-    this._handleKeyUp = event => this.fire('keyup', event)
-    dom.addEventListener('keyup', this._handleKeyUp, false)
-
-    this._handleBlur = event => this.fire('blur', event)
-    dom.addEventListener('blur', this._handleBlur, false)
-  }
-
-  destroy() {
-    const { dom } = this
-    dom.removeEventListener('focus', this._handleFocus, false)
-    dom.removeEventListener('keyup', this._handleKeyUp, false)
-    dom.removeEventListener('blur', this._handleBlur, false)
+    this.addEvent(dom, 'focus', event => this.fire('focus', event))
+    this.addEvent(dom, 'keyup', event => this.fire('keyup', event))
+    this.addEvent(dom, 'blur', event => this.fire('blur', event))
   }
 }
