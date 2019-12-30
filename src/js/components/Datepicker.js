@@ -2,6 +2,7 @@ import { utcToZonedTime } from 'date-fns-tz'
 import endOfDay from 'date-fns/endOfDay'
 import parse from 'date-fns/parse'
 import set from 'date-fns/set'
+import noop from 'lodash.noop'
 import startOfDay from 'date-fns/startOfDay'
 import DatepickerDateInput from './DatepickerDateInput'
 import DatepickerTimeInput from './DatepickerTimeInput'
@@ -19,6 +20,7 @@ export default class Datepicker {
   constructor(dom, options = {}) {
     this.dom = dom
     this.options = options
+    this.options.change = options.change || noop
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.lastTriggered = null
     this.nextDate = null
@@ -69,16 +71,6 @@ export default class Datepicker {
     this.timeMenu = new DatepickerTimeMenu()
 
     this.addEvents()
-  }
-
-  change() {
-    const { change } = this.options
-    if (typeof change === 'function') {
-      change({
-        startDate: this.startDate,
-        endDate: this.endDate
-      })
-    }
   }
 
   clearInputStatus() {
@@ -271,7 +263,10 @@ export default class Datepicker {
           endDate: this.endDate
         })
       }
-      this.change()
+      this.options.change({
+        startDate: this.startDate,
+        endDate: this.endDate
+      })
     })
 
     this.timeMenu.on('click', (event, res) => {
