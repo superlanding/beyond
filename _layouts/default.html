@@ -12,6 +12,7 @@
     {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
+    {% include icons.html %}
     {% if jekyll.environment == "development" %}
       <script src="http://localhost:8080/beyond.js"></script>
     {% else %}
