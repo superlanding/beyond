@@ -9,18 +9,25 @@ export default class Dropdown {
   constructor(dom) {
     this.dom = dom
     this.isMenuVisible = false
+    this.place = null
+    this.align = null
     this.init()
   }
 
   init() {
     this.id = this.dom.dataset.dropdown
     this.menu = document.querySelector(`[data-dropdown-menu="${this.id}"]`)
+    this.place = this.menu.dataset.place || 'bottom'
+    this.align = this.menu.dataset.align
     this.menu.remove()
     this.addEvents()
   }
 
   hideMenu() {
     this.menu.remove()
+    // recover
+    this.menu.dataset.place = this.place
+    this.menu.dataset.align = this.align
     this.isMenuVisible = false
   }
 
@@ -29,16 +36,8 @@ export default class Dropdown {
     menu.style.display = 'block'
     menu.style.opacity = 0
     document.body.append(menu)
-    const pos = getFloatedTargetPos({
-      src: this.dom,
-      target: menu,
-      place: menu.dataset.place || 'bottom',
-      align: menu.dataset.align,
-      offset: ('offset' in menu.dataset) ? menu.dataset.offset : 14
-    })
-    this.menu.style.opacity = 1
-    this.menu.style.left = toPixel(pos.left)
-    this.menu.style.top = toPixel(pos.top)
+    this.adjustMenuPos()
+    menu.style.opacity = 1
     this.isMenuVisible = true
   }
 
@@ -47,17 +46,16 @@ export default class Dropdown {
   }
 
   adjustMenuPos() {
-    if (! this.isMenuVisible) {
-      return
-    }
     const { menu, dom } = this
-    const pos = getFloatedTargetPos({
+    const { pos, place, align } = getFloatedTargetPos({
       src: dom,
       target: menu,
-      place: menu.dataset.place,
-      align: menu.dataset.align,
+      place: this.place,
+      align: this.align,
       offset: ('offset' in menu.dataset) ? menu.dataset.offset : 14
     })
+    menu.dataset.place = place
+    menu.dataset.align = align
     menu.style.left = toPixel(pos.left)
     menu.style.top = toPixel(pos.top)
   }
@@ -75,6 +73,11 @@ export default class Dropdown {
       }
     })
 
-    this.addEvent(window, 'resize', throttle(() => this.adjustMenuPos(), 300))
+    this.addEvent(window, 'resize', throttle(() => {
+      if (! this.isMenuVisible) {
+        return
+      }
+      this.adjustMenuPos()
+    }, 300))
   }
 }
