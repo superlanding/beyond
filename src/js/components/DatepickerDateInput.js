@@ -16,6 +16,10 @@ export default class DatepickerDateInput {
     this.init()
   }
 
+  focus() {
+    this.dom.focus()
+  }
+
   init() {
     const { dom } = this
     dom.value = this.format(this.date)

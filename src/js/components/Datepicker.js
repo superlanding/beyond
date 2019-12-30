@@ -287,7 +287,10 @@ export default class Datepicker {
   }
 
   addBtnArrowEvents() {
-    this.btnArrow.on('click', () => this.handleDateInputFocus(this.inputDateStart))
+    this.btnArrow.on('click', () => {
+      this.inputDateStart.focus()
+      this.handleDateInputFocus(this.inputDateStart)
+    })
   }
 
   addEvents() {
