@@ -24,6 +24,7 @@ export default class Datepicker {
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.lastTriggered = null
     this.nextDate = null
+    this.focused = false
     this.init()
   }
 
@@ -81,6 +82,7 @@ export default class Datepicker {
   }
 
   handleDateInputFocus(input) {
+    this.focused = true
     this.clearInputStatus()
     input.setActive(true)
     this.lastTriggered = input
@@ -90,6 +92,7 @@ export default class Datepicker {
   }
 
   handleTimeInputFocus(input) {
+    this.focused = true
     this.clearInputStatus()
     input.setActive(true)
     this.lastTriggered = input
@@ -300,6 +303,10 @@ export default class Datepicker {
       const dateMenuDom = dateMenu.dom
       const timeMenuDom = timeMenu.dom
 
+      if (this.focused) {
+        this.focused = false
+        return
+      }
       if ((! dateMenu.isVisible) && (! timeMenu.isVisible)) {
         return
       }
