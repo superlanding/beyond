@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Selects | Beyond</title>
+    <title>Tables | Beyond</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
     
@@ -85,7 +85,7 @@ href="/assets/img/icons/apple-icon-72x72.png' | relative_url }}">
     
       <li>
         
-          <a href="/beyond/components/selects.html" class="nav-item active">Selects</a>
+          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
         
       </li>
     
@@ -145,7 +145,7 @@ href="/assets/img/icons/apple-icon-72x72.png' | relative_url }}">
     
       <li>
         
-          <a href="/beyond/components/tables.html" class="nav-item">Tables</a>
+          <a href="/beyond/components/tables.html" class="nav-item active">Tables</a>
         
       </li>
     
@@ -153,10 +153,10 @@ href="/assets/img/icons/apple-icon-72x72.png' | relative_url }}">
 </nav>
 
     <main class="main">
-      <div class="page-selects">
+      <div class="page-tables">
 
   <div class="card card-shadow-sm">
-    <h1 class="card-heading">下拉式選單 - Selects</h1>
+    <h1 class="card-heading">表格 - Tables</h1>
     <div class="codebox" data-codebox>
       <div class="codebox-tabs" data-tabs>
         <a>Result</a>
@@ -164,31 +164,55 @@ href="/assets/img/icons/apple-icon-72x72.png' | relative_url }}">
       </div>
       <div class="codebox-panes" data-panes>
         <div class="codebox-result">
-          <div class="row">
-  <select class="select">
-    <option value="">請選擇</option>
-    <option value="">請選擇</option>
-    <option value="1">燙青菜</option>
-    <option value="2">燒肉</option>
-    <option value="3">滿漢全席</option>
-  </select>
-</div>
-<div class="row">
-  <select class="select select-outline">
-    <option value="">請選擇</option>
-    <option value="1">燙青菜</option>
-    <option value="2">燒肉</option>
-    <option value="3">滿漢全席</option>
-  </select>
-</div>
-<div class="row">
-  <select class="select select-outline-strong">
-    <option value="">請選擇</option>
-    <option value="1">燙青菜</option>
-    <option value="2">燒肉</option>
-    <option value="3">滿漢全席</option>
-  </select>
-</div>
+          <table class="table">
+  <thead>
+    <tr>
+      <th>品項</th>
+      <th>價錢</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>玉米蛋餅</td>
+      <td>30 元</td>
+    </tr>
+    <tr>
+      <td>火腿蛋餅</td>
+      <td>25 元</td>
+    </tr>
+    <tr>
+      <td>香菜蛋餅</td>
+      <td>35 元</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table striped">
+  <thead>
+    <tr>
+      <th>品項</th>
+      <th>價錢</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>綠茶</td>
+      <td>30 元</td>
+    </tr>
+    <tr>
+      <td>紅茶</td>
+      <td>25 元</td>
+    </tr>
+    <tr>
+      <td>奶茶</td>
+      <td>35 元</td>
+    </tr>
+    <tr>
+      <td>冰咖啡</td>
+      <td>35 元</td>
+    </tr>
+  </tbody>
+</table>
 
         </div>
         <div>
@@ -217,31 +241,79 @@ href="/assets/img/icons/apple-icon-72x72.png' | relative_url }}">
 23
 24
 25
-</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>燙青菜<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>燒肉<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>滿漢全席<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select select-outline"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>燙青菜<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>燒肉<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>滿漢全席<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select select-outline-strong"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>燙青菜<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>燒肉<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>滿漢全席<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+</pre></td><td class="code"><pre><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>品項<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>價錢<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>玉米蛋餅<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>30 元<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>火腿蛋餅<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>25 元<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>香菜蛋餅<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>35 元<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+
+<span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table striped"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>品項<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>價錢<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>綠茶<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>30 元<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>紅茶<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>25 元<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>奶茶<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>35 元<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>冰咖啡<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>35 元<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
         </div>
       </div>

@@ -399,3 +399,6 @@ p {
       transform: rotate(90deg);
       display: block;
       margin: 0 auto; } }
+
+.page-tables .table {
+  margin-bottom: 40px; }
