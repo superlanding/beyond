@@ -686,6 +686,16 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@superlanding/getscrollleft@0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@superlanding/getscrollleft/-/getscrollleft-0.0.12.tgz#c888703887113ea09febb5b66c6ca1238f594627"
+  integrity sha512-HBEyJGF9ZTLTIVtiYWZaN9m4WX63xpA0wd+ItjVBb1wxp4Tb2PKbIziFZZA/iyaK6hD2Q4ZfCtfafvqGVOpM0w==
+
+"@superlanding/getscrolltop@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@superlanding/getscrolltop/-/getscrolltop-0.0.11.tgz#ce3c7afab49e084c3f97fc99d0e5e1bad3a136e9"
+  integrity sha512-37+9bnQ+pezoiKSJZXx4WFYGfP63PeR2v3xuhw9VV5tBYXpXFHBUONeUTqOaRggA6eRsNxlAWDiKnw12x1HMUA==
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
