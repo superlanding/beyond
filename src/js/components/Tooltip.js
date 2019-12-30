@@ -1,8 +1,10 @@
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import toPixel from '../helpers/toPixel'
+import supportDom from '../helpers/supportDom'
 
 const TOOLTIP_PLACEMENTS = ['top', 'bottom', 'left', 'right']
 
+@supportDom
 export default class Tooltip {
 
   constructor(dom) {
@@ -47,7 +49,7 @@ export default class Tooltip {
   addEvents() {
     const { dom, tooltip } = this
     if ('onmouseover' in dom) {
-      dom._handleMouseOver = () => {
+      this.addEvent(dom, 'mouseover', () => {
         if (window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT) {
           clearTimeout(window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT)
           window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT = null
@@ -57,7 +59,7 @@ export default class Tooltip {
         tooltip.style.opacity = 0
         tooltip.style.display = 'block'
 
-        const pos = getFloatedTargetPos({
+        const { pos } = getFloatedTargetPos({
           src: dom,
           target: tooltip,
           place: this.getPlace(),
@@ -66,11 +68,10 @@ export default class Tooltip {
         tooltip.style.left = toPixel(pos.left)
         tooltip.style.top = toPixel(pos.top)
         tooltip.style.opacity = 1
-      }
-      dom.addEventListener('mouseover', dom._handleMouseOver, false)
+      })
     }
     if ('onmouseleave' in dom) {
-      dom._handleMouseLeave = () => {
+      const handleMouseLeave = () => {
         window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT = setTimeout(() => {
           tooltip.style.opacity = 0
           window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT = setTimeout(() => {
@@ -78,19 +79,8 @@ export default class Tooltip {
           }, 300)
         }, 200)
       }
-      dom.addEventListener('click', dom._handleMouseLeave, false)
-      dom.addEventListener('mouseleave', dom._handleMouseLeave, false)
-    }
-  }
-
-  destroy() {
-    const { dom } = this
-    if ('onmouseover' in dom) {
-      dom.removeEventListener('mouseover', dom._handleMouseOver, false)
-    }
-    if ('onmouseleave' in dom) {
-      dom.removeEventListener('click', dom._handleMouseLeave, false)
-      dom.removeEventListener('mouseleave', dom._handleMouseLeave, false)
+      this.addEvent(dom, 'click', handleMouseLeave)
+      this.addEvent(dom, 'mouseleave', handleMouseLeave)
     }
   }
 }

@@ -43,7 +43,7 @@ export default class DatepickerTimeMenu {
   }
 
   addEvents() {
-    this._handleMenuClick = event => {
+    this.addEvent(this.dom, 'click', event => {
       const { dataset } = event.target
       if ('hour' in dataset) {
         const res = {
@@ -52,18 +52,17 @@ export default class DatepickerTimeMenu {
         }
         this.fire('click', event, res)
       }
-    }
-    this.dom.addEventListener('click', this._handleMenuClick, false)
+    })
   }
 
   pos(src) {
     const { dom } = this
-    const pos = getFloatedTargetPos({
+    const { pos } = getFloatedTargetPos({
       src,
       target: dom,
       place: 'bottom',
       align: 'right',
-      offset: 20
+      offset: 4
     })
     dom.style.left = toPixel(pos.left)
     dom.style.top = toPixel(pos.top)
@@ -111,7 +110,6 @@ export default class DatepickerTimeMenu {
   }
 
   destroy() {
-    this.dom.removeEventListener('click', this._handleMenuClick, false)
     this.dom.remove()
   }
 }

@@ -13,12 +13,6 @@ export default class DatepickerBtnArrow {
   }
 
   addEvents() {
-    const { dom } = this
-    this._handleClick = event => this.fire('click', event)
-    dom.addEventListener('click', this._handleClick, false)
-  }
-
-  destroy() {
-    this.dom.removeEventListener('click', this._handleClick, false)
+    this.addEvent(this.dom, 'click', event => this.fire('click', event))
   }
 }

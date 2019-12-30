@@ -1,9 +1,14 @@
+import noop from 'lodash.noop'
+import supportDom from '../helpers/supportDom'
+
+@supportDom
 export default class Tabbox {
 
   constructor(dom, options = {}) {
     this.currentNode = null
     this.dom = dom
     this.options = options
+    this.options.change = options.change || noop
     this.init()
   }
 
@@ -69,15 +74,9 @@ export default class Tabbox {
     }
   }
 
-  change(data) {
-    if (typeof this.options.change === 'function') {
-      this.options.change(data)
-    }
-  }
-
   addEvents() {
     this.btns.forEach(btn => {
-      const handleBtnClick = () => {
+      this.addEvent(btn, 'click', () => {
         if (btn !== this.currentNode) {
           this.removeCurrentClass()
           this.clearSelects()
@@ -89,16 +88,15 @@ export default class Tabbox {
           })
           this.currentNode = btn
           this.addCurrentClass()
-          this.change({ id: btn.dataset.tabboxItem, type: 'btn' })
+          this.options.change({ id: btn.dataset.tabboxItem, type: 'btn' })
         }
-      }
-      btn._handleBtnClick = handleBtnClick
-      btn.addEventListener('click', handleBtnClick, false)
+      })
     })
 
     this.selectBoxes.forEach(div => {
       const select = div.querySelector('select')
-      const handleSelectChange = event => {
+
+      this.addEvent(select, 'change', event => {
         if (event.target.value) {
           this.removeCurrentClass()
           this.clearSelects({ except: select })
@@ -110,34 +108,22 @@ export default class Tabbox {
           })
           this.currentNode = select
           this.addCurrentClass()
-          this.change({ id: event.target.value, type: 'select' })
+          this.options.change({ id: event.target.value, type: 'select' })
         }
-      }
-      select._handleSelectChange = handleSelectChange
-      select.addEventListener('change', handleSelectChange, false)
+      })
 
-      const handleSelectFocus = () => {
+      this.addEvent(select, 'focus', () => {
         select.parentNode.classList.add('js-focus')
-      }
-      select._handleSelectFocus = handleSelectFocus
-      select.addEventListener('focus', handleSelectFocus, false)
+      })
 
-      const handleSelectBlur = () => {
+      this.addEvent(select, 'blur', () => {
         select.parentNode.classList.remove('js-focus')
-      }
-      select._handleSelectBlur = handleSelectBlur
-      select.addEventListener('blur', handleSelectBlur, false)
+      })
     })
   }
 
   destroy() {
     this.currentNode = null
     this.slider.parentNode.removeChild(this.slider)
-    this.btns.forEach(btn => btn.removeEventListener('click', btn._handleBtnClick, false))
-    this.selects.forEach(select => {
-      select.removeEventListener('change', select._handleSelectChange, false)
-      select.removeEventListener('focus', select._handleSelectFocus, false)
-      select.removeEventListener('blur', select._handleSelectBlur, false)
-    })
   }
 }

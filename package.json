@@ -20,8 +20,14 @@
   },
   "homepage": "https://github.com/superlanding/beyond#readme",
   "dependencies": {
+    "@babel/polyfill": "7.7.0",
+    "@superlanding/getscrollleft": "0.0.12",
+    "@superlanding/getscrolltop": "0.0.11",
     "date-fns": "2.8.1",
     "date-fns-tz": "1.0.8",
+    "lodash.debounce": "4.0.8",
+    "lodash.isfunction": "3.0.9",
+    "lodash.noop": "3.0.1",
     "lodash.throttle": "4.1.1",
     "node.normalize.scss": "3.0.3"
   },

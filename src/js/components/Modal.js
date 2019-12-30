@@ -1,3 +1,7 @@
+import noop from 'lodash.noop'
+import supportDom from '../helpers/supportDom'
+
+@supportDom
 export default class Modal {
 
   constructor(dom, options = {}) {
@@ -5,6 +9,8 @@ export default class Modal {
     this.isVisible = false
     this.modalId = null
     this.options = options
+    this.options.cancel = options.cancel || noop
+    this.options.confirm = options.confirm || noop
     this.init()
   }
 
@@ -37,59 +43,34 @@ export default class Modal {
     }, 300)
   }
 
-  confirm() {
-    if (typeof this.options.confirm === 'function') {
-      this.options.confirm()
-    }
-  }
-
-  cancel(type) {
-    if (typeof this.options.cancel === 'function') {
-      this.options.cancel(type)
-    }
-  }
-
   addEvents() {
-    this._handleOpenerClick = this.show.bind(this)
-    this.dom.addEventListener('click', this._handleOpenerClick, false)
+    this.addEvent(this.dom, 'click', () => this.show())
 
-    this._handleCloseBtnClick = () => {
+    this.addEvent(this.closeBtn, 'click', () => {
       this.hide()
-      this.cancel('close')
-    }
-    this.closeBtn.addEventListener('click', this._handleCloseBtnClick, false)
+      this.options.cancel('close')
+    })
 
-    this._handleCancelBtnClick = () => {
+    this.addEvent(this.cancelBtn, 'click', () => {
       this.hide()
-      this.cancel('cancel')
-    }
-    this.cancelBtn.addEventListener('click', this._handleCancelBtnClick, false)
+      this.options.cancel('cancel')
+    })
 
-    this._handleModalClick = event => {
+    this.addEvent(this.modal, 'click', event => {
       // is backdrop
       if (event.target.dataset.modal === this.modalId) {
         this.hide()
-        this.cancel('backdrop')
+        this.options.cancel('backdrop')
       }
-    }
-    this.modal.addEventListener('click', this._handleModalClick, false)
+    })
 
-    this._handleConfirmBtnClick = () => {
+    this.addEvent(this.confirmBtn, 'click', () => {
       if (typeof this.options.confirm === 'function') {
-        this.confirm()
+        this.options.confirm()
       }
       else {
         this.hide()
       }
-    }
-    this.confirmBtn.addEventListener('click', this._handleConfirmBtnClick, false)
-  }
-
-  destroy() {
-    this.dom.removeEventListener('click', this._handleOpenerClick, false)
-    this.closeBtn.removeEventListener('click', this._handleCloseBtnClick, false)
-    this.cancelBtn.removeEventListener('click', this._handleCancelBtnClick, false)
-    this.modal.removeEventListener('click', this._handleModalClick, false)
-    this.confirmBtn.removeEventListener('click', this._handleConfirmBtnClick, false)
+    })
   }
 }

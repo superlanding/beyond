@@ -2,6 +2,7 @@ import { utcToZonedTime } from 'date-fns-tz'
 import endOfDay from 'date-fns/endOfDay'
 import parse from 'date-fns/parse'
 import set from 'date-fns/set'
+import noop from 'lodash.noop'
 import startOfDay from 'date-fns/startOfDay'
 import DatepickerDateInput from './DatepickerDateInput'
 import DatepickerTimeInput from './DatepickerTimeInput'
@@ -10,16 +11,20 @@ import DatepickerTimeMenu from './DatepickerTimeMenu'
 import DatepickerBtnArrow from './DatepickerBtnArrow'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
+import supportDom from '../helpers/supportDom'
 import { DEFAULT_TIMEZONE } from '../consts'
 
+@supportDom
 export default class Datepicker {
 
   constructor(dom, options = {}) {
     this.dom = dom
     this.options = options
+    this.options.change = options.change || noop
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.lastTriggered = null
     this.nextDate = null
+    this.focused = false
     this.init()
   }
 
@@ -69,16 +74,6 @@ export default class Datepicker {
     this.addEvents()
   }
 
-  change() {
-    const { change } = this.options
-    if (typeof change === 'function') {
-      change({
-        startDate: this.startDate,
-        endDate: this.endDate
-      })
-    }
-  }
-
   clearInputStatus() {
     this.inputDateStart.clearStatus()
     this.inputTimeStart.clearStatus()
@@ -87,6 +82,7 @@ export default class Datepicker {
   }
 
   handleDateInputFocus(input) {
+    this.focused = true
     this.clearInputStatus()
     input.setActive(true)
     this.lastTriggered = input
@@ -96,6 +92,7 @@ export default class Datepicker {
   }
 
   handleTimeInputFocus(input) {
+    this.focused = true
     this.clearInputStatus()
     input.setActive(true)
     this.lastTriggered = input
@@ -269,7 +266,10 @@ export default class Datepicker {
           endDate: this.endDate
         })
       }
-      this.change()
+      this.options.change({
+        startDate: this.startDate,
+        endDate: this.endDate
+      })
     })
 
     this.timeMenu.on('click', (event, res) => {
@@ -287,7 +287,10 @@ export default class Datepicker {
   }
 
   addBtnArrowEvents() {
-    this.btnArrow.on('click', () => this.handleDateInputFocus(this.inputDateStart))
+    this.btnArrow.on('click', () => {
+      this.inputDateStart.focus()
+      this.handleDateInputFocus(this.inputDateStart)
+    })
   }
 
   addEvents() {
@@ -297,12 +300,16 @@ export default class Datepicker {
     this.addMenuEvents()
     this.addBtnArrowEvents()
 
-    this._handleDocClick = event => {
+    this.addEvent(document, 'click', event => {
       const { dom, dateMenu, timeMenu } = this
       const { target } = event
       const dateMenuDom = dateMenu.dom
       const timeMenuDom = timeMenu.dom
 
+      if (this.focused) {
+        this.focused = false
+        return
+      }
       if ((! dateMenu.isVisible) && (! timeMenu.isVisible)) {
         return
       }
@@ -313,26 +320,24 @@ export default class Datepicker {
       if (dateMenuDom.contains(target)) {
         return
       }
-      if (dateMenuDom === event.target) {
+      if (dateMenuDom === target) {
         return
       }
 
       if (timeMenuDom.contains(target)) {
         return
       }
-      if (timeMenuDom === event.target) {
+      if (timeMenuDom === target) {
         return
       }
 
       this.clearInputStatus()
       dateMenu.hide()
       timeMenu.hide()
-    }
-    document.addEventListener('click', this._handleDocClick, false)
+    })
   }
 
   destroy() {
-    document.removeEventListener('click', this._handleDocClick, false)
     this.inputDateStart.destroy()
     this.inputTimeStart.destroy()
     this.inputDateEnd.destroy()

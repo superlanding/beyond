@@ -1,25 +1,44 @@
+import isFunction from 'lodash.isfunction'
+
 export default function supportDom(target) {
+
   return class extends target {
 
-    constructor(...args) {
-      super(...args)
+    init() {
       this._listeners = []
+      this._externalListeners = []
+      if (isFunction(super.init)) {
+        super.init()
+      }
     }
 
     on(name, func) {
-      this._listeners.push({ name, func })
+      this._externalListeners.push({ name, func })
     }
 
     fire(name, ...args) {
-      this._listeners.filter(row => row.name === name)
+      this._externalListeners.filter(row => row.name === name)
         .forEach(row => row.func.apply(this, args))
     }
 
+    addEvent(dom, name, func) {
+      dom.addEventListener(name, func)
+      this._listeners.push({ dom, name, func })
+    }
+
+    removeEvents() {
+      this._listeners.forEach(({ dom, name, func }) => {
+        dom.removeEventListener(name, func)
+      })
+      this._listeners.length = 0
+    }
+
     destroy() {
-      if (typeof super.destroy === 'function') {
+      this._externalListeners.length = 0
+      this.removeEvents()
+      if (isFunction(super.destroy)) {
         super.destroy()
       }
-      this._listeners.length = 0
     }
   }
 }

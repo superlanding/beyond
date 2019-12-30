@@ -1,4 +1,5 @@
 import './../sass/index.scss'
+import '@babel/polyfill'
 import './polyfills/nodeContains'
 import './polyfills/nodeHasAttribute'
 import './polyfills/nodeRemove'
@@ -9,6 +10,7 @@ import Modal from './components/Modal'
 import Tabbox from './components/Tabbox'
 import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
+import Sidebar from './components/Sidebar'
 
 const hasWindow = (typeof window !== 'undefined')
 const isCommonJs = ((typeof module === 'object') && (typeof module.exports === 'object'))
@@ -19,6 +21,7 @@ if (hasWindow && (! isCommonJs)) {
     Datepicker,
     Dropdown,
     Modal,
+    Sidebar,
     Tabbox,
     Toast,
     Tooltip
@@ -30,6 +33,7 @@ export {
   Datepicker,
   Dropdown,
   Modal,
+  Sidebar,
   Tabbox,
   Toast,
   Tooltip

@@ -1,8 +1,15 @@
 .page-datepickers {
   .codebox-result {
-    padding: 20px 0 20px 6px;
     .datepicker {
       white-space: nowrap;
+
+      @media (max-width: $screen-md) {
+        .icon-arrow-right {
+          transform: rotate(90deg);
+          display: block;
+          margin: 0 auto;
+        }
+      }
     }
   }
 }
