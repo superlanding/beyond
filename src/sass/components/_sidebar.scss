@@ -1,3 +1,9 @@
+.btn-sidebar {
+  display: none;
+  @media (max-width: $screen-md) {
+    display: block;
+  }
+}
 .sidebar {
   @media (max-width: $screen-md) {
     z-index: 20;
