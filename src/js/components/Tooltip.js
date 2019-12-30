@@ -59,7 +59,7 @@ export default class Tooltip {
         tooltip.style.opacity = 0
         tooltip.style.display = 'block'
 
-        const pos = getFloatedTargetPos({
+        const { pos } = getFloatedTargetPos({
           src: dom,
           target: tooltip,
           place: this.getPlace(),

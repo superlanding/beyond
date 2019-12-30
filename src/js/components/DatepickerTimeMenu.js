@@ -57,7 +57,7 @@ export default class DatepickerTimeMenu {
 
   pos(src) {
     const { dom } = this
-    const pos = getFloatedTargetPos({
+    const { pos } = getFloatedTargetPos({
       src,
       target: dom,
       place: 'bottom',

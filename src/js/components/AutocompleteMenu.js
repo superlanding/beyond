@@ -20,7 +20,7 @@ export default class AutocompleteMenu {
   pos(src) {
     const offsetLeft = this.options.offsetLeft || 0
     const offsetTop = this.options.offsetTop || 0
-    const pos = getFloatedTargetPos({
+    const { pos } = getFloatedTargetPos({
       src,
       target: this.dom,
       place: 'bottom',

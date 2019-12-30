@@ -186,7 +186,7 @@ export default class DatepickerDateMenu {
 
   pos(src) {
     const { dom } = this
-    const pos = getFloatedTargetPos({
+    const { pos } = getFloatedTargetPos({
       src,
       target: dom,
       place: 'bottom',
