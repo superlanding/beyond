@@ -191,7 +191,7 @@ export default class DatepickerDateMenu {
       target: dom,
       place: 'bottom',
       align: 'right',
-      offset: 20
+      offset: 4
     })
     dom.style.left = toPixel(pos.left)
     dom.style.top = toPixel(pos.top)
