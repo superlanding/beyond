@@ -317,14 +317,14 @@ export default class Datepicker {
       if (dateMenuDom.contains(target)) {
         return
       }
-      if (dateMenuDom === event.target) {
+      if (dateMenuDom === target) {
         return
       }
 
       if (timeMenuDom.contains(target)) {
         return
       }
-      if (timeMenuDom === event.target) {
+      if (timeMenuDom === target) {
         return
       }
 
