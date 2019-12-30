@@ -22,6 +22,7 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     "space-before-function-paren": "off",
     "no-unused-vars": "warn",
-    "indent": ["warn", 2, { "SwitchCase": 1 }]
+    "indent": ["warn", 2, { "SwitchCase": 1 }],
+    "prefer-const": "warn"
   }
 }
