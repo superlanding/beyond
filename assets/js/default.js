@@ -1,5 +1,5 @@
 (function() {
-  const { Codebox, Sidebar } = window.beyond
+  const { Codebox, Sidebar } = window.beyond.default
 
   document.querySelectorAll('[data-codebox]')
     .forEach(dom => {
