@@ -1,4 +1,4 @@
-const { Tooltip } = window.beyond
+const { Tooltip } = window.beyond.default
 
 document.querySelectorAll('[data-tooltip]')
   .forEach(dom => {

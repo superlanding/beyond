@@ -51,5 +51,5 @@
       window.removeEventListener('resize', this._handleWindowResize, false)
     }
   }
-  beyond.Codebox = Codebox
+  beyond.default.Codebox = Codebox
 })(window.beyond = window.beyond || {});

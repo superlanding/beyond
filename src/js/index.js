@@ -12,10 +12,7 @@ import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
 import Sidebar from './components/Sidebar'
 
-const hasWindow = (typeof window !== 'undefined')
-const isCommonJs = ((typeof module === 'object') && (typeof module.exports === 'object'))
-
-const beyond = {
+export default {
   Autocomplete,
   Datepicker,
   Dropdown,
@@ -25,9 +22,3 @@ const beyond = {
   Toast,
   Tooltip
 }
-
-if (hasWindow && (! isCommonJs)) {
-  window.beyond = beyond
-}
-
-export default beyond

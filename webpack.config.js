@@ -58,6 +58,8 @@ module.exports = {
     ]
   },
   output: {
+    library: 'beyond',
+    libraryTarget: 'umd',
     filename: 'beyond.js',
     path: path.resolve(__dirname, 'dist')
   },

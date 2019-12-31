@@ -1,4 +1,4 @@
-const { Dropdown } = window.beyond
+const { Dropdown } = window.beyond.default
 
 document.querySelectorAll('[data-dropdown]')
   .forEach(dom => {
