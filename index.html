@@ -143,7 +143,11 @@
     <h2>使用</h2>
     <h3>在 sass 檔案引入樣式</h3>
     <div class="code">
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="k">@import</span> <span class="s1">'beyond/src/sass/index.scss'</span><span class="p">;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// 定義 css 圖片路徑與 font icons 路徑</span>
+<span class="nv">$beyond-icon-font-path</span><span class="p">:</span> <span class="s1">'~@superlanding/beyond/src/font/'</span><span class="p">;</span>
+<span class="nv">$beyond-css-img-path</span><span class="p">:</span> <span class="s1">'~@superlanding/beyond/src/sass/img/'</span><span class="p">;</span>
+
+<span class="k">@import</span> <span class="s1">'~@superlanding/beyond/src/sass/index.scss'</span><span class="p">;</span></code></pre></figure>
     </div>
 
     <h3>JS 元件存取</h3>
