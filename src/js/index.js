@@ -15,20 +15,7 @@ import Sidebar from './components/Sidebar'
 const hasWindow = (typeof window !== 'undefined')
 const isCommonJs = ((typeof module === 'object') && (typeof module.exports === 'object'))
 
-if (hasWindow && (! isCommonJs)) {
-  window.beyond = {
-    Autocomplete,
-    Datepicker,
-    Dropdown,
-    Modal,
-    Sidebar,
-    Tabbox,
-    Toast,
-    Tooltip
-  }
-}
-
-export {
+const beyond = {
   Autocomplete,
   Datepicker,
   Dropdown,
@@ -38,3 +25,9 @@ export {
   Toast,
   Tooltip
 }
+
+if (hasWindow && (! isCommonJs)) {
+  window.beyond = beyond
+}
+
+export default beyond
