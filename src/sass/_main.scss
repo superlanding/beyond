@@ -9,8 +9,7 @@ body {
   box-sizing: inherit;
 }
 
-:focus,
-.outline {
+:focus {
   outline: 3px solid $bg-outline;
   outline-offset: 2px;
 }
