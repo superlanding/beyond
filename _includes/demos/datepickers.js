@@ -1,4 +1,4 @@
-const { Datepicker } = window.beyond
+const { Datepicker } = window.beyond.default
 
 document.querySelectorAll('[data-datepicker]').forEach(dom => {
 

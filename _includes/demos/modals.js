@@ -1,4 +1,4 @@
-const { Modal } = window.beyond
+const { Modal } = window.beyond.default
 
 document.querySelectorAll('[data-modal-opener]').forEach(dom => {
 
