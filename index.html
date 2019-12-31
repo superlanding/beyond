@@ -18,7 +18,11 @@ yarn add @superlanding/beyond --exact
     <h3>在 sass 檔案引入樣式</h3>
     <div class="code">
 {% highlight scss %}
-@import 'beyond/src/sass/index.scss';
+// 定義 css 圖片路徑與 font icons 路徑
+$beyond-icon-font-path: '~@superlanding/beyond/src/font/';
+$beyond-css-img-path: '~@superlanding/beyond/src/sass/img/';
+
+@import '~@superlanding/beyond/src/sass/index.scss';
 {% endhighlight %}
     </div>
 
