@@ -12,7 +12,7 @@ import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
 import Sidebar from './components/Sidebar'
 
-export default {
+export {
   Autocomplete,
   Datepicker,
   Dropdown,

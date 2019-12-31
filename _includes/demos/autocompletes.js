@@ -1,4 +1,4 @@
-const { Autocomplete } = window.beyond.default
+const { Autocomplete } = window.beyond
 
 const rows = [
   { prefix: 'SP', title: '🔥SHARE.CO🔥經典香水吊卡 ➜ 糖果茉莉, 奇蹟罌粟, 能量麝香, 甜蜜莉莉' },
