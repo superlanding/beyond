@@ -13,6 +13,7 @@
 }
 .dropdown-menu {
   display: none;
+  transition: .2s all;
 
   .dropdown-menu-scrollable {
     max-height: 186px;

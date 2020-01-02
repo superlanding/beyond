@@ -24,10 +24,14 @@ export default class Dropdown {
   }
 
   hideMenu() {
-    this.menu.remove()
+    const { menu } = this
+    menu.style.transform = 'scale(.8)'
+    menu.style.opacity = 0
+    setTimeout(() => menu.remove(), 300)
+
     // recover
-    this.menu.dataset.place = this.place
-    this.menu.dataset.align = this.align
+    menu.dataset.place = this.place
+    menu.dataset.align = this.align
     this.isMenuVisible = false
   }
 
@@ -35,8 +39,10 @@ export default class Dropdown {
     const { menu } = this
     menu.style.display = 'block'
     menu.style.opacity = 0
+    menu.style.transform = 'scale(.8)'
     document.body.append(menu)
     this.adjustMenuPos()
+    menu.style.transform = 'scale(1)'
     menu.style.opacity = 1
     this.isMenuVisible = true
   }
