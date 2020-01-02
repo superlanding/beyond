@@ -33,6 +33,7 @@
   display: inline-block;
   margin-right: 4px;
   input[type="checkbox"] {
+    z-index: 1;
     opacity: 0;
     position: absolute;
     display: block;
