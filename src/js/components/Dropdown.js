@@ -47,15 +47,23 @@ export default class Dropdown {
 
   adjustMenuPos() {
     const { menu, dom } = this
+
+    const { dataset } = menu
+    const offset = ('offset' in dataset) ? parseInt(dataset.offset, 10) : 14
+    const offsetLeft = ('offsetLeft' in dataset) ? parseInt(dataset.offsetLeft, 10) : 0
+    const offsetTop = ('offsetTop' in dataset) ? parseInt(dataset.offsetTop, 10) : 0
+
     const { pos, place, align } = getFloatedTargetPos({
       src: dom,
       target: menu,
       place: this.place,
       align: this.align,
-      offset: ('offset' in menu.dataset) ? menu.dataset.offset : 14
+      offset,
+      offsetLeft,
+      offsetTop
     })
-    menu.dataset.place = place
-    menu.dataset.align = align
+    dataset.place = place
+    dataset.align = align
     menu.style.left = toPixel(pos.left)
     menu.style.top = toPixel(pos.top)
   }

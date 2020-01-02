@@ -22,12 +22,30 @@ export default function getFloatedTargetPos(options) {
   const detectedPlace = detectPlace({ pos: posWithOffsets, place, w2, h2 })
   const detectedAlign = detectAlign({ pos: posWithOffsets, place, align, w2, h2 })
 
-  if ((place !== detectedPlace) || (align !== detectedAlign)) {
+  const placeDifferent = (place !== detectedPlace)
+  const alignDifferent = (align !== detectedAlign)
+
+  if (placeDifferent || alignDifferent) {
     pos = getPos({
       x1, y1, w1, h1, w2, h2,
       place: detectedPlace, align: detectedAlign, offset
     })
-    posWithOffsets = addExtraOffsets({ pos, offsetLeft, offsetTop })
+
+    let adjustedOffsetLeft = offsetLeft
+    let adjustedOffsetTop = offsetTop
+
+    if (placeDifferent && ['left', 'right'].includes(detectedPlace)) {
+      adjustedOffsetLeft = -adjustedOffsetLeft
+    }
+    if (placeDifferent && ['top', 'bottom'].includes(detectedPlace)) {
+      adjustedOffsetTop = -adjustedOffsetTop
+    }
+
+    posWithOffsets = addExtraOffsets({
+      pos,
+      offsetLeft: adjustedOffsetLeft,
+      offsetTop: adjustedOffsetTop
+    })
   }
 
   const posWithSafeBoundary = adjustToBoundary({
