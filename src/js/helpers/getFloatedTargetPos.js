@@ -1,3 +1,4 @@
+import getDomPos from '@superlanding/getdompos'
 import getScrollTop from '@superlanding/getscrolltop'
 import getScrollLeft from '@superlanding/getscrollleft'
 
@@ -6,8 +7,7 @@ export default function getFloatedTargetPos(options) {
 
   const { src, target, place, align, offset, offsetLeft, offsetTop } = options
 
-  const x1 = src.offsetLeft
-  const y1 = src.offsetTop
+  const { x: x1, y: y1 } = getDomPos(src)
 
   const w1 = src.offsetWidth
   const h1 = src.offsetHeight
