@@ -29,6 +29,13 @@ export default class Tooltip {
     this.tooltip = tooltip
   }
 
+  static remove() {
+    const div = document.querySelector('[data-global-tooltip]')
+    if (div) {
+      div.remove()
+    }
+  }
+
   getPlace() {
     const str = this.dom.dataset.place
     return TOOLTIP_PLACEMENTS.includes(str) ? str : 'bottom'
@@ -50,9 +57,9 @@ export default class Tooltip {
     const { dom, tooltip } = this
     if ('onmouseover' in dom) {
       this.addEvent(dom, 'mouseover', () => {
-        if (window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT) {
-          clearTimeout(window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT)
-          window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT = null
+        if (Tooltip._TOOLTIP_MOUSELEAVE_TIMEOUT) {
+          clearTimeout(Tooltip._TOOLTIP_MOUSELEAVE_TIMEOUT)
+          Tooltip._TOOLTIP_MOUSELEAVE_TIMEOUT = null
         }
         this.setTooltipMsg()
 
@@ -72,9 +79,9 @@ export default class Tooltip {
     }
     if ('onmouseleave' in dom) {
       const handleMouseLeave = () => {
-        window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT = setTimeout(() => {
+        Tooltip._TOOLTIP_MOUSELEAVE_TIMEOUT = setTimeout(() => {
           tooltip.style.opacity = 0
-          window.beyond._TOOLTIP_MOUSELEAVE_TIMEOUT = setTimeout(() => {
+          Tooltip._TOOLTIP_MOUSELEAVE_TIMEOUT = setTimeout(() => {
             tooltip.style.display = 'none'
           }, 300)
         }, 200)
