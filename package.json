@@ -1,6 +1,6 @@
 {
   "name": "@superlanding/beyond",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "The best frontend framework for super-landing.com",
   "main": "dist/beyond.js",
   "scripts": {
