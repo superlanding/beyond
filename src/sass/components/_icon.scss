@@ -24,440 +24,443 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .icon-a:before {
   content: "\e900";
-  color: #4f566b;
+  color: $color-icon;
 }
 .icon-arrow-down:before {
   content: "\e901";
-  color: #4f566b;
+  color: $color-icon;
 }
 .icon-arrow-left:before {
   content: "\e902";
-  color: #4f566b;
+  color: $color-icon;
 }
 .icon-arrow-right:before {
   content: "\e903";
-  color: #4f566b;
+  color: $color-icon;
 }
 .icon-arrow-up:before {
   content: "\e904";
-  color: #4f566b;
+  color: $color-icon;
 }
 .icon-bank:before {
   content: "\e905";
-  color: #4f566b;
+  color: $color-icon;
 }
 .icon-bell-alt:before {
   content: "\e906";
-  color: #4f566b;
+  color: $color-icon;
 }
 .icon-bell:before {
   content: "\e907";
-  color: #4f566b;
+  color: $color-icon;
+}
+.icon-birthday-cake:before {
+  content: "\e908";
+  color: $color-icon;
 }
 .icon-black-cat:before {
-  content: "\e908";
-  color: #4f566b;
+  content: "\e909";
+  color: $color-icon;
 }
 .icon-bolt-alt:before {
-  content: "\e909";
-  color: #4f566b;
+  content: "\e90a";
+  color: $color-icon;
 }
 .icon-bolt:before {
-  content: "\e90a";
-  color: #4f566b;
+  content: "\e90b";
+  color: $color-icon;
 }
 .icon-brush:before {
-  content: "\e90b";
-  color: #4f566b;
+  content: "\e90c";
+  color: $color-icon;
 }
 .icon-calculator:before {
-  content: "\e90c";
-  color: #4f566b;
+  content: "\e90d";
+  color: $color-icon;
 }
 .icon-caret-square-up:before {
-  content: "\e90d";
-  color: #4f566b;
+  content: "\e90e";
+  color: $color-icon;
 }
 .icon-cart-empty:before {
-  content: "\e90e";
-  color: #4f566b;
+  content: "\e90f";
+  color: $color-icon;
 }
 .icon-cart:before {
-  content: "\e90f";
-  color: #4f566b;
+  content: "\e910";
+  color: $color-icon;
 }
 .icon-chart-bar:before {
-  content: "\e910";
-  color: #4f566b;
+  content: "\e911";
+  color: $color-icon;
 }
 .icon-check-circle:before {
-  content: "\e911";
-  color: #4f566b;
+  content: "\e912";
+  color: $color-icon;
 }
 .icon-check:before {
-  content: "\e912";
-  color: #4f566b;
+  content: "\e913";
+  color: $color-icon;
 }
 .icon-chevron-down:before {
-  content: "\e913";
-  color: #4f566b;
+  content: "\e914";
+  color: $color-icon;
 }
 .icon-chevron-left:before {
-  content: "\e914";
-  color: #4f566b;
+  content: "\e915";
+  color: $color-icon;
 }
 .icon-chevron-right:before {
-  content: "\e915";
-  color: #4f566b;
+  content: "\e916";
+  color: $color-icon;
 }
 .icon-chevron-up:before {
-  content: "\e916";
-  color: #4f566b;
+  content: "\e917";
+  color: $color-icon;
 }
 .icon-clock:before {
-  content: "\e917";
-  color: #4f566b;
+  content: "\e918";
+  color: $color-icon;
 }
 .icon-code:before {
-  content: "\e918";
-  color: #4f566b;
+  content: "\e919";
+  color: $color-icon;
 }
 .icon-cog:before {
-  content: "\e919";
-  color: #4f566b;
+  content: "\e91a";
+  color: $color-icon;
 }
 .icon-cogs:before {
-  content: "\e91a";
-  color: #4f566b;
+  content: "\e91b";
+  color: $color-icon;
 }
 .icon-comments:before {
-  content: "\e91b";
-  color: #4f566b;
+  content: "\e91c";
+  color: $color-icon;
 }
 .icon-copy:before {
-  content: "\e91c";
-  color: #4f566b;
+  content: "\e91d";
+  color: $color-icon;
 }
 .icon-cross-circle:before {
-  content: "\e91d";
-  color: #4f566b;
+  content: "\e91e";
+  color: $color-icon;
 }
 .icon-cross:before {
-  content: "\e91e";
-  color: #4f566b;
+  content: "\e91f";
+  color: $color-icon;
 }
 .icon-doc:before {
-  content: "\e91f";
-  color: #4f566b;
+  content: "\e920";
+  color: $color-icon;
 }
 .icon-dollar-alt:before {
-  content: "\e920";
-  color: #4f566b;
+  content: "\e921";
+  color: $color-icon;
 }
 .icon-dollar:before {
-  content: "\e921";
-  color: #4f566b;
+  content: "\e922";
+  color: $color-icon;
 }
 .icon-dot-circle-alt:before {
-  content: "\e922";
-  color: #4f566b;
+  content: "\e923";
+  color: $color-icon;
 }
 .icon-dot-circle:before {
-  content: "\e923";
-  color: #4f566b;
+  content: "\e924";
+  color: $color-icon;
 }
 .icon-download:before {
-  content: "\e924";
-  color: #4f566b;
+  content: "\e925";
+  color: $color-icon;
 }
 .icon-earth:before {
-  content: "\e925";
-  color: #4f566b;
+  content: "\e926";
+  color: $color-icon;
 }
 .icon-ecpay:before {
-  content: "\e926";
-  color: #4f566b;
+  content: "\e927";
+  color: $color-icon;
 }
 .icon-ellipsis-h:before {
-  content: "\e927";
-  color: #4f566b;
+  content: "\e928";
+  color: $color-icon;
 }
 .icon-ellipsis-v:before {
-  content: "\e928";
-  color: #4f566b;
+  content: "\e929";
+  color: $color-icon;
 }
 .icon-envelop:before {
-  content: "\e929";
-  color: #4f566b;
+  content: "\e92a";
+  color: $color-icon;
 }
 .icon-exchange:before {
-  content: "\e92a";
-  color: #4f566b;
+  content: "\e92b";
+  color: $color-icon;
 }
 .icon-exclamation-triangle:before {
-  content: "\e92b";
-  color: #4f566b;
+  content: "\e92c";
+  color: $color-icon;
 }
 .icon-external-link:before {
-  content: "\e92c";
-  color: #4f566b;
+  content: "\e92d";
+  color: $color-icon;
 }
 .icon-family-mart:before {
-  content: "\e92d";
-  color: #4f566b;
+  content: "\e92e";
+  color: $color-icon;
 }
 .icon-fb-messenger:before {
-  content: "\e92e";
-  color: #4f566b;
+  content: "\e92f";
+  color: $color-icon;
 }
 .icon-fb:before {
-  content: "\e92f";
-  color: #4f566b;
+  content: "\e930";
+  color: $color-icon;
 }
 .icon-female:before {
-  content: "\e930";
-  color: #4f566b;
+  content: "\e931";
+  color: $color-icon;
 }
 .icon-file-alt:before {
-  content: "\e931";
-  color: #4f566b;
+  content: "\e932";
+  color: $color-icon;
 }
 .icon-file:before {
-  content: "\e932";
-  color: #4f566b;
+  content: "\e933";
+  color: $color-icon;
 }
 .icon-h:before {
-  content: "\e933";
-  color: #4f566b;
+  content: "\e934";
+  color: $color-icon;
 }
 .icon-hamburger:before {
-  content: "\e934";
-  color: #4f566b;
+  content: "\e935";
+  color: $color-icon;
 }
 .icon-hct:before {
-  content: "\e935";
-  color: #4f566b;
+  content: "\e936";
+  color: $color-icon;
 }
 .icon-hi-life:before {
-  content: "\e936";
-  color: #4f566b;
+  content: "\e937";
+  color: $color-icon;
 }
 .icon-horn:before {
-  content: "\e937";
-  color: #4f566b;
+  content: "\e938";
+  color: $color-icon;
 }
 .icon-image-alt:before {
-  content: "\e938";
-  color: #4f566b;
+  content: "\e939";
+  color: $color-icon;
 }
 .icon-image:before {
-  content: "\e939";
-  color: #4f566b;
+  content: "\e93a";
+  color: $color-icon;
 }
 .icon-images-alt:before {
-  content: "\e93a";
-  color: #4f566b;
+  content: "\e93b";
+  color: $color-icon;
 }
 .icon-images:before {
-  content: "\e93b";
-  color: #4f566b;
+  content: "\e93c";
+  color: $color-icon;
 }
 .icon-invoice:before {
-  content: "\e93c";
-  color: #4f566b;
+  content: "\e93d";
+  color: $color-icon;
 }
 .icon-kafen:before {
-  content: "\e93d";
-  color: #4f566b;
+  content: "\e93e";
+  color: $color-icon;
 }
 .icon-language:before {
-  content: "\e93e";
-  color: #4f566b;
+  content: "\e93f";
+  color: $color-icon;
 }
 .icon-line:before {
-  content: "\e93f";
-  color: #4f566b;
+  content: "\e940";
+  color: $color-icon;
 }
 .icon-link:before {
-  content: "\e940";
-  color: #4f566b;
+  content: "\e941";
+  color: $color-icon;
 }
 .icon-list:before {
-  content: "\e941";
-  color: #4f566b;
+  content: "\e942";
+  color: $color-icon;
 }
 .icon-lock:before {
-  content: "\e942";
-  color: #4f566b;
+  content: "\e943";
+  color: $color-icon;
 }
 .icon-male:before {
-  content: "\e943";
-  color: #4f566b;
+  content: "\e944";
+  color: $color-icon;
 }
 .icon-medium-alt:before {
-  content: "\e944";
-  color: #4f566b;
+  content: "\e945";
+  color: $color-icon;
 }
 .icon-medium:before {
-  content: "\e945";
-  color: #4f566b;
+  content: "\e946";
+  color: $color-icon;
 }
 .icon-move:before {
-  content: "\e946";
-  color: #4f566b;
+  content: "\e947";
+  color: $color-icon;
 }
 .icon-ok-mart:before {
-  content: "\e947";
-  color: #4f566b;
+  content: "\e948";
+  color: $color-icon;
 }
 .icon-paper-plane:before {
-  content: "\e948";
-  color: #4f566b;
+  content: "\e949";
+  color: $color-icon;
 }
 .icon-pause:before {
-  content: "\e949";
-  color: #4f566b;
+  content: "\e94a";
+  color: $color-icon;
 }
 .icon-pelican:before {
-  content: "\e94a";
-  color: #4f566b;
+  content: "\e94b";
+  color: $color-icon;
 }
 .icon-pencil:before {
-  content: "\e94b";
-  color: #4f566b;
+  content: "\e94c";
+  color: $color-icon;
 }
 .icon-pie:before {
-  content: "\e94c";
-  color: #4f566b;
+  content: "\e94d";
+  color: $color-icon;
 }
 .icon-play:before {
-  content: "\e94d";
-  color: #4f566b;
+  content: "\e94e";
+  color: $color-icon;
 }
 .icon-plus:before {
-  content: "\e94e";
-  color: #4f566b;
+  content: "\e94f";
+  color: $color-icon;
 }
 .icon-question-mark:before {
-  content: "\e94f";
-  color: #4f566b;
+  content: "\e950";
+  color: $color-icon;
 }
 .icon-random:before {
-  content: "\e950";
-  color: #4f566b;
+  content: "\e951";
+  color: $color-icon;
 }
 .icon-refresh:before {
-  content: "\e951";
-  color: #4f566b;
+  content: "\e952";
+  color: $color-icon;
 }
 .icon-refund-alt:before {
-  content: "\e952";
-  color: #4f566b;
+  content: "\e953";
+  color: $color-icon;
 }
 .icon-refund:before {
-  content: "\e953";
+  content: "\e954";
   color: #575e78;
 }
 .icon-search:before {
-  content: "\e954";
-  color: #4f566b;
+  content: "\e955";
+  color: $color-icon;
 }
 .icon-seven-eleven:before {
-  content: "\e955";
-  color: #4f566b;
+  content: "\e956";
+  color: $color-icon;
 }
 .icon-shipping:before {
-  content: "\e956";
-  color: #4f566b;
+  content: "\e957";
+  color: $color-icon;
 }
 .icon-sign-out:before {
-  content: "\e957";
-  color: #4f566b;
+  content: "\e958";
+  color: $color-icon;
 }
 .icon-site-map:before {
-  content: "\e958";
-  color: #4f566b;
+  content: "\e959";
+  color: $color-icon;
 }
 .icon-smilepay:before {
-  content: "\e959";
-  color: #4f566b;
+  content: "\e95a";
+  color: $color-icon;
 }
 .icon-sms:before {
-  content: "\e95a";
-  color: #4f566b;
+  content: "\e95b";
+  color: $color-icon;
 }
 .icon-star-alt:before {
-  content: "\e95b";
-  color: #4f566b;
+  content: "\e95c";
+  color: $color-icon;
 }
 .icon-star:before {
-  content: "\e95c";
-  color: #4f566b;
+  content: "\e95d";
+  color: $color-icon;
 }
 .icon-sticky-alt:before {
-  content: "\e95d";
-  color: #4f566b;
+  content: "\e95e";
+  color: $color-icon;
 }
 .icon-sticky:before {
-  content: "\e95e";
-  color: #4f566b;
+  content: "\e95f";
+  color: $color-icon;
 }
 .icon-super-landing-alt:before {
-  content: "\e95f";
-  color: #4f566b;
+  content: "\e960";
+  color: $color-icon;
 }
 .icon-super-landing:before {
-  content: "\e960";
-  color: #4f566b;
+  content: "\e961";
+  color: $color-icon;
 }
 .icon-tachometer:before {
-  content: "\e961";
-  color: #4f566b;
+  content: "\e962";
+  color: $color-icon;
 }
 .icon-tag:before {
-  content: "\e962";
-  color: #4f566b;
+  content: "\e963";
+  color: $color-icon;
 }
 .icon-tasks:before {
-  content: "\e963";
-  color: #4f566b;
+  content: "\e964";
+  color: $color-icon;
 }
 .icon-text-cog:before {
-  content: "\e964";
-  color: #4f566b;
+  content: "\e965";
+  color: $color-icon;
 }
 .icon-trash:before {
-  content: "\e965";
-  color: #4f566b;
+  content: "\e966";
+  color: $color-icon;
 }
 .icon-upload:before {
-  content: "\e966";
-  color: #4f566b;
+  content: "\e967";
+  color: $color-icon;
 }
 .icon-user-alt:before {
-  content: "\e967";
-  color: #4f566b;
+  content: "\e968";
+  color: $color-icon;
 }
 .icon-user:before {
-  content: "\e968";
-  color: #4f566b;
+  content: "\e969";
+  color: $color-icon;
 }
 .icon-users-alt:before {
-  content: "\e969";
-  color: #4f566b;
+  content: "\e96a";
+  color: $color-icon;
 }
 .icon-users:before {
-  content: "\e96a";
-  color: #4f566b;
+  content: "\e96b";
+  color: $color-icon;
 }
 .icon-window-maximize:before {
-  content: "\e96b";
-  color: #4f566b;
+  content: "\e96c";
+  color: $color-icon;
 }
 .icon-youtube:before {
-  content: "\e96c";
-  color: #555;
+  content: "\e96d";
+  color: $color-icon;
 }
