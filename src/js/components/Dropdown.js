@@ -78,10 +78,14 @@ export default class Dropdown {
 
   addEvents() {
 
-    const { menuMouseOver } = this.options
+    const { menuMouseOver, menuMouseLeave } = this.options
 
     if (isFunction(menuMouseOver)) {
       this.addEvent(this.menu, 'mouseover', event => menuMouseOver(event))
+    }
+
+    if (isFunction(menuMouseLeave)) {
+      this.addEvent(this.menu, 'mouseleave', event => menuMouseLeave(event))
     }
 
     this.addEvent(this.dom, 'click', () => this.toggleMenu())
