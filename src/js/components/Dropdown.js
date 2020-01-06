@@ -1,4 +1,5 @@
 import throttle from 'lodash.throttle'
+import isFunction from 'lodash.isfunction'
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import toPixel from '../helpers/toPixel'
 import supportDom from '../helpers/supportDom'
@@ -6,8 +7,9 @@ import supportDom from '../helpers/supportDom'
 @supportDom
 export default class Dropdown {
 
-  constructor(dom) {
+  constructor(dom, options = {}) {
     this.dom = dom
+    this.options = options
     this.isMenuVisible = false
     this.place = null
     this.align = null
@@ -75,6 +77,13 @@ export default class Dropdown {
   }
 
   addEvents() {
+
+    const { menuMouseOver } = this.options
+
+    if (isFunction(menuMouseOver)) {
+      this.addEvent(this.menu, 'mouseover', event => menuMouseOver(event))
+    }
+
     this.addEvent(this.dom, 'click', () => this.toggleMenu())
 
     this.addEvent(document, 'click', event => {
