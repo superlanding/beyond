@@ -20,16 +20,21 @@ export default class Tabbox {
     this.addEvents()
   }
 
+  adjustSlider() {
+    const [firstBtn] = this.btns
+    if (firstBtn) {
+      this.slider.style.top = (firstBtn.offsetHeight - this.slider.offsetHeight) + 'px'
+    }
+  }
+
   appendSlider() {
     this.slider = document.createElement('div')
     this.slider.classList.add('js-slider')
     this.dom.appendChild(this.slider)
-    const [firstBtn] = this.btns
     const defaultBtn = this.btns.find(btn => 'default' in btn.dataset)
 
-    if (firstBtn) {
-      this.slider.style.top = (firstBtn.offsetHeight - this.slider.offsetHeight) + 'px'
-    }
+    this.adjustSlider()
+
     if (defaultBtn) {
       this.moveSlider({
         top: defaultBtn.top,
