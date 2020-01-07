@@ -27,6 +27,16 @@ export default class Tabbox {
     }
   }
 
+  moveTo(name) {
+    const target = this.dom.querySelector(`[data-tabbox-item=${name}]`)
+    if (target) {
+      this.removeCurrentClass()
+      this.currentNode = target
+      this.moveToCurrentNode()
+      this.addCurrentClass()
+    }
+  }
+
   appendSlider() {
     this.slider = document.createElement('div')
     this.slider.classList.add('js-slider')
