@@ -60,14 +60,15 @@
           color: #3c4257;
           font-size: 13px;
           &.hint-danger {
+            color: #e03953;
             &:before {
               font-family: 'icomoon';
-              content: "\e92b";
               margin-right: 4px;
               display: inline-block;
               transform: translateY(1px);
+              color: #e03953;
+              @extend .icon-exclamation-triangle:before
             }
-            color: #e03953;
           }
         }
       }
