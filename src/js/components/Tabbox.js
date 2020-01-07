@@ -36,19 +36,30 @@ export default class Tabbox {
     this.adjustSlider()
 
     if (defaultBtn) {
-      this.moveSlider({
-        top: defaultBtn.top,
-        left: defaultBtn.left,
-        width: defaultBtn.offsetWidth,
-        color: defaultBtn.dataset.activeColor
-      })
       this.currentNode = defaultBtn
+      this.moveToCurrentNode()
       this.addCurrentClass()
     }
   }
 
   setSliderColor(color) {
     this.slider.style.backgroundColor = color
+  }
+
+  moveToCurrentNode() {
+    let node = this.currentNode
+    if (! node) {
+      return
+    }
+    if (node.tagName === 'SELECT') {
+      node = node.parentNode
+    }
+    this.moveSlider({
+      top: node.offsetTop,
+      left: node.offsetLeft,
+      width: node.offsetWidth,
+      color: node.dataset.activeColor
+    })
   }
 
   moveSlider({ top, left, width, color = '#858585' }) {
@@ -85,13 +96,8 @@ export default class Tabbox {
         if (btn !== this.currentNode) {
           this.removeCurrentClass()
           this.clearSelects()
-          this.moveSlider({
-            top: btn.offsetTop,
-            left: btn.offsetLeft,
-            width: btn.offsetWidth,
-            color: btn.dataset.activeColor
-          })
           this.currentNode = btn
+          this.moveToCurrentNode()
           this.addCurrentClass()
           this.options.change({ id: btn.dataset.tabboxItem, type: 'btn' })
         }
@@ -105,13 +111,8 @@ export default class Tabbox {
         if (event.target.value) {
           this.removeCurrentClass()
           this.clearSelects({ except: select })
-          this.moveSlider({
-            top: div.offsetTop,
-            left: div.offsetLeft,
-            width: div.offsetWidth,
-            color: div.dataset.activeColor
-          })
           this.currentNode = select
+          this.moveToCurrentNode()
           this.addCurrentClass()
           this.options.change({ id: event.target.value, type: 'select' })
         }
