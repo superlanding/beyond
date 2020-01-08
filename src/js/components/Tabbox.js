@@ -42,11 +42,12 @@ export default class Tabbox {
     this.slider.classList.add('js-slider')
     this.dom.appendChild(this.slider)
     const defaultBtn = this.btns.find(btn => 'default' in btn.dataset)
+    const defaultSelectBox = this.selectBoxes.find(div => 'default' in div.dataset)
 
     this.adjustSlider()
 
-    if (defaultBtn) {
-      this.currentNode = defaultBtn
+    if (defaultBtn || defaultSelectBox) {
+      this.currentNode = defaultBtn || defaultSelectBox
       this.moveToCurrentNode()
       this.addCurrentClass()
     }
