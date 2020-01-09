@@ -33,72 +33,110 @@ h6 {
   }
 }
 
-.txt-num,
-a.txt-num,
-a.txt-num:hover {
+.txt-num {
   font-family: 'Roboto', sans-serif;
 }
+
 .txt-order-id,
 a.txt-order-id,
 a.txt-order-id:hover {
   font-family: 'Roboto', sans-serif;
-  color: #343a6a;
+  color: $color-order-id;
 }
+a.txt-order-id:hover {
+  border-bottom: 1px solid $color-order-id;
+}
+
 .txt-consignment-no,
 a.txt-consignment-no,
 a.txt-consignment-no:hover {
   font-family: Arial;
-  color: #424770;
+  color: $color-consignment-no;
 }
+a.txt-consignment-no:hover {
+  border-bottom: 1px solid $color-consignment-no;
+}
+
 .txt-xdelivery-id,
 a.txt-xdelivery-id,
 a.txt-xdelivery-id:hover {
   font-family: "PingFang TC";
-  color: #6382A3;
+  color: $color-xdelivery-id;
 }
+a.txt-xdelivery-id:hover {
+  border-bottom: 1px solid $color-xdelivery-id;
+}
+
 .txt-sticky-nickname,
 a.txt-sticky-nickname,
 a.txt-sticky-nickname:hover {
   font-family: "Helvetica Neue";
-  color: #000;
+  color: $color-sticky-nickname;
   font-weight: 900;
 }
+a.txt-sticky-nickname:hover {
+  border-bottom: 1px solid $color-sticky-nickname;
+}
+
 .txt-money,
 a.txt-money,
 a.txt-money:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: #5c5f72;
+  color: $color-money;
 }
+a.txt-money:hover {
+  border-bottom: 1px solid $color-money;
+}
+
 .txt-receiver,
 a.txt-receiver,
 a.txt-receiver:hover {
   font-family: "PingFang TC";
-  color: #424770;
+  color: $color-receiver;
 }
+a.txt-receiver:hover {
+  border-bottom: 1px solid $color-receiver;
+}
+
 .txt-ip,
 a.txt-ip,
 a.txt-ip:hover {
   font-family: 'Roboto', sans-serif;
-  color: #424770;
+  color: $color-ip;
 }
+a.txt-ip:hover {
+  border-bottom: 1px solid $color-ip;
+}
+
 .txt-invoice-no,
 a.txt-invoice-no,
 a.txt-invoice-no:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: #63a396;
+  color: $color-invoice-no;
 }
+a.txt-invoice-no:hover {
+  border-bottom: 1px solid $color-invoice-no;
+}
+
 .txt-part-no,
 a.txt-part-no,
 a.txt-part-no:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: #6772e5;
+  color: $color-part-no;
 }
+a.txt-part-no:hover {
+  border-bottom: 1px solid $color-part-no;
+}
+
 .txt-picking,
 a.txt-picking,
 a.txt-picking:hover {
   font-family: 'Roboto', sans-serif;
-  color: #4191d9;
+  color: $color-picking;
+}
+a.txt-picking:hover {
+  border-bottom: 1px solid $color-picking;
 }
