@@ -34,60 +34,71 @@ h6 {
 }
 
 .txt-num,
-a.txt-num {
+a.txt-num,
+a.txt-num:hover {
   font-family: 'Roboto', sans-serif;
 }
 .txt-order-id,
-a.txt-order-id {
+a.txt-order-id,
+a.txt-order-id:hover {
   font-family: 'Roboto', sans-serif;
   color: #343a6a;
 }
 .txt-consignment-no,
-a.txt-consignment-no {
+a.txt-consignment-no,
+a.txt-consignment-no:hover {
   font-family: Arial;
   color: #424770;
 }
 .txt-xdelivery-id,
-a.txt-xdelivery-id {
+a.txt-xdelivery-id,
+a.txt-xdelivery-id:hover {
   font-family: "PingFang TC";
   color: #6382A3;
 }
 .txt-sticky-nickname,
-a.txt-sticky-nickname {
+a.txt-sticky-nickname,
+a.txt-sticky-nickname:hover {
   font-family: "Helvetica Neue";
   color: #000;
   font-weight: 900;
 }
 .txt-money,
-a.txt-money {
+a.txt-money,
+a.txt-money:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   color: #5c5f72;
 }
 .txt-receiver,
-a.txt-receiver {
+a.txt-receiver,
+a.txt-receiver:hover {
   font-family: "PingFang TC";
   color: #424770;
 }
 .txt-ip,
-a.txt-ip {
+a.txt-ip,
+a.txt-ip:hover {
   font-family: 'Roboto', sans-serif;
   color: #424770;
 }
 .txt-invoice-no,
-a.txt-invoice-no {
+a.txt-invoice-no,
+a.txt-invoice-no:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   color: #63a396;
 }
 .txt-part-no,
-a.txt-part-no {
+a.txt-part-no,
+a.txt-part-no:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   color: #6772e5;
 }
 .txt-picking,
-a.txt-picking {
+a.txt-picking,
+a.txt-picking:hover {
   font-family: 'Roboto', sans-serif;
   color: #4191d9;
 }
