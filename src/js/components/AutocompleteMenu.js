@@ -55,7 +55,7 @@ export default class AutocompleteMenu {
     this.dom = dom
   }
 
-  renderMenu(rows, renderFunc) {
+  renderMenuItem(rows, renderFunc) {
     const nodes = rows.map(row => renderFunc(row))
     const html = nodes.map(node => {
       if ((typeof node === 'object') && ('outerHTML' in node)) {

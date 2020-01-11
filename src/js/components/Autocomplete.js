@@ -4,6 +4,15 @@ import promisify from '../helpers/promisify'
 import supportDom from '../helpers/supportDom'
 import noop from 'lodash.noop'
 
+const defaultRenderMenuItem = row => {
+  return `
+    <div class="item">
+      <div class="page-prefix">${row.prefix}</div>
+      <div class="page-title">${row.title}</div>
+    </div>
+  `
+}
+
 @supportDom
 export default class Autocomplete {
 
@@ -11,6 +20,7 @@ export default class Autocomplete {
     this.dom = dom
     this.options = options
     this.options.getData = promisify(this.options.getData || noop)
+    this.options.renderMenuItem = this.options.renderMenuItem || defaultRenderMenuItem
     this.isCompositing = false
     this.rows = []
 
@@ -26,15 +36,8 @@ export default class Autocomplete {
     this.addEvents()
   }
 
-  renderMenu() {
-    this.menu.renderMenu(this.rows, row => {
-      return `
-        <div class="item">
-          <div class="page-prefix">${row.prefix}</div>
-          <div class="page-title">${row.title}</div>
-        </div>
-      `;
-    })
+  renderMenuItem() {
+    this.menu.renderMenuItem(this.rows, this.options.renderMenuItem)
   }
 
   async getData() {
@@ -45,7 +48,7 @@ export default class Autocomplete {
     }
     const { menu } = this
     this.rows = rows
-    this.renderMenu()
+    this.renderMenuItem()
 
     if (rows.length > 0) {
       this.showMenu()
