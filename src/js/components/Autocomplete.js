@@ -26,8 +26,8 @@ export default class Autocomplete {
     this.addEvents()
   }
 
-  renderMenu() {
-    this.menu.renderMenu(this.rows, row => {
+  renderMenuItem() {
+    this.menu.renderMenuItem(this.rows, row => {
       return `
         <div class="item">
           <div class="page-prefix">${row.prefix}</div>
@@ -45,7 +45,7 @@ export default class Autocomplete {
     }
     const { menu } = this
     this.rows = rows
-    this.renderMenu()
+    this.renderMenuItem()
 
     if (rows.length > 0) {
       this.showMenu()
