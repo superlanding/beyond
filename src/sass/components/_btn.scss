@@ -34,14 +34,28 @@
     transform: translateY(0);
     cursor: not-allowed;
   }
-}
-
-.btn-icon {
   .icon {
     display: inline-block;
     margin-right: 4px;
     vertical-align: sub;
   }
+}
+
+.btn-icon {
+  @include size(48px);
+  position: relative;
+  padding: 0;
+  box-shadow: none;
+  &:hover {
+    box-shadow: none;
+  }
+  background-color: transparent;
+  border: 0;
+  .icon {
+    margin: 0;
+    vertical-align: middle;
+  }
+  @include ripple(48px, 0, 0);
 }
 
 .btn.btn-outline {

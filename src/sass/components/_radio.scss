@@ -5,15 +5,20 @@
   vertical-align: middle;
   color: #3c4257;
   font-size: 14px;
+  > span {
+    position: relative;
+  }
 }
 .radio {
+  $size: 14px;
+  @include size($size);
   cursor: pointer;
   transform: translateY(2px);
-  @include size(14px);
   position: relative;
   display: inline-block;
   margin-right: 4px;
   input[type="radio"] {
+    @include size($size);
     cursor: pointer;
     opacity: 0;
     position: absolute;
@@ -50,4 +55,5 @@
       opacity: 0;
     }
   }
+  @include ripple(34px, -10px, -9px);
 }
