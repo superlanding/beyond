@@ -101,6 +101,34 @@ export default class Tabbox {
     }
   }
 
+  setStatus(status) {
+    const btn = this.btns.find(btn => btn.dataset.tabboxItem === status)
+    if (btn) {
+      this.removeCurrentClass()
+      this.clearSelects()
+      this.currentNode = btn
+      this.moveToCurrentNode()
+      this.addCurrentClass()
+      this.options.change({ id: status, type: 'btn' })
+      return
+    }
+    const select = this.selects.find(s => {
+      const options = Array.from(s.querySelectorAll('option'))
+      return options.find(o => o.value === status)
+    })
+    if (select) {
+      this.removeCurrentClass()
+      this.clearSelects({ except: select })
+      select.value = status
+      this.currentNode = select
+      this.moveToCurrentNode()
+      this.addCurrentClass()
+      this.options.change({ id: status, type: 'select' })
+      return
+    }
+    throw new Error(`Cannot find status: ${status}`)
+  }
+
   addEvents() {
     this.btns.forEach(btn => {
       this.addEvent(btn, 'click', () => {
