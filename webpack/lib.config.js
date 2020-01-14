@@ -2,20 +2,6 @@ const path = require('path')
 const mode = (process.env.NODE_ENV === 'production') ? 'production' : 'development'
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const output = {
-  library: 'beyond',
-  libraryTarget: 'umd',
-  filename: 'beyond.js',
-  path: path.resolve(__dirname, '../dist')
-}
-
-if (mode === 'development') {
-  output.publicPath = 'http://localhost:8080/'
-}
-else {
-  output.publicPath = '/beyond/dist/'
-}
-
 module.exports = {
   mode,
   devtool: 'source-map',
@@ -72,7 +58,12 @@ module.exports = {
       }
     ]
   },
-  output,
+  output: {
+    library: 'beyond',
+    libraryTarget: 'umd',
+    filename: 'beyond.js',
+    path: path.resolve(__dirname, '../dist')
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'beyond.css',
