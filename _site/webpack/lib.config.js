@@ -12,6 +12,9 @@ const output = {
 if (mode === 'development') {
   output.publicPath = 'http://localhost:8080/'
 }
+else {
+  output.publicPath = '/beyond/dist/'
+}
 
 module.exports = {
   mode,
