@@ -1,4 +1,7 @@
 .select {
+  &::-ms-expand {
+    display: none;
+  }
   font-size: 14px;
   color: #3c4257;
   appearance: none;
