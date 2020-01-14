@@ -25,7 +25,7 @@
   .codebox-panes {
     transition: .3s all;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     flex-wrap: nowrap;
     > div {
       width: 100%;
