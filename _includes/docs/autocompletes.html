@@ -1,0 +1,85 @@
+<div class="doc">
+  <h2>Autocomplete HTML</h2>
+  <div class="code">
+{% highlight html %}
+<label class="search-input">
+  <i class="icon-search"></i>
+  <input class="input"
+         type="text"
+         data-autocomplete
+         data-offset-left="-26"
+         placeholder="search something" />
+</label>
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-offset-left</td>
+        <td>選單的 left 偏移值，例如希望選單可以往右偏移 20 px，<strong>data-offset-left="20"</strong></td>
+      </tr>
+      <tr>
+        <td>data-offset-top</td>
+        <td>選單的 top 偏移值</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Autocomplete JS</h2>
+  <h3>constructor</h3>
+  <div class="code">
+{% highlight js %}
+const autocomplete = new Autocomplete(dom, options)
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>需要指定為 autocomplete 的元素</td>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>object</td>
+        <td>選項</td>
+      </tr>
+      <tr>
+        <td>options.getData</td>
+        <td>function</td>
+        <td>根據關鍵字取得選單資料，可以是 async function</td>
+      </tr>
+      <tr>
+        <td>options.itemClick</td>
+        <td>function</td>
+        <td>決定要 return row 的哪一個屬性當作是 getData function 的關鍵字</td>
+      </tr>
+      <tr>
+        <td>options.renderMenuItem</td>
+        <td>function</td>
+        <td>決定要用什麼 HTML 顯示 autocomplete 的 menu 選單</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>destroy</h3>
+  <p>移除 autocomplete 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+{% highlight js %}
+autocomplete.destroy()
+{% endhighlight %}
+  </div>
+</div><!-- .doc -->
