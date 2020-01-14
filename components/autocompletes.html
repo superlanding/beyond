@@ -208,33 +208,43 @@
 25
 26
 27
-</pre></td><td class="code"><pre><span class="kd">const</span> <span class="p">{</span> <span class="nx">Autocomplete</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+28
+29
+30
+31
+32
+</pre></td><td class="code"><pre><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">Autocomplete</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
 
-<span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">{</span> <span class="na">prefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SP</span><span class="dl">'</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">🔥SHARE.CO🔥經典香水吊卡 ➜ 糖果茉莉, 奇蹟罌粟, 能量麝香, 甜蜜莉莉</span><span class="dl">'</span> <span class="p">},</span>
-  <span class="p">{</span> <span class="na">prefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SPY</span><span class="dl">'</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">🔥SHARE.CO🔥經典粉絲限定 VIP 方案</span><span class="dl">'</span> <span class="p">},</span>
-  <span class="p">{</span> <span class="na">prefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SW</span><span class="dl">'</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">素TEE / 內褲 / 平口褲 ➜ 版型專為亞洲人身形設計</span><span class="dl">'</span> <span class="p">}</span>
-<span class="p">]</span>
+  <span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="na">prefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SP</span><span class="dl">'</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">🔥SHARE.CO🔥經典香水吊卡 ➜ 糖果茉莉, 奇蹟罌粟, 能量麝香, 甜蜜莉莉</span><span class="dl">'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">prefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SPY</span><span class="dl">'</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">🔥SHARE.CO🔥經典粉絲限定 VIP 方案</span><span class="dl">'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">prefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SW</span><span class="dl">'</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">素TEE / 內褲 / 平口褲 ➜ 版型專為亞洲人身形設計</span><span class="dl">'</span> <span class="p">}</span>
+  <span class="p">]</span>
 
-<span class="kd">const</span> <span class="nx">dom</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-autocomplete]</span><span class="dl">'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">dom</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-autocomplete]</span><span class="dl">'</span><span class="p">)</span>
 
-<span class="kd">const</span> <span class="nx">autocomplete</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Autocomplete</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
-
-  <span class="k">async</span> <span class="nx">getData</span><span class="p">({</span> <span class="nx">keyword</span> <span class="p">})</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">filter</span><span class="p">(({</span> <span class="nx">prefix</span><span class="p">,</span> <span class="nx">title</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-
-      <span class="kd">const</span> <span class="nx">upperKeyword</span> <span class="o">=</span> <span class="nx">keyword</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
-      <span class="kd">const</span> <span class="nx">upperTitle</span> <span class="o">=</span> <span class="nx">title</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
-      <span class="kd">const</span> <span class="nx">upperPrefix</span> <span class="o">=</span> <span class="nx">prefix</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
-
-      <span class="k">return</span> <span class="nx">upperPrefix</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">upperKeyword</span><span class="p">)</span> <span class="o">||</span> <span class="nx">upperTitle</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">upperKeyword</span><span class="p">)</span>
-    <span class="p">})</span>
-  <span class="p">},</span>
-
-  <span class="nx">itemClick</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">prefix</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">dom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span>
   <span class="p">}</span>
-<span class="p">})</span>
+
+  <span class="k">new</span> <span class="nx">Autocomplete</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
+
+    <span class="k">async</span> <span class="nx">getData</span><span class="p">({</span> <span class="nx">keyword</span> <span class="p">})</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">filter</span><span class="p">(({</span> <span class="nx">prefix</span><span class="p">,</span> <span class="nx">title</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+        <span class="kd">const</span> <span class="nx">upperKeyword</span> <span class="o">=</span> <span class="nx">keyword</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+        <span class="kd">const</span> <span class="nx">upperTitle</span> <span class="o">=</span> <span class="nx">title</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+        <span class="kd">const</span> <span class="nx">upperPrefix</span> <span class="o">=</span> <span class="nx">prefix</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="nx">upperPrefix</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">upperKeyword</span><span class="p">)</span> <span class="o">||</span> <span class="nx">upperTitle</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">upperKeyword</span><span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">},</span>
+    <span class="nx">itemClick</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">prefix</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">})()</span>
 </pre></td></tr></tbody></table></code></pre></figure>
         </div>
       </div>
@@ -320,34 +330,6 @@
 </div><!-- .doc -->
 
   </div><!-- .card end -->
-  <script>const { Autocomplete } = window.beyond
-
-const rows = [
-  { prefix: 'SP', title: '🔥SHARE.CO🔥經典香水吊卡 ➜ 糖果茉莉, 奇蹟罌粟, 能量麝香, 甜蜜莉莉' },
-  { prefix: 'SPY', title: '🔥SHARE.CO🔥經典粉絲限定 VIP 方案' },
-  { prefix: 'SW', title: '素TEE / 內褲 / 平口褲 ➜ 版型專為亞洲人身形設計' }
-]
-
-const dom = document.querySelector('[data-autocomplete]')
-
-const autocomplete = new Autocomplete(dom, {
-
-  async getData({ keyword }) {
-    return rows.filter(({ prefix, title }) => {
-
-      const upperKeyword = keyword.toUpperCase()
-      const upperTitle = title.toUpperCase()
-      const upperPrefix = prefix.toUpperCase()
-
-      return upperPrefix.includes(upperKeyword) || upperTitle.includes(upperKeyword)
-    })
-  },
-
-  itemClick(row) {
-    return row.prefix
-  }
-})
-</script>
 </div>
 
     </main>

@@ -3,6 +3,7 @@ const mode = (process.env.NODE_ENV === 'production') ? 'production' : 'developme
 
 module.exports = {
   mode,
+  devtool: 'source-map',
   entry: './assets/js/default.js',
   module: {
     rules: [
