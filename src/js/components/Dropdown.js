@@ -42,7 +42,7 @@ export default class Dropdown {
     menu.style.display = 'block'
     menu.style.opacity = 0
     menu.style.transform = 'scale(.8)'
-    document.body.append(menu)
+    document.body.appendChild(menu)
     this.adjustMenuPos()
     menu.style.transform = 'scale(1)'
     menu.style.opacity = 1

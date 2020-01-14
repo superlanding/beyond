@@ -85,44 +85,44 @@
   &[data-place="top"][data-align="left"]:after {
     bottom: -6px;
     left: 20px;
-    right: initial;
+    right: auto;
   }
   &[data-place="bottom"][data-align="left"]:after {
     top: -6px;
     left: 20px;
-    right: initial;
+    right: auto;
   }
 
   &[data-place="top"][data-align="right"]:after {
     bottom: -6px;
-    left: initial;
+    left: auto;
     right: 20px;
   }
   &[data-place="bottom"][data-align="right"]:after {
     top: -6px;
-    left: initial;
+    left: auto;
     right: 20px;
   }
 
   &[data-place="left"][data-align="top"]:after {
     right: -6px;
     top: 14px;
-    bottom: initial;
+    bottom: auto;
   }
   &[data-place="right"][data-align="top"]:after {
     left: -6px;
     top: 14px;
-    bottom: initial;
+    bottom: auto;
   }
 
   &[data-place="left"][data-align="bottom"]:after {
     right: -6px;
-    top: initial;
+    top: auto;
     bottom: 14px;
   }
   &[data-place="right"][data-align="bottom"]:after {
     left: -6px;
-    top: initial;
+    top: auto;
     bottom: 14px;
   }
 }

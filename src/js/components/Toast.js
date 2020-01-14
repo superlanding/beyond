@@ -72,7 +72,7 @@ export default class Toast {
   init() {
     const toast = document.createElement('div')
     toast.classList.add('toast')
-    document.body.append(toast)
+    document.body.appendChild(toast)
     this.toast = toast
   }
 
