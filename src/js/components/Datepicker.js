@@ -11,6 +11,7 @@ import DatepickerTimeMenu from './DatepickerTimeMenu'
 import DatepickerBtnArrow from './DatepickerBtnArrow'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
+import intlReady from '../helpers/intlReady'
 import supportDom from '../helpers/supportDom'
 import { DEFAULT_TIMEZONE } from '../consts'
 
@@ -25,7 +26,9 @@ export default class Datepicker {
     this.lastTriggered = null
     this.nextDate = null
     this.focused = false
-    this.init()
+
+    intlReady()
+      .then(() => this.init())
   }
 
   init() {
