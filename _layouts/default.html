@@ -18,13 +18,16 @@
     {% else %}
       <script src="{{ '/dist/beyond.js' | relative_url }}"></script>
     {% endif %}
-    <script src="{{ '/assets/js/codebox.js' | relative_url }}"></script>
   </head>
   <body class="container-default container bg-admin">
     {% include nav.html %}
     <main class="main">
       {{ content }}
     </main>
-    <script src="{{ '/assets/js/default.js' | relative_url }}"></script>
+    {% if jekyll.environment == "development" %}
+      <script src="http://localhost:8080/web.js"></script>
+    {% else %}
+      <script src="{{ '/dist/web.js' | relative_url }}"></script>
+    {% endif %}
   </body>
 </html>
