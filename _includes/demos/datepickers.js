@@ -1,6 +1,4 @@
 const { Datepicker } = window.beyond
 
-document.querySelectorAll('[data-datepicker]').forEach(dom => {
-
-  const datepicker = new Datepicker(dom)
-})
+document.querySelectorAll('[data-datepicker]')
+  .forEach(dom => new Datepicker(dom))
