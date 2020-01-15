@@ -30,8 +30,11 @@ export default class Datepicker {
 
   init() {
     const { dom } = this
-    this.startDate = utcToZonedTime(new Date(), this.tz)
-    this.endDate = utcToZonedTime(endOfDay(new Date()), this.tz)
+    const startDate = this.options.startDate || new Date()
+    const endDate = this.options.endDate || endOfDay(startDate)
+
+    this.startDate = utcToZonedTime(startDate, this.tz)
+    this.endDate = utcToZonedTime(endDate, this.tz)
 
     this.currentDate = this.startDate
 
@@ -72,6 +75,18 @@ export default class Datepicker {
     this.timeMenu = new DatepickerTimeMenu()
 
     this.addEvents()
+  }
+
+  setDates(startDate, endDate) {
+    if (dateGt(startDate, endDate)) {
+      throw new Error('Start date cannot be greater than end date.')
+    }
+    this.startDate = utcToZonedTime(startDate, this.tz)
+    this.endDate = utcToZonedTime(endDate, this.tz)
+    this.inputDateStart.setDate(this.startDate)
+    this.inputTimeStart.setDate(this.startDate)
+    this.inputDateEnd.setDate(this.endDate)
+    this.inputTimeEnd.setDate(this.endDate)
   }
 
   clearInputStatus() {
