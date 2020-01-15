@@ -28,6 +28,7 @@
     "date-fns": "2.9.0",
     "date-fns-tz": "1.0.9",
     "date-time-format-timezone": "1.0.21",
+    "element-dataset": "2.2.6",
     "lodash.debounce": "4.0.8",
     "lodash.isfunction": "3.0.9",
     "lodash.noop": "3.0.1",
