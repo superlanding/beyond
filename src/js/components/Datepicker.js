@@ -30,8 +30,11 @@ export default class Datepicker {
 
   init() {
     const { dom } = this
-    this.startDate = utcToZonedTime(new Date(), this.tz)
-    this.endDate = utcToZonedTime(endOfDay(new Date()), this.tz)
+    const startDate = this.options.startDate || new Date()
+    const endDate = this.options.endDate || endOfDay(startDate)
+
+    this.startDate = utcToZonedTime(startDate, this.tz)
+    this.endDate = utcToZonedTime(endDate, this.tz)
 
     this.currentDate = this.startDate
 
