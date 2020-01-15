@@ -7,20 +7,25 @@
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+
   .toast-item {
+    display: inline-block;
     border-radius: 2px;
-    display: flex;
-    align-items: center;
     transition: .3s all;
     margin: 7px auto;
     padding: 8px 12px;
     background-color: #3c4257;
     color: #fff;
-    .toast-message {
-      padding-right: 14px;
-    }
+    white-space: nowrap;
+  }
+  .toast-message {
+    vertical-align: middle;
+    white-space: normal;
+    text-align: left;
+    max-width: 210px;
+    display: inline-block;
+    padding-right: 14px;
   }
   .toast-btn {
     padding: 7px 14px 7px 24px;
