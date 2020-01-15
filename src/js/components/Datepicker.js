@@ -77,6 +77,18 @@ export default class Datepicker {
     this.addEvents()
   }
 
+  setDates(startDate, endDate) {
+    if (dateGt(startDate, endDate)) {
+      throw new Error('Start date cannot be greater than end date.')
+    }
+    this.startDate = utcToZonedTime(startDate, this.tz)
+    this.endDate = utcToZonedTime(endDate, this.tz)
+    this.inputDateStart.setDate(this.startDate)
+    this.inputTimeStart.setDate(this.startDate)
+    this.inputDateEnd.setDate(this.endDate)
+    this.inputTimeEnd.setDate(this.endDate)
+  }
+
   clearInputStatus() {
     this.inputDateStart.clearStatus()
     this.inputTimeStart.clearStatus()
