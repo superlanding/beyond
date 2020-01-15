@@ -24,7 +24,7 @@
     "@superlanding/getdompos": "0.0.16",
     "@superlanding/getscrollleft": "0.0.16",
     "@superlanding/getscrolltop": "0.0.16",
-    "core-js": "3",
+    "core-js": "3.6.4",
     "date-fns": "2.9.0",
     "date-fns-tz": "1.0.9",
     "date-time-format-timezone": "1.0.21",
