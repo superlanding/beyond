@@ -17,6 +17,8 @@
       const i = this.currentIndex
       const transform = (i === 0) ? 'none' : `translateX(-${i * 100}%)`
       this.panesBox.style.transform = transform
+      // ie9
+      this.panesBox.style.msTransform = transform
       this.panesBox.style.height = this.panes[i].offsetHeight + 'px'
     }
 
