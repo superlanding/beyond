@@ -10,8 +10,19 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        include: [
+          path.resolve('src/js'),
+          path.resolve('node_modules/@superlanding')
+        ],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              configFile: path.resolve('.babelrc')
+            }
+          },
+          'eslint-loader'
+        ]
       },
       {
         test: /\.svg$/,
