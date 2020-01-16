@@ -9,4 +9,3 @@ git commit -m "update _site/ and dist/"
 git subtree split --prefix _site -b gh-pages
 
 git push --all origin
-git co master
