@@ -1,6 +1,7 @@
 import './../sass/index.scss'
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+import './polyfills/classList'
 import './polyfills/nodeRemove'
 import './polyfills/elementDataset'
 import Autocomplete from './components/Autocomplete'
