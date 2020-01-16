@@ -1,5 +1,3 @@
-import 'core-js/stable'
-import 'regenerator-runtime/runtime'
 import './codebox'
 import '../../_includes/demos/tabbox'
 import '../../_includes/demos/toasts'

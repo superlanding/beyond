@@ -67,7 +67,7 @@ export default class AutocompleteMenu {
   }
 
   addEvents() {
-    this.addEvent(this.dom, 'click', () => {
+    this.addEvent(this.dom, 'click', event => {
       let node = event.target
       while (node.parentNode !== this.dom) {
         node = node.parentNode
