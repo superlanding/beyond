@@ -43,6 +43,9 @@
       background-color: #f7fafc;
     }
   }
+  &.no-arrow:after {
+    display: none;
+  }
   &:after {
     content: ' ';
     display: block;
