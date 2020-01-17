@@ -28,13 +28,8 @@
     }
   }
 
-  &.tag-new {
-    border-color: $bg-tag-new;
-    color: $bg-tag-new;
-  }
-
   @for $i from 1 through length($bg-tag-types) {
-    &.tag-type#{$i} {
+    &.tag-type#{$i - 1} {
       border-color: nth($bg-tag-types, $i);
       color: nth($bg-tag-types, $i);
     }

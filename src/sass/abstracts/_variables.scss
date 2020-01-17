@@ -72,7 +72,7 @@ $color-invoice-no: #63a396;
 $color-part-no: #6772e5;
 $color-picking: #4191d9;
 
-$bg-tag-new: #6dbc80;
+$bg-tag-type0: #6dbc80;
 $bg-tag-type1: #018972;
 $bg-tag-type2: #005b4a;
 $bg-tag-type3: #313864;
@@ -82,10 +82,11 @@ $bg-tag-invoice: #5d69e3;
 $bg-tag-coupon: #e682dc;
 $bg-tag-danger: #e03953;
 
-$bg-tag-types: $bg-tag-type1,
-                 $bg-tag-type2,
-                 $bg-tag-type3,
-                 $bg-tag-type4;
+$bg-tag-types: $bg-tag-type0,
+               $bg-tag-type1,
+               $bg-tag-type2,
+               $bg-tag-type3,
+               $bg-tag-type4;
 
 $screen-xs: 480px;
 $screen-sm: 768px;
