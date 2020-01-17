@@ -2,8 +2,8 @@ module Beyond
   module Rails
     class Engine < ::Rails::Engine
       initializer 'beyond.assets.precompile' do |app|
-        %w(stylesheets javascripts fonts images).each do |sub|
-          app.config.assets.paths << root.join('assets', sub).to_s
+        %w(sass js font img).each do |sub|
+          app.config.assets.paths << root.join('src', sub).to_s
         end
 
         # sprockets-rails 3 tracks down the calls to `font_path` and `image_path`
