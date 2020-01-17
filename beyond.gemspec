@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/@superlanding/beyond'
   s.license  = 'MIT'
 
-  s.add_runtime_dependency 'sassc', '~> 2.0', '>= 2.0.0'
-  s.add_runtime_dependency 'autoprefixer-rails', '~> 5.2', '>= 5.2.1'
+  s.add_runtime_dependency 'sassc', '>= 2.0.0'
+  s.add_runtime_dependency 'autoprefixer-rails', '>= 5.2.1'
 
   s.files    = `git ls-files -- src/*`.split("\n")
 end
