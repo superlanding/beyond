@@ -1,3 +1,5 @@
+$beyond-use-helper: false !default;
+
 $bg-admin: #e3e8ee;
 $bg-outline: rgba(58, 151, 212, .28);
 
@@ -72,26 +74,30 @@ $color-invoice-no: #63a396;
 $color-part-no: #6772e5;
 $color-picking: #4191d9;
 
-$bg-tag-new: #6dbc80;
+$bg-tag-type0: #6dbc80;
 $bg-tag-type1: #018972;
 $bg-tag-type2: #005b4a;
 $bg-tag-type3: #313864;
 $bg-tag-type4: #74b6fb;
-$bg-tag-others: #8b8b9e;
-$bg-tag-invoice: #5d69e3;
-$bg-tag-coupon: #e682dc;
+$bg-tag-type5: #5d69e3;
+$bg-tag-type6: #8b8b9e;
+$bg-tag-type7: #e682dc;
 $bg-tag-danger: #e03953;
 
-$bg-tag-types: $bg-tag-type1,
-                 $bg-tag-type2,
-                 $bg-tag-type3,
-                 $bg-tag-type4;
+$bg-tag-types: $bg-tag-type0,
+               $bg-tag-type1,
+               $bg-tag-type2,
+               $bg-tag-type3,
+               $bg-tag-type4,
+               $bg-tag-type5,
+               $bg-tag-type6,
+               $bg-tag-type7;
 
 $screen-xs: 480px;
 $screen-sm: 768px;
 $screen-md: 992px;
 $screen-lg: 1200px;
 
-$beyond-icon-font-path: '../font/' !default;
+$beyond-icon-font-path: if($beyond-use-helper, '', '../font/') !default;
 $beyond-icon-font-name: 'icomoon' !default;
-$beyond-css-img-path: './img/' !default;
+$beyond-css-img-path: if($beyond-use-helper, '', './img/') !default;

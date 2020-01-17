@@ -28,29 +28,11 @@
     }
   }
 
-  &.tag-new {
-    border-color: $bg-tag-new;
-    color: $bg-tag-new;
-  }
-
   @for $i from 1 through length($bg-tag-types) {
-    &.tag-type#{$i} {
+    &.tag-type#{$i - 1} {
       border-color: nth($bg-tag-types, $i);
       color: nth($bg-tag-types, $i);
     }
-  }
-
-  &.tag-invoice {
-    border-color: $bg-tag-invoice;
-    color: $bg-tag-invoice;
-  }
-  &.tag-others {
-    border-color: $bg-tag-others;
-    color: $bg-tag-others;
-  }
-  &.tag-coupon {
-    border-color: $bg-tag-coupon;
-    color: $bg-tag-coupon;
   }
   &.tag-danger {
     border: 0;

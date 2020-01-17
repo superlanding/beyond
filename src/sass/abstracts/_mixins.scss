@@ -1,3 +1,17 @@
+@function beyond-font-path($path) {
+  @if $beyond-use-helper {
+    @return font-path($path);
+  }
+  @return $path
+}
+
+@function beyond-image-path($path) {
+  @if $beyond-use-helper {
+    @return image-path($path);
+  }
+  @return $path
+}
+
 @mixin size($size) {
   width: $size;
   height: $size;
