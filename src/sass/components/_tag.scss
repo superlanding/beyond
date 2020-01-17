@@ -34,10 +34,6 @@
       color: nth($bg-tag-types, $i);
     }
   }
-  &.tag-coupon {
-    border-color: $bg-tag-coupon;
-    color: $bg-tag-coupon;
-  }
   &.tag-danger {
     border: 0;
     background-color: $bg-tag-danger;
