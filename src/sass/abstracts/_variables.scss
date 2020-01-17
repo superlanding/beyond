@@ -77,8 +77,8 @@ $bg-tag-type1: #018972;
 $bg-tag-type2: #005b4a;
 $bg-tag-type3: #313864;
 $bg-tag-type4: #74b6fb;
+$bg-tag-type5: #5d69e3;
 $bg-tag-others: #8b8b9e;
-$bg-tag-invoice: #5d69e3;
 $bg-tag-coupon: #e682dc;
 $bg-tag-danger: #e03953;
 
@@ -86,7 +86,8 @@ $bg-tag-types: $bg-tag-type0,
                $bg-tag-type1,
                $bg-tag-type2,
                $bg-tag-type3,
-               $bg-tag-type4;
+               $bg-tag-type4,
+               $bg-tag-type5;
 
 $screen-xs: 480px;
 $screen-sm: 768px;
