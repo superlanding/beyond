@@ -34,11 +34,6 @@
       color: nth($bg-tag-types, $i);
     }
   }
-
-  &.tag-others {
-    border-color: $bg-tag-others;
-    color: $bg-tag-others;
-  }
   &.tag-coupon {
     border-color: $bg-tag-coupon;
     color: $bg-tag-coupon;
