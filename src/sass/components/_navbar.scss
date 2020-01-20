@@ -3,7 +3,9 @@
   $color-nav-primary: rgb(60, 66, 87);
   $color-nav-primary-ex: #101425;
   $color-nav: rgb(105, 115, 150);
+  $color-nav-ex: #adb5d0;
   $color-nav-disabled: #adb5d0;
+
   display: flex;
   background-color: $bg-nav;
   font-size: 12px;
@@ -35,11 +37,10 @@
       }
     }
   }
-  .nav-item {
-    &.active, &:hover {
-      .nav-link {
-        color: $color-nav-primary-ex;
-      }
+  .nav-item.js-active,
+  .nav-item:hover  {
+    .nav-link {
+      color: $color-nav-primary-ex;
     }
   }
   .nav-link {
@@ -48,8 +49,20 @@
       color: $color-nav-disabled;
       cursor: not-allowed;
       &:hover {
-        color: #adb5d0;
+        color: $color-nav-ex;
       }
+    }
+  }
+  &.js-collapse {
+    @media (max-width: $screen-md) {
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      position: fixed;
+      z-index: 20;
+      box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
+        0 15px 35px 0 rgba(49, 49, 93, .1),
+        0 5px 15px 0 rgba(0, 0, 0, .08);
     }
   }
   .navbar-collapse {
@@ -122,6 +135,69 @@
         transform: rotate(-45deg);
         bottom: 0;
       }
+    }
+  }
+
+  &.navbar-type1 {
+    $bg-nav-type1: #1a1f36;
+    $color-nav-primary-type1: #fff;
+    $color-nav-type1: #6c8eef;
+    $color-nav-ex-type1: #fff;
+    $color-nav-disabled-type1: #9193ce;
+
+    background: $bg-nav-type1;
+    &, & a {
+      color: $color-nav-type1;
+    }
+    .navbar-brand {
+      color: $color-nav-primary-type1;
+    }
+    .nav-item.js-active,
+    .nav-item:hover  {
+      .nav-link {
+        color: $color-nav-ex-type1;
+      }
+    }
+    .nav-link.disabled {
+      color: $color-nav-disabled-type1;
+    }
+    .navbar-toggler-icon,
+    .navbar-toggler-icon:before,
+    .navbar-toggler-icon:after {
+      background-color: $color-nav-primary-type1;
+    }
+  }
+
+  &.navbar-type2 {
+    $color-nav-primary-type2: #fff;
+    $color-nav-type2: #e3e0e8;
+    $color-nav-ex-type2: #fff;
+    $color-nav-disabled-type2: #9193ce;
+
+    background: rgb(84,73,255);
+    background: linear-gradient(125deg,
+      rgba(84,73,255,1) 0%,
+      rgba(29,205,255,1) 80%,
+      rgba(166,255,203,1) 100%);
+    &, & a {
+      color: $color-nav-type2;
+    }
+    .navbar-brand {
+      color: $color-nav-primary-type2;
+    }
+    .nav-item.js-active,
+    .nav-item:hover  {
+      .nav-link {
+        color: $color-nav-ex-type2;
+      }
+    }
+    .nav-link.disabled {
+      color: $color-nav-disabled-type2;
+    }
+    .navbar-toggler-icon,
+    .navbar-toggler-icon:before,
+    .navbar-toggler-icon:after {
+      background-color: $color-nav-primary-type2;
     }
   }
 }
