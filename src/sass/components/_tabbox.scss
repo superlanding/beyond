@@ -48,11 +48,18 @@
       box-shadow: none;
     }
   }
+  &.tabbox-sm .tab-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  &.tabbox-lg .tab-btn {
+    font-size: 14px;
+    padding: 18px 50px;
+  }
   .tab-btn {
     background: #fff;
-    min-width: 60px;
-    padding: 6px 12px;
-    font-size: 12px;
+    padding: 12px 25px;
+    font-size: 13px;
     border-top: 0;
     border-right: 0;
     border-left: 0;
