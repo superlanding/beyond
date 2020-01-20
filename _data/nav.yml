@@ -6,6 +6,8 @@
   link: /content/colors.html
 - name: Buttons
   link: /components/buttons.html
+- name: Tabboxes
+  link: /components/tabboxes.html
 - name: Tags
   link: /components/tags.html
 - name: Selects
