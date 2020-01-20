@@ -32,6 +32,7 @@
     "element-dataset": "2.2.6",
     "intl": "1.2.5",
     "lodash.debounce": "4.0.8",
+    "lodash.get": "4.4.2",
     "lodash.isfunction": "3.0.9",
     "lodash.noop": "3.0.1",
     "lodash.throttle": "4.1.1",
