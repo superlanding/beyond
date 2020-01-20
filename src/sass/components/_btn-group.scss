@@ -1,3 +1,14 @@
+
+.badge {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  font-size: 12px;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #eaeaea;
+  padding: 2px 8px;
+}
+
 .btn-group {
 
   display: inline-block;
@@ -12,5 +23,8 @@
   > .btn.btn-last {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+  .btn .badge {
+    margin-left: 10px;
   }
 }

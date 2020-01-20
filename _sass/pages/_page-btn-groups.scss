@@ -1,5 +1,8 @@
 .page-btn-groups {
-  .codebox-result > .btn-group {
-    margin-right: 20px;
+  .btn-group-separator {
+    margin-bottom: 20px;
+    > .btn-group {
+      margin-right: 20px;
+    }
   }
 }
