@@ -17,7 +17,7 @@ export default class Dropdown {
   }
 
   init() {
-    this.id = this.dom.dataset.dropdown
+    this.id = this.dom.dataset.target
     this.menu = document.querySelector(`[data-dropdown-menu="${this.id}"]`)
     this.place = this.menu.dataset.place || 'bottom'
     this.align = this.menu.dataset.align
