@@ -12,6 +12,7 @@ import Tabbox from './components/Tabbox'
 import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
 import Sidebar from './components/Sidebar'
+import Navbar from './components/Navbar'
 
 export {
   Autocomplete,
@@ -21,5 +22,6 @@ export {
   Sidebar,
   Tabbox,
   Toast,
-  Tooltip
+  Tooltip,
+  Navbar
 }

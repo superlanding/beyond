@@ -6,6 +6,7 @@ import '../../_includes/demos/autocompletes'
 import '../../_includes/demos/datepickers'
 import '../../_includes/demos/tooltips'
 import '../../_includes/demos/dropdowns'
+import '../../_includes/demos/navbars'
 
 const { Codebox, Sidebar } = window.beyond
 

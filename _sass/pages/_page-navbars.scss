@@ -1,0 +1,11 @@
+.page-navbars {
+  .codebox {
+    width: 760px;
+    @media (max-width: $screen-md) {
+      width: 100%;
+      .codebox-result {
+        min-height: 320px;
+      }
+    }
+  }
+}

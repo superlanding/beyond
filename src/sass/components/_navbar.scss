@@ -1,0 +1,127 @@
+.navbar {
+  $bg-nav: rgb(227, 232, 238);
+  $color-nav-primary: rgb(60, 66, 87);
+  $color-nav-primary-ex: #101425;
+  $color-nav: rgb(105, 115, 150);
+  $color-nav-disabled: #adb5d0;
+  display: flex;
+  background-color: $bg-nav;
+  font-size: 12px;
+  padding: 8px 14px 8px 8px;
+  @media (max-width: $screen-md) {
+    display: block;
+    .navbar-topbar {
+      @include flex-center;
+    }
+  }
+  &, a {
+    color: $color-nav;
+  }
+  .navbar-brand {
+    display: inline-block;
+    color: $color-nav-primary;
+    font-size: 16px;
+    padding: 4px 14px;
+  }
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    @media (max-width: $screen-md) {
+      display: block;
+      margin-bottom: 10px;
+      .nav-link {
+        display: block;
+        padding: 7px 0;
+      }
+    }
+  }
+  .nav-item {
+    &.active, &:hover {
+      .nav-link {
+        color: $color-nav-primary-ex;
+      }
+    }
+  }
+  .nav-link {
+    padding: 7px 14px;
+    &.disabled {
+      color: $color-nav-disabled;
+      cursor: not-allowed;
+      &:hover {
+        color: #adb5d0;
+      }
+    }
+  }
+  .navbar-collapse {
+
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    @media (max-width: $screen-md) {
+      display: none;
+    }
+
+    &.js-collapse {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      @media (max-width: $screen-md) {
+        display: block;
+        padding: 7px 14px 14px;
+      }
+    }
+  }
+  .navbar-toggler {
+    display: none;
+    @media (max-width: $screen-md) {
+      display: block;
+    }
+    border: 0;
+    background-color: transparent;
+    position: relative;
+    @include size(48px);
+    .navbar-toggler-icon {
+      @include absolute-center;
+      &,
+      &:before,
+      &:after {
+        transition: .3s all;
+        background-color: $color-nav-primary;
+        display: block;
+        position: absolute;
+        width: 24px;
+        height: 1px;
+      }
+      &:before {
+        content: '';
+        top: -7px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      &:after {
+        content: '';
+        bottom: -7px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    &.js-active .navbar-toggler-icon {
+      & {
+        background-color: transparent;
+      }
+      &:before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+      &:after {
+        transform: rotate(-45deg);
+        bottom: 0;
+      }
+    }
+  }
+}
