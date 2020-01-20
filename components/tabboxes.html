@@ -5,6 +5,26 @@ title: Tabboxes
 <div class="page-tabboxes">
   <div class="card card-shadow-sm">
     <h2 class="card-heading">過濾按鈕</h2>
+
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+        <a>JavaScript</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          {% include demos/tabbox-sm.html %}
+        </div>
+        <div>
+          {% highlight html linenos %}{% include demos/tabbox-sm.html %}{% endhighlight %}
+        </div>
+        <div>
+          {% highlight javascript linenos %}{% include demos/tabbox.js %}{% endhighlight %}
+        </div>
+      </div>
+    </div>
+
     <div class="codebox" data-codebox>
       <div class="codebox-tabs" data-tabs>
         <a>Result</a>
@@ -23,6 +43,27 @@ title: Tabboxes
         </div>
       </div>
     </div>
+
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+        <a>JavaScript</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          {% include demos/tabbox-lg.html %}
+        </div>
+        <div>
+          {% highlight html linenos %}{% include demos/tabbox-lg.html %}{% endhighlight %}
+        </div>
+        <div>
+          {% highlight javascript linenos %}{% include demos/tabbox.js %}{% endhighlight %}
+        </div>
+      </div>
+    </div>
+
     {% include docs/tabbox.html %}
   </div><!-- .card end -->
+
 </div>
