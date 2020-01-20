@@ -21,6 +21,10 @@
   .separator {
     margin: 14px 0;
   }
+  .inline-separator {
+    display: inline-block;
+    margin-right: 7px;
+  }
   .js-slider {
     position: absolute;
     background-color: #858585;
