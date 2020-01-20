@@ -1,11 +1,13 @@
 import noop from 'lodash.noop'
 import supportDom from '../helpers/supportDom'
+import Dropdown from './Dropdown'
 
 @supportDom
 export default class Tabbox {
 
   constructor(dom, options = {}) {
     this.currentNode = null
+    this.optionEl = null
     this.dom = dom
     this.options = options
     this.options.change = options.change || noop
@@ -13,9 +15,11 @@ export default class Tabbox {
   }
 
   init() {
-    this.btns = Array.from(this.dom.querySelectorAll('button[data-tabbox-item]'))
-    this.appendSlider()
+    const { dom } = this
+    this.btns = Array.from(dom.querySelectorAll('button[data-tabbox-item]'))
+    this.dropdowns = Array.from(dom.querySelectorAll('button[data-tabbox-dropdown]'))
     this.addEvents()
+    this.appendSlider()
   }
 
   adjustSlider() {
@@ -35,6 +39,24 @@ export default class Tabbox {
     }
   }
 
+  getDefaultDropdownData() {
+    let index = 0
+    for (const d of this.dropdownInstances) {
+      const options = Array.from(d.menu.querySelectorAll('[data-tabbox-item]'))
+      for (const optionEl of options) {
+        if ('default' in optionEl.dataset) {
+          return {
+            defaultDropdownBtn: this.dropdowns[index],
+            defaultDropdownInstance: d,
+            defaultOptionEl: optionEl
+          }
+        }
+      }
+      ++index
+    }
+    return {}
+  }
+
   appendSlider() {
     this.slider = document.createElement('div')
     this.slider.classList.add('js-slider')
@@ -48,6 +70,17 @@ export default class Tabbox {
       this.moveToCurrentNode()
       this.addCurrentClass()
     }
+
+    const { defaultDropdownBtn, defaultDropdownInstance,
+      defaultOptionEl } = this.getDefaultDropdownData()
+
+    if (defaultDropdownBtn) {
+      this.currentNode = defaultDropdownBtn
+      this.optionEl = defaultOptionEl
+      this.moveToCurrentNode()
+      this.addCurrentClass()
+      defaultDropdownInstance.setText(this.optionEl.textContent)
+    }
   }
 
   setSliderColor(color) {
@@ -55,12 +88,17 @@ export default class Tabbox {
   }
 
   moveToCurrentNode() {
-    let node = this.currentNode
+    const node = this.currentNode
     if (! node) {
       return
     }
-    if (node.tagName === 'SELECT') {
-      node = node.parentNode
+    if ('tabboxDropdown' in node.dataset) {
+      return this.moveSlider({
+        top: node.offsetTop,
+        left: node.offsetLeft,
+        width: node.offsetWidth,
+        color: this.optionEl.dataset.activeColor
+      })
     }
     this.moveSlider({
       top: node.offsetTop,
@@ -102,6 +140,22 @@ export default class Tabbox {
   }
 
   addEvents() {
+    this.dropdownInstances = this.dropdowns.map(el => {
+      const dropdownInstance = new Dropdown(el, {
+        menuClick: event => {
+          this.currentNode = el
+          this.optionEl = event.target
+          this.moveToCurrentNode()
+
+          this.dropdownInstances.filter(d => d !== dropdownInstance)
+            .forEach(d => d.restoreText())
+
+          dropdownInstance.setText(this.optionEl.textContent)
+        }
+      })
+      return dropdownInstance
+    })
+
     this.btns.forEach(btn => {
       this.addEvent(btn, 'click', () => {
         if (btn !== this.currentNode) {

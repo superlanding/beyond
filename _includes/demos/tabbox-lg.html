@@ -1,5 +1,7 @@
 <div class="tabbox tabbox-lg" data-tabbox>
-   <button class="tab-btn" data-tabbox-item="all" data-default>全部</button><!--
+  <button class="tab-btn"
+          data-tabbox-item="all"
+          data-default>全部</button><!--
 --><button class="tab-btn tab-btn-new"
            data-tabbox-item="new"
            data-active-color="#018972">新訂單</button><!--
@@ -23,18 +25,10 @@
            data-active-color="#018972">已出貨</button><!--
 --><button class="tab-btn"
            data-tabbox-dropdown
-           data-target="menu-lg-other"
-           data-active-color="#018972">
-           其他
-     <i class="icon icon-chevron-down"></i>
-   </button><!--
+           data-target="menu-lg-other">其他<i class="icon icon-chevron-down"></i></button><!--
 --><button class="tab-btn"
            data-tabbox-dropdown
-           data-target="menu-lg-exchange"
-           data-active-color="#018972">
-           退換貨
-     <i class="icon icon-chevron-down"></i>
-   </button><!--
+           data-target="menu-lg-exchange">退換貨<i class="icon icon-chevron-down"></i></button><!--
 --><button class="tab-btn tab-btn-invoice"
            data-tabbox-item="invoice-unissued"
            data-active-color="#5d69e3">未開發票</button><!--
@@ -55,17 +49,35 @@
 <div class="dropdown-menu"
      data-dropdown-menu="menu-lg-other"
      data-place="bottom">
-  <a class="dropdown-item" data-value="temp" href="">臨時</a>
-  <a class="dropdown-item" data-value="other" href="">其他</a>
-  <a class="dropdown-item" data-value="cancelled" href="">已取消</a>
-  <a class="dropdown-item" data-value="deleted" href="">已刪除</a>
+  <a class="dropdown-item"
+    data-tabbox-item="temp"
+    data-active-color="#e03953">臨時</a>
+  <a class="dropdown-item"
+     data-tabbox-item="other"
+     data-active-color="#e03953">其他</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-tabbox-item="cancelled"
+     data-active-color="#8b8b9e">已取消</a>
+  <a class="dropdown-item"
+     data-tabbox-item="deleted"
+     data-active-color="#313864">已刪除</a>
 </div>
 
 <div class="dropdown-menu"
      data-dropdown-menu="menu-lg-exchange"
      data-place="bottom">
-  <a class="dropdown-item" data-value="returning" href="">退貨中</a>
-  <a class="dropdown-item" data-value="exchanging" href="">換貨中</a>
-  <a class="dropdown-item" data-value="returned" href="">已退貨</a>
-  <a class="dropdown-item" data-value="refunded" href="">已退款</a>
+  <a class="dropdown-item"
+     data-tabbox-item="returning"
+     data-active-color="#19af95">退貨中</a>
+  <a class="dropdown-item"
+     data-tabbox-item="exchanging"
+     data-active-color="#19af95">換貨中</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-tabbox-item="returned"
+     data-active-color="#8b8b9e">已退貨</a>
+  <a class="dropdown-item"
+     data-tabbox-item="refunded"
+     data-active-color="#8b8b9e">已退款</a>
 </div>

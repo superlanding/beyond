@@ -1,49 +1,51 @@
 <div class="tabbox tabbox-sm" data-tabbox>
   <div class="separator">
     <div class="inline-separator">
-      <button class="tab-btn" data-tabbox-item="all" data-default>全部</button>
+      <button class="tab-btn"
+              data-tabbox-item="all"
+              data-default>全部</button>
     </div>
     <div class="inline-separator">
       <button class="tab-btn tab-btn-new"
               data-tabbox-item="new"
-              data-active-color="#018972">新訂單</button><!--
-    --><button class="tab-btn tab-btn-type1"
+              data-active-color="#6dbc80">新訂單</button><!--
+      --><button class="tab-btn tab-btn-type1"
                data-tabbox-item="waiting"
-               data-active-color="#018972">等待中</button><!--
-    --><button class="tab-btn tab-btn-type1"
+               data-active-color="#ff5c5c">等待中</button><!--
+      --><button class="tab-btn tab-btn-type1"
                data-tabbox-item="confirming"
-               data-active-color="#018972">確認中</button><!--
-    --><button class="tab-btn tab-btn-type1"
+               data-active-color="#ff5c5c">確認中</button><!--
+      --><button class="tab-btn tab-btn-type1"
                data-tabbox-item="confirmed"
-               data-active-color="#018972">已確認</button><!--
-    --><button class="tab-btn tab-btn-type2"
+               data-active-color="#19af95">已確認</button>
+     </div>
+     <div class="inline-separator">
+      <button class="tab-btn tab-btn-type2"
                data-tabbox-item="wait-for-shipping"
-               data-active-color="#018972">待出貨</button>
+               data-active-color="#993192">待出貨</button><!--
+       --><button class="tab-btn tab-btn-type2"
+              data-tabbox-item="shipping"
+              data-active-color="#5d69e3">出貨中</button><!--
+       --><button class="tab-btn tab-btn-type2"
+                  data-tabbox-item="shipped"
+                  data-active-color="#8b8b9e">已出貨</button><!--
+       --><button class="tab-btn tab-btn-type2"
+                 data-tabbox-item="delay"
+                 data-active-color="#e03953">延遲出貨</button>
+     </div>
+     <div class="inline-separator">
+       <button class="tab-btn"
+               data-tabbox-dropdown
+               data-target="menu-sm-exchange">退換貨<i class="icon icon-chevron-down"></i></button><!--
+       --><button class="tab-btn"
+                  data-tabbox-dropdown
+                  data-target="menu-sm-other">其他<i class="icon icon-chevron-down"></i></button><!--
+       --><button class="tab-btn tab-btn-invoice"
+                  data-tabbox-item="incompelte-order"
+                  data-active-color="#5d69e3">未下單</button>
      </div>
   </div>
   <div class="separator">
-    <div class="inline-separator">
-      <button class="tab-btn tab-btn-type2"
-              data-tabbox-item="shipping"
-              data-active-color="#018972">出貨中</button><!--
-       --><button class="tab-btn tab-btn-type2"
-                  data-tabbox-item="shipped"
-                  data-active-color="#018972">已出貨</button><!--
-       --><button class="tab-btn"
-                  data-dropdown
-                  data-target="menu-sm-other"
-                  data-active-color="#018972">
-         其他
-         <i class="icon icon-chevron-down"></i>
-       </button><!--
-       --><button class="tab-btn"
-                  data-dropdown
-                  data-target="menu-sm-exchange"
-                  data-active-color="#018972">
-         退換貨
-         <i class="icon icon-chevron-down"></i>
-       </button>
-    </div>
     <div class="inline-separator">
       <button class="tab-btn tab-btn-invoice"
               data-tabbox-item="invoice-unissued"
@@ -66,18 +68,38 @@
 
 <div class="dropdown-menu"
      data-dropdown-menu="menu-sm-other"
-     data-place="bottom">
-  <a class="dropdown-item" data-value="temp" href="">臨時</a>
-  <a class="dropdown-item" data-value="other" href="">其他</a>
-  <a class="dropdown-item" data-value="cancelled" href="">已取消</a>
-  <a class="dropdown-item" data-value="deleted" href="">已刪除</a>
+     data-place="bottom"
+     data-align="left">
+  <a class="dropdown-item"
+    data-tabbox-item="temp"
+    data-active-color="#e03953">臨時</a>
+  <a class="dropdown-item"
+     data-tabbox-item="other"
+     data-active-color="#e03953">其他</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-tabbox-item="cancelled"
+     data-active-color="#8b8b9e">已取消</a>
+  <a class="dropdown-item"
+     data-tabbox-item="deleted"
+     data-active-color="#313864">已刪除</a>
 </div>
 
 <div class="dropdown-menu"
      data-dropdown-menu="menu-sm-exchange"
-     data-place="bottom">
-  <a class="dropdown-item" data-value="returning" href="">退貨中</a>
-  <a class="dropdown-item" data-value="exchanging" href="">換貨中</a>
-  <a class="dropdown-item" data-value="returned" href="">已退貨</a>
-  <a class="dropdown-item" data-value="refunded" href="">已退款</a>
+     data-place="bottom"
+     data-align="left">
+  <a class="dropdown-item"
+     data-tabbox-item="returning"
+     data-active-color="#19af95">退貨中</a>
+  <a class="dropdown-item"
+     data-tabbox-item="exchanging"
+     data-active-color="#19af95">換貨中</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-tabbox-item="returned"
+     data-active-color="#8b8b9e">已退貨</a>
+  <a class="dropdown-item"
+     data-tabbox-item="refunded"
+     data-active-color="#8b8b9e">已退款</a>
 </div>
