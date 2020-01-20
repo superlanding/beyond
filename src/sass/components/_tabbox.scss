@@ -18,35 +18,14 @@
 
 .tabbox {
   position: relative;
+  .separator {
+    margin: 14px 0;
+  }
   .js-slider {
     position: absolute;
     background-color: #858585;
     height: 2px;
     transition: all .3s;
-  }
-  .select-box {
-    display: inline-block;
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-bottom-color: #cdcdcd;
-    &.js-focus {
-      select {
-        @include tab-active-text;
-      }
-      @include tab-active-border;
-    }
-    select {
-      cursor: pointer;
-      &:hover {
-        @include tab-active-text;
-      }
-      outline: 0;
-      font-size: 12px;
-      padding: 6px 32px 6px 12px;
-      border: 0;
-      border-radius: 0;
-      box-shadow: none;
-    }
   }
   &.tabbox-sm .tab-btn {
     font-size: 12px;
@@ -57,6 +36,15 @@
     padding: 18px 50px;
   }
   .tab-btn {
+    .icon.icon-chevron-down {
+      margin-left: 4px;
+      font-size: 10px;
+    }
+    &:hover {
+      .icon.icon-chevron-down:before {
+        color: #1d2638;
+      }
+    }
     background: #fff;
     padding: 12px 25px;
     font-size: 13px;
