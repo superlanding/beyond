@@ -28,15 +28,16 @@
     }
   }
 
-  @for $i from 1 through length($bg-tag-types) {
-    &.tag-type#{$i - 1} {
-      border-color: nth($bg-tag-types, $i);
-      color: nth($bg-tag-types, $i);
+  @each $classname, $bg in $bg-tags {
+    &.#{$classname} {
+      border-color: $bg;
+      color: $bg;
     }
   }
-  &.tag-danger {
-    border: 0;
-    background-color: $bg-tag-danger;
+
+  &.tag-danger-ex {
     color: $color-light;
+    background-color: $bg-tag-danger-ex;
+    border: 0;
   }
 }
