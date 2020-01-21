@@ -38,6 +38,6 @@
   &.tag-danger-ex {
     color: $color-light;
     background-color: $bg-tag-danger-ex;
-    border: 0;
+    border: 1px solid $bg-tag-danger-ex;
   }
 }
