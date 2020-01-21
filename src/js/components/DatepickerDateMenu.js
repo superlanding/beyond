@@ -16,6 +16,7 @@ import range from '../helpers/range'
 import toPixel from '../helpers/toPixel'
 import isTouchDevice from '../helpers/isTouchDevice'
 import dateLt from '../helpers/dateLt'
+import dateEq from '../helpers/dateEq'
 import { DEFAULT_TIMEZONE, DEFAULT_LOCALE } from '../consts'
 import supportDom from '../helpers/supportDom'
 
@@ -75,12 +76,15 @@ export default class DatepickerDateMenu {
     const beforeWeekday = ((firstWeekday - 1) === -1) ? 6 : (firstWeekday - 1)
     const emptyHeadRows = range(1, beforeWeekday).map(toEmptyCell)
 
+    const initialStartDate = startOfDay(startDate)
+    const initialEndDate = startOfDay(endDate)
+
     // 00:00:00
     // eslint-disable-next-line prefer-const
-    let startOfStartDate = startOfDay(startDate)
+    let startOfStartDate = initialStartDate
 
     // eslint-disable-next-line prefer-const
-    let startOfEndDate = startOfDay(endDate)
+    let startOfEndDate = initialEndDate
 
     if (startDate && (! endDate) && this.hoveredCellData) {
       const { year: y, month: m, date: d } = this.hoveredCellData
@@ -98,8 +102,8 @@ export default class DatepickerDateMenu {
 
       return {
         type: CELL_TYPE_DAY,
-        isStartDate: (resCompareStart === 0),
-        isEndDate: (endDate && (resCompareEnd === 0)),
+        isStartDate: dateEq(initialStartDate, d),
+        isEndDate: dateEq(initialEndDate, d),
         isSelected: (resCompareStart <= 0) && (resCompareEnd >= 0),
         day
       }
