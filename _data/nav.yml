@@ -4,6 +4,8 @@
   link: /content/typography.html
 - name: Colors
   link: /content/colors.html
+- name: Avatars
+  link: /components/avatars.html
 - name: Badges
   link: /components/badges.html
 - name: Buttons
