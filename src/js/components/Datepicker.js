@@ -4,6 +4,9 @@ import parse from 'date-fns/parse'
 import set from 'date-fns/set'
 import noop from 'lodash.noop'
 import startOfDay from 'date-fns/startOfDay'
+import getHours from 'date-fns/getHours'
+import getMinutes from 'date-fns/getMinutes'
+import getSeconds from 'date-fns/getSeconds'
 import DatepickerDateInput from './DatepickerDateInput'
 import DatepickerTimeInput from './DatepickerTimeInput'
 import DatepickerDateMenu from './DatepickerDateMenu'
@@ -25,6 +28,8 @@ export default class Datepicker {
     this.lastTriggered = null
     this.nextDate = null
     this.focused = false
+    this.inputDateStartSet = false
+    this.inputDateEndSet = false
     this.init()
   }
 
@@ -96,12 +101,23 @@ export default class Datepicker {
     this.inputTimeEnd.clearStatus()
   }
 
+  clearTimeInputStatus() {
+    this.inputTimeStart.clearStatus()
+    this.inputTimeEnd.clearStatus()
+  }
+
   handleDateInputFocus(input) {
     this.focused = true
-    this.clearInputStatus()
-    input.setActive(true)
-    this.lastTriggered = input
-    this.dateMenu.setDate({ date: input.date })
+    this.inputDateStartSet = false
+    this.inputDateEndSet = false
+    this.clearTimeInputStatus()
+    this.inputDateStart.setActive(true)
+    this.inputDateEnd.setActive(true)
+    this.dateMenu.setDate({
+      date: this.startDate,
+      startDate: this.startDate,
+      endDate: this.endDate
+    })
     this.dateMenu.show(this.dom)
     this.timeMenu.hide()
   }
@@ -254,37 +270,58 @@ export default class Datepicker {
       event.stopPropagation()
       event.preventDefault()
 
-      const { lastTriggered } = this
+      if (this.inputDateStartSet && this.inputDateEndSet) {
+        this.inputDateStartSet = false
+        this.inputDateEndSet = false
+      }
+
       const { year, month, date } = res
 
-      if (lastTriggered === this.inputDateStart) {
+      if ((! this.inputDateStartSet) && (! this.inputDateEndSet)) {
+        this.dateMenu.setDate({ startDate: null, endDate: null })
         const nextStartDate = set(this.startDate, { year, month, date })
-        if (dateGt(startOfDay(nextStartDate), startOfDay(this.endDate))) {
-          return
-        }
         this.startDate = nextStartDate
         this.inputDateStart.setDate(nextStartDate)
-        this.dateMenu.setDate({
-          date: this.startDate,
+        this.inputDateStartSet = true
+        return this.dateMenu.setDate({
           startDate: this.startDate
         })
       }
-      if (lastTriggered === this.inputDateEnd) {
-        const nextEndDate = set(this.endDate, { year, month, date })
-        if (dateLt(startOfDay(nextEndDate), startOfDay(this.startDate))) {
-          return
+
+      if (this.inputDateStartSet && (! this.inputDateEndSet)) {
+        this.endDate = set(this.endDate, { year, month, date })
+
+        // switch if next endDate is prior to startDate
+        if (dateLt(startOfDay(this.endDate), startOfDay(this.startDate))) {
+          const oldStartDate = this.startDate
+          const oldEndDate = this.endDate;
+          [this.startDate, this.endDate] = [this.endDate, this.startDate]
+
+          // keeps the time
+          this.startDate = set(this.startDate, {
+            hours: getHours(oldStartDate),
+            minutes: getMinutes(oldStartDate),
+            seconds: getSeconds(oldStartDate)
+          })
+          this.endDate = set(this.endDate, {
+            hours: getHours(oldEndDate),
+            minutes: getMinutes(oldEndDate),
+            seconds: getSeconds(oldEndDate)
+          })
         }
-        this.endDate = nextEndDate
-        this.inputDateEnd.setDate(nextEndDate)
+        this.inputDateStart.setDate(this.startDate)
+        this.inputDateEnd.setDate(this.endDate)
+
+        this.inputDateEndSet = true
         this.dateMenu.setDate({
-          date: this.endDate,
+          startDate: this.startDate,
+          endDate: this.endDate
+        })
+        return this.options.change({
+          startDate: this.startDate,
           endDate: this.endDate
         })
       }
-      this.options.change({
-        startDate: this.startDate,
-        endDate: this.endDate
-      })
     })
 
     this.timeMenu.on('click', (event, res) => {

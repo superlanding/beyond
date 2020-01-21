@@ -54,10 +54,16 @@
   box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
     0 15px 35px 0 rgba(49, 49, 93, .1),
     0 5px 15px 0 rgba(0, 0, 0, .08);
+  background-color: #fff;
+  white-space: nowrap;
   .datepicker-content {
-    background-color: #fff;
+    display: inline-block;
     position: relative;
     padding: 0 14px 14px 14px;
+
+    &.second-content {
+      padding: 0 14px 14px 0;
+    }
   }
   .datepicker-caption {
     font-size: 15px;
@@ -69,7 +75,7 @@
   .datepicker-week-header {
     li {
       display: inline-block;
-      padding: 7px 14px;
+      padding: 7px 10px;
       font-size: 11px;
       color: #8792a2;
     }
@@ -99,6 +105,9 @@
     font-size: 14px;
     width: 100%;
     margin-top: 2px;
+    th, td {
+      padding: 3px;
+    }
     td {
       text-align: center;
       &.cell {
@@ -111,7 +120,7 @@
       &.cell.selected {
         background-color: #6c8eef;
         color: #fff;
-        border-color: rgba(108, 142, 239, .16);
+        border-color: #6c8eef;
       }
       &.cell.selected-ex {
         background-color: #5469d4;
