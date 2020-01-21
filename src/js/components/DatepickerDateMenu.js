@@ -1,5 +1,6 @@
 import { format } from 'date-fns-tz'
 import addDays from 'date-fns/addDays'
+import set from 'date-fns/set'
 import addMonths from 'date-fns/addMonths'
 import compareAsc from 'date-fns/compareAsc'
 import endOfMonth from 'date-fns/endOfMonth'
@@ -14,6 +15,7 @@ import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import range from '../helpers/range'
 import toPixel from '../helpers/toPixel'
 import isTouchDevice from '../helpers/isTouchDevice'
+import dateLt from '../helpers/dateLt'
 import { DEFAULT_TIMEZONE, DEFAULT_LOCALE } from '../consts'
 import supportDom from '../helpers/supportDom'
 
@@ -38,6 +40,7 @@ export default class DatepickerDateMenu {
     this.date2 = addMonths(date, 1)
     this.startDate = startDate
     this.endDate = endDate
+    this.hoveredCellData = null
     this.options = options
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.locale = options.locale || DEFAULT_LOCALE
@@ -50,6 +53,14 @@ export default class DatepickerDateMenu {
   init() {
     this.addMenu()
     this.addEvents()
+  }
+
+  setHoveredCell(data) {
+    const dataChanged = JSON.stringify(data) !== JSON.stringify(this.hoveredCellData)
+    if (dataChanged && (! this.endDate)) {
+      this.hoveredCellData = data
+      this.drawTables()
+    }
   }
 
   getTableRows(date) {
@@ -65,20 +76,31 @@ export default class DatepickerDateMenu {
     const emptyHeadRows = range(1, beforeWeekday).map(toEmptyCell)
 
     // 00:00:00
-    const startOfStartDate = startOfDay(startDate)
-    const endOfEndDate = startOfDay(endDate)
+    // eslint-disable-next-line prefer-const
+    let startOfStartDate = startOfDay(startDate)
+
+    // eslint-disable-next-line prefer-const
+    let startOfEndDate = startOfDay(endDate)
+
+    if (startDate && (! endDate) && this.hoveredCellData) {
+      const { year: y, month: m, date: d } = this.hoveredCellData
+      startOfEndDate = set(startOfStartDate, { year: y, month: m, date: d })
+      if (dateLt(startOfEndDate, startOfStartDate)) {
+        [startOfStartDate, startOfEndDate] = [startOfEndDate, startOfStartDate]
+      }
+    }
 
     const rows = range(1, daysInMonth).map(day => {
 
       const d = addDays(firstDateOfMonth, day - 1)
       const resCompareStart = compareAsc(startOfStartDate, d)
-      const resCompareEnd = compareAsc(endOfEndDate, d)
+      const resCompareEnd = compareAsc(startOfEndDate, d)
 
       return {
         type: CELL_TYPE_DAY,
         isStartDate: (resCompareStart === 0),
-        isEndDate: (resCompareEnd === 0),
-        isSelected: (resCompareStart === -1) && (resCompareEnd === 1),
+        isEndDate: (endDate && (resCompareEnd === 0)),
+        isSelected: (resCompareStart <= 0) && (resCompareEnd >= 0),
         day
       }
     })
@@ -102,6 +124,17 @@ export default class DatepickerDateMenu {
     }
   }
 
+  drawTables() {
+    if (isTouchDevice()) {
+      const rows = this.getTableRows(this.date)
+      this.table.innerHTML = this.getTableHtml(rows)
+    }
+    else {
+      this.table1.innerHTML = this.getTableHtml(this.getTableRows(this.date))
+      this.table2.innerHTML = this.getTableHtml(this.getTableRows(this.date2))
+    }
+  }
+
   setDate({ date, startDate, endDate }) {
     if (date) {
       this.date = date
@@ -114,14 +147,7 @@ export default class DatepickerDateMenu {
     if (typeof endDate !== 'undefined') {
       this.endDate = endDate
     }
-    if (isTouchDevice()) {
-      const rows = this.getTableRows(this.date)
-      this.table.innerHTML = this.getTableHtml(rows)
-    }
-    else {
-      this.table1.innerHTML = this.getTableHtml(this.getTableRows(this.date))
-      this.table2.innerHTML = this.getTableHtml(this.getTableRows(this.date2))
-    }
+    this.drawTables()
   }
 
   getWeekHeaderItems() {
@@ -215,6 +241,17 @@ export default class DatepickerDateMenu {
     this.dom = dom
   }
 
+  findTable(target) {
+    let node = target
+    while (node.parentNode) {
+      node = node.parentNode
+      if (node.tagName === 'TABLE') {
+        return node
+      }
+    }
+    return null
+  }
+
   addEvents() {
     this.addEvent(this.btnPrev, 'click', event => {
       this.setDate({ date: subMonths(this.date, 1) })
@@ -256,6 +293,19 @@ export default class DatepickerDateMenu {
           }
           this.fire('td-click', event, res)
         }
+      })
+      this.addEvent(this.dom, 'mouseover', event => {
+        if ('dateTableCell' in event.target.dataset) {
+          const table = this.findTable(event.target)
+          const date = ('dateTable1' in table.dataset) ? this.date : this.date2
+          const res = {
+            year: getYear(date),
+            month: getMonth(date),
+            date: parseInt(event.target.textContent.trim(), 10)
+          }
+          return this.fire('td-mouseover', event, res)
+        }
+        this.fire('td-mouseover', event, null)
       })
     }
   }

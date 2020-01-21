@@ -286,6 +286,11 @@ export default class Datepicker {
   }
 
   addMenuEvents() {
+    this.dateMenu.on('td-mouseover', (event, res) => {
+      if (this.dateMenu.startDate && (! this.dateMenu.endDate)) {
+        this.dateMenu.setHoveredCell(res)
+      }
+    })
     this.dateMenu.on('td-click', (event, res) => {
       event.stopPropagation()
       event.preventDefault()
