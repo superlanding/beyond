@@ -90,9 +90,7 @@
   color: $color-light;
 
   &.hover,
-  &:hover {
-    background-color: $bg-primary-ex;
-  }
+  &:hover,
   &.active,
   &:active {
     background-color: $bg-primary-ex;
@@ -130,9 +128,7 @@
   color: $color-light;
 
   &.hover,
-  &:hover {
-    background-color: $bg-success-ex;
-  }
+  &:hover,
   &.active,
   &:active {
     background-color: $bg-success-ex;
@@ -148,9 +144,7 @@
   color: $color-light;
 
   &.hover,
-  &:hover {
-    background-color: $bg-info-ex;
-  }
+  &:hover,
   &.active,
   &:active {
     background-color: $bg-info-ex;
@@ -169,9 +163,7 @@
     font-size: 20px;
   }
   &.hover,
-  &:hover {
-    background-color: $bg-warn-ex;
-  }
+  &:hover,
   &.active,
   &:active {
     background-color: $bg-warn-ex;
@@ -190,9 +182,7 @@
     font-size: 20px;
   }
   &.hover,
-  &:hover {
-    background-color: $bg-danger-ex;
-  }
+  &:hover,
   &.active,
   &:active {
     background-color: $bg-danger-ex;
@@ -281,9 +271,7 @@
   box-shadow: none;
 
   &.hover,
-  &:hover {
-    color: $color-link-ex;
-  }
+  &:hover,
   &.active,
   &:active {
     color: $color-link-ex;
