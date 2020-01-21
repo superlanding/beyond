@@ -18,7 +18,7 @@ import supportDom from '../helpers/supportDom'
 import { DEFAULT_TIMEZONE } from '../consts'
 
 @supportDom
-export default class Datepicker {
+export default class DateTimeRanger {
 
   constructor(dom, options = {}) {
     this.dom = dom
