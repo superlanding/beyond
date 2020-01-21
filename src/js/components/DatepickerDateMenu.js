@@ -188,20 +188,20 @@ export default class DatepickerDateMenu {
 
   addMenu() {
     const dom = document.createElement('div')
-    dom.className = 'datepicker-date-menu'
+    dom.className = 'date-menu'
 
     if (isTouchDevice()) {
       dom.innerHTML = `
-        <div class="datepicker-content">
-          <div class="datepicker-caption" data-menu-caption></div>
-          <ul class="datepicker-week-header">
+        <div class="date-menu-content">
+          <div class="date-menu-caption" data-menu-caption></div>
+          <ul class="date-menu-week-header">
             ${this.getWeekHeaderItems()}
           </ul>
-          <table class="datepicker-date-table" data-date-table></table>
-          <button class="datepicker-btn-prev" data-btn-prev>
+          <table class="date-menu-date-table" data-date-table></table>
+          <button class="date-menu-btn-prev" data-btn-prev>
             <i class="icon icon-chevron-left"></i>
           </button>
-          <button class="datepicker-btn-next" data-btn-next>
+          <button class="date-menu-btn-next" data-btn-next>
             <i class="icon icon-chevron-right"></i>
           </button>
         </div>
@@ -213,23 +213,23 @@ export default class DatepickerDateMenu {
     }
     else {
       dom.innerHTML = `
-        <div class="datepicker-content">
-          <div class="datepicker-caption" data-menu-caption1></div>
-          <ul class="datepicker-week-header">
+        <div class="date-menu-content">
+          <div class="date-menu-caption" data-menu-caption1></div>
+          <ul class="date-menu-week-header">
             ${this.getWeekHeaderItems()}
           </ul>
-          <table class="datepicker-date-table" data-date-table1></table>
-          <button class="datepicker-btn-prev" data-btn-prev>
+          <table class="date-menu-date-table" data-date-table1></table>
+          <button class="date-menu-btn-prev" data-btn-prev>
             <i class="icon icon-chevron-left"></i>
           </button>
         </div>
-        <div class="datepicker-content second-content">
-          <div class="datepicker-caption" data-menu-caption2></div>
-          <ul class="datepicker-week-header">
+        <div class="date-menu-content second-content">
+          <div class="date-menu-caption" data-menu-caption2></div>
+          <ul class="date-menu-week-header">
             ${this.getWeekHeaderItems()}
           </ul>
-          <table class="datepicker-date-table" data-date-table2></table>
-          <button class="datepicker-btn-next" data-btn-next>
+          <table class="date-menu-date-table" data-date-table2></table>
+          <button class="date-menu-btn-next" data-btn-next>
             <i class="icon icon-chevron-right"></i>
           </button>
         </div>

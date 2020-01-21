@@ -1,4 +1,4 @@
-.datepicker {
+.date-time-ranger {
   border-radius: 4px;
   background-color: #fff;
   display: inline-block;
@@ -8,36 +8,6 @@
     0 1px 2px 0 rgba(0, 0, 0, .08),
     0 0 0 0 transparent;
   padding: 4px;
-  .datepicker-date-input,
-  .datepicker-time-input {
-    &::placeholder {
-      font-size: 11px;
-      color: hsla(0, 0%, 100%, .6);
-    }
-    text-align: center;
-    height: 24px;
-    border: 0;
-    border-radius: 3px;
-    font-size: 13px;
-    &.active {
-      background-color: #5469d4;
-      color: #fff
-    }
-    &.active.danger {
-      background-color: #cd3d64;
-      color: #fff
-    }
-    &:focus {
-      outline: 0;
-    }
-  }
-
-  .datepicker-date-input {
-    width: 82px;
-  }
-  .datepicker-time-input {
-    width: 52px;
-  }
   .icon-arrow-right {
     padding-left: 0;
     padding-right: 0;
@@ -50,7 +20,37 @@
   }
 }
 
-.datepicker-date-menu {
+.date-input,
+.time-input {
+  &::placeholder {
+    font-size: 11px;
+    color: hsla(0, 0%, 100%, .6);
+  }
+  text-align: center;
+  height: 24px;
+  border: 0;
+  border-radius: 3px;
+  font-size: 13px;
+  &.active {
+    background-color: #5469d4;
+    color: #fff
+  }
+  &.active.danger {
+    background-color: #cd3d64;
+    color: #fff
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+.date-input {
+  width: 82px;
+}
+.time-input {
+  width: 52px;
+}
+
+.date-menu {
   display: none;
   position: absolute;
   box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
@@ -58,7 +58,7 @@
     0 5px 15px 0 rgba(0, 0, 0, .08);
   background-color: #fff;
   white-space: nowrap;
-  .datepicker-content {
+  .date-menu-content {
     display: inline-block;
     position: relative;
     padding: 0 14px 14px 14px;
@@ -67,14 +67,14 @@
       padding: 0 14px 14px 0;
     }
   }
-  .datepicker-caption {
+  .date-menu-caption {
     font-size: 15px;
     color: #3c4257;
     text-align: center;
     height: 50px;
     line-height: 50px;
   }
-  .datepicker-week-header {
+  .date-menu-week-header {
     li {
       display: inline-block;
       padding: 7px 10px;
@@ -82,8 +82,8 @@
       color: #8792a2;
     }
   }
-  .datepicker-btn-prev,
-  .datepicker-btn-next {
+  .date-menu-btn-prev,
+  .date-menu-btn-next {
     border: 0;
     background-color: transparent;
     position: absolute;
@@ -95,15 +95,15 @@
       font-size: 12px;
     }
   }
-  .datepicker-btn-prev {
+  .date-menu-btn-prev {
     left: 0;
     top: 0;
   }
-  .datepicker-btn-next {
+  .date-menu-btn-next {
     right: 0;
     top: 0;
   }
-  .datepicker-date-table {
+  .date-menu-date-table {
     font-size: 14px;
     width: 100%;
     margin-top: 2px;
@@ -133,7 +133,7 @@
   }
 }
 
-.datepicker-time-menu {
+.time-menu {
   display: none;
   box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
     0 15px 35px 0 rgba(49, 49, 93, .1),
@@ -143,7 +143,7 @@
   height: 200px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  .datepicker-time-menu-item {
+  .time-menu-item {
     color: #3c4257;
     font-size: 14px;
     &:hover {
