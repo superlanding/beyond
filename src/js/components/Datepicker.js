@@ -265,6 +265,26 @@ export default class Datepicker {
     })
   }
 
+  switchDates() {
+    const oldStartDate = this.startDate
+    const oldEndDate = this.endDate;
+    [this.startDate, this.endDate] = [this.endDate, this.startDate]
+
+    // keeps the time
+    this.startDate = set(this.startDate, {
+      hours: getHours(oldStartDate),
+      minutes: getMinutes(oldStartDate),
+      seconds: getSeconds(oldStartDate)
+    })
+    this.endDate = set(this.endDate, {
+      hours: getHours(oldEndDate),
+      minutes: getMinutes(oldEndDate),
+      seconds: getSeconds(oldEndDate)
+    })
+    this.inputDateStart.setDate(this.startDate)
+    this.inputDateEnd.setDate(this.endDate)
+  }
+
   addMenuEvents() {
     this.dateMenu.on('td-click', (event, res) => {
       event.stopPropagation()
@@ -293,21 +313,7 @@ export default class Datepicker {
 
         // switch if next endDate is prior to startDate
         if (dateLt(startOfDay(this.endDate), startOfDay(this.startDate))) {
-          const oldStartDate = this.startDate
-          const oldEndDate = this.endDate;
-          [this.startDate, this.endDate] = [this.endDate, this.startDate]
-
-          // keeps the time
-          this.startDate = set(this.startDate, {
-            hours: getHours(oldStartDate),
-            minutes: getMinutes(oldStartDate),
-            seconds: getSeconds(oldStartDate)
-          })
-          this.endDate = set(this.endDate, {
-            hours: getHours(oldEndDate),
-            minutes: getMinutes(oldEndDate),
-            seconds: getSeconds(oldEndDate)
-          })
+          this.switchDates()
         }
         this.inputDateStart.setDate(this.startDate)
         this.inputDateEnd.setDate(this.endDate)
@@ -384,6 +390,10 @@ export default class Datepicker {
       }
 
       this.clearInputStatus()
+
+      if (dateLt(startOfDay(this.endDate), startOfDay(this.startDate))) {
+        this.switchDates()
+      }
       dateMenu.hide()
       timeMenu.hide()
     })
