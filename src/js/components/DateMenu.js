@@ -34,7 +34,7 @@ const CELL_TYPE_EMPTY = Symbol('CELL_TYPE_EMPTY')
 const CELL_TYPE_DAY = Symbol('CELL_TYPE_DAY')
 
 @supportDom
-export default class DatepickerDateMenu {
+export default class DateMenu {
 
   constructor({ date, startDate, endDate, options = {} }) {
     this.date = date

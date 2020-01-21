@@ -9,8 +9,8 @@ import getMinutes from 'date-fns/getMinutes'
 import getSeconds from 'date-fns/getSeconds'
 import DatepickerDateInput from './DatepickerDateInput'
 import DatepickerTimeInput from './DatepickerTimeInput'
-import DatepickerDateMenu from './DatepickerDateMenu'
-import DatepickerTimeMenu from './DatepickerTimeMenu'
+import DateMenu from './DateMenu'
+import TimeMenu from './TimeMenu'
 import DatepickerBtnArrow from './DatepickerBtnArrow'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
@@ -71,13 +71,13 @@ export default class DateTimeRanger {
       this.options
     )
 
-    this.dateMenu = new DatepickerDateMenu({
+    this.dateMenu = new DateMenu({
       date: this.currentDate,
       startDate: this.startDate,
       endDate: this.endDate,
       options: this.options
     })
-    this.timeMenu = new DatepickerTimeMenu()
+    this.timeMenu = new TimeMenu()
 
     this.addEvents()
   }

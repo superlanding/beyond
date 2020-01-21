@@ -6,7 +6,7 @@ import range from '../helpers/range'
 import supportDom from '../helpers/supportDom'
 
 @supportDom
-export default class DatepickerTimeMenu {
+export default class TimeMenu {
 
   constructor() {
     this.date = null
