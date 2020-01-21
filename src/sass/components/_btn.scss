@@ -125,60 +125,39 @@
   }
 }
 
-.btn.btn-variant1 {
-  background-color: $bg-variant1;
+.btn.btn-success {
+  background-color: $bg-success;
   color: $color-light;
 
   &.hover,
   &:hover {
-    background-color: $bg-variant1-ex;
+    background-color: $bg-success-ex;
   }
   &.active,
   &:active {
-    background-color: $bg-variant1-ex;
+    background-color: $bg-success-ex;
   }
   &.disabled,
   &:disabled {
-    background-color: $bg-variant1-ex2;
+    background-color: $bg-success-ex2;
   }
 }
 
-.btn.btn-variant2 {
-  background-color: $bg-variant2;
+.btn.btn-info {
+  background-color: $bg-info;
   color: $color-light;
 
   &.hover,
   &:hover {
-    background-color: $bg-variant2-ex;
+    background-color: $bg-info-ex;
   }
   &.active,
   &:active {
-    background-color: $bg-variant2-ex;
+    background-color: $bg-info-ex;
   }
   &.disabled,
   &:disabled {
-    background-color: $bg-variant2-ex2;
-  }
-}
-
-.btn.btn-variant3 {
-  background-color: $bg-variant3;
-  color: $color-variant3;
-
-  &.hover,
-  &:hover {
-    color: $color-variant3-ex;
-    background-color: $bg-variant3-ex;
-  }
-  &.active,
-  &:active {
-    color: $color-variant3-ex;
-    background-color: $bg-variant3-ex;
-  }
-  &.disabled,
-  &:disabled {
-    color: $color-variant3-ex2;
-    background-color: $bg-variant3-ex2;
+    background-color: $bg-info-ex2;
   }
 }
 
@@ -221,6 +200,39 @@
   &.disabled,
   &:disabled {
     background-color: $bg-danger-ex2;
+  }
+}
+
+.btn.btn-variant1 {
+  background-color: $bg-variant1;
+  color: $color-light;
+
+  &.hover,
+  &:hover,
+  &.active,
+  &:active {
+    background-color: $bg-variant1-ex;
+  }
+  &.disabled,
+  &:disabled {
+    background-color: $bg-variant1-ex2;
+  }
+}
+
+.btn.btn-variant2 {
+  background-color: $bg-variant2;
+  color: $color-variant2;
+
+  &.hover,
+  &:hover {
+    background-color: $bg-variant2-ex;
+  }
+  &.active,
+  &:active,
+  &.disabled,
+  &:disabled {
+    color: $color-variant2-ex;
+    background-color: $bg-variant2-ex2;
   }
 }
 

@@ -31,19 +31,14 @@
   color: $color-secondary;
 }
 
-.badge.badge-variant1 {
-  background-color: $bg-variant1;
+.badge.badge-success {
+  background-color: $bg-success;
   color: $color-light;
 }
 
-.badge.badge-variant2 {
-  background-color: $bg-variant2;
+.badge.badge-danger {
+  background-color: $bg-danger;
   color: $color-light;
-}
-
-.badge.badge-variant3 {
-  background-color: $bg-variant3;
-  color: $color-variant3;
 }
 
 .badge.badge-warn {
@@ -51,9 +46,19 @@
   color: $color-light;
 }
 
-.badge.badge-danger {
-  background-color: $bg-danger;
+.badge.badge-info {
+  background-color: $bg-info;
   color: $color-light;
+}
+
+.badge.badge-variant1 {
+  background-color: $bg-variant1;
+  color: $color-light;
+}
+
+.badge.badge-variant2 {
+  background-color: $bg-variant2;
+  color: $color-variant2;
 }
 
 .badge.badge-light {
