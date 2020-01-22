@@ -24,6 +24,9 @@ export default class DateTimeRanger {
     this.dom = dom
     this.options = options
     this.options.change = options.change || noop
+    this.options.useMouseOver = ('useMouseOver' in options) ?
+      options.useMouseOver : true
+
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.lastTriggered = null
     this.nextDate = null

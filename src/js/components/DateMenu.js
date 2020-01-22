@@ -19,6 +19,7 @@ import dateLt from '../helpers/dateLt'
 import dateEq from '../helpers/dateEq'
 import { DEFAULT_TIMEZONE, DEFAULT_LOCALE } from '../consts'
 import supportDom from '../helpers/supportDom'
+import throttle from 'lodash.throttle'
 
 const DEFAULT_WEEK_HEADER_ITEMS = [
   { id: 'monday', text: '一' },
@@ -302,19 +303,24 @@ export default class DateMenu {
           this.fire('td-click', event, res)
         }
       })
-      this.addEvent(this.dom, 'mouseover', event => {
-        if ('dateTableCell' in event.target.dataset) {
-          const table = this.findTable(event.target)
-          const date = ('dateTable1' in table.dataset) ? this.date : this.date2
-          const res = {
-            year: getYear(date),
-            month: getMonth(date),
-            date: parseInt(event.target.textContent.trim(), 10)
+
+      if (this.options.useMouseOver) {
+        console.log('here')
+        this.addEvent(this.dom, 'mouseover', throttle(event => {
+          if ('dateTableCell' in event.target.dataset) {
+            const table = this.findTable(event.target)
+            const date = ('dateTable1' in table.dataset) ? this.date : this.date2
+            const res = {
+              year: getYear(date),
+              month: getMonth(date),
+              date: parseInt(event.target.textContent.trim(), 10)
+            }
+            return this.fire('td-mouseover', event, res)
           }
-          return this.fire('td-mouseover', event, res)
-        }
-        this.fire('td-mouseover', event, null)
-      })
+          this.fire('td-mouseover', event, null)
+        }, 300))
+      }
+
     }
   }
 
