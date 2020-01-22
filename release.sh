@@ -3,4 +3,4 @@
 yarn deploy
 npm version patch
 git push --tags
-npm publish
+bash -l -c "npm publish"
