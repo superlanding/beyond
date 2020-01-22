@@ -37,7 +37,7 @@ module.exports = {
   output,
   devServer: {
     headers: {
-      "Access-Control-Allow-Origin": "http://localhost:4000"
+      "Access-Control-Allow-Origin": "*"
     }
   }
 }
