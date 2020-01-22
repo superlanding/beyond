@@ -39,22 +39,39 @@ export default class Tabbox {
     }
   }
 
-  getDefaultDropdownData() {
+  eachDropdownOption(fn) {
     let index = 0
     for (const d of this.dropdownInstances) {
       const options = Array.from(d.menu.querySelectorAll('[data-tabbox-item]'))
       for (const optionEl of options) {
-        if ('default' in optionEl.dataset) {
-          return {
-            defaultDropdownBtn: this.dropdowns[index],
-            defaultDropdownInstance: d,
-            defaultOptionEl: optionEl
-          }
+        const going = fn({
+          dropdownBtn: this.dropdowns[index],
+          dropdownInstance: d,
+          optionEl
+        })
+        if (going === false) {
+          return
         }
       }
       ++index
     }
-    return {}
+  }
+
+  getDefaultDropdownData() {
+
+    let res = {}
+
+    this.eachDropdownOption(({ dropdownBtn, dropdownInstance, optionEl }) => {
+      if ('default' in optionEl.dataset) {
+        res = {
+          defaultDropdownBtn: dropdownBtn,
+          defaultDropdownInstance: dropdownInstance,
+          defaultOptionEl: optionEl
+        }
+        return false
+      }
+    })
+    return res
   }
 
   appendSlider() {
