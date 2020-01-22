@@ -6,7 +6,7 @@ import range from '../helpers/range'
 import supportDom from '../helpers/supportDom'
 
 @supportDom
-export default class DatepickerTimeMenu {
+export default class TimeMenu {
 
   constructor() {
     this.date = null
@@ -27,7 +27,7 @@ export default class DatepickerTimeMenu {
         return arr
       }, [])
       .map(({ hour, min }) => {
-        return `<div class="datepicker-time-menu-item"
+        return `<div class="time-menu-item"
           data-hour="${hour}"
           data-minute="${min}">${hour}:${min.toString().padStart(2, '0')}</div>`
       })
@@ -36,7 +36,7 @@ export default class DatepickerTimeMenu {
 
   addMenu() {
     const dom = document.createElement('div')
-    dom.className = 'datepicker-time-menu'
+    dom.className = 'time-menu'
     dom.innerHTML = this.getMenuItems()
     document.body.appendChild(dom)
     this.dom = dom

@@ -11,25 +11,29 @@ $bg-secondary: #fff;
 $bg-secondary-ex: #fff;
 $bg-secondary-ex2: #ebebeb;
 
-$bg-variant1: #d681d8;
-$bg-variant1-ex: #eda3ef;
-$bg-variant1-ex2: #d1bdd1;
-
-$bg-variant2: #25b47e;
-$bg-variant2-ex: #7de1bb;
-$bg-variant2-ex2: #98b6ab;
-
-$bg-variant3: #fdd85f;
-$bg-variant3-ex: #ffe89e;
-$bg-variant3-ex2: #dcd7c9;
-
-$bg-warn: #f1946a;
-$bg-warn-ex: #e7a283;
-$bg-warn-ex2: #e5cec3;
+$bg-success: #25b47e;
+$bg-success-ex: #7de1bb;
+$bg-success-ex2: #98b6ab;
 
 $bg-danger: #cd3d64;
 $bg-danger-ex: #ef6a8e;
 $bg-danger-ex2: #b59ba7;
+
+$bg-warn: #f1946a;
+$bg-warn-ex: #ffaf8c;
+$bg-warn-ex2: #e5cec3;
+
+$bg-info: #5ecdf1;
+$bg-info-ex: #7bdfff;
+$bg-info-ex2: #a4c5d0;
+
+$bg-type1: #d681d8;
+$bg-type1-ex: #eda3ef;
+$bg-type1-ex2: #d1bdd1;
+
+$bg-type2: #fdd85f;
+$bg-type2-ex: #ffe89e;
+$bg-type2-ex2: #dcd7c9;
 
 $bg-light: #fff;
 $bg-light-ex: #fff;
@@ -47,9 +51,9 @@ $color-secondary: #6772e5;
 $color-secondary-ex: #7795f8;
 $color-secondary-ex2: #bbb;
 
-$color-variant3: #516487;
-$color-variant3-ex: #7d8eae;
-$color-variant3-ex2: #bbb;
+$color-type2: #516487;
+$color-type2-ex: #7d8eae;
+$color-type2-ex2: #bbb;
 
 $color-light: #fff;
 
@@ -63,35 +67,55 @@ $color-link-ex2: #bbb;
 
 $color-icon: #4f566b;
 
-$color-order-id: #343a6a;
-$color-consignment-no: #424770;
-$color-xdelivery-id: #6382a3;
-$color-sticky-nickname: #000;
-$color-money: #5c5f72;
-$color-receiver: #424770;
-$color-ip: #424770;
-$color-invoice-no: #63a396;
-$color-part-no: #6772e5;
-$color-picking: #4191d9;
+$color-avatar: #000;
 
-$bg-tag-type0: #6dbc80;
-$bg-tag-type1: #018972;
-$bg-tag-type2: #005b4a;
-$bg-tag-type3: #313864;
-$bg-tag-type4: #74b6fb;
-$bg-tag-type5: #5d69e3;
-$bg-tag-type6: #8b8b9e;
-$bg-tag-type7: #e682dc;
-$bg-tag-danger: #e03953;
+// tags
+$bg-tag-primary: #6782e5;
+$bg-tag-secondary: #7d5ae8;
+$bg-tag-success: $bg-success;
+$bg-tag-danger: $bg-danger;
+$bg-tag-warn: $bg-warn;
+$bg-tag-info: $bg-info;
+$bg-tag-dark: $bg-dark;
+$bg-tag-light: #8b8b9e;
 
-$bg-tag-types: $bg-tag-type0,
-               $bg-tag-type1,
-               $bg-tag-type2,
-               $bg-tag-type3,
-               $bg-tag-type4,
-               $bg-tag-type5,
-               $bg-tag-type6,
-               $bg-tag-type7;
+$bg-tag-type0: #19af95;
+$bg-tag-type1: #005b4a;
+$bg-tag-type2: #865260;
+$bg-tag-type3: #993192;
+$bg-tag-type4: #e682dc;
+
+$bg-tags: (
+  (tag-primary, $bg-tag-primary),
+  (tag-secondary, $bg-tag-secondary),
+  (tag-success, $bg-tag-success),
+  (tag-danger, $bg-tag-danger),
+  (tag-warn, $bg-tag-warn),
+  (tag-info, $bg-tag-info),
+  (tag-dark, $bg-tag-dark),
+  (tag-light, $bg-tag-light),
+  (tag-type0, $bg-tag-type0),
+  (tag-type1, $bg-tag-type1),
+  (tag-type2, $bg-tag-type2),
+  (tag-type3, $bg-tag-type3),
+  (tag-type4, $bg-tag-type4)
+);
+
+$bg-tag-danger-ex: #e03953;
+
+$bg-avatar-type0: #a3d96e;
+$bg-avatar-type1: #ffb958;
+$bg-avatar-type2: #5956D6;
+$bg-avatar-type3: #ce4d94;
+$bg-avatar-type4: #56c4d6;
+
+$bg-avatars: (
+  (avatar-type0, $bg-avatar-type0),
+  (avatar-type1, $bg-avatar-type1),
+  (avatar-type2, $bg-avatar-type2),
+  (avatar-type3, $bg-avatar-type3),
+  (avatar-type4, $bg-avatar-type4)
+);
 
 $screen-xs: 480px;
 $screen-sm: 768px;

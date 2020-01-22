@@ -4,8 +4,16 @@
   link: /content/typography.html
 - name: Colors
   link: /content/colors.html
+- name: Avatars
+  link: /components/avatars.html
+- name: Badges
+  link: /components/badges.html
 - name: Buttons
   link: /components/buttons.html
+- name: Button Groups
+  link: /components/button-groups.html
+- name: Tabboxes
+  link: /components/tabboxes.html
 - name: Tags
   link: /components/tags.html
 - name: Selects
@@ -24,9 +32,13 @@
   link: /components/tooltips.html
 - name: Toasts
   link: /components/toasts.html
+- name: DateTimeRangers
+  link: /components/date-time-rangers.html
 - name: Datepickers
   link: /components/datepickers.html
 - name: Autocompletes
   link: /components/autocompletes.html
 - name: Tables
   link: /components/tables.html
+- name: Navbars
+  link: /components/navbars.html

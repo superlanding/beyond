@@ -21,26 +21,18 @@
 --><button class="tab-btn tab-btn-type2"
            data-tabbox-item="shipped"
            data-active-color="#018972">已出貨</button><!--
---><div class="select-box"
-        data-tabbox-item="others">
-     <select class="select">
-       <option value="">其他</option>
-       <option value="temp">臨時</option>
-       <option value="others">其他</option>
-       <option value="cancelled">已取消</option>
-       <option value="deleted">已刪除</option>
-     </select>
-   </div><!--
---><div class="select-box"
-        data-tabbox-item="return/exchange">
-     <select class="select">
-       <option value="">退換貨</option>
-       <option value="returning">退貨中</option>
-       <option value="exchanging">換貨中</option>
-       <option value="returned">已退貨</option>
-       <option value="refunded">已退款</option>
-     </select>
-   </div><!--
+--><button class="tab-btn"
+           data-tabbox-dropdown
+           data-target="menu-md-other">
+           其他
+     <i class="icon icon-chevron-down"></i>
+   </button><!--
+--><button class="tab-btn"
+           data-tabbox-dropdown
+           data-target="menu-md-exchange">
+           退換貨
+     <i class="icon icon-chevron-down"></i>
+   </button><!--
 --><button class="tab-btn tab-btn-invoice"
            data-tabbox-item="invoice-unissued"
            data-active-color="#5d69e3">未開發票</button><!--
@@ -56,4 +48,40 @@
 --><button class="tab-btn tab-btn-others"
            data-tabbox-item="7days"
            data-active-color="#7d7d7d">七日內出貨</button>
+</div>
+
+<div class="dropdown-menu"
+     data-dropdown-menu="menu-md-other"
+     data-place="bottom">
+  <a class="dropdown-item"
+    data-tabbox-item="temp"
+    data-active-color="#e03953">臨時</a>
+  <a class="dropdown-item"
+     data-tabbox-item="other"
+     data-active-color="#e03953">其他</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-tabbox-item="cancelled"
+     data-active-color="#8b8b9e">已取消</a>
+  <a class="dropdown-item"
+     data-tabbox-item="deleted"
+     data-active-color="#313864">已刪除</a>
+</div>
+
+<div class="dropdown-menu"
+     data-dropdown-menu="menu-md-exchange"
+     data-place="bottom">
+  <a class="dropdown-item"
+     data-tabbox-item="returning"
+     data-active-color="#19af95">退貨中</a>
+  <a class="dropdown-item"
+     data-tabbox-item="exchanging"
+     data-active-color="#19af95">換貨中</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-tabbox-item="returned"
+     data-active-color="#8b8b9e">已退貨</a>
+  <a class="dropdown-item"
+     data-tabbox-item="refunded"
+     data-active-color="#8b8b9e">已退款</a>
 </div>

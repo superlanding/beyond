@@ -1,0 +1,9 @@
+.page-navbars {
+  .codebox {
+    width: 760px;
+    margin-bottom: 20px;
+    @media (max-width: $screen-md) {
+      width: 100%;
+    }
+  }
+}

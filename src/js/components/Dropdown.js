@@ -13,11 +13,29 @@ export default class Dropdown {
     this.isMenuVisible = false
     this.place = null
     this.align = null
+    this.defaultTextNode = this.getDefaultTextNode(dom, options.textIndex)
+    this.defaultText = this.defaultTextNode ? this.defaultTextNode.textContent.trim() : ''
     this.init()
   }
 
+  restoreText() {
+    if (this.defaultTextNode) {
+      this.defaultTextNode.textContent = this.defaultText
+    }
+  }
+
+  setText(text) {
+    if (this.defaultTextNode) {
+      this.defaultTextNode.textContent = text
+    }
+  }
+
+  getDefaultTextNode(dom, index = 0) {
+    return dom.childNodes[index]
+  }
+
   init() {
-    this.id = this.dom.dataset.dropdown
+    this.id = this.dom.dataset.target
     this.menu = document.querySelector(`[data-dropdown-menu="${this.id}"]`)
     this.place = this.menu.dataset.place || 'bottom'
     this.align = this.menu.dataset.align
@@ -78,7 +96,7 @@ export default class Dropdown {
 
   addEvents() {
 
-    const { menuMouseOver, menuMouseLeave } = this.options
+    const { menuMouseOver, menuMouseLeave, menuClick } = this.options
 
     if (isFunction(menuMouseOver)) {
       this.addEvent(this.menu, 'mouseover', event => menuMouseOver(event))
@@ -86,6 +104,15 @@ export default class Dropdown {
 
     if (isFunction(menuMouseLeave)) {
       this.addEvent(this.menu, 'mouseleave', event => menuMouseLeave(event))
+    }
+
+    if (isFunction(menuClick)) {
+      this.addEvent(this.menu, 'click', event => {
+        const { dataset } = event.target
+        if (('dropdownItem' in dataset) || ('tabboxItem' in dataset)) {
+          menuClick(event)
+        }
+      })
     }
 
     this.addEvent(this.dom, 'click', () => this.toggleMenu())

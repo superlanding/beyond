@@ -1,0 +1,211 @@
+.navbar {
+  $bg-nav: rgb(227, 232, 238);
+  $color-nav-primary: rgb(60, 66, 87);
+  $color-nav-primary-ex: #101425;
+  $color-nav: rgb(105, 115, 150);
+  $color-nav-ex: #adb5d0;
+  $color-nav-disabled: #adb5d0;
+
+  display: flex;
+  background-color: $bg-nav;
+  font-size: 12px;
+  padding: 8px 14px 8px 8px;
+  @media (max-width: $screen-md) {
+    display: block;
+    .navbar-topbar {
+      @include flex-center;
+    }
+  }
+  &, a {
+    color: $color-nav;
+  }
+  .navbar-brand {
+    display: inline-block;
+    color: $color-nav-primary;
+    font-size: 16px;
+    padding: 4px 14px;
+  }
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    @media (max-width: $screen-md) {
+      display: block;
+      margin-bottom: 10px;
+      .nav-link {
+        display: block;
+        padding: 7px 0;
+      }
+    }
+  }
+  .nav-item.js-active,
+  .nav-item:hover  {
+    .nav-link {
+      color: $color-nav-primary-ex;
+    }
+  }
+  .nav-link {
+    padding: 7px 14px;
+    &.disabled {
+      color: $color-nav-disabled;
+      cursor: not-allowed;
+      &:hover {
+        color: $color-nav-ex;
+      }
+    }
+  }
+  &.js-collapse {
+    @media (max-width: $screen-md) {
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      position: fixed;
+      z-index: 20;
+      box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
+        0 15px 35px 0 rgba(49, 49, 93, .1),
+        0 5px 15px 0 rgba(0, 0, 0, .08);
+    }
+  }
+  .navbar-collapse {
+
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    @media (max-width: $screen-md) {
+      display: none;
+    }
+
+    &.js-collapse {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      @media (max-width: $screen-md) {
+        display: block;
+        padding: 7px 14px 14px;
+      }
+    }
+  }
+  .navbar-toggler {
+    display: none;
+    @media (max-width: $screen-md) {
+      display: block;
+    }
+    border: 0;
+    background-color: transparent;
+    position: relative;
+    @include size(48px);
+    .navbar-toggler-icon {
+      @include absolute-center;
+      &,
+      &:before,
+      &:after {
+        transition: .3s all;
+        background-color: $color-nav-primary;
+        display: block;
+        position: absolute;
+        width: 24px;
+        height: 1px;
+      }
+      &:before {
+        content: '';
+        top: -7px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      &:after {
+        content: '';
+        bottom: -7px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    &.js-active .navbar-toggler-icon {
+      & {
+        background-color: transparent;
+      }
+      &:before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+      &:after {
+        transform: rotate(-45deg);
+        bottom: 0;
+      }
+    }
+  }
+
+  &.navbar-type1 {
+    $bg-nav-type1: #1a1f36;
+    $color-nav-primary-type1: #fff;
+    $color-nav-type1: #6c8eef;
+    $color-nav-ex-type1: #b9d2ff;
+    $color-nav-disabled-type1: #9193ce;
+
+    background: $bg-nav-type1;
+    &, & a {
+      color: $color-nav-type1;
+    }
+    .navbar-brand {
+      color: #fff;
+    }
+    .nav-item.js-active,
+    .nav-item:hover  {
+      .nav-link {
+        color: $color-nav-ex-type1;
+      }
+    }
+    .nav-link.disabled,
+    .nav-link.disabled:hover {
+      color: $color-nav-disabled-type1;
+    }
+    .navbar-toggler-icon,
+    .navbar-toggler-icon:before,
+    .navbar-toggler-icon:after {
+      background-color: $color-nav-primary-type1;
+    }
+    .search-input {
+      box-shadow: none;
+    }
+  }
+
+  &.navbar-type2 {
+    $color-nav-primary-type2: #fff;
+    $color-nav-type2: #e3e0e8;
+    $color-nav-ex-type2: #fff;
+    $color-nav-disabled-type2: #b5b6dc;
+
+    background: rgb(84,73,255);
+    background: linear-gradient(125deg,
+      rgba(84,73,255,1) 0%,
+      rgba(29,205,255,1) 80%,
+      rgba(166,255,203,1) 100%);
+    &, & a {
+      color: $color-nav-type2;
+    }
+    .navbar-brand {
+      color: $color-nav-primary-type2;
+    }
+    .nav-item.js-active,
+    .nav-item:hover  {
+      .nav-link {
+        color: $color-nav-ex-type2;
+      }
+    }
+    .nav-link.disabled,
+    .nav-link.disabled:hover {
+      color: $color-nav-disabled-type2;
+    }
+    .navbar-toggler-icon,
+    .navbar-toggler-icon:before,
+    .navbar-toggler-icon:after {
+      background-color: $color-nav-primary-type2;
+    }
+    .search-input {
+      box-shadow: none;
+    }
+  }
+}

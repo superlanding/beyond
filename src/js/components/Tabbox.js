@@ -1,11 +1,13 @@
 import noop from 'lodash.noop'
 import supportDom from '../helpers/supportDom'
+import Dropdown from './Dropdown'
 
 @supportDom
 export default class Tabbox {
 
   constructor(dom, options = {}) {
     this.currentNode = null
+    this.optionEl = null
     this.dom = dom
     this.options = options
     this.options.change = options.change || noop
@@ -13,11 +15,11 @@ export default class Tabbox {
   }
 
   init() {
-    this.btns = Array.from(this.dom.querySelectorAll('button[data-tabbox-item]'))
-    this.selectBoxes = Array.from(this.dom.querySelectorAll('div[data-tabbox-item]'))
-    this.selects = Array.from(this.dom.querySelectorAll('div[data-tabbox-item] select'))
-    this.appendSlider()
+    const { dom } = this
+    this.btns = Array.from(dom.querySelectorAll('button[data-tabbox-item]'))
+    this.dropdownBtns = Array.from(dom.querySelectorAll('button[data-tabbox-dropdown]'))
     this.addEvents()
+    this.appendSlider()
   }
 
   adjustSlider() {
@@ -37,19 +39,64 @@ export default class Tabbox {
     }
   }
 
+  eachDropdownOption(fn) {
+    let index = 0
+    for (const d of this.dropdownInstances) {
+      const options = Array.from(d.menu.querySelectorAll('[data-tabbox-item]'))
+      for (const optionEl of options) {
+        const going = fn({
+          dropdownBtn: this.dropdownBtns[index],
+          dropdownInstance: d,
+          optionEl
+        })
+        if (going === false) {
+          return
+        }
+      }
+      ++index
+    }
+  }
+
+  getDefaultDropdownData() {
+
+    let res = {}
+
+    this.eachDropdownOption(({ dropdownBtn, dropdownInstance, optionEl }) => {
+      if ('default' in optionEl.dataset) {
+        res = {
+          defaultDropdownBtn: dropdownBtn,
+          defaultDropdownInstance: dropdownInstance,
+          defaultOptionEl: optionEl
+        }
+        return false
+      }
+    })
+    return res
+  }
+
   appendSlider() {
     this.slider = document.createElement('div')
     this.slider.classList.add('js-slider')
     this.dom.appendChild(this.slider)
     const defaultBtn = this.btns.find(btn => 'default' in btn.dataset)
-    const defaultSelectBox = this.selectBoxes.find(div => 'default' in div.dataset)
 
     this.adjustSlider()
 
-    if (defaultBtn || defaultSelectBox) {
+    if (defaultBtn) {
       this.currentNode = defaultBtn || defaultSelectBox
       this.moveToCurrentNode()
       this.addCurrentClass()
+    }
+
+    const { defaultDropdownBtn, defaultDropdownInstance,
+      defaultOptionEl } = this.getDefaultDropdownData()
+
+    if (defaultDropdownBtn) {
+      this.currentNode = defaultDropdownBtn
+      this.optionEl = defaultOptionEl
+      this.moveToCurrentNode()
+      this.addCurrentClass()
+      defaultDropdownInstance.setText(this.optionEl.textContent)
     }
   }
 
@@ -58,12 +105,17 @@ export default class Tabbox {
   }
 
   moveToCurrentNode() {
-    let node = this.currentNode
+    const node = this.currentNode
     if (! node) {
       return
     }
-    if (node.tagName === 'SELECT') {
-      node = node.parentNode
+    if ('tabboxDropdown' in node.dataset) {
+      return this.moveSlider({
+        top: node.offsetTop,
+        left: node.offsetLeft,
+        width: node.offsetWidth,
+        color: this.optionEl.dataset.activeColor
+      })
     }
     this.moveSlider({
       top: node.offsetTop,
@@ -77,16 +129,6 @@ export default class Tabbox {
     this.slider.style.transform = `translate(${left}px, ${top}px)`
     this.slider.style.width = width + 'px'
     this.slider.style.backgroundColor = color
-  }
-
-  clearSelects(args) {
-    const except = args ? args.except : null
-    this.selects.forEach(select => {
-      if (except && (select === except)) {
-        return
-      }
-      select.value = ''
-    })
   }
 
   removeCurrentClass() {
@@ -105,36 +147,57 @@ export default class Tabbox {
     const btn = this.btns.find(btn => btn.dataset.tabboxItem === status)
     if (btn) {
       this.removeCurrentClass()
-      this.clearSelects()
       this.currentNode = btn
       this.moveToCurrentNode()
       this.addCurrentClass()
       this.options.change({ id: status, type: 'btn' })
       return
     }
-    const select = this.selects.find(s => {
-      const options = Array.from(s.querySelectorAll('option'))
-      return options.find(o => o.value === status)
+
+    let dropdownMatched = false
+    this.eachDropdownOption(({ dropdownBtn, dropdownInstance, optionEl }) => {
+      if (status === optionEl.dataset.tabboxItem) {
+        this.setDropdown({ dropdownBtn, dropdownInstance, optionEl })
+        this.options.change({ id: status, type: 'dropdown' })
+        dropdownMatched = true
+        return false
+      }
     })
-    if (select) {
-      this.removeCurrentClass()
-      this.clearSelects({ except: select })
-      select.value = status
-      this.currentNode = select
-      this.moveToCurrentNode()
-      this.addCurrentClass()
-      this.options.change({ id: status, type: 'select' })
-      return
+
+    if (! dropdownMatched) {
+      throw new Error(`Cannot find status: ${status}`)
     }
-    throw new Error(`Cannot find status: ${status}`)
+  }
+
+  setDropdown({ dropdownBtn, dropdownInstance, optionEl }) {
+    this.currentNode = dropdownBtn
+    this.optionEl = optionEl
+    this.moveToCurrentNode()
+
+    this.dropdownInstances.filter(d => d !== dropdownInstance)
+      .forEach(d => d.restoreText())
+    dropdownInstance.setText(this.optionEl.textContent)
   }
 
   addEvents() {
+    this.dropdownInstances = this.dropdownBtns.map(el => {
+      const dropdownInstance = new Dropdown(el, {
+        menuClick: event => {
+          this.setDropdown({
+            dropdownBtn: el,
+            optionEl: event.target,
+            dropdownInstance
+          })
+          this.options.change({ id: event.target.dataset.tabboxItem, type: 'dropdown' })
+        }
+      })
+      return dropdownInstance
+    })
+
     this.btns.forEach(btn => {
       this.addEvent(btn, 'click', () => {
         if (btn !== this.currentNode) {
           this.removeCurrentClass()
-          this.clearSelects()
           this.currentNode = btn
           this.moveToCurrentNode()
           this.addCurrentClass()
@@ -142,33 +205,11 @@ export default class Tabbox {
         }
       })
     })
-
-    this.selectBoxes.forEach(div => {
-      const select = div.querySelector('select')
-
-      this.addEvent(select, 'change', event => {
-        if (event.target.value) {
-          this.removeCurrentClass()
-          this.clearSelects({ except: select })
-          this.currentNode = select
-          this.moveToCurrentNode()
-          this.addCurrentClass()
-          this.options.change({ id: event.target.value, type: 'select' })
-        }
-      })
-
-      this.addEvent(select, 'focus', () => {
-        select.parentNode.classList.add('js-focus')
-      })
-
-      this.addEvent(select, 'blur', () => {
-        select.parentNode.classList.remove('js-focus')
-      })
-    })
   }
 
   destroy() {
     this.currentNode = null
+    this.dropdownInstances.forEach(d => d.destroy())
     this.slider.parentNode.removeChild(this.slider)
   }
 }

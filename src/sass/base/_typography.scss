@@ -33,110 +33,73 @@ h6 {
   }
 }
 
+.txt-lg {
+  font-size: 16px;
+}
+.txt-md {
+  font-size: 14px;
+}
+.txt-sm {
+  font-size: 12px;
+}
+.txt-ex-sm {
+  font-size: 10px;
+}
+.txt-strikethrough {
+  display: inline-block;
+  position: relative;
+  &:after {
+    content: '';
+    background-color: #f35b5b;
+    height: 2px;
+    width: 110%;
+    position: absolute;
+    top: 45%;
+    left: -5%;
+    transform: scaleY(.8);
+  }
+}
+.txt-positive {
+  font-family: 'Roboto', sans-serif;
+  color: #25b47e;
+}
+.txt-negative {
+  font-family: 'Roboto', sans-serif;
+  color: #cd3d64
+}
 .txt-num {
   font-family: 'Roboto', sans-serif;
 }
-
-.txt-order-id,
-a.txt-order-id,
-a.txt-order-id:hover {
-  font-family: 'Roboto', sans-serif;
-  color: $color-order-id;
-}
-a.txt-order-id:hover {
-  border-bottom: 1px solid $color-order-id;
-}
-
-.txt-consignment-no,
-a.txt-consignment-no,
-a.txt-consignment-no:hover {
-  font-family: Arial;
-  color: $color-consignment-no;
-}
-a.txt-consignment-no:hover {
-  border-bottom: 1px solid $color-consignment-no;
-}
-
-.txt-xdelivery-id,
-a.txt-xdelivery-id,
-a.txt-xdelivery-id:hover {
-  font-family: "PingFang TC";
-  color: $color-xdelivery-id;
-}
-a.txt-xdelivery-id:hover {
-  border-bottom: 1px solid $color-xdelivery-id;
-}
-
-.txt-sticky-nickname,
-a.txt-sticky-nickname,
-a.txt-sticky-nickname:hover {
-  font-family: "Helvetica Neue";
-  color: $color-sticky-nickname;
+.txt-avatar,
+a.txt-avatar,
+a.txt-avatar:hover {
+  font-family: 'Helvetica Neue';
+  color: $color-avatar;
   font-weight: 900;
 }
-a.txt-sticky-nickname:hover {
-  border-bottom: 1px solid $color-sticky-nickname;
+a.txt-avatar:hover {
+  border-bottom: 1px solid $color-avatar;
 }
-
-.txt-money,
-a.txt-money,
-a.txt-money:hover {
+.txt-type0 {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: $color-money;
+  color: #5c5f72;
 }
-a.txt-money:hover {
-  border-bottom: 1px solid $color-money;
-}
-
-.txt-receiver,
-a.txt-receiver,
-a.txt-receiver:hover {
-  font-family: "PingFang TC";
-  color: $color-receiver;
-}
-a.txt-receiver:hover {
-  border-bottom: 1px solid $color-receiver;
-}
-
-.txt-ip,
-a.txt-ip,
-a.txt-ip:hover {
-  font-family: 'Roboto', sans-serif;
-  color: $color-ip;
-}
-a.txt-ip:hover {
-  border-bottom: 1px solid $color-ip;
-}
-
-.txt-invoice-no,
-a.txt-invoice-no,
-a.txt-invoice-no:hover {
+.txt-type1 {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: $color-invoice-no;
+  color: #63a396;
 }
-a.txt-invoice-no:hover {
-  border-bottom: 1px solid $color-invoice-no;
-}
-
-.txt-part-no,
-a.txt-part-no,
-a.txt-part-no:hover {
+.txt-type2 {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: $color-part-no;
+  color: #6772e5;
 }
-a.txt-part-no:hover {
-  border-bottom: 1px solid $color-part-no;
-}
-
-.txt-picking,
-a.txt-picking,
-a.txt-picking:hover {
+.txt-type3 {
   font-family: 'Roboto', sans-serif;
-  color: $color-picking;
+  color: #4191d9;
 }
-a.txt-picking:hover {
-  border-bottom: 1px solid $color-picking;
+.txt-type4 {
+  font-family: 'PingFang TC';
+  color: #6382a3;
 }
