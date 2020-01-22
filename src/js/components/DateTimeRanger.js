@@ -7,7 +7,7 @@ import startOfDay from 'date-fns/startOfDay'
 import getHours from 'date-fns/getHours'
 import getMinutes from 'date-fns/getMinutes'
 import getSeconds from 'date-fns/getSeconds'
-import DatepickerDateInput from './DatepickerDateInput'
+import DateInput from './DateInput'
 import DatepickerTimeInput from './DatepickerTimeInput'
 import DateMenu from './DateMenu'
 import TimeMenu from './TimeMenu'
@@ -43,7 +43,7 @@ export default class DateTimeRanger {
 
     this.currentDate = this.startDate
 
-    this.inputDateStart = new DatepickerDateInput(
+    this.inputDateStart = new DateInput(
       dom.querySelector('[data-date-start]'),
       this.startDate,
       this.options
@@ -59,7 +59,7 @@ export default class DateTimeRanger {
       dom.querySelector('[data-btn-arrow]')
     )
 
-    this.inputDateEnd = new DatepickerDateInput(
+    this.inputDateEnd = new DateInput(
       dom.querySelector('[data-date-end]'),
       this.endDate,
       this.options
@@ -198,7 +198,10 @@ export default class DateTimeRanger {
   }
 
   addDateInputEvents() {
-    this.inputDateStart.on('focus', () => this.handleDateInputFocus(this.inputDateStart))
+    this.inputDateStart.on('focus', event => {
+      this.inputDateStart
+      this.handleDateInputFocus(this.inputDateStart)
+    })
     this.inputDateStart.on('keyup', event => {
       return this.handleDateInputKeyUp({
         event,
