@@ -20,7 +20,6 @@
   }
 }
 
-.date-input,
 .time-input {
   &::placeholder {
     font-size: 11px;
@@ -42,9 +41,6 @@
   &:focus {
     outline: 0;
   }
-}
-.date-input {
-  width: 82px;
 }
 .time-input {
   width: 52px;
