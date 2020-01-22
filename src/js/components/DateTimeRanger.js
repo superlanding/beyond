@@ -198,10 +198,7 @@ export default class DateTimeRanger {
   }
 
   addDateInputEvents() {
-    this.inputDateStart.on('focus', event => {
-      this.inputDateStart
-      this.handleDateInputFocus(this.inputDateStart)
-    })
+    this.inputDateStart.on('focus', () => this.handleDateInputFocus(this.inputDateStart))
     this.inputDateStart.on('keyup', event => {
       return this.handleDateInputKeyUp({
         event,
