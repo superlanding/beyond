@@ -3,7 +3,7 @@ import { DEFAULT_TIMEZONE } from '../consts'
 import supportDom from '../helpers/supportDom'
 
 @supportDom
-export default class DatepickerTimeInput {
+export default class TimeInput {
 
   constructor(dom, date, options = {}) {
     this.active = false
