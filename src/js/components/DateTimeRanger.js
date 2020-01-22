@@ -166,7 +166,7 @@ export default class DateTimeRanger {
     this.nextDate = res
   }
 
-  handleInputBlur({ input, isStart }) {
+  handleDateInputBlur({ input, isStart }) {
     const dateProp = isStart ? 'startDate' : 'endDate'
     const oldDate = this[dateProp]
     const { nextDate } = this
@@ -208,7 +208,7 @@ export default class DateTimeRanger {
       })
     })
     this.inputDateStart.on('blur', () => {
-      return this.handleInputBlur({
+      return this.handleDateInputBlur({
         input: this.inputDateStart,
         isStart: true
       })
@@ -224,7 +224,7 @@ export default class DateTimeRanger {
       })
     })
     this.inputDateEnd.on('blur', () => {
-      return this.handleInputBlur({
+      return this.handleDateInputBlur({
         input: this.inputDateEnd,
         isStart: false
       })
