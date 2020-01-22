@@ -1,6 +1,5 @@
 # frozen_string_literal: true
-
-source "https://github.com/superlanding/beyond"
+source 'https://rubygems.org'
 
 group :development do
   gem "jekyll"
