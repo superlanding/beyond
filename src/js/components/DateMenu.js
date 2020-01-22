@@ -56,6 +56,10 @@ export default class DateMenu {
     this.addEvents()
   }
 
+  useSingleMenu() {
+    return isTouchDevice() || this.options.useSingleMenu
+  }
+
   setHoveredCell(data) {
     const dataChanged = JSON.stringify(data) !== JSON.stringify(this.hoveredCellData)
     if (dataChanged && (! this.endDate)) {
@@ -119,7 +123,7 @@ export default class DateMenu {
   setCaption() {
     const { date, date2 } = this
     const options = { timezone: this.tz, locale: this.locale }
-    if (isTouchDevice()) {
+    if (this.useSingleMenu()) {
       this.caption.textContent = format(date, this.captionPattern, options)
     }
     else {
@@ -129,7 +133,7 @@ export default class DateMenu {
   }
 
   drawTables() {
-    if (isTouchDevice()) {
+    if (this.useSingleMenu()) {
       const rows = this.getTableRows(this.date)
       this.table.innerHTML = this.getTableHtml(rows)
     }
@@ -190,7 +194,7 @@ export default class DateMenu {
     const dom = document.createElement('div')
     dom.className = 'date-menu'
 
-    if (isTouchDevice()) {
+    if (this.useSingleMenu()) {
       dom.innerHTML = `
         <div class="date-menu-content">
           <div class="date-menu-caption" data-menu-caption></div>
@@ -265,7 +269,7 @@ export default class DateMenu {
       this.setDate({ date: addMonths(this.date, 1) })
     })
 
-    if (isTouchDevice()) {
+    if (this.useSingleMenu()) {
       this.addEvent(this.table, 'click', event => {
         if ('dateTableCell' in event.target.dataset) {
           const res = {
