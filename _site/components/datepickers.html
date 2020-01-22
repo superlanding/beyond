@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
-    <title>Datepickers | Beyond</title>
+    <title>DatePickers | Beyond</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
     
@@ -50,7 +50,31 @@
     
       <li>
         
+          <a href="/beyond/components/avatars.html" class="nav-item">Avatars</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/badges.html" class="nav-item">Badges</a>
+        
+      </li>
+    
+      <li>
+        
           <a href="/beyond/components/buttons.html" class="nav-item">Buttons</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/button-groups.html" class="nav-item">Button Groups</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
         
       </li>
     
@@ -110,6 +134,12 @@
     
       <li>
         
+          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
+        
+      </li>
+    
+      <li>
+        
           <a href="/beyond/components/datepickers.html" class="nav-item active">Datepickers</a>
         
       </li>
@@ -126,6 +156,12 @@
         
       </li>
     
+      <li>
+        
+          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
+        
+      </li>
+    
   </ul>
 </nav>
 
@@ -133,7 +169,7 @@
       <div class="page-datepickers">
 
   <div class="card card-shadow-sm">
-    <h1 class="card-heading">日期選擇器 - Datepickers</h1>
+    <h1 class="card-heading">日期選擇器 - Datepicker</h1>
 
     <div class="codebox" data-codebox>
       <div class="codebox-tabs" data-tabs>
@@ -144,11 +180,15 @@
       <div class="codebox-panes" data-panes>
         <div class="codebox-result">
           <div class="datepicker" data-datepicker>
-  <input class="datepicker-date-input" data-date-start /><!--
-  --><input class="datepicker-time-input" data-time-start /><!--
-  --><button class="icon-arrow-right" data-btn-arrow tabindex="-1"></button><!--
-  --><input class="datepicker-date-input" data-date-end /><!--
-  --><input class="datepicker-time-input" data-time-end />
+  <input class="date-input" data-date />
+</div>
+
+<br>
+<br>
+
+<div class="datepicker" data-datepicker>
+  <input class="date-input" data-date />
+  <input class="time-input" data-time />
 </div>
 
         </div>
@@ -160,12 +200,20 @@
 5
 6
 7
+8
+9
+10
+11
 </pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"datepicker"</span> <span class="na">data-datepicker</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"datepicker-date-input"</span> <span class="na">data-date-start</span> <span class="nt">/&gt;</span><span class="c">&lt;!--
-  --&gt;</span><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"datepicker-time-input"</span> <span class="na">data-time-start</span> <span class="nt">/&gt;</span><span class="c">&lt;!--
-  --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"icon-arrow-right"</span> <span class="na">data-btn-arrow</span> <span class="na">tabindex=</span><span class="s">"-1"</span><span class="nt">&gt;&lt;/button&gt;</span><span class="c">&lt;!--
-  --&gt;</span><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"datepicker-date-input"</span> <span class="na">data-date-end</span> <span class="nt">/&gt;</span><span class="c">&lt;!--
-  --&gt;</span><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"datepicker-time-input"</span> <span class="na">data-time-end</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"date-input"</span> <span class="na">data-date</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"datepicker"</span> <span class="na">data-datepicker</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"date-input"</span> <span class="na">data-date</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"time-input"</span> <span class="na">data-time</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
         </div>
@@ -180,21 +228,15 @@
 8
 9
 10
-11
-12
-13
 </pre></td><td class="code"><pre><span class="k">import</span> <span class="nx">intlReady</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../assets/js/intlReady</span><span class="dl">'</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">zonedTimeToUtc</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">date-fns-tz</span><span class="dl">'</span>
-
 <span class="kd">const</span> <span class="p">{</span> <span class="nx">Datepicker</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
 
 <span class="nx">intlReady</span><span class="p">()</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-datepicker]</span><span class="dl">'</span><span class="p">)</span>
-      <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Datepicker</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
-        <span class="na">startDate</span><span class="p">:</span> <span class="nx">zonedTimeToUtc</span><span class="p">(</span><span class="dl">'</span><span class="s1">2018-09-01 18:01:36.386</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Asia/Taipei</span><span class="dl">'</span><span class="p">),</span>
-        <span class="na">endDate</span><span class="p">:</span> <span class="nx">zonedTimeToUtc</span><span class="p">(</span><span class="dl">'</span><span class="s1">2018-09-03 18:01:36.386</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Asia/Taipei</span><span class="dl">'</span><span class="p">)</span>
-      <span class="p">}))</span>
+    <span class="kd">const</span> <span class="nx">date</span> <span class="o">=</span> <span class="nx">zonedTimeToUtc</span><span class="p">(</span><span class="dl">'</span><span class="s1">2018-09-01 18:01:36.386</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Asia/Taipei</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-datepicker]</span><span class="dl">'</span><span class="p">))</span>
+      <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Datepicker</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">date</span><span class="p">))</span>
   <span class="p">})</span>
 </pre></td></tr></tbody></table></code></pre></figure>
         </div>
@@ -204,11 +246,7 @@
   <h2>Datepicker HTML</h2>
   <div class="code">
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"datepicker"</span> <span class="na">data-datepicker</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"datepicker-date-input"</span> <span class="na">data-date-start</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"datepicker-time-input"</span> <span class="na">data-time-start</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"icon-arrow-right"</span> <span class="na">data-btn-arrow</span> <span class="na">tabindex=</span><span class="s">"-1"</span><span class="nt">&gt;&lt;/button&gt;</span>
-  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"datepicker-date-input"</span> <span class="na">data-date-end</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"datepicker-time-input"</span> <span class="na">data-time-end</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"date-input"</span> <span class="na">data-date</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
   </div>
   <table class="table">
@@ -220,24 +258,8 @@
     </thead>
     <tbody>
       <tr>
-        <td>data-date-start</td>
-        <td>指定為開始日期的輸入文字框</td>
-      </tr>
-      <tr>
-        <td>data-date-end</td>
-        <td>指定為結束日期的輸入文字框</td>
-      </tr>
-      <tr>
-        <td>data-time-start</td>
-        <td>指定為開始時間的輸入文字框</td>
-      </tr>
-      <tr>
-        <td>data-time-end</td>
-        <td>指定為結束時間的輸入文字框</td>
-      </tr>
-      <tr>
-        <td>data-btn-arrow</td>
-        <td>指定為 datepicker 的按鈕</td>
+        <td>data-date</td>
+        <td>指定為日期的文字輸入框</td>
       </tr>
     </tbody>
   </table>

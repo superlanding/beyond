@@ -250,6 +250,10 @@ td.code > pre {
   background-color: #4f556a;
   padding: 14px 0; }
 
+.codebox-label {
+  margin-top: 14px;
+  margin-bottom: 7px; }
+
 .doc h2 {
   margin-top: 30px; }
 .doc h3 {
@@ -301,6 +305,8 @@ p {
 .code-block {
   margin-bottom: 20px; }
 
+.page-typography .txt-demo-box {
+  line-height: 30px; }
 .page-typography .card-h1 {
   margin-bottom: 34px; }
 .page-typography .separator {
@@ -345,9 +351,6 @@ p {
     font-size: 12px;
     margin-top: 10px; }
 
-.page-btns .codebox-label {
-  margin-top: 14px;
-  margin-bottom: 7px; }
 @media (max-width: 992px) {
   .page-btns .container {
     display: block; } }
@@ -391,13 +394,35 @@ p {
 .page-forms .card {
   margin-bottom: 40px; }
 
-.page-datepickers .codebox-result .datepicker {
+.page-date-time-rangers .codebox-result .datepicker {
   white-space: nowrap; }
   @media (max-width: 992px) {
-    .page-datepickers .codebox-result .datepicker .icon-arrow-right {
+    .page-date-time-rangers .codebox-result .datepicker .icon-arrow-right {
       transform: rotate(90deg);
       display: block;
       margin: 0 auto; } }
 
 .page-tables .table {
   margin-bottom: 40px; }
+
+.page-navbars .codebox {
+  width: 760px;
+  margin-bottom: 20px; }
+  @media (max-width: 992px) {
+    .page-navbars .codebox {
+      width: 100%; } }
+
+.page-tabboxes .codebox {
+  margin-bottom: 20px; }
+.page-tabboxes .tabbox {
+  margin-bottom: 20px; }
+
+.page-btn-groups .btn-group-separator {
+  margin-bottom: 20px; }
+  .page-btn-groups .btn-group-separator > .btn-group {
+    margin-right: 20px; }
+
+.page-avatars .avatar-wrap {
+  margin-bottom: 20px; }
+  .page-avatars .avatar-wrap > .avatar {
+    margin-right: 14px; }
