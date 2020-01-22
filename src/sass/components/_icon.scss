@@ -464,7 +464,11 @@
   content: "\e96d";
   color: $color-icon;
 }
+.icon-flag:before {
+  content: "\e96f";
+  color: $color-icon;
+}
 .icon-rocket:before {
   content: "\e96e";
-  color: #4f566b;
+  color: $color-icon;
 }
