@@ -56,9 +56,11 @@ export default class Datepicker {
 
   handleDateInputFocus() {
     this.focused = true
+    this.clearInputStatus()
     this.dateInput.setActive(true)
     this.dateMenu.setDate({ date: this.menuDate })
     this.dateMenu.show(this.dom)
+    this.timeMenu && this.timeMenu.hide()
   }
 
   handleDateInputKeyUp(event) {
@@ -121,15 +123,15 @@ export default class Datepicker {
   }
 
   addDateInputEvents() {
-    this.dateInput.on('focus', event => this.handleDateInputFocus(event))
+    this.dateInput.on('focus', () => this.handleDateInputFocus())
     this.dateInput.on('keyup', event => this.handleDateInputKeyUp(event))
-    this.dateInput.on('blur', event => this.handleDateInputBlur(event))
+    this.dateInput.on('blur', () => this.handleDateInputBlur())
   }
 
   addTimeInputEvents() {
-    this.timeInput.on('focus', event => this.handleTimeInputFocus(event))
+    this.timeInput.on('focus', () => this.handleTimeInputFocus())
     this.timeInput.on('keyup', event => this.handleTimeInputKeyUp(event))
-    this.timeInput.on('blur', event => this.handleTimeInputBlur(event))
+    this.timeInput.on('blur', () => this.handleTimeInputBlur())
   }
 
   addEvents() {
@@ -144,6 +146,9 @@ export default class Datepicker {
       this.date = set(this.date, { year, month, date })
       this.dateInput.setDate(this.date)
       this.dateMenu.setDate({ startDate: this.date })
+      this.dateInput.setActive(false)
+      this.dateMenu.hide()
+      this.options.change({ date: this.date })
     })
 
     if (this.timeInput) {
@@ -154,6 +159,7 @@ export default class Datepicker {
         this.timeInput.setDate(this.date)
         this.timeMenu.hide()
         this.clearInputStatus()
+        this.options.change({ date: this.date })
       })
     }
 
@@ -167,10 +173,7 @@ export default class Datepicker {
         this.focused = false
         return
       }
-      if (! dateMenu.isVisible) {
-        return
-      }
-      if (timeMenu && (! timeMenu.isVisible)) {
+      if ((! dateMenu.isVisible) && (timeMenu && (! timeMenu.isVisible))) {
         return
       }
       if (dom.contains(target)) {
