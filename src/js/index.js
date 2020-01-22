@@ -6,6 +6,7 @@ import './polyfills/nodeRemove'
 import './polyfills/elementDataset'
 import Autocomplete from './components/Autocomplete'
 import DateTimeRanger from './components/DateTimeRanger'
+import Datepicker from './components/Datepicker'
 import Dropdown from './components/Dropdown'
 import Modal from './components/Modal'
 import Tabbox from './components/Tabbox'
@@ -17,6 +18,7 @@ import Navbar from './components/Navbar'
 export {
   Autocomplete,
   DateTimeRanger,
+  Datepicker,
   Dropdown,
   Modal,
   Sidebar,
