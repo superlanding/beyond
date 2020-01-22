@@ -305,7 +305,6 @@ export default class DateMenu {
       })
 
       if (this.options.useMouseOver) {
-        console.log('here')
         this.addEvent(this.dom, 'mouseover', throttle(event => {
           if ('dateTableCell' in event.target.dataset) {
             const table = this.findTable(event.target)
