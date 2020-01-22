@@ -1,6 +1,7 @@
 import { format } from 'date-fns-tz'
 import { DEFAULT_TIMEZONE } from '../consts'
 import supportDom from '../helpers/supportDom'
+import isTouchDevice from '../helpers/isTouchDevice'
 
 @supportDom
 export default class TimeInput {
@@ -18,12 +19,19 @@ export default class TimeInput {
   }
 
   init() {
+    this.initInput()
+    this.addEvents()
+  }
+
+  initInput() {
     const { dom } = this
     dom.value = this.format(this.date)
     if (! dom.hasAttribute('placeholder')) {
       dom.setAttribute('placeholder', this.timePattern.toUpperCase())
     }
-    this.addEvents()
+    if (isTouchDevice()) {
+      dom.setAttribute('readonly', 'readonly')
+    }
   }
 
   format(date) {
