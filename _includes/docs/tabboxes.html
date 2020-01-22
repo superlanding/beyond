@@ -1,26 +1,39 @@
 <div class="doc">
   <h2>Tabbox HTML</h2>
-  <p>按鈕 HTML 需要符合 button[data-tabbox-item]，select 元素須符合 div[data-tabbox-item] select</p>
+  <p>按鈕 HTML 需要符合 button[data-tabbox-item]，dropdown button 元素須符合 button[data-tabbox-dropdown]</p>
   <div class="code">
 {% highlight html %}
-<div class="tabbox" data-tabbox>
+<div class="tabbox">
    <button class="tab-btn" data-tabbox-item="all" data-default>全部</button>
-   <button class="tab-btn tab-btn-new"
+   <button class="tab-btn"
            data-tabbox-item="new"
            data-active-color="#018972">新訂單</button>
-   <button class="tab-btn tab-btn-type1"
-           data-tabbox-item="waiting"
-           data-active-color="#018972">等待中</button>
-   <div class="select-box"
-        data-tabbox-item="others">
-     <select class="select">
-       <option value="">其他</option>
-       <option value="temp">臨時</option>
-       <option value="others">其他</option>
-       <option value="cancelled">已取消</option>
-       <option value="deleted">已刪除</option>
-     </select>
-   </div>
+   <button class="tab-btn"
+           data-tabbox-dropdown
+           data-target="menu-exchange">退換貨<i class="icon-chevron-down"></i></button>
+</div>
+
+<div class="dropdown-menu"
+     data-dropdown-menu="menu-exchange"
+     data-place="bottom"
+     data-align="left">
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="returning"
+     data-active-color="#19af95">退貨中</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="exchanging"
+     data-active-color="#19af95">換貨中</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="returned"
+     data-active-color="#8b8b9e">已退貨</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="refunded"
+     data-active-color="#8b8b9e">已退款</a>
 </div>
 {% endhighlight %}
   </div>
