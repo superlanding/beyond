@@ -64,25 +64,20 @@
       @include tab-active-text;
     }
     @include tab-focus-style;
-    &.tab-btn-new {
-      border-bottom-color: rgba(109, 188, 128, .3);
-      @include tab-focus-style;
-    }
-    &.tab-btn-type1 {
-      border-bottom-color: rgba(1, 137, 114, .2);
-      @include tab-focus-style;
-    }
-    &.tab-btn-type2 {
-      border-bottom-color: rgba(0, 91, 74, .2);
-      @include tab-focus-style;
-    }
-    &.tab-btn-invoice {
-      border-bottom-color: rgba(93, 105, 227, .3);
-      @include tab-focus-style;
-    }
-    &.tab-btn-others {
-      border-bottom-color: rgba(205, 205, 205, 1);
-      @include tab-focus-style;
+
+    $tab-btn-borders: (
+      (tab-btn-type0, rgba(109, 188, 128, .3)),
+      (tab-btn-type1, rgba(1, 137, 114, .2)),
+      (tab-btn-type2, rgba(0, 91, 74, .2)),
+      (tab-btn-type3, rgba(93, 105, 227, .3)),
+      (tab-btn-type4, rgba(205, 205, 205, 1)),
+    );
+
+    @each $classname, $border in $tab-btn-borders {
+      &.#{$classname} {
+        border-bottom-color: $border;
+        @include tab-focus-style;
+      }
     }
   }
 }
