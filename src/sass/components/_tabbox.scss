@@ -40,12 +40,12 @@
     padding: 18px 50px;
   }
   .tab-btn {
-    .icon.icon-chevron-down {
+    .icon-chevron-down {
       margin-left: 7px;
       font-size: 10px;
     }
     &:hover {
-      .icon.icon-chevron-down:before {
+      .icon-chevron-down:before {
         color: #1d2638;
       }
     }
