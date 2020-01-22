@@ -17,7 +17,7 @@ export default class Tabbox {
   init() {
     const { dom } = this
     this.btns = Array.from(dom.querySelectorAll('button[data-tabbox-item]'))
-    this.dropdowns = Array.from(dom.querySelectorAll('button[data-tabbox-dropdown]'))
+    this.dropdownBtns = Array.from(dom.querySelectorAll('button[data-tabbox-dropdown]'))
     this.addEvents()
     this.appendSlider()
   }
@@ -45,7 +45,7 @@ export default class Tabbox {
       const options = Array.from(d.menu.querySelectorAll('[data-tabbox-item]'))
       for (const optionEl of options) {
         const going = fn({
-          dropdownBtn: this.dropdowns[index],
+          dropdownBtn: this.dropdownBtns[index],
           dropdownInstance: d,
           optionEl
         })
@@ -153,21 +153,42 @@ export default class Tabbox {
       this.options.change({ id: status, type: 'btn' })
       return
     }
-    throw new Error(`Cannot find status: ${status}`)
+
+    let dropdownMatched = false
+    this.eachDropdownOption(({ dropdownBtn, dropdownInstance, optionEl }) => {
+      if (status === optionEl.dataset.tabboxItem) {
+        this.setDropdown({ dropdownBtn, dropdownInstance, optionEl })
+        this.options.change({ id: status, type: 'dropdown' })
+        dropdownMatched = true
+        return false
+      }
+    })
+
+    if (! dropdownMatched) {
+      throw new Error(`Cannot find status: ${status}`)
+    }
+  }
+
+  setDropdown({ dropdownBtn, dropdownInstance, optionEl }) {
+    this.currentNode = dropdownBtn
+    this.optionEl = optionEl
+    this.moveToCurrentNode()
+
+    this.dropdownInstances.filter(d => d !== dropdownInstance)
+      .forEach(d => d.restoreText())
+    dropdownInstance.setText(this.optionEl.textContent)
   }
 
   addEvents() {
-    this.dropdownInstances = this.dropdowns.map(el => {
+    this.dropdownInstances = this.dropdownBtns.map(el => {
       const dropdownInstance = new Dropdown(el, {
         menuClick: event => {
-          this.currentNode = el
-          this.optionEl = event.target
-          this.moveToCurrentNode()
-
-          this.dropdownInstances.filter(d => d !== dropdownInstance)
-            .forEach(d => d.restoreText())
-
-          dropdownInstance.setText(this.optionEl.textContent)
+          this.setDropdown({
+            dropdownBtn: el,
+            optionEl: event.target,
+            dropdownInstance
+          })
+          this.options.change({ id: event.target.dataset.tabboxItem, type: 'dropdown' })
         }
       })
       return dropdownInstance
