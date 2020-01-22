@@ -20,32 +20,6 @@
   }
 }
 
-.time-input {
-  &::placeholder {
-    font-size: 11px;
-    color: hsla(0, 0%, 100%, .6);
-  }
-  text-align: center;
-  height: 24px;
-  border: 0;
-  border-radius: 3px;
-  font-size: 13px;
-  &.active {
-    background-color: #5469d4;
-    color: #fff
-  }
-  &.active.danger {
-    background-color: #cd3d64;
-    color: #fff
-  }
-  &:focus {
-    outline: 0;
-  }
-}
-.time-input {
-  width: 52px;
-}
-
 .time-menu {
   display: none;
   box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
