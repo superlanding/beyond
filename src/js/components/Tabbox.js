@@ -171,6 +171,7 @@ export default class Tabbox {
 
   destroy() {
     this.currentNode = null
+    this.dropdownInstances.forEach(d => d.destroy())
     this.slider.parentNode.removeChild(this.slider)
   }
 }
