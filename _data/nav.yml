@@ -32,8 +32,8 @@
   link: /components/tooltips.html
 - name: Toasts
   link: /components/toasts.html
-- name: Datepickers
-  link: /components/datepickers.html
+- name: DateTimeRangers
+  link: /components/date-time-rangers.html
 - name: Autocompletes
   link: /components/autocompletes.html
 - name: Tables
