@@ -34,7 +34,7 @@ export default class Datepicker {
     )
     this.dateMenu = new DateMenu({
       date: this.menuDate,
-      options: this.options
+      options: Object.assign({}, this.options, { useSingleMenu: true })
     })
 
     const timeInput = dom.querySelector('[data-time]')
