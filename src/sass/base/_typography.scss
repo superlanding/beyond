@@ -138,3 +138,12 @@ a.txt-type4:hover {
 a.txt-type4:hover {
   border-bottom: 1px solid $color-txt-type4;
 }
+
+.content-disabled {
+  &,
+  *,
+  *:before {
+    filter: grayscale(70%);
+  }
+}
+

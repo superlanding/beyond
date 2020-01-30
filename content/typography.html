@@ -63,7 +63,7 @@ title: Typography
 
   <div class="card card-shadow-md">
     <h2 class="card-heading">表格文字</h2>
-    <div class="codebox last-codebox" data-codebox>
+    <div class="codebox" data-codebox>
       <div class="codebox-tabs" data-tabs>
         <a>Result</a>
         <a>HTML</a>
@@ -77,5 +77,22 @@ title: Typography
         </div>
       </div>
     </div>
+
+    <div class="codebox-label">disabled 背景與內文</div>
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          {% include demos/table-disabled.html %}
+        </div>
+        <div>
+          {% highlight html linenos %}{% include demos/table-disabled.html %}{% endhighlight %}
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
