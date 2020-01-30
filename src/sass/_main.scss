@@ -47,10 +47,10 @@ th, td {
 
 a {
   cursor: pointer;
-  color: #5469d4;
+  color: $color-anchor;
   font-weight: 500;
   text-decoration: none;
   &:hover {
-    color: #1a1f36;
+    color: $color-anchor-ex;
   }
 }
