@@ -9,10 +9,21 @@
   margin-right: auto;
   text-align: center;
 
+  .toast-item-box {
+    transition: .3s all;
+    opacity: 0;
+    transform: translateY(200%);
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    &.has-btn .toast-message {
+      padding-right: 14px;
+    }
+  }
   .toast-item {
     display: inline-block;
     border-radius: 2px;
-    transition: .3s all;
     margin: 7px auto;
     padding: 8px 12px;
     background-color: #3c4257;
@@ -25,7 +36,6 @@
     text-align: left;
     max-width: 210px;
     display: inline-block;
-    padding-right: 14px;
   }
   .toast-btn {
     padding: 7px 14px 7px 24px;
