@@ -315,7 +315,7 @@
 
   <div class="card card-shadow-md">
     <h2 class="card-heading">表格文字</h2>
-    <div class="codebox last-codebox" data-codebox>
+    <div class="codebox" data-codebox>
       <div class="codebox-tabs" data-tabs>
         <a>Result</a>
         <a>HTML</a>
@@ -500,7 +500,264 @@
         </div>
       </div>
     </div>
+
+    <div class="codebox-label">disabled 背景與內文</div>
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          <table class="table-fonts bg-disabled content-disabled">
+  <tr>
+    <th>標籤</th>
+    <td>
+      <div>
+        <span class="tag tag-primary">主要</span>
+        <span class="tag tag-secondary">次要</span>
+        <span class="tag tag-success">成功</span>
+        <span class="tag tag-danger">危險</span>
+        <span class="tag tag-warn">警告</span>
+        <span class="tag tag-info">資訊</span>
+        <span class="tag tag-light">光明</span>
+        <span class="tag tag-dark">黑暗</span>
+        <span class="tag tag-danger-ex">非常危險</span>
+      </div>
+      <div>
+        <span class="tag tag-type0">type0</span>
+        <span class="tag tag-type1">type1</span>
+        <span class="tag tag-type2">type2</span>
+        <span class="tag tag-type3">type3</span>
+        <span class="tag tag-type4">type4</span>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>訂單編號</th>
+    <td>SP12345678</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>托運單號</th>
+    <td>1002-6790-5721</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>發票號碼</th>
+    <td class="txt-type1">MH-12345678</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>火箭快遞</th>
+    <td class="txt-type4">439944</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>便利貼暱稱</th>
+    <td class="txt-avatar">
+      <img class="avatar avatar-sm avatar-eddie"
+           src="/beyond/assets/img/avatar-eddie.jpg"
+           alt="eddie's avatar" />
+      eddie
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>金額</th>
+    <td class="txt-type0">NT$1,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>收件人</th>
+    <td>黃宏成</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>IP</th>
+    <td>115.43.250.18</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>料號</th>
+    <td class="txt-type2">88180101-010</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>撿貨編號</th>
+    <td class="txt-type3">婉婷全九</td>
+    <td></td>
+  </tr>
+</table>
+
+        </div>
+        <div>
+          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+</pre></td><td class="code"><pre><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table-fonts bg-disabled content-disabled"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>標籤<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+      <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-primary"</span><span class="nt">&gt;</span>主要<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-secondary"</span><span class="nt">&gt;</span>次要<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-success"</span><span class="nt">&gt;</span>成功<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-danger"</span><span class="nt">&gt;</span>危險<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-warn"</span><span class="nt">&gt;</span>警告<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-info"</span><span class="nt">&gt;</span>資訊<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-light"</span><span class="nt">&gt;</span>光明<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-dark"</span><span class="nt">&gt;</span>黑暗<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-danger-ex"</span><span class="nt">&gt;</span>非常危險<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-type0"</span><span class="nt">&gt;</span>type0<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-type1"</span><span class="nt">&gt;</span>type1<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-type2"</span><span class="nt">&gt;</span>type2<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-type3"</span><span class="nt">&gt;</span>type3<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-type4"</span><span class="nt">&gt;</span>type4<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>訂單編號<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;</span>SP12345678<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>托運單號<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;</span>1002-6790-5721<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>發票號碼<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"txt-type1"</span><span class="nt">&gt;</span>MH-12345678<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>火箭快遞<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"txt-type4"</span><span class="nt">&gt;</span>439944<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>便利貼暱稱<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"txt-avatar"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"avatar avatar-sm avatar-eddie"</span>
+           <span class="na">src=</span><span class="s">"/beyond/assets/img/avatar-eddie.jpg"</span>
+           <span class="na">alt=</span><span class="s">"eddie's avatar"</span> <span class="nt">/&gt;</span>
+      eddie
+    <span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>金額<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"txt-type0"</span><span class="nt">&gt;</span>NT$1,000<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>收件人<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;</span>黃宏成<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>IP<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;</span>115.43.250.18<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>料號<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"txt-type2"</span><span class="nt">&gt;</span>88180101-010<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>撿貨編號<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"txt-type3"</span><span class="nt">&gt;</span>婉婷全九<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
 
     </main>
