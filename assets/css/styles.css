@@ -305,6 +305,11 @@ p {
 .code-block {
   margin-bottom: 20px; }
 
+.page-typography .title-demo {
+  line-height: 20px; }
+  .page-typography .title-demo .tag {
+    margin-top: 7px;
+    margin-bottom: 7px; }
 .page-typography .txt-demo-box {
   line-height: 30px; }
 .page-typography .card-h1 {
