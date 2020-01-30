@@ -11,20 +11,19 @@ class ToastItem {
   init() {
 
     const { message, btnText, btnCb } = this.options
+
     const dom = document.createElement('div')
-    dom.classList.add('toast-item')
-    dom.style.transform = 'translateY(200%)'
-    dom.style.opacity = 0
-
-    const toastMessage = document.createElement('div')
-    toastMessage.classList.add('toast-message')
-    toastMessage.innerHTML = message
-
-    dom.appendChild(toastMessage)
+    dom.innerHTML = `
+      <div class="toast-item">
+        <div class="toast-message">${message}</div>
+      </div>
+    `
+    dom.className = 'toast-item-box'
 
     this.dom = dom
 
     if (btnText) {
+      this.dom.classList.add('has-btn')
       this.createBtn(btnText)
     }
     if (btnText && btnCb) {
@@ -33,16 +32,14 @@ class ToastItem {
   }
 
   show() {
-    const { dom } = this
-    dom.style.transform = 'translateY(0)'
-    dom.style.opacity = 1
+    this.dom.classList.add('visible')
   }
 
   createBtn() {
     const btn = document.createElement('button')
-    btn.classList.add('toast-btn')
+    btn.className = 'toast-btn'
     btn.innerText = this.options.btnText
-    this.dom.appendChild(btn)
+    this.dom.querySelector('.toast-item').appendChild(btn)
     this.btn = btn
   }
 
@@ -58,6 +55,7 @@ class ToastItem {
 
   destroy() {
     const { dom } = this
+    clearTimeout(dom._showTimer)
     clearTimeout(dom._timer)
     dom.remove()
   }
@@ -74,18 +72,24 @@ export default class Toast {
     toast.classList.add('toast')
     document.body.appendChild(toast)
     this.toast = toast
+    this.items = []
   }
 
   send(options) {
+
     const toastItem = new ToastItem(options)
     this.toast.appendChild(toastItem.dom)
-    setTimeout(() => toastItem.show(), 50)
+    this.items.push(toastItem)
+
+    toastItem._showTimer = setTimeout(() => toastItem.show(), 50)
     toastItem._timer = setTimeout(() => {
+      this.items = this.items.filter(item => item !== toastItem)
       toastItem.destroy()
     }, options.duration || 3000)
   }
 
   destroy() {
-    this.box.remove()
+    this.items.forEach(item => item.destroy())
+    this.toast.remove()
   }
 }
