@@ -5,8 +5,9 @@
   vertical-align: middle;
   color: #3c4257;
   font-size: 14px;
-  > span {
+  .radio + span {
     position: relative;
+    margin-left: 4px;
   }
 }
 .radio {
@@ -16,7 +17,6 @@
   transform: translateY(2px);
   position: relative;
   display: inline-block;
-  margin-right: 4px;
   input[type="radio"] {
     @include size($size);
     cursor: pointer;

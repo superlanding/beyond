@@ -25,18 +25,20 @@
   vertical-align: middle;
   color: #3c4257;
   font-size: 14px;
-  > span {
+  .checkbox + span {
     position: relative;
+    margin-left: 4px;
   }
 }
 .checkbox {
+
   $size: 14px;
   @include size($size);
   cursor: pointer;
   transform: translateY(2px);
   position: relative;
   display: inline-block;
-  margin-right: 4px;
+
   input[type="checkbox"] {
     @include size($size);
     cursor: pointer;
