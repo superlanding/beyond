@@ -9,16 +9,17 @@ import DateMenu from './DateMenu'
 import TimeMenu from './TimeMenu'
 import supportDom from '../helpers/supportDom'
 import { DEFAULT_TIMEZONE } from '../consts'
+import dateToTimestamp from '../helpers/dateToTimestamp'
 
 @supportDom
 export default class Datepicker {
 
-  constructor(dom, date, options = {}) {
+  constructor(dom, timestamp, options = {}) {
     this.dom = dom
     this.options = options
     this.options.change = options.change || noop
     this.tz = options.tz || DEFAULT_TIMEZONE
-    this.date = utcToZonedTime(date, this.tz)
+    this.date = new Date(timestamp * 1000)
     this.menuDate = toDate(this.date)
     this.focused = false
     this.nextDate = null
@@ -148,7 +149,10 @@ export default class Datepicker {
       this.dateMenu.setDate({ startDate: this.date })
       this.dateInput.setActive(false)
       this.dateMenu.hide()
-      this.options.change({ date: this.date })
+      this.options.change({
+        date: this.date,
+        timestamp: dateToTimestamp(this.date)
+      })
     })
 
     if (this.timeInput) {
