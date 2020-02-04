@@ -26,7 +26,7 @@
   <h3>constructor</h3>
   <div class="code">
 {% highlight js %}
-const datepicker = new Datepicker(dom, options)
+const datepicker = new Datepicker(dom, timestamp, options)
 {% endhighlight %}
   </div>
   <table class="table">
@@ -42,6 +42,11 @@ const datepicker = new Datepicker(dom, options)
         <td>dom</td>
         <td>HTMLElement</td>
         <td>需要指定為 datepicker 的元素</td>
+      </tr>
+      <tr>
+        <td>timestamp</td>
+        <td>integer</td>
+        <td>unix timestamp</td>
       </tr>
       <tr>
         <td>options</td>

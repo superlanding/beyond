@@ -1,4 +1,3 @@
-import { utcToZonedTime } from 'date-fns-tz'
 import endOfDay from 'date-fns/endOfDay'
 import parse from 'date-fns/parse'
 import set from 'date-fns/set'
@@ -15,7 +14,7 @@ import DatepickerBtnArrow from './DatepickerBtnArrow'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
 import supportDom from '../helpers/supportDom'
-import { DEFAULT_TIMEZONE } from '../consts'
+import dateToTimestamp from '../helpers/dateToTimestamp'
 
 @supportDom
 export default class DateTimeRanger {
@@ -27,7 +26,6 @@ export default class DateTimeRanger {
     this.options.useMouseOver = ('useMouseOver' in options) ?
       options.useMouseOver : true
 
-    this.tz = options.tz || DEFAULT_TIMEZONE
     this.lastTriggered = null
     this.nextDate = null
     this.focused = false
@@ -38,11 +36,10 @@ export default class DateTimeRanger {
 
   init() {
     const { dom } = this
-    const startDate = this.options.startDate || new Date()
-    const endDate = this.options.endDate || endOfDay(startDate)
+    const { startAt, endAt } = this.options
 
-    this.startDate = utcToZonedTime(startDate, this.tz)
-    this.endDate = utcToZonedTime(endDate, this.tz)
+    this.startDate = startAt ? new Date(startAt * 1000) : startOfDay(new Date())
+    this.endDate = endAt ? new Date(endAt * 1000) : endOfDay(this.startDate)
 
     this.currentDate = this.startDate
 
@@ -89,8 +86,8 @@ export default class DateTimeRanger {
     if (dateGt(startDate, endDate)) {
       throw new Error('Start date cannot be greater than end date.')
     }
-    this.startDate = utcToZonedTime(startDate, this.tz)
-    this.endDate = utcToZonedTime(endDate, this.tz)
+    this.startDate = startDate
+    this.endDate = endDate
     this.inputDateStart.setDate(this.startDate)
     this.inputTimeStart.setDate(this.startDate)
     this.inputDateEnd.setDate(this.endDate)
@@ -333,7 +330,9 @@ export default class DateTimeRanger {
         })
         return this.options.change({
           startDate: this.startDate,
-          endDate: this.endDate
+          endDate: this.endDate,
+          startAt: dateToTimestamp(this.startDate),
+          endAt: dateToTimestamp(this.endDate)
         })
       }
     })

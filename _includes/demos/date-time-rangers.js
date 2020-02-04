@@ -1,13 +1,17 @@
+import endOfDay from 'date-fns/endOfDay'
 import intlReady from '../../assets/js/intlReady'
-import { zonedTimeToUtc } from 'date-fns-tz'
 
 const { DateTimeRanger } = window.beyond
+const locale = 'Asia/Taipei'
+const pattern = 'yyyy-MM-dd hh:mm:ss'
+
+const dateToTimestamp = date => parseInt(+date / 1000, 10)
 
 intlReady()
   .then(() => {
     document.querySelectorAll('[data-date-time-ranger]')
       .forEach(dom => new DateTimeRanger(dom, {
-        startDate: zonedTimeToUtc('2018-09-01 18:01:36.386', 'Asia/Taipei'),
-        endDate: zonedTimeToUtc('2018-09-03 18:01:36.386', 'Asia/Taipei')
+        startAt: dateToTimestamp(new Date()),
+        endAt: dateToTimestamp(endOfDay(new Date())),
       }))
   })

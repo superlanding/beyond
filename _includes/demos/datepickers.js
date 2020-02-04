@@ -1,10 +1,11 @@
 import intlReady from '../../assets/js/intlReady'
-import { zonedTimeToUtc } from 'date-fns-tz'
 const { Datepicker } = window.beyond
+
+const dateToTimestamp = date => parseInt(+date / 1000, 10)
 
 intlReady()
   .then(() => {
-    const date = zonedTimeToUtc('2018-09-01 18:01:36.386', 'Asia/Taipei')
+    const timestamp = dateToTimestamp(new Date())
     Array.from(document.querySelectorAll('[data-datepicker]'))
-      .forEach(dom => new Datepicker(dom, date))
+      .forEach(dom => new Datepicker(dom, timestamp))
   })
