@@ -228,15 +228,17 @@
 8
 9
 10
+11
 </pre></td><td class="code"><pre><span class="k">import</span> <span class="nx">intlReady</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../assets/js/intlReady</span><span class="dl">'</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">zonedTimeToUtc</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">date-fns-tz</span><span class="dl">'</span>
 <span class="kd">const</span> <span class="p">{</span> <span class="nx">Datepicker</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+
+<span class="kd">const</span> <span class="nx">dateToTimestamp</span> <span class="o">=</span> <span class="nx">date</span> <span class="o">=&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="o">+</span><span class="nx">date</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="nx">intlReady</span><span class="p">()</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">date</span> <span class="o">=</span> <span class="nx">zonedTimeToUtc</span><span class="p">(</span><span class="dl">'</span><span class="s1">2018-09-01 18:01:36.386</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Asia/Taipei</span><span class="dl">'</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="nx">dateToTimestamp</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
     <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-datepicker]</span><span class="dl">'</span><span class="p">))</span>
-      <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Datepicker</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">date</span><span class="p">))</span>
+      <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Datepicker</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">))</span>
   <span class="p">})</span>
 </pre></td></tr></tbody></table></code></pre></figure>
         </div>
@@ -267,7 +269,7 @@
   <h2>Datepicker JS</h2>
   <h3>constructor</h3>
   <div class="code">
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">datepicker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Datepicker</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">datepicker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Datepicker</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span></code></pre></figure>
   </div>
   <table class="table">
     <thead>
@@ -282,6 +284,11 @@
         <td>dom</td>
         <td>HTMLElement</td>
         <td>需要指定為 datepicker 的元素</td>
+      </tr>
+      <tr>
+        <td>timestamp</td>
+        <td>integer</td>
+        <td>unix timestamp</td>
       </tr>
       <tr>
         <td>options</td>
