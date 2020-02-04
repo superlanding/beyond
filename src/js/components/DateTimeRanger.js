@@ -15,6 +15,7 @@ import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
 import supportDom from '../helpers/supportDom'
 import dateToTimestamp from '@superlanding/datetotimestamp'
+import timestampToDate from '@superlanding/timestamptodate'
 
 @supportDom
 export default class DateTimeRanger {
@@ -80,6 +81,13 @@ export default class DateTimeRanger {
     this.timeMenu = new TimeMenu()
 
     this.addEvents()
+  }
+
+  setTimestamps(startAt, endAt) {
+    return this.setDates(
+      timestampToDate(startAt),
+      timestampToDate(endAt)
+    )
   }
 
   setDates(startDate, endDate) {

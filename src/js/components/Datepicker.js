@@ -1,4 +1,3 @@
-import { utcToZonedTime } from 'date-fns-tz'
 import parse from 'date-fns/parse'
 import set from 'date-fns/set'
 import noop from 'lodash.noop'
@@ -63,6 +62,16 @@ export default class Datepicker {
     this.dateMenu.setDate({ date: this.menuDate })
     this.dateMenu.show(this.dom)
     this.timeMenu && this.timeMenu.hide()
+  }
+
+  setTimestamp(timestamp) {
+    return this.setDate(timestampToDate(timestamp))
+  }
+
+  setDate(date) {
+    this.date = date
+    this.dateInput.setDate(date)
+    this.dateMenu.setDate({ startDate: date })
   }
 
   handleDateInputKeyUp(event) {
