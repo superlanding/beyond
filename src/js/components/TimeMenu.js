@@ -2,7 +2,7 @@ import getHours from 'date-fns/getHours'
 import getMinutes from 'date-fns/getMinutes'
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import toPixel from '../helpers/toPixel'
-import range from '../helpers/range'
+import range from 'lodash.range'
 import supportDom from '../helpers/supportDom'
 
 @supportDom
@@ -19,11 +19,13 @@ export default class TimeMenu {
     this.addEvents()
   }
 
-  getMenuItems() {
-    return range(0, 23)
-      .reduce((arr, num) => {
-        arr.push({ hour: num, min: 0 })
-        arr.push({ hour: num, min: 30 })
+  getMenuItems(step) {
+    const dayMins = 24 * 60
+    return range(0, dayMins, step)
+      .reduce((arr, mins) => {
+        const hour = parseInt(mins / 60, 10)
+        const min = mins % 60
+        arr.push({ hour, min })
         return arr
       }, [])
       .map(({ hour, min }) => {
@@ -37,7 +39,6 @@ export default class TimeMenu {
   addMenu() {
     const dom = document.createElement('div')
     dom.className = 'time-menu'
-    dom.innerHTML = this.getMenuItems()
     document.body.appendChild(dom)
     this.dom = dom
   }
@@ -92,8 +93,9 @@ export default class TimeMenu {
       })
   }
 
-  show({ src, date }) {
+  show({ src, date, step = 30 }) {
     const { dom } = this
+    dom.innerHTML = this.getMenuItems(step)
     dom.style.opacity = 0
     dom.style.display = 'block'
     this.pos(src)
