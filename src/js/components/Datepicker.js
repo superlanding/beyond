@@ -9,7 +9,8 @@ import DateMenu from './DateMenu'
 import TimeMenu from './TimeMenu'
 import supportDom from '../helpers/supportDom'
 import { DEFAULT_TIMEZONE } from '../consts'
-import dateToTimestamp from '../helpers/dateToTimestamp'
+import dateToTimestamp from '@superlanding/datetotimestamp'
+import timestampToDate from '@superlanding/timestamptodate'
 
 @supportDom
 export default class Datepicker {
@@ -19,7 +20,7 @@ export default class Datepicker {
     this.options = options
     this.options.change = options.change || noop
     this.tz = options.tz || DEFAULT_TIMEZONE
-    this.date = new Date(timestamp * 1000)
+    this.date = timestampToDate(timestamp)
     this.menuDate = toDate(this.date)
     this.focused = false
     this.nextDate = null

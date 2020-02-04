@@ -14,7 +14,7 @@ import DatepickerBtnArrow from './DatepickerBtnArrow'
 import dateGt from '../helpers/dateGt'
 import dateLt from '../helpers/dateLt'
 import supportDom from '../helpers/supportDom'
-import dateToTimestamp from '../helpers/dateToTimestamp'
+import dateToTimestamp from '@superlanding/datetotimestamp'
 
 @supportDom
 export default class DateTimeRanger {

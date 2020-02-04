@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/superlanding/beyond#readme",
   "dependencies": {
+    "@superlanding/datetotimestamp": "0.0.19",
+    "@superlanding/timestamptodate": "0.0.19",
     "@superlanding/getdompos": "0.0.16",
     "@superlanding/getscrollleft": "0.0.16",
     "@superlanding/getscrolltop": "0.0.16",
