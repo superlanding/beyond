@@ -136,7 +136,11 @@ export default class DateTimeRanger {
     input.setActive(true)
     this.lastTriggered = input
     this.dateMenu.hide()
-    this.timeMenu.show({ src: this.dom, date: input.date })
+    this.timeMenu.show({
+      src: this.dom,
+      date: input.date,
+      step: parseInt(input.dom.dataset.step, 10) || 30
+    })
   }
 
   handleDateInputKeyUp({ event, input, date, isStart }) {

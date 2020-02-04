@@ -23,10 +23,10 @@
   "homepage": "https://github.com/superlanding/beyond#readme",
   "dependencies": {
     "@superlanding/datetotimestamp": "0.0.19",
-    "@superlanding/timestamptodate": "0.0.19",
     "@superlanding/getdompos": "0.0.16",
     "@superlanding/getscrollleft": "0.0.16",
     "@superlanding/getscrolltop": "0.0.16",
+    "@superlanding/timestamptodate": "0.0.19",
     "core-js": "3.6.4",
     "date-fns": "2.9.0",
     "date-fns-tz": "1.0.9",
@@ -36,6 +36,7 @@
     "lodash.debounce": "4.0.8",
     "lodash.isfunction": "3.0.9",
     "lodash.noop": "3.0.1",
+    "lodash.range": "3.2.0",
     "lodash.throttle": "4.1.1",
     "node.normalize.scss": "3.0.3",
     "regenerator-runtime": "0.13.3"
