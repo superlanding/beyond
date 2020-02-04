@@ -736,6 +736,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@superlanding/datetotimestamp@0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@superlanding/datetotimestamp/-/datetotimestamp-0.0.19.tgz#335808c0bd93b47d23a5ff14e9a8d9156ee56ada"
+  integrity sha512-cEkvkOjldlkXVvjMjJ6F22sIf18hlkjrAvUIIw6j8e98TYHZ3T7/KdnXox4Pxyd3zQhjbC209fxdfwZ782S1SQ==
+
 "@superlanding/getdompos@0.0.16":
   version "0.0.16"
   resolved "https://registry.yarnpkg.com/@superlanding/getdompos/-/getdompos-0.0.16.tgz#d39f4ae9660eb3e175ac550f596274ad8eda7ff2"
@@ -750,6 +755,11 @@
   version "0.0.16"
   resolved "https://registry.yarnpkg.com/@superlanding/getscrolltop/-/getscrolltop-0.0.16.tgz#add5cd12847767dfee4fe7d4ed6e7413267246ce"
   integrity sha512-Mg40W09ClZ0bpxYa09vkfxgFfI+KN/4AKYwBxRQYkmwi5j5+2wbB61AKwn1gsuq2RNRyT/upFp9bnFzNnjMJoA==
+
+"@superlanding/timestamptodate@0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@superlanding/timestamptodate/-/timestamptodate-0.0.19.tgz#1a91fdc6adfb313b88be4aedb7a374dbfa43a166"
+  integrity sha512-AwtIsx1sI9ATxC/s+da2OGCygfK+mQyk4C2wwyIl3V4GFgFEOX1JvpEXsWWYMRgw6ErzX0vW/UjyHs50eJXaFg==
 
 "@types/events@*":
   version "3.0.0"

@@ -2,8 +2,6 @@ import endOfDay from 'date-fns/endOfDay'
 import intlReady from '../../assets/js/intlReady'
 
 const { DateTimeRanger } = window.beyond
-const locale = 'Asia/Taipei'
-const pattern = 'yyyy-MM-dd hh:mm:ss'
 
 const dateToTimestamp = date => parseInt(+date / 1000, 10)
 
