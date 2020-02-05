@@ -145,6 +145,14 @@ export default class Datepicker {
     this.timeInput.on('blur', () => this.handleTimeInputBlur())
   }
 
+  emitChange() {
+    const { date } = this
+    this.options.change({
+      date,
+      timestamp: dateToTimestamp(date)
+    })
+  }
+
   addEvents() {
 
     this.addDateInputEvents()
@@ -159,10 +167,7 @@ export default class Datepicker {
       this.dateMenu.setDate({ startDate: this.date })
       this.dateInput.setActive(false)
       this.dateMenu.hide()
-      this.options.change({
-        date: this.date,
-        timestamp: dateToTimestamp(this.date)
-      })
+      this.emitChange()
     })
 
     if (this.timeInput) {
@@ -173,7 +178,7 @@ export default class Datepicker {
         this.timeInput.setDate(this.date)
         this.timeMenu.hide()
         this.clearInputStatus()
-        this.options.change({ date: this.date })
+        this.emitChange()
       })
     }
 
