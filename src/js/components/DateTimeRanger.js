@@ -297,6 +297,16 @@ export default class DateTimeRanger {
     this.inputDateEnd.setDate(this.endDate)
   }
 
+  emitChange() {
+    const { startDate, endDate } = this
+    this.options.change({
+      startDate,
+      endDate,
+      startAt: dateToTimestamp(startDate),
+      endAt: dateToTimestamp(endDate)
+    })
+  }
+
   addMenuEvents() {
     this.dateMenu.on('td-mouseover', (event, res) => {
       if (this.dateMenu.startDate && (! this.dateMenu.endDate)) {
@@ -340,12 +350,7 @@ export default class DateTimeRanger {
           startDate: this.startDate,
           endDate: this.endDate
         })
-        return this.options.change({
-          startDate: this.startDate,
-          endDate: this.endDate,
-          startAt: dateToTimestamp(this.startDate),
-          endAt: dateToTimestamp(this.endDate)
-        })
+        return this.emitChange()
       }
     })
 
@@ -360,6 +365,7 @@ export default class DateTimeRanger {
       this.lastTriggered.setDate(nextDate)
       this.timeMenu.hide()
       this.clearInputStatus()
+      this.emitChange()
     })
   }
 
