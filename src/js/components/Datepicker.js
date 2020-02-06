@@ -19,8 +19,9 @@ export default class Datepicker {
     this.options = options
     this.options.change = options.change || noop
     this.tz = options.tz || DEFAULT_TIMEZONE
-    this.date = timestampToDate(timestamp)
-    this.menuDate = toDate(this.date)
+
+    this.date = (timestamp === null) ? null : timestampToDate(timestamp)
+    this.menuDate = (timestamp === null) ? toDate(new Date()) : toDate(this.date)
     this.focused = false
     this.nextDate = null
     this.init()
@@ -76,7 +77,15 @@ export default class Datepicker {
 
   handleDateInputKeyUp(event) {
     const { date, dateInput } = this
-    const res = parse(event.target.value, dateInput.datePattern, date)
+    const { value } = event.target
+
+    if ((! dateInput.required) && (value === '')) {
+      this.date = null
+      this.nextDate = null
+      return
+    }
+
+    const res = parse(value, dateInput.datePattern, date)
     this.nextDate = null
     if (res.toString() === 'Invalid Date') {
       return dateInput.setDanger(true)
@@ -88,7 +97,11 @@ export default class Datepicker {
   handleDateInputBlur() {
     const { nextDate, date, dateInput } = this
 
-    if (nextDate) {
+    if (date === null) {
+      dateInput.setDate(null)
+      this.timeInput && this.timeInput.setDate(null)
+    }
+    else if (nextDate) {
       this.date = nextDate
       dateInput.setDate(nextDate)
       this.dateMenu.setDate({ startDate: nextDate })
@@ -110,6 +123,12 @@ export default class Datepicker {
 
   handleTimeInputKeyUp(event) {
     const { date, timeInput } = this
+    const { value } = event.target
+
+    if ((! timeInput.required) && (value === '')) {
+      this.nextDate = null
+      return
+    }
     const res = parse(event.target.value, timeInput.timePattern, date)
     this.nextDate = null
 
@@ -128,7 +147,7 @@ export default class Datepicker {
       timeInput.setDate(nextDate)
       this.nextDate = null
     }
-    else {
+    else if (date) {
       timeInput.setDate(date)
     }
   }
@@ -162,7 +181,7 @@ export default class Datepicker {
       event.preventDefault()
 
       const { year, month, date } = res
-      this.date = set(this.date, { year, month, date })
+      this.date = set(this.date || new Date(), { year, month, date })
       this.dateInput.setDate(this.date)
       this.dateMenu.setDate({ startDate: this.date })
       this.dateInput.setActive(false)
@@ -174,7 +193,13 @@ export default class Datepicker {
       this.addTimeInputEvents()
 
       this.timeMenu.on('click', (event, res) => {
-        this.date = set(this.date, { hours: res.hour, minutes: res.minute })
+        if (this.date === null) {
+          this.date = set(new Date(), { hours: res.hour, minutes: res.minute })
+          this.dateInput.setDate(this.date)
+        }
+        else {
+          this.date = set(this.date, { hours: res.hour, minutes: res.minute })
+        }
         this.timeInput.setDate(this.date)
         this.timeMenu.hide()
         this.clearInputStatus()

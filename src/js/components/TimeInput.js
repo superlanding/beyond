@@ -25,7 +25,9 @@ export default class TimeInput {
 
   initInput() {
     const { dom } = this
-    dom.value = this.format(this.date)
+    if (this.date) {
+      dom.value = this.format(this.date)
+    }
     if (! dom.hasAttribute('placeholder')) {
       dom.setAttribute('placeholder', this.timePattern.toUpperCase())
     }
@@ -40,7 +42,7 @@ export default class TimeInput {
 
   setDate(date) {
     this.date = date
-    this.dom.value = this.format(date)
+    this.dom.value = date ? this.format(date) : ''
   }
 
   setActive(active) {
