@@ -11,7 +11,7 @@
   <h3>constructor</h3>
   <div class="code">
 {% highlight js %}
-const searchDropdown = new SearchDropdown(dom)
+const searchDropdown = new SearchDropdown(dom, options)
 {% endhighlight %}
   </div>
   <table class="table">
@@ -27,6 +27,26 @@ const searchDropdown = new SearchDropdown(dom)
         <td>dom</td>
         <td>HTMLElement</td>
         <td>要被初始化的選單按鈕元素</td>
+      </tr>
+      <tr>
+        <td>options.renderItem</td>
+        <td>function</td>
+        <td>如何顯示選單的 HTML</td>
+      </tr>
+      <tr>
+        <td>options.getData</td>
+        <td>function</td>
+        <td>要取得選單資料的方法，可以是 async</td>
+      </tr>
+      <tr>
+        <td>options.itemClick</td>
+        <td>function</td>
+        <td>當選單項目被點擊時，按鈕的文字要怎麼設定</td>
+      </tr>
+      <tr>
+        <td>options.placeholder</td>
+        <td>string</td>
+        <td>搜尋框的提示文字</td>
       </tr>
     </tbody>
   </table>

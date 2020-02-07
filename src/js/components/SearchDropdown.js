@@ -23,6 +23,7 @@ export default class SearchDropdown {
     this.place = 'bottom'
     this.align = 'left'
     this.isMenuVisible = false
+    this.lastKeyword = null
     this.items = []
     this.compositionStarted = false
     this.init()
@@ -75,9 +76,15 @@ export default class SearchDropdown {
     this.menuContent = menuContent
   }
 
+  setMenuContentActive(active) {
+    if (active) {
+      return this.menuContent.classList.add('active')
+    }
+    this.menuContent.classList.remove('active')
+  }
+
   hideMenu() {
-    const { menu, menuContent } = this
-    menuContent.classList.remove('active')
+    const { menu } = this
     menu.style.transform = 'scale(.8)'
     menu.style.opacity = 0
     setTimeout(() => menu.remove(), 300)
@@ -89,9 +96,8 @@ export default class SearchDropdown {
   }
 
   showMenu() {
-    const { input, menu, menuContent } = this
+    const { input, menu } = this
     this.getData(input.value)
-    menuContent.classList.add('active')
     menu.style.display = 'block'
     menu.style.opacity = 0
     menu.style.transform = 'scale(.8)'
@@ -129,11 +135,17 @@ export default class SearchDropdown {
 
   renderMenu() {
     this.menuContent.innerHTML = this.items.map(this.options.renderItem).join('')
+    this.setMenuContentActive(this.items.length > 0)
   }
 
   async getData(keyword) {
-    this.items = await this.options.getData(keyword)
-    this.renderMenu()
+    this.lastKeyword = keyword
+    const items = await this.options.getData(keyword)
+
+    if (this.lastKeyword === this.input.value) {
+      this.items = items
+      this.renderMenu()
+    }
   }
 
   findClickedItem(target, parent) {

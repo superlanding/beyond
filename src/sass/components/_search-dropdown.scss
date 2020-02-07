@@ -6,14 +6,12 @@
   .search-dropdown-input.input {
     width: 100%;
   }
-  .search-dropdown-menu {
-    &.active {
-      border-top: 1px solid rgba(60, 66, 87, .16);
-    }
+  .search-dropdown-menu.active {
+    border-top: 1px solid rgba(60, 66, 87, .16);
+    padding: 4px 0;
     max-height: 240px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 4px 0;
   }
   .search-dropdown-menu-item {
     cursor: pointer;
