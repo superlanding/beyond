@@ -14,6 +14,7 @@ import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
+import SearchDropdown from './components/SearchDropdown'
 
 export {
   Autocomplete,
@@ -25,5 +26,6 @@ export {
   Tabbox,
   Toast,
   Tooltip,
-  Navbar
+  Navbar,
+  SearchDropdown
 }

@@ -22,6 +22,8 @@
   link: /components/forms.html
 - name: Dropdowns
   link: /components/dropdowns.html
+- name: Search Dropdowns
+  link: /components/search-dropdowns.html
 - name: Icons
   link: /components/icons.html
 - name: Modals
