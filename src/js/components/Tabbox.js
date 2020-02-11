@@ -24,9 +24,12 @@ export default class Tabbox {
 
   adjustSlider() {
     const [firstBtn] = this.btns
-    if (firstBtn) {
-      this.slider.style.top = (firstBtn.offsetHeight - this.slider.offsetHeight) + 'px'
+    if (! firstBtn) {
+      return
     }
+    const { slider } = this
+    slider.style.top = (firstBtn.offsetHeight - slider.offsetHeight) + 'px'
+    slider.style.left = firstBtn.offsetLeft + 'px'
   }
 
   moveTo(name) {
