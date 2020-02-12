@@ -57,10 +57,6 @@ export default class Tooltip {
     const { dom, tooltip } = this
     if ('onmouseover' in dom) {
       this.addEvent(dom, 'mouseover', () => {
-        if (Tooltip._TOOLTIP_MOUSELEAVE_TIMEOUT) {
-          clearTimeout(Tooltip._TOOLTIP_MOUSELEAVE_TIMEOUT)
-          Tooltip._TOOLTIP_MOUSELEAVE_TIMEOUT = null
-        }
         this.setTooltipMsg()
 
         tooltip.style.opacity = 0
@@ -79,12 +75,8 @@ export default class Tooltip {
     }
     if ('onmouseleave' in dom) {
       const handleMouseLeave = () => {
-        Tooltip._TOOLTIP_MOUSELEAVE_TIMEOUT = setTimeout(() => {
-          tooltip.style.opacity = 0
-          Tooltip._TOOLTIP_MOUSELEAVE_TIMEOUT = setTimeout(() => {
-            tooltip.style.display = 'none'
-          }, 300)
-        }, 200)
+        tooltip.style.opacity = 0
+        tooltip.style.display = 'none'
       }
       this.addEvent(dom, 'click', handleMouseLeave)
       this.addEvent(dom, 'mouseleave', handleMouseLeave)
