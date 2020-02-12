@@ -3,6 +3,7 @@ import throttle from 'lodash.throttle'
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import toPixel from '../helpers/toPixel'
 import supportDom from '../helpers/supportDom'
+import getKey from '../helpers/getKey'
 
 const renderMenu = row => {
   return `<div class="search-dropdown-menu-item" data-item>${JSON.stringify(row)}</div>`
@@ -24,6 +25,7 @@ export default class SearchDropdown {
     this.align = 'left'
     this.isMenuVisible = false
     this.lastKeyword = null
+    this.selectedIndex = null
     this.items = []
     this.compositionStarted = false
     this.init()
@@ -106,6 +108,7 @@ export default class SearchDropdown {
     menu.style.transform = 'scale(1)'
     menu.style.opacity = 1
     this.isMenuVisible = true
+    this.input.focus()
   }
 
   toggleMenu() {
@@ -134,7 +137,10 @@ export default class SearchDropdown {
   }
 
   renderMenu() {
-    this.menuContent.innerHTML = this.items.map(this.options.renderItem).join('')
+    this.menuContent.innerHTML = this.items.map((item, i) => {
+      return this.options.renderItem(item, i, (this.selectedIndex === i))
+    })
+      .join('')
     this.setMenuContentActive(this.items.length > 0)
   }
 
@@ -161,14 +167,63 @@ export default class SearchDropdown {
     return null
   }
 
+  blurInput() {
+    if (document.activeElement === this.input) {
+      this.input.blur()
+    }
+  }
+
+  selectPrevItem() {
+    if (this.items.length === 0) {
+      return
+    }
+    this.blurInput()
+    if ((this.selectedIndex - 1) < 0) {
+      this.selectedIndex = null
+      this.input.focus()
+      this.renderMenu()
+      return
+    }
+    this.selectedIndex -= 1
+    this.renderMenu()
+  }
+
+  selectNextItem() {
+    const { length } = this.items
+    if (length === 0) {
+      return
+    }
+    this.blurInput()
+    if (! Number.isInteger(this.selectedIndex)) {
+      this.selectedIndex = 0
+      this.renderMenu()
+      return
+    }
+    if ((this.selectedIndex + 1) < (length - 1)) {
+      this.selectedIndex += 1
+      this.renderMenu()
+    }
+  }
+
+  setItem(item) {
+    this.setText(this.options.itemClick(item))
+    this.hideMenu()
+    this.options.change(item)
+  }
+
+  setCurrentItem() {
+    const item = this.items[this.selectedIndex]
+    if (item) {
+      this.setItem(item)
+    }
+  }
+
   addEvents() {
 
     this.addEvent(this.menuContent, 'click', event => {
       const item = this.findClickedItem(event.target)
       if (item) {
-        this.setText(this.options.itemClick(item))
-        this.hideMenu()
-        this.options.change(item)
+        this.setItem(item)
       }
     })
 
@@ -176,8 +231,7 @@ export default class SearchDropdown {
       if (this.compositionStarted) {
         return
       }
-      const isEnter = (event.keyCode === 13)
-      if (isEnter) {
+      if (getKey(event) === 'enter') {
         this.getData(event.target.value)
       }
     })
@@ -200,6 +254,35 @@ export default class SearchDropdown {
 
       if (isBackdrop) {
         this.hideMenu()
+      }
+    })
+    this.addEvent(document, 'keydown', event => {
+      const key = getKey(event)
+      if (this.isMenuVisible && ['up', 'down'].includes(key)) {
+        event.preventDefault()
+      }
+    })
+
+    this.addEvent(document, 'keyup', event => {
+      if (this.compositionStarted) {
+        return
+      }
+      if (! this.isMenuVisible) {
+        return
+      }
+      const key = getKey(event)
+
+      if (key === 'esc') {
+        this.blurInput()
+      }
+      if (key === 'up') {
+        return this.selectPrevItem()
+      }
+      if (key === 'down') {
+        return this.selectNextItem()
+      }
+      if (key === 'enter') {
+        return this.setCurrentItem()
       }
     })
 
