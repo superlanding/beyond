@@ -179,9 +179,7 @@ export default class SearchDropdown {
     }
     this.blurInput()
     if ((this.selectedIndex - 1) < 0) {
-      this.selectedIndex = null
       this.input.focus()
-      this.renderMenu()
       return
     }
     this.selectedIndex -= 1
@@ -225,6 +223,10 @@ export default class SearchDropdown {
       if (item) {
         this.setItem(item)
       }
+    })
+    this.addEvent(this.input, 'focus', () => {
+      this.selectedIndex = null
+      this.renderMenu()
     })
 
     this.addEvent(this.input, 'keyup', event => {
