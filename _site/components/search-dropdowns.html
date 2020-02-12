@@ -257,6 +257,7 @@
 49
 50
 51
+52
 </pre></td><td class="code"><pre><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">SearchDropdown</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
 
@@ -284,11 +285,12 @@
     <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="k">new</span> <span class="nx">SearchDropdown</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
         <span class="na">placeholder</span><span class="p">:</span> <span class="dl">'</span><span class="s1">搜尋</span><span class="dl">'</span><span class="p">,</span>
-        <span class="nx">renderItem</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">renderItem</span><span class="p">(</span><span class="nx">row</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">selected</span><span class="p">)</span> <span class="p">{</span>
           <span class="k">return</span> <span class="s2">`
-            &lt;div class="search-dropdown-menu-item" data-item&gt;
-            &lt;strong&gt;</span><span class="p">${</span><span class="nx">row</span><span class="p">.</span><span class="nx">prefix</span><span class="p">}</span><span class="s2">&lt;/strong&gt;
-            &lt;span&gt;</span><span class="p">${</span><span class="nx">row</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2">&lt;/span&gt;
+            &lt;div class="search-dropdown-menu-item </span><span class="p">${</span><span class="nx">selected</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">selected</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">"
+                 data-item&gt;
+              &lt;strong&gt;</span><span class="p">${</span><span class="nx">row</span><span class="p">.</span><span class="nx">prefix</span><span class="p">}</span><span class="s2">&lt;/strong&gt;
+              &lt;span&gt;</span><span class="p">${</span><span class="nx">row</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2">&lt;/span&gt;
             &lt;/div&gt;
             `</span>
         <span class="p">},</span>
