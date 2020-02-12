@@ -25,11 +25,12 @@
     .forEach(dom => {
       new SearchDropdown(dom, {
         placeholder: '搜尋',
-        renderItem(row) {
+        renderItem(row, i, selected) {
           return `
-            <div class="search-dropdown-menu-item" data-item>
-            <strong>${row.prefix}</strong>
-            <span>${row.title}</span>
+            <div class="search-dropdown-menu-item ${selected ? 'selected' : ''}"
+                 data-item>
+              <strong>${row.prefix}</strong>
+              <span>${row.title}</span>
             </div>
             `
         },
