@@ -137,11 +137,30 @@ export default class SearchDropdown {
   }
 
   renderMenu() {
-    this.menuContent.innerHTML = this.items.map((item, i) => {
+    const { menuContent, items } = this
+    menuContent.innerHTML = items.map((item, i) => {
       return this.options.renderItem(item, i, (this.selectedIndex === i))
     })
       .join('')
-    this.setMenuContentActive(this.items.length > 0)
+    this.setMenuContentActive(items.length > 0)
+
+    const menuItemEls = this.getMenuItemEls()
+    const selectedEl = menuItemEls[this.selectedIndex]
+    if (selectedEl) {
+      const scrollTop = menuContent.scrollTop
+      const contentTop = menuContent.offsetTop
+      const contentBottom = contentTop + menuContent.offsetHeight
+      const elHeight = selectedEl.offsetHeight
+      const elTop = selectedEl.offsetTop - scrollTop
+      const elBottom = elTop + elHeight
+
+      if (elTop < contentTop) {
+        this.menuContent.scrollTop -= elHeight
+      }
+      else if (elBottom > contentBottom) {
+        this.menuContent.scrollTop += elHeight
+      }
+    }
   }
 
   async getData(keyword) {
@@ -171,17 +190,17 @@ export default class SearchDropdown {
     return null
   }
 
-  blurInput() {
-    if (document.activeElement === this.input) {
-      this.input.blur()
-    }
+  isInputFocused() {
+    return document.activeElement === this.input
   }
 
   selectPrevItem() {
     if (this.items.length === 0) {
       return
     }
-    this.blurInput()
+    if (this.isInputFocused()) {
+      this.input.blur()
+    }
     if ((this.selectedIndex - 1) < 0) {
       this.input.focus()
       return
@@ -195,7 +214,9 @@ export default class SearchDropdown {
     if (length === 0) {
       return
     }
-    this.blurInput()
+    if (this.isInputFocused()) {
+      this.input.blur()
+    }
     if (! Number.isInteger(this.selectedIndex)) {
       this.selectedIndex = 0
       this.renderMenu()
@@ -217,6 +238,15 @@ export default class SearchDropdown {
     const item = this.items[this.selectedIndex]
     if (item) {
       this.setItem(item)
+    }
+  }
+
+  handleEscKey() {
+    if (this.isInputFocused()) {
+      this.input.blur()
+    }
+    else {
+      this.hideMenu()
     }
   }
 
@@ -279,7 +309,7 @@ export default class SearchDropdown {
       const key = getKey(event)
 
       if (key === 'esc') {
-        this.blurInput()
+        return this.handleEscKey()
       }
       if (key === 'up') {
         return this.selectPrevItem()
