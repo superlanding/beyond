@@ -154,8 +154,12 @@ export default class SearchDropdown {
     }
   }
 
+  getMenuItemEls() {
+    return Array.from(this.menuContent.querySelectorAll('[data-item]'))
+  }
+
   findClickedItem(target, parent) {
-    const rows = Array.from(this.menuContent.querySelectorAll('[data-item]'))
+    const rows = this.getMenuItemEls()
     let node = target
     while (node.parentNode !== parent) {
       if ('item' in node.dataset) {
