@@ -54,3 +54,23 @@ a {
     color: $color-anchor-ex;
   }
 }
+
+// active style
+$color-active: #1f212d;
+
+.select,
+.select.select-outline,
+.select.select-outline-strong,
+.btn.btn-dropdown,
+.search-input,
+.input {
+  &.active {
+    color: $color-active;
+    box-shadow: 0 1px 1px 0 rgba(9, 10, 58, 0.55),
+    rgba(30, 40, 76, 0.16) 0 0 0 1px,
+    rgba(31, 44, 86, 0.12) 0 2px 5px 0;
+  }
+}
+.search-input.active .input {
+  color: $color-active;
+}
