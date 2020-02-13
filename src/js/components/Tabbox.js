@@ -11,6 +11,7 @@ export default class Tabbox {
     this.dom = dom
     this.options = options
     this.options.change = options.change || noop
+    this.options.click = options.click || noop
     this.init()
   }
 
@@ -186,12 +187,18 @@ export default class Tabbox {
     this.dropdownInstances = this.dropdownBtns.map(el => {
       const dropdownInstance = new Dropdown(el, {
         menuClick: event => {
+          const id = event.target.dataset.tabboxItem
+          this.options.click({ id, type: 'dropdown' })
+
+          if (this.optionEl === event.target) {
+            return
+          }
           this.setDropdown({
             dropdownBtn: el,
             optionEl: event.target,
             dropdownInstance
           })
-          this.options.change({ id: event.target.dataset.tabboxItem, type: 'dropdown' })
+          this.options.change({ id, type: 'dropdown' })
         }
       })
       return dropdownInstance
@@ -199,12 +206,14 @@ export default class Tabbox {
 
     this.btns.forEach(btn => {
       this.addEvent(btn, 'click', () => {
+        const id = btn.dataset.tabboxItem
+        this.options.click({ id, type: 'btn' })
         if (btn !== this.currentNode) {
           this.removeCurrentClass()
           this.currentNode = btn
           this.moveToCurrentNode()
           this.addCurrentClass()
-          this.options.change({ id: btn.dataset.tabboxItem, type: 'btn' })
+          this.options.change({ id, type: 'btn' })
         }
       })
     })
