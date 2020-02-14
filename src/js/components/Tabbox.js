@@ -211,6 +211,7 @@ export default class Tabbox {
         if (btn !== this.currentNode) {
           this.removeCurrentClass()
           this.currentNode = btn
+          this.optionEl = null
           this.moveToCurrentNode()
           this.addCurrentClass()
           this.options.change({ id, type: 'btn' })
