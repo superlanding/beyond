@@ -67,6 +67,9 @@
         border-style: solid;
         border-color: #e3e8ee;
       }
+      &.cell.today {
+        background-color: #fffef4;
+      }
       &.cell.selected {
         background-color: #6c8eef;
         color: #fff;

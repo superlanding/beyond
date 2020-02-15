@@ -99,6 +99,11 @@ export default class DateMenu {
       }
     }
 
+    const formatDate = date => {
+      return format(date, 'yyyy-MM-dd', { timezone: this.tz, locale: this.locale })
+    }
+    const today = formatDate(new Date())
+
     const rows = range(1, daysInMonth).map(day => {
 
       const d = addDays(firstDateOfMonth, day - 1)
@@ -110,6 +115,7 @@ export default class DateMenu {
         isStartDate: dateEq(initialStartDate, d),
         isEndDate: dateEq(initialEndDate, d),
         isSelected: (resCompareStart <= 0) && (resCompareEnd >= 0),
+        isToday: (today === formatDate(d)),
         day
       }
     })
@@ -187,6 +193,9 @@ export default class DateMenu {
     }
     if (row.isSelected) {
       return `<td class="cell selected" data-date-table-cell>${row.day}</td>`
+    }
+    if (this.options.highlightToday && row.isToday) {
+      return `<td class="cell today" data-date-table-cell>${row.day}</td>`
     }
     return `<td class="cell" data-date-table-cell>${row.day}</td>`
   }
