@@ -95,3 +95,8 @@ $color-active: #5469d4;
     rgba(14, 26, 62, .12) 0 2px 5px 0,
     0 0 0 4px rgba(58, 151, 212, .28);
 }
+
+.scrollable {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
