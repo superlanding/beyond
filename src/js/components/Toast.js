@@ -75,7 +75,13 @@ export default class Toast {
     this.items = []
   }
 
-  send(options) {
+  send(arg) {
+
+    let options = arg
+
+    if (typeof arg === 'string') {
+      options = { message: arg }
+    }
 
     const toastItem = new ToastItem(options)
     this.toast.appendChild(toastItem.dom)
