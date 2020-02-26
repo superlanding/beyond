@@ -63,21 +63,25 @@
     box-shadow: inset 0 1px #e3e8ee;
   }
   .hint {
-    color: #5469d4;
     margin: 7px 0;
-    display: block;
-    font-size: 13px;
-    &.hint-danger {
-      color: #e03953;
-      &:before {
-        font-family: 'icomoon';
-        margin-right: 4px;
-        display: inline-block;
-        transform: translateY(1px);
-        color: #e03953;
-        @extend .icon-exclamation-triangle:before
-      }
-    }
+  }
+}
+
+.hint {
+  font-size: 13px;
+  display: block;
+  color: #5469d4;
+}
+
+.hint.hint-danger {
+  color: #e03953;
+  &:before {
+    font-family: 'icomoon';
+    margin-right: 4px;
+    display: inline-block;
+    transform: translateY(1px);
+    color: #e03953;
+    @extend .icon-exclamation-triangle:before
   }
 }
 
