@@ -53,6 +53,14 @@ export default class Tooltip {
     }
   }
 
+  hide() {
+    const { tooltip } = this
+    if (tooltip) {
+      tooltip.style.opacity = 0
+      tooltip.style.display = 'none'
+    }
+  }
+
   addEvents() {
     const { dom, tooltip } = this
     if ('onmouseover' in dom) {
@@ -74,12 +82,13 @@ export default class Tooltip {
       })
     }
     if ('onmouseleave' in dom) {
-      const handleMouseLeave = () => {
-        tooltip.style.opacity = 0
-        tooltip.style.display = 'none'
-      }
+      const handleMouseLeave = () => this.hide()
       this.addEvent(dom, 'click', handleMouseLeave)
       this.addEvent(dom, 'mouseleave', handleMouseLeave)
     }
+  }
+
+  destroy() {
+    this.hide()
   }
 }
