@@ -33,6 +33,19 @@ h6 {
   }
 }
 
+.txt-primary {
+  color: $txt-color-primary;
+}
+.txt-secondary {
+  color: $txt-color-secondary;
+}
+.txt-warn {
+  color: $txt-color-warn;
+}
+.txt-danger {
+  color: $txt-color-danger;
+}
+
 .txt-lg {
   font-size: 16px;
 }
