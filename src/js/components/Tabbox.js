@@ -209,6 +209,7 @@ export default class Tabbox {
         const id = btn.dataset.tabboxItem
         this.options.click({ id, type: 'btn' })
         if (btn !== this.currentNode) {
+          this.dropdownInstances.forEach(d => d.restoreText())
           this.removeCurrentClass()
           this.currentNode = btn
           this.optionEl = null
