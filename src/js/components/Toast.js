@@ -92,6 +92,11 @@ export default class Toast {
       this.items = this.items.filter(item => item !== toastItem)
       toastItem.destroy()
     }, options.duration || 3000)
+
+    return () => {
+      this.items = this.items.filter(item => item !== toastItem)
+      toastItem.destroy()
+    }
   }
 
   destroy() {
