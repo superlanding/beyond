@@ -15,9 +15,12 @@ import Tooltip from './components/Tooltip'
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 import SearchDropdown from './components/SearchDropdown'
+import Radio from './components/Radio'
+import Checkbox from './components/Checkbox'
 
 export {
   Autocomplete,
+  Checkbox,
   DateTimeRanger,
   Datepicker,
   Dropdown,
@@ -27,5 +30,6 @@ export {
   Toast,
   Tooltip,
   Navbar,
+  Radio,
   SearchDropdown
 }
