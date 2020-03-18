@@ -17,6 +17,9 @@
     &:hover {
       transform: none;
     }
+    &:focus {
+      @include focus-outline;
+    }
   }
   a {
     margin-top: 7px;
