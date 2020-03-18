@@ -9,6 +9,7 @@ import '../../_includes/demos/tooltips'
 import '../../_includes/demos/dropdowns'
 import '../../_includes/demos/search-dropdowns'
 import '../../_includes/demos/navbars'
+import '../../_includes/demos/forms'
 
 const { Codebox, Sidebar } = window.beyond
 
