@@ -19,16 +19,20 @@ module Beyond
       @assets_path ||= File.join gem_path, 'src'
     end
 
+    def dist_path
+      @dist_path ||= File.join gem_path, 'dist'
+    end
+
     def stylesheets_path
       File.join assets_path, 'sass'
     end
 
     def font_path
-      File.join assets_path, 'font'
+      File.join dist_path, 'font'
     end
 
     def javascripts_path
-      File.join assets_path, 'js'
+      File.join dist_path, 'js'
     end
 
     def rails?
