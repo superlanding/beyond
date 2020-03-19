@@ -3,11 +3,10 @@ module Beyond
     class Engine < ::Rails::Engine
       initializer 'beyond.assets.precompile' do |app|
 
-        %w(sass).each do |sub|
-          app.config.assets.paths << root.join('src', sub).to_s
-        end
+        app.config.assets.paths << root.join('src', 'sass').to_s
+        app.config.assets.paths << root.join('dist').to_s
 
-        %w(js font img).each do |sub|
+        %w(font img).each do |sub|
           app.config.assets.paths << root.join('dist', sub).to_s
         end
 
