@@ -2,7 +2,10 @@
   "name": "@superlanding/beyond",
   "version": "0.0.99",
   "description": "The best frontend framework for super-landing.com",
-  "browserslist": "defaults, ie >= 9",
+  "browserslist": [
+    "defaults",
+    "ie >= 9"
+  ],
   "main": "dist/beyond.js",
   "scripts": {
     "dev": "webpack-dev-server --host 0.0.0.0",
