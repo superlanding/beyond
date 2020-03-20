@@ -1,5 +1,7 @@
 - name: Home
   link: /
+- name: Containers
+  link: /layout/containers.html
 - name: Typography
   link: /content/typography.html
 - name: Colors
