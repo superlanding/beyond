@@ -133,7 +133,7 @@ $beyond-icon-font-path: if($beyond-use-helper, '', '../font/') !default;
 $beyond-icon-font-name: 'icomoon' !default;
 $beyond-css-img-path: if($beyond-use-helper, '', './img/') !default;
 
-$breakpoint-xl: 1200px;
-$breakpoint-lg: 992px;
-$breakpoint-md: 768px;
 $breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
