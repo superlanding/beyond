@@ -1,6 +1,3 @@
-$col-total: 12;
-$col-sizes: 'sm', 'md', 'lg', 'xl';
-
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -45,7 +42,7 @@ $col-sizes: 'sm', 'md', 'lg', 'xl';
     @extend %col-basic;
     @extend %col-auto;
   }
-  @each $size in $col-sizes {
+  @each $size in $screen-sizes {
     .col-#{$size},
     .col-#{$size}-#{$i},
     .col-#{$size}-auto {
