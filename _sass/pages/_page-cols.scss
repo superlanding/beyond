@@ -13,6 +13,11 @@
       }
     }
   }
+  .codebox-result {
+    > .container {
+      margin-bottom: 40px;
+    }
+  }
   .row {
     border: 2px solid #c2cbd6;
     background-color: #c2cbd6;
