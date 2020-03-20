@@ -1,0 +1,29 @@
+.page-cols {
+  h1.card-heading {
+    margin-bottom: 14px;
+  }
+  padding: 14px 20px;
+  width: 100%;
+  .table {
+    width: 100%;
+    margin-bottom: 14px;
+    td, th {
+      &.active {
+        background-color: #eee;
+      }
+    }
+  }
+  .row {
+    border: 2px solid #c2cbd6;
+    background-color: #c2cbd6;
+    padding: 7px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+  .col,
+  [class^="col-"] {
+    text-align: center;
+    background-color: #ecf1f7;
+    border: 1px solid #a3b0bf;
+  }
+}
