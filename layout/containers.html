@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
+    <title>Containers | Beyond</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+    
+      <link rel="stylesheet" href="/beyond/dist/beyond.css">
+    
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180"
+      href="/beyond/assets/img/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+      href="/beyond/assets/img/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+      href="/beyond/assets/img/icons/favicon-16x16.png">
+<link rel="manifest" href="/beyond/assets/img/icons/manifest.json">
+
+    
+      <script src="/beyond/dist/beyond.js"></script>
+    
+  </head>
+  <body class="bg-admin no-nav-container">
+    <a class="no-nav__btn-back" href="/">
+      <i class="icon-chevron-left"></i>
+      回首頁
+    </a>
+    <div class="page-containers card card-shadow-sm">
+  <h1 class="card-heading">容器 - Containers</h1>
+
+  <table id="container-table" class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>
+          Extra small<br>
+          <span class="font-weight-normal">&lt; 576px</span>
+        </th>
+        <th>
+          Small<br>
+          <span class="font-weight-normal">&gt;&#61; 576px</span>
+        </th>
+        <th>
+          Medium<br>
+          <span class="font-weight-normal">&gt;&#61; 768px</span>
+        </th>
+        <th>
+          Large<br>
+          <span class="font-weight-normal">&gt;&#61; 992px</span>
+        </th>
+        <th>
+          Extra large<br>
+          <span class="font-weight-normal">&gt;&#61; 1200px</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.container</code></td>
+        <td class="text-muted">100%</td>
+        <td>540px</td>
+        <td>720px</td>
+        <td>960px</td>
+        <td>1140px</td>
+      </tr>
+      <tr>
+        <td><code>.container-sm</code></td>
+        <td class="text-muted">100%</td>
+        <td>540px</td>
+        <td>720px</td>
+        <td>960px</td>
+        <td>1140px</td>
+      </tr>
+      <tr>
+        <td><code>.container-md</code></td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td>720px</td>
+        <td>960px</td>
+        <td>1140px</td>
+      </tr>
+      <tr>
+        <td><code>.container-lg</code></td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td>960px</td>
+        <td>1140px</td>
+      </tr>
+      <tr>
+        <td><code>.container-xl</code></td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td>1140px</td>
+      </tr>
+      <tr>
+        <td><code>.container-fluid</code></td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        <div class="container">container</div>
+<div class="container-sm">container-sm</div>
+<div class="container-md">container-md</div>
+<div class="container-lg">container-lg</div>
+<div class="container-xl">container-xl</div>
+<div class="container-fluid">container-fluid</div>
+
+      </div>
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>container<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-sm"</span><span class="nt">&gt;</span>container-sm<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-md"</span><span class="nt">&gt;</span>container-md<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-lg"</span><span class="nt">&gt;</span>container-lg<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-xl"</span><span class="nt">&gt;</span>container-xl<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid"</span><span class="nt">&gt;</span>container-fluid<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div id="width-pad"></div>
+    
+      <script src="/beyond/dist/web.js"></script>
+    
+  </body>
+</html>
