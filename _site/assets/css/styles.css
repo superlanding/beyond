@@ -237,6 +237,7 @@ td.code > pre {
   white-space: pre-wrap; }
 
 .container-default {
+  display: flex;
   margin: 30px 40px; }
 
 .main {
@@ -271,6 +272,22 @@ td.code > pre {
     margin-left: 0;
     margin-right: 0;
     margin-top: 20px; } }
+.no-nav-container {
+  padding: 0 20px 20px; }
+
+.no-nav__btn-back {
+  display: inline-flex;
+  align-items: center;
+  margin: 14px; }
+  .no-nav__btn-back i {
+    margin-right: 7px; }
+
+#width-pad {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 7px 14px; }
+
 .codebox {
   overflow: hidden;
   background-color: #3c4257;
@@ -431,3 +448,45 @@ p {
   margin-bottom: 20px; }
   .page-avatars .avatar-wrap > .avatar {
     margin-right: 14px; }
+
+.page-containers {
+  padding: 14px 20px;
+  width: 100%; }
+  .page-containers h1.card-heading {
+    margin-bottom: 14px; }
+  .page-containers .container,
+  .page-containers [class^="container-"] {
+    font-size: 20px;
+    background-color: #e3e8ee;
+    text-align: center;
+    padding: 7px 0;
+    margin-bottom: 14px; }
+  .page-containers .table {
+    width: 100%;
+    margin-bottom: 14px; }
+    .page-containers .table td.active, .page-containers .table th.active {
+      background-color: #eee; }
+
+.page-cols {
+  padding: 14px 20px;
+  width: 100%; }
+  .page-cols h1.card-heading {
+    margin-bottom: 14px; }
+  .page-cols .table {
+    width: 100%;
+    margin-bottom: 14px; }
+    .page-cols .table td.active, .page-cols .table th.active {
+      background-color: #eee; }
+  .page-cols .codebox-result > .container {
+    margin-bottom: 40px; }
+  .page-cols .row {
+    border: 2px solid #c2cbd6;
+    background-color: #c2cbd6;
+    padding: 7px;
+    margin-top: 14px;
+    margin-bottom: 14px; }
+  .page-cols .col,
+  .page-cols [class^="col-"] {
+    text-align: center;
+    background-color: #ecf1f7;
+    border: 1px solid #a3b0bf; }
