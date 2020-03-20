@@ -16,4 +16,7 @@ const { Codebox, Sidebar } = window.beyond
 document.querySelectorAll('[data-codebox]')
   .forEach(dom => new Codebox(dom))
 
-new Sidebar(document.querySelector('[data-sidebar-opener]'))
+const sidebarDom = document.querySelector('[data-sidebar-opener]')
+if (sidebarDom) {
+  new Sidebar(sidebarDom)
+}
