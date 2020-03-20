@@ -1,0 +1,17 @@
+.no-nav-container {
+  padding: 0 20px 20px;
+}
+.no-nav__btn-back {
+  display: inline-flex;
+  align-items: center;
+  margin: 14px;
+  i {
+    margin-right: 7px;
+  }
+}
+#width-pad {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 7px 14px;
+}
