@@ -1,0 +1,82 @@
+$col-total: 12;
+$col-sizes: 'sm', 'md', 'lg', 'xl';
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+@mixin col-effect() {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+%col-basic {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+%col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+}
+
+.col {
+  @extend %col-basic;
+  @include col-effect;
+}
+
+@for $i from 1 through $col-total {
+  .col-#{$i} {
+    $percent: (100% / $col-total) * $i;
+    flex: 0 0 #{$percent};
+    max-width: #{$percent};
+    @extend %col-basic;
+  }
+  .col-auto {
+    @extend %col-basic;
+    @extend %col-auto;
+  }
+  @each $size in $col-sizes {
+    .col-#{$size},
+    .col-#{$size}-#{$i},
+    .col-#{$size}-auto {
+      @extend %col-basic;
+    }
+    .col-#{$size}-auto {
+      @extend %col-auto;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-sm) {
+  .col-sm {
+    @include col-effect;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .col-md {
+    @include col-effect;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .col-lg {
+    @include col-effect;
+  }
+}
+
+@media (min-width: $breakpoint-xl) {
+  .col-xl {
+    @include col-effect;
+  }
+}
