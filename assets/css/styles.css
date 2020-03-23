@@ -490,3 +490,30 @@ p {
     text-align: center;
     background-color: #ecf1f7;
     border: 1px solid #a3b0bf; }
+
+.page-utilities {
+  padding: 14px 20px;
+  width: 100%; }
+  .page-utilities h1.card-heading {
+    margin-bottom: 14px; }
+  .page-utilities .table {
+    width: 100%;
+    margin-bottom: 14px; }
+    .page-utilities .table td.active, .page-utilities .table th.active {
+      background-color: #eee; }
+  .page-utilities .codebox-result > .container-wrap {
+    position: relative; }
+  .page-utilities .codebox-result .col-12 {
+    position: relative;
+    padding: 7px;
+    border: 1px solid #555;
+    text-align: center;
+    background-color: #e3e8ee; }
+    .page-utilities .codebox-result .col-12 div[class^="hidden-"] {
+      line-height: 2.2rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #f7f8f9; }
