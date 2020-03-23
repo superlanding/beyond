@@ -4,6 +4,8 @@
   link: /layout/containers.html
 - name: Cols
   link: /layout/cols.html
+- name: Utilities
+  link: /layout/utilities.html
 - name: Typography
   link: /content/typography.html
 - name: Colors
