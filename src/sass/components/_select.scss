@@ -1,4 +1,7 @@
 .select {
+  &:disabled {
+    opacity: .5;
+  }
   &::-ms-expand {
     display: none;
   }
