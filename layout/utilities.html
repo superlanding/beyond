@@ -31,7 +31,7 @@
     <div class="page-utilities card card-shadow-sm">
   <h1 class="card-heading">工具 - Utililities</h1>
 
-  <table id="utils-table" class="table">
+  <table class="table table-resolution" data-table-resolution>
     <thead>
       <tr>
         <th></th>
@@ -51,36 +51,43 @@
           Extra large<br>
           <span class="font-weight-normal">&lt;&#61; 1200px</span>
         </th>
+        <th>
+          <span class="font-weight-normal">&gt; 1200px</span>
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><code>.hidden-sm</code></td>
-        <td>隱藏</td>
-        <td>隱藏</td>
-        <td>隱藏</td>
-        <td>隱藏</td>
+        <td class="strong">隱藏</td>
+        <td>顯示</td>
+        <td>顯示</td>
+        <td>顯示</td>
+        <td>顯示</td>
       </tr>
       <tr>
         <td><code>.hidden-md</code></td>
-        <td class="text-muted">無</td>
-        <td>隱藏</td>
-        <td>隱藏</td>
-        <td>隱藏</td>
+        <td class="strong">隱藏</td>
+        <td class="strong">隱藏</td>
+        <td>顯示</td>
+        <td>顯示</td>
+        <td>顯示</td>
       </tr>
       <tr>
         <td><code>.hidden-lg</code></td>
-        <td class="text-muted">無</td>
-        <td class="text-muted">無</td>
-        <td>隱藏</td>
-        <td>隱藏</td>
+        <td class="strong">隱藏</td>
+        <td class="strong">隱藏</td>
+        <td class="strong">隱藏</td>
+        <td>顯示</td>
+        <td>顯示</td>
       </tr>
       <tr>
         <td><code>.hidden-xl</code></td>
-        <td class="text-muted">無</td>
-        <td class="text-muted">無</td>
-        <td class="text-muted">無</td>
-        <td>隱藏</td>
+        <td class="strong">隱藏</td>
+        <td class="strong">隱藏</td>
+        <td class="strong">隱藏</td>
+        <td class="strong">隱藏</td>
+        <td>顯示</td>
       </tr>
     </tbody>
   </table>
@@ -96,25 +103,25 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        hidden-sm ( applied )
+        hidden-sm ( 隱藏 )
         <div class="hidden-sm">hidden-sm</div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        hidden-md ( applied )
+        hidden-md ( 隱藏 )
         <div class="hidden-md">hidden-md</div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        hidden-lg ( applied )
+        hidden-lg ( 隱藏 )
         <div class="hidden-lg">hidden-lg</div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        hidden-xl ( applied )
+        hidden-xl ( 隱藏 )
         <div class="hidden-xl">hidden-xl</div>
       </div>
     </div>
@@ -155,25 +162,25 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-12"</span><span class="nt">&gt;</span>
-        hidden-sm ( applied )
+        hidden-sm ( 隱藏 )
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hidden-sm"</span><span class="nt">&gt;</span>hidden-sm<span class="nt">&lt;/div&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-12"</span><span class="nt">&gt;</span>
-        hidden-md ( applied )
+        hidden-md ( 隱藏 )
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hidden-md"</span><span class="nt">&gt;</span>hidden-md<span class="nt">&lt;/div&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-12"</span><span class="nt">&gt;</span>
-        hidden-lg ( applied )
+        hidden-lg ( 隱藏 )
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hidden-lg"</span><span class="nt">&gt;</span>hidden-lg<span class="nt">&lt;/div&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-12"</span><span class="nt">&gt;</span>
-        hidden-xl ( applied )
+        hidden-xl ( 隱藏 )
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hidden-xl"</span><span class="nt">&gt;</span>hidden-xl<span class="nt">&lt;/div&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
