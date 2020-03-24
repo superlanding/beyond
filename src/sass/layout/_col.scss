@@ -5,7 +5,7 @@
   margin-left: -15px;
 }
 
-@mixin col-effect() {
+@mixin col-flex() {
   -ms-flex-preferred-size: 0;
   flex-basis: 0;
   -ms-flex-positive: 1;
@@ -28,7 +28,7 @@
 
 .col {
   @extend %col-basic;
-  @include col-effect;
+  @include col-flex;
 }
 
 @for $i from 1 through $col-total {
@@ -56,24 +56,24 @@
 
 @media (min-width: $breakpoint-sm) {
   .col-sm {
-    @include col-effect;
+    @include col-flex;
   }
 }
 
 @media (min-width: $breakpoint-md) {
   .col-md {
-    @include col-effect;
+    @include col-flex;
   }
 }
 
 @media (min-width: $breakpoint-lg) {
   .col-lg {
-    @include col-effect;
+    @include col-flex;
   }
 }
 
 @media (min-width: $breakpoint-xl) {
   .col-xl {
-    @include col-effect;
+    @include col-flex;
   }
 }
