@@ -13,10 +13,8 @@
       }
     }
   }
+
   .codebox-result {
-    > .container-wrap {
-      position: relative;
-    }
     .col-12 {
       position: relative;
       padding: 7px;
@@ -24,7 +22,8 @@
       text-align: center;
       background-color: #e3e8ee;
 
-      div[class^="hidden-"] {
+      div[class^="hidden-"],
+      div[class^="visible-"] {
         line-height: 2.2rem;
         position: absolute;
         top: 0;
@@ -35,4 +34,5 @@
       }
     }
   }
+
 }
