@@ -23,9 +23,7 @@ if (sidebarDom) {
 
 const pad = document.getElementById('width-pad')
 const throttle = require('lodash.throttle')
-const containerTable = document.getElementById('container-table')
-const colTable = document.getElementById('col-table')
-const hiddenUtilsTable = document.getElementById('hidden-utils-table')
+const resolutionTables = document.querySelectorAll('[data-table-resolution]')
 const getHighLightIndex = width => {
   if (width >= 1200) {
     return 5
@@ -61,15 +59,9 @@ const handleResize = () => {
     pad.innerText = '目前視窗寬度: ' + window.innerWidth + 'px'
   }
   const highlightIndex = getHighLightIndex(window.innerWidth)
-  if (containerTable) {
-    highlightTableCol(containerTable, highlightIndex)
-  }
-  if (colTable) {
-    highlightTableCol(colTable, highlightIndex)
-  }
-  if (hiddenUtilsTable) {
-    highlightTableCol(hiddenUtilsTable, highlightIndex)
-  }
+  resolutionTables.forEach(table => {
+    highlightTableCol(table, highlightIndex)
+  })
 }
 handleResize()
 window.addEventListener('resize', throttle(handleResize, 100))
