@@ -6,17 +6,32 @@
   max-width: 100%;
 }
 
-%col-basic {
+@mixin col-num($i) {
+  $percent: (100% / $col-total) * $i;
+  flex: 0 0 #{$percent};
+  max-width: #{$percent};
+}
+
+@mixin col-basic() {
   position: relative;
   width: 100%;
+  min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
 }
 
-%col-auto {
+@mixin col-auto() {
   flex: 0 0 auto;
   width: auto;
-  max-width: 100%;
+  max-width: none;
+}
+
+%col-basic {
+  @include col-basic;
+}
+
+%col-auto {
+  @include col-auto;
 }
 
 .row {
@@ -31,26 +46,15 @@
   @include col-flex;
 }
 
+.col-auto {
+  @extend %col-basic;
+  @extend %col-auto;
+}
+
 @for $i from 1 through $col-total {
   .col-#{$i} {
-    $percent: (100% / $col-total) * $i;
-    flex: 0 0 #{$percent};
-    max-width: #{$percent};
     @extend %col-basic;
-  }
-  .col-auto {
-    @extend %col-basic;
-    @extend %col-auto;
-  }
-  @each $size in $screen-sizes {
-    .col-#{$size},
-    .col-#{$size}-#{$i},
-    .col-#{$size}-auto {
-      @extend %col-basic;
-    }
-    .col-#{$size}-auto {
-      @extend %col-auto;
-    }
+    @include col-num($i);
   }
 }
 
@@ -58,8 +62,25 @@
   $breakpoint: nth($breakpoints, $i);
   $size: nth($screen-sizes, $i);
   @media (min-width: $breakpoint) {
+    %col-basic-#{$size} {
+      @include col-basic;
+    }
+    %col-auto-#{$size} {
+      @include col-auto;
+    }
     .col-#{$size} {
+      @extend %col-basic-#{$size};
       @include col-flex;
+    }
+    @for $j from 1 through $col-total {
+      .col-#{$size}-#{$j} {
+        @extend %col-basic-#{$size};
+        @include col-num($j);
+      }
+    }
+    .col-#{$size}-auto {
+      @extend %col-basic-#{$size};
+      @extend %col-auto-#{$size};
     }
   }
 }
