@@ -25,6 +25,7 @@ const pad = document.getElementById('width-pad')
 const throttle = require('lodash.throttle')
 const containerTable = document.getElementById('container-table')
 const colTable = document.getElementById('col-table')
+const hiddenUtilsTable = document.getElementById('hidden-utils-table')
 const getHighLightIndex = width => {
   if (width >= 1200) {
     return 5
@@ -65,6 +66,9 @@ const handleResize = () => {
   }
   if (colTable) {
     highlightTableCol(colTable, highlightIndex)
+  }
+  if (hiddenUtilsTable) {
+    highlightTableCol(hiddenUtilsTable, highlightIndex)
   }
 }
 handleResize()
