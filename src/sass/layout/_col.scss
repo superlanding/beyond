@@ -54,26 +54,12 @@
   }
 }
 
-@media (min-width: $breakpoint-sm) {
-  .col-sm {
-    @include col-flex;
-  }
-}
-
-@media (min-width: $breakpoint-md) {
-  .col-md {
-    @include col-flex;
-  }
-}
-
-@media (min-width: $breakpoint-lg) {
-  .col-lg {
-    @include col-flex;
-  }
-}
-
-@media (min-width: $breakpoint-xl) {
-  .col-xl {
-    @include col-flex;
+@for $i from 1 through length($breakpoints) {
+  $breakpoint: nth($breakpoints, $i);
+  $size: nth($screen-sizes, $i);
+  @media (min-width: $breakpoint) {
+    .col-#{$size} {
+      @include col-flex;
+    }
   }
 }
