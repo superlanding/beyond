@@ -142,3 +142,25 @@ $breakpoints: $breakpoint-sm, $breakpoint-md, $breakpoint-lg, $breakpoint-xl;
 
 $screen-sizes: 'sm', 'md', 'lg', 'xl';
 $col-total: 12;
+
+// spacing utilities
+$space-types: 'm', 'p';
+$space-size-max: 5;
+
+$side-all: 'all';
+$side-top: 't';
+$side-bottom: 'b';
+$side-left: 'l';
+$side-right: 'r';
+$side-x: 'x';
+$side-y: 'y';
+
+$sides: (
+  $side-all,
+  $side-top,
+  $side-bottom,
+  $side-left,
+  $side-right,
+  $side-x,
+  $side-y
+);
