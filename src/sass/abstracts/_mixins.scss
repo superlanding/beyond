@@ -68,27 +68,28 @@
   align-items: center;
 }
 
+@function space-classname($type, $side, $i, $size: '') {
+  @if $size == '' {
+    @return #{$type}#{$side}-#{$i};
+  }
+  @return #{$type}#{$side}-#{$size}-#{$i};
+}
+
 @mixin space-props($type, $side, $i, $size: '') {
   $spacer: 1rem;
   $space: $spacer * $i * .25;
   $prop: 'margin';
-  $classname: #{$type}#{$side}-#{$i};
 
-  @if $type == 'p' {
-    $prop: 'padding';
-  }
-  @if $side == 'all' {
-    $classname: #{$type}-#{$i};
-  }
   @if $space == 0rem {
     $space: 0;
   }
-  @if $size != '' {
-    $classname: #{$classname}-#{$size};
+  @if $type == 'p' {
+    $prop: 'padding';
   }
+  $classname: space-classname($type, $side, $i, $size);
 
   .#{$classname} {
-    @if $side == 'all' {
+    @if $side == '' {
       #{$prop}: $space;
     }
     @else if $side == 't' {
