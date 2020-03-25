@@ -70,6 +70,16 @@
   }
 }
 
+.form-inline {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+}
+
 .hint {
   font-size: 13px;
   display: block;
