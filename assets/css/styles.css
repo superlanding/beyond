@@ -426,6 +426,15 @@ p {
 
 .page-forms .card {
   margin-bottom: 40px; }
+.page-forms .first-heading {
+  margin-bottom: 1rem; }
+.page-forms .heading {
+  margin-top: 2rem;
+  margin-bottom: 1rem; }
+.page-forms .codebox {
+  margin-bottom: 1rem; }
+.page-forms .form-control + .form-control {
+  margin-top: 1.2rem; }
 
 .page-date-time-rangers .codebox-result .datepicker {
   white-space: nowrap; }
@@ -527,3 +536,8 @@ p {
       right: 0;
       bottom: 0;
       background-color: #f7f8f9; }
+
+.page-spacing-utilities {
+  padding: 14px 20px; }
+  .page-spacing-utilities h1.card-heading {
+    margin-bottom: 14px; }
