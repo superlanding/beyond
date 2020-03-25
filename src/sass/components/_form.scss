@@ -118,6 +118,9 @@ label {
   box-shadow: 0 0 0 1px rgba(60, 66, 87, .16),
     0 1px 1px 0 rgba(0, 0, 0, .12);
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  &:focus {
+    @include focus-outline;
+  }
 }
 
 .form-txt {
@@ -144,5 +147,8 @@ label {
   .checkbox + span {
     position: relative;
     margin-left: 4px;
+  }
+  .checkbox .icon-checkbox {
+    transform: translateY(-1px);
   }
 }
