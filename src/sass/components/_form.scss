@@ -152,3 +152,12 @@ label {
     transform: translateY(-1px);
   }
 }
+
+.form-control-file {
+  display: block;
+  width: 100%;
+}
+
+input[type="file"] {
+  line-height: 1;
+}
