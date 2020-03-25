@@ -81,10 +81,6 @@ fieldset {
   display: flex;
   align-items: center;
   flex-flow: row wrap;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   .form-group {
     margin-bottom: 0;
   }
@@ -216,11 +212,7 @@ label {
 }
 
 .form-check.form-check-inline {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   padding-left: 0;
   margin-right: .75rem;
@@ -282,4 +274,57 @@ label {
 
 input[type="file"] {
   line-height: 1;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100%;
+}
+
+.input-group-text {
+  display: flex;
+  align-items: center;
+  padding: .25rem .75rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #e9ecef;
+  border: 0;
+  box-shadow: 0 0 0 1px rgba(60, 66, 87, .16),
+    0 1px 1px 0 rgba(0, 0, 0, .12);
+  border-radius: .25rem;
+}
+
+.input-group-prepend {
+  margin-right: -1px;
+}
+
+.input-group > .form-control:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+@media (min-width: $breakpoint-sm) {
+  .form-inline {
+    .input-group {
+      width: auto;
+    }
+    .form-group {
+      display: flex;
+      flex: 0 0 auto;
+      flex-flow: row wrap;
+      align-items: center;
+      margin-bottom: 0;
+    }
+    label {
+      margin-bottom: 0;
+    }
+  }
 }
