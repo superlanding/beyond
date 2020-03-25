@@ -137,6 +137,19 @@ label {
   border-radius: .2rem;
 }
 
+.form-control,
+.form-control-lg,
+.form-control-sm {
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &:disabled,
+  &[readonly] {
+    color: #111;
+    background-color: #e9ecef;
+  }
+}
+
 .form-txt {
   display: block;
   margin-top: .25rem;
