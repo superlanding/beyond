@@ -7,6 +7,9 @@
   &.ripple:before {
     display: none;
   }
+  .icon-checkbox {
+    background-color: transparent;
+  }
 }
 
 %radio-disabled {
