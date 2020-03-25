@@ -7,7 +7,7 @@
            aria-describedby="emailHelp"
            placeholder="Enter email">
      <small id="emailHelp"
-            class="form-text text-muted">We'll never share your email with anyone else.</small>
+            class="form-txt txt-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="example-input-password1">Password</label>
@@ -16,12 +16,14 @@
            id="example-input-password1"
            placeholder="Password">
   </div>
-  <div class="form-check">
-    <input type="checkbox"
-           class="form-check-input"
-           id="example-check">
-    <label class="form-check-label"
-           for="example-check">Check me out</label>
-  </div>
+
+  <label class="form-check">
+    <div class="checkbox ripple">
+      <input type="checkbox" />
+      <i class="icon-checkbox"></i>
+    </div>
+    <span>Check me out</span>
+  </label>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
