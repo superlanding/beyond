@@ -1,3 +1,10 @@
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
 .form {
   .btn.btn-form {
     text-shadow: 0 1px 0 #fff;
@@ -150,6 +157,10 @@ label {
   margin-bottom: 0;
   font-size: inherit;
   line-height: 1.5;
+}
+.col-form-field {
+  display: flex;
+  align-items: center;
 }
 
 .form-control-lg {
