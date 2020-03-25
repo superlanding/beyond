@@ -67,3 +67,62 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@mixin space-props($type, $side, $i, $size: '') {
+  $spacer: 1rem;
+  $space: $spacer * $i * .25;
+  $prop: 'margin';
+  $classname: #{$type}#{$side}-#{$i};
+
+  @if $type == 'p' {
+    $prop: 'padding';
+  }
+  @if $side == 'all' {
+    $classname: #{$type}-#{$i};
+  }
+  @if $space == 0rem {
+    $space: 0;
+  }
+  @if $size != '' {
+    $classname: #{$classname}-#{$size};
+  }
+
+  .#{$classname} {
+    @if $side == 'all' {
+      #{$prop}: $space;
+    }
+    @else if $side == 't' {
+      #{$prop}-top: $space;
+    }
+    @else if $side == 'b' {
+      #{$prop}-bottom: $space;
+    }
+    @else if $side == 'l' {
+      #{$prop}-left: $space;
+    }
+    @else if $side == 'r' {
+      #{$prop}-right: $space;
+    }
+    @else if $side == 'x' {
+      #{$prop}-left: $space;
+      #{$prop}-right: $space;
+    }
+    @else if $side == 'y' {
+      #{$prop}-top: $space;
+      #{$prop}-bottom: $space;
+    }
+    @else {
+      @error "Unknown side #{$side}.";
+    }
+  }
+}
+
+@mixin each-space-props($size: '') {
+  @each $type in $space-types {
+    @each $side in $sides {
+      @for $i from 0 through $space-size-max {
+        @include space-props($type, $side, $i, $size);
+      }
+    }
+  }
+}
