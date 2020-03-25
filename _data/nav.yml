@@ -6,6 +6,8 @@
   link: /layout/cols.html
 - name: Visibility Utilities
   link: /layout/visibility-utilities.html
+- name: Spacing Utilities
+  link: /layout/spacing-utilities.html
 - name: Typography
   link: /content/typography.html
 - name: Colors
