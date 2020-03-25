@@ -1,0 +1,24 @@
+%checkbox-disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+  input[type="checkbox"] {
+    cursor: not-allowed;
+  }
+  &.ripple:before {
+    display: none;
+  }
+}
+
+%radio-disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+  input[type="radio"] {
+    cursor: not-allowed;
+  }
+  &.ripple:before {
+    display: none;
+  }
+  .icon-radio {
+    background-color: transparent;
+  }
+}

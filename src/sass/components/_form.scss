@@ -188,15 +188,12 @@ label {
   margin-top: .25rem;
 }
 
-.form-check {
-  margin-bottom: 1rem;
-}
-
 .form-check-label {
   margin-bottom: 0;
 }
 
 .form-check {
+  margin-bottom: 1rem;
   display: block;
   padding: 6px 0;
   cursor: pointer;
@@ -204,12 +201,23 @@ label {
   vertical-align: middle;
   color: #3c4257;
   font-size: 14px;
-  .checkbox + span {
+  .checkbox + span,
+  .radio + span {
     position: relative;
     margin-left: 4px;
   }
   .checkbox .icon-checkbox {
     transform: translateY(-1px);
+  }
+  &.disabled {
+    color: #6c757d;
+    cursor: not-allowed;
+    .checkbox {
+      @extend %checkbox-disabled;
+    }
+    .radio {
+      @extend %radio-disabled;
+    }
   }
 }
 

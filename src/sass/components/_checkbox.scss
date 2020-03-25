@@ -35,17 +35,6 @@
   transform: translateY(-1px);
 }
 
-%checkbox-disabled {
-  background-color: #eee;
-  cursor: not-allowed;
-  input[type="checkbox"] {
-    cursor: not-allowed;
-  }
-  &.ripple:before {
-    display: none;
-  }
-}
-
 .checkbox {
   transform: translateY(3px);
   &.focus {
@@ -102,13 +91,6 @@
   }
   @include ripple(34px, -10px, -9px);
   &.disabled {
-    @extend %checkbox-disabled;
-  }
-}
-.form-check.disabled {
-  color: #6c757d;
-  cursor: not-allowed;
-  .checkbox {
     @extend %checkbox-disabled;
   }
 }
