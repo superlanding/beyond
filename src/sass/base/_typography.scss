@@ -159,6 +159,10 @@ body a.txt-type4:hover {
   border-bottom: 1px solid $color-txt-type4;
 }
 
+.txt-muted {
+  color: #6c757d;
+}
+
 .content-disabled {
   &,
   *,
@@ -166,4 +170,3 @@ body a.txt-type4:hover {
     filter: grayscale(10%);
   }
 }
-
