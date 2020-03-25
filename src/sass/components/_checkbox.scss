@@ -34,6 +34,7 @@
 .label-checkbox .checkbox .icon-checkbox {
   transform: translateY(-1px);
 }
+
 .checkbox {
   transform: translateY(3px);
   &.focus {
@@ -71,6 +72,7 @@
     }
   }
   .icon-checkbox {
+    background-color: #fff;
     transform: translateY(-2px);
     transition: .3s background-color;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12),
@@ -89,4 +91,7 @@
     }
   }
   @include ripple(34px, -10px, -9px);
+  &.disabled {
+    @extend %checkbox-disabled;
+  }
 }

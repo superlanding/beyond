@@ -9,19 +9,17 @@
     </div>
     <div class="form-group">
       <label for="disabled-select">Disabled select menu</label>
-      <select id="disabled-select" class="form-control">
+      <select id="disabled-select" class="form-control select">
         <option>Disabled select</option>
       </select>
     </div>
-    <div class="form-check">
-      <input class="form-check-input"
-             type="checkbox"
-             id="disabled-fieldset-check"
-             disabled>
-      <label class="form-check-label" for="disabled-fieldset-check">
-        Can't check this
-      </label>
-    </div>
+    <label class="form-check disabled">
+      <div class="checkbox ripple">
+        <input type="checkbox" disabled>
+        <i class="icon-checkbox"></i>
+      </div>
+      <span>Can't check this</span>
+    </label>
     <button type="submit" class="btn btn-primary">Submit</button>
   </fieldset>
 </form>

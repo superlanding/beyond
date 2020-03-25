@@ -62,4 +62,7 @@
     }
   }
   @include ripple(34px, -10px, -9px);
+  &.disabled {
+    @extend %radio-disabled;
+  }
 }
