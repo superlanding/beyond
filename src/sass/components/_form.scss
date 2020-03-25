@@ -117,13 +117,9 @@ label {
   margin-bottom: .5rem;
 }
 
-%form-control {
-  border: 0;
-  display: block;
-  width: 250px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #495057;
+.col .form-control,
+[class*=col-] .form-control {
+  width: 100%;
 }
 
 .form-control {
@@ -240,6 +236,16 @@ label {
       @extend %radio-disabled;
     }
   }
+}
+
+.form-row {
+  @extend %row;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.form-row > .col, .form-row > [class*=col-] {
+  padding-left: 5px;
+  padding-right: 15px;
 }
 
 .form-control-file {

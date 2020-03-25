@@ -25,3 +25,19 @@
     background-color: transparent;
   }
 }
+
+%row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+%form-control {
+  border: 0;
+  display: block;
+  width: 250px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #495057;
+}
