@@ -114,23 +114,33 @@ label {
   margin-bottom: .5rem;
 }
 
-.form-control {
+%form-control {
+  border: 0;
   display: block;
   width: 250px;
   padding: 6px 7px 7px;
   font-size: 14px;
   line-height: 1.5;
   color: #495057;
+}
+
+.form-control {
+  @extend %form-control;
   background-color: #fff;
   background-clip: padding-box;
-  border: 0;
   border-radius: 4px;
   box-shadow: 0 0 0 1px rgba(60, 66, 87, .16),
     0 1px 1px 0 rgba(0, 0, 0, .12);
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: box-shadow .15s ease-in-out;
+
   &:focus {
     @include focus-outline;
   }
+}
+
+.form-control-plaintext {
+  @extend %form-control;
+  background-color: transparent;
 }
 
 .form-control-lg {
