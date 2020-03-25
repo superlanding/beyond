@@ -151,6 +151,12 @@ label {
   background-color: transparent;
 }
 
+.col-form-label-lg {
+  padding-top: calc(.5rem + 1px);
+  padding-bottom: calc(.5rem + 1px);
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
 .col-form-label {
   padding-top: calc(.375rem + 1px);
   padding-bottom: calc(.375rem + 1px);
@@ -158,9 +164,19 @@ label {
   font-size: inherit;
   line-height: 1.5;
 }
+.col-form-label-sm {
+  padding-top: calc(.25rem + 1px);
+  padding-bottom: calc(.25rem + 1px);
+  font-size: .875rem;
+  line-height: 1.5;
+}
 .col-form-field {
   display: flex;
   align-items: center;
+  .form-check {
+    transform: translateY(-2px);
+    margin-bottom: 0;
+  }
 }
 
 .form-control-lg {
