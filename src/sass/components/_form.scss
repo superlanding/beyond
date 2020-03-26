@@ -191,7 +191,14 @@ label {
 
 .form-control,
 .form-control-lg,
-.form-control-sm {
+.form-control-sm,
+.form-control-plaintext {
+  &.is-valid {
+    box-shadow: 0 0 0 1px $txt-color-success;
+  }
+  &.is-invalid {
+    box-shadow: 0 0 0 1px $txt-color-danger;
+  }
   &:disabled {
     cursor: not-allowed;
   }
@@ -199,6 +206,36 @@ label {
   &[readonly] {
     color: #111;
     background-color: #e9ecef;
+  }
+}
+
+.valid-feedback,
+.invalid-feedback {
+  font-size: 80%;
+  margin-top: .35rem;
+  &:before {
+    font-family: 'icomoon';
+    display: inline-block;
+  }
+}
+
+.valid-feedback {
+  color: $txt-color-success;
+  &:before {
+    margin-right: 4px;
+    transform: translateY(1px);
+    color: $txt-color-success;
+    @extend .icon-check:before
+  }
+}
+
+.invalid-feedback {
+  color: $txt-color-danger;
+  &:before {
+    margin-right: 4px;
+    transform: translateY(1px);
+    color: $txt-color-danger;
+    @extend .icon-exclamation-triangle:before
   }
 }
 
@@ -255,6 +292,12 @@ label {
       @extend %radio-disabled;
     }
   }
+  span.is-valid {
+    color: $txt-color-success;
+  }
+  span.is-invalid {
+    color: $txt-color-danger;
+  }
 }
 
 .form-row {
@@ -279,9 +322,12 @@ input[type="file"] {
 .input-group {
   position: relative;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: stretch;
   width: 100%;
+  > .form-control:not(:last-child) {
+    flex: 1 1 0%;
+  }
 }
 
 .input-group-text {
