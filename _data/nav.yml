@@ -1,5 +1,7 @@
 - name: Home
   link: /
+- name: Alerts
+  link: /components/alerts.html
 - name: Containers
   link: /layout/containers.html
 - name: Cols
