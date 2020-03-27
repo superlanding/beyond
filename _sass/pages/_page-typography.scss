@@ -1,39 +1,13 @@
 .page-typography {
-  .title-demo {
-    line-height: 20px;
-    .tag {
-      margin-top: 7px;
-      margin-bottom: 7px;
-    }
+  .table .tag {
+    margin-right: 4px;
+    margin-bottom: 7px;
   }
-  .txt-demo-box {
-    line-height: 30px;
-  }
-  .card-h1 {
-    margin-bottom: 34px;
-  }
-  .separator {
-    margin-bottom: 30px;
-  }
-  .col-heading-en {
-    margin-left: 120px;
-  }
-  .card {
-    margin-bottom: 20px;
-  }
-  .table-fonts {
-    min-width: 320px;
-    font-size: 12px;
-    th {
-      color: #697386;
-      text-align: left;
-      font-weight: 400;
-    }
+  > h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
   .avatar-eddie {
     margin-right: 4px;
-  }
-  .last-codebox {
-    margin-top: 40px;
   }
 }

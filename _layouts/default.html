@@ -20,11 +20,16 @@
       <script src="{{ '/dist/beyond.js' | relative_url }}"></script>
     {% endif %}
   </head>
-  <body class="container-default container bg-admin">
-    {% include nav.html %}
-    <main class="main">
-      {{ content }}
-    </main>
+  <body class="container bg-admin">
+    <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
+      <i class="icon-hamburger"></i>
+    </button>
+    <div class="row">
+      {% include nav.html %}
+      <main class="col-md-8 col-xl-10 main">
+        {{ content }}
+      </main>
+    </div>
     {% if jekyll.environment == "development" %}
       <script src="{{ site.webpack_url }}/web.js"></script>
     {% else %}

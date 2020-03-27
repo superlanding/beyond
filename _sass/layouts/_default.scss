@@ -1,13 +1,18 @@
-.container-default {
-  display: flex;
-  margin: 30px 40px;
-}
 .main {
-  width: 100%;
-  margin-top: 4px;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-bottom: 120px;
+  background-color: #fff;
+  padding: 20px 36px;
+  @media (max-width: $screen-xs) {
+    padding: 20px 32px;
+  }
+  .codebox {
+    margin-bottom: 1.8rem;
+  }
+  h1 {
+    margin-bottom: 1.6rem;
+  }
+}
+.btn-sidebar {
+  margin: 14px;
 }
 .code {
   background-color: #4f556a;
@@ -46,6 +51,5 @@
   .main {
     margin-left: 0;
     margin-right: 0;
-    margin-top: 20px;
   }
 }

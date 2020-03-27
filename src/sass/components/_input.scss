@@ -1,6 +1,6 @@
 .input {
   width: 250px;
-  @media (max-width: $screen-xs) {
+  @media (max-width: $screen-sm) {
     width: initial;
   }
   color: #3c4257;

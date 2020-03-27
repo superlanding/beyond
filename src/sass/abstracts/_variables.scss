@@ -76,6 +76,19 @@ $txt-color-success: #25b47e;
 $txt-color-warn: #f1946a;
 $txt-color-danger: #cd3d64;
 
+$color-txt-type0: #5c5f72;
+$color-txt-type1: #63a396;
+$color-txt-type2: #6772e5;
+$color-txt-type3: #4191d9;
+$color-txt-type4: #6382a3;
+
+$color-txt-types:
+  $color-txt-type0,
+  $color-txt-type1,
+  $color-txt-type2,
+  $color-txt-type3,
+  $color-txt-type4;
+
 // tags
 $bg-tag-primary: #6782e5;
 $bg-tag-secondary: #7d5ae8;
@@ -124,21 +137,16 @@ $bg-avatars: (
   (avatar-type4, $bg-avatar-type4)
 );
 
-$screen-xs: 480px;
-$screen-sm: 768px;
-$screen-md: 992px;
-$screen-lg: 1200px;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
 
 $beyond-icon-font-path: if($beyond-use-helper, '', '../font/') !default;
 $beyond-icon-font-name: 'icomoon' !default;
 $beyond-css-img-path: if($beyond-use-helper, '', './img/') !default;
 
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-
-$breakpoints: $breakpoint-sm, $breakpoint-md, $breakpoint-lg, $breakpoint-xl;
+$breakpoints: $screen-sm, $screen-md, $screen-lg, $screen-xl;
 
 $screen-sizes: 'sm', 'md', 'lg', 'xl';
 $col-total: 12;
