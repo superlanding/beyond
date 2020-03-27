@@ -1,0 +1,110 @@
+<div class="doc">
+  <h2>DateTimeRanger HTML</h2>
+  <div class="code">
+{% highlight html %}
+<div class="date-time-ranger" data-date-time-ranger>
+  <input class="date-input" data-date-start />
+  <input class="time-input" data-time-start />
+  <button class="icon-arrow-right" data-btn-arrow tabindex="-1"></button>
+  <input class="date-input" data-date-end />
+  <input class="time-input" data-time-end />
+</div>
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-date-start</td>
+        <td>指定為開始日期的輸入文字框</td>
+      </tr>
+      <tr>
+        <td>data-date-end</td>
+        <td>指定為結束日期的輸入文字框</td>
+      </tr>
+      <tr>
+        <td>data-time-start</td>
+        <td>指定為開始時間的輸入文字框</td>
+      </tr>
+      <tr>
+        <td>data-time-end</td>
+        <td>指定為結束時間的輸入文字框</td>
+      </tr>
+      <tr>
+        <td>data-btn-arrow</td>
+        <td>指定為 dateTimeRanger 的按鈕</td>
+      </tr>
+      <tr>
+        <td>data-step</td>
+        <td>指定時間選單的間隔，預設 30 分。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>DateTimeRanger JS</h2>
+  <h3>constructor</h3>
+  <div class="code">
+{% highlight js %}
+const dateTimeRanger = new DateTimeRanger(dom, options)
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>需要指定為 dateTimeRanger 的元素</td>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>object</td>
+        <td>選項</td>
+      </tr>
+      <tr>
+        <td>options.startAt</td>
+        <td>integer</td>
+        <td>開始時間，unix timestamp</td>
+      </tr>
+      <tr>
+        <td>options.endAt</td>
+        <td>integer</td>
+        <td>結束時間，unix timestamp</td>
+      </tr>
+      <tr>
+        <td>options.tz</td>
+        <td>string</td>
+        <td>時區，預設為 Asia/Taipei</td>
+      </tr>
+      <tr>
+        <td>options.locale</td>
+        <td>object</td>
+        <td>語系，預設為 zh-TW。可以從 date-fns/locale/ import</td>
+      </tr>
+      <tr>
+        <td>options.change</td>
+        <td>function</td>
+        <td>dateTimeRanger 時間被更新時的 callback</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>destroy</h3>
+  <p>移除 dateTimeRanger 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+{% highlight js %}
+dateTimeRanger.destroy()
+{% endhighlight %}
+  </div>
+</div><!-- .doc -->

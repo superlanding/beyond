@@ -1,0 +1,25 @@
+@for $i from 1 through length($breakpoints) {
+  $breakpoint: nth($breakpoints, $i);
+  $size: nth($screen-sizes, $i);
+
+  .visible-#{$size}-block,
+  .visible-#{$size}-inline,
+  .visible-#{$size}-inline-block {
+    display: none;
+  }
+
+  @media (max-width: $breakpoint) {
+    .hidden-#{$size} {
+      display: none;
+    }
+    .visible-#{$size}-block {
+      display: block;
+    }
+    .visible-#{$size}-inline {
+      display: inline;
+    }
+    .visible-#{$size}-inline-block {
+      display: inline-block;
+    }
+  }
+}

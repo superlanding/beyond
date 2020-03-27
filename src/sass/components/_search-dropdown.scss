@@ -1,0 +1,28 @@
+.search-dropdown.dropdown-menu {
+  padding: 0;
+  .search-dropdown-input-wrap {
+    padding: 14px;
+  }
+  .search-dropdown-input.input {
+    width: 100%;
+  }
+  .search-dropdown-menu.active {
+    border-top: 1px solid rgba(60, 66, 87, .16);
+    padding: 4px 0;
+    max-height: 240px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .search-dropdown-menu-item {
+    border: 3px solid transparent;
+    &.selected {
+      border: 3px solid $bg-outline;
+    }
+    cursor: pointer;
+    font-size: 13px;
+    padding: 7px 11px;
+    strong {
+      color: #6772e5;
+    }
+  }
+}

@@ -1,0 +1,92 @@
+---
+layout: no-nav
+title: Cols
+---
+<div class="page-cols card card-shadow-sm">
+  <h1 class="card-heading">網格 - Cols</h1>
+
+  <table class="table" data-table-resolution>
+    <thead>
+      <tr>
+        <th></th>
+        <th>
+          Extra small<br>
+          <span>&lt;576px</span>
+        </th>
+        <th>
+          Small<br>
+          <span>&gt;&#61; 576px</span>
+        </th>
+        <th>
+          Medium<br>
+          <span>&gt;&#61; 768px</span>
+        </th>
+        <th>
+          Large<br>
+          <span>&gt;&#61; 992px</span>
+        </th>
+        <th>
+          Extra large<br>
+          <span>&gt;&#61; 1200px</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.col</code></td>
+        <td>套用</td>
+        <td>套用</td>
+        <td>套用</td>
+        <td>套用</td>
+        <td>套用</td>
+      </tr>
+      <tr>
+        <td><code>.col-sm</code></td>
+        <td class="text-muted">無</td>
+        <td>套用</td>
+        <td>套用</td>
+        <td>套用</td>
+        <td>套用</td>
+      </tr>
+      <tr>
+        <td><code>.col-md</code></td>
+        <td class="text-muted">無</td>
+        <td class="text-muted">無</td>
+        <td>套用</td>
+        <td>套用</td>
+        <td>套用</td>
+      </tr>
+      <tr>
+        <td><code>.col-lg</code></td>
+        <td class="text-muted">無</td>
+        <td class="text-muted">無</td>
+        <td class="text-muted">無</td>
+        <td>套用</td>
+        <td>套用</td>
+      </tr>
+      <tr>
+        <td><code>.col-xl</code></td>
+        <td class="text-muted">無</td>
+        <td class="text-muted">無</td>
+        <td class="text-muted">無</td>
+        <td class="text-muted">無</td>
+        <td>套用</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/cols.html %}
+      </div>
+      <div>
+        {% highlight html linenos %}{% include demos/cols.html %}{% endhighlight %}
+      </div>
+    </div>
+  </div>
+</div>

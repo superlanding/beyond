@@ -1,416 +1,250 @@
-import { utcToZonedTime } from 'date-fns-tz'
-import endOfDay from 'date-fns/endOfDay'
 import parse from 'date-fns/parse'
 import set from 'date-fns/set'
 import noop from 'lodash.noop'
-import startOfDay from 'date-fns/startOfDay'
-import getHours from 'date-fns/getHours'
-import getMinutes from 'date-fns/getMinutes'
-import getSeconds from 'date-fns/getSeconds'
-import DatepickerDateInput from './DatepickerDateInput'
-import DatepickerTimeInput from './DatepickerTimeInput'
-import DatepickerDateMenu from './DatepickerDateMenu'
-import DatepickerTimeMenu from './DatepickerTimeMenu'
-import DatepickerBtnArrow from './DatepickerBtnArrow'
-import dateGt from '../helpers/dateGt'
-import dateLt from '../helpers/dateLt'
+import toDate from 'date-fns/toDate'
+import DateInput from './DateInput'
+import TimeInput from './TimeInput'
+import DateMenu from './DateMenu'
+import TimeMenu from './TimeMenu'
 import supportDom from '../helpers/supportDom'
 import { DEFAULT_TIMEZONE } from '../consts'
+import dateToTimestamp from '@superlanding/datetotimestamp'
+import timestampToDate from '@superlanding/timestamptodate'
 
 @supportDom
 export default class Datepicker {
 
-  constructor(dom, options = {}) {
+  constructor(dom, timestamp, options = {}) {
     this.dom = dom
     this.options = options
     this.options.change = options.change || noop
     this.tz = options.tz || DEFAULT_TIMEZONE
-    this.lastTriggered = null
-    this.nextDate = null
+
+    this.date = (timestamp === null) ? null : timestampToDate(timestamp)
+    this.menuDate = (timestamp === null) ? toDate(new Date()) : toDate(this.date)
     this.focused = false
-    this.inputDateStartSet = false
-    this.inputDateEndSet = false
+    this.nextDate = null
     this.init()
   }
 
   init() {
     const { dom } = this
-    const startDate = this.options.startDate || new Date()
-    const endDate = this.options.endDate || endOfDay(startDate)
-
-    this.startDate = utcToZonedTime(startDate, this.tz)
-    this.endDate = utcToZonedTime(endDate, this.tz)
-
-    this.currentDate = this.startDate
-
-    this.inputDateStart = new DatepickerDateInput(
-      dom.querySelector('[data-date-start]'),
-      this.startDate,
+    this.dateInput = new DateInput(
+      dom.querySelector('[data-date]'),
+      this.date,
       this.options
     )
-
-    this.inputTimeStart = new DatepickerTimeInput(
-      dom.querySelector('[data-time-start]'),
-      this.startDate,
-      this.options
-    )
-
-    this.btnArrow = new DatepickerBtnArrow(
-      dom.querySelector('[data-btn-arrow]')
-    )
-
-    this.inputDateEnd = new DatepickerDateInput(
-      dom.querySelector('[data-date-end]'),
-      this.endDate,
-      this.options
-    )
-
-    this.inputTimeEnd = new DatepickerTimeInput(
-      dom.querySelector('[data-time-end]'),
-      this.endDate,
-      this.options
-    )
-
-    this.dateMenu = new DatepickerDateMenu({
-      date: this.currentDate,
-      startDate: this.startDate,
-      endDate: this.endDate,
-      options: this.options
+    this.dateMenu = new DateMenu({
+      date: this.menuDate,
+      options: Object.assign({}, this.options, { useSingleMenu: true })
     })
-    this.timeMenu = new DatepickerTimeMenu()
 
+    const timeInput = dom.querySelector('[data-time]')
+    if (timeInput) {
+      this.timeInput = new TimeInput(
+        timeInput,
+        this.date,
+        this.options
+      )
+      this.timeMenu = new TimeMenu()
+    }
     this.addEvents()
   }
 
-  setDates(startDate, endDate) {
-    if (dateGt(startDate, endDate)) {
-      throw new Error('Start date cannot be greater than end date.')
-    }
-    this.startDate = utcToZonedTime(startDate, this.tz)
-    this.endDate = utcToZonedTime(endDate, this.tz)
-    this.inputDateStart.setDate(this.startDate)
-    this.inputTimeStart.setDate(this.startDate)
-    this.inputDateEnd.setDate(this.endDate)
-    this.inputTimeEnd.setDate(this.endDate)
-  }
-
   clearInputStatus() {
-    this.inputDateStart.clearStatus()
-    this.inputTimeStart.clearStatus()
-    this.inputDateEnd.clearStatus()
-    this.inputTimeEnd.clearStatus()
+    this.dateInput.clearStatus()
+    this.timeInput && this.timeInput.clearStatus()
   }
 
-  clearTimeInputStatus() {
-    this.inputTimeStart.clearStatus()
-    this.inputTimeEnd.clearStatus()
-  }
-
-  handleDateInputFocus(input) {
-    this.focused = true
-    this.inputDateStartSet = false
-    this.inputDateEndSet = false
-    this.clearTimeInputStatus()
-    this.inputDateStart.setActive(true)
-    this.inputDateEnd.setActive(true)
-    this.dateMenu.setDate({
-      date: this.startDate,
-      startDate: this.startDate,
-      endDate: this.endDate
-    })
-    this.dateMenu.show(this.dom)
-    this.timeMenu.hide()
-  }
-
-  handleTimeInputFocus(input) {
+  handleDateInputFocus() {
     this.focused = true
     this.clearInputStatus()
-    input.setActive(true)
-    this.lastTriggered = input
+    this.dateInput.setActive(true)
+    this.dateMenu.setDate({ date: this.menuDate })
+    this.dateMenu.show(this.dom)
+    this.timeMenu && this.timeMenu.hide()
+  }
+
+  setTimestamp(timestamp) {
+    return this.setDate(timestampToDate(timestamp))
+  }
+
+  setDate(date) {
+    this.date = date
+    this.dateInput.setDate(date)
+    this.dateMenu.setDate({ startDate: date })
+  }
+
+  handleDateInputKeyUp(event) {
+    const { date, dateInput } = this
+    const { value } = event.target
+
+    if ((! dateInput.required) && (value === '')) {
+      this.date = null
+      this.nextDate = null
+      return
+    }
+
+    const res = parse(value, dateInput.datePattern, date)
+    this.nextDate = null
+    if (res.toString() === 'Invalid Date') {
+      return dateInput.setDanger(true)
+    }
+    dateInput.setDanger(false)
+    this.nextDate = res
+  }
+
+  handleDateInputBlur() {
+    const { nextDate, date, dateInput } = this
+
+    if (date === null) {
+      dateInput.setDate(null)
+      this.timeInput && this.timeInput.setDate(null)
+    }
+    else if (nextDate) {
+      this.date = nextDate
+      dateInput.setDate(nextDate)
+      this.dateMenu.setDate({ startDate: nextDate })
+      this.nextDate = null
+    }
+    else {
+      dateInput.setDate(date)
+    }
+  }
+
+  handleTimeInputFocus() {
+    const { timeInput } = this
+    this.focused = true
+    this.clearInputStatus()
+    timeInput.setActive(true)
     this.dateMenu.hide()
-    this.timeMenu.show({ src: this.dom, date: input.date })
+    this.timeMenu.show({ src: this.dom, date: timeInput.date })
   }
 
-  handleDateInputKeyUp({ event, input, date, isStart }) {
+  handleTimeInputKeyUp(event) {
+    const { date, timeInput } = this
+    const { value } = event.target
 
-    const res = parse(event.target.value, input.datePattern, date)
+    if ((! timeInput.required) && (value === '')) {
+      this.nextDate = null
+      return
+    }
+    const res = parse(event.target.value, timeInput.timePattern, date)
     this.nextDate = null
 
     if (res.toString() === 'Invalid Date') {
-      return input.setDanger(true)
+      return timeInput.setDanger(true)
     }
-    if (isStart && dateGt(startOfDay(res), startOfDay(this.endDate))) {
-      return input.setDanger(true)
-    }
-    if ((! isStart) && dateLt(startOfDay(res), startOfDay(this.startDate))) {
-      return input.setDanger(true)
-    }
-    input.setDanger(false)
+    timeInput.setDanger(false)
     this.nextDate = res
   }
 
-  handleTimeInputKeyUp({ event, input, date, isStart }) {
-    const res = parse(event.target.value, input.timePattern, date)
-    this.nextDate = null
-
-    if (res.toString() === 'Invalid Date') {
-      return input.setDanger(true)
-    }
-    if (isStart && dateGt(startOfDay(res), startOfDay(this.endDate))) {
-      return input.setDanger(true)
-    }
-    if ((! isStart) && dateLt(startOfDay(res), startOfDay(this.startDate))) {
-      return input.setDanger(true)
-    }
-    input.setDanger(false)
-    this.nextDate = res
-  }
-
-  handleInputBlur({ input, isStart }) {
-    const dateProp = isStart ? 'startDate' : 'endDate'
-    const oldDate = this[dateProp]
-    const { nextDate } = this
+  handleTimeInputBlur() {
+    const { nextDate, date, timeInput } = this
 
     if (nextDate) {
-      this[dateProp] = nextDate
-      input.setDate(nextDate)
-      this.dateMenu.setDate({ [dateProp]: nextDate })
+      this.date = nextDate
+      timeInput.setDate(nextDate)
       this.nextDate = null
     }
-    else {
-      input.setDate(oldDate)
-    }
-  }
-
-  handleTimeInputBlur({ input, isStart }) {
-    const dateProp = isStart ? 'startDate' : 'endDate'
-    const oldDate = this[dateProp]
-    const { nextDate } = this
-
-    if (nextDate) {
-      this[dateProp] = nextDate
-      input.setDate(nextDate)
-      this.nextDate = null
-    }
-    else {
-      input.setDate(oldDate)
+    else if (date) {
+      timeInput.setDate(date)
     }
   }
 
   addDateInputEvents() {
-    this.inputDateStart.on('focus', () => this.handleDateInputFocus(this.inputDateStart))
-    this.inputDateStart.on('keyup', event => {
-      return this.handleDateInputKeyUp({
-        event,
-        input: this.inputDateStart,
-        date: this.startDate,
-        isStart: true
-      })
-    })
-    this.inputDateStart.on('blur', () => {
-      return this.handleInputBlur({
-        input: this.inputDateStart,
-        isStart: true
-      })
-    })
-
-    this.inputDateEnd.on('focus', () => this.handleDateInputFocus(this.inputDateEnd))
-    this.inputDateEnd.on('keyup', event => {
-      return this.handleDateInputKeyUp({
-        event,
-        input: this.inputDateEnd,
-        date: this.endDate,
-        isStart: false
-      })
-    })
-    this.inputDateEnd.on('blur', () => {
-      return this.handleInputBlur({
-        input: this.inputDateEnd,
-        isStart: false
-      })
-    })
+    this.dateInput.on('focus', () => this.handleDateInputFocus())
+    this.dateInput.on('keyup', event => this.handleDateInputKeyUp(event))
+    this.dateInput.on('blur', () => this.handleDateInputBlur())
   }
 
   addTimeInputEvents() {
-    this.inputTimeStart.on('focus', () => this.handleTimeInputFocus(this.inputTimeStart))
-    this.inputTimeStart.on('keyup', event => {
-      return this.handleTimeInputKeyUp({
-        event,
-        input: this.inputTimeStart,
-        date: this.startDate,
-        isStart: true
-      })
-    })
-    this.inputTimeStart.on('blur', event => {
-      return this.handleTimeInputBlur({
-        input: this.inputTimeStart,
-        isStart: true
-      })
-    })
-
-    this.inputTimeEnd.on('focus', () => this.handleTimeInputFocus(this.inputTimeEnd))
-    this.inputTimeEnd.on('keyup', event => {
-      return this.handleTimeInputKeyUp({
-        event,
-        input: this.inputTimeEnd,
-        date: this.startDate,
-        isStart: false
-      })
-    })
-    this.inputTimeEnd.on('blur', event => {
-      return this.handleTimeInputBlur({
-        input: this.inputTimeEnd,
-        isStart: false
-      })
-    })
+    this.timeInput.on('focus', () => this.handleTimeInputFocus())
+    this.timeInput.on('keyup', event => this.handleTimeInputKeyUp(event))
+    this.timeInput.on('blur', () => this.handleTimeInputBlur())
   }
 
-  switchDates() {
-    const oldStartDate = this.startDate
-    const oldEndDate = this.endDate;
-    [this.startDate, this.endDate] = [this.endDate, this.startDate]
-
-    // keeps the time
-    this.startDate = set(this.startDate, {
-      hours: getHours(oldStartDate),
-      minutes: getMinutes(oldStartDate),
-      seconds: getSeconds(oldStartDate)
-    })
-    this.endDate = set(this.endDate, {
-      hours: getHours(oldEndDate),
-      minutes: getMinutes(oldEndDate),
-      seconds: getSeconds(oldEndDate)
-    })
-    this.inputDateStart.setDate(this.startDate)
-    this.inputDateEnd.setDate(this.endDate)
-  }
-
-  addMenuEvents() {
-    this.dateMenu.on('td-mouseover', (event, res) => {
-      if (this.dateMenu.startDate && (! this.dateMenu.endDate)) {
-        this.dateMenu.setHoveredCell(res)
-      }
-    })
-    this.dateMenu.on('td-click', (event, res) => {
-      event.stopPropagation()
-      event.preventDefault()
-
-      if (this.inputDateStartSet && this.inputDateEndSet) {
-        this.inputDateStartSet = false
-        this.inputDateEndSet = false
-      }
-
-      const { year, month, date } = res
-
-      if ((! this.inputDateStartSet) && (! this.inputDateEndSet)) {
-        this.dateMenu.setDate({ startDate: null, endDate: null })
-        const nextStartDate = set(this.startDate, { year, month, date })
-        this.startDate = nextStartDate
-        this.inputDateStart.setDate(nextStartDate)
-        this.inputDateStartSet = true
-        return this.dateMenu.setDate({
-          startDate: this.startDate
-        })
-      }
-
-      if (this.inputDateStartSet && (! this.inputDateEndSet)) {
-        this.endDate = set(this.endDate, { year, month, date })
-
-        // switch if next endDate is prior to startDate
-        if (dateLt(startOfDay(this.endDate), startOfDay(this.startDate))) {
-          this.switchDates()
-        }
-        this.inputDateStart.setDate(this.startDate)
-        this.inputDateEnd.setDate(this.endDate)
-
-        this.inputDateEndSet = true
-        this.dateMenu.setDate({
-          startDate: this.startDate,
-          endDate: this.endDate
-        })
-        return this.options.change({
-          startDate: this.startDate,
-          endDate: this.endDate
-        })
-      }
-    })
-
-    this.timeMenu.on('click', (event, res) => {
-      const nextDate = set(this.lastTriggered.date, { hours: res.hour, minutes: res.minute })
-      if (this.lastTriggered === this.inputTimeStart) {
-        this.startDate = nextDate
-      }
-      if (this.lastTriggered === this.inputTimeEnd) {
-        this.endDate = nextDate
-      }
-      this.lastTriggered.setDate(nextDate)
-      this.timeMenu.hide()
-      this.clearInputStatus()
-    })
-  }
-
-  addBtnArrowEvents() {
-    this.btnArrow.on('click', () => {
-      this.inputDateStart.focus()
-      this.handleDateInputFocus(this.inputDateStart)
+  emitChange() {
+    const { date } = this
+    this.options.change({
+      date,
+      timestamp: dateToTimestamp(date)
     })
   }
 
   addEvents() {
 
     this.addDateInputEvents()
-    this.addTimeInputEvents()
-    this.addMenuEvents()
-    this.addBtnArrowEvents()
+
+    this.dateMenu.on('td-click', (event, res) => {
+      event.stopPropagation()
+      event.preventDefault()
+
+      const { year, month, date } = res
+      this.date = set(this.date || new Date(), { year, month, date })
+      this.dateInput.setDate(this.date)
+      this.dateMenu.setDate({ startDate: this.date })
+      this.dateInput.setActive(false)
+      this.dateMenu.hide()
+      this.emitChange()
+    })
+
+    if (this.timeInput) {
+      this.addTimeInputEvents()
+
+      this.timeMenu.on('click', (event, res) => {
+        if (this.date === null) {
+          this.date = set(new Date(), { hours: res.hour, minutes: res.minute })
+          this.dateInput.setDate(this.date)
+        }
+        else {
+          this.date = set(this.date, { hours: res.hour, minutes: res.minute })
+        }
+        this.timeInput.setDate(this.date)
+        this.timeMenu.hide()
+        this.clearInputStatus()
+        this.emitChange()
+      })
+    }
 
     this.addEvent(document, 'click', event => {
       const { dom, dateMenu, timeMenu } = this
       const { target } = event
       const dateMenuDom = dateMenu.dom
-      const timeMenuDom = timeMenu.dom
+      const timeMenuDom = timeMenu ? timeMenu.dom : null
 
       if (this.focused) {
         this.focused = false
         return
       }
-      if ((! dateMenu.isVisible) && (! timeMenu.isVisible)) {
+      if ((! dateMenu.isVisible) && (timeMenu && (! timeMenu.isVisible))) {
         return
       }
       if (dom.contains(target)) {
         return
       }
-
       if (dateMenuDom.contains(target)) {
         return
       }
       if (dateMenuDom === target) {
         return
       }
-
-      if (timeMenuDom.contains(target)) {
+      if (timeMenuDom && timeMenuDom.contains(target)) {
         return
       }
-      if (timeMenuDom === target) {
+      if (timeMenuDom && (timeMenuDom === target)) {
         return
       }
-
       this.clearInputStatus()
-
-      if (dateLt(startOfDay(this.endDate), startOfDay(this.startDate))) {
-        this.switchDates()
-      }
       dateMenu.hide()
-      timeMenu.hide()
+      timeMenu && timeMenu.hide()
     })
   }
 
   destroy() {
-    this.inputDateStart.destroy()
-    this.inputTimeStart.destroy()
-    this.inputDateEnd.destroy()
-    this.inputTimeEnd.destroy()
+    this.dateInput.destroy()
     this.dateMenu.destroy()
-    this.timeMenu.destroy()
-    this.btnArrow.destroy()
+    this.timeInput && this.timeInput.destroy()
+    this.timeMenu && this.timeMenu.destroy()
   }
 }

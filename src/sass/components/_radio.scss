@@ -5,18 +5,23 @@
   vertical-align: middle;
   color: #3c4257;
   font-size: 14px;
-  > span {
+  .radio + span {
     position: relative;
+    margin-left: 4px;
   }
 }
 .radio {
+  transform: translateY(3px);
+  &.focus {
+    @include focus-outline;
+  }
+  border-radius: 100%;
   $size: 14px;
   @include size($size);
   cursor: pointer;
   transform: translateY(2px);
   position: relative;
   display: inline-block;
-  margin-right: 4px;
   input[type="radio"] {
     @include size($size);
     cursor: pointer;
@@ -25,11 +30,12 @@
     display: block;
     bottom: 0;
     &:checked ~ .icon-radio:after {
-      transform: translateY(1px) scale(1);
+      transform: translateY(0) scale(1);
       opacity: 1;
     }
   }
   .icon-radio {
+    transform: translateY(-1px);
     background-color: #fff;
     border: 0;
     border-radius: 50%;
@@ -51,9 +57,12 @@
       bottom: 0;
       content: '';
       display: block;
-      transform: translateY(1px) scale(0);
+      transform: translateY(0) scale(0);
       opacity: 0;
     }
   }
   @include ripple(34px, -10px, -9px);
+  &.disabled {
+    @extend %radio-disabled;
+  }
 }

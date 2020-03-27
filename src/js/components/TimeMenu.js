@@ -2,11 +2,11 @@ import getHours from 'date-fns/getHours'
 import getMinutes from 'date-fns/getMinutes'
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import toPixel from '../helpers/toPixel'
-import range from '../helpers/range'
+import range from 'lodash.range'
 import supportDom from '../helpers/supportDom'
 
 @supportDom
-export default class DatepickerTimeMenu {
+export default class TimeMenu {
 
   constructor() {
     this.date = null
@@ -19,15 +19,17 @@ export default class DatepickerTimeMenu {
     this.addEvents()
   }
 
-  getMenuItems() {
-    return range(0, 23)
-      .reduce((arr, num) => {
-        arr.push({ hour: num, min: 0 })
-        arr.push({ hour: num, min: 30 })
+  getMenuItems(step) {
+    const dayMins = 24 * 60
+    return range(0, dayMins, step)
+      .reduce((arr, mins) => {
+        const hour = parseInt(mins / 60, 10)
+        const min = mins % 60
+        arr.push({ hour, min })
         return arr
       }, [])
       .map(({ hour, min }) => {
-        return `<div class="datepicker-time-menu-item"
+        return `<div class="time-menu-item"
           data-hour="${hour}"
           data-minute="${min}">${hour}:${min.toString().padStart(2, '0')}</div>`
       })
@@ -36,8 +38,7 @@ export default class DatepickerTimeMenu {
 
   addMenu() {
     const dom = document.createElement('div')
-    dom.className = 'datepicker-time-menu'
-    dom.innerHTML = this.getMenuItems()
+    dom.className = 'time-menu'
     document.body.appendChild(dom)
     this.dom = dom
   }
@@ -92,8 +93,9 @@ export default class DatepickerTimeMenu {
       })
   }
 
-  show({ src, date }) {
+  show({ src, date, step = 30 }) {
     const { dom } = this
+    dom.innerHTML = this.getMenuItems(step)
     dom.style.opacity = 0
     dom.style.display = 'block'
     this.pos(src)

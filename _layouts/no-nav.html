@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
+    <title>{{ page.title }} | Beyond</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+    {% if jekyll.environment == "development" %}
+      <link rel="stylesheet" href="{{ site.webpack_url }}/beyond.css">
+    {% else %}
+      <link rel="stylesheet" href="{{ '/dist/beyond.css' | relative_url }}">
+    {% endif %}
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    {% include icons.html %}
+    {% if jekyll.environment == "development" %}
+      <script src="{{ site.webpack_url }}/beyond.js"></script>
+    {% else %}
+      <script src="{{ '/dist/beyond.js' | relative_url }}"></script>
+    {% endif %}
+  </head>
+  <body class="bg-admin no-nav-container">
+    <a class="no-nav__btn-back" href="{{ '/' | relative_url }}">
+      <i class="icon-chevron-left"></i>
+      回首頁
+    </a>
+    {{ content }}
+    <div id="width-pad"></div>
+    {% if jekyll.environment == "development" %}
+      <script src="{{ site.webpack_url }}/web.js"></script>
+    {% else %}
+      <script src="{{ '/dist/web.js' | relative_url }}"></script>
+    {% endif %}
+  </body>
+</html>

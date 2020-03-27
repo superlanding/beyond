@@ -1,4 +1,7 @@
 .select {
+  &:disabled {
+    opacity: .5;
+  }
   &::-ms-expand {
     display: none;
   }
@@ -9,14 +12,18 @@
   background: #fff;
   box-shadow: 0 2px 5px 0 rgba(60, 66, 87, .12);
   padding: 6px 34px 6px 10px;
+
   background-image: url(beyond-image-path('#{$beyond-css-img-path}arrow-select.svg'));
+  &.active {
+    background-image: url(beyond-image-path('#{$beyond-css-img-path}arrow-select-ex.svg'));
+  }
+  &[multiple] {
+    background-image: none;
+  }
   background-repeat: no-repeat;
   background-position: right 14px center;
   &:focus {
-    outline: 0;
-    box-shadow: 0 0 0 1px rgba(60, 66, 87, .16),
-      0 1px 1px 0 rgba(0, 0, 0, .12),
-      0 0 0 4px rgba(58, 151, 212, .28);
+    @include focus-outline;
   }
 }
 

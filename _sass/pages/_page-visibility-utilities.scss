@@ -1,0 +1,38 @@
+.page-utilities {
+  h1.card-heading {
+    margin-bottom: 14px;
+  }
+  padding: 14px 20px;
+  width: 100%;
+  .table {
+    width: 100%;
+    margin-bottom: 14px;
+    td, th {
+      &.active {
+        background-color: #eee;
+      }
+    }
+  }
+
+  .codebox-result {
+    .col-12 {
+      position: relative;
+      padding: 7px;
+      border: 1px solid #555;
+      text-align: center;
+      background-color: #e3e8ee;
+
+      div[class^="hidden-"],
+      div[class^="visible-"] {
+        line-height: 2.2rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #f7f8f9;
+      }
+    }
+  }
+
+}

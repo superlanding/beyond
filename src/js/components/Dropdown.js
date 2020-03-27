@@ -109,7 +109,7 @@ export default class Dropdown {
     if (isFunction(menuClick)) {
       this.addEvent(this.menu, 'click', event => {
         const { dataset } = event.target
-        if (('dropdownItem' in dataset) || ('tabboxItem' in dataset)) {
+        if ('dropdownItem' in dataset) {
           menuClick(event)
         }
       })

@@ -1,4 +1,19 @@
 .table {
+  .title {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 4px;
+  }
+  .sub {
+    font-size: 14px;
+    font-weight: 900;
+    margin-bottom: 4px;
+  }
+  .link {
+    &:hover {
+      border-bottom: 1px solid $color-anchor-ex;
+    }
+  }
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border-collapse: collapse;
@@ -11,17 +26,17 @@
     background-color: #f7fafc;
     color: #1a1f36;
   }
-  th {
-    box-shadow: inset 0 1px #e3e8ee,
-      inset 0 -1px #e3e8ee;
-  }
   th,
   td {
-    padding: 9px 20px;
-  }
-  td {
-    box-shadow: inset 0 -1px #e3e8ee;
     background-color: #fff;
+    padding: 7px;
+    box-shadow: inset 0 -1px #e3e8ee;
+  }
+  tr {
+    transition: .3s all;
+  }
+  tr:hover {
+    filter: brightness(95%);
   }
   &.striped {
     tr:nth-child(even) td {

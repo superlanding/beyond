@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
     {% if jekyll.environment == "development" %}
-      <link rel="stylesheet" href="http://localhost:8080/beyond.css">
+      <link rel="stylesheet" href="{{ site.webpack_url }}/beyond.css">
     {% else %}
       <link rel="stylesheet" href="{{ '/dist/beyond.css' | relative_url }}">
     {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
     {% include icons.html %}
     {% if jekyll.environment == "development" %}
-      <script src="http://localhost:8080/beyond.js"></script>
+      <script src="{{ site.webpack_url }}/beyond.js"></script>
     {% else %}
       <script src="{{ '/dist/beyond.js' | relative_url }}"></script>
     {% endif %}
@@ -26,7 +26,7 @@
       {{ content }}
     </main>
     {% if jekyll.environment == "development" %}
-      <script src="http://localhost:8080/web.js"></script>
+      <script src="{{ site.webpack_url }}/web.js"></script>
     {% else %}
       <script src="{{ '/dist/web.js' | relative_url }}"></script>
     {% endif %}

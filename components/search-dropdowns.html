@@ -1,0 +1,30 @@
+---
+layout: default
+title: Search Dropdowns
+---
+<div class="page-search-dropdowns">
+
+  <div class="card card-shadow-sm">
+    <h1 class="card-heading">可搜尋的下拉式選單 - Search Dropdowns</h1>
+
+    <div class="codebox" data-codebox>
+      <div class="codebox-tabs" data-tabs>
+        <a>Result</a>
+        <a>HTML</a>
+        <a>JavaScript</a>
+      </div>
+      <div class="codebox-panes" data-panes>
+        <div class="codebox-result">
+          {% include demos/search-dropdowns.html %}
+        </div>
+        <div>
+          {% highlight html linenos %}{% include demos/search-dropdowns.html %}{% endhighlight %}
+        </div>
+        <div>
+          {% highlight js linenos %}{% include demos/search-dropdowns.js %}{% endhighlight %}
+        </div>
+      </div>
+    </div><!-- .codebox -->
+    {% include docs/search-dropdowns.html %}
+  </div>
+</div>

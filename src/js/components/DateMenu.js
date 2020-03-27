@@ -16,8 +16,10 @@ import range from '../helpers/range'
 import toPixel from '../helpers/toPixel'
 import isTouchDevice from '../helpers/isTouchDevice'
 import dateLt from '../helpers/dateLt'
+import dateEq from '../helpers/dateEq'
 import { DEFAULT_TIMEZONE, DEFAULT_LOCALE } from '../consts'
 import supportDom from '../helpers/supportDom'
+import throttle from 'lodash.throttle'
 
 const DEFAULT_WEEK_HEADER_ITEMS = [
   { id: 'monday', text: '一' },
@@ -33,7 +35,7 @@ const CELL_TYPE_EMPTY = Symbol('CELL_TYPE_EMPTY')
 const CELL_TYPE_DAY = Symbol('CELL_TYPE_DAY')
 
 @supportDom
-export default class DatepickerDateMenu {
+export default class DateMenu {
 
   constructor({ date, startDate, endDate, options = {} }) {
     this.date = date
@@ -53,6 +55,10 @@ export default class DatepickerDateMenu {
   init() {
     this.addMenu()
     this.addEvents()
+  }
+
+  useSingleMenu() {
+    return isTouchDevice() || this.options.useSingleMenu
   }
 
   setHoveredCell(data) {
@@ -75,12 +81,15 @@ export default class DatepickerDateMenu {
     const beforeWeekday = ((firstWeekday - 1) === -1) ? 6 : (firstWeekday - 1)
     const emptyHeadRows = range(1, beforeWeekday).map(toEmptyCell)
 
+    const initialStartDate = startOfDay(startDate)
+    const initialEndDate = startOfDay(endDate)
+
     // 00:00:00
     // eslint-disable-next-line prefer-const
-    let startOfStartDate = startOfDay(startDate)
+    let startOfStartDate = initialStartDate
 
     // eslint-disable-next-line prefer-const
-    let startOfEndDate = startOfDay(endDate)
+    let startOfEndDate = initialEndDate
 
     if (startDate && (! endDate) && this.hoveredCellData) {
       const { year: y, month: m, date: d } = this.hoveredCellData
@@ -90,6 +99,11 @@ export default class DatepickerDateMenu {
       }
     }
 
+    const formatDate = date => {
+      return format(date, 'yyyy-MM-dd', { timezone: this.tz, locale: this.locale })
+    }
+    const today = formatDate(new Date())
+
     const rows = range(1, daysInMonth).map(day => {
 
       const d = addDays(firstDateOfMonth, day - 1)
@@ -98,9 +112,10 @@ export default class DatepickerDateMenu {
 
       return {
         type: CELL_TYPE_DAY,
-        isStartDate: (resCompareStart === 0),
-        isEndDate: (endDate && (resCompareEnd === 0)),
+        isStartDate: dateEq(initialStartDate, d),
+        isEndDate: dateEq(initialEndDate, d),
         isSelected: (resCompareStart <= 0) && (resCompareEnd >= 0),
+        isToday: (today === formatDate(d)),
         day
       }
     })
@@ -115,7 +130,7 @@ export default class DatepickerDateMenu {
   setCaption() {
     const { date, date2 } = this
     const options = { timezone: this.tz, locale: this.locale }
-    if (isTouchDevice()) {
+    if (this.useSingleMenu()) {
       this.caption.textContent = format(date, this.captionPattern, options)
     }
     else {
@@ -125,7 +140,7 @@ export default class DatepickerDateMenu {
   }
 
   drawTables() {
-    if (isTouchDevice()) {
+    if (this.useSingleMenu()) {
       const rows = this.getTableRows(this.date)
       this.table.innerHTML = this.getTableHtml(rows)
     }
@@ -179,25 +194,28 @@ export default class DatepickerDateMenu {
     if (row.isSelected) {
       return `<td class="cell selected" data-date-table-cell>${row.day}</td>`
     }
+    if (this.options.highlightToday && row.isToday) {
+      return `<td class="cell today" data-date-table-cell>${row.day}</td>`
+    }
     return `<td class="cell" data-date-table-cell>${row.day}</td>`
   }
 
   addMenu() {
     const dom = document.createElement('div')
-    dom.className = 'datepicker-date-menu'
+    dom.className = 'date-menu'
 
-    if (isTouchDevice()) {
+    if (this.useSingleMenu()) {
       dom.innerHTML = `
-        <div class="datepicker-content">
-          <div class="datepicker-caption" data-menu-caption></div>
-          <ul class="datepicker-week-header">
+        <div class="date-menu-content">
+          <div class="date-menu-caption" data-menu-caption></div>
+          <ul class="date-menu-week-header">
             ${this.getWeekHeaderItems()}
           </ul>
-          <table class="datepicker-date-table" data-date-table></table>
-          <button class="datepicker-btn-prev" data-btn-prev>
+          <table class="date-menu-date-table" data-date-table></table>
+          <button class="date-menu-btn-prev" data-btn-prev>
             <i class="icon icon-chevron-left"></i>
           </button>
-          <button class="datepicker-btn-next" data-btn-next>
+          <button class="date-menu-btn-next" data-btn-next>
             <i class="icon icon-chevron-right"></i>
           </button>
         </div>
@@ -209,23 +227,23 @@ export default class DatepickerDateMenu {
     }
     else {
       dom.innerHTML = `
-        <div class="datepicker-content">
-          <div class="datepicker-caption" data-menu-caption1></div>
-          <ul class="datepicker-week-header">
+        <div class="date-menu-content">
+          <div class="date-menu-caption" data-menu-caption1></div>
+          <ul class="date-menu-week-header">
             ${this.getWeekHeaderItems()}
           </ul>
-          <table class="datepicker-date-table" data-date-table1></table>
-          <button class="datepicker-btn-prev" data-btn-prev>
+          <table class="date-menu-date-table" data-date-table1></table>
+          <button class="date-menu-btn-prev" data-btn-prev>
             <i class="icon icon-chevron-left"></i>
           </button>
         </div>
-        <div class="datepicker-content second-content">
-          <div class="datepicker-caption" data-menu-caption2></div>
-          <ul class="datepicker-week-header">
+        <div class="date-menu-content second-content">
+          <div class="date-menu-caption" data-menu-caption2></div>
+          <ul class="date-menu-week-header">
             ${this.getWeekHeaderItems()}
           </ul>
-          <table class="datepicker-date-table" data-date-table2></table>
-          <button class="datepicker-btn-next" data-btn-next>
+          <table class="date-menu-date-table" data-date-table2></table>
+          <button class="date-menu-btn-next" data-btn-next>
             <i class="icon icon-chevron-right"></i>
           </button>
         </div>
@@ -261,7 +279,7 @@ export default class DatepickerDateMenu {
       this.setDate({ date: addMonths(this.date, 1) })
     })
 
-    if (isTouchDevice()) {
+    if (this.useSingleMenu()) {
       this.addEvent(this.table, 'click', event => {
         if ('dateTableCell' in event.target.dataset) {
           const res = {
@@ -294,19 +312,23 @@ export default class DatepickerDateMenu {
           this.fire('td-click', event, res)
         }
       })
-      this.addEvent(this.dom, 'mouseover', event => {
-        if ('dateTableCell' in event.target.dataset) {
-          const table = this.findTable(event.target)
-          const date = ('dateTable1' in table.dataset) ? this.date : this.date2
-          const res = {
-            year: getYear(date),
-            month: getMonth(date),
-            date: parseInt(event.target.textContent.trim(), 10)
+
+      if (this.options.useMouseOver) {
+        this.addEvent(this.dom, 'mouseover', throttle(event => {
+          if ('dateTableCell' in event.target.dataset) {
+            const table = this.findTable(event.target)
+            const date = ('dateTable1' in table.dataset) ? this.date : this.date2
+            const res = {
+              year: getYear(date),
+              month: getMonth(date),
+              date: parseInt(event.target.textContent.trim(), 10)
+            }
+            return this.fire('td-mouseover', event, res)
           }
-          return this.fire('td-mouseover', event, res)
-        }
-        this.fire('td-mouseover', event, null)
-      })
+          this.fire('td-mouseover', event, null)
+        }, 300))
+      }
+
     }
   }
 

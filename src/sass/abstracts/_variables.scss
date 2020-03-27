@@ -45,6 +45,9 @@ $bg-dark-ex2: #b7b7b7;
 
 $bg-icon: #8892b3;
 
+$color-anchor: #5469d4;
+$color-anchor-ex: #1a1f36;
+
 $color-primary: #5469d4;
 
 $color-secondary: #6772e5;
@@ -65,9 +68,13 @@ $color-link: #5469d4;
 $color-link-ex: #32325d;
 $color-link-ex2: #bbb;
 
-$color-icon: #4f566b;
-
 $color-avatar: #000;
+
+$txt-color-primary: #6772e5;
+$txt-color-secondary: #969696;
+$txt-color-success: #25b47e;
+$txt-color-warn: #f1946a;
+$txt-color-danger: #cd3d64;
 
 // tags
 $bg-tag-primary: #6782e5;
@@ -125,3 +132,93 @@ $screen-lg: 1200px;
 $beyond-icon-font-path: if($beyond-use-helper, '', '../font/') !default;
 $beyond-icon-font-name: 'icomoon' !default;
 $beyond-css-img-path: if($beyond-use-helper, '', './img/') !default;
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+$breakpoints: $breakpoint-sm, $breakpoint-md, $breakpoint-lg, $breakpoint-xl;
+
+$screen-sizes: 'sm', 'md', 'lg', 'xl';
+$col-total: 12;
+
+// spacing utilities
+$space-types: 'm', 'p';
+$space-size-max: 5;
+
+$side-all: '';
+$side-top: 't';
+$side-bottom: 'b';
+$side-left: 'l';
+$side-right: 'r';
+$side-x: 'x';
+$side-y: 'y';
+
+$sides: (
+  $side-all,
+  $side-top,
+  $side-bottom,
+  $side-left,
+  $side-right,
+  $side-x,
+  $side-y
+);
+
+// alert
+$alert-bg-primary: #d7daea;
+$alert-color-primary: #5b5e67;
+$alert-color-link-primary: #020204;
+$alert-color-hr-primary: #020204;
+
+$alert-bg-secondary: #e3e8ee;
+$alert-color-secondary: #565a67;
+$alert-color-link-secondary: #121623;
+$alert-color-hr-secondary: #121623;
+
+$alert-bg-success: #cbf4c9;
+$alert-color-success: #316d58;
+$alert-color-link-success: #022519;
+$alert-color-hr-success: #87b3a4;
+
+$alert-bg-danger: #ffc0c0;
+$alert-color-danger: #923939;
+$alert-color-link-danger: #310101;
+$alert-color-hr-danger: #310101;
+
+$alert-bg-warning: #f8e5b9;
+$alert-color-warning: #b5653c;
+$alert-color-link-warning: #3a1401;
+$alert-color-hr-warning: #3a1401;
+
+$alert-bg-info: #ceeaf1;
+$alert-color-info: #4b5a71;
+$alert-color-link-info: #08111f;
+$alert-color-hr-info: #08111f;
+
+$alert-bg-light: #eee;
+$alert-color-light: #4b5271;
+$alert-color-link-light: #14182b;
+$alert-color-hr-light: #14182b;
+
+$alert-bg-dark: #4e4e4e;
+$alert-color-dark: #ddd;
+$alert-color-link-dark: #fff;
+$alert-color-hr-dark: #fff;
+
+$alert-states: 'primary', 'secondary', 'success',
+  'danger', 'warning', 'info', 'light', 'dark';
+
+$alert-bgs: $alert-bg-primary, $alert-bg-secondary, $alert-bg-success,
+  $alert-bg-danger, $alert-bg-warning, $alert-bg-info, $alert-bg-light, $alert-bg-dark;
+
+$alert-colors: $alert-color-primary, $alert-color-secondary, $alert-color-success,
+  $alert-color-danger, $alert-color-warning, $alert-color-info, $alert-color-light, $alert-color-dark;
+
+$alert-color-links: $alert-color-link-primary, $alert-color-link-secondary,
+  $alert-color-link-success, $alert-color-link-danger, $alert-color-link-warning,
+  $alert-color-link-info, $alert-color-link-light, $alert-color-link-dark;
+
+$alert-color-hrs: $alert-color-hr-primary, $alert-color-hr-secondary,
+  $alert-color-hr-success, $alert-color-hr-danger, $alert-color-hr-warning,
+  $alert-color-hr-info, $alert-color-hr-light, $alert-color-hr-dark;

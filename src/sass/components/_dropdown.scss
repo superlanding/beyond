@@ -11,6 +11,19 @@
     margin-left: 0;
   }
 }
+.heading-dropdown {
+  cursor: pointer;
+  display: inline-block;
+  .icon.icon-chevron-down {
+    transition: .3s all;
+    opacity: 0;
+    margin-left: 7px;
+    font-size: 80%;
+  }
+  &:hover .icon.icon-chevron-down {
+    opacity: 1;
+  }
+}
 .dropdown-menu {
   display: none;
   transition: .2s all;

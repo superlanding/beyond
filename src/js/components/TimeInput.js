@@ -1,9 +1,10 @@
 import { format } from 'date-fns-tz'
 import { DEFAULT_TIMEZONE } from '../consts'
 import supportDom from '../helpers/supportDom'
+import isTouchDevice from '../helpers/isTouchDevice'
 
 @supportDom
-export default class DatepickerTimeInput {
+export default class TimeInput {
 
   constructor(dom, date, options = {}) {
     this.active = false
@@ -18,12 +19,21 @@ export default class DatepickerTimeInput {
   }
 
   init() {
+    this.initInput()
+    this.addEvents()
+  }
+
+  initInput() {
     const { dom } = this
-    dom.value = this.format(this.date)
+    if (this.date) {
+      dom.value = this.format(this.date)
+    }
     if (! dom.hasAttribute('placeholder')) {
       dom.setAttribute('placeholder', this.timePattern.toUpperCase())
     }
-    this.addEvents()
+    if (isTouchDevice()) {
+      dom.setAttribute('readonly', 'readonly')
+    }
   }
 
   format(date) {
@@ -32,7 +42,7 @@ export default class DatepickerTimeInput {
 
   setDate(date) {
     this.date = date
-    this.dom.value = this.format(date)
+    this.dom.value = date ? this.format(date) : ''
   }
 
   setActive(active) {

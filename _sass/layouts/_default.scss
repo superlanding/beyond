@@ -1,4 +1,5 @@
 .container-default {
+  display: flex;
   margin: 30px 40px;
 }
 .main {
@@ -15,6 +16,14 @@
 .codebox-label {
   margin-top: 14px;
   margin-bottom: 7px;
+}
+.table-resolution {
+  td {
+    color: #999;
+  }
+  .strong {
+    color: #111;
+  }
 }
 .doc {
   h2 {

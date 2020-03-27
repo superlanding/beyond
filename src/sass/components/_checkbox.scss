@@ -25,18 +25,27 @@
   vertical-align: middle;
   color: #3c4257;
   font-size: 14px;
-  > span {
+  .checkbox + span {
     position: relative;
+    margin-left: 4px;
   }
 }
+
+.label-checkbox .checkbox .icon-checkbox {
+  transform: translateY(-1px);
+}
+
 .checkbox {
+  transform: translateY(3px);
+  &.focus {
+    @include focus-outline;
+  }
   $size: 14px;
   @include size($size);
   cursor: pointer;
-  transform: translateY(2px);
   position: relative;
   display: inline-block;
-  margin-right: 4px;
+
   input[type="checkbox"] {
     @include size($size);
     cursor: pointer;
@@ -63,6 +72,8 @@
     }
   }
   .icon-checkbox {
+    background-color: #fff;
+    transform: translateY(-2px);
     transition: .3s background-color;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12),
       0 0 0 1px rgba(60, 66, 87, 0.16),
@@ -80,4 +91,7 @@
     }
   }
   @include ripple(34px, -10px, -9px);
+  &.disabled {
+    @extend %checkbox-disabled;
+  }
 }

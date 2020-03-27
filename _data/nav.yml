@@ -1,5 +1,15 @@
 - name: Home
   link: /
+- name: Alerts
+  link: /components/alerts.html
+- name: Containers
+  link: /layout/containers.html
+- name: Cols
+  link: /layout/cols.html
+- name: Visibility Utilities
+  link: /layout/visibility-utilities.html
+- name: Spacing Utilities
+  link: /layout/spacing-utilities.html
 - name: Typography
   link: /content/typography.html
 - name: Colors
@@ -22,6 +32,8 @@
   link: /components/forms.html
 - name: Dropdowns
   link: /components/dropdowns.html
+- name: Search Dropdowns
+  link: /components/search-dropdowns.html
 - name: Icons
   link: /components/icons.html
 - name: Modals
@@ -32,6 +44,8 @@
   link: /components/tooltips.html
 - name: Toasts
   link: /components/toasts.html
+- name: DateTimeRangers
+  link: /components/date-time-rangers.html
 - name: Datepickers
   link: /components/datepickers.html
 - name: Autocompletes
