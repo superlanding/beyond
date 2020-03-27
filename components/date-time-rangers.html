@@ -3,28 +3,24 @@ layout: default
 title: DateTimeRanger
 ---
 <div class="page-date-time-rangers">
-
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">日期範圍選擇器 - DateTimeRanger</h1>
-
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-        <a>JavaScript</a>
+  <h1>日期範圍選擇器 - DateTimeRanger</h1>
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+      <a>JavaScript</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/date-time-rangers.html %}
       </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/date-time-rangers.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/date-time-rangers.html %}{% endhighlight %}
-        </div>
-        <div>
-          {% highlight js linenos %}{% include demos/date-time-rangers.js %}{% endhighlight %}
-        </div>
+      <div>
+        {% highlight html linenos %}{% include demos/date-time-rangers.html %}{% endhighlight %}
+      </div>
+      <div>
+        {% highlight js linenos %}{% include demos/date-time-rangers.js %}{% endhighlight %}
       </div>
     </div>
-    {% include docs/date-time-rangers.html %}
-  </div><!-- .card end -->
+  </div>
+  {% include docs/date-time-rangers.html %}
 </div>

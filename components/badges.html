@@ -2,90 +2,86 @@
 layout: default
 title: Badges
 ---
-<div class="page-badges">
+<div>
+  <h1>標籤 - Badges</h1>
 
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">標籤 - Badges</h1>
-
-    <div class="codebox-label">與標題一起使用</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
+  <h2>與標題一起使用</h2>
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/badges-heading.html %}
       </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/badges-heading.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/badges-heading.html %}{% endhighlight %}
-        </div>
+      <div>
+        {% highlight html linenos %}{% include demos/badges-heading.html %}{% endhighlight %}
       </div>
     </div>
+  </div>
 
-    <div class="codebox-label">嵌入在按鈕裡面</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
+  <h2>嵌入在按鈕裡面</h2>
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/badges-btn.html %}
       </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/badges-btn.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/badges-btn.html %}{% endhighlight %}
-        </div>
+      <div>
+        {% highlight html linenos %}{% include demos/badges-btn.html %}{% endhighlight %}
       </div>
     </div>
+  </div>
 
-    <div class="codebox-label">情境變化</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
+  <h2>情境變化</h2>
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/badges-type.html %}
       </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/badges-type.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/badges-type.html %}{% endhighlight %}
-        </div>
+      <div>
+        {% highlight html linenos %}{% include demos/badges-type.html %}{% endhighlight %}
       </div>
     </div>
+  </div>
 
-    <div class="codebox-label">膠囊標籤</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
+  <h2>膠囊標籤</h2>
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/badges-pill.html %}
       </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/badges-pill.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/badges-pill.html %}{% endhighlight %}
-        </div>
+      <div>
+        {% highlight html linenos %}{% include demos/badges-pill.html %}{% endhighlight %}
       </div>
     </div>
+  </div>
 
-    <div class="codebox-label">連結</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
+  <h2>連結</h2>
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/badges-anchor.html %}
       </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/badges-anchor.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/badges-anchor.html %}{% endhighlight %}
-        </div>
+      <div>
+        {% highlight html linenos %}{% include demos/badges-anchor.html %}{% endhighlight %}
       </div>
     </div>
-
   </div>
 </div>
