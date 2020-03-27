@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime'
 import './polyfills/classList'
 import './polyfills/nodeRemove'
 import './polyfills/elementDataset'
+import Alert from './components/Alert'
 import Autocomplete from './components/Autocomplete'
 import Checkbox from './components/Checkbox'
 import DateTimeRanger from './components/DateTimeRanger'
@@ -19,6 +20,7 @@ import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
 
 export {
+  Alert,
   Autocomplete,
   Checkbox,
   DateTimeRanger,
