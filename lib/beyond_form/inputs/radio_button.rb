@@ -14,11 +14,18 @@ module BeyondForm
 
           radio_button_options[:class] = radio_button_classes(name, options)
 
-          content_tag(:div, class: radio_button_wrapper_class(options)) do
-            html = radio_button_without_beyond(name, value, radio_button_options)
-            html.concat(radio_button_label(name, value, options)) unless options[:skip_label]
-            html.concat(generate_error(name)) if options[:error_message]
-            html
+          content_tag(:label, class: radio_button_wrapper_class(options)) do
+            radio_wrap = content_tag(:div, class: "radio ripple") do
+              concat(radio_button_without_beyond(name, value, radio_button_options))
+              concat(content_tag(:i, "", class: "icon-radio"))
+            end
+            concat(radio_wrap)
+
+            unless options[:skip_label]
+              concat(content_tag(:span, options[:label], options))
+            end
+
+            concat(generate_error(name)) if options[:error_message]
           end
         end
 
@@ -27,11 +34,11 @@ module BeyondForm
 
       private
 
-      def radio_button_label(name, value, options)
-        label_options = { value: value, class: radio_button_label_class(options) }
-        label_options[:for] = options[:id] if options[:id].present?
-        label(name, options[:label], label_options)
-      end
+      # def radio_button_label(name, value, options)
+      #   label_options = { value: value, class: radio_button_label_class(options) }
+      #   label_options[:for] = options[:id] if options[:id].present?
+      #   label(name, options[:label], label_options)
+      # end
 
       def radio_button_classes(name, options)
         classes = [options[:class]]
@@ -52,10 +59,10 @@ module BeyondForm
       def radio_button_wrapper_class(options)
         classes = []
         classes << if options[:custom]
-                     custom_radio_button_wrapper_class(options)
-                   else
-                     standard_radio_button_wrapper_class(options)
-                   end
+        custom_radio_button_wrapper_class(options)
+        else
+          standard_radio_button_wrapper_class(options)
+        end
         classes << options[:wrapper_class] if options[:wrapper_class].present?
         classes.flatten.compact
       end

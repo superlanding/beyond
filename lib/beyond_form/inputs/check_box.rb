@@ -11,6 +11,7 @@ module BeyondForm
           options = options.symbolize_keys!
           check_box_options = options.except(:class, :label, :label_class, :error_message, :help,
                                              :inline, :custom, :hide_label, :skip_label, :wrapper_class)
+
           check_box_options[:class] = check_box_classes(name, options)
 
           content_tag(:label, class: check_box_wrapper_class(options)) do
