@@ -12,7 +12,11 @@
   .alert-heading {
     color: inherit;
     font-weight: 900;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    line-height: 1.5em;
   }
 
   @for $i from 1 through length($alert-states) {
