@@ -14,6 +14,7 @@
       border-bottom: 1px solid $color-anchor-ex;
     }
   }
+  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border-collapse: collapse;
@@ -25,6 +26,18 @@
   thead {
     background-color: #f7fafc;
     color: #1a1f36;
+  }
+  th {
+    color: #697386;
+  }
+  td {
+    color: #3c4257;
+  }
+  @for $i from 1 through length($color-txt-types) {
+    td.txt-type#{$i},
+    th.txt-type#{$i} {
+      color: nth($color-txt-types, $i);
+    }
   }
   th,
   td {

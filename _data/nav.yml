@@ -2,6 +2,8 @@
   link: /
 - name: Alerts
   link: /components/alerts.html
+- name: Cards
+  link: /components/cards.html
 - name: Containers
   link: /layout/containers.html
 - name: Cols

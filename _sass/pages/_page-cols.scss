@@ -1,18 +1,4 @@
 .page-cols {
-  h1.card-heading {
-    margin-bottom: 14px;
-  }
-  padding: 14px 20px;
-  width: 100%;
-  .table {
-    width: 100%;
-    margin-bottom: 14px;
-    td, th {
-      &.active {
-        background-color: #eee;
-      }
-    }
-  }
   .codebox-result {
     > .container {
       margin-bottom: 40px;

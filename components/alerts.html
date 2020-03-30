@@ -2,70 +2,66 @@
 layout: default
 title: Alerts
 ---
-<div class="page-alert">
+<div>
+  <h1>提示訊息 - Alert</h1>
 
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">提示訊息 - Alert</h1>
-
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/alert-styles.html %}
       </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/alert-styles.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/alert-styles.html %}{% endhighlight %}
-        </div>
+      <div>
+        {% highlight html linenos %}{% include demos/alert-styles.html %}{% endhighlight %}
       </div>
     </div>
+  </div>
 
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/alert-link.html %}
       </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/alert-link.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/alert-link.html %}{% endhighlight %}
-        </div>
+      <div>
+        {% highlight html linenos %}{% include demos/alert-link.html %}{% endhighlight %}
       </div>
     </div>
+  </div>
 
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/alert-heading.html %}
       </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/alert-heading.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/alert-heading.html %}{% endhighlight %}
-        </div>
+      <div>
+        {% highlight html linenos %}{% include demos/alert-heading.html %}{% endhighlight %}
       </div>
     </div>
+  </div>
 
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
+  <div class="codebox" data-codebox>
+    <div class="codebox-tabs" data-tabs>
+      <a>Result</a>
+      <a>HTML</a>
+    </div>
+    <div class="codebox-panes" data-panes>
+      <div class="codebox-result">
+        {% include demos/alert-dismiss.html %}
       </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/alert-dismiss.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/alert-dismiss.html %}{% endhighlight %}
-        </div>
+      <div>
+        {% highlight html linenos %}{% include demos/alert-dismiss.html %}{% endhighlight %}
       </div>
     </div>
-
-  </div><!-- .card end -->
+  </div>
 </div>

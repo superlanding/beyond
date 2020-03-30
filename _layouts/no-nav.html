@@ -25,7 +25,9 @@
       <i class="icon-chevron-left"></i>
       回首頁
     </a>
-    {{ content }}
+    <div class="no-nav-content">
+      {{ content }}
+    </div>
     <div id="width-pad"></div>
     {% if jekyll.environment == "development" %}
       <script src="{{ site.webpack_url }}/web.js"></script>
