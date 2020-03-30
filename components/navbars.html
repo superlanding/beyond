@@ -4,60 +4,22 @@ title: Navbars
 ---
 <div class="page-navbars">
   <h1>導覽列 - Navbars</h1>
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-      <a>JavaScript</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/navbars.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/navbars.html %}{% endhighlight %}
-      </div>
-      <div>
-        {% highlight javascript linenos %}{% include demos/navbars.js %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
-
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-      <a>JavaScript</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/navbars-type1.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/navbars-type1.html %}{% endhighlight %}
-      </div>
-      <div>
-        {% highlight javascript linenos %}{% include demos/navbars.js %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
-
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-      <a>JavaScript</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/navbars-type2.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/navbars-type2.html %}{% endhighlight %}
-      </div>
-      <div>
-        {% highlight javascript linenos %}{% include demos/navbars.js %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {%
+    include codebox.html
+    result="demos/navbars.html"
+    html="demos/navbars.html"
+    js="demos/navbars.js"
+  %}
+  {%
+    include codebox.html
+    result="demos/navbars-type1.html"
+    html="demos/navbars-type1.html"
+    js="demos/navbars.js"
+  %}
+  {%
+    include codebox.html
+    result="demos/navbars-type2.html"
+    html="demos/navbars-type2.html"
+    js="demos/navbars.js"
+  %}
 </div>

@@ -4,52 +4,12 @@ title: Typography
 ---
 <div class="page-typography">
   <h1>字體</h1>
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/typography.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/typography.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {% include codebox.html result="demos/typography.html" html="demos/typography.html" %}
 
   <h2>文字排版 - Typography</h2>
   <h3>標題層級</h3>
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/headings-zh.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/headings-zh.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
-
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/headings-en.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/headings-en.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {% include codebox.html result="demos/headings-zh.html" html="demos/headings-zh.html" %}
+  {% include codebox.html result="demos/headings-en.html" html="demos/headings-en.html" %}
 
   <h2>內文</h2>
   <div>
@@ -57,35 +17,8 @@ title: Typography
   </div>
 
   <h2>表格文字</h2>
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/table-fonts.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/table-fonts.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {% include codebox.html result="demos/table-fonts.html" html="demos/table-fonts.html" %}
 
   <h2>disabled 背景與內文</h2>
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/table-disabled.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/table-disabled.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
-
+  {% include codebox.html result="demos/table-disabled.html" html="demos/table-disabled.html" %}
 </div>

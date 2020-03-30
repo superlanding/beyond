@@ -73,19 +73,5 @@ title: Cols
       </tr>
     </tbody>
   </table>
-
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/cols.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/cols.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {% include codebox.html result="demos/cols.html" html="demos/cols.html" %}
 </div>

@@ -4,24 +4,12 @@ title: Modals
 ---
 <div>
   <h1>互動視窗 - Modals</h1>
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-      <a>JavaScript</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/modal-btn.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/modals.html %}{% endhighlight %}
-      </div>
-      <div>
-        {% highlight javascript linenos %}{% include demos/modals.js %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {%
+    include codebox.html
+    result="demos/modals.html"
+    html="demos/modals.html"
+    js="demos/modals.js"
+  %}
   {% include docs/modals.html %}
 </div>
 

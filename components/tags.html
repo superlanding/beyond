@@ -4,18 +4,5 @@ title: Tags
 ---
 <div class="page-tags">
   <h1>標籤 - Tags</h1>
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/tags.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/tags.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {% include codebox.html result="demos/tags.html" html="demos/tags.html" %}
 </div>
