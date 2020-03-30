@@ -27,8 +27,14 @@
 .card-text {
   margin-bottom: 1rem;
   line-height: 1.6rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
-
+.card-img-top {
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+}
 .card-shadow-sm {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .12);
 }
