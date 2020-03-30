@@ -121,6 +121,14 @@
   display: flex;
   flex-flow: row wrap;
 }
+.card-deck {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-columns .card {
+  margin-bottom: .75rem;
+}
 
 @media (min-width: $screen-sm) {
   .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-footer,
@@ -145,5 +153,31 @@
   .card-group > .card {
     flex: 1 0 0%;
     margin-bottom: 0;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .card-deck {
+    flex-flow: row wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .card-deck .card {
+    display: flex;
+    flex: 1 0 0%;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  .card-columns {
+    column-count: 3;
+    column-gap: 1.25rem;
+  }
+  .card-columns .card {
+    display: inline-block;
+    width: 100%;
   }
 }
