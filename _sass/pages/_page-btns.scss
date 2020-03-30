@@ -1,14 +1,6 @@
 .page-btns {
-  @media (max-width: $screen-md) {
-    .container {
-      display: block;
-    }
-  }
   .codebox-result .btn {
     margin-right: 10px;
     margin-bottom: 20px;
-  }
-  .card {
-    margin-bottom: 40px;
   }
 }

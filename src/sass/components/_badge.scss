@@ -21,52 +21,9 @@
   border-radius: 10em;
 }
 
-.badge.badge-primary {
-  background-color: $bg-primary;
-  color: $color-light;
-}
-
-.badge.badge-secondary {
-  background-color: $bg-secondary;
-  color: $color-secondary;
-}
-
-.badge.badge-success {
-  background-color: $bg-success;
-  color: $color-light;
-}
-
-.badge.badge-danger {
-  background-color: $bg-danger;
-  color: $color-light;
-}
-
-.badge.badge-warn {
-  background-color: $bg-warn;
-  color: $color-light;
-}
-
-.badge.badge-info {
-  background-color: $bg-info;
-  color: $color-light;
-}
-
-.badge.badge-type1 {
-  background-color: $bg-type1;
-  color: $color-light;
-}
-
-.badge.badge-type2 {
-  background-color: $bg-type2;
-  color: $color-type2;
-}
-
-.badge.badge-light {
-  background-color: $bg-light;
-  color: $color-dark;
-}
-
-.badge.badge-dark {
-  background-color: $bg-dark;
-  color: $color-light;
+@each $classname, $bg, $color in $badges {
+  .badge.#{$classname} {
+    background-color: $bg;
+    color: $color;
+  }
 }

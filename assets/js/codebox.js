@@ -45,7 +45,6 @@
     }
 
     addEvents() {
-      const { dom } = this
       if (typeof window.MutationObserver !== 'undefined') {
         const config = { attributes: true, childList: true, subtree: true }
         this.mutationObserver = new MutationObserver((mutationsList, observer) => {

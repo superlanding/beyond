@@ -3,22 +3,6 @@ layout: default
 title: Selects
 ---
 <div class="page-selects">
-
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">下拉式選單 - Selects</h1>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/selects.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/selects.html %}{% endhighlight %}
-        </div>
-      </div>
-    </div>
-  </div><!-- .card end -->
+  <h1>下拉式選單 - Selects</h1>
+  {% include codebox.html result="demos/selects.html" html="demos/selects.html" %}
 </div>

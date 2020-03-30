@@ -1,11 +1,8 @@
-.btn-sidebar {
-  display: none;
-  @media (max-width: $screen-md) {
-    display: block;
-  }
-}
 .sidebar {
+  padding-top: 10px;
+  padding-bottom: 40px;
   @media (max-width: $screen-md) {
+    width: 240px;
     z-index: 20;
     transition: .2s all;
     background-color: #fff;

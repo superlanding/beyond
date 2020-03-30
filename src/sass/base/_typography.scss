@@ -1,5 +1,4 @@
 h1, h2, h3, h4, h5, h6 {
-  color: #32325d;
   font-weight: 400;
 }
 h1 {
@@ -21,7 +20,7 @@ h6 {
   font-size: 16px;
 }
 
-@media (max-width: $screen-xs) {
+@media (max-width: $screen-sm) {
   h1 {
     font-size: 26px;
   }
@@ -47,6 +46,10 @@ h6 {
 }
 .txt-danger {
   color: $txt-color-danger;
+}
+
+.txt-white {
+  color: #fff !important;
 }
 
 code {
@@ -101,7 +104,6 @@ body a.txt-avatar:hover {
   border-bottom: 1px solid $color-avatar;
 }
 
-$color-txt-type0: #5c5f72;
 .txt-type0,
 a.txt-type0,
 a.txt-type0:hover {
@@ -113,7 +115,6 @@ body a.txt-type0:hover {
   border-bottom: 1px solid $color-txt-type0;
 }
 
-$color-txt-type1: #63a396;
 .txt-type1,
 a.txt-type1,
 a.txt-type1:hover {
@@ -125,7 +126,6 @@ body a.txt-type1:hover {
   border-bottom: 1px solid $color-txt-type1;
 }
 
-$color-txt-type2: #6772e5;
 .txt-type2,
 a.txt-type2,
 a.txt-type2:hover {
@@ -137,7 +137,6 @@ body a.txt-type2:hover {
   border-bottom: 1px solid $color-txt-type2;
 }
 
-$color-txt-type3: #4191d9;
 .txt-type3,
 a.txt-type3,
 a.txt-type3:hover {
@@ -148,7 +147,6 @@ body a.txt-type3:hover {
   border-bottom: 1px solid $color-txt-type3;
 }
 
-$color-txt-type4: #6382a3;
 .txt-type4,
 a.txt-type4,
 a.txt-type4:hover {
@@ -161,6 +159,16 @@ body a.txt-type4:hover {
 
 .txt-muted {
   color: #6c757d;
+}
+
+.txt-center {
+  text-align: center !important;
+}
+.txt-right {
+  text-align: right !important;
+}
+.txt-left {
+  text-align: left !important;
 }
 
 .content-disabled {

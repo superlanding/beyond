@@ -1,19 +1,21 @@
 - name: Home
   link: /
-- name: Alerts
-  link: /components/alerts.html
-- name: Containers
-  link: /layout/containers.html
 - name: Cols
   link: /layout/cols.html
+- name: Containers
+  link: /layout/containers.html
 - name: Visibility Utilities
   link: /layout/visibility-utilities.html
 - name: Spacing Utilities
   link: /layout/spacing-utilities.html
-- name: Typography
-  link: /content/typography.html
 - name: Colors
   link: /content/colors.html
+- name: Typography
+  link: /content/typography.html
+- name: Autocompletes
+  link: /components/autocompletes.html
+- name: Alerts
+  link: /components/alerts.html
 - name: Avatars
   link: /components/avatars.html
 - name: Badges
@@ -22,35 +24,35 @@
   link: /components/buttons.html
 - name: Button Groups
   link: /components/button-groups.html
-- name: Tabboxes
-  link: /components/tabboxes.html
-- name: Tags
-  link: /components/tags.html
-- name: Selects
-  link: /components/selects.html
-- name: Forms
-  link: /components/forms.html
+- name: Cards
+  link: /components/cards.html
+- name: DateTimeRangers
+  link: /components/date-time-rangers.html
+- name: Datepickers
+  link: /components/datepickers.html
 - name: Dropdowns
   link: /components/dropdowns.html
+- name: Forms
+  link: /components/forms.html
+- name: Selects
+  link: /components/selects.html
+- name: Spinners
+  link: /components/spinners.html
 - name: Search Dropdowns
   link: /components/search-dropdowns.html
 - name: Icons
   link: /components/icons.html
 - name: Modals
   link: /components/modals.html
-- name: Spinners
-  link: /components/spinners.html
-- name: Tooltips
-  link: /components/tooltips.html
-- name: Toasts
-  link: /components/toasts.html
-- name: DateTimeRangers
-  link: /components/date-time-rangers.html
-- name: Datepickers
-  link: /components/datepickers.html
-- name: Autocompletes
-  link: /components/autocompletes.html
-- name: Tables
-  link: /components/tables.html
 - name: Navbars
   link: /components/navbars.html
+- name: Tables
+  link: /components/tables.html
+- name: Tabboxes
+  link: /components/tabboxes.html
+- name: Tags
+  link: /components/tags.html
+- name: Toasts
+  link: /components/toasts.html
+- name: Tooltips
+  link: /components/tooltips.html

@@ -2,13 +2,13 @@
   .color-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
-  padding-right: 0;
   .card-color {
     transition: all .3s;
-    margin-right: 30px;
-    margin-bottom: 30px;
-    width: 220px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    width: 210px;
     padding: 14px;
     border-radius: 6px;
     &:hover {

@@ -2,9 +2,8 @@
 layout: no-nav
 title: Cols
 ---
-<div class="page-cols card card-shadow-sm">
-  <h1 class="card-heading">網格 - Cols</h1>
-
+<div class="page-cols card-shadow-sm">
+  <h1>網格 - Cols</h1>
   <table class="table" data-table-resolution>
     <thead>
       <tr>
@@ -74,19 +73,5 @@ title: Cols
       </tr>
     </tbody>
   </table>
-
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/cols.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/cols.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {% include codebox.html result="demos/cols.html" html="demos/cols.html" %}
 </div>

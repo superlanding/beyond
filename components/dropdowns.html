@@ -3,28 +3,12 @@ layout: default
 title: Dropdowns
 ---
 <div class="page-dropdowns">
-
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">下拉式選單 - Dropdowns</h1>
-
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-        <a>JavaScript</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/dropdowns.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/dropdowns.html %}{% endhighlight %}
-        </div>
-        <div>
-          {% highlight js linenos %}{% include demos/dropdowns.js %}{% endhighlight %}
-        </div>
-      </div>
-    </div><!-- .codebox -->
-    {% include docs/dropdowns.html %}
-  </div>
+  <h1>下拉式選單 - Dropdowns</h1>
+  {%
+    include codebox.html
+    result="demos/dropdowns.html"
+    html="demos/dropdowns.html"
+    js="demos/dropdowns.js"
+  %}
+  {% include docs/dropdowns.html %}
 </div>

@@ -357,7 +357,7 @@ input[type="file"] {
   border-bottom-left-radius: 0;
 }
 
-@media (min-width: $breakpoint-sm) {
+@media (min-width: $screen-sm) {
   .form-inline {
     .input-group {
       width: auto;
