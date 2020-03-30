@@ -1,4 +1,8 @@
 .nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  list-style: none;
   .nav-item {
     color: #1a1f36;
     text-decoration: none;
@@ -10,4 +14,35 @@
     color: $color-primary;
     font-weight: 700;
   }
+}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #495057;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+.nav-link.disabled {
+  color: #6c757d;
+  cursor: not-allowed;
+}
+.nav-tabs .nav-item {
+  margin-bottom: -1px;
+}
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+.nav-link {
+  display: block;
+  padding: .5rem 1rem;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: $bg-primary;
+}
+.card-header-pills {
+  margin-right: -.625rem;
+  margin-left: -.625rem;
 }
