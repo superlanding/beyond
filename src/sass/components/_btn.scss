@@ -85,203 +85,46 @@
   }
 }
 
-.btn.btn-primary {
-  background-color: $bg-primary;
-  color: $color-light;
+@each $data in $btns {
+  $classname: nth($data, 1);
+  $bg: nth($data, 2);
+  $color: nth($data, 3);
+  $bg-ex: nth($data, 4);
+  $bg-disabled: nth($data, 5);
 
-  &.hover,
-  &:hover,
-  &.active,
-  &:active {
-    background-color: $bg-primary-ex;
-  }
-  &.disabled,
-  &:disabled {
-    background-color: $bg-primary-ex2;
-  }
-}
-
-.btn.btn-secondary {
-  background-color: $bg-secondary;
-  color: $color-secondary;
-
-  &.hover,
-  &:hover {
-    color: $color-secondary-ex;
-    background-color: $bg-secondary-ex;
-  }
-  &.active,
-  &:active {
-    color: $color-secondary-ex;
-    background-color: $bg-secondary-ex;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .08);
-  }
-  &.disabled,
-  &:disabled {
-    background-color: $bg-secondary-ex2;
-    color: $color-secondary-ex2;
-  }
-}
-
-.btn.btn-success {
-  background-color: $bg-success;
-  color: $color-light;
-
-  &.hover,
-  &:hover,
-  &.active,
-  &:active {
-    background-color: $bg-success-ex;
-  }
-  &.disabled,
-  &:disabled {
-    background-color: $bg-success-ex2;
-  }
-}
-
-.btn.btn-info {
-  background-color: $bg-info;
-  color: $color-light;
-
-  &.hover,
-  &:hover,
-  &.active,
-  &:active {
-    background-color: $bg-info-ex;
-  }
-  &.disabled,
-  &:disabled {
-    background-color: $bg-info-ex2;
-  }
-}
-
-.btn.btn-warn {
-  background-color: $bg-warn;
-  color: $color-light;
-  .icon:before {
-    color: $color-light;
-    font-size: 20px;
-  }
-  &.hover,
-  &:hover,
-  &.active,
-  &:active {
-    background-color: $bg-warn-ex;
-  }
-  &.disabled,
-  &:disabled {
-    background-color: $bg-warn-ex2;
-  }
-}
-
-.btn.btn-danger {
-  background-color: $bg-danger;
-  color: $color-light;
-  .icon:before {
-    color: $color-light;
-    font-size: 20px;
-  }
-  &.hover,
-  &:hover,
-  &.active,
-  &:active {
-    background-color: $bg-danger-ex;
-  }
-  &.disabled,
-  &:disabled {
-    background-color: $bg-danger-ex2;
-  }
-}
-
-.btn.btn-type1 {
-  background-color: $bg-type1;
-  color: $color-light;
-
-  &.hover,
-  &:hover,
-  &.active,
-  &:active {
-    background-color: $bg-type1-ex;
-  }
-  &.disabled,
-  &:disabled {
-    background-color: $bg-type1-ex2;
-  }
-}
-
-.btn.btn-type2 {
-  background-color: $bg-type2;
-  color: $color-type2;
-
-  &.hover,
-  &:hover {
-    background-color: $bg-type2-ex;
-  }
-  &.active,
-  &:active,
-  &.disabled,
-  &:disabled {
-    color: $color-type2-ex;
-    background-color: $bg-type2-ex2;
-  }
-}
-
-.btn.btn-light {
-  background-color: $bg-light;
-  color: $color-dark;
-
-  &.hover,
-  &:hover {
-    background-color: $bg-light-ex;
-  }
-  &.active,
-  &:active {
-    background-color: $bg-light-ex;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .08);
-  }
-  &.disabled,
-  &:disabled {
-    color: $color-dark-ex2;
-    background-color: $bg-light-ex2;
-  }
-}
-
-.btn.btn-dark {
-  background-color: $bg-dark;
-  color: $color-light;
-
-  &.hover,
-  &:hover {
-    background-color: $bg-dark-ex;
-  }
-  &.active,
-  &:active {
-    background-color: $bg-dark-ex;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .08);
-  }
-  &.disabled,
-  &:disabled {
-    background-color: $bg-dark-ex2;
+  .btn.#{$classname} {
+    background-color: $bg;
+    color: $color;
+    &.hover,
+    &:hover,
+    &.active,
+    &:active {
+      background-color: $bg-ex;
+    }
+    &.disabled,
+    &:disabled {
+      background-color: $bg-disabled;
+    }
   }
 }
 
 .btn.btn-link {
-  color: $color-link;
+  background-color: nth($btn-link, 2);
+  color: nth($btn-link, 3);
   cursor: pointer;
-  box-shadow: none;
-
+  box-shadow: 'none';
   &.hover,
   &:hover,
   &.active,
   &:active {
-    color: $color-link-ex;
+    color: nth($btn-link, 4);
   }
   &.disabled,
   &:disabled {
-    color: $color-link-ex2;
-    cursor: not-allowed;
+    color: nth($btn-link, 5);
   }
 }
+
 button.close {
   padding: 0;
   background-color: transparent;

@@ -175,7 +175,7 @@ $sides: (
   $side-y
 );
 
-// alert
+// alerts
 $alert-bg-primary: #d7daea;
 $alert-color-primary: #3c4257;
 $alert-color-link-primary: #020204;
@@ -237,3 +237,33 @@ $sizes: 25, 50, 75, 100;
 
 // border utils
 $border-color: #dee2e6;
+
+// buttons
+// classname, bg, color, bg-ex, bg-disabled
+$btn-primary: 'btn-primary', #6772e5, #fff, #7795f8, #b2b7df;
+$btn-secondary: 'btn-secondary', #fff, #6772e5, #fff, #ebebeb;
+$btn-success: 'btn-success', #25b47e, #fff, #7de1bb, #98b6ab;
+$btn-danger: 'btn-danger', #cd3d64, #fff, #ef6a8e, #b59ba7;
+$btn-warn: 'btn-warn', #f1946a, #fff, #ffaf8c, #e5cec3;
+$btn-warning: 'btn-warning', #f1946a, #fff, #ffaf8c, #e5cec3;
+$btn-info: 'btn-info', #5ecdf1, #fff, #7bdfff, #a4c5d0;
+$btn-light: 'btn-light', #f8f9fa, #697386, #f8f9fa, #ebebeb;
+$btn-dark: 'btn-dark', #000, #fff, #4c4c4c, #b7b7b7;
+$btn-type1: 'btn-type1', #d681d8, #fff, #eda3ef, #d1bdd1;
+$btn-type2: 'btn-type2', #fdd85f, #516487, #ffe89e, #dcd7c9;
+
+$btns:
+  $btn-primary,
+  $btn-secondary,
+  $btn-success,
+  $btn-danger,
+  $btn-warn,
+  $btn-warning,
+  $btn-info,
+  $btn-light,
+  $btn-dark,
+  $btn-type1,
+  $btn-type2;
+
+// classname, bg, color, color-ex, color-disabled
+$btn-link: 'btn-link', #fff, #5469d4, #32325d, #bbb;
