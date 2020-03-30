@@ -1,44 +1,10 @@
 $beyond-use-helper: false !default;
 
-$backgrounds:
-  ('bg-admin', #e3e8ee),
-  ('bg-content', #f7fafc),
-  ('bg-primary', #6772e5),
-  ('bg-primary-ex', #7795f8),
-  ('bg-primary-ex2', #b2b7df),
-  ('bg-secondary', #fff),
-  ('bg-secondary-ex', #fff),
-  ('bg-secondary-ex2', #ebebeb),
-  ('bg-success', #25b47e),
-  ('bg-success-ex', #7de1bb),
-  ('bg-success-ex2', #98b6ab),
-  ('bg-danger', #cd3d64),
-  ('bg-danger-ex', #ef6a8e),
-  ('bg-danger-ex2', #b59ba7),
-  ('bg-warn', #f1946a),
-  ('bg-warn-ex', #ffaf8c),
-  ('bg-warn-ex2', #e5cec3),
-  ('bg-info', #5ecdf1),
-  ('bg-info-ex', #7bdfff),
-  ('bg-info-ex2', #a4c5d0),
-  ('bg-white', #fff),
-  ('bg-type1', #d681d8),
-  ('bg-type1-ex', #eda3ef),
-  ('bg-type1-ex2', #d1bdd1),
-  ('bg-type2', #fdd85f),
-  ('bg-type2-ex', #ffe89e),
-  ('bg-type2-ex2', #dcd7c9),
-  ('bg-light', #f8f9fa),
-  ('bg-light-ex', #f8f9fa),
-  ('bg-light-ex2', #ebebeb),
-  ('bg-dark', #000),
-  ('bg-dark-ex', #4c4c4c),
-  ('bg-dark-ex2', #b7b7b7),
-  ('bg-icon', #8892b3),
-  ('bg-disabled', #f1f1f1);
+// backgrounds
 
 $bg-admin: #e3e8ee;
 $bg-outline: rgba(58, 151, 212, .28);
+$bg-content: #f7fafc;
 
 $bg-primary: #6772e5;
 $bg-primary-ex: #7795f8;
@@ -83,6 +49,46 @@ $bg-dark-ex: #4c4c4c;
 $bg-dark-ex2: #b7b7b7;
 
 $bg-icon: #8892b3;
+$bg-disabled: #f1f1f1;
+
+$backgrounds:
+  ('bg-admin', $bg-admin),
+  ('bg-outline', $bg-outline),
+  ('bg-content', $bg-content),
+  ('bg-primary', $bg-primary),
+  ('bg-primary-ex', $bg-primary-ex),
+  ('bg-primary-ex2', $bg-primary-ex2),
+  ('bg-secondary', $bg-secondary),
+  ('bg-secondary-ex', $bg-secondary-ex),
+  ('bg-secondary-ex2', $bg-secondary-ex2),
+  ('bg-success', $bg-success),
+  ('bg-success-ex', $bg-success-ex),
+  ('bg-success-ex2', $bg-success-ex2),
+  ('bg-danger', $bg-danger),
+  ('bg-danger-ex', $bg-danger-ex),
+  ('bg-danger-ex2', $bg-danger-ex2),
+  ('bg-warn', $bg-warn),
+  ('bg-warning', $bg-warn),
+  ('bg-warn-ex', $bg-warn-ex),
+  ('bg-warn-ex2', $bg-warn-ex2),
+  ('bg-info', $bg-info),
+  ('bg-info-ex', $bg-info-ex),
+  ('bg-info-ex2', $bg-info-ex2),
+  ('bg-white', $bg-white),
+  ('bg-type1', $bg-type1),
+  ('bg-type1-ex', $bg-type1-ex),
+  ('bg-type1-ex2', $bg-type1-ex2),
+  ('bg-type2', $bg-type2),
+  ('bg-type2-ex', $bg-type2-ex),
+  ('bg-type2-ex2', $bg-type2-ex2),
+  ('bg-light', $bg-light),
+  ('bg-light-ex', $bg-light-ex),
+  ('bg-light-ex2', $bg-light-ex2),
+  ('bg-dark', $bg-dark),
+  ('bg-dark-ex', $bg-dark-ex),
+  ('bg-dark-ex2', $bg-dark-ex2),
+  ('bg-icon', $bg-icon),
+  ('bg-disabled', $bg-disabled);
 
 $color-anchor: #5469d4;
 $color-anchor-ex: #1a1f36;
