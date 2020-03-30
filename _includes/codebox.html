@@ -13,21 +13,21 @@
   </div>
   <div class="codebox-panes" data-panes>
     <div class="codebox-result">
-      {% include include.result %}
+      {% include {{ include.result }} %}
     </div>
     {% if include.html %}
       <div>
-        {% highlight html linenos %}{% include include.html %}{% endhighlight %}
+        {% highlight html linenos %}{% include {{ include.html }} %}{% endhighlight %}
       </div>
     {% endif %}
     {% if include.js %}
       <div>
-        {% highlight js linenos %}{% include include.js %}{% endhighlight %}
+        {% highlight js linenos %}{% include {{ include.js }} %}{% endhighlight %}
       </div>
     {% endif %}
     {% if include.css %}
       <div>
-        {% highlight css linenos %}{% include include.css %}{% endhighlight %}
+        {% highlight css linenos %}{% include {{ include.css }} %}{% endhighlight %}
       </div>
     {% endif %}
   </div>
