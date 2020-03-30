@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
-    <title>Toasts.html | Beyond</title>
+    <title>Toasts | Beyond</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
     
@@ -23,11 +23,12 @@
       <script src="/beyond/dist/beyond.js"></script>
     
   </head>
-  <body class="container-default container bg-admin">
-    <button class="btn btn-sidebar" data-sidebar-opener="sidebar">
-  <i class="icon-hamburger"></i>
-</button>
-<nav class="nav sidebar" data-sidebar="sidebar">
+  <body class="container bg-admin">
+    <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
+      <i class="icon-hamburger"></i>
+    </button>
+    <div class="row">
+      <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
   <ul>
     
       <li>
@@ -38,13 +39,13 @@
     
       <li>
         
-          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
+          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
+          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
         
       </li>
     
@@ -62,13 +63,25 @@
     
       <li>
         
+          <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+        
+      </li>
+    
+      <li>
+        
           <a href="/beyond/content/typography.html" class="nav-item">Typography</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/alerts.html" class="nav-item">Alerts</a>
         
       </li>
     
@@ -98,19 +111,25 @@
     
       <li>
         
-          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+          <a href="/beyond/components/cards.html" class="nav-item">Cards</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
         
       </li>
     
@@ -122,7 +141,13 @@
     
       <li>
         
-          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
+          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
         
       </li>
     
@@ -146,37 +171,7 @@
     
       <li>
         
-          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/toasts.html" class="nav-item active">Toasts</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
         
       </li>
     
@@ -188,96 +183,61 @@
     
       <li>
         
-          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
+          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/toasts.html" class="nav-item active">Toasts</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
         
       </li>
     
   </ul>
 </nav>
 
-    <main class="main">
-      <div class="page-toasts">
-
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">提示訊息 - Toasts</h1>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-        <a>JavaScript</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <button class="btn" id="btn-toast">點我發提示訊息</button>
-
-        </div>
+      <main class="col-md-8 col-xl-10 main">
         <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+  <h1>提示訊息 - Toasts</h1>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <button class="btn" id="btn-toast">點我發提示訊息</button>
+
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 </pre></td><td class="code"><pre><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">id=</span><span class="s">"btn-toast"</span><span class="nt">&gt;</span>點我發提示訊息<span class="nt">&lt;/button&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-</pre></td><td class="code"><pre>(function() {
-  const names = ['路人甲', '路人乙', '路人丙']
-  const actions = ['吃了一個漢堡', '跌了一跤', '說: 你當台灣人是塑膠做的喔 ! 不要欺負我們台灣人']
-
-  const { Toast } = window.beyond
-  const toast = new Toast()
-  const btn = document.getElementById('btn-toast')
-
-  if (! btn ) {
-    return
-  }
-
-  let clickedCount = 0
-
-  btn.addEventListener('click', () =&gt; {
-
-    const num = parseInt(Math.random() * 10, 10) + 1
-    const index = num % names.length
-
-    toast.send({
-      message: `${++clickedCount}. ${names[index]}${actions[index]}`,
-      btnText: '取消',
-      btnCb(res) {
-        res.clear()
-      }
-    })
-  }, false)
-})()
-</pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
-    <div class="doc">
+    
+    
+    
+  </div>
+</div>
+
+  <div class="doc">
   <h2>Toast JS</h2>
   <h3>constructor</h3>
   <div class="code">
@@ -333,10 +293,10 @@
   </div>
 </div><!-- .doc -->
 
-  </div><!-- .card end -->
 </div>
 
-    </main>
+      </main>
+    </div>
     
       <script src="/beyond/dist/web.js"></script>
     

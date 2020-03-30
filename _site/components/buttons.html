@@ -23,11 +23,12 @@
       <script src="/beyond/dist/beyond.js"></script>
     
   </head>
-  <body class="container-default container bg-admin">
-    <button class="btn btn-sidebar" data-sidebar-opener="sidebar">
-  <i class="icon-hamburger"></i>
-</button>
-<nav class="nav sidebar" data-sidebar="sidebar">
+  <body class="container bg-admin">
+    <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
+      <i class="icon-hamburger"></i>
+    </button>
+    <div class="row">
+      <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
   <ul>
     
       <li>
@@ -38,13 +39,13 @@
     
       <li>
         
-          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
+          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
+          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
         
       </li>
     
@@ -62,13 +63,25 @@
     
       <li>
         
+          <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+        
+      </li>
+    
+      <li>
+        
           <a href="/beyond/content/typography.html" class="nav-item">Typography</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/alerts.html" class="nav-item">Alerts</a>
         
       </li>
     
@@ -98,19 +111,25 @@
     
       <li>
         
-          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+          <a href="/beyond/components/cards.html" class="nav-item">Cards</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
         
       </li>
     
@@ -122,7 +141,13 @@
     
       <li>
         
-          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
+          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
         
       </li>
     
@@ -146,37 +171,7 @@
     
       <li>
         
-          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
         
       </li>
     
@@ -188,30 +183,48 @@
     
       <li>
         
-          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
+          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
         
       </li>
     
   </ul>
 </nav>
 
-    <main class="main">
-      <div class="page-btns">
-
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">按鈕 - Buttons</h1>
-
-    <h2>按鈕樣式</h2>
-
-    <div class="codebox-label">Default</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <button class="btn btn-primary">主要</button>
+      <main class="col-md-8 col-xl-10 main">
+        <div class="page-btns">
+  <h1>按鈕 - Buttons</h1>
+  <h2>按鈕樣式</h2>
+  <h3>Default</h3>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <button class="btn btn-primary">主要</button>
 <button class="btn btn-secondary">次要</button>
 <button class="btn btn-success">成功</button>
 <button class="btn btn-danger">危險</button>
@@ -223,9 +236,10 @@
 <button class="btn btn-dark">黑暗</button>
 <a class="btn btn-link" tabindex="0">超連結</a>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -248,19 +262,27 @@
 <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-dark"</span><span class="nt">&gt;</span>黑暗<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-link"</span> <span class="na">tabindex=</span><span class="s">"0"</span><span class="nt">&gt;</span>超連結<span class="nt">&lt;/a&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
+  </div>
+</div>
 
-    <div class="codebox-label">Hover</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <button class="btn btn-primary hover">主要</button>
+
+  <h3>Hover</h3>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <button class="btn btn-primary hover">主要</button>
 <button class="btn btn-secondary hover">次要</button>
 <button class="btn btn-success hover">成功</button>
 <button class="btn btn-danger hover">危險</button>
@@ -272,9 +294,10 @@
 <button class="btn btn-dark hover">黑暗</button>
 <a class="btn btn-link hover" tabindex="0">超連結</a>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -297,19 +320,27 @@
 <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-dark hover"</span><span class="nt">&gt;</span>黑暗<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-link hover"</span> <span class="na">tabindex=</span><span class="s">"0"</span><span class="nt">&gt;</span>超連結<span class="nt">&lt;/a&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
+  </div>
+</div>
 
-    <div class="codebox-label">Active</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <button class="btn btn-primary active">主要</button>
+
+  <h3>Active</h3>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <button class="btn btn-primary active">主要</button>
 <button class="btn btn-secondary active">次要</button>
 <button class="btn btn-success active">成功</button>
 <button class="btn btn-danger active">危險</button>
@@ -321,9 +352,10 @@
 <button class="btn btn-dark active">黑暗</button>
 <a class="btn btn-link active" tabindex="0">超連結</a>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -346,19 +378,27 @@
 <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-dark active"</span><span class="nt">&gt;</span>黑暗<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-link active"</span> <span class="na">tabindex=</span><span class="s">"0"</span><span class="nt">&gt;</span>超連結<span class="nt">&lt;/a&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
+  </div>
+</div>
 
-    <div class="codebox-label">Disabled</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <button class="btn btn-primary" disabled>主要</button>
+
+  <h3>Disabled</h3>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <button class="btn btn-primary" disabled>主要</button>
 <button class="btn btn-secondary" disabled>次要</button>
 <button class="btn btn-success" disabled>成功</button>
 <button class="btn btn-danger" disabled>危險</button>
@@ -370,9 +410,10 @@
 <button class="btn btn-dark" disabled>黑暗</button>
 <a class="btn btn-link disabled" tabindex="0">超連結</a>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -395,22 +436,27 @@
 <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-dark"</span> <span class="na">disabled</span><span class="nt">&gt;</span>黑暗<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-link disabled"</span> <span class="na">tabindex=</span><span class="s">"0"</span><span class="nt">&gt;</span>超連結<span class="nt">&lt;/a&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
+  </div>
+</div>
 
-  </div><!-- .card end -->
 
-  <div class="card card-shadow-sm">
-    <h2 class="card-heading">按鈕尺寸</h2>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <div class="row">
+  <h2>按鈕尺寸</h2>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <div class="row">
   <button class="btn btn-primary btn-lg">大按鈕</button>
   <button class="btn btn-secondary btn-lg">大按鈕</button>
 </div>
@@ -423,9 +469,10 @@
   <button class="btn btn-secondary btn-sm">小按鈕</button>
 </div>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -450,21 +497,27 @@
   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-secondary btn-sm"</span><span class="nt">&gt;</span>小按鈕<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
   </div>
+</div>
 
-  <div class="card card-shadow-sm">
-    <h2 class="card-heading">Icon 按鈕</h2>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <button class="btn btn-icon ripple">
+
+  <h2>Icon 按鈕</h2>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <button class="btn btn-icon ripple">
   <i class="icon icon-plus"></i>
 </button>
 <button class="btn btn-outline">
@@ -480,9 +533,10 @@
   發票全額折讓
 </button>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -513,13 +567,17 @@
   發票全額折讓
 <span class="nt">&lt;/button&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
   </div>
 </div>
 
-    </main>
+</div>
+
+      </main>
+    </div>
     
       <script src="/beyond/dist/web.js"></script>
     
