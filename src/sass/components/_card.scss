@@ -55,6 +55,11 @@
 .card-header+.list-group .list-group-item:first-child {
   border-top: 0;
 }
+.card-footer {
+  padding: .75rem 1.25rem;
+  background-color: rgba(0, 0, 0, .03);
+  border-top: 1px solid rgba(0, 0, 0, .125);
+}
 .card > .list-group:first-child .list-group-item:first-child {
   border-top-left-radius: .25rem;
   border-top-right-radius: .25rem;
@@ -86,4 +91,12 @@
   box-shadow: 0 30px 60px -12px rgba(50, 50, 93, .25),
     0 18px 36px -18px rgba(0, 0, 0, .3),
     0 -12px 36px -8px rgba(0, 0, 0, .02);
+}
+.blockquote {
+  font-size: 1.25rem;
+}
+.blockquote-footer {
+  display: block;
+  font-size: 80%;
+  color: #6c757d;
 }
