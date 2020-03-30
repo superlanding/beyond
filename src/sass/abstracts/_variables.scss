@@ -90,16 +90,26 @@ $backgrounds:
   ('bg-disabled', $bg-disabled);
 
 // borders
+$border-primary: $bg-primary;
+$border-secondary: #6c757d;
+$border-success: $bg-success;
+$border-danger: $bg-danger;
+$border-warning: $bg-warn;
+$border-info: $bg-info;
+$border-light: $bg-light;
+$border-dark: $bg-dark;
+$border-white: $bg-white;
+
 $borders:
- ('border-primary', $bg-primary),
- ('border-secondary', #6c757d),
- ('border-success', $bg-success),
- ('border-danger', $bg-danger),
- ('border-warning', $bg-warn),
- ('border-info', $bg-info),
- ('border-light', $bg-light),
- ('border-dark', $bg-dark),
- ('border-white', $bg-white);
+ ('border-primary', $border-primary),
+ ('border-secondary', $border-secondary),
+ ('border-success', $border-success),
+ ('border-danger', $border-danger),
+ ('border-warning', $border-warning),
+ ('border-info', $border-info),
+ ('border-light', $border-light),
+ ('border-dark', $border-dark),
+ ('border-white', $border-white);
 
 $color-anchor: #5469d4;
 $color-anchor-ex: #1a1f36;
