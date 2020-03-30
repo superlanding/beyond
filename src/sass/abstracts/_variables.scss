@@ -1,6 +1,7 @@
 $beyond-use-helper: false !default;
 
 // backgrounds
+$bg-transparent: transparent;
 $bg-admin: #e3e8ee;
 $bg-outline: rgba(58, 151, 212, .28);
 $bg-content: #f7fafc;
@@ -51,6 +52,7 @@ $bg-icon: #8892b3;
 $bg-disabled: #f1f1f1;
 
 $backgrounds:
+  ('bg-transparent', $bg-transparent),
   ('bg-admin', $bg-admin),
   ('bg-outline', $bg-outline),
   ('bg-content', $bg-content),
