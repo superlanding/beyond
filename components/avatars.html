@@ -3,41 +3,10 @@ layout: default
 title: Avatars
 ---
 <div class="page-avatars">
+  <h1 class="card-heading">頭像 - Avatars</h1>
+  <h2>Default</h2>
+  {% include codebox.html result="demos/avatars.html" html="demos/avatars.html" %}
 
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">頭像 - Avatars</h1>
-
-    <div class="codebox-label">Default</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/avatars.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/avatars.html %}{% endhighlight %}
-        </div>
-      </div>
-    </div>
-
-    <div class="codebox-label">Types</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/avatars-type.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/avatars-type.html %}{% endhighlight %}
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <h2>Types</h2>
+  {% include codebox.html result="demos/avatars-type.html" html="demos/avatars-type.html" %}
 </div>

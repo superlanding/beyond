@@ -3,42 +3,98 @@ layout: default
 title: Forms
 ---
 <div class="page-forms">
+  <h1>表單 - Forms</h1>
+  <h2 id="overview" class="first-heading">Overview</h2>
+  {% include codebox.html result="demos/form-overview.html" html="demos/form-overview.html" %}
 
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">表單 - Forms</h1>
-    <h2>Default Form</h2>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/default-form.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/default-form.html %}{% endhighlight %}
-        </div>
-      </div>
-    </div>
-  </div>
+  <h2 id="form-controls" class="heading">Form controls</h2>
+  {% include codebox.html result="demos/form-controls.html" html="demos/form-controls.html" %}
+  {% include codebox.html result="demos/form-control-file.html" html="demos/form-control-file.html" %}
 
-  <div class="card card-shadow-sm">
-    <h2 class="card-heading">Vertical Form</h2>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/vertical-form.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/vertical-form.html %}{% endhighlight %}
-        </div>
-      </div>
-    </div>
-  </div>
+  <h2 id="sizing" class="heading">Sizing</h2>
+  {% include codebox.html result="demos/form-control-size.html" html="demos/form-control-size.html" %}
 
+  <h2 id="readonly" class="heading">Readonly</h2>
+  {% include codebox.html result="demos/form-readonly.html" html="demos/form-readonly.html" %}
+
+  <h2 id="readonly-plaintext" class="heading">Readonly plain text</h2>
+  {%
+    include codebox.html
+    result="demos/form-readonly-plain-text.html"
+    html="demos/form-readonly-plain-text.html"
+  %}
+  {%
+    include codebox.html
+    result="demos/form-readonly-plain-text2.html"
+    html="demos/form-readonly-plain-text2.html"
+  %}
+
+  <h2 id="checkboxes-and-radios" class="heading">Checkboxes and radios</h2>
+  <h3>Default (stacked)</h3>
+  {%
+    include codebox.html
+    result="demos/form-checkboxes-and-radios-default.html"
+    html="demos/form-checkboxes-and-radios-default.html"
+  %}
+
+  {%
+    include codebox.html
+    result="demos/form-checkboxes-and-radios-default2.html"
+    html="demos/form-checkboxes-and-radios-default2.html"
+  %}
+
+  <h3 id="inline">Inline</h3>
+  {%
+    include codebox.html
+    result="demos/form-checkboxes-and-radios-inline.html"
+    html="demos/form-checkboxes-and-radios-inline.html"
+  %}
+  {%
+    include codebox.html
+    result="demos/form-checkboxes-and-radios-inline2.html"
+    html="demos/form-checkboxes-and-radios-inline2.html"
+  %}
+
+  <h3 id="without-labels">Without labels</h3>
+  {%
+    include codebox.html
+    result="demos/form-checkboxes-and-radios-without-labels.html"
+    html="demos/form-checkboxes-and-radios-without-labels.html"
+  %}
+
+  <h2 id="layout" class="heading">Layout</h2>
+  <h3>Form groups</h3>
+  {% include codebox.html result="demos/form-groups.html" html="demos/form-groups.html" %}
+
+  <h3 id="form-grid">Form grid</h3>
+  {% include codebox.html result="demos/form-grid.html" html="demos/form-grid.html" %}
+
+  <h3 id="form-row">Form row</h3>
+  {% include codebox.html result="demos/form-row.html" html="demos/form-row.html" %}
+  {% include codebox.html result="demos/form-row2.html" html="demos/form-row2.html" %}
+
+  <h3 id="horizontal-form">Horizontal form</h3>
+  {% include codebox.html result="demos/horizontal-form.html" html="demos/horizontal-form.html" %}
+  {% include codebox.html result="demos/horizontal-form2.html" html="demos/horizontal-form2.html" %}
+
+  <h3 id="column-sizing">Column sizing</h3>
+  {% include codebox.html result="demos/form-column-sizing.html" html="demos/form-column-sizing.html" %}
+
+  <h3 id="auto-sizing">Auto-sizing</h3>
+  {% include codebox.html result="demos/form-auto-sizing.html" html="demos/form-auto-sizing.html" %}
+  {% include codebox.html result="demos/form-auto-sizing2.html" html="demos/form-auto-sizing2.html" %}
+
+  <h2 id="inline-forms" class="heading">Inline forms</h2>
+  {% include codebox.html result="demos/inline-forms.html" html="demos/inline-forms.html" %}
+
+  <h2 id="help-text" class="heading">Help text</h2>
+  {% include codebox.html result="demos/form-help-text.html" html="demos/form-help-text.html" %}
+  {% include codebox.html result="demos/form-help-text2.html" html="demos/form-help-text2.html" %}
+
+  <h2 id="disabled-forms" class="heading">Disabled forms</h2>
+  {% include codebox.html result="demos/disabled-forms.html" html="demos/disabled-forms.html" %}
+  {% include codebox.html result="demos/disabled-forms2.html" html="demos/disabled-forms2.html" %}
+
+  <h2 id="validation" class="heading">Validations</h2>
+  {% include codebox.html result="demos/form-validation.html" html="demos/form-validation.html" %}
 </div>

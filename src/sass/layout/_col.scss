@@ -48,9 +48,22 @@
   @extend %col-auto;
 }
 
+@for $i from 1 through length($breakpoints) {
+  $breakpoint: nth($breakpoints, $i);
+  $size: nth($screen-sizes, $i);
+  .col-#{$size} {
+    @extend %col-basic;
+  }
+  @for $j from 1 through $col-total {
+    .col-#{$i},
+    .col-#{$size}-#{$j} {
+      @extend %col-basic;
+    }
+  }
+}
+
 @for $i from 1 through $col-total {
   .col-#{$i} {
-    @extend %col-basic;
     @include col-num($i);
   }
 }
@@ -59,24 +72,18 @@
   $breakpoint: nth($breakpoints, $i);
   $size: nth($screen-sizes, $i);
   @media (min-width: $breakpoint) {
-    %col-basic-#{$size} {
-      @include col-basic;
-    }
     %col-auto-#{$size} {
       @include col-auto;
     }
     .col-#{$size} {
-      @extend %col-basic-#{$size};
       @include col-flex;
     }
     @for $j from 1 through $col-total {
       .col-#{$size}-#{$j} {
-        @extend %col-basic-#{$size};
         @include col-num($j);
       }
     }
     .col-#{$size}-auto {
-      @extend %col-basic-#{$size};
       @extend %col-auto-#{$size};
     }
   }

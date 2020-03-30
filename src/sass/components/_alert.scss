@@ -1,0 +1,50 @@
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  a.alert-link {
+    font-weight: 900;
+    border-bottom: 1px solid transparent;
+  }
+  .alert-heading {
+    color: inherit;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    line-height: 1.5em;
+  }
+
+  @for $i from 1 through length($alert-states) {
+    $state: nth($alert-states, $i);
+    $bg: nth($alert-bgs, $i);
+    $color: nth($alert-colors, $i);
+    $color-link:  nth($alert-color-links, $i);
+    $color-hr: nth($alert-color-hrs, $i);
+    &.alert-#{$state} {
+      background-color: $bg;
+      color: $color;
+      .alert-link {
+        color: $color-link;
+        &:hover {
+          border-bottom: 1px solid $color-link;
+        }
+      }
+      hr {
+        border-top-color: $color-hr;
+      }
+    }
+  }
+}
+.alert-dismissible .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .45rem 1.25rem;
+  color: inherit;
+  font-size: 1.4rem;
+}

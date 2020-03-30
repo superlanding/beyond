@@ -1,29 +1,9 @@
 ---
 layout: default
-title: Toasts.html
+title: Toasts
 ---
-<div class="page-toasts">
-
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">提示訊息 - Toasts</h1>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-        <a>JavaScript</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/toasts.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/toasts.html %}{% endhighlight %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/toasts.js %}{% endhighlight %}
-        </div>
-      </div>
-    </div>
-    {% include docs/toasts.html %}
-  </div><!-- .card end -->
+<div>
+  <h1>提示訊息 - Toasts</h1>
+  {% include codebox.html result="demos/toasts.html" html="demos/toasts.html" %}
+  {% include docs/toasts.html %}
 </div>

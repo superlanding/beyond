@@ -2,30 +2,15 @@
 layout: default
 title: Modals
 ---
-<div class="page-modals">
-
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">互動視窗 - Modals</h1>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-        <a>JavaScript</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          {% include demos/modal-btn.html %}
-        </div>
-        <div>
-          {% highlight html linenos %}{% include demos/modals.html %}{% endhighlight %}
-        </div>
-        <div>
-          {% highlight javascript linenos %}{% include demos/modals.js %}{% endhighlight %}
-        </div>
-      </div>
-    </div>
-    {% include docs/modals.html %}
-  </div><!-- .card end -->
+<div>
+  <h1>互動視窗 - Modals</h1>
+  {%
+    include codebox.html
+    result="demos/modals.html"
+    html="demos/modals.html"
+    js="demos/modals.js"
+  %}
+  {% include docs/modals.html %}
 </div>
 
 {% include demos/modal-content.html %}

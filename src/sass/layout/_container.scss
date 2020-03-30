@@ -9,14 +9,14 @@
   margin-right: auto;
 }
 
-@media (min-width: $breakpoint-sm) {
+@media (min-width: $screen-sm) {
   .container,
   .container-sm {
     max-width: 540px;
   }
 }
 
-@media (min-width: $breakpoint-md) {
+@media (min-width: $screen-md) {
   .container,
   .container-sm,
   .container-md {
@@ -24,7 +24,7 @@
   }
 }
 
-@media (min-width: $breakpoint-lg) {
+@media (min-width: $screen-lg) {
   .container,
   .container-sm,
   .container-md,
@@ -33,7 +33,7 @@
   }
 }
 
-@media (min-width: $breakpoint-xl) {
+@media (min-width: $screen-xl) {
   .container,
   .container-sm,
   .container-md,

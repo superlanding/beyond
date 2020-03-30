@@ -2,9 +2,8 @@
 layout: no-nav
 title: Visibility Utilities
 ---
-<div class="page-utilities card card-shadow-sm">
-  <h1 class="card-heading">顯示 &#x2F; 隱藏工具 - Visibility Utililities</h1>
-
+<div class="page-visibility-utilities card-shadow-sm">
+  <h1>顯示 &#x2F; 隱藏工具 - Visibility Utililities</h1>
   <table class="table table-resolution" data-table-resolution>
     <thead>
       <tr>
@@ -65,21 +64,7 @@ title: Visibility Utilities
       </tr>
     </tbody>
   </table>
-
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/hidden-utilities.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/hidden-utilities.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {% include codebox.html result="demos/hidden-utilities.html" html="demos/hidden-utilities.html" %}
 
   <table class="table table-resolution" data-table-resolution>
     <thead>
@@ -141,19 +126,5 @@ title: Visibility Utilities
       </tr>
     </tbody>
   </table>
-
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/visibility-utilities.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/visibility-utilities.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {% include codebox.html result="demos/visibility-utilities.html" html="demos/visibility-utilities.html" %}
 </div>
