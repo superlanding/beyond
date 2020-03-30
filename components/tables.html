@@ -4,18 +4,5 @@ title: Tables
 ---
 <div class="page-tables">
   <h1>表格 - Tables</h1>
-  <div class="codebox" data-codebox>
-    <div class="codebox-tabs" data-tabs>
-      <a>Result</a>
-      <a>HTML</a>
-    </div>
-    <div class="codebox-panes" data-panes>
-      <div class="codebox-result">
-        {% include demos/tables.html %}
-      </div>
-      <div>
-        {% highlight html linenos %}{% include demos/tables.html %}{% endhighlight %}
-      </div>
-    </div>
-  </div>
+  {% include codebox.html result="demos/tables.html" html="demos/tables.html" %}
 </div>
