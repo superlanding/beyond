@@ -28,31 +28,9 @@
 .border-right-0 {
   border-right: 0;
 }
-.border-primary {
-  border-color: $bg-primary !important;
-}
-.border-secondary {
-  border-color: $bg-secondary !important;
-  border-color: $bg-primary;
-}
-.border-success {
-  border-color: $bg-success !important;
-}
-.border-danger {
-  border-color: $bg-danger !important;
-}
-.border-warning {
-  border-color: $bg-warn !important;
-}
-.border-info {
-  border-color: $bg-info !important;
-}
-.border-light {
-  border-color: $bg-light !important;
-}
-.border-dark {
-  border-color: $bg-dark !important;
-}
-.border-white {
-  border-color: $bg-white !important;
+
+@each $classname, $border-color in $borders {
+  .#{$classname} {
+    border-color: $border-color !important;
+  }
 }
