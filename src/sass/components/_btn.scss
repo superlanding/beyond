@@ -85,13 +85,7 @@
   }
 }
 
-@each $data in $btns {
-  $classname: nth($data, 1);
-  $bg: nth($data, 2);
-  $color: nth($data, 3);
-  $bg-ex: nth($data, 4);
-  $bg-disabled: nth($data, 5);
-
+@each $classname, $bg, $color, $bg-ex, $bg-disabled in $btns {
   .btn.#{$classname} {
     background-color: $bg;
     color: $color;
