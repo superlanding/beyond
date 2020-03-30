@@ -1,5 +1,4 @@
 h1, h2, h3, h4, h5, h6 {
-  color: #32325d;
   font-weight: 400;
 }
 h1 {
@@ -47,6 +46,10 @@ h6 {
 }
 .txt-danger {
   color: $txt-color-danger;
+}
+
+.txt-white {
+  color: #fff !important;
 }
 
 code {
