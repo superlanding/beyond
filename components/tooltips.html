@@ -23,11 +23,12 @@
       <script src="/beyond/dist/beyond.js"></script>
     
   </head>
-  <body class="container-default container bg-admin">
-    <button class="btn btn-sidebar" data-sidebar-opener="sidebar">
-  <i class="icon-hamburger"></i>
-</button>
-<nav class="nav sidebar" data-sidebar="sidebar">
+  <body class="container bg-admin">
+    <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
+      <i class="icon-hamburger"></i>
+    </button>
+    <div class="row">
+      <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
   <ul>
     
       <li>
@@ -38,13 +39,13 @@
     
       <li>
         
-          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
+          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
+          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
         
       </li>
     
@@ -62,13 +63,25 @@
     
       <li>
         
+          <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+        
+      </li>
+    
+      <li>
+        
           <a href="/beyond/content/typography.html" class="nav-item">Typography</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/alerts.html" class="nav-item">Alerts</a>
         
       </li>
     
@@ -98,19 +111,25 @@
     
       <li>
         
-          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+          <a href="/beyond/components/cards.html" class="nav-item">Cards</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
         
       </li>
     
@@ -122,7 +141,13 @@
     
       <li>
         
-          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
+          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
         
       </li>
     
@@ -146,37 +171,7 @@
     
       <li>
         
-          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/tooltips.html" class="nav-item active">Tooltips</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
         
       </li>
     
@@ -188,27 +183,46 @@
     
       <li>
         
-          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
+          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tooltips.html" class="nav-item active">Tooltips</a>
         
       </li>
     
   </ul>
 </nav>
 
-    <main class="main">
-      <div class="page-tooltips">
-
-  <div class="card card-shadow-sm">
-    <h1 class="card-heading">文字提示 - Tooltips</h1>
-
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          
+      <main class="col-md-8 col-xl-10 main">
+        <div>
+  <h1 class="card-heading">文字提示 - Tooltips</h1>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      
 <button class="btn btn-outline"
         data-tooltip
         data-msg="上方出現"
@@ -247,9 +261,10 @@
         data-tooltip
         data-msg="<p>手再傳體北苦東中覺世不交，計曾喜要路不雖，病它夫物絕交樣府星你病己受學有態，成大人己事！叫國跟導，故少的在人飛選。眾文的化，子氣讀相計對，多片害，</p><p>點哥能學檢的以後到事兩，細開來將資讀……童太而是了最著知先！對仍由己員背天生旅指代；積達濟可行根城位反已也原可太親直媽就他告，再過天不國會間轉那花、多獲息；飯至以比日會是遠分南不先對假我站；微益爭。太過小也件，時相。</p>">長篇大論</button>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -324,10 +339,14 @@
         <span class="na">data-tooltip</span>
         <span class="na">data-msg=</span><span class="s">"&lt;p&gt;手再傳體北苦東中覺世不交，計曾喜要路不雖，病它夫物絕交樣府星你病己受學有態，成大人己事！叫國跟導，故少的在人飛選。眾文的化，子氣讀相計對，多片害，&lt;/p&gt;&lt;p&gt;點哥能學檢的以後到事兩，細開來將資讀……童太而是了最著知先！對仍由己員背天生旅指代；積達濟可行根城位反已也原可太親直媽就他告，再過天不國會間轉那花、多獲息；飯至以比日會是遠分南不先對假我站；微益爭。太過小也件，時相。&lt;/p&gt;"</span><span class="nt">&gt;</span>長篇大論<span class="nt">&lt;/button&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
-    <div class="doc">
+    
+    
+    
+  </div>
+</div>
+
+  <div class="doc">
   <h2>Tooltip HTML</h2>
   <div class="code">
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline"</span>
@@ -385,10 +404,10 @@
   </div>
 </div><!-- .doc -->
 
-  </div>
 </div>
 
-    </main>
+      </main>
+    </div>
     
       <script src="/beyond/dist/web.js"></script>
     

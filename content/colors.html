@@ -23,11 +23,12 @@
       <script src="/beyond/dist/beyond.js"></script>
     
   </head>
-  <body class="container-default container bg-admin">
-    <button class="btn btn-sidebar" data-sidebar-opener="sidebar">
-  <i class="icon-hamburger"></i>
-</button>
-<nav class="nav sidebar" data-sidebar="sidebar">
+  <body class="container bg-admin">
+    <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
+      <i class="icon-hamburger"></i>
+    </button>
+    <div class="row">
+      <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
   <ul>
     
       <li>
@@ -38,13 +39,13 @@
     
       <li>
         
-          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
+          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
+          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
         
       </li>
     
@@ -62,13 +63,25 @@
     
       <li>
         
+          <a href="/beyond/content/colors.html" class="nav-item active">Colors</a>
+        
+      </li>
+    
+      <li>
+        
           <a href="/beyond/content/typography.html" class="nav-item">Typography</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/content/colors.html" class="nav-item active">Colors</a>
+          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/alerts.html" class="nav-item">Alerts</a>
         
       </li>
     
@@ -98,19 +111,25 @@
     
       <li>
         
-          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+          <a href="/beyond/components/cards.html" class="nav-item">Cards</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
         
       </li>
     
@@ -122,7 +141,13 @@
     
       <li>
         
-          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
+          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
         
       </li>
     
@@ -146,37 +171,7 @@
     
       <li>
         
-          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
         
       </li>
     
@@ -188,16 +183,34 @@
     
       <li>
         
-          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
+          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
         
       </li>
     
   </ul>
 </nav>
 
-    <main class="main">
-      <div class="page-colors card card-shadow-sm">
-  <h1 class="card-heading">顏色 - Colors</h1>
+      <main class="col-md-8 col-xl-10 main">
+        <div class="page-colors">
+  <h1>顏色 - Colors</h1>
   <div class="color-container">
 
     <div class="card-color card-shadow-sm">
@@ -254,7 +267,6 @@
       <div class="label-card-color">Info</div>
     </div>
 
-
     <div class="card-color card-shadow-sm">
       <div class="palette">
         <div class="place bg-type1"></div>
@@ -291,10 +303,11 @@
       <div class="label-card-color">Dark</div>
     </div>
 
-  </div>
+  </div><!-- .color-container -->
 </div>
 
-    </main>
+      </main>
+    </div>
     
       <script src="/beyond/dist/web.js"></script>
     

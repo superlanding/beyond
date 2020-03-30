@@ -23,11 +23,12 @@
       <script src="/beyond/dist/beyond.js"></script>
     
   </head>
-  <body class="container-default container bg-admin">
-    <button class="btn btn-sidebar" data-sidebar-opener="sidebar">
-  <i class="icon-hamburger"></i>
-</button>
-<nav class="nav sidebar" data-sidebar="sidebar">
+  <body class="container bg-admin">
+    <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
+      <i class="icon-hamburger"></i>
+    </button>
+    <div class="row">
+      <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
   <ul>
     
       <li>
@@ -38,13 +39,13 @@
     
       <li>
         
-          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
+          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
+          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
         
       </li>
     
@@ -62,13 +63,25 @@
     
       <li>
         
+          <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+        
+      </li>
+    
+      <li>
+        
           <a href="/beyond/content/typography.html" class="nav-item active">Typography</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/alerts.html" class="nav-item">Alerts</a>
         
       </li>
     
@@ -98,19 +111,25 @@
     
       <li>
         
-          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+          <a href="/beyond/components/cards.html" class="nav-item">Cards</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
         
       </li>
     
@@ -122,7 +141,13 @@
     
       <li>
         
-          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
+          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
         
       </li>
     
@@ -146,37 +171,7 @@
     
       <li>
         
-          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
         
       </li>
     
@@ -188,25 +183,46 @@
     
       <li>
         
-          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
+          <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
         
       </li>
     
   </ul>
 </nav>
 
-    <main class="main">
-      <div class="page-typography">
-  <div class="card card-shadow-md">
-    <h2 class="card-heading">字體</h2>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <div class="txt-demo-box">
+      <main class="col-md-8 col-xl-10 main">
+        <div class="page-typography">
+  <h1>字體</h1>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <div class="txt-demo-box">
   <div class="txt-lg">大字型 - 她透過窗戶目不轉睛地仰望著星星。</div>
   <div class="txt-md">中字型 - 她透過窗戶目不轉睛地仰望著星星。</div>
   <div class="txt-sm">小字型 - 她透過窗戶目不轉睛地仰望著星星。</div>
@@ -228,9 +244,10 @@
   <div class="txt-danger">danger</div>
 </div>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -273,32 +290,38 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"txt-danger"</span><span class="nt">&gt;</span>danger<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
   </div>
+</div>
 
-  <div class="card card-shadow-md">
-    <h1 class="card-h1">文字排版 - Typography</h1>
-    <h2 class="card-heading">標題層級</h2>
 
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <h1>千里之行，始於足下</h1>
+  <h2>文字排版 - Typography</h2>
+  <h3>標題層級</h3>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <h1>千里之行，始於足下</h1>
 <h2>千里之行，始於足下</h2>
 <h3>千里之行，始於足下</h3>
 <h4>千里之行，始於足下</h4>
 <h5>千里之行，始於足下</h5>
 <h6>千里之行，始於足下</h6>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -311,27 +334,35 @@
 <span class="nt">&lt;h5&gt;</span>千里之行，始於足下<span class="nt">&lt;/h5&gt;</span>
 <span class="nt">&lt;h6&gt;</span>千里之行，始於足下<span class="nt">&lt;/h6&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
+  </div>
+</div>
 
-    <div class="codebox last-codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <h1>Heading 1</h1>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <h1>Heading 1</h1>
 <h2>Heading 2</h2>
 <h3>Heading 3</h3>
 <h4>Heading 4</h4>
 <h5>Heading 5</h5>
 <h6>Heading 6</h6>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -344,13 +375,16 @@
 <span class="nt">&lt;h5&gt;</span>Heading 5<span class="nt">&lt;/h5&gt;</span>
 <span class="nt">&lt;h6&gt;</span>Heading 6<span class="nt">&lt;/h6&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
   </div>
+</div>
 
-  <div class="card card-shadow-md">
-    <h2 class="card-heading">內文</h2>
+
+  <h2>內文</h2>
+  <div>
     <p>們太間了相用，創一同問流我？
 
   後童感，飛實我絕結學識風、舞然意的目。美起直多有，的情術公當小銀當算角成廣，要臺寶理、一但團母要孩處難論老過這，物通一性進開後：要來英長界。
@@ -361,18 +395,21 @@
 
   </div>
 
-  <div class="card card-shadow-md">
-    <h2 class="card-heading">表格文字</h2>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <table class="table table-fonts">
+  <h2>表格文字</h2>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <table class="table">
   <tr>
-    <th class="title-demo">
+    <th>
       標題
       <div class="title">這是大標題</div>
       <div class="sub">這是小標題</div>
@@ -380,7 +417,7 @@
       <br>
       <a class="link">這是超連結</a>
     </th>
-    <td class="title-demo">
+    <td>
       <div class="title">這是大標題</div>
       <div class="sub">這是小標題</div>
       <span class="tag">這是標籤</span>
@@ -446,9 +483,10 @@
   </tr>
 </table>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -523,9 +561,9 @@
 73
 74
 75
-</pre></td><td class="code"><pre><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-fonts"</span><span class="nt">&gt;</span>
+</pre></td><td class="code"><pre><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;tr&gt;</span>
-    <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"title-demo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;th&gt;</span>
       標題
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>這是大標題<span class="nt">&lt;/div&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sub"</span><span class="nt">&gt;</span>這是小標題<span class="nt">&lt;/div&gt;</span>
@@ -533,7 +571,7 @@
       <span class="nt">&lt;br&gt;</span>
       <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"link"</span><span class="nt">&gt;</span>這是超連結<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/th&gt;</span>
-    <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"title-demo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>這是大標題<span class="nt">&lt;/div&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sub"</span><span class="nt">&gt;</span>這是小標題<span class="nt">&lt;/div&gt;</span>
       <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag"</span><span class="nt">&gt;</span>這是標籤<span class="nt">&lt;/span&gt;</span>
@@ -599,19 +637,27 @@
   <span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;/table&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
+  </div>
+</div>
 
-    <div class="codebox-label">disabled 背景與內文</div>
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <table class="table table-fonts bg-disabled content-disabled">
+
+  <h2>disabled 背景與內文</h2>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <table class="table table-fonts bg-disabled content-disabled">
   <tr>
     <th>標籤</th>
     <td>
@@ -693,9 +739,10 @@
   </tr>
 </table>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -858,14 +905,17 @@
   <span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;/table&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+    
   </div>
+</div>
 
 </div>
 
-    </main>
+      </main>
+    </div>
     
       <script src="/beyond/dist/web.js"></script>
     

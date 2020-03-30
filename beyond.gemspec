@@ -15,4 +15,9 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'autoprefixer-rails', '>= 5.2.1'
 
   s.files    = `git ls-files -- src/*`.split("\n")
+
+  s.require_paths = ["lib"]
+
+  s.add_dependency("actionpack", ">= 5.0")
+  s.add_dependency("activemodel", ">= 5.0")
 end

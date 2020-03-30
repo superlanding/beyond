@@ -23,11 +23,12 @@
       <script src="/beyond/dist/beyond.js"></script>
     
   </head>
-  <body class="container-default container bg-admin">
-    <button class="btn btn-sidebar" data-sidebar-opener="sidebar">
-  <i class="icon-hamburger"></i>
-</button>
-<nav class="nav sidebar" data-sidebar="sidebar">
+  <body class="container bg-admin">
+    <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
+      <i class="icon-hamburger"></i>
+    </button>
+    <div class="row">
+      <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
   <ul>
     
       <li>
@@ -38,13 +39,13 @@
     
       <li>
         
-          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
+          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
+          <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
         
       </li>
     
@@ -62,13 +63,25 @@
     
       <li>
         
+          <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+        
+      </li>
+    
+      <li>
+        
           <a href="/beyond/content/typography.html" class="nav-item">Typography</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/alerts.html" class="nav-item">Alerts</a>
         
       </li>
     
@@ -98,19 +111,25 @@
     
       <li>
         
-          <a href="/beyond/components/tabboxes.html" class="nav-item active">Tabboxes</a>
+          <a href="/beyond/components/cards.html" class="nav-item">Cards</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
         
       </li>
     
       <li>
         
-          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
         
       </li>
     
@@ -122,7 +141,13 @@
     
       <li>
         
-          <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
+          <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
         
       </li>
     
@@ -146,37 +171,7 @@
     
       <li>
         
-          <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
         
       </li>
     
@@ -188,27 +183,48 @@
     
       <li>
         
-          <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
+          <a href="/beyond/components/tabboxes.html" class="nav-item active">Tabboxes</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
+        
+      </li>
+    
+      <li>
+        
+          <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
         
       </li>
     
   </ul>
 </nav>
 
-    <main class="main">
-      <div class="page-tabboxes">
-  <div class="card card-shadow-sm">
-    <h2 class="card-heading">過濾按鈕</h2>
-
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-        <a>JavaScript</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <div class="tabbox tabbox-sm" data-tabbox>
+      <main class="col-md-8 col-xl-10 main">
+        <div class="page-tabboxes">
+  <h1>過濾按鈕</h1>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+      <a>JS</a>
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <div class="tabbox tabbox-sm" data-tabbox>
   <div class="separator">
     <button class="tab-btn"
             data-tabbox-item="all"
@@ -316,9 +332,10 @@
      data-active-color="#8b8b9e">已退款</a>
 </div>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -533,9 +550,11 @@
      <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退款<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+      </div>
+    
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -544,19 +563,26 @@
 <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tabbox]</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Tabbox</span><span class="p">(</span><span class="nx">dom</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+  </div>
+</div>
 
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-        <a>JavaScript</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <div class="tabbox" data-tabbox>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+      <a>JS</a>
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <div class="tabbox" data-tabbox>
    <button class="tab-btn" data-tabbox-item="all" data-default>全部</button><!--
 --><button class="tab-btn tab-btn-type0"
            data-tabbox-item="new"
@@ -655,9 +681,10 @@
      data-active-color="#8b8b9e">已退款</a>
 </div>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -854,9 +881,11 @@
      <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退款<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+      </div>
+    
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -865,19 +894,26 @@
 <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tabbox]</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Tabbox</span><span class="p">(</span><span class="nx">dom</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+  </div>
+</div>
 
-    <div class="codebox" data-codebox>
-      <div class="codebox-tabs" data-tabs>
-        <a>Result</a>
-        <a>HTML</a>
-        <a>JavaScript</a>
-      </div>
-      <div class="codebox-panes" data-panes>
-        <div class="codebox-result">
-          <div class="tabbox tabbox-lg" data-tabbox>
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+      <a>JS</a>
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <div class="tabbox tabbox-lg" data-tabbox>
   <button class="tab-btn"
           data-tabbox-item="all"
           data-default>全部</button><!--
@@ -969,9 +1005,10 @@
      data-active-color="#8b8b9e">已退款</a>
 </div>
 
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1154,9 +1191,11 @@
      <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退款<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
-        <div>
-          <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+      </div>
+    
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1165,11 +1204,13 @@
 <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tabbox]</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Tabbox</span><span class="p">(</span><span class="nx">dom</span><span class="p">))</span>
 </pre></td></tr></tbody></table></code></pre></figure>
-        </div>
       </div>
-    </div>
+    
+    
+  </div>
+</div>
 
-    <div class="doc">
+  <div class="doc">
   <h2>Tabbox HTML</h2>
   <p>按鈕 HTML 需要符合 button[data-tabbox-item]，dropdown button 元素須符合 button[data-tabbox-dropdown]</p>
   <div class="code">
@@ -1277,11 +1318,10 @@
   </div>
 </div><!-- .doc -->
 
-  </div><!-- .card end -->
-
 </div>
 
-    </main>
+      </main>
+    </div>
     
       <script src="/beyond/dist/web.js"></script>
     

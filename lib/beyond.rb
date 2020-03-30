@@ -1,5 +1,5 @@
-require 'beyond/version'
-
+require "beyond/version"
+require "beyond_form"
 module Beyond
   class << self
 

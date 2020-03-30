@@ -45,12 +45,29 @@
     }
 
     addEvents() {
+      if (typeof window.MutationObserver !== 'undefined') {
+        const config = { attributes: true, childList: true, subtree: true }
+        this.mutationObserver = new MutationObserver((mutationsList, observer) => {
+          for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+              this.setBoxHeight()
+            }
+            else if (mutation.type === 'attributes') {
+              this.setBoxHeight()
+            }
+          }
+        })
+        this.mutationObserver.observe(this.dom, config)
+      }
       this._handleWindowResize = () => this.setBoxHeight()
-      window.addEventListener('resize', this._handleWindowResize, false)
+      window.addEventListener('resize', this._handleWindowResize)
     }
 
     destroy() {
-      window.removeEventListener('resize', this._handleWindowResize, false)
+      if (this.mutationObserver) {
+        this.mutationObserver.disconnect()
+      }
+      window.removeEventListener('resize', this._handleWindowResize)
     }
   }
   beyond.Codebox = Codebox
