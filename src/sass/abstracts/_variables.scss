@@ -27,6 +27,8 @@ $bg-info: #5ecdf1;
 $bg-info-ex: #7bdfff;
 $bg-info-ex2: #a4c5d0;
 
+$bg-white: #fff;
+
 $bg-type1: #d681d8;
 $bg-type1-ex: #eda3ef;
 $bg-type1-ex2: #d1bdd1;
@@ -232,3 +234,6 @@ $alert-color-hrs: $alert-color-hr-primary, $alert-color-hr-secondary,
   $alert-color-hr-info, $alert-color-hr-light, $alert-color-hr-dark;
 
 $sizes: 25, 50, 75, 100;
+
+// border utils
+$border-color: #dee2e6;
