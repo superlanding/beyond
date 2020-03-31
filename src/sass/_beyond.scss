@@ -1,7 +1,8 @@
-@import './vendor/_normalize';
 @import './abstracts/_variables';
 @import './abstracts/_placeholders';
 @import './abstracts/_mixins';
+@import './vendor/_normalize';
+@import './vendor/_turbolink';
 @import './base/_background';
 @import './base/_typography';
 @import './_main';
