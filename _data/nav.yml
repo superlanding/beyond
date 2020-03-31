@@ -45,6 +45,8 @@
       link: /components/dropdowns.html
     - name: Forms
       link: /components/forms.html
+    - name: Pagination
+      link: /components/pagination.html
     - name: Selects
       link: /components/selects.html
     - name: Spinners
