@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
-    <title>Selects | Beyond</title>
+    <title>Lists | Beyond</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
     
@@ -204,8 +204,8 @@
 </nav>
 
       <main class="col-md-8 col-xl-10 main">
-        <div class="page-selects">
-  <h1>下拉式選單 - Selects</h1>
+        <div class="page-lists">
+  <h1>清單 - Lists</h1>
   <div class="codebox" data-codebox>
   <div class="codebox-tabs" data-tabs>
     <a>Result</a>
@@ -217,25 +217,65 @@
   </div>
   <div class="codebox-panes" data-panes>
     <div class="codebox-result">
-      <select class="select">
-  <option value="">請選擇</option>
-  <option value="">請選擇</option>
-  <option value="1">燙青菜</option>
-  <option value="2">燒肉</option>
-  <option value="3">滿漢全席</option>
-</select>
-<select class="select select-outline">
-  <option value="">請選擇</option>
-  <option value="1">燙青菜</option>
-  <option value="2">燒肉</option>
-  <option value="3">滿漢全席</option>
-</select>
-<select class="select select-outline-strong">
-  <option value="">請選擇</option>
-  <option value="1">燙青菜</option>
-  <option value="2">燒肉</option>
-  <option value="3">滿漢全席</option>
-</select>
+      <ul class="list-inline">
+  <li>
+    <a href="">連結1</a>
+  </li>
+  <li>
+    <a href="">連結2</a>
+  </li>
+  <li>
+    <a href="">連結3</a>
+  </li>
+</ul>
+
+<ul class="list-style-disc">
+  <li>
+    <a href="">連結1</a>
+  </li>
+  <li>
+    <a href="">連結2</a>
+  </li>
+  <li>
+    <a href="">連結3</a>
+  </li>
+</ul>
+
+<ul class="list-style-circle">
+  <li>
+    <a href="">連結1</a>
+  </li>
+  <li>
+    <a href="">連結2</a>
+  </li>
+  <li>
+    <a href="">連結3</a>
+  </li>
+</ul>
+
+<ul class="list-style-square">
+  <li>
+    <a href="">連結1</a>
+  </li>
+  <li>
+    <a href="">連結2</a>
+  </li>
+  <li>
+    <a href="">連結3</a>
+  </li>
+</ul>
+
+<ul class="list-style-decimal">
+  <li>
+    <a href="">連結1</a>
+  </li>
+  <li>
+    <a href="">連結2</a>
+  </li>
+  <li>
+    <a href="">連結3</a>
+  </li>
+</ul>
 
     </div>
     
@@ -259,25 +299,105 @@
 17
 18
 19
-</pre></td><td class="code"><pre><span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>燙青菜<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>燒肉<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>滿漢全席<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select select-outline"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>燙青菜<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>燒肉<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>滿漢全席<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select select-outline-strong"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>燙青菜<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>燒肉<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>滿漢全席<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+</pre></td><td class="code"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-inline"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結1<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結2<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結3<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-style-disc"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結1<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結2<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結3<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-style-circle"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結1<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結2<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結3<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-style-square"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結1<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結2<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結3<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-style-decimal"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結1<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結2<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>連結3<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
       </div>
     
