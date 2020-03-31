@@ -29,6 +29,8 @@
       link: /components/avatars.html
     - name: Badges
       link: /components/badges.html
+    - name: Breadcrumbs
+      link: /components/breadcrumbs.html
     - name: Buttons
       link: /components/buttons.html
     - name: Button Groups
