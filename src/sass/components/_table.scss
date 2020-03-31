@@ -1,4 +1,32 @@
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .table {
+  width: 100%;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+
+  strong {
+    color: #5469d4;
+  }
+  thead {
+    background-color: #f7fafc;
+    color: #1a1f36;
+  }
+  th {
+    color: #697386;
+    white-space: nowrap;
+  }
+  td {
+    color: #3c4257;
+  }
   .title {
     font-size: 16px;
     font-weight: 900;
@@ -13,25 +41,6 @@
     &:hover {
       border-bottom: 1px solid $color-anchor-ex;
     }
-  }
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border-collapse: collapse;
-  font-size: 13px;
-  text-align: left;
-  strong {
-    color: #5469d4;
-  }
-  thead {
-    background-color: #f7fafc;
-    color: #1a1f36;
-  }
-  th {
-    color: #697386;
-  }
-  td {
-    color: #3c4257;
   }
   @for $i from 1 through length($color-txt-types) {
     td.txt-type#{$i},
