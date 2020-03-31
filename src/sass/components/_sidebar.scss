@@ -1,7 +1,11 @@
 .sidebar {
+  > ul {
+    width: 100%;
+  }
   padding-top: 10px;
   padding-bottom: 40px;
   @media (max-width: $screen-md) {
+    padding-left: 10px;
     width: 240px;
     z-index: 20;
     transition: .2s all;
