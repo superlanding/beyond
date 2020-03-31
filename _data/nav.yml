@@ -55,6 +55,8 @@
       link: /components/search-dropdowns.html
     - name: Icons
       link: /components/icons.html
+    - name: Lists
+      link: /components/lists.html
     - name: Modals
       link: /components/modals.html
     - name: Navbars
