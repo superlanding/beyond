@@ -49,7 +49,7 @@ module BeyondForm
     def initialize(object_name, object, template, options)
       @layout = options[:layout] || default_layout
       @label_col = options[:label_col] || default_label_col
-      @control_col = options[:control_col] || default_control_col
+      @control_col = (options[:control_col] || default_control_col) + " col-form-field"
       @label_errors = options[:label_errors] || false
 
       @inline_errors = if options[:inline_errors].nil?
