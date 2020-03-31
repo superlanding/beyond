@@ -12,10 +12,13 @@ import '../../_includes/demos/navbars'
 import '../../_includes/demos/forms'
 import '../../_includes/demos/alert'
 
-const { Codebox, Sidebar } = window.beyond
+const { Codebox, Sidebar, Menu } = window.beyond
 
 document.querySelectorAll('[data-codebox]')
   .forEach(dom => new Codebox(dom))
+
+document.querySelectorAll('[data-menu-toggle]')
+  .forEach(dom => new Menu(dom))
 
 const sidebarDom = document.querySelector('[data-sidebar-opener]')
 if (sidebarDom) {

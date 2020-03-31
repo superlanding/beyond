@@ -19,6 +19,7 @@ module BeyondForm
     autoload :Components
     autoload :Inputs
     autoload :Helpers
+    autoload :Translator
   end
 
   def self.eager_load!
