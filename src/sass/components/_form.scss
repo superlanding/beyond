@@ -325,7 +325,7 @@ input[type="file"] {
   flex-wrap: wrap;
   align-items: stretch;
   width: 100%;
-  > .form-control:not(:last-child) {
+  > .form-control {
     flex: 1 1 0%;
   }
 }
@@ -359,6 +359,9 @@ input[type="file"] {
 
 @media (min-width: $screen-sm) {
   .form-inline {
+    .form-control {
+      width: auto;
+    }
     .input-group {
       width: auto;
     }
