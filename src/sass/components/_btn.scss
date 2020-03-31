@@ -44,7 +44,10 @@
     vertical-align: sub;
   }
 }
-
+.btn-block {
+  display: block;
+  width: 100%;
+}
 .btn.btn-icon {
   outline: 0;
   border-radius: 100%;

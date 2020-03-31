@@ -10,6 +10,7 @@ import Checkbox from './components/Checkbox'
 import DateTimeRanger from './components/DateTimeRanger'
 import Datepicker from './components/Datepicker'
 import Dropdown from './components/Dropdown'
+import Menu from './components/Menu'
 import Modal from './components/Modal'
 import Navbar from './components/Navbar'
 import Radio from './components/Radio'
@@ -26,6 +27,7 @@ export {
   DateTimeRanger,
   Datepicker,
   Dropdown,
+  Menu,
   Modal,
   Navbar,
   Radio,
