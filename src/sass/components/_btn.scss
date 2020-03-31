@@ -40,8 +40,10 @@
   }
   .icon {
     display: inline-block;
-    margin-right: 4px;
+    margin-right: 6px;
     vertical-align: sub;
+    transform: translateY(-1px);
+    font-size: 1rem;
   }
 }
 .btn-block {
@@ -63,6 +65,7 @@
   .icon {
     margin: 0;
     vertical-align: middle;
+    transform: translateY(0);
   }
   @include ripple(48px, 0, 0);
 }
@@ -82,9 +85,6 @@
   }
   &:focus {
     @include focus-outline;
-  }
-  .icon {
-    transform: translateY(-2px);
   }
 }
 
@@ -126,4 +126,14 @@ button.close {
   padding: 0;
   background-color: transparent;
   border: 0;
+}
+
+.btn-line {
+  background-color: #7ec163;
+  color: #fff;
+}
+
+.btn-fb {
+  background-color: #4a9cff;
+  color: #fff;
 }
