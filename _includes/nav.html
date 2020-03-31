@@ -2,10 +2,26 @@
   <ul>
     {% for item in site.data.nav %}
       <li>
-        {% if page.url == item.link %}
-          <a href="{{ item.link | relative_url }}" class="nav-item active">{{ item.name }}</a>
+
+        {% if item.name %}
+          {% if page.url == item.link %}
+            <a href="{{ item.link | relative_url }}" class="nav-item active">{{ item.name }}</a>
+          {% else %}
+            <a href="{{ item.link | relative_url }}" class="nav-item">{{ item.name }}</a>
+          {% endif %}
         {% else %}
-          <a href="{{ item.link | relative_url }}" class="nav-item">{{ item.name }}</a>
+          <div class="nav-folder"
+               data-menu-toggle="{{ item.folder }}"
+               data-default-visible>{{ item.folder }}<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="{{ item.folder }}">
+            {% for subItem in item.items %}
+              {% if page.url == item.link %}
+                <a href="{{ subItem.link | relative_url }}" class="nav-item active">{{ subItem.name }}</a>
+              {% else %}
+                <a href="{{ subItem.link | relative_url }}" class="nav-item">{{ subItem.name }}</a>
+              {% endif %}
+           {% endfor %}
+          </ul>
         {% endif %}
       </li>
     {% endfor %}

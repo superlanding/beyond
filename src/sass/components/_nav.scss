@@ -3,12 +3,39 @@
   flex-wrap: wrap;
   padding-left: 0;
   list-style: none;
+  .nav-folder {
+    user-select: none;
+    cursor: pointer;
+    padding: 7px;
+    color: #1a1f36;
+    font-size: .875rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    i {
+      transition: .3s all;
+      transform: translateY(1px);
+      font-size: .7rem;
+      margin-left: 10px;
+    }
+    &.js-opened i {
+      transform: translateY(1px) rotate(180deg);
+    }
+  }
+  .nav-folder + ul {
+    .nav-item {
+      color: #626c98;
+    }
+  }
+  .nav-menu {
+    display: none;
+  }
   .nav-item {
     color: #1a1f36;
     text-decoration: none;
     display: block;
     padding: 7px;
-    font-size: 14px;
+    font-size: .875rem;
   }
   .nav-item.active {
     color: $color-primary;
