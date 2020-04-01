@@ -43,6 +43,8 @@
       link: /components/datepickers.html
     - name: Dropdowns
       link: /components/dropdowns.html
+    - name: Footers
+      link: /components/footers.html
     - name: Forms
       link: /components/forms.html
     - name: Pagination
