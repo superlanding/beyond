@@ -7,8 +7,6 @@ export default function supportDom(target) {
     init() {
       const { dom } = this
       if (dom && dom.dataset.beyondBound) {
-        console.log(dom)
-        console.log('This dom is already bound by beyond.')
         return
       }
       this._listeners = []
