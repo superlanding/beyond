@@ -11,6 +11,7 @@ import '../../_includes/demos/search-dropdowns'
 import '../../_includes/demos/navbars'
 import '../../_includes/demos/forms'
 import '../../_includes/demos/alert'
+import '../../_includes/demos/btns'
 
 const { Codebox, Sidebar, Menu } = window.beyond
 

@@ -379,6 +379,9 @@ td.code > pre {
   font-size: 12px;
   margin-top: 10px; }
 
+.page-btns .codebox-result .row {
+  padding-left: 20px;
+  align-items: center; }
 .page-btns .codebox-result .btn {
   margin-right: 10px;
   margin-bottom: 20px; }
@@ -521,3 +524,22 @@ td.code > pre {
   padding-left: 40px; }
 .page-lists ul {
   margin-bottom: 2rem; }
+
+.page-footers {
+  padding: 20px;
+  display: flex;
+  flex-direction: column; }
+  .page-footers .content {
+    flex: 1;
+    padding: 100px;
+    font-size: 4rem;
+    text-align: center;
+    background-color: #eee; }
+  .page-footers ul {
+    margin-left: 1.2rem; }
+
+.footer {
+  font-size: 4rem;
+  text-align: center;
+  background-color: #333;
+  color: #fff; }
