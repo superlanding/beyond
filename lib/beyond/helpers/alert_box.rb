@@ -2,7 +2,7 @@ module Beyond
   module Helpers
     module AlertBox
 
-      def beyond_alert_box(*args, &block)
+      def alertbox(*args, &block)
         if block_given?
           html = yield
         else
@@ -16,13 +16,13 @@ module Beyond
         opts = options.merge(class: "alert alert-#{style} #{css}", role: "alert")
         content_tag(:div, opts) do
           concat(html)
-          concat(beyond_dismiss_button) if dismissible
+          concat(alertbox_dismiss_button) if dismissible
         end
       end
 
       protected
 
-      def beyond_dismiss_button
+      def alertbox_dismiss_button
         %{
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
