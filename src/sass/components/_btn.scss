@@ -17,10 +17,31 @@
   &.btn-sm {
     font-size: 12px;
     padding: 2px 6px;
+    .btn-loader {
+      padding: 8px 8px 9px;
+      .ring-loader {
+        @include size($ring-loader-size-sm);
+        div {
+          @include size($ring-loader-size-sm);
+        }
+      }
+    }
+  }
+  .btn-loader {
+    padding: 10px;
   }
   &.btn-lg {
     font-size: 16px;
     padding: 8px 20px;
+    .btn-loader {
+      padding: 11px;
+      .ring-loader {
+        @include size($ring-loader-size-lg);
+        div {
+          @include size($ring-loader-size-lg);
+        }
+      }
+    }
   }
   &.hover,
   &:hover {
@@ -45,6 +66,9 @@
     transform: translateY(-1px);
     font-size: 1rem;
   }
+}
+.btn-loader {
+  position: relative;
 }
 .btn-block {
   display: block;
