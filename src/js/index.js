@@ -6,6 +6,7 @@ import './polyfills/nodeRemove'
 import './polyfills/elementDataset'
 import Alert from './components/Alert'
 import Autocomplete from './components/Autocomplete'
+import Btn from './components/Btn'
 import Checkbox from './components/Checkbox'
 import DateTimeRanger from './components/DateTimeRanger'
 import Datepicker from './components/Datepicker'
@@ -19,10 +20,12 @@ import Sidebar from './components/Sidebar'
 import Tabbox from './components/Tabbox'
 import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
+import bind from './helpers/bind'
 
 export {
   Alert,
   Autocomplete,
+  Btn,
   Checkbox,
   DateTimeRanger,
   Datepicker,
@@ -35,5 +38,6 @@ export {
   Sidebar,
   Tabbox,
   Toast,
-  Tooltip
+  Tooltip,
+  bind
 }

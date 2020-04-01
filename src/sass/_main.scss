@@ -1,7 +1,19 @@
+html {
+  height: 100%;
+}
 body {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
+
+  .content {
+    flex: 1;
+  }
+  &.with-footer {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 }
 *,
 *:before,
@@ -35,7 +47,9 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-
+small {
+  font-size: 70%;
+}
 blockquote {
   margin: 0 0 1rem;
 }
