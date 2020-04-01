@@ -6,6 +6,7 @@ import './polyfills/nodeRemove'
 import './polyfills/elementDataset'
 import Alert from './components/Alert'
 import Autocomplete from './components/Autocomplete'
+import Btn from './components/Btn'
 import Checkbox from './components/Checkbox'
 import DateTimeRanger from './components/DateTimeRanger'
 import Datepicker from './components/Datepicker'
@@ -23,6 +24,7 @@ import Tooltip from './components/Tooltip'
 export {
   Alert,
   Autocomplete,
+  Btn,
   Checkbox,
   DateTimeRanger,
   Datepicker,

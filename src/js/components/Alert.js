@@ -14,7 +14,6 @@ export default class Alert {
     const btns = dom.querySelectorAll('[data-dismiss="alert"]')
 
     btns.forEach(btn => {
-      console.log('wtf', btn)
       this.addEvent(btn, 'click', () => {
         this.destroy()
         this.dom.remove()

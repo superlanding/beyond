@@ -1,6 +1,12 @@
 .page-btns {
-  .codebox-result .btn {
-    margin-right: 10px;
-    margin-bottom: 20px;
+  .codebox-result {
+    .row {
+      padding-left: 20px;
+      align-items: center;
+    }
+    .btn {
+      margin-right: 10px;
+      margin-bottom: 20px;
+    }
   }
 }
