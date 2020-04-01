@@ -9,7 +9,7 @@
     }
   }
 
-  @media (max-width: $breakpoint) {
+  @media (min-width: $breakpoint) {
     @for $i from 1 through $col-total {
       $percent: (100% / $col-total) * $i;
       .offset-#{$size}-#{$i} {
