@@ -1,6 +1,6 @@
 {
   "name": "@superlanding/beyond",
-  "version": "0.0.111",
+  "version": "0.0.112",
   "description": "The best frontend framework for super-landing.com",
   "browserslist": [
     "defaults",
