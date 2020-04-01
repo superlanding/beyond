@@ -5,8 +5,15 @@ export default function supportDom(target) {
   return class extends target {
 
     init() {
+      const { dom } = this
+      if (dom && dom.dataset.beyondBound) {
+        return
+      }
       this._listeners = []
       this._externalListeners = []
+      if (this.dom) {
+        this.dom.dataset.beyondBound = 1
+      }
       if (isFunction(super.init)) {
         super.init()
       }
@@ -36,6 +43,9 @@ export default function supportDom(target) {
     destroy() {
       this._externalListeners.length = 0
       this.removeEvents()
+      if (this.dom) {
+        delete this.dom.dataset.beyondBound
+      }
       if (isFunction(super.destroy)) {
         super.destroy()
       }

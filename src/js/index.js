@@ -20,6 +20,7 @@ import Sidebar from './components/Sidebar'
 import Tabbox from './components/Tabbox'
 import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
+import bind from './helpers/bind'
 
 export {
   Alert,
@@ -37,5 +38,6 @@ export {
   Sidebar,
   Tabbox,
   Toast,
-  Tooltip
+  Tooltip,
+  bind
 }

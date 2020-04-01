@@ -1,11 +1,13 @@
 import supportDom from '../helpers/supportDom'
 import toPixel from '../helpers/toPixel'
 
+@supportDom
 export default class Btn {
 
   constructor(dom) {
     this.dom = dom
     this.loading = false
+    this.init()
   }
 
   showLoader() {
