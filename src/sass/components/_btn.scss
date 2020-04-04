@@ -15,7 +15,9 @@
     @include focus-outline;
   }
   &.btn-sm {
-    font-size: 12px;
+    &, .icon:before {
+      font-size: 12px;
+    }
     padding: 2px 6px;
     .btn-loader {
       padding: 8px 8px 9px;
@@ -32,6 +34,9 @@
   }
   &.btn-lg {
     font-size: 16px;
+    .icon:before {
+      font-size: 20px;
+    }
     padding: 8px 20px;
     .btn-loader {
       padding: 11px;
@@ -61,9 +66,9 @@
   }
   .icon {
     display: inline-block;
-    margin-right: 6px;
+    margin-right: 2px;
     vertical-align: sub;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     font-size: 1rem;
   }
 }
