@@ -2,7 +2,7 @@ module Beyond
   module Helpers
     module AlertBox
 
-      def alertbox(*args, &block)
+      def b_alert_box(*args, &block)
         if block_given?
           html = yield
         else
