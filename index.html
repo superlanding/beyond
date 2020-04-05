@@ -6,16 +6,43 @@ title: Home
   <h1>Beyond</h1>
   <div>這裡放全站共用元件</div>
 
+  <h2>Ruby / Rails</h2>
+
   <div class="doc">
-    <h2>安裝</h2>
+    <h3>使用方式</h3>
+    <div class="code">
+{% highlight ruby %}
+gem "beyond"
+{% endhighlight %}
+    </div>
+
+    在 application.js
+    <div class="code">
+{% highlight js %}
+//= require beyond
+{% endhighlight %}
+    </div>
+
+    在 application.scss
+    <div class="code">
+{% highlight scss %}
+@import "beyond-sprockets"
+@import "beyond"
+{% endhighlight %}
+    </div>
+  </div>
+
+  <h2>Webpack</h2>
+  <div class="doc">
+    <h3>安裝</h3>
     <div class="code">
 {% highlight shell %}
 yarn add @superlanding/beyond --exact
 {% endhighlight %}
     </div>
 
-    <h2>使用</h2>
-    <h3>在 sass 檔案引入樣式</h3>
+    <h3>使用</h3>
+    <h4>在 sass 檔案引入樣式</h4>
     <div class="code">
 {% highlight scss %}
 // 定義 css 圖片路徑與 font icons 路徑
@@ -26,7 +53,7 @@ $beyond-css-img-path: '~@superlanding/beyond/src/sass/img/';
 {% endhighlight %}
     </div>
 
-    <h3>JS 元件存取</h3>
+    <h4>JS 元件存取</h4>
     <div class="code">
 {% highlight js %}
 import { Datepicker, Dropdown, Modal, Tabbox, Toast, Tooltip } from '@superlanding/beyond'
