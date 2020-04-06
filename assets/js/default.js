@@ -4,7 +4,7 @@ import bindModals from '../../_includes/demos/modals'
 import bindAutocompletes from '../../_includes/demos/autocompletes'
 import bindDateTimeRangers from '../../_includes/demos/date-time-rangers'
 import bindDatepickers from '../../_includes/demos/datepickers'
-import '../../_includes/demos/search-dropdowns'
+import bindSearchDropdowns from '../../_includes/demos/search-dropdowns'
 import '../../_includes/demos/btns'
 
 const { beyond } = window
@@ -16,6 +16,7 @@ bindModals()
 bindAutocompletes()
 bindDateTimeRangers()
 bindDatepickers()
+bindSearchDropdowns()
 
 document.querySelectorAll('[data-codebox]')
   .forEach(dom => new Codebox(dom))
