@@ -1,26 +1,22 @@
 import './codebox'
 import bindAutocompletes from '../../_includes/demos/autocompletes'
 import bindBtns from '../../_includes/demos/btns'
+import bindCodeboxes from './bindCodeboxes'
 import bindDateTimeRangers from '../../_includes/demos/date-time-rangers'
 import bindDatepickers from '../../_includes/demos/datepickers'
 import bindModals from '../../_includes/demos/modals'
 import bindSearchDropdowns from '../../_includes/demos/search-dropdowns'
 import bindToasts from '../../_includes/demos/toasts'
 
-const { beyond } = window
-const { Codebox } = beyond
-
-beyond.bind()
+window.beyond.bind()
 bindAutocompletes()
 bindBtns()
+bindCodeboxes()
 bindDateTimeRangers()
 bindDatepickers()
 bindModals()
 bindSearchDropdowns()
 bindToasts()
-
-document.querySelectorAll('[data-codebox]')
-  .forEach(dom => new Codebox(dom))
 
 const pad = document.getElementById('width-pad')
 const throttle = require('lodash.throttle')
