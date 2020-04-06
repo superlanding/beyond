@@ -1,6 +1,6 @@
 import './codebox'
 import bindToasts from '../../_includes/demos/toasts'
-import '../../_includes/demos/modals'
+import bindModals from '../../_includes/demos/modals'
 import '../../_includes/demos/autocompletes'
 import '../../_includes/demos/date-time-rangers'
 import '../../_includes/demos/datepickers'
@@ -12,6 +12,7 @@ const { Codebox } = beyond
 
 beyond.bind()
 bindToasts()
+bindModals()
 
 document.querySelectorAll('[data-codebox]')
   .forEach(dom => new Codebox(dom))
