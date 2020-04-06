@@ -6,10 +6,10 @@ module Beyond
         options = {}
 
         if args.length == 1
-          if args[0].is_a?(String)
-            text = args.shift
-          else
+          if args[0].is_a?(Hash)
             options = args.shift
+          else
+            text = args.shift.to_s
           end
         elsif args.length == 2
           text = args.shift
