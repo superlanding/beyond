@@ -1,23 +1,23 @@
 import './codebox'
-import bindToasts from '../../_includes/demos/toasts'
-import bindModals from '../../_includes/demos/modals'
 import bindAutocompletes from '../../_includes/demos/autocompletes'
+import bindBtns from '../../_includes/demos/btns'
 import bindDateTimeRangers from '../../_includes/demos/date-time-rangers'
 import bindDatepickers from '../../_includes/demos/datepickers'
+import bindModals from '../../_includes/demos/modals'
 import bindSearchDropdowns from '../../_includes/demos/search-dropdowns'
-import bindBtns from '../../_includes/demos/btns'
+import bindToasts from '../../_includes/demos/toasts'
 
 const { beyond } = window
 const { Codebox } = beyond
 
 beyond.bind()
-bindToasts()
-bindModals()
 bindAutocompletes()
+bindBtns()
 bindDateTimeRangers()
 bindDatepickers()
+bindModals()
 bindSearchDropdowns()
-bindBtns()
+bindToasts()
 
 document.querySelectorAll('[data-codebox]')
   .forEach(dom => new Codebox(dom))
