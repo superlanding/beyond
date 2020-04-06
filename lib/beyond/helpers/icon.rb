@@ -2,15 +2,18 @@ module Beyond
   module Helpers
     module Icon
       def b_icon(i, *args)
-        if args.is_a?(Hash)
-          text = nil
-          options = args
-        elsif args.is_a?(Array)
+        text = nil
+        options = {}
+
+        if args.length == 1
+          if args[0].is_a?(String)
+            text = args.shift
+          else
+            options = args.shift
+          end
+        elsif args.length == 2
           text = args.shift
-          options = args.shift || {}
-        else
-          text = nil
-          options = {}
+          options = args.shift
         end
 
         klass = options.delete(:class) { nil }
