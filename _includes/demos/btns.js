@@ -1,4 +1,4 @@
-(function() {
+export default function bindBtns() {
   const { Btn } = window.beyond
   document.querySelectorAll('[data-btn]')
     .forEach(dom => {
@@ -7,4 +7,4 @@
         btn.setLoading(! btn.loading)
       })
     })
-})()
+}
