@@ -78,3 +78,5 @@
   items:
     - name: Turbolinks
       link: /integrations/turbolinks.html
+    - name: jQuery
+      link: /integrations/jquery.html
