@@ -1,61 +1,42 @@
 import './codebox'
-import '../../_includes/demos/toasts'
-import '../../_includes/demos/modals'
-import '../../_includes/demos/autocompletes'
-import '../../_includes/demos/date-time-rangers'
-import '../../_includes/demos/datepickers'
-import '../../_includes/demos/search-dropdowns'
-import '../../_includes/demos/btns'
+import bindAutocompletes from '../../_includes/demos/autocompletes'
+import bindBtns from '../../_includes/demos/btns'
+import bindCodeboxes from './bindCodeboxes'
+import bindDateTimeRangers from '../../_includes/demos/date-time-rangers'
+import bindDatepickers from '../../_includes/demos/datepickers'
+import bindModals from '../../_includes/demos/modals'
+import bindSearchDropdowns from '../../_includes/demos/search-dropdowns'
+import bindToasts from '../../_includes/demos/toasts'
+import bindWidthPad from './bindWidthPad'
 
-const { beyond } = window
-const { Codebox } = beyond
+const { beyond, Turbolinks } = window
+const { docReady } = beyond
+const unbinds = []
 
-beyond.bind()
+Turbolinks.start()
 
-document.querySelectorAll('[data-codebox]')
-  .forEach(dom => new Codebox(dom))
+document.addEventListener('turbolinks:before-render', () => unbindAll())
+document.addEventListener('turbolinks:render', () => bindAll())
 
-const pad = document.getElementById('width-pad')
-const throttle = require('lodash.throttle')
-const resolutionTables = document.querySelectorAll('[data-table-resolution]')
-const getHighLightIndex = width => {
-  if (width >= 1200) {
-    return 5
-  }
-  if (width >= 992) {
-    return 4
-  }
-  if (width >= 768) {
-    return 3
-  }
-  if (width >= 576) {
-    return 2
-  }
-  return 1
+docReady()
+  .then(() => bindAll())
+
+function bindAll() {
+  unbinds.push(bindCodeboxes())
+  unbinds.push(bindWidthPad())
+
+  beyond.bind()
+
+  bindAutocompletes()
+  bindBtns()
+  bindDateTimeRangers()
+  bindDatepickers()
+  bindModals()
+  bindSearchDropdowns()
+  bindToasts()
 }
-const highlightTableCol = (table, index) => {
-  table.querySelectorAll('tr')
-    .forEach((tr, trIndex) => {
-      const selector = (trIndex === 0) ? 'th' : 'td'
-      tr.querySelectorAll(selector)
-        .forEach((cell, i) => {
-          if (i === index) {
-            cell.classList.add('active')
-          }
-          else {
-            cell.classList.remove('active')
-          }
-        })
-    })
+
+function unbindAll() {
+  unbinds.forEach(unbind => unbind())
+  beyond.unbindAll()
 }
-const handleResize = () => {
-  if (pad) {
-    pad.innerText = '目前視窗寬度: ' + window.innerWidth + 'px'
-  }
-  const highlightIndex = getHighLightIndex(window.innerWidth)
-  resolutionTables.forEach(table => {
-    highlightTableCol(table, highlightIndex)
-  })
-}
-handleResize()
-window.addEventListener('resize', throttle(handleResize, 100))

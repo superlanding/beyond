@@ -1,4 +1,4 @@
-(function() {
+export default function bindSearchDropdowns() {
   const { SearchDropdown } = window.beyond
 
   const rows = [
@@ -49,4 +49,4 @@
         }
       })
     })
-})()
+}

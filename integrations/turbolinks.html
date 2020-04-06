@@ -1,0 +1,25 @@
+---
+layout: default
+title: Turbolinks
+---
+<div>
+  <h1>Turbolinks</h1>
+  <div class="doc">
+    <h3>與 Turbolinks 一起使用</h3>
+    <div class="code">
+{% highlight js %}
+import Turbolinks from 'turbolinks'
+
+const { beyond } = window
+
+Turbolinks.start()
+
+document.addEventListener('turbolinks:before-render', () => beyond.unbindAll())
+document.addEventListener('turbolinks:render', () => beyond.bind())
+
+beyond.docReady()
+  .then(() => beyond.bind())
+{% endhighlight %}
+    </div>
+  </div>
+</div>
