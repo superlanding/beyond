@@ -1,0 +1,29 @@
+---
+layout: default
+title: jQuery
+---
+<div>
+  <h1>Turbolinks</h1>
+  <div class="doc">
+    <h3>與 jQuery 一起使用</h3>
+    <p>Beyond 會自動載入 jQuery plugin，你也可以選擇手動載入</p>
+    <div class="code">
+{% highlight js %}
+import $ from 'jquery'
+
+window.beyond.bindJQuery($)
+
+// jQuery plugins
+$('[data-alert]').alert()
+$('input[type="checkbox"]').checkbox()
+$('[data-dropdown]').dropdown()
+$('[data-menu-toggle]').menu()
+$('[data-navbar]').navbar()
+$('input[type="radio"]').radio()
+$('[data-sidebar-opener]').sidebar()
+$('[data-tabbox]').tabbox()
+$('[data-tooltip]').tooltip()
+{% endhighlight %}
+    </div>
+  </div>
+</div>

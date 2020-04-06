@@ -12,6 +12,7 @@ module.exports = {
     }
   },
   rules: {
+    "spaced-comment": "off",
     "require-jsdoc": "off",
     "padded-blocks": "off",
     "semi": "off",

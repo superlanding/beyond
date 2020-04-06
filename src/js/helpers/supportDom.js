@@ -1,4 +1,5 @@
 import isFunction from 'lodash.isfunction'
+import createdComponents from '../consts/createdComponents'
 
 export default function supportDom(target) {
 
@@ -10,6 +11,7 @@ export default function supportDom(target) {
       if (isFunction(super.init)) {
         super.init()
       }
+      createdComponents.push(this)
     }
 
     on(name, func) {
