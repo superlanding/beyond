@@ -19,6 +19,10 @@
       href="/beyond/assets/img/icons/favicon-16x16.png">
 <link rel="manifest" href="/beyond/assets/img/icons/manifest.json">
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     
       <script src="/beyond/dist/beyond.js"></script>
     
@@ -204,6 +208,26 @@
         
       </li>
     
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Integrations"
+               data-default-visible>Integrations<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Integrations">
+            
+              
+                <a href="/beyond/integrations/turbolinks.html" class="nav-item">Turbolinks</a>
+              
+           
+              
+                <a href="/beyond/integrations/jquery.html" class="nav-item">jQuery</a>
+              
+           
+          </ul>
+        
+      </li>
+    
   </ul>
 </nav>
 
@@ -297,7 +321,7 @@
 30
 31
 32
-</pre></td><td class="code"><pre><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindAutocompletes</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">Autocomplete</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
 
   <span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="p">[</span>
@@ -328,7 +352,7 @@
       <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">prefix</span>
     <span class="p">}</span>
   <span class="p">})</span>
-<span class="p">})()</span>
+<span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></figure>
       </div>
     
