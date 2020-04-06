@@ -19,6 +19,10 @@
       href="/beyond/assets/img/icons/favicon-16x16.png">
 <link rel="manifest" href="/beyond/assets/img/icons/manifest.json">
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     
       <script src="/beyond/dist/beyond.js"></script>
     
@@ -198,6 +202,26 @@
            
               
                 <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
+              
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Integrations"
+               data-default-visible>Integrations<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Integrations">
+            
+              
+                <a href="/beyond/integrations/turbolinks.html" class="nav-item">Turbolinks</a>
+              
+           
+              
+                <a href="/beyond/integrations/jquery.html" class="nav-item">jQuery</a>
               
            
           </ul>
@@ -407,18 +431,24 @@
 10
 11
 12
-</pre></td><td class="code"><pre><span class="kd">const</span> <span class="p">{</span> <span class="nx">Modal</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+13
+14
+15
+</pre></td><td class="code"><pre><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindModals</span><span class="p">()</span> <span class="p">{</span>
 
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-modal-opener]</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">new</span> <span class="nx">Modal</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">confirm</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">confirmed</span><span class="dl">'</span><span class="p">)</span>
-    <span class="p">},</span>
-    <span class="nx">cancel</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">cancelled</span><span class="dl">'</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span>
-    <span class="p">}</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">Modal</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+
+  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-modal-opener]</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="nx">Modal</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">confirm</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">confirmed</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">},</span>
+      <span class="nx">cancel</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">cancelled</span><span class="dl">'</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
   <span class="p">})</span>
-<span class="p">})</span>
+<span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></figure>
       </div>
     

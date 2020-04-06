@@ -1,11 +1,13 @@
 require "beyond/version"
 require "beyond_form"
 module Beyond
+
   class << self
 
     def load!
       if rails?
         register_rails_engine
+        require "beyond/helpers"
       elsif sprockets?
         register_sprockets
       end
