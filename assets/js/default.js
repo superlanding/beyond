@@ -9,14 +9,34 @@ import bindSearchDropdowns from '../../_includes/demos/search-dropdowns'
 import bindToasts from '../../_includes/demos/toasts'
 import bindWidthPad from './bindWidthPad'
 
-bindCodeboxes()
-bindWidthPad()
+const { beyond, Turbolinks } = window
+const { docReady } = beyond
+const unbinds = []
 
-window.beyond.bind()
-bindAutocompletes()
-bindBtns()
-bindDateTimeRangers()
-bindDatepickers()
-bindModals()
-bindSearchDropdowns()
-bindToasts()
+Turbolinks.start()
+
+document.addEventListener('turbolinks:before-render', () => unbindAll())
+document.addEventListener('turbolinks:render', () => bindAll())
+
+docReady()
+  .then(() => bindAll())
+
+function bindAll() {
+  unbinds.push(bindCodeboxes())
+  unbinds.push(bindWidthPad())
+
+  beyond.bind()
+
+  bindAutocompletes()
+  bindBtns()
+  bindDateTimeRangers()
+  bindDatepickers()
+  bindModals()
+  bindSearchDropdowns()
+  bindToasts()
+}
+
+function unbindAll() {
+  unbinds.forEach(unbind => unbind())
+  beyond.unbindAll()
+}
