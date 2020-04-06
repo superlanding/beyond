@@ -5,7 +5,7 @@ import bindAutocompletes from '../../_includes/demos/autocompletes'
 import bindDateTimeRangers from '../../_includes/demos/date-time-rangers'
 import bindDatepickers from '../../_includes/demos/datepickers'
 import bindSearchDropdowns from '../../_includes/demos/search-dropdowns'
-import '../../_includes/demos/btns'
+import bindBtns from '../../_includes/demos/btns'
 
 const { beyond } = window
 const { Codebox } = beyond
@@ -17,6 +17,7 @@ bindAutocompletes()
 bindDateTimeRangers()
 bindDatepickers()
 bindSearchDropdowns()
+bindBtns()
 
 document.querySelectorAll('[data-codebox]')
   .forEach(dom => new Codebox(dom))
