@@ -1,4 +1,4 @@
-(function() {
+export default function bindAutocompletes() {
   const { Autocomplete } = window.beyond
 
   const rows = [
@@ -29,4 +29,4 @@
       return row.prefix
     }
   })
-})()
+}
