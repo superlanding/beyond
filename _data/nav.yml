@@ -73,3 +73,8 @@
       link: /components/toasts.html
     - name: Tooltips
       link: /components/tooltips.html
+
+- folder: Integrations
+  items:
+    - name: Turbolinks
+      link: /integrations/turbolinks.html
