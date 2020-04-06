@@ -2,7 +2,7 @@ import './codebox'
 import bindToasts from '../../_includes/demos/toasts'
 import bindModals from '../../_includes/demos/modals'
 import bindAutocompletes from '../../_includes/demos/autocompletes'
-import '../../_includes/demos/date-time-rangers'
+import bindDateTimeRangers from '../../_includes/demos/date-time-rangers'
 import '../../_includes/demos/datepickers'
 import '../../_includes/demos/search-dropdowns'
 import '../../_includes/demos/btns'
@@ -14,6 +14,7 @@ beyond.bind()
 bindToasts()
 bindModals()
 bindAutocompletes()
+bindDateTimeRangers()
 
 document.querySelectorAll('[data-codebox]')
   .forEach(dom => new Codebox(dom))
