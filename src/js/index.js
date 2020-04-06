@@ -22,6 +22,7 @@ import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
 import bind from './helpers/bind'
 import docReady from './helpers/docReady'
+import unbindAll from './helpers/unbindAll'
 
 export {
   Alert,
@@ -41,5 +42,6 @@ export {
   Toast,
   Tooltip,
   bind,
-  docReady
+  docReady,
+  unbindAll
 }
