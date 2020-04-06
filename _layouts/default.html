@@ -14,6 +14,7 @@
     {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
     {% include icons.html %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
     {% if jekyll.environment == "development" %}
       <script src="{{ site.webpack_url }}/beyond.js"></script>
     {% else %}
