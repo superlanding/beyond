@@ -16,7 +16,7 @@ module Beyond
         css = "alert alert-#{style} #{css}"
         css = "#{css} alert-dismissible" if dismissible
 
-        opts = options.merge(class: css, role: "alert")
+        opts = options.merge(class: css, role: "alert", "data-alert" => true)
         content_tag(:div, opts) do
           concat(html)
           concat(alertbox_dismiss_button) if dismissible
