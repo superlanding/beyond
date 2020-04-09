@@ -241,6 +241,8 @@
       <a>HTML</a>
     
     
+      <a>JS</a>
+    
     
   </div>
   <div class="codebox-panes" data-panes>
@@ -255,6 +257,68 @@
 </pre></td></tr></tbody></table></code></pre></figure>
       </div>
     
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="code"><pre><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindToasts</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="kd">const</span> <span class="nx">names</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">路人甲</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">路人乙</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">路人丙</span><span class="dl">'</span><span class="p">]</span>
+  <span class="kd">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">吃了一個漢堡</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">跌了一跤</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">說: 你當台灣人是塑膠做的喔 ! 不要欺負我們台灣人</span><span class="dl">'</span><span class="p">]</span>
+
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">Toast</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+  <span class="kd">const</span> <span class="nx">toast</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Toast</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">btn-toast</span><span class="dl">'</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">btn</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+
+  <span class="kd">let</span> <span class="nx">clickedCount</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+    <span class="kd">const</span> <span class="nx">num</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">num</span> <span class="o">%</span> <span class="nx">names</span><span class="p">.</span><span class="nx">length</span>
+
+    <span class="nx">toast</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
+      <span class="na">message</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="o">++</span><span class="nx">clickedCount</span><span class="p">}</span><span class="s2">. </span><span class="p">${</span><span class="nx">names</span><span class="p">[</span><span class="nx">index</span><span class="p">]}${</span><span class="nx">actions</span><span class="p">[</span><span class="nx">index</span><span class="p">]}</span><span class="s2">`</span><span class="p">,</span>
+      <span class="na">btnText</span><span class="p">:</span> <span class="dl">'</span><span class="s1">取消</span><span class="dl">'</span><span class="p">,</span>
+      <span class="nx">btnCb</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+  <span class="p">},</span> <span class="kc">false</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
     
     
   </div>
