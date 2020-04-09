@@ -9,6 +9,7 @@ import bindMenuFn from './bindMenuFn'
 import bindModalFn from './bindModalFn'
 import bindNavbarFn from './bindNavbarFn'
 import bindRadioFn from './bindRadioFn'
+import bindSearchDropdownFn from './bindSearchDropdownFn'
 import bindSidebarFn from './bindSidebarFn'
 import bindTabboxFn from './bindTabboxFn'
 import bindTooltipFn from './bindTooltipFn'
@@ -34,6 +35,7 @@ export default function bindJQuery(jQuery) {
   bindMenuFn($)
   bindNavbarFn($)
   bindRadioFn($)
+  bindSearchDropdownFn($)
   bindSidebarFn($)
   bindTabboxFn($)
   bindTooltipFn($)
