@@ -339,10 +339,14 @@ td.code > pre {
 
 .page-home h1 {
   margin-bottom: .6rem; }
+.page-home h2 {
+  margin-top: 1rem; }
 .page-home h3 {
   margin-bottom: .8rem; }
 .page-home .code {
   margin-bottom: 1.8rem; }
+.page-home .code-label {
+  margin-bottom: .4rem; }
 
 .page-typography .table .tag {
   margin-right: 4px;
