@@ -2,6 +2,7 @@ import bindAutocompleteFn from './bindAutocompleteFn'
 import bindAlertFn from './bindAlertFn'
 import bindBtnFn from './bindBtnFn'
 import bindDateTimeRangerFn from './bindDateTimeRangerFn'
+import bindDatepickerFn from './bindDatepickerFn'
 import bindCheckboxFn from './bindCheckboxFn'
 import bindDropdownFn from './bindDropdownFn'
 import bindMenuFn from './bindMenuFn'
@@ -26,6 +27,7 @@ export default function bindJQuery(jQuery) {
   bindBtnFn($)
   bindCheckboxFn($)
   bindDateTimeRangerFn($)
+  bindDatepickerFn($)
   bindDropdownFn($)
   bindMenuFn($)
   bindNavbarFn($)
