@@ -6,6 +6,7 @@ import bindDatepickerFn from './bindDatepickerFn'
 import bindCheckboxFn from './bindCheckboxFn'
 import bindDropdownFn from './bindDropdownFn'
 import bindMenuFn from './bindMenuFn'
+import bindModalFn from './bindModalFn'
 import bindNavbarFn from './bindNavbarFn'
 import bindRadioFn from './bindRadioFn'
 import bindSidebarFn from './bindSidebarFn'
@@ -29,6 +30,7 @@ export default function bindJQuery(jQuery) {
   bindDateTimeRangerFn($)
   bindDatepickerFn($)
   bindDropdownFn($)
+  bindModalFn($)
   bindMenuFn($)
   bindNavbarFn($)
   bindRadioFn($)
