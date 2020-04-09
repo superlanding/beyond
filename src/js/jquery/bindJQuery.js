@@ -12,6 +12,7 @@ import bindRadioFn from './bindRadioFn'
 import bindSearchDropdownFn from './bindSearchDropdownFn'
 import bindSidebarFn from './bindSidebarFn'
 import bindTabboxFn from './bindTabboxFn'
+import bindToastFn from './bindToastFn'
 import bindTooltipFn from './bindTooltipFn'
 
 export default function bindJQuery(jQuery) {
@@ -38,5 +39,6 @@ export default function bindJQuery(jQuery) {
   bindSearchDropdownFn($)
   bindSidebarFn($)
   bindTabboxFn($)
+  bindToastFn($)
   bindTooltipFn($)
 }
