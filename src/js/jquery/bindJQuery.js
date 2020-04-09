@@ -1,5 +1,6 @@
 import bindAutocompleteFn from './bindAutocompleteFn'
 import bindAlertFn from './bindAlertFn'
+import bindBtnFn from './bindBtnFn'
 import bindCheckboxFn from './bindCheckboxFn'
 import bindDropdownFn from './bindDropdownFn'
 import bindMenuFn from './bindMenuFn'
@@ -21,6 +22,7 @@ export default function bindJQuery(jQuery) {
   }
   bindAutocompleteFn($)
   bindAlertFn($)
+  bindBtnFn($)
   bindCheckboxFn($)
   bindDropdownFn($)
   bindMenuFn($)
