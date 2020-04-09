@@ -1,3 +1,4 @@
+import bindAutocompleteFn from './bindAutocompleteFn'
 import bindAlertFn from './bindAlertFn'
 import bindCheckboxFn from './bindCheckboxFn'
 import bindDropdownFn from './bindDropdownFn'
@@ -18,6 +19,7 @@ export default function bindJQuery(jQuery) {
   if (typeof $ === 'undefined') {
     return
   }
+  bindAutocompleteFn($)
   bindAlertFn($)
   bindCheckboxFn($)
   bindDropdownFn($)
