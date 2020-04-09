@@ -3,7 +3,11 @@ import Menu from '../components/Menu'
 export default function bindMenuFn($) {
 
   $.fn.menu = function() {
-    this.each((i, dom) => new Menu(dom))
+
+    const menus = this.map((i, dom) => new Menu(dom))
+
+    this.destroy = () => menus.each((i, m) => m.destroy())
+
     return this
   }
 }
