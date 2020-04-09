@@ -34,7 +34,9 @@
 .label-checkbox .checkbox .icon-checkbox {
   transform: translateY(-1px);
 }
-
+label.checkbox {
+  margin-bottom: initial;
+}
 .checkbox {
   transform: translateY(3px);
   &.focus {
