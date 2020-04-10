@@ -7,9 +7,11 @@
     <title>Modals | Beyond</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+
     
       <link rel="stylesheet" href="/beyond/dist/beyond.css">
     
+
     <link rel="stylesheet" href="/beyond/assets/css/styles.css">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
@@ -26,12 +28,9 @@
 
     
       <script src="/beyond/dist/beyond.js"></script>
-    
-
-    
       <script src="/beyond/dist/beyond-jquery.js"></script>
+      <script src="/beyond/dist/web.js"></script>
     
-
   </head>
   <body class="container bg-admin">
     <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
@@ -440,20 +439,26 @@
 13
 14
 15
+16
+17
+18
 </pre></td><td class="code"><pre><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindModals</span><span class="p">()</span> <span class="p">{</span>
 
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">Modal</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
 
-  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-modal-opener]</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">new</span> <span class="nx">Modal</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">modals</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-modal-opener]</span><span class="dl">'</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Modal</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
       <span class="nx">confirm</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">confirmed</span><span class="dl">'</span><span class="p">)</span>
       <span class="p">},</span>
       <span class="nx">cancel</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">cancelled</span><span class="dl">'</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span>
       <span class="p">}</span>
-    <span class="p">})</span>
-  <span class="p">})</span>
+    <span class="p">}))</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">unbindModals</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">modals</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">m</span> <span class="o">=&gt;</span> <span class="nx">m</span><span class="p">.</span><span class="nx">destroy</span><span class="p">())</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></figure>
       </div>
@@ -636,8 +641,5 @@
 
       </main>
     </div>
-    
-      <script src="/beyond/dist/web.js"></script>
-    
   </body>
 </html>

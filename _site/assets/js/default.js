@@ -10,43 +10,28 @@ import bindToasts from '../../_includes/demos/toasts'
 import bindWidthPad from './bindWidthPad'
 
 const { beyond, Turbolinks, $ } = window
-const { docReady } = beyond
 const bindJQuery = window['beyond-jquery'].default
 const unbinds = []
 
 Turbolinks.start()
+bindJQuery(beyond, $)
 
-document.addEventListener('turbolinks:before-render', () => unbindAll())
-document.addEventListener('turbolinks:render', () => bindAll())
-
-docReady()
-  .then(() => bindAll())
+document.addEventListener('turbolinks:before-cache', () => unbindAll())
+document.addEventListener('turbolinks:load', () => bindAll())
 
 function bindAll() {
-  bindJQuery(beyond, $)
+  beyond.bind()
+
   unbinds.push(bindCodeboxes())
   unbinds.push(bindWidthPad())
 
-  beyond.bind()
-
-  // jQuery plugins
-  /*$('[data-alert]').alert()
-  $('input[type="checkbox"]').checkbox()
-  $('[data-dropdown]').dropdown()
-  $('[data-menu-toggle]').menu()
-  $('[data-navbar]').navbar()
-  $('input[type="radio"]').radio()
-  $('[data-sidebar-opener]').sidebar()
-  $('[data-tabbox]').tabbox()
-  $('[data-tooltip]').tooltip()*/
-
-  bindAutocompletes()
-  bindBtns()
-  bindDateTimeRangers()
-  bindDatepickers()
-  bindModals()
-  bindSearchDropdowns()
-  bindToasts()
+  unbinds.push(bindAutocompletes())
+  unbinds.push(bindBtns())
+  unbinds.push(bindDateTimeRangers())
+  unbinds.push(bindDatepickers())
+  unbinds.push(bindModals())
+  unbinds.push(bindSearchDropdowns())
+  unbinds.push(bindToasts())
 }
 
 function unbindAll() {

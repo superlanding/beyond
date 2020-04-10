@@ -7,9 +7,11 @@
     <title>Search Dropdowns | Beyond</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+
     
       <link rel="stylesheet" href="/beyond/dist/beyond.css">
     
+
     <link rel="stylesheet" href="/beyond/assets/css/styles.css">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
@@ -26,12 +28,9 @@
 
     
       <script src="/beyond/dist/beyond.js"></script>
-    
-
-    
       <script src="/beyond/dist/beyond-jquery.js"></script>
+      <script src="/beyond/dist/web.js"></script>
     
-
   </head>
   <body class="container bg-admin">
     <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
@@ -329,6 +328,10 @@
 50
 51
 52
+53
+54
+55
+56
 </pre></td><td class="code"><pre><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindSearchDropdowns</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">SearchDropdown</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
 
@@ -352,34 +355,38 @@
     <span class="p">{</span> <span class="na">prefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SW14</span><span class="dl">'</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">素TEE / 內褲 / 平口褲 ➜ 版型專為亞洲人身形設計</span><span class="dl">'</span> <span class="p">}</span>
   <span class="p">]</span>
 
-  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-search-dropdown]</span><span class="dl">'</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="k">new</span> <span class="nx">SearchDropdown</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
-        <span class="na">placeholder</span><span class="p">:</span> <span class="dl">'</span><span class="s1">搜尋</span><span class="dl">'</span><span class="p">,</span>
-        <span class="nx">renderItem</span><span class="p">(</span><span class="nx">row</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">selected</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">return</span> <span class="s2">`
-            &lt;div class="search-dropdown-menu-item </span><span class="p">${</span><span class="nx">selected</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">selected</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">"
-                 data-item&gt;
-              &lt;strong&gt;</span><span class="p">${</span><span class="nx">row</span><span class="p">.</span><span class="nx">prefix</span><span class="p">}</span><span class="s2">&lt;/strong&gt;
-              &lt;span&gt;</span><span class="p">${</span><span class="nx">row</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2">&lt;/span&gt;
-            &lt;/div&gt;
-            `</span>
-        <span class="p">},</span>
-        <span class="k">async</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">return</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">filter</span><span class="p">(({</span> <span class="nx">prefix</span><span class="p">,</span> <span class="nx">title</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">placeholder</span><span class="p">:</span> <span class="dl">'</span><span class="s1">搜尋</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">renderItem</span><span class="p">(</span><span class="nx">row</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">selected</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s2">`
+        &lt;div class="search-dropdown-menu-item </span><span class="p">${</span><span class="nx">selected</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">selected</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">"
+             data-item&gt;
+          &lt;strong&gt;</span><span class="p">${</span><span class="nx">row</span><span class="p">.</span><span class="nx">prefix</span><span class="p">}</span><span class="s2">&lt;/strong&gt;
+          &lt;span&gt;</span><span class="p">${</span><span class="nx">row</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2">&lt;/span&gt;
+        &lt;/div&gt;
+        `</span>
+    <span class="p">},</span>
+    <span class="k">async</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">filter</span><span class="p">(({</span> <span class="nx">prefix</span><span class="p">,</span> <span class="nx">title</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
-            <span class="kd">const</span> <span class="nx">upperKeyword</span> <span class="o">=</span> <span class="nx">keyword</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
-            <span class="kd">const</span> <span class="nx">upperTitle</span> <span class="o">=</span> <span class="nx">title</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
-            <span class="kd">const</span> <span class="nx">upperPrefix</span> <span class="o">=</span> <span class="nx">prefix</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+        <span class="kd">const</span> <span class="nx">upperKeyword</span> <span class="o">=</span> <span class="nx">keyword</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+        <span class="kd">const</span> <span class="nx">upperTitle</span> <span class="o">=</span> <span class="nx">title</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+        <span class="kd">const</span> <span class="nx">upperPrefix</span> <span class="o">=</span> <span class="nx">prefix</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
 
-            <span class="k">return</span> <span class="nx">upperPrefix</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">upperKeyword</span><span class="p">)</span> <span class="o">||</span> <span class="nx">upperTitle</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">upperKeyword</span><span class="p">)</span>
-          <span class="p">})</span>
-        <span class="p">},</span>
-        <span class="nx">itemClick</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">prefix</span>
-        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">upperPrefix</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">upperKeyword</span><span class="p">)</span> <span class="o">||</span> <span class="nx">upperTitle</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">upperKeyword</span><span class="p">)</span>
       <span class="p">})</span>
-    <span class="p">})</span>
+    <span class="p">},</span>
+    <span class="nx">itemClick</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">prefix</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">searchDropdowns</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-search-dropdown]</span><span class="dl">'</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">SearchDropdown</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">options</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">unbindSearchDropdowns</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">searchDropdowns</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">s</span> <span class="o">=&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">destroy</span><span class="p">())</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></figure>
       </div>
@@ -450,8 +457,5 @@
 
       </main>
     </div>
-    
-      <script src="/beyond/dist/web.js"></script>
-    
   </body>
 </html>

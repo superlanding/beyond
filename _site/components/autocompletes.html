@@ -7,9 +7,11 @@
     <title>Autocompletes | Beyond</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+
     
       <link rel="stylesheet" href="/beyond/dist/beyond.css">
     
+
     <link rel="stylesheet" href="/beyond/assets/css/styles.css">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
@@ -26,12 +28,9 @@
 
     
       <script src="/beyond/dist/beyond.js"></script>
-    
-
-    
       <script src="/beyond/dist/beyond-jquery.js"></script>
+      <script src="/beyond/dist/web.js"></script>
     
-
   </head>
   <body class="container bg-admin">
     <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
@@ -327,7 +326,22 @@
 30
 31
 32
-</pre></td><td class="code"><pre><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindAutocompletes</span><span class="p">()</span> <span class="p">{</span>
+33
+34
+35
+36
+37
+38
+</pre></td><td class="code"><pre><span class="k">import</span> <span class="nx">noop</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">lodash.noop</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindAutocompletes</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="kd">const</span> <span class="nx">dom</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-autocomplete]</span><span class="dl">'</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">dom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">noop</span>
+  <span class="p">}</span>
+
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">Autocomplete</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
 
   <span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="p">[</span>
@@ -335,14 +349,7 @@
     <span class="p">{</span> <span class="na">prefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SPY</span><span class="dl">'</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">🔥SHARE.CO🔥經典粉絲限定 VIP 方案</span><span class="dl">'</span> <span class="p">},</span>
     <span class="p">{</span> <span class="na">prefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SW</span><span class="dl">'</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">素TEE / 內褲 / 平口褲 ➜ 版型專為亞洲人身形設計</span><span class="dl">'</span> <span class="p">}</span>
   <span class="p">]</span>
-
-  <span class="kd">const</span> <span class="nx">dom</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-autocomplete]</span><span class="dl">'</span><span class="p">)</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">dom</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span>
-  <span class="p">}</span>
-
-  <span class="k">new</span> <span class="nx">Autocomplete</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">autocomplete</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Autocomplete</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
 
     <span class="k">async</span> <span class="nx">getData</span><span class="p">({</span> <span class="nx">keyword</span> <span class="p">})</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">filter</span><span class="p">(({</span> <span class="nx">prefix</span><span class="p">,</span> <span class="nx">title</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -358,6 +365,10 @@
       <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">prefix</span>
     <span class="p">}</span>
   <span class="p">})</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">unbindAutocompletes</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">autocomplete</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></figure>
       </div>
@@ -450,8 +461,5 @@
 
       </main>
     </div>
-    
-      <script src="/beyond/dist/web.js"></script>
-    
   </body>
 </html>
