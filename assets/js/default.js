@@ -29,7 +29,7 @@ function bindAll() {
   unbinds.push(bindBtns())
   unbinds.push(bindDateTimeRangers())
   unbinds.push(bindDatepickers())
-  bindModals()
+  unbinds.push(bindModals())
   bindSearchDropdowns()
   unbinds.push(bindToasts())
 }
