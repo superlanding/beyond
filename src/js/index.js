@@ -23,9 +23,6 @@ import Tooltip from './components/Tooltip'
 import bind from './helpers/bind'
 import docReady from './helpers/docReady'
 import unbindAll from './helpers/unbindAll'
-import bindJQuery from './jquery/bindJQuery'
-
-bindJQuery()
 
 export {
   Alert,
@@ -46,6 +43,5 @@ export {
   Tooltip,
   bind,
   docReady,
-  unbindAll,
-  bindJQuery
+  unbindAll
 }
