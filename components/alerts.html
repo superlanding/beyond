@@ -8,4 +8,12 @@ title: Alerts
   {% include codebox.html result="demos/alert-link.html" html="demos/alert-link.html" %}
   {% include codebox.html result="demos/alert-heading.html" html="demos/alert-heading.html" %}
   {% include codebox.html result="demos/alert-dismiss.html" html="demos/alert-dismiss.html" %}
+
+  <h2>Rails View Helper</h2>
+
+  <div class="code">
+{% highlight erb %}
+<%= b_alert_box("訊息內容", style: :danger, dismissible: true) %>
+{% endhighlight %}
+  </div>
 </div>
