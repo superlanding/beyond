@@ -26,7 +26,7 @@ function bindAll() {
   unbinds.push(bindWidthPad())
 
   unbinds.push(bindAutocompletes())
-  bindBtns()
+  unbinds.push(bindBtns())
   bindDateTimeRangers()
   bindDatepickers()
   bindModals()
