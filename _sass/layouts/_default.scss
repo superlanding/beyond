@@ -14,9 +14,13 @@
 .btn-sidebar {
   margin: 14px;
 }
+.code-label {
+  margin-bottom: .4rem;
+}
 .code {
   background-color: #4f556a;
   padding: 14px 0;
+  margin-bottom: 1.2rem;
 }
 .codebox-label {
   margin-top: 14px;
@@ -35,7 +39,8 @@
     margin-top: 30px;
   }
   h3 {
-    margin-top: 14px;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
   }
   .table {
     margin-top: 20px;
