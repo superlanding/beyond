@@ -10,17 +10,13 @@ import bindToasts from '../../_includes/demos/toasts'
 import bindWidthPad from './bindWidthPad'
 
 const { beyond, Turbolinks, $ } = window
-const { docReady } = beyond
 const bindJQuery = window['beyond-jquery'].default
 const unbinds = []
 
 Turbolinks.start()
 
-document.addEventListener('turbolinks:before-render', () => unbindAll())
-document.addEventListener('turbolinks:render', () => bindAll())
-
-docReady()
-  .then(() => bindAll())
+document.addEventListener('turbolinks:before-cache', () => unbindAll())
+document.addEventListener('turbolinks:load', () => bindAll())
 
 function bindAll() {
   bindJQuery(beyond, $)
