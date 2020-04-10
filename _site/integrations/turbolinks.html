@@ -248,8 +248,8 @@
 
 <span class="nx">Turbolinks</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
 
-<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">turbolinks:before-render</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">beyond</span><span class="p">.</span><span class="nx">unbindAll</span><span class="p">())</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">turbolinks:render</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">beyond</span><span class="p">.</span><span class="nx">bind</span><span class="p">())</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">turbolinks:before-cache</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">beyond</span><span class="p">.</span><span class="nx">unbindAll</span><span class="p">())</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">turbolinks:load</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">beyond</span><span class="p">.</span><span class="nx">bind</span><span class="p">())</span>
 
 <span class="nx">beyond</span><span class="p">.</span><span class="nx">docReady</span><span class="p">()</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">beyond</span><span class="p">.</span><span class="nx">bind</span><span class="p">())</span></code></pre></figure>
