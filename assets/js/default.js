@@ -27,7 +27,7 @@ function bindAll() {
 
   unbinds.push(bindAutocompletes())
   unbinds.push(bindBtns())
-  bindDateTimeRangers()
+  unbinds.push(bindDateTimeRangers())
   bindDatepickers()
   bindModals()
   bindSearchDropdowns()

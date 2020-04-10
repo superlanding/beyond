@@ -6,13 +6,23 @@ export default function bindDateTimeRangers() {
   const { DateTimeRanger } = window.beyond
 
   const dateToTimestamp = date => parseInt(+date / 1000, 10)
+  let dateTimeRangers = []
+  let unbound = false
 
   intlReady()
     .then(() => {
-      document.querySelectorAll('[data-date-time-ranger]')
-        .forEach(dom => new DateTimeRanger(dom, {
+      if (unbound) {
+        return
+      }
+      dateTimeRangers = Array.from(document.querySelectorAll('[data-date-time-ranger]'))
+        .map(dom => new DateTimeRanger(dom, {
           startAt: dateToTimestamp(new Date()),
           endAt: dateToTimestamp(endOfDay(new Date())),
         }))
     })
+
+  return function unbindDateTimeRangers() {
+    unbound = true
+    dateTimeRangers.forEach(d => d.destroy())
+  }
 }
