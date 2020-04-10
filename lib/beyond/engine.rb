@@ -1,7 +1,6 @@
 module Beyond
   module Rails
     class Engine < ::Rails::Engine
-      config.eager_load_namespaces << Beyond
       config.autoload_paths << File.expand_path("lib", __dir__)
 
       initializer 'beyond.assets.precompile' do |app|
