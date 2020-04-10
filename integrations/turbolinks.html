@@ -14,8 +14,8 @@ const { beyond } = window
 
 Turbolinks.start()
 
-document.addEventListener('turbolinks:before-render', () => beyond.unbindAll())
-document.addEventListener('turbolinks:render', () => beyond.bind())
+document.addEventListener('turbolinks:before-cache', () => beyond.unbindAll())
+document.addEventListener('turbolinks:load', () => beyond.bind())
 
 beyond.docReady()
   .then(() => beyond.bind())
