@@ -238,26 +238,180 @@
 </nav>
 
       <main class="col-md-8 col-xl-10 main">
-        <div>
+        <div class="page-jquery">
   <h1>jQuery</h1>
   <div class="doc">
-    <h3>與 jQuery 一起使用</h3>
-    <p>Beyond 會自動載入 jQuery plugin，你也可以選擇手動載入</p>
+    <h3>套用 beyond 的 jQuery plugin</h3>
+    <div class="code-label">CommonJS</div>
     <div class="code">
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">$</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">jquery</span><span class="dl">'</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">beyond</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@superlanding/beyond</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">bindJQuery</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@superlanding/beyond/dist/beyond-jquery</span><span class="dl">'</span>
 
-<span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span><span class="p">.</span><span class="nx">bindJQuery</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span>
+<span class="nx">bindJQuery</span><span class="p">(</span><span class="nx">beyond</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span></code></pre></figure>
+    </div>
 
-<span class="c1">// jQuery plugins</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-alert]</span><span class="dl">'</span><span class="p">).</span><span class="nx">alert</span><span class="p">()</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[type="checkbox"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">checkbox</span><span class="p">()</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-dropdown]</span><span class="dl">'</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">()</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-menu-toggle]</span><span class="dl">'</span><span class="p">).</span><span class="nx">menu</span><span class="p">()</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-navbar]</span><span class="dl">'</span><span class="p">).</span><span class="nx">navbar</span><span class="p">()</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[type="radio"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">radio</span><span class="p">()</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-sidebar-opener]</span><span class="dl">'</span><span class="p">).</span><span class="nx">sidebar</span><span class="p">()</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tabbox]</span><span class="dl">'</span><span class="p">).</span><span class="nx">tabbox</span><span class="p">()</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tooltip]</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">()</span></code></pre></figure>
+    <div class="code-label">Browser</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="p">{</span> <span class="nx">$</span><span class="p">,</span> <span class="nx">beyond</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span>
+<span class="kd">const</span> <span class="nx">bindJQuery</span> <span class="o">=</span> <span class="nb">window</span><span class="p">[</span><span class="dl">'</span><span class="s1">beyond-jquery</span><span class="dl">'</span><span class="p">].</span><span class="k">default</span>
+
+<span class="nx">bindJQuery</span><span class="p">(</span><span class="nx">beyond</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span></code></pre></figure>
+    </div>
+
+    <h3>各元件範例</h3>
+    <div class="code-label">Alert</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 alert 的行為到 dom 上</span>
+<span class="c1">// 所以有 data-dismiss="alert" 的元素被點擊後可以關閉 alert 訊息</span>
+<span class="kd">const</span> <span class="nx">$alerts</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-alert]</span><span class="dl">'</span><span class="p">).</span><span class="nx">alert</span><span class="p">()</span>
+
+<span class="c1">// 移除 alerts 的 listeners</span>
+<span class="nx">$alert</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Checkbox</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 checkbox 的 focus style 到 dom 上</span>
+<span class="kd">const</span> <span class="nx">$checkboxes</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[type="checkbox"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">checkbox</span><span class="p">()</span>
+
+<span class="c1">// 移除 checkbox 的 listeners</span>
+<span class="nx">$checkboxes</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Dropdown</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 dropdown 的行為到 dom 上</span>
+<span class="c1">// options 請參考 Dropdown 元件頁面的說明</span>
+<span class="nx">$dropdowns</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-dropdown]</span><span class="dl">'</span><span class="p">).</span><span class="nx">dropdown</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+
+<span class="c1">// 移除 dropdown 的 listeners</span>
+<span class="nx">$dropdowns</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Menu</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 menu 的行為到 dom 上</span>
+<span class="nx">$menus</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-menu-toggle]</span><span class="dl">'</span><span class="p">).</span><span class="nx">menu</span><span class="p">()</span>
+
+<span class="c1">// 移除 menu 的 listeners</span>
+<span class="nx">$menus</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Navbar</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 navbar 的 到 dom 上</span>
+<span class="nx">$navbars</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-navbar]</span><span class="dl">'</span><span class="p">).</span><span class="nx">navbar</span><span class="p">()</span>
+
+<span class="c1">// 移除 navbar 的 listeners</span>
+<span class="nx">$navbars</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Radio</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 radio 的 focus style 到 dom 上</span>
+<span class="nx">$radios</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[type="radio"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">radio</span><span class="p">()</span>
+
+<span class="c1">// 移除 radio 的 listeners</span>
+<span class="nx">$radios</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Sidebar</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 sidebar 的行為到 dom 上</span>
+<span class="nx">$sidebar</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-sidebar-opener]</span><span class="dl">'</span><span class="p">).</span><span class="nx">sidebar</span><span class="p">()</span>
+
+<span class="c1">// 移除 sidebar 的 listeners</span>
+<span class="nx">$sidebar</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Tabbox</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 tabbox 的行為到 dom 上</span>
+<span class="nx">$tabboxes</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tabbox]</span><span class="dl">'</span><span class="p">).</span><span class="nx">tabbox</span><span class="p">()</span>
+
+<span class="c1">// 移除 tabbox 的 listeners</span>
+<span class="nx">$tabboxes</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Tooltip</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 tooltip 的行為到 dom 上</span>
+<span class="nx">$tooltips</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tooltip]</span><span class="dl">'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">()</span>
+
+<span class="c1">// 移除 tooltip 的 listeners</span>
+<span class="nx">$tooltips</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Autocomplete</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 autocomplete 的行為到 dom 上</span>
+<span class="c1">// options 請參考 Autocomplete 元件說明頁</span>
+<span class="nx">$autocompletes</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-autocomplete]</span><span class="dl">'</span><span class="p">).</span><span class="nx">autocomplete</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+
+<span class="c1">// 移除 autocomplete 的 listeners</span>
+<span class="nx">$autocompletes</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Btn</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 btn 的行為到 dom 上</span>
+<span class="nx">$btns</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-btn]</span><span class="dl">'</span><span class="p">).</span><span class="nx">btn</span><span class="p">()</span>
+
+<span class="c1">// 移除 autocomplete 的 listeners</span>
+<span class="nx">$btns</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">DateTimeRanger</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 dateTimeRanger 的行為到 dom 上</span>
+<span class="c1">// options 請參考 DateTimeRanger 元件說明頁</span>
+<span class="nx">$dateTimeRangers</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-date-time-ranger]</span><span class="dl">'</span><span class="p">).</span><span class="nx">dateTimeRanger</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+
+<span class="c1">// 移除 dateTimeRanger 的 listeners</span>
+<span class="nx">$dateTimeRangers</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Datepicker</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 datepicker 的行為到 dom 上</span>
+<span class="c1">// options 請參考 Datepicker 元件說明頁</span>
+<span class="kd">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="nx">$datepickers</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-datepicker]</span><span class="dl">'</span><span class="p">).</span><span class="nx">datepicker</span><span class="p">(</span><span class="nx">timestamp</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
+
+<span class="c1">// 移除 datepicker 的 listeners</span>
+<span class="nx">$datepickers</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Modal</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 modal 的行為到 dom 上</span>
+<span class="c1">// options 請參考 Modal 元件說明頁</span>
+<span class="nx">$modals</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-modal-opener]</span><span class="dl">'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+
+<span class="c1">// 移除 modal 的 listeners</span>
+<span class="nx">$modals</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">SearchDropdown</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 綁定 searchDropdown 的行為到 dom 上</span>
+<span class="c1">// options 請參考 SearchDropdown 元件說明頁</span>
+<span class="nx">$searchDropdowns</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-search-dropdown]</span><span class="dl">'</span><span class="p">).</span><span class="nx">searchDropdown</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+
+<span class="c1">// 移除 searchDropdown 的 listeners</span>
+<span class="nx">$searchDropdowns</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+    </div>
+
+    <div class="code-label">Toast</div>
+    <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 建立 Toast 控制物件</span>
+<span class="kd">const</span> <span class="nx">toast</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">toast</span><span class="p">()</span>
+
+<span class="nx">toast</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello World</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="c1">// 移除 toast 建立在 document 上的 dom 與 listeners</span>
+<span class="nx">toast</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
     </div>
   </div>
 </div>
