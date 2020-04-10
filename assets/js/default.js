@@ -20,10 +20,10 @@ document.addEventListener('turbolinks:before-cache', () => unbindAll())
 document.addEventListener('turbolinks:load', () => bindAll())
 
 function bindAll() {
+  beyond.bind()
+
   unbinds.push(bindCodeboxes())
   unbinds.push(bindWidthPad())
-
-  beyond.bind()
 
   unbinds.push(bindAutocompletes())
   bindBtns()
