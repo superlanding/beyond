@@ -2,27 +2,215 @@
 layout: default
 title: jQuery
 ---
-<div>
+<div class="page-jquery">
   <h1>jQuery</h1>
   <div class="doc">
-    <h3>與 jQuery 一起使用</h3>
-    <p>Beyond 會自動載入 jQuery plugin，你也可以選擇手動載入</p>
+    <h3>套用 beyond 的 jQuery plugin</h3>
+    <div class="code-label">CommonJS</div>
     <div class="code">
 {% highlight js %}
 import $ from 'jquery'
+import * as beyond from '@superlanding/beyond'
+import bindJQuery from '@superlanding/beyond/dist/beyond-jquery'
 
-window.beyond.bindJQuery($)
+bindJQuery(beyond, $)
+{% endhighlight %}
+    </div>
 
-// jQuery plugins
-$('[data-alert]').alert()
-$('input[type="checkbox"]').checkbox()
-$('[data-dropdown]').dropdown()
-$('[data-menu-toggle]').menu()
-$('[data-navbar]').navbar()
-$('input[type="radio"]').radio()
-$('[data-sidebar-opener]').sidebar()
-$('[data-tabbox]').tabbox()
-$('[data-tooltip]').tooltip()
+    <div class="code-label">Browser</div>
+    <div class="code">
+{% highlight js %}
+const { $, beyond } = window
+const bindJQuery = window['beyond-jquery'].default
+
+bindJQuery(beyond, $)
+{% endhighlight %}
+    </div>
+
+    <h3>各元件範例</h3>
+    <div class="code-label">Alert</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 alert 的行為到 dom 上
+// 所以有 data-dismiss="alert" 的元素被點擊後可以關閉 alert 訊息
+const $alerts = $('[data-alert]').alert()
+
+// 移除 alerts 的 listeners
+$alert.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Checkbox</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 checkbox 的 focus style 到 dom 上
+const $checkboxes = $('input[type="checkbox"]').checkbox()
+
+// 移除 checkbox 的 listeners
+$checkboxes.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Dropdown</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 dropdown 的行為到 dom 上
+// options 請參考 Dropdown 元件頁面的說明
+$dropdowns = $('[data-dropdown]').dropdown(options)
+
+// 移除 dropdown 的 listeners
+$dropdowns.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Menu</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 menu 的行為到 dom 上
+$menus = $('[data-menu-toggle]').menu()
+
+// 移除 menu 的 listeners
+$menus.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Navbar</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 navbar 的 到 dom 上
+$navbars = $('[data-navbar]').navbar()
+
+// 移除 navbar 的 listeners
+$navbars.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Radio</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 radio 的 focus style 到 dom 上
+$radios = $('input[type="radio"]').radio()
+
+// 移除 radio 的 listeners
+$radios.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Sidebar</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 sidebar 的行為到 dom 上
+$sidebar = $('[data-sidebar-opener]').sidebar()
+
+// 移除 sidebar 的 listeners
+$sidebar.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Tabbox</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 tabbox 的行為到 dom 上
+$tabboxes = $('[data-tabbox]').tabbox()
+
+// 移除 tabbox 的 listeners
+$tabboxes.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Tooltip</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 tooltip 的行為到 dom 上
+$tooltips = $('[data-tooltip]').tooltip()
+
+// 移除 tooltip 的 listeners
+$tooltips.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Autocomplete</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 autocomplete 的行為到 dom 上
+// options 請參考 Autocomplete 元件說明頁
+$autocompletes = $('[data-autocomplete]').autocomplete(options)
+
+// 移除 autocomplete 的 listeners
+$autocompletes.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Btn</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 btn 的行為到 dom 上
+$btns = $('[data-btn]').btn()
+
+// 移除 autocomplete 的 listeners
+$btns.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">DateTimeRanger</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 dateTimeRanger 的行為到 dom 上
+// options 請參考 DateTimeRanger 元件說明頁
+$dateTimeRangers = $('[data-date-time-ranger]').dateTimeRanger(options)
+
+// 移除 dateTimeRanger 的 listeners
+$dateTimeRangers.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Datepicker</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 datepicker 的行為到 dom 上
+// options 請參考 Datepicker 元件說明頁
+const timestamp = +new Date() / 1000
+$datepickers = $('[data-datepicker]').datepicker(timestamp, options)
+
+// 移除 datepicker 的 listeners
+$datepickers.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Modal</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 modal 的行為到 dom 上
+// options 請參考 Modal 元件說明頁
+$modals = $('[data-modal-opener]').modal(options)
+
+// 移除 modal 的 listeners
+$modals.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">SearchDropdown</div>
+    <div class="code">
+{% highlight js %}
+// 綁定 searchDropdown 的行為到 dom 上
+// options 請參考 SearchDropdown 元件說明頁
+$searchDropdowns = $('[data-search-dropdown]').searchDropdown(options)
+
+// 移除 searchDropdown 的 listeners
+$searchDropdowns.destroy()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Toast</div>
+    <div class="code">
+{% highlight js %}
+// 建立 Toast 控制物件
+const toast = $.fn.toast()
+
+toast.send('Hello World')
+
+// 移除 toast 建立在 document 上的 dom 與 listeners
+toast.destroy()
 {% endhighlight %}
     </div>
   </div>
