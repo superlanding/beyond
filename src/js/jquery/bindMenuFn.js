@@ -1,6 +1,6 @@
-import Menu from '../components/Menu'
+export default function bindMenuFn(beyond, $) {
 
-export default function bindMenuFn($) {
+  const { Menu } = beyond
 
   $.fn.menu = function() {
 

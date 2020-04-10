@@ -1,6 +1,7 @@
-import Checkbox from '../components/Checkbox'
+export default function bindCheckboxFn(beyond, $) {
 
-export default function bindCheckboxFn($) {
+  const { Checkbox } = beyond
+
   $.fn.checkbox = function() {
 
     const checkboxes = this.map((i, dom) => new Checkbox(dom))

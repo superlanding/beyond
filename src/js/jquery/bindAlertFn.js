@@ -1,6 +1,6 @@
-import Alert from '../components/Alert'
+export default function bindAlertFn(beyond, $) {
 
-export default function bindAlertFn($) {
+  const { Alert } = beyond
 
   $.fn.alert = function() {
 

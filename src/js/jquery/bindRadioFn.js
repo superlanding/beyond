@@ -1,6 +1,6 @@
-import Radio from '../components/Radio'
+export default function bindRadioFn(beyond, $) {
 
-export default function bindRadioFn($) {
+  const { Radio } = beyond
 
   $.fn.radio = function() {
 

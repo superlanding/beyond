@@ -1,6 +1,6 @@
-import SearchDropdown from '../components/SearchDropdown'
+export default function bindSearchDropdownFn(beyond, $) {
 
-export default function bindSearchDropdownFn($) {
+  const { SearchDropdown } = beyond
 
   $.fn.searchDropdown = function(settings) {
 

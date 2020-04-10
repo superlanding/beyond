@@ -1,6 +1,6 @@
-import Btn from '../components/Btn'
+export default function bindBtnFn(beyond, $) {
 
-export default function bindBtnFn($) {
+  const { Btn } = beyond
 
   $.fn.btn = function() {
 
