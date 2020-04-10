@@ -14,12 +14,12 @@ const bindJQuery = window['beyond-jquery'].default
 const unbinds = []
 
 Turbolinks.start()
+bindJQuery(beyond, $)
 
 document.addEventListener('turbolinks:before-cache', () => unbindAll())
 document.addEventListener('turbolinks:load', () => bindAll())
 
 function bindAll() {
-  bindJQuery(beyond, $)
   unbinds.push(bindCodeboxes())
   unbinds.push(bindWidthPad())
 
