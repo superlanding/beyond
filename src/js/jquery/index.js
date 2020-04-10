@@ -25,6 +25,12 @@ export default function bindJQuery(beyond, jQuery) {
   if (typeof $ === 'undefined') {
     return
   }
+
+  // avoid duplicated jquery bindings
+  if (beyond._boundJQuery) {
+    return
+  }
+
   bindAutocompleteFn(beyond, $)
   bindAlertFn(beyond, $)
   bindBtnFn(beyond, $)
@@ -41,4 +47,6 @@ export default function bindJQuery(beyond, jQuery) {
   bindTabboxFn(beyond, $)
   bindToastFn(beyond, $)
   bindTooltipFn(beyond, $)
+
+  beyond._boundJQuery = true
 }
