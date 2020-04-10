@@ -35,7 +35,7 @@ function bindAll() {
   bindDatepickers()
   bindModals()
   bindSearchDropdowns()
-  bindToasts()
+  unbinds.push(bindToasts())
 }
 
 function unbindAll() {
