@@ -1,6 +1,6 @@
-import Tabbox from '../components/Tabbox'
+export default function bindTabboxFn(beyond, $) {
 
-export default function bindTabboxFn($) {
+  const { Tabbox } = beyond
 
   $.fn.tabbox = function() {
 

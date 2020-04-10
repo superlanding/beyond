@@ -1,6 +1,6 @@
-import Autocomplete from '../components/Autocomplete'
+export default function bindAutocompleteFn(beyond, $) {
 
-export default function bindAutocompleteFn($) {
+  const { Autocomplete } = beyond
 
   $.fn.autocomplete = function(options) {
 

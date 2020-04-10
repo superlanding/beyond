@@ -1,6 +1,6 @@
-import Tooltip from '../components/Tooltip'
+export default function bindTooltipFn(beyond, $) {
 
-export default function bindTooltipFn($) {
+  const { Tooltip } = beyond
 
   $.fn.tooltip = function() {
 

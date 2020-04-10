@@ -9,8 +9,9 @@ import bindSearchDropdowns from '../../_includes/demos/search-dropdowns'
 import bindToasts from '../../_includes/demos/toasts'
 import bindWidthPad from './bindWidthPad'
 
-const { beyond, Turbolinks } = window
+const { beyond, Turbolinks, $ } = window
 const { docReady } = beyond
+const bindJQuery = window['beyond-jquery'].default
 const unbinds = []
 
 Turbolinks.start()
@@ -22,6 +23,7 @@ docReady()
   .then(() => bindAll())
 
 function bindAll() {
+  bindJQuery(beyond, $)
   unbinds.push(bindCodeboxes())
   unbinds.push(bindWidthPad())
 

@@ -1,6 +1,6 @@
-import DateTimeRanger from '../components/DateTimeRanger'
+export default function bindDateTimeRangerFn(beyond, $) {
 
-export default function bindDateTimeRangerFn($) {
+  const { DateTimeRanger } = beyond
 
   $.fn.dateTimeRanger = function(settings) {
 
