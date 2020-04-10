@@ -253,9 +253,13 @@ td.code > pre {
 .btn-sidebar {
   margin: 14px; }
 
+.code-label {
+  margin-bottom: .4rem; }
+
 .code {
   background-color: #4f556a;
-  padding: 14px 0; }
+  padding: 14px 0;
+  margin-bottom: 1.2rem; }
 
 .codebox-label {
   margin-top: 14px;
@@ -269,7 +273,8 @@ td.code > pre {
 .doc h2 {
   margin-top: 30px; }
 .doc h3 {
-  margin-top: 14px; }
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem; }
 .doc .table {
   margin-top: 20px; }
 
@@ -343,10 +348,6 @@ td.code > pre {
   margin-top: 1rem; }
 .page-home h3 {
   margin-bottom: .8rem; }
-.page-home .code {
-  margin-bottom: 1.8rem; }
-.page-home .code-label {
-  margin-bottom: .4rem; }
 
 .page-typography .table .tag {
   margin-right: 4px;
