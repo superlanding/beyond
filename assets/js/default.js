@@ -29,7 +29,7 @@ function bindAll() {
 
   beyond.bind()
 
-  bindAutocompletes()
+  unbinds.push(bindAutocompletes())
   bindBtns()
   bindDateTimeRangers()
   bindDatepickers()
