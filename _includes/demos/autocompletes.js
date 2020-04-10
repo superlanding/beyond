@@ -1,4 +1,13 @@
+import noop from 'lodash.noop'
+
 export default function bindAutocompletes() {
+
+  const dom = document.querySelector('[data-autocomplete]')
+
+  if (! dom) {
+    return noop
+  }
+
   const { Autocomplete } = window.beyond
 
   const rows = [
@@ -6,14 +15,7 @@ export default function bindAutocompletes() {
     { prefix: 'SPY', title: '🔥SHARE.CO🔥經典粉絲限定 VIP 方案' },
     { prefix: 'SW', title: '素TEE / 內褲 / 平口褲 ➜ 版型專為亞洲人身形設計' }
   ]
-
-  const dom = document.querySelector('[data-autocomplete]')
-
-  if (! dom) {
-    return
-  }
-
-  new Autocomplete(dom, {
+  const autocomplete = new Autocomplete(dom, {
 
     async getData({ keyword }) {
       return rows.filter(({ prefix, title }) => {
@@ -29,4 +31,8 @@ export default function bindAutocompletes() {
       return row.prefix
     }
   })
+
+  return function unbindAutocompletes() {
+    autocomplete.destroy()
+  }
 }

@@ -1,10 +1,17 @@
 export default function bindBtns() {
+
   const { Btn } = window.beyond
-  document.querySelectorAll('[data-btn]')
-    .forEach(dom => {
-      const btn = new Btn(dom)
-      dom.addEventListener('click', () => {
-        btn.setLoading(! btn.loading)
-      })
+
+  const btns = Array.from(document.querySelectorAll('[data-btn]'))
+    .map(dom => new Btn(dom))
+
+  btns.forEach(btn => {
+    btn.addEvent(btn.dom, 'click', () => {
+      btn.setLoading(! btn.loading)
     })
+  })
+
+  return function unbindBtns() {
+    btns.forEach(btn => btn.destroy())
+  }
 }

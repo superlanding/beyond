@@ -21,32 +21,36 @@ export default function bindSearchDropdowns() {
     { prefix: 'SW14', title: '素TEE / 內褲 / 平口褲 ➜ 版型專為亞洲人身形設計' }
   ]
 
-  document.querySelectorAll('[data-search-dropdown]')
-    .forEach(dom => {
-      new SearchDropdown(dom, {
-        placeholder: '搜尋',
-        renderItem(row, i, selected) {
-          return `
-            <div class="search-dropdown-menu-item ${selected ? 'selected' : ''}"
-                 data-item>
-              <strong>${row.prefix}</strong>
-              <span>${row.title}</span>
-            </div>
-            `
-        },
-        async getData(keyword) {
-          return rows.filter(({ prefix, title }) => {
+  const options = {
+    placeholder: '搜尋',
+    renderItem(row, i, selected) {
+      return `
+        <div class="search-dropdown-menu-item ${selected ? 'selected' : ''}"
+             data-item>
+          <strong>${row.prefix}</strong>
+          <span>${row.title}</span>
+        </div>
+        `
+    },
+    async getData(keyword) {
+      return rows.filter(({ prefix, title }) => {
 
-            const upperKeyword = keyword.toUpperCase()
-            const upperTitle = title.toUpperCase()
-            const upperPrefix = prefix.toUpperCase()
+        const upperKeyword = keyword.toUpperCase()
+        const upperTitle = title.toUpperCase()
+        const upperPrefix = prefix.toUpperCase()
 
-            return upperPrefix.includes(upperKeyword) || upperTitle.includes(upperKeyword)
-          })
-        },
-        itemClick(row) {
-          return row.prefix
-        }
+        return upperPrefix.includes(upperKeyword) || upperTitle.includes(upperKeyword)
       })
-    })
+    },
+    itemClick(row) {
+      return row.prefix
+    }
+  }
+
+  const searchDropdowns = Array.from(document.querySelectorAll('[data-search-dropdown]'))
+    .map(dom => new SearchDropdown(dom, options))
+
+  return function unbindSearchDropdowns() {
+    searchDropdowns.forEach(s => s.destroy())
+  }
 }
