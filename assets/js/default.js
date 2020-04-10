@@ -29,17 +29,6 @@ function bindAll() {
 
   beyond.bind()
 
-  // jQuery plugins
-  /*$('[data-alert]').alert()
-  $('input[type="checkbox"]').checkbox()
-  $('[data-dropdown]').dropdown()
-  $('[data-menu-toggle]').menu()
-  $('[data-navbar]').navbar()
-  $('input[type="radio"]').radio()
-  $('[data-sidebar-opener]').sidebar()
-  $('[data-tabbox]').tabbox()
-  $('[data-tooltip]').tooltip()*/
-
   bindAutocompletes()
   bindBtns()
   bindDateTimeRangers()
