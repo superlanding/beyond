@@ -1,6 +1,7 @@
 import supportDom from '../helpers/supportDom'
 import ToastItem from './ToastItem'
 
+@supportDom
 export default class Toast {
 
   constructor() {
