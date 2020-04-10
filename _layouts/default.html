@@ -23,14 +23,12 @@
 
     {% if jekyll.environment == "development" %}
       <script src="{{ site.webpack_url }}/beyond.js"></script>
+      <script src="{{ site.webpack_url }}/beyond-jquery.js"></script>
+      <script src="{{ site.webpack_url }}/web.js"></script>
     {% else %}
       <script src="{{ '/dist/beyond.js' | relative_url }}"></script>
-    {% endif %}
-
-    {% if jekyll.environment == "development" %}
-      <script src="{{ site.webpack_url }}/beyond-jquery.js"></script>
-    {% else %}
       <script src="{{ '/dist/beyond-jquery.js' | relative_url }}"></script>
+      <script src="{{ '/dist/web.js' | relative_url }}"></script>
     {% endif %}
   </head>
   <body class="container bg-admin">
@@ -43,10 +41,5 @@
         {{ content }}
       </main>
     </div>
-    {% if jekyll.environment == "development" %}
-      <script src="{{ site.webpack_url }}/web.js"></script>
-    {% else %}
-      <script src="{{ '/dist/web.js' | relative_url }}"></script>
-    {% endif %}
   </body>
 </html>
