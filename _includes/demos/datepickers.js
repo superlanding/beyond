@@ -18,6 +18,7 @@ export default function bindDatepickers() {
     })
 
   return function unbindDatepickers() {
+    unbound = true
     datepickers.forEach(d => d.destroy())
   }
 }
