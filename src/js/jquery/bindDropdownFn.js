@@ -1,6 +1,7 @@
-import Dropdown from '../components/Dropdown'
+export default function bindDropdownFn(beyond, $) {
 
-export default function bindDropdownFn($) {
+  const { Dropdown } = beyond
+
   $.fn.dropdown = function() {
 
     const dropdowns = this.map((i, dom) => new Dropdown(dom))

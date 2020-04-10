@@ -15,7 +15,7 @@ import bindTabboxFn from './bindTabboxFn'
 import bindToastFn from './bindToastFn'
 import bindTooltipFn from './bindTooltipFn'
 
-export default function bindJQuery(jQuery) {
+export default function bindJQuery(beyond, jQuery) {
 
   if (typeof window === 'undefined') {
     return
@@ -25,20 +25,20 @@ export default function bindJQuery(jQuery) {
   if (typeof $ === 'undefined') {
     return
   }
-  bindAutocompleteFn($)
-  bindAlertFn($)
-  bindBtnFn($)
-  bindCheckboxFn($)
-  bindDateTimeRangerFn($)
-  bindDatepickerFn($)
-  bindDropdownFn($)
-  bindModalFn($)
-  bindMenuFn($)
-  bindNavbarFn($)
-  bindRadioFn($)
-  bindSearchDropdownFn($)
-  bindSidebarFn($)
-  bindTabboxFn($)
-  bindToastFn($)
-  bindTooltipFn($)
+  bindAutocompleteFn(beyond, $)
+  bindAlertFn(beyond, $)
+  bindBtnFn(beyond, $)
+  bindCheckboxFn(beyond, $)
+  bindDateTimeRangerFn(beyond, $)
+  bindDatepickerFn(beyond, $)
+  bindDropdownFn(beyond, $)
+  bindModalFn(beyond, $)
+  bindMenuFn(beyond, $)
+  bindNavbarFn(beyond, $)
+  bindRadioFn(beyond, $)
+  bindSearchDropdownFn(beyond, $)
+  bindSidebarFn(beyond, $)
+  bindTabboxFn(beyond, $)
+  bindToastFn(beyond, $)
+  bindTooltipFn(beyond, $)
 }

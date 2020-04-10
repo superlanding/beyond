@@ -1,6 +1,6 @@
-import Navbar from '../components/Navbar'
+export default function bindNavbarFn(beyond, $) {
 
-export default function bindNavbarFn($) {
+  const { Navbar } = beyond
 
   $.fn.navbar = function() {
 

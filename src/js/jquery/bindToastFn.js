@@ -1,5 +1,6 @@
-import Toast from '../components/Toast'
+export default function bindToastFn(beyond, $) {
 
-export default function bindToastFn($) {
+  const { Toast } = beyond
+
   $.fn.toast = options => new Toast(options)
 }

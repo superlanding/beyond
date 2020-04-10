@@ -1,6 +1,6 @@
-import Datepicker from '../components/Datepicker'
+export default function bindDatepickerFn(beyond, $) {
 
-export default function bindDatepickerFn($) {
+  const { Datepicker } = beyond
 
   $.fn.datepicker = function(timestamp, settings) {
 

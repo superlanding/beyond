@@ -1,6 +1,6 @@
-import Sidebar from '../components/Sidebar'
+export default function bindSidebarFn(beyond, $) {
 
-export default function bindSidebarFn($) {
+  const { Sidebar } = beyond
 
   $.fn.sidebar = function() {
 

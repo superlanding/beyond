@@ -1,6 +1,6 @@
-import Modal from '../components/Modal'
+export default function bindModalFn(beyond, $) {
 
-export default function bindModalFn($) {
+  const { Modal } = beyond
 
   $.fn.modal = function(settings) {
 
