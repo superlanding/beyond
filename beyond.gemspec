@@ -3,12 +3,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'beyond/version'
 
 Gem::Specification.new do |s|
-  s.name     = 'beyond'
+  s.name     = 'beyond-rails'
   s.version  = Beyond::VERSION
-  s.authors  = ['kmsheng']
+  s.authors  = ['kmsheng', "Eddie Li"]
   s.email    = 'kmsh3ng@gmail.com'
   s.summary  = 'beyond is a collection of frontend components which aims for admin website.'
-  s.homepage = 'https://github.com/@superlanding/beyond'
+  s.homepage = 'https://superlanding.github.io/beyond/'
   s.license  = 'MIT'
 
   s.add_runtime_dependency 'sassc', '>= 2.0.0'
