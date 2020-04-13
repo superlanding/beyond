@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'beyond/version'
 
 Gem::Specification.new do |s|
-  s.name     = 'beyond-rails'
+  s.name     = 'beyond'
   s.version  = Beyond::VERSION
   s.authors  = ['kmsheng', "Eddie Li"]
   s.email    = 'kmsh3ng@gmail.com'
