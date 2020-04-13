@@ -15,6 +15,9 @@
     background-color: #5469d4;
     color: #fff
   }
+  &.input.active {
+    color: #fff
+  }
   &.active.danger {
     background-color: #cd3d64;
     color: #fff
