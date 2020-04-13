@@ -53,14 +53,62 @@ $beyond-css-img-path: '~@superlanding/beyond/src/sass/img/';
 {% endhighlight %}
     </div>
 
-    <div class="code-label">JS 元件存取</div>
+    <h2>JS 元件存取</h2>
+    <h3>自動載入</h3>
+    <ul class="list-style-disc">
+      <li>必須在 document ready 之後執行</li>
+      <li>
+        自動載入目前只支援以下元件:
+        <ul class="list-style-disc">
+          <li>Alert</li>
+          <li>Checkbox</li>
+          <li>Dropdown</li>
+          <li>Menu</li>
+          <li>Navbar</li>
+          <li>Radio</li>
+          <li>Sidebar</li>
+          <li>Tabbox</li>
+          <li>Tooltip</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="code-label">JavaScript Modules</div>
+    <div class="code">
+{% highlight js %}
+import { bind, unbindAll } from '@superlanding/beyond'
+
+// bind 執行後會返回一個 unbind 方法
+// unbind 只會 destroy 透過 bind 綁定的元件
+const unbind = bind()
+
+// 或是可以使用 unbindAll 解除所有載入 Beyond 後所生成的元件
+unbindAll()
+{% endhighlight %}
+    </div>
+
+    <div class="code-label">Browser</div>
+    <div class="code">
+{% highlight js %}
+const unbind = window.beyond.bind()
+
+window.beyond.unbindAll()
+{% endhighlight %}
+    </div>
+
+    <h3>手動載入</h3>
+    <div class="code-label">JavaScript Modules</div>
     <div class="code">
 {% highlight js %}
 import { Datepicker, Dropdown, Modal, Tabbox, Toast, Tooltip } from '@superlanding/beyond'
+{% endhighlight %}
+    </div>
 
-// 或是在瀏覽器環境存取 window.beyond
+    <div class="code-label">Browser</div>
+    <div class="code">
+{% highlight js %}
 const { Datepicker, Dropdown, Modal, Tabbox, Toast, Tooltip } = window.beyond
 {% endhighlight %}
     </div>
+
   </div>
 </div>
