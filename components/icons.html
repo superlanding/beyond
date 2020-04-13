@@ -5,4 +5,14 @@ title: Icons
 <div class="page-icons">
   <h1>圖示 - Icons</h1>
   {% include codebox.html result="demos/icons.html" html="demos/icons.html" %}
+
+  <h2>Rails View Helper</h2>
+
+  <div class="code">
+{% highlight erb %}
+<%= b_icon("seven-eleven") %>
+<%= b_icon(:cross, "Fail", class: "txt-danger") %>
+<%= b_icon(:check, "OK", class: "txt-primary") %>
+{% endhighlight %}
+  </div>
 </div>

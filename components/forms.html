@@ -98,4 +98,17 @@ title: Forms
 
   <h2 id="validation" class="heading">Validations</h2>
   {% include codebox.html result="demos/form-validation.html" html="demos/form-validation.html" %}
+
+  <h2 id="readonly" class="heading">Rails Form Wrapper</h2>
+
+  <div class="code">
+{% highlight erb %}
+<%= beyond_form_for(@user) do |f| %>
+  <%= f.email_field :email %>
+  <%= f.text_field :full_name %>
+  <%= f.submit "Submit" %>
+<% end %>
+{% endhighlight %}
+  </div>
+
 </div>
