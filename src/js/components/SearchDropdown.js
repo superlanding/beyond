@@ -163,13 +163,17 @@ export default class SearchDropdown {
     }
   }
 
+  setItems(items) {
+    this.items = items
+    this.renderMenu()
+  }
+
   async getData(keyword) {
     this.lastKeyword = keyword
     const items = await this.options.getData(keyword)
 
     if (this.lastKeyword === this.input.value) {
-      this.items = items
-      this.renderMenu()
+      this.setItems(items)
     }
   }
 
