@@ -1,5 +1,6 @@
 import noop from 'lodash.noop'
 import throttle from 'lodash.throttle'
+import debounce from 'lodash.debounce'
 import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
 import toPixel from '../helpers/toPixel'
 import supportDom from '../helpers/supportDom'
@@ -253,14 +254,12 @@ export default class SearchDropdown {
       this.renderMenu()
     })
 
-    this.addEvent(this.input, 'keyup', event => {
+    this.addEvent(this.input, 'keyup', debounce(event => {
       if (this.compositionStarted) {
         return
       }
-      if (getKey(event) === 'enter') {
-        this.getData(event.target.value)
-      }
-    })
+      this.getData(event.target.value)
+    }, 500))
     this.addEvent(this.input, 'compositionstart', () => {
       this.compositionStarted = true
     })
