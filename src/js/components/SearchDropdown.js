@@ -25,7 +25,7 @@ export default class SearchDropdown {
     this.align = 'left'
     this.isMenuVisible = false
     this.lastKeyword = null
-    this.selectedIndex = null
+    this.selectedIndex = 0
     this.items = []
     this.compositionStarted = false
     this.init()
@@ -163,13 +163,17 @@ export default class SearchDropdown {
     }
   }
 
+  setItems(items) {
+    this.items = items
+    this.renderMenu()
+  }
+
   async getData(keyword) {
     this.lastKeyword = keyword
     const items = await this.options.getData(keyword)
 
     if (this.lastKeyword === this.input.value) {
-      this.items = items
-      this.renderMenu()
+      this.setItems(items)
     }
   }
 
@@ -198,28 +202,15 @@ export default class SearchDropdown {
     if (this.items.length === 0) {
       return
     }
-    if (this.isInputFocused()) {
-      this.input.blur()
+    if (this.selectedIndex > 0) {
+      this.selectedIndex -= 1
+      this.renderMenu()
     }
-    if ((this.selectedIndex - 1) < 0) {
-      this.input.focus()
-      return
-    }
-    this.selectedIndex -= 1
-    this.renderMenu()
   }
 
   selectNextItem() {
     const { length } = this.items
     if (length === 0) {
-      return
-    }
-    if (this.isInputFocused()) {
-      this.input.blur()
-    }
-    if (! Number.isInteger(this.selectedIndex)) {
-      this.selectedIndex = 0
-      this.renderMenu()
       return
     }
     if ((this.selectedIndex + 1) < (length - 1)) {
@@ -259,7 +250,6 @@ export default class SearchDropdown {
       }
     })
     this.addEvent(this.input, 'focus', () => {
-      this.selectedIndex = null
       this.renderMenu()
     })
 
