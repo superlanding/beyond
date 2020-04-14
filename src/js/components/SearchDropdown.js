@@ -22,6 +22,7 @@ export default class SearchDropdown {
     this.options.renderMenu = options.renderMenu || renderMenu
     this.options.itemClick = options.itemClick || itemClick
     this.options.change = options.change || noop
+    this.options.wait = options.wait || 50
     this.place = 'bottom'
     this.align = 'left'
     this.isMenuVisible = false
@@ -259,7 +260,7 @@ export default class SearchDropdown {
         return
       }
       this.getData(event.target.value)
-    }, 500))
+    }, this.options.wait))
     this.addEvent(this.input, 'compositionstart', () => {
       this.compositionStarted = true
     })
