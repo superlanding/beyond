@@ -26,7 +26,7 @@ export default class SearchDropdown {
     this.place = 'bottom'
     this.align = 'left'
     this.isMenuVisible = false
-    this.lastKeyword = null
+    this.lastKeyword = ''
     this.selectedIndex = 0
     this.items = []
     this.compositionStarted = false
@@ -171,6 +171,9 @@ export default class SearchDropdown {
   }
 
   async getData(keyword) {
+    if (this.lastKeyword === keyword) {
+      return
+    }
     this.lastKeyword = keyword
     const items = await this.options.getData(keyword)
 
