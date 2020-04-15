@@ -26,7 +26,7 @@ export default class SearchDropdown {
     this.place = 'bottom'
     this.align = 'left'
     this.isMenuVisible = false
-    this.lastKeyword = ''
+    this.lastKeyword = null
     this.selectedIndex = 0
     this.items = []
     this.compositionStarted = false
