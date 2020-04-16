@@ -30,6 +30,7 @@ export default class SearchDropdown {
     this.selectedIndex = 0
     this.items = []
     this.compositionStarted = false
+    this.compositionJustEnded = false
     this.init()
   }
 
@@ -264,10 +265,13 @@ export default class SearchDropdown {
       }
       this.getData(event.target.value)
     }, this.options.wait))
+
     this.addEvent(this.input, 'compositionstart', () => {
       this.compositionStarted = true
     })
+
     this.addEvent(this.input, 'compositionend', () => {
+      this.compositionJustEnded = true
       this.compositionStarted = false
     })
 
@@ -285,6 +289,7 @@ export default class SearchDropdown {
         this.hideMenu()
       }
     })
+
     this.addEvent(document, 'keydown', event => {
       const key = getKey(event)
       if (this.isMenuVisible && ['up', 'down'].includes(key)) {
@@ -309,6 +314,11 @@ export default class SearchDropdown {
       }
       if (key === 'down') {
         return this.selectNextItem()
+      }
+      // workaround to block composition ended with enter key
+      if ((key === 'enter') && this.compositionJustEnded) {
+        this.compositionJustEnded = false
+        return
       }
       if (key === 'enter') {
         return this.setCurrentItem()
