@@ -159,10 +159,14 @@ button.close {
 
 .btn-line {
   background-color: #7ec163;
-  color: #fff;
+  &, &:hover {
+    color: #fff;
+  }
 }
 
 .btn-fb {
   background-color: #4a9cff;
-  color: #fff;
+  &, &:hover {
+    color: #fff;
+  }
 }
