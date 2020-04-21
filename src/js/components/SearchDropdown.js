@@ -22,6 +22,7 @@ export default class SearchDropdown {
     this.options.renderMenu = options.renderMenu || renderMenu
     this.options.itemClick = options.itemClick || itemClick
     this.options.change = options.change || noop
+    this.options.wait = options.wait || 50
     this.place = 'bottom'
     this.align = 'left'
     this.isMenuVisible = false
@@ -29,6 +30,7 @@ export default class SearchDropdown {
     this.selectedIndex = 0
     this.items = []
     this.compositionStarted = false
+    this.compositionJustEnded = false
     this.init()
   }
 
@@ -170,6 +172,9 @@ export default class SearchDropdown {
   }
 
   async getData(keyword) {
+    if (this.lastKeyword === keyword) {
+      return
+    }
     this.lastKeyword = keyword
     const items = await this.options.getData(keyword)
 
@@ -259,11 +264,14 @@ export default class SearchDropdown {
         return
       }
       this.getData(event.target.value)
-    }, 500))
+    }, this.options.wait))
+
     this.addEvent(this.input, 'compositionstart', () => {
       this.compositionStarted = true
     })
+
     this.addEvent(this.input, 'compositionend', () => {
+      this.compositionJustEnded = true
       this.compositionStarted = false
     })
 
@@ -281,6 +289,7 @@ export default class SearchDropdown {
         this.hideMenu()
       }
     })
+
     this.addEvent(document, 'keydown', event => {
       const key = getKey(event)
       if (this.isMenuVisible && ['up', 'down'].includes(key)) {
@@ -305,6 +314,11 @@ export default class SearchDropdown {
       }
       if (key === 'down') {
         return this.selectNextItem()
+      }
+      // workaround to block composition ended with enter key
+      if ((key === 'enter') && this.compositionJustEnded) {
+        this.compositionJustEnded = false
+        return
       }
       if (key === 'enter') {
         return this.setCurrentItem()
