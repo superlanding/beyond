@@ -29,6 +29,6 @@ git commit -m "Rybygem bump version: $VERSION"
 GEM_VERSION_COMMIT=$(git rev-parse HEAD)
 
 git co master
-git cherry-pick $NPM_PATCH_COMMIT
-git cherry-pick $GEM_VERSION_COMMIT
+git cherry-pick $NPM_PATCH_COMMIT  --strategy-option theirs
+git cherry-pick $GEM_VERSION_COMMIT  --strategy-option theirs
 git push --all
