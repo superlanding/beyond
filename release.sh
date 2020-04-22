@@ -26,14 +26,12 @@ NEXT_VERSION=$(npm version patch | sed -e 's/v/''/g')
 # 3. gem build beyond.gemspec (壓縮成 gem)
 # 4. gem push beyond-rails-$NEXT_VERSION.gem
 # 5. 刪除 beyond-rails-$NEXT_VERSION.gem
-# 
+#
 # Gem 網站：https://rubygems.org/gems/beyond-rails
 # 關於 Gem publish 的 permission 已經增加 (kmsh3ng@gmail.com) 請去註冊 rubygems.org 網站
 
 git push --tags
 bash -l -c "npm publish"
-
-
 
 CURRENT_HASH=$(git rev-parse HEAD)
 git co master
