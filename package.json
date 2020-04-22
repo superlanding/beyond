@@ -8,6 +8,7 @@
   ],
   "main": "dist/beyond.js",
   "scripts": {
+    "version": "echo $npm_package_version",
     "dev": "webpack-dev-server --host 0.0.0.0",
     "build": "./build.sh",
     "deploy": "./deploy.sh",
