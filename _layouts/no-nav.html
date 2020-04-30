@@ -11,10 +11,10 @@
     {% if jekyll.environment == "development" %}
       <link rel="stylesheet" href="{{ site.webpack_url }}/beyond.css">
     {% else %}
-      <link rel="stylesheet" href="{{ '/dist/beyond.css' | relative_url }}">
+      <link rel="stylesheet" href="{{ '/dist/beyond.css' | relative_url }}?v={{ site.data.version }}">
     {% endif %}
 
-    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ site.data.version }}">
     {% include icons.html %}
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -26,9 +26,9 @@
       <script src="{{ site.webpack_url }}/beyond-jquery.js"></script>
       <script src="{{ site.webpack_url }}/web.js"></script>
     {% else %}
-      <script src="{{ '/dist/beyond.js' | relative_url }}"></script>
-      <script src="{{ '/dist/beyond-jquery.js' | relative_url }}"></script>
-      <script src="{{ '/dist/web.js' | relative_url }}"></script>
+      <script src="{{ '/dist/beyond.js' | relative_url }}?v={{ site.data.version }}"></script>
+      <script src="{{ '/dist/beyond-jquery.js' | relative_url }}?v={{ site.data.version }}"></script>
+      <script src="{{ '/dist/web.js' | relative_url }}?v={{ site.data.version }}"></script>
     {% endif %}
   </head>
   <body class="bg-admin no-nav-container">

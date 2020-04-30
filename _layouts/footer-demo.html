@@ -10,14 +10,14 @@
     {% if jekyll.environment == "development" %}
       <link rel="stylesheet" href="{{ site.webpack_url }}/beyond.css">
     {% else %}
-      <link rel="stylesheet" href="{{ '/dist/beyond.css' | relative_url }}">
+      <link rel="stylesheet" href="{{ '/dist/beyond.css' | relative_url }}?v={{ site.data.version }}">
     {% endif %}
-    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ site.data.version }}">
     {% include icons.html %}
     {% if jekyll.environment == "development" %}
       <script src="{{ site.webpack_url }}/beyond.js"></script>
     {% else %}
-      <script src="{{ '/dist/beyond.js' | relative_url }}"></script>
+      <script src="{{ '/dist/beyond.js' | relative_url }}?v={{ site.data.version }}"></script>
     {% endif %}
   </head>
   <body class="bg-admin with-footer">
