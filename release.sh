@@ -17,14 +17,14 @@ NPM_PATCH_COMMIT=$(git rev-parse HEAD)
 VERSION=$(npm run version --silent)
 sed -i '' -e "s/VERSION = '\(.*\)'/VERSION = '$VERSION'/" lib/beyond/version.rb
 
+git add lib/beyond/version.rb
+git commit -m "Rybygem bump version: $VERSION"
+
 gem build beyond.gemspec
 
 GEM_FILE="beyond-rails-$VERSION.gem"
 gem push $GEM_FILE
 rm $GEM_FILE
-
-git add lib/beyond/version.rb
-git commit -m "Rybygem bump version: $VERSION"
 
 GEM_VERSION_COMMIT=$(git rev-parse HEAD)
 
