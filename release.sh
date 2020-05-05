@@ -9,10 +9,7 @@ if [ $NPM_LOGGED_IN -ne 0 ]; then
 fi
 
 yarn deploy
-npm version patch
-git push --tags
-bash -l -c "npm publish"
-NPM_PATCH_COMMIT=$(git rev-parse HEAD)
+npm version --no-git-tag-version patch
 
 VERSION=$(npm run version --silent)
 sed -i '' -e "s/VERSION = '\(.*\)'/VERSION = '$VERSION'/" lib/beyond/version.rb
@@ -27,6 +24,11 @@ gem push $GEM_FILE
 rm $GEM_FILE
 
 GEM_VERSION_COMMIT=$(git rev-parse HEAD)
+
+git tag $VERSION
+git push --tags
+bash -l -c "npm publish"
+NPM_PATCH_COMMIT=$(git rev-parse HEAD)
 
 git co master
 git cherry-pick $NPM_PATCH_COMMIT  --strategy-option theirs
