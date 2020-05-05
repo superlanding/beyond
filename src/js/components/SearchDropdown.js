@@ -175,6 +175,7 @@ export default class SearchDropdown {
     if (this.lastKeyword === keyword) {
       return
     }
+    this.resetSelectedIndex()
     this.lastKeyword = keyword
     const items = await this.options.getData(keyword)
 
@@ -202,6 +203,10 @@ export default class SearchDropdown {
 
   isInputFocused() {
     return document.activeElement === this.input
+  }
+
+  resetSelectedIndex() {
+    this.selectedIndex = 0
   }
 
   selectPrevItem() {
