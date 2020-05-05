@@ -14,6 +14,7 @@ npm version --no-git-tag-version patch
 VERSION=$(npm run version --silent)
 sed -i '' -e "s/VERSION = '\(.*\)'/VERSION = '$VERSION'/" lib/beyond/version.rb
 
+git add package.json
 git add lib/beyond/version.rb
 git commit -m "Rybygem bump version: $VERSION"
 
