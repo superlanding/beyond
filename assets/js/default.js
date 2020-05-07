@@ -1,6 +1,7 @@
 import './codebox'
 import bindAutocompletes from '../../_includes/demos/autocompletes'
 import bindBtns from '../../_includes/demos/btns'
+import bindIcons from '../../_includes/demos/icons'
 import bindCodeboxes from './bindCodeboxes'
 import bindDateTimeRangers from '../../_includes/demos/date-time-rangers'
 import bindDatepickers from '../../_includes/demos/datepickers'
@@ -32,6 +33,7 @@ function bindAll() {
   unbinds.push(bindModals())
   unbinds.push(bindSearchDropdowns())
   unbinds.push(bindToasts())
+  unbinds.push(bindIcons())
 }
 
 function unbindAll() {
