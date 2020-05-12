@@ -423,6 +423,9 @@ export default class DateTimeRanger {
       if (dateLt(startOfDay(this.endDate), startOfDay(this.startDate))) {
         this.switchDates()
       }
+      if (this.inputDateStartSet && (! this.inputDateEndSet)) {
+        this.emitChange()
+      }
       this.clearInputDateSetStatus()
       dateMenu.hide()
       timeMenu.hide()
