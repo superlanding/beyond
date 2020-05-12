@@ -307,6 +307,11 @@ export default class DateTimeRanger {
     })
   }
 
+  clearInputDateSetStatus() {
+    this.inputDateStartSet = false
+    this.inputDateEndSet = false
+  }
+
   addMenuEvents() {
     this.dateMenu.on('td-mouseover', (event, res) => {
       if (this.dateMenu.startDate && (! this.dateMenu.endDate)) {
@@ -318,8 +323,7 @@ export default class DateTimeRanger {
       event.preventDefault()
 
       if (this.inputDateStartSet && this.inputDateEndSet) {
-        this.inputDateStartSet = false
-        this.inputDateEndSet = false
+        this.clearInputDateSetStatus()
       }
 
       const { year, month, date } = res
@@ -419,6 +423,7 @@ export default class DateTimeRanger {
       if (dateLt(startOfDay(this.endDate), startOfDay(this.startDate))) {
         this.switchDates()
       }
+      this.clearInputDateSetStatus()
       dateMenu.hide()
       timeMenu.hide()
     })
