@@ -172,6 +172,14 @@ export default class Datepicker {
     })
   }
 
+  hide() {
+    const { timeMenu } = this
+    this.focused = false
+    this.clearInputStatus()
+    this.dateMenu.hide()
+    timeMenu && timeMenu.hide()
+  }
+
   addEvents() {
 
     this.addDateInputEvents()
@@ -235,9 +243,7 @@ export default class Datepicker {
       if (timeMenuDom && (timeMenuDom === target)) {
         return
       }
-      this.clearInputStatus()
-      dateMenu.hide()
-      timeMenu && timeMenu.hide()
+      this.hide()
     })
   }
 
