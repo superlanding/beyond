@@ -24,6 +24,7 @@ export default class Datepicker {
     this.menuDate = (timestamp === null) ? toDate(new Date()) : toDate(this.date)
     this.focused = false
     this.nextDate = null
+    this.backdropMode = options.backdropMode || 'auto'
     this.init()
   }
 
@@ -223,6 +224,9 @@ export default class Datepicker {
 
       if (this.focused) {
         this.focused = false
+        return
+      }
+      if (this.backdropMode === 'manual') {
         return
       }
       if ((! dateMenu.isVisible) && (timeMenu && (! timeMenu.isVisible))) {

@@ -15,6 +15,7 @@ export default class Dropdown {
     this.align = null
     this.defaultTextNode = this.getDefaultTextNode(dom, options.textIndex)
     this.defaultText = this.defaultTextNode ? this.defaultTextNode.textContent.trim() : ''
+    this.backdropMode = options.backdropMode || 'auto'
     this.init()
   }
 
@@ -119,6 +120,9 @@ export default class Dropdown {
 
     this.addEvent(document, 'click', event => {
       if (! this.isMenuVisible) {
+        return
+      }
+      if (this.backdropMode === 'manual') {
         return
       }
       // is backdrop
