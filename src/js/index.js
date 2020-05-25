@@ -17,6 +17,7 @@ import Navbar from './components/Navbar'
 import Radio from './components/Radio'
 import SearchDropdown from './components/SearchDropdown'
 import Sidebar from './components/Sidebar'
+import Timepicker from './components/Timepicker'
 import Tabbox from './components/Tabbox'
 import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
@@ -38,6 +39,7 @@ export {
   Radio,
   SearchDropdown,
   Sidebar,
+  Timepicker,
   Tabbox,
   Toast,
   Tooltip,
