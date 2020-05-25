@@ -110,15 +110,14 @@ export default class Timepicker {
     })
 
     this.addEvent(document, 'click', event => {
-      const { dom, timeMenu } = this
-      const { target } = event
-      const timeMenuDom = timeMenu ? timeMenu.dom : null
-
       if (this.focused) {
         this.focused = false
         return
       }
       if (this.backdropMode === 'manual') {
+        return
+      }
+      if (event.target === this.dom) {
         return
       }
       this.hide()
