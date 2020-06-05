@@ -143,3 +143,8 @@ $color-active: #5469d4;
   clip-path: inset(50%);
   border: 0;
 }
+
+input[type=file], /* FF, IE7+, chrome (except button) */
+input[type=file]::-webkit-file-upload-button { /* chromes and blink button */
+  cursor: pointer;
+}
