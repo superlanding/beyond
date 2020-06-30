@@ -228,13 +228,13 @@ function adjustToBoundary({ pos, w1, w2, h1, h2 }) {
   let left = pos.left
   let top = pos.top
   if (touchedLeft) {
-    left = 0
+    left = 0 + getScrollLeft()
   }
   if (touchedRight) {
     left = window.innerWidth - w2 + w1;
   }
   if (touchedTop) {
-    top = 0
+    top = 0 + getScrollTop()
   }
   if (touchedBottom) {
     top = window.innerHeight - h2 + h1
