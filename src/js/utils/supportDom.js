@@ -1,4 +1,4 @@
-import isFunction from 'lodash.isfunction'
+import { isFunction } from './index'
 import createdComponents from '../consts/createdComponents'
 
 export default function supportDom(target) {

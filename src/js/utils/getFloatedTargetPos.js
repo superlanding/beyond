@@ -1,6 +1,4 @@
-import getDomPos from '@superlanding/getdompos'
-import getScrollTop from '@superlanding/getscrolltop'
-import getScrollLeft from '@superlanding/getscrollleft'
+import { getDomPos, getScrollTop, getScrollLeft } from './index'
 
 // Calculate floated target position for tooltip and dropdown
 export default function getFloatedTargetPos(options) {

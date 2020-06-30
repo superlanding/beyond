@@ -1,8 +1,7 @@
-import debounce from 'lodash.debounce'
 import AutocompleteMenu from './AutocompleteMenu'
 import promisify from '../utils/promisify'
 import supportDom from '../utils/supportDom'
-import noop from 'lodash.noop'
+import { debounce, noop } from '../utils'
 
 const defaultRenderMenuItem = row => {
   return `

@@ -1,11 +1,3 @@
-import endOfDay from 'date-fns/endOfDay'
-import parse from 'date-fns/parse'
-import set from 'date-fns/set'
-import noop from 'lodash.noop'
-import startOfDay from 'date-fns/startOfDay'
-import getHours from 'date-fns/getHours'
-import getMinutes from 'date-fns/getMinutes'
-import getSeconds from 'date-fns/getSeconds'
 import DateInput from './DateInput'
 import TimeInput from './TimeInput'
 import DateMenu from './DateMenu'
@@ -14,8 +6,18 @@ import DatepickerBtnArrow from './DatepickerBtnArrow'
 import dateGt from '../utils/dateGt'
 import dateLt from '../utils/dateLt'
 import supportDom from '../utils/supportDom'
-import dateToTimestamp from '@superlanding/datetotimestamp'
-import timestampToDate from '@superlanding/timestamptodate'
+import {
+  endOfDay,
+  dateToTimestamp,
+  getHours,
+  getMinutes,
+  getSeconds,
+  noop,
+  parse,
+  set,
+  startOfDay,
+  timestampToDate
+} from '../utils'
 
 @supportDom
 export default class DateTimeRanger {
