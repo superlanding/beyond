@@ -1,5 +1,4 @@
 import getFloatedTargetPos from '../utils/getFloatedTargetPos'
-import range from '../utils/range'
 import isTouchDevice from '../utils/isTouchDevice'
 import dateLt from '../utils/dateLt'
 import dateEq from '../utils/dateEq'
@@ -14,6 +13,7 @@ import {
   getMonth,
   getYear,
   throttle,
+  range,
   set,
   startOfDay,
   startOfMonth,
@@ -81,7 +81,7 @@ export default class DateMenu {
 
     const firstWeekday = getDay(startOfMonth(date))
     const beforeWeekday = ((firstWeekday - 1) === -1) ? 6 : (firstWeekday - 1)
-    const emptyHeadRows = range(1, beforeWeekday).map(toEmptyCell)
+    const emptyHeadRows = range(1, beforeWeekday + 1).map(toEmptyCell)
 
     const initialStartDate = startOfDay(startDate)
     const initialEndDate = startOfDay(endDate)
@@ -106,7 +106,7 @@ export default class DateMenu {
     }
     const today = formatDate(new Date())
 
-    const rows = range(1, daysInMonth).map(day => {
+    const rows = range(1, daysInMonth + 1).map(day => {
 
       const d = addDays(firstDateOfMonth, day - 1)
       const resCompareStart = compareAsc(startOfStartDate, d)
@@ -124,7 +124,7 @@ export default class DateMenu {
 
     const lastWeekday = getDay(endOfMonth(date))
     const emptyDays = ((7 - lastWeekday) % 7)
-    const emptyTailRows = range(1, emptyDays).map(toEmptyCell)
+    const emptyTailRows = range(1, emptyDays + 1).map(toEmptyCell)
 
     return emptyHeadRows.concat(rows).concat(emptyTailRows)
   }
