@@ -5,7 +5,7 @@ import getScrollLeft from '@superlanding/getscrollleft'
 // Calculate floated target position for tooltip and dropdown
 export default function getFloatedTargetPos(options) {
 
-  const { src, target, place, align, offset = 0, offsetLeft, offsetTop } = options
+  const { src, target, place, align, offset = 0, offsetLeft = 0, offsetTop = 0 } = options
 
   const { x: x1, y: y1 } = getDomPos(src)
 
