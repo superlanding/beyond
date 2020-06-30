@@ -1,7 +1,6 @@
 import getFloatedTargetPos from '../utils/getFloatedTargetPos'
-import toPixel from '../utils/toPixel'
 import supportDom from '../utils/supportDom'
-import { isFunction, throttle } from '../utils'
+import { isFunction, toPixel, throttle } from '../utils'
 
 @supportDom
 export default class Dropdown {

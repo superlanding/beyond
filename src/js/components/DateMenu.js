@@ -1,6 +1,5 @@
 import getFloatedTargetPos from '../utils/getFloatedTargetPos'
 import range from '../utils/range'
-import toPixel from '../utils/toPixel'
 import isTouchDevice from '../utils/isTouchDevice'
 import dateLt from '../utils/dateLt'
 import dateEq from '../utils/dateEq'
@@ -19,6 +18,7 @@ import {
   startOfDay,
   startOfMonth,
   subMonths,
+  toPixel,
   format
 } from '../utils'
 import { DEFAULT_TIMEZONE, DEFAULT_LOCALE } from '../consts'

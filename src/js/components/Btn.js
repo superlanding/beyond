@@ -1,5 +1,5 @@
 import supportDom from '../utils/supportDom'
-import toPixel from '../utils/toPixel'
+import { toPixel } from '../utils'
 
 @supportDom
 export default class Btn {

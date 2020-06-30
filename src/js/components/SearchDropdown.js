@@ -1,8 +1,7 @@
 import getFloatedTargetPos from '../utils/getFloatedTargetPos'
-import toPixel from '../utils/toPixel'
 import supportDom from '../utils/supportDom'
 import getKey from '../utils/getKey'
-import { debounce, noop, throttle } from '../utils'
+import { debounce, noop, toPixel, throttle } from '../utils'
 
 const renderMenu = row => {
   return `<div class="search-dropdown-menu-item" data-item>${JSON.stringify(row)}</div>`
