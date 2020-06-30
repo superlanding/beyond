@@ -1,6 +1,6 @@
 import getFloatedTargetPos from '../utils/getFloatedTargetPos'
-import toPixel from '../utils/toPixel'
 import supportDom from '../utils/supportDom'
+import { toPixel } from '../utils'
 
 const TOOLTIP_PLACEMENTS = ['top', 'bottom', 'left', 'right']
 

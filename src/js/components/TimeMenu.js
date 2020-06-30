@@ -1,7 +1,6 @@
 import getFloatedTargetPos from '../utils/getFloatedTargetPos'
-import toPixel from '../utils/toPixel'
 import supportDom from '../utils/supportDom'
-import { getHours, getMinutes, range } from '../utils'
+import { getHours, getMinutes, range, toPixel } from '../utils'
 
 @supportDom
 export default class TimeMenu {

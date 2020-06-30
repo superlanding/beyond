@@ -4,6 +4,7 @@ import getDomPos from '@superlanding/getdompos'
 import getScrollLeft from '@superlanding/getscrollleft'
 import getScrollTop from '@superlanding/getscrolltop'
 import timestampToDate from '@superlanding/timestamptodate'
+import toPixel from '@superlanding/toPixel'
 
 // date-fns
 import addDays from 'date-fns/addDays'
@@ -40,6 +41,7 @@ export {
   getScrollLeft,
   getScrollTop,
   timestampToDate,
+  toPixel,
 
   // date-fns
   addDays,
