@@ -1,25 +1,27 @@
-import { format } from 'date-fns-tz'
-import addDays from 'date-fns/addDays'
-import set from 'date-fns/set'
-import addMonths from 'date-fns/addMonths'
-import compareAsc from 'date-fns/compareAsc'
-import endOfMonth from 'date-fns/endOfMonth'
-import getDay from 'date-fns/getDay'
-import getDaysInMonth from 'date-fns/getDaysInMonth'
-import getMonth from 'date-fns/getMonth'
-import getYear from 'date-fns/getYear'
-import startOfDay from 'date-fns/startOfDay'
-import startOfMonth from 'date-fns/startOfMonth'
-import subMonths from 'date-fns/subMonths'
-import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
-import range from '../helpers/range'
-import toPixel from '../helpers/toPixel'
-import isTouchDevice from '../helpers/isTouchDevice'
-import dateLt from '../helpers/dateLt'
-import dateEq from '../helpers/dateEq'
+import getFloatedTargetPos from '../utils/getFloatedTargetPos'
+import range from '../utils/range'
+import toPixel from '../utils/toPixel'
+import isTouchDevice from '../utils/isTouchDevice'
+import dateLt from '../utils/dateLt'
+import dateEq from '../utils/dateEq'
+import supportDom from '../utils/supportDom'
+import {
+  addDays,
+  addMonths,
+  compareAsc,
+  endOfMonth,
+  getDay,
+  getDaysInMonth,
+  getMonth,
+  getYear,
+  throttle,
+  set,
+  startOfDay,
+  startOfMonth,
+  subMonths,
+  format
+} from '../utils'
 import { DEFAULT_TIMEZONE, DEFAULT_LOCALE } from '../consts'
-import supportDom from '../helpers/supportDom'
-import throttle from 'lodash.throttle'
 
 const DEFAULT_WEEK_HEADER_ITEMS = [
   { id: 'monday', text: '一' },

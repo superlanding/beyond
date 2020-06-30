@@ -1,7 +1,7 @@
-import { format } from 'date-fns-tz'
 import { DEFAULT_TIMEZONE } from '../consts'
-import supportDom from '../helpers/supportDom'
-import isTouchDevice from '../helpers/isTouchDevice'
+import supportDom from '../utils/supportDom'
+import isTouchDevice from '../utils/isTouchDevice'
+import { format } from '../utils'
 
 @supportDom
 export default class TimeInput {

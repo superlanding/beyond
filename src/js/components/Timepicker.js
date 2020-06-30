@@ -1,12 +1,14 @@
-import parse from 'date-fns/parse'
-import set from 'date-fns/set'
-import noop from 'lodash.noop'
 import TimeInput from './TimeInput'
 import TimeMenu from './TimeMenu'
-import supportDom from '../helpers/supportDom'
 import { DEFAULT_TIMEZONE } from '../consts'
-import dateToTimestamp from '@superlanding/datetotimestamp'
-import timestampToDate from '@superlanding/timestamptodate'
+import supportDom from '../utils/supportDom'
+import {
+  dateToTimestamp,
+  noop,
+  parse,
+  set,
+  timestampToDate
+} from '../utils'
 
 @supportDom
 export default class Timepicker {

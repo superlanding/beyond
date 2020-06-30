@@ -1,11 +1,9 @@
-import getDomPos from '@superlanding/getdompos'
-import getScrollTop from '@superlanding/getscrolltop'
-import getScrollLeft from '@superlanding/getscrollleft'
+import { getDomPos, getScrollTop, getScrollLeft } from './index'
 
 // Calculate floated target position for tooltip and dropdown
 export default function getFloatedTargetPos(options) {
 
-  const { src, target, place, align, offset = 0, offsetLeft, offsetTop } = options
+  const { src, target, place, align, offset = 0, offsetLeft = 0, offsetTop = 0 } = options
 
   const { x: x1, y: y1 } = getDomPos(src)
 
@@ -228,13 +226,13 @@ function adjustToBoundary({ pos, w1, w2, h1, h2 }) {
   let left = pos.left
   let top = pos.top
   if (touchedLeft) {
-    left = 0
+    left = 0 + getScrollLeft()
   }
   if (touchedRight) {
     left = window.innerWidth - w2 + w1;
   }
   if (touchedTop) {
-    top = 0
+    top = 0 + getScrollTop()
   }
   if (touchedBottom) {
     top = window.innerHeight - h2 + h1

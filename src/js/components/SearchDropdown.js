@@ -1,10 +1,8 @@
-import noop from 'lodash.noop'
-import throttle from 'lodash.throttle'
-import debounce from 'lodash.debounce'
-import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
-import toPixel from '../helpers/toPixel'
-import supportDom from '../helpers/supportDom'
-import getKey from '../helpers/getKey'
+import getFloatedTargetPos from '../utils/getFloatedTargetPos'
+import toPixel from '../utils/toPixel'
+import supportDom from '../utils/supportDom'
+import getKey from '../utils/getKey'
+import { debounce, noop, throttle } from '../utils'
 
 const renderMenu = row => {
   return `<div class="search-dropdown-menu-item" data-item>${JSON.stringify(row)}</div>`
