@@ -770,6 +770,11 @@
   resolved "https://registry.yarnpkg.com/@superlanding/timestamptodate/-/timestamptodate-0.0.19.tgz#1a91fdc6adfb313b88be4aedb7a374dbfa43a166"
   integrity sha512-AwtIsx1sI9ATxC/s+da2OGCygfK+mQyk4C2wwyIl3V4GFgFEOX1JvpEXsWWYMRgw6ErzX0vW/UjyHs50eJXaFg==
 
+"@superlanding/topixel@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@superlanding/topixel/-/topixel-0.0.22.tgz#77335db043010d731b76f27b4c3f8d97d9ed83f9"
+  integrity sha512-qXKGeydLMcTkFlX1WrPg8cGUMrK5ThspoSgk5bbnX4xTW5aUYQCSYrQItcCvykbfhyawhl04/nLomdSEmzGr8Q==
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
