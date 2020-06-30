@@ -1,4 +1,4 @@
-import supportDom from '../helpers/supportDom'
+import supportDom from '../utils/supportDom'
 
 @supportDom
 export default class Radio {

@@ -1,5 +1,5 @@
 import noop from 'lodash.noop'
-import supportDom from '../helpers/supportDom'
+import supportDom from '../utils/supportDom'
 
 @supportDom
 export default class Modal {

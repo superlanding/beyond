@@ -1,8 +1,8 @@
 import throttle from 'lodash.throttle'
 import isFunction from 'lodash.isfunction'
-import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
-import toPixel from '../helpers/toPixel'
-import supportDom from '../helpers/supportDom'
+import getFloatedTargetPos from '../utils/getFloatedTargetPos'
+import toPixel from '../utils/toPixel'
+import supportDom from '../utils/supportDom'
 
 @supportDom
 export default class Dropdown {

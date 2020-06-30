@@ -1,9 +1,9 @@
 import getHours from 'date-fns/getHours'
 import getMinutes from 'date-fns/getMinutes'
-import getFloatedTargetPos from '../helpers/getFloatedTargetPos'
-import toPixel from '../helpers/toPixel'
+import getFloatedTargetPos from '../utils/getFloatedTargetPos'
+import toPixel from '../utils/toPixel'
 import range from 'lodash.range'
-import supportDom from '../helpers/supportDom'
+import supportDom from '../utils/supportDom'
 
 @supportDom
 export default class TimeMenu {

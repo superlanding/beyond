@@ -21,9 +21,9 @@ import Timepicker from './components/Timepicker'
 import Tabbox from './components/Tabbox'
 import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
-import bind from './helpers/bind'
-import docReady from './helpers/docReady'
-import unbindAll from './helpers/unbindAll'
+import bind from './utils/bind'
+import docReady from './utils/docReady'
+import unbindAll from './utils/unbindAll'
 
 export {
   Alert,
