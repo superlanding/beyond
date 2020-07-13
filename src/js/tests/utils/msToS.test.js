@@ -1,4 +1,4 @@
-import test from 'ava'
+import { test } from '../../../../test/utils'
 import msToS from '../../utils/msToS'
 
 test('msToS', t => {
