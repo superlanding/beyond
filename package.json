@@ -13,7 +13,7 @@
     "build": "./build.sh",
     "deploy": "./deploy.sh",
     "release": "./release.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc ava src/js/tests/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,16 @@
     "url": "https://github.com/superlanding/beyond/issues"
   },
   "homepage": "https://github.com/superlanding/beyond#readme",
+  "ava": {
+    "babel": {
+      "compileAsTests": [
+        "src/**/*.js"
+      ]
+    },
+    "require": [
+      "./src/js/tests/setup.js"
+    ]
+  },
   "dependencies": {
     "@superlanding/datetotimestamp": "0.0.19",
     "@superlanding/getdompos": "0.0.16",
