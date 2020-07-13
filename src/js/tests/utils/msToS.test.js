@@ -1,5 +1,5 @@
-import { test } from '../../../../test/utils'
-import msToS from '../../utils/msToS'
+import { test } from '~/test/utils'
+import msToS from '~/src/js/utils/msToS'
 
 test('msToS', t => {
   t.is(msToS(1000), 1)
