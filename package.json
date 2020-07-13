@@ -26,13 +26,18 @@
   },
   "homepage": "https://github.com/superlanding/beyond#readme",
   "ava": {
+    "require": [
+      "./test/setup.js"
+    ],
     "babel": {
       "compileAsTests": [
-        "src/**/*.js"
+        "./src/js/**/*.js"
       ]
-    },
-    "require": [
-      "./src/js/tests/setup.js"
+    }
+  },
+  "nyc": {
+    "extension": [
+      ".js"
     ]
   },
   "dependencies": {
