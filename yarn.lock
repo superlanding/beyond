@@ -1001,30 +1001,30 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@superlanding/datetotimestamp@0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@superlanding/datetotimestamp/-/datetotimestamp-0.0.19.tgz#335808c0bd93b47d23a5ff14e9a8d9156ee56ada"
-  integrity sha512-cEkvkOjldlkXVvjMjJ6F22sIf18hlkjrAvUIIw6j8e98TYHZ3T7/KdnXox4Pxyd3zQhjbC209fxdfwZ782S1SQ==
+"@superlanding/datetotimestamp@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@superlanding/datetotimestamp/-/datetotimestamp-0.0.22.tgz#7f780cc769ee871131445ea43b96b9d0df594fa5"
+  integrity sha512-fce0K8kcFCvwtUVxLiQq6FtTTjrV6t9EKglcrEZw60QHQ5CyCZmWCbRql8JCiMhzoFj4Rf0w1dqx1+slce6RcQ==
 
-"@superlanding/getdompos@0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@superlanding/getdompos/-/getdompos-0.0.16.tgz#d39f4ae9660eb3e175ac550f596274ad8eda7ff2"
-  integrity sha512-kA4xkeeW39rLckLk2/XuUSjU1EGjFhZkkHhnpdKpR/slwcUL3ErQ693qtLASqBwZBHrAjKeGrsrZnwptLwzsew==
+"@superlanding/getdompos@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@superlanding/getdompos/-/getdompos-0.0.22.tgz#7e2fc333b81f6b9ea903ee5ed96b819229ea2e4c"
+  integrity sha512-RoRxboBdkwEiAOnQ+pLbcJvJ425BiNxeiNAOZuhwPn9mMsynHk3J9VUT2CKKoJuvz5pwi6KCTlt5lHCJsC9XYw==
 
-"@superlanding/getscrollleft@0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@superlanding/getscrollleft/-/getscrollleft-0.0.16.tgz#41b2c0adb3e0962a6e484a0a173280b4815fff67"
-  integrity sha512-NaK78zwr9ORClXkhtP+2qYXDdVBmFH06lhXXIn2BH8/WRgCHq3xvl2amPGUd8fNz0d8eeQZh89wNrZR6Dz1+kw==
+"@superlanding/getscrollleft@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@superlanding/getscrollleft/-/getscrollleft-0.0.22.tgz#e549a2ae15901c6670bd6fe9cbf1141257df44fa"
+  integrity sha512-kS7nJdc5wXGpkiG3GwIn2c6fjd0r315/PaaDmTxWxkb/otxbiSL5P9p/hXdXNNsnU8mYfPCgdbdeVbHxTHXK8Q==
 
-"@superlanding/getscrolltop@0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@superlanding/getscrolltop/-/getscrolltop-0.0.16.tgz#add5cd12847767dfee4fe7d4ed6e7413267246ce"
-  integrity sha512-Mg40W09ClZ0bpxYa09vkfxgFfI+KN/4AKYwBxRQYkmwi5j5+2wbB61AKwn1gsuq2RNRyT/upFp9bnFzNnjMJoA==
+"@superlanding/getscrolltop@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@superlanding/getscrolltop/-/getscrolltop-0.0.22.tgz#f150c5eec7e1239c263fceaa837c5002f1fc4ded"
+  integrity sha512-GOZY/+6lh5dZIPYhBuTIT9vvX3zspFpm5S1hJbJlNcOqfQGf0V3rfP//U3vZSHeUzpA5G+m26Bf8NUaRR50YjQ==
 
-"@superlanding/timestamptodate@0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@superlanding/timestamptodate/-/timestamptodate-0.0.19.tgz#1a91fdc6adfb313b88be4aedb7a374dbfa43a166"
-  integrity sha512-AwtIsx1sI9ATxC/s+da2OGCygfK+mQyk4C2wwyIl3V4GFgFEOX1JvpEXsWWYMRgw6ErzX0vW/UjyHs50eJXaFg==
+"@superlanding/timestamptodate@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@superlanding/timestamptodate/-/timestamptodate-0.0.22.tgz#4a58cc23d3f1cc3cf2d419454d164fe6fcbc97b6"
+  integrity sha512-C1bJy+FPEnXQTfyJTNvakaXF8SkLj1bW75UL+KIgsUhlalgbR+8T7+A+bxEzDyjBh6OzuuzWecgLM6I8xbCpRw==
 
 "@superlanding/topixel@0.0.22":
   version "0.0.22"

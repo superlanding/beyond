@@ -41,11 +41,11 @@
     ]
   },
   "dependencies": {
-    "@superlanding/datetotimestamp": "0.0.19",
-    "@superlanding/getdompos": "0.0.16",
-    "@superlanding/getscrollleft": "0.0.16",
-    "@superlanding/getscrolltop": "0.0.16",
-    "@superlanding/timestamptodate": "0.0.19",
+    "@superlanding/datetotimestamp": "0.0.22",
+    "@superlanding/getdompos": "0.0.22",
+    "@superlanding/getscrollleft": "0.0.22",
+    "@superlanding/getscrolltop": "0.0.22",
+    "@superlanding/timestamptodate": "0.0.22",
     "@superlanding/topixel": "0.0.22",
     "core-js": "3.6.4",
     "date-fns": "2.9.0",
