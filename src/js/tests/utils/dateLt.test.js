@@ -1,5 +1,5 @@
-import { test } from '../../../../test/utils'
-import dateLt from '../../utils/dateLt'
+import { test } from '~/test/utils'
+import dateLt from '~/src/js/utils/dateLt'
 
 test('dateLt', t => {
 
