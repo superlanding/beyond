@@ -97,12 +97,20 @@ export default class Datepicker {
     this.nextDate = res
   }
 
+  clearBlurTimer() {
+    if (this._blurTimer) {
+      clearTimeout(this._blurTimer)
+      this._blurTimer = null
+    }
+  }
+
   handleDateInputBlur() {
     const { nextDate, date, dateInput } = this
 
     if (date === null) {
       dateInput.setDate(null)
       this.timeInput && this.timeInput.setDate(null)
+      this._blurTimer = setTimeout(() => this.emitChange(), 50)
     }
     else if (nextDate) {
       this.date = nextDate
@@ -190,6 +198,8 @@ export default class Datepicker {
     this.dateMenu.on('td-click', (event, res) => {
       event.stopPropagation()
       event.preventDefault()
+
+      this.clearBlurTimer()
 
       const { year, month, date } = res
       this.date = set(this.date || new Date(), { year, month, date })
