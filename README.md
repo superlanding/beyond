@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/superlanding/beyond.svg?branch=master)](https://travis-ci.org/superlanding/beyond)
 # Beyond
 https://superlanding.github.io/beyond/
 

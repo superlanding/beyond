@@ -4,7 +4,7 @@ import getDomPos from '@superlanding/getdompos'
 import getScrollLeft from '@superlanding/getscrollleft'
 import getScrollTop from '@superlanding/getscrolltop'
 import timestampToDate from '@superlanding/timestamptodate'
-import toPixel from '@superlanding/toPixel'
+import toPixel from '@superlanding/topixel'
 
 // date-fns
 import addDays from 'date-fns/addDays'
