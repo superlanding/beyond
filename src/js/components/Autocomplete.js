@@ -66,7 +66,6 @@ export default class Autocomplete {
     menu.on('click', index => {
       const { itemClick } = this.options
       if (typeof itemClick === 'function') {
-        clearTimeout(this._blurTimer)
         const value = itemClick(this.rows[index])
         this.dom.value = value
         this.menu.hide()
@@ -82,8 +81,13 @@ export default class Autocomplete {
       }
     })
 
-    this.addEvent(dom, 'blur', () => {
-      this._blurTimer = setTimeout(() => this.menu.hide(), 50)
+    this.addEvent(document, 'click', event => {
+      const { target } = event
+      const inInput = this.dom.contains(target)
+      const inMenu = this.menu.dom.contains(target)
+      if ((! inInput) && (! inMenu)) {
+        this.menu.hide()
+      }
     })
 
     this.addEvent(dom, 'keyup', debounce(() => {
