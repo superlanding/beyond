@@ -65,6 +65,13 @@ export default class Tooltip {
     const { dom, tooltip } = this
     if ('onmouseover' in dom) {
       this.addEvent(dom, 'mouseover', () => {
+
+        const msg = this.dom.dataset.msg || ''
+
+        if (msg.length === 0) {
+          return
+        }
+
         this.setTooltipMsg()
 
         tooltip.style.opacity = 0
