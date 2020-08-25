@@ -5,6 +5,8 @@ export default function bindIcons() {
 
   const divs = Array.from(document.querySelectorAll('div.icon'))
 
+  const searchInput = document.getElementById('icon-search')
+
   const getClipboardText = target => {
     switch (target.tagName) {
       case 'I':
@@ -32,9 +34,39 @@ export default function bindIcons() {
     div.addEventListener('click', handleClick)
   })
 
+  const icons = document.querySelectorAll('.codebox-result > .icon > i')
+  const svgs = document.querySelectorAll('.codebox-result > .icon > .svg')
+
+  const handleInput = event => {
+    const keyword = event.target.value
+
+    svgs.forEach(svg => {
+      const svgName = svg.alt
+      if (svgName.startsWith(keyword)) {
+        svg.parentNode.style.display = 'inline-block'
+      }
+      else {
+        svg.parentNode.style.display = 'none'
+      }
+    })
+
+    icons.forEach(icon => {
+      const iconName = icon.className.replace(/^icon-/, '')
+      if (iconName.startsWith(keyword)) {
+        icon.parentNode.style.display = 'inline-block'
+      }
+      else {
+        icon.parentNode.style.display = 'none'
+      }
+    })
+  }
+
+  searchInput.addEventListener('input', handleInput, false)
+
   return function unbindIcons() {
     divs.forEach(div => {
       div.removeEventListener('click', handleClick)
     })
+    searchInput.removeEventListener('input', handleInput, false)
   }
 }
