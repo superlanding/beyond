@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 npm whoami > /dev/null
 
 NPM_LOGGED_IN=$?
