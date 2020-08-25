@@ -7,13 +7,12 @@
       font-size: 32px;
     }
     .svg {
+      display: block;
+      margin: 0 auto;
       @include size(32px);
     }
     .icon {
       cursor: pointer;
-      @include size(72px);
-      background-color: #fff;
-      padding: 20px;
       display: inline-block;
       margin-right: 20px;
       margin-bottom: 20px;
@@ -21,6 +20,17 @@
         margin-right: 10px;
         margin-bottom: 10px;
       }
+    }
+    .icon-content {
+      margin: 0 auto;
+      @include size(72px);
+      padding: 20px;
+      background-color: #fff;
+    }
+    .icon-desc {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 7px;
     }
   }
   #icon-search {
