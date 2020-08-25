@@ -1,2 +1,2 @@
 client: yarn dev
-server: jekyll s --host 0.0.0.0
+server: bundle exec jekyll s --host 0.0.0.0

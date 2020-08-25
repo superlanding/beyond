@@ -34,30 +34,26 @@ export default function bindIcons() {
     div.addEventListener('click', handleClick)
   })
 
-  const icons = document.querySelectorAll('.codebox-result > .icon > i')
-  const svgs = document.querySelectorAll('.codebox-result > .icon > .svg')
+  const icons = document.querySelectorAll('.codebox-result > .icon > .icon-content > i')
+  const svgs = document.querySelectorAll('.codebox-result > .icon > .icon-content > .svg')
+
+  const toggle = (name, keyword, dom) => {
+    if (name.toLowerCase().startsWith(keyword.toLowerCase())) {
+      dom.parentNode.parentNode.style.display = 'inline-block'
+    }
+    else {
+      dom.parentNode.parentNode.style.display = 'none'
+    }
+  }
 
   const handleInput = event => {
     const keyword = event.target.value
 
-    svgs.forEach(svg => {
-      const svgName = svg.alt
-      if (svgName.startsWith(keyword)) {
-        svg.parentNode.style.display = 'inline-block'
-      }
-      else {
-        svg.parentNode.style.display = 'none'
-      }
-    })
+    svgs.forEach(svg => toggle(svg.alt, keyword, svg))
 
     icons.forEach(icon => {
       const iconName = icon.className.replace(/^icon-/, '')
-      if (iconName.startsWith(keyword)) {
-        icon.parentNode.style.display = 'inline-block'
-      }
-      else {
-        icon.parentNode.style.display = 'none'
-      }
+      toggle(iconName, keyword, icon)
     })
   }
 
