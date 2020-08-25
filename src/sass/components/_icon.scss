@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'icomoon';
+  font-family: '#{$beyond-icon-font-name}';
   src: url(beyond-font-path('#{$beyond-icon-font-path}#{$beyond-icon-font-name}.eot?sxulqz'));
   src: url(beyond-font-path('#{$beyond-icon-font-path}#{$beyond-icon-font-name}.eot?sxulqz#iefix')) format('embedded-opentype'),
     url(beyond-font-path('#{$beyond-icon-font-path}#{$beyond-icon-font-name}.ttf?sxulqz')) format('truetype'),
@@ -12,7 +12,7 @@
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: '#{$beyond-icon-font-name}' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -410,4 +410,16 @@
 }
 .icon-quote:before {
   content: "\e980";
+}
+.icon-brush-alt:before {
+  content: "\e981";
+}
+.icon-crown:before {
+  content: "\e982";
+}
+.icon-expand:before {
+  content: "\e983";
+}
+.icon-shrink:before {
+  content: "\e984";
 }

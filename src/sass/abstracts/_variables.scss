@@ -212,7 +212,7 @@ $screen-lg: 992px;
 $screen-xl: 1200px;
 
 $beyond-icon-font-path: if($beyond-use-helper, '', '../font/') !default;
-$beyond-icon-font-name: 'icomoon' !default;
+$beyond-icon-font-name: 'beyond' !default;
 $beyond-css-img-path: if($beyond-use-helper, '', './img/') !default;
 
 $breakpoints: $screen-sm, $screen-md, $screen-lg, $screen-xl;
