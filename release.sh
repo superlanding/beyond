@@ -10,7 +10,6 @@ if [ $NPM_LOGGED_IN -ne 0 ]; then
   npm login
 fi
 
-yarn deploy
 npm version --no-git-tag-version patch
 
 VERSION=$(npm run version --silent)
