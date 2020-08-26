@@ -403,8 +403,6 @@ td.code > pre {
   display: block;
   margin-bottom: 30px; }
 
-.page-icons .codebox {
-  max-width: 840px; }
 .page-icons .codebox-result [class^="icon-"], .page-icons .codebox-result [class*=" icon-"] {
   font-size: 32px; }
 .page-icons .codebox-result .svg {
@@ -413,6 +411,7 @@ td.code > pre {
   width: 32px;
   height: 32px; }
 .page-icons .codebox-result .icon {
+  width: 105px;
   cursor: pointer;
   display: inline-block;
   margin-right: 20px;
