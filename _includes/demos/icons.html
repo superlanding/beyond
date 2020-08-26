@@ -12,4 +12,7 @@
       <div class="icon-desc">{{ item.name }}</div>
     {% endif %}
   </div>
+  {% if forloop.index == 13 %}
+    <br />
+  {% endif %}
 {% endfor %}

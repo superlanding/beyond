@@ -1,7 +1,4 @@
 .page-icons {
-  .codebox {
-    max-width: 840px;
-  }
   .codebox-result {
     [class^="icon-"], [class*=" icon-"] {
       font-size: 32px;
@@ -12,6 +9,7 @@
       @include size(32px);
     }
     .icon {
+      width: 105px;
       cursor: pointer;
       display: inline-block;
       margin-right: 20px;
