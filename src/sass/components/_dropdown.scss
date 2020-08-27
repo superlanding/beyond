@@ -36,6 +36,9 @@
 
   z-index: 1;
   padding: 8px 0;
+  &.no-padding {
+    padding: 0;
+  }
   position: absolute;
   background-color: #fff;
   box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
@@ -141,4 +144,14 @@
     top: auto;
     bottom: 14px;
   }
+}
+
+.dropdown-menu-title {
+  padding: 7px 14px;
+  font-weight: 500;
+  background-color: #f7fafc;
+}
+.dropdown-menu-content {
+  padding: 14px;
+  font-size: .9rem;
 }

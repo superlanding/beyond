@@ -17,6 +17,9 @@ title: Buttons
   <h3>Disabled</h3>
   {% include codebox.html result="demos/btns-disabled.html" html="demos/btns-disabled.html" %}
 
+  <h3>Outlined</h3>
+  {% include codebox.html result="demos/btns-outlined.html" html="demos/btns-outlined.html" %}
+
   <h2>按鈕尺寸</h2>
   {% include codebox.html result="demos/btns-size.html" html="demos/btns-size.html" %}
 
@@ -24,5 +27,10 @@ title: Buttons
   {% include codebox.html result="demos/btns-icon.html" html="demos/btns-icon.html" %}
 
   <h2>讀取狀態</h2>
-  {% include codebox.html result="demos/btns-loading.html" html="demos/btns-loading.html" %}
+  {%
+    include codebox.html
+    result="demos/btns-loading.html"
+    html="demos/btns-loading.html"
+    js="demos/btns-loading.js"
+  %}
 </div>

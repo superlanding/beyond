@@ -15,11 +15,13 @@
                data-default-visible>{{ item.folder }}<i class="icon-chevron-down"></i></div>
            <ul class="nav-menu" data-menu="{{ item.folder }}">
             {% for subItem in item.items %}
-              {% if page.url == item.link %}
-                <a href="{{ subItem.link | relative_url }}" class="nav-item active">{{ subItem.name }}</a>
-              {% else %}
-                <a href="{{ subItem.link | relative_url }}" class="nav-item">{{ subItem.name }}</a>
-              {% endif %}
+              <li>
+                {% if page.url == subItem.link %}
+                  <a href="{{ subItem.link | relative_url }}" class="nav-item active">{{ subItem.name }}</a>
+                {% else %}
+                  <a href="{{ subItem.link | relative_url }}" class="nav-item">{{ subItem.name }}</a>
+                {% endif %}
+              </li>
            {% endfor %}
           </ul>
         {% endif %}

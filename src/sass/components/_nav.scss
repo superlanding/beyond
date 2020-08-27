@@ -23,23 +23,28 @@
     }
   }
   .nav-folder + ul {
+    margin-bottom: .5rem;
     .nav-item {
-      color: #626c98;
+      padding-left: 1rem;
     }
   }
   .nav-menu {
     display: none;
   }
   .nav-item {
+    font-weight: 400;
     color: #1a1f36;
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 7px;
     font-size: .875rem;
+    > i {
+      margin-right: .8rem;
+    }
   }
   .nav-item.active {
     color: $color-primary;
-    font-weight: 700;
   }
 }
 .nav-tabs .nav-item.show .nav-link,

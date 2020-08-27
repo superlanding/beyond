@@ -82,6 +82,9 @@ export default class Tabbox {
     this.slider = document.createElement('div')
     this.slider.classList.add('js-slider')
     this.dom.appendChild(this.slider)
+
+    this.defaultSliderColor = getComputedStyle(this.slider).getPropertyValue('background-color')
+
     const defaultBtn = this.btns.find(btn => 'default' in btn.dataset)
 
     this.adjustSlider()
@@ -129,10 +132,12 @@ export default class Tabbox {
     })
   }
 
-  moveSlider({ top, left, width, color = '#858585' }) {
+  moveSlider({ top, left, width, color }) {
     this.slider.style.transform = `translate(${left}px, ${top}px)`
     this.slider.style.width = width + 'px'
-    this.slider.style.backgroundColor = color
+
+    const defaultSliderColor = this.defaultSliderColor || '#858585'
+    this.slider.style.backgroundColor = color || defaultSliderColor
   }
 
   removeCurrentClass() {
@@ -159,6 +164,7 @@ export default class Tabbox {
     }
 
     let dropdownMatched = false
+
     this.eachDropdownOption(({ dropdownBtn, dropdownInstance, optionEl }) => {
       if (status === optionEl.dataset.tabboxItem) {
         this.setDropdown({ dropdownBtn, dropdownInstance, optionEl })
@@ -174,9 +180,11 @@ export default class Tabbox {
   }
 
   setDropdown({ dropdownBtn, dropdownInstance, optionEl }) {
+    this.removeCurrentClass()
     this.currentNode = dropdownBtn
     this.optionEl = optionEl
     this.moveToCurrentNode()
+    this.addCurrentClass()
 
     this.dropdownInstances.filter(d => d !== dropdownInstance)
       .forEach(d => d.restoreText())

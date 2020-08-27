@@ -60,7 +60,7 @@
     border-left: 0;
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-bottom-color: #cdcdcd;
+    border-bottom-color: #e3e8ee;
     outline: 0;
     transition: all .3s;
     &:hover {
@@ -82,5 +82,15 @@
         @include tab-focus-style;
       }
     }
+  }
+}
+.tabbox.tabbox-uno {
+  $tab-active-color: #6772e5;
+  .js-slider {
+    background-color: $tab-active-color;
+  }
+  .tab-btn.js-current {
+    color: $tab-active-color;
+    font-weight: 700;
   }
 }

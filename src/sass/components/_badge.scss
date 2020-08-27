@@ -1,16 +1,10 @@
 .badge {
-  position: relative;
-  top: -1px;
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  font-size: 75%;
-  display: inline-block;
-  border-radius: .25em;
-  line-height: 1;
-  vertical-align: baseline;
+  font-size: 12px;
+  border-radius: 2px;
   background-color: #eaeaea;
-  padding: .25em .4em;
-  text-align: center;
+  padding: 1px 4px;
   white-space: nowrap;
   transform: translateY(-8%);
 }
