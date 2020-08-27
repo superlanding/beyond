@@ -117,7 +117,7 @@
   }
 }
 
-@each $classname, $bg, $color, $bg-ex, $bg-disabled in $btns {
+@each $classname, $bg, $color, $bg-ex, $bg-disabled, $outlined-color in $btns {
   .btn.#{$classname} {
     background-color: $bg;
     color: $color;
@@ -131,14 +131,17 @@
     &:disabled {
       background-color: $bg-disabled;
     }
+    &.outlined {
+      border: 1px solid $outlined-color;
+    }
   }
 }
 
 .btn.btn-link {
-  background-color: nth($btn-link, 2);
+  background-color: transparent;
   color: nth($btn-link, 3);
   cursor: pointer;
-  box-shadow: 'none';
+  box-shadow: none;
   &.hover,
   &:hover,
   &.active,
@@ -148,6 +151,9 @@
   &.disabled,
   &:disabled {
     color: nth($btn-link, 5);
+  }
+  &.outlined {
+    border: 1px solid #ccc;
   }
 }
 
