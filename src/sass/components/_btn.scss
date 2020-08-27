@@ -120,7 +120,7 @@
 .btn .badge {
   margin-left: .5rem;
   font-weight: 400;
-  line-height: inherit;
+  line-height: initial;
 }
 
 @each $classname, $bg, $color, $bg-ex, $bg-disabled, $outlined-color, $badge-bg, $badge-color in $btns {
