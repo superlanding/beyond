@@ -311,7 +311,7 @@ $badges:
   ('badge-danger', #cd3d64, #fff),
   ('badge-warn', #f1946a, #fff),
   ('badge-info', #5ecdf1, #fff),
-  ('badge-light', #f8f9fa, #fff),
+  ('badge-light', #f8f9fa, #666),
   ('badge-dark', #000, #fff),
   ('badge-type1', #d681d8, #fff),
   ('badge-type2', #fdd85f, #516487);
@@ -320,18 +320,18 @@ $badges:
 $border-color: #dee2e6;
 
 // buttons
-// classname, bg, color, bg-ex, bg-disabled, outlined-color
-$btn-primary: 'btn-primary', #6772e5, #fff, #7795f8, #b2b7df, darken(#6772e5, 10%);
-$btn-secondary: 'btn-secondary', #fff, #6772e5, #fff, #ebebeb, lighten(#6772e5, 18%);
-$btn-success: 'btn-success', #25b47e, #fff, #7de1bb, #98b6ab, darken(#25b47e, 10%);
-$btn-danger: 'btn-danger', #cd3d64, #fff, #ef6a8e, #b59ba7, darken(#cd3d64, 10%);
-$btn-warn: 'btn-warn', #f1946a, #fff, #ffaf8c, #e5cec3, darken(#f1946a, 10%);
-$btn-warning: 'btn-warning', #f1946a, #fff, #ffaf8c, #e5cec3, darken(#f1946a, 10%);
-$btn-info: 'btn-info', #5ecdf1, #fff, #7bdfff, #a4c5d0, darken(#5ecdf1, 10%);
-$btn-light: 'btn-light', #f8f9fa, #697386, #f8f9fa, #ebebeb, #ccc;
-$btn-dark: 'btn-dark', #000, #fff, #4c4c4c, #b7b7b7, #000;
-$btn-type1: 'btn-type1', #d681d8, #fff, #eda3ef, #d1bdd1, darken(#d681d8, 10%);
-$btn-type2: 'btn-type2', #fdd85f, #516487, #ffe89e, #dcd7c9, darken(#fdd85f, 10%);
+// classname, bg, color, bg-ex, bg-disabled, outlined-color, badge-bg, badge-color
+$btn-primary: 'btn-primary', #6772e5, #fff, #7795f8, #b2b7df, darken(#6772e5, 10%), #6c8eef, #fff;
+$btn-secondary: 'btn-secondary', #fff, #6772e5, #fff, #ebebeb, lighten(#6772e5, 18%), lighten(#ccc, 12%), #6772e5;
+$btn-success: 'btn-success', #25b47e, #fff, #7de1bb, #98b6ab, darken(#25b47e, 10%), lighten(#25b47e, 5%), #fff;
+$btn-danger: 'btn-danger', #cd3d64, #fff, #ef6a8e, #b59ba7, darken(#cd3d64, 10%), lighten(#cd3d64, 10%), #fff;
+$btn-warn: 'btn-warn', #f1946a, #fff, #ffaf8c, #e5cec3, darken(#f1946a, 10%), lighten(#f1946a, 7%), #fff;
+$btn-warning: 'btn-warning', #f1946a, #fff, #ffaf8c, #e5cec3, darken(#f1946a, 10%), lighten(#f1946a, 7%), #fff;
+$btn-info: 'btn-info', #5ecdf1, #fff, #7bdfff, #a4c5d0, darken(#5ecdf1, 10%), lighten(#5ecdf1, 7%), #fff;
+$btn-light: 'btn-light', #f8f9fa, #697386, #f8f9fa, #ebebeb, #ccc, lighten(#ccc, 13%), #697386;
+$btn-dark: 'btn-dark', #000, #fff, #4c4c4c, #b7b7b7, #000, lighten(#000, 30%), #fff;
+$btn-type1: 'btn-type1', #d681d8, #fff, #eda3ef, #d1bdd1, darken(#d681d8, 10%), lighten(#d681d8, 7%), #fff;
+$btn-type2: 'btn-type2', #fdd85f, #516487, #ffe89e, #dcd7c9, darken(#fdd85f, 10%), lighten(#fdd85f, 7%), #516487;
 
 $btns:
   $btn-primary,

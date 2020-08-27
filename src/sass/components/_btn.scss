@@ -117,7 +117,13 @@
   }
 }
 
-@each $classname, $bg, $color, $bg-ex, $bg-disabled, $outlined-color in $btns {
+.btn .badge {
+  margin-left: .5rem;
+  font-weight: 400;
+  line-height: inherit;
+}
+
+@each $classname, $bg, $color, $bg-ex, $bg-disabled, $outlined-color, $badge-bg, $badge-color in $btns {
   .btn.#{$classname} {
     background-color: $bg;
     color: $color;
@@ -133,6 +139,10 @@
     }
     &.outlined {
       border: 1px solid $outlined-color;
+    }
+    .badge {
+      background-color: $badge-bg;
+      color: $badge-color;
     }
   }
 }
