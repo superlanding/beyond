@@ -57,12 +57,16 @@ export default function bindIcons() {
     })
   }
 
-  searchInput.addEventListener('input', handleInput, false)
+  if (searchInput) {
+    searchInput.addEventListener('input', handleInput, false)
+  }
 
   return function unbindIcons() {
     divs.forEach(div => {
       div.removeEventListener('click', handleClick)
     })
-    searchInput.removeEventListener('input', handleInput, false)
+    if (searchInput) {
+      searchInput.removeEventListener('input', handleInput, false)
+    }
   }
 }
