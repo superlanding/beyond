@@ -1,7 +1,8 @@
 .btn {
   outline: 0;
   background-color: #fff;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   border: 0;
   padding: 6px 12px 7px;
   border-radius: 3px;
@@ -65,11 +66,7 @@
     cursor: not-allowed;
   }
   .icon {
-    display: inline-block;
-    margin-right: 2px;
-    vertical-align: sub;
-    transform: translateY(-2px);
-    font-size: 1rem;
+    margin-right: .7em;
   }
 }
 .btn-loader {
@@ -120,7 +117,6 @@
 .btn .badge {
   margin-left: .5rem;
   font-weight: 400;
-  line-height: initial;
 }
 
 @each $classname, $bg, $color, $bg-ex, $bg-disabled, $outlined-color, $badge-bg, $badge-color in $btns {
