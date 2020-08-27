@@ -8,3 +8,48 @@
   color: #fff;
   background-color: #555;
 }
+
+.tooltip.tooltip-popover {
+  background-color: #fff;
+  color: #3c4257;
+  padding: 10px 13px;
+
+  &:after {
+    content: ' ';
+    display: block;
+    border: 0;
+    border-top-left-radius: 4px;
+    @include size(12px);
+    background-color: #fff;
+    position: absolute;
+    transform: rotate(45deg);
+  }
+  &.top:after {
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &.bottom:after {
+    top: -6px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &.left:after {
+    right: -6px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  &.right:after {
+    left: -6px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
