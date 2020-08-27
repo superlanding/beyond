@@ -84,3 +84,13 @@
     }
   }
 }
+.tabbox.tabbox-uno {
+  $tab-active-color: #6772e5;
+  .js-slider {
+    background-color: $tab-active-color;
+  }
+  .tab-btn.js-current {
+    color: $tab-active-color;
+    font-weight: 700;
+  }
+}
