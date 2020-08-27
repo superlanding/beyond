@@ -24,13 +24,14 @@
   }
   .nav-folder + ul {
     .nav-item {
-      color: #626c98;
+      padding-left: 1rem;
     }
   }
   .nav-menu {
     display: none;
   }
   .nav-item {
+    font-weight: 400;
     color: #1a1f36;
     text-decoration: none;
     display: block;
@@ -39,7 +40,6 @@
   }
   .nav-item.active {
     color: $color-primary;
-    font-weight: 700;
   }
 }
 .nav-tabs .nav-item.show .nav-link,
