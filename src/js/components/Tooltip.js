@@ -67,6 +67,7 @@ export default class Tooltip {
       this.addEvent(dom, 'mouseover', () => {
 
         const msg = this.dom.dataset.msg || ''
+        const style = this.dom.dataset.style || 'default'
 
         if (msg.length === 0) {
           return
@@ -77,12 +78,15 @@ export default class Tooltip {
         tooltip.style.opacity = 0
         tooltip.style.display = 'block'
 
-        const { pos } = getFloatedTargetPos({
+        const { pos, place } = getFloatedTargetPos({
           src: dom,
           target: tooltip,
           place: this.getPlace(),
           offset: this.getOffset()
         })
+
+        tooltip.className = (style === 'default') ? 'tooltip' : `tooltip tooltip-popover ${place}`
+
         tooltip.style.left = toPixel(pos.left)
         tooltip.style.top = toPixel(pos.top)
         tooltip.style.opacity = 1
