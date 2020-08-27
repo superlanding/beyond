@@ -164,6 +164,7 @@ export default class Tabbox {
     }
 
     let dropdownMatched = false
+
     this.eachDropdownOption(({ dropdownBtn, dropdownInstance, optionEl }) => {
       if (status === optionEl.dataset.tabboxItem) {
         this.setDropdown({ dropdownBtn, dropdownInstance, optionEl })
@@ -179,9 +180,11 @@ export default class Tabbox {
   }
 
   setDropdown({ dropdownBtn, dropdownInstance, optionEl }) {
+    this.removeCurrentClass()
     this.currentNode = dropdownBtn
     this.optionEl = optionEl
     this.moveToCurrentNode()
+    this.addCurrentClass()
 
     this.dropdownInstances.filter(d => d !== dropdownInstance)
       .forEach(d => d.restoreText())
