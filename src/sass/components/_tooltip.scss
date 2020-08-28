@@ -10,10 +10,12 @@
 }
 
 .tooltip.tooltip-popover {
+  $border-color: #e8e8e8;
   background-color: #fff;
   color: #3c4257;
   padding: 10px 13px;
   box-shadow: 4px 4px 15px 1px rgba(68,  68, 72, .12);
+  border: 1px solid $border-color;
 
   &:after {
     content: ' ';
@@ -31,6 +33,8 @@
     right: 0;
     margin-left: auto;
     margin-right: auto;
+    border-right: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
   }
   &.bottom:after {
     top: -6px;
@@ -38,6 +42,8 @@
     right: 0;
     margin-left: auto;
     margin-right: auto;
+    border-left: 1px solid $border-color;
+    border-top: 1px solid $border-color;
   }
   &.left:after {
     right: -6px;
@@ -45,6 +51,8 @@
     bottom: 0;
     margin-top: auto;
     margin-bottom: auto;
+    border-right: 1px solid $border-color;
+    border-top: 1px solid $border-color;
   }
   &.right:after {
     left: -6px;
@@ -52,5 +60,7 @@
     bottom: 0;
     margin-top: auto;
     margin-bottom: auto;
+    border-left: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
   }
 }
