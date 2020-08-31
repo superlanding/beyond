@@ -46,15 +46,19 @@ export default class Modal {
   addEvents() {
     this.addEvent(this.dom, 'click', () => this.show())
 
-    this.addEvent(this.closeBtn, 'click', () => {
-      this.hide()
-      this.options.cancel('close')
-    })
+    if (this.closeBtn) {
+      this.addEvent(this.closeBtn, 'click', () => {
+        this.hide()
+        this.options.cancel('close')
+      })
+    }
 
-    this.addEvent(this.cancelBtn, 'click', () => {
-      this.hide()
-      this.options.cancel('cancel')
-    })
+    if (this.cancelBtn) {
+      this.addEvent(this.cancelBtn, 'click', () => {
+        this.hide()
+        this.options.cancel('cancel')
+      })
+    }
 
     this.addEvent(this.modal, 'click', event => {
       // is backdrop
@@ -64,13 +68,15 @@ export default class Modal {
       }
     })
 
-    this.addEvent(this.confirmBtn, 'click', () => {
-      if (typeof this.options.confirm === 'function') {
-        this.options.confirm()
-      }
-      else {
-        this.hide()
-      }
-    })
+    if (this.confirmBtn) {
+      this.addEvent(this.confirmBtn, 'click', () => {
+        if (typeof this.options.confirm === 'function') {
+          this.options.confirm()
+        }
+        else {
+          this.hide()
+        }
+      })
+    }
   }
 }
