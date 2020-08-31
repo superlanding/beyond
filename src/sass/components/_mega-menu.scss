@@ -2,6 +2,9 @@
   padding-top: .2rem;
   padding-bottom: .2rem;
 }
+.mega-menu-divider {
+  border-bottom: 1px solid #ebebeb;
+}
 .mega-menu-col {
   padding: .7rem 1.5rem;
   flex-grow: 1;
@@ -42,13 +45,14 @@
 }
 .mega-menu-icon-box-item {
   cursor: pointer;
-  transition: .3s background-color;
+  transition: .3s all;
   &:hover {
+    color: $text-color;
     background-color: #f6f6f6;
   }
   display: table-cell;
   padding: 1rem 1.8rem;
-  color: $text-color;
+  color: $color-primary;
   text-align: center;
   i {
     display: block;
