@@ -69,3 +69,15 @@
     }
   }
 }
+
+.modal.static {
+  overflow-y: initial;
+  background-color: transparent;
+  opacity: 1;
+  position: static;
+  display: block;
+  .modal-dialog {
+    transform: scale(1);
+    margin: 0 auto;
+  }
+}
