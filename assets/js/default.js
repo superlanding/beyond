@@ -9,6 +9,7 @@ import bindModals from '../../_includes/demos/modals'
 import bindSearchDropdowns from '../../_includes/demos/search-dropdowns'
 import bindToasts from '../../_includes/demos/toasts'
 import bindWidthPad from './bindWidthPad'
+import bindJqueryModal from '../../_includes/demos/jquery-modal'
 
 const { beyond, Turbolinks, $ } = window
 const bindJQuery = window['beyond-jquery'].default
@@ -34,6 +35,8 @@ function bindAll() {
   unbinds.push(bindSearchDropdowns())
   unbinds.push(bindToasts())
   unbinds.push(bindIcons())
+
+  unbinds.push(bindJqueryModal())
 }
 
 function unbindAll() {

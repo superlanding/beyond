@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
     
-      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1598857289">
+      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1598954492">
     
 
-    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1598857289">
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1598954492">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32"
@@ -27,9 +27,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
 
     
-      <script src="/beyond/dist/beyond.js?v=1598857289"></script>
-      <script src="/beyond/dist/beyond-jquery.js?v=1598857289"></script>
-      <script src="/beyond/dist/web.js?v=1598857289"></script>
+      <script src="/beyond/dist/beyond.js?v=1598954492"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1598954492"></script>
+      <script src="/beyond/dist/web.js?v=1598954492"></script>
     
   </head>
   <body class="container bg-admin">
@@ -649,6 +649,216 @@
   </div>
 </div>
 
+
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+      <a>JS</a>
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <button id="jq-modal-btn"
+        type="button"
+        class="btn btn-primary">用 jQuery 打開視窗</button>
+<button id="jq-modal-replace-btn"
+        type="button"
+        class="btn btn-primary">用 jQuery 打開視窗並換掉 HTML</button>
+<button id="jq-uniq-modal-btn"
+        type="button"
+        class="btn btn-primary">用 $.uniqModal 產生唯一的 Modal</button>
+
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"display: none;"</span> <span class="na">class=</span><span class="s">"modal jquery-modal"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span><span class="nt">&gt;</span>jquery-modal 視窗標題<span class="nt">&lt;/h5&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn-close"</span> <span class="na">data-close</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon icon-cross"</span><span class="nt">&gt;&lt;/i&gt;</span>
+        <span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body bg-content"</span><span class="nt">&gt;</span>
+        jquery-modal 視窗內文
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">data-cancel</span> <span class="na">class=</span><span class="s">"btn btn-outline"</span><span class="nt">&gt;</span>取消<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">data-confirm</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>確認<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+</pre></td><td class="code"><pre><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindJqueryModal</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="kd">const</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">jq-modal-btn</span><span class="dl">'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">replaceBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">jq-modal-replace-btn</span><span class="dl">'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">uniqBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">jq-uniq-modal-btn</span><span class="dl">'</span><span class="p">)</span>
+
+  <span class="kd">const</span> <span class="nx">html</span> <span class="o">=</span> <span class="s2">`
+    &lt;div class="modal jquery-modal"&gt;
+      &lt;div class="modal-dialog"&gt;
+        &lt;div class="modal-content"&gt;
+          &lt;div class="modal-header"&gt;
+            &lt;h5 class="modal-title"&gt;視窗標題&lt;/h5&gt;
+            &lt;button type="button" class="btn-close" data-close aria-label="Close"&gt;
+              &lt;i class="icon icon-cross"&gt;&lt;/i&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class="modal-body bg-content"&gt;
+            換掉了...
+          &lt;/div&gt;
+          &lt;div class="modal-footer"&gt;
+            &lt;button data-cancel class="btn btn-outline"&gt;取消&lt;/button&gt;
+            &lt;button data-confirm class="btn btn-primary"&gt;確認&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `</span>
+
+  <span class="kd">let</span> <span class="nx">onBtnClick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.jquery-modal</span><span class="dl">'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">open?</span><span class="dl">'</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.jquery-modal</span><span class="dl">'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="dl">'</span><span class="s1">open?</span><span class="dl">'</span><span class="p">))</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="kd">let</span> <span class="nx">onReplaceBtnClick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.jquery-modal</span><span class="dl">'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">,</span> <span class="nx">html</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="kd">let</span> <span class="nx">onUniqBtnClick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">uniqModal</span><span class="p">().</span><span class="nx">modal</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">btn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onBtnClick</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">replaceBtn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">replaceBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onReplaceBtnClick</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">uniqBtn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">uniqBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onUniqBtnClick</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">unbindJqueryModal</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">btn</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">btn</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onBtnClick</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">replaceBtn</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">replaceBtn</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onReplaceBtnClick</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">uniqBtn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">uniqBtn</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onUniqBtnClick</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+  </div>
+</div>
+
+
   <div class="doc">
   <h2>Modal HTML</h2>
   <div class="code">
@@ -764,6 +974,26 @@
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">modal</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
   </div>
 </div><!-- .doc -->
+
+  <div style="display: none;" class="modal jquery-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">jquery-modal 視窗標題</h5>
+        <button type="button" class="btn-close" data-close aria-label="Close">
+          <i class="icon icon-cross"></i>
+        </button>
+      </div>
+      <div class="modal-body bg-content">
+        jquery-modal 視窗內文
+      </div>
+      <div class="modal-footer">
+        <button data-cancel class="btn btn-outline">取消</button>
+        <button data-confirm class="btn btn-primary">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>
 
