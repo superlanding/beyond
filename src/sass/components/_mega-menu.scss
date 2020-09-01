@@ -1,6 +1,16 @@
+$mega-menu-text-color: #0a2540;
+$mega-menu-text-color-ex: #8A8D90;
+
+@mixin mega-menu-text() {
+  transition: .3s color;
+  color: $mega-menu-text-color;
+  &:hover {
+    color: $mega-menu-text-color-ex;
+  }
+}
+
 .mega-menu {
-  padding-top: .2rem;
-  padding-bottom: .2rem;
+  font-size: .9375rem;
 }
 .mega-menu-divider {
   border-bottom: 1px solid #ebebeb;
@@ -8,35 +18,16 @@
 .mega-menu-col {
   padding: .7rem 1.5rem;
   flex-grow: 1;
-  transition: .3s background-color;
   min-width: 180px;
-  color: $text-color;
   display: flex;
   align-items: center;
-  &:hover {
-    color: $text-color-strong;
-    background-color: #f6f6f6;
-  }
-  i {
-    margin-right: .6rem;
-  }
-}
-.mega-menu-label {
-  padding-left: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: .5rem;
-  color: $text-color-light;
-  font-size: 12px;
+  @include mega-menu-text;
 }
 .mega-menu-item {
   transition: .3s background-color;
-  color: $text-color;
   display: block;
-  padding: .5rem 2.2rem;
-  &:hover {
-    color: $text-color-strong;
-    background-color: #f6f6f6;
-  }
+  padding: .7rem 1.5rem;
+  @include mega-menu-text;
 }
 .mega-menu-icon-box {
   display: table;
@@ -49,14 +40,17 @@
   cursor: pointer;
   transition: .3s all;
   display: table-cell;
-  padding: 1rem 1.8rem;
-  color: $color-primary;
+  padding: 1rem 1.5rem;
   text-align: center;
+  @include mega-menu-text;
   &:hover {
-    color: $text-color-strong;
-    background-color: #f6f6f6;
+    i {
+      color: $mega-menu-text-color;
+    }
   }
   i {
+    transition: .3s color;
+    color: #88add2;
     display: block;
     margin-bottom: .4rem;
   }

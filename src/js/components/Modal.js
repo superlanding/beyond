@@ -1,6 +1,8 @@
 import supportDom from '../utils/supportDom'
 import { noop } from '../utils'
 
+let globalModalId = 0
+
 @supportDom
 export default class Modal {
 
@@ -15,19 +17,41 @@ export default class Modal {
   }
 
   init() {
-    this.modalId = this.dom.dataset.modalOpener
-    const selector = `[data-modal="${this.modalId}"]`
-    this.modal = document.querySelector(selector)
-    if (! this.modal) {
-      throw new Error(`${selector} is not defined.`)
-    }
+    this.bindEvents()
+  }
+
+  bindEvents() {
+    this.setModalDom()
     this.closeBtn = this.modal.querySelector('[data-close]')
     this.cancelBtn = this.modal.querySelector('[data-cancel]')
     this.confirmBtn = this.modal.querySelector('[data-confirm]')
     this.addEvents()
   }
 
-  show() {
+  setModalDom() {
+    const { modalOpener, modal } = this.dom.dataset
+
+    if (modalOpener) {
+      this.modalId = this.dom.dataset.modalOpener
+      const selector = `[data-modal="${this.modalId}"]`
+      this.modal = document.querySelector(selector)
+      return
+    }
+
+    if (modal) {
+      this.modalId = modal
+    }
+    else {
+      this.modalId = `modal-${++globalModalId}`
+      this.dom.dataset.modal = this.modalId
+    }
+    this.modal = this.dom
+  }
+
+  show(html) {
+    if (html) {
+      this.replace(html)
+    }
     this.isVisible = true
     this.modal.style.display = 'block'
     setTimeout(() => {
@@ -43,24 +67,47 @@ export default class Modal {
     }, 300)
   }
 
+  replace(html) {
+    this.destroy()
+    this.modalId = null
+
+    // replace with new dom
+    const div = document.createElement('div')
+    div.innerHTML = html.trim()
+    const dom = div.firstChild
+    this.dom.parentNode.replaceChild(dom, this.dom)
+
+    this.dom = dom
+    this.dom._modal = this
+    this.init()
+  }
+
+  visible() {
+    return this.isVisible
+  }
+
+  addEventIfDomExists(dom, event, cb) {
+    if (dom) {
+      this.addEvent(dom, event, cb)
+    }
+  }
+
   addEvents() {
-    this.addEvent(this.dom, 'click', () => this.show())
-
-    if (this.closeBtn) {
-      this.addEvent(this.closeBtn, 'click', () => {
-        this.hide()
-        this.options.cancel('close')
-      })
+    if (this.dom.dataset.modalOpener) {
+      this.addEventIfDomExists(this.dom, 'click', () => this.show())
     }
 
-    if (this.cancelBtn) {
-      this.addEvent(this.cancelBtn, 'click', () => {
-        this.hide()
-        this.options.cancel('cancel')
-      })
-    }
+    this.addEventIfDomExists(this.closeBtn, 'click', () => {
+      this.hide()
+      this.options.cancel('close')
+    })
 
-    this.addEvent(this.modal, 'click', event => {
+    this.addEventIfDomExists(this.cancelBtn, 'click', () => {
+      this.hide()
+      this.options.cancel('cancel')
+    })
+
+    this.addEventIfDomExists(this.modal, 'click', event => {
       // is backdrop
       if (event.target.dataset.modal === this.modalId) {
         this.hide()
@@ -68,15 +115,13 @@ export default class Modal {
       }
     })
 
-    if (this.confirmBtn) {
-      this.addEvent(this.confirmBtn, 'click', () => {
-        if (typeof this.options.confirm === 'function') {
-          this.options.confirm()
-        }
-        else {
-          this.hide()
-        }
-      })
-    }
+    this.addEventIfDomExists(this.confirmBtn, 'click', () => {
+      if (typeof this.options.confirm === 'function') {
+        this.options.confirm()
+      }
+      else {
+        this.hide()
+      }
+    })
   }
 }
