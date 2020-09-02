@@ -37,6 +37,8 @@
       link: /components/button-groups.html
     - name: Cards
       link: /components/cards.html
+    - name: Charts
+      link: /components/charts.html
     - name: DateTimeRangers
       link: /components/date-time-rangers.html
     - name: Datepickers
