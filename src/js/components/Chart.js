@@ -46,6 +46,10 @@ export default class Chart {
     this.xLabelGutter = options.xLabelGutter || 80
     this.yLabelGutter = options.yLabelGutter || 10
 
+    this.xLabelMargin = options.xLabelMargin || 10
+    this.yLabelMargin = options.yLabelMargin || 10
+    this.bgColor = options.bgColor || '#fff'
+
     this.init()
   }
 
@@ -69,9 +73,17 @@ export default class Chart {
   }
 
   setXLabelCount() {
+    const contentWidth = this.width - (this.xPadding * 2) - this.yLabelMargin - this.yLabelWidth
+    const { xLabelWidth } = this
+    const count = (contentWidth - xLabelWidth) / (xLabelWidth + this.xLabelGutter)
+    this.xLabelCount = parseInt(count, 10)
   }
 
   setYLabelCount() {
+    const contentHeight = this.height - (this.yPadding * 2)
+    const yLabelHeight = this.fontSize
+    const count = (contentHeight - yLabelHeight) / (yLabelHeight + this.yLabelGutter)
+    this.yLabelCount = parseInt(count, 10)
   }
 
   setPoints(pointsArr) {
@@ -125,7 +137,7 @@ export default class Chart {
   }
 
   clear() {
-    this.ctx.fillStyle = '#fff'
+    this.ctx.fillStyle = this.bgColor
     this.ctx.fillRect(0, 0, this.width, this.height)
   }
 }
