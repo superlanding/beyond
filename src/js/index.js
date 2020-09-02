@@ -7,6 +7,7 @@ import './polyfills/elementDataset'
 import Alert from './components/Alert'
 import Autocomplete from './components/Autocomplete'
 import Btn from './components/Btn'
+import Chart from './components/Chart'
 import Checkbox from './components/Checkbox'
 import DateTimeRanger from './components/DateTimeRanger'
 import Datepicker from './components/Datepicker'
@@ -29,6 +30,7 @@ export {
   Alert,
   Autocomplete,
   Btn,
+  Chart,
   Checkbox,
   DateTimeRanger,
   Datepicker,
