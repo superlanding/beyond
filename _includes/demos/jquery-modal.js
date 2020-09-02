@@ -26,18 +26,18 @@ export default function bindJqueryModal() {
     </div>
   `
 
-  let onBtnClick = () => {
+  const onBtnClick = () => {
     $('.jquery-modal').modal('show')
     setTimeout(() => {
       console.log('open?', $('.jquery-modal').modal('open?'))
     }, 1000)
   }
 
-  let onReplaceBtnClick = () => {
+  const onReplaceBtnClick = () => {
     $('.jquery-modal').modal('show', html)
   }
 
-  let onUniqBtnClick = () => {
+  const onUniqBtnClick = () => {
     $.uniqModal().modal('show')
   }
 
@@ -59,8 +59,8 @@ export default function bindJqueryModal() {
     if (replaceBtn) {
       replaceBtn.removeEventListener('click', onReplaceBtnClick)
     }
-  if (uniqBtn) {
-    uniqBtn.removeEventListener('click', onUniqBtnClick)
-  }
+    if (uniqBtn) {
+      uniqBtn.removeEventListener('click', onUniqBtnClick)
+    }
   }
 }
