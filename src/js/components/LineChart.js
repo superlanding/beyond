@@ -86,12 +86,15 @@ export default class LineChart {
 
   handleDprChange() {
     this.setDpr()
-    this.bindMedia()
+    this.setCanvasSizeByDpr()
+    this.setLabelWidths()
+    this.setLabelHeights()
+    this.draw()
   }
 
   bindMedia() {
     if (this.media) {
-      this.unbindMedia()
+      return
     }
     this.media = window.matchMedia(`(resolution: ${this.dpr}dppx)`)
     this._handleDprChange = this.handleDprChange.bind(this)
@@ -364,11 +367,7 @@ export default class LineChart {
     }
   }
 
-  setPoints(pointsArr) {
-    this.pointsArr = pointsArr
-    this.setLabelWidths()
-    this.setLabelHeights()
-
+  draw() {
     this.raf(() => {
 
       const contentWidth = this.getContentWidth()
@@ -394,6 +393,13 @@ export default class LineChart {
       this.drawLines()
       this.drawLineLables()
     })
+  }
+
+  setPoints(pointsArr) {
+    this.pointsArr = pointsArr
+    this.setLabelWidths()
+    this.setLabelHeights()
+    this.draw()
   }
 
   setLabelWidths() {
