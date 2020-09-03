@@ -93,123 +93,148 @@ export default class Chart {
     return this.height - (this.yPadding * 2)
   }
 
-  getSortedPointsByXAxis() {
-    const points = uniqBy(this.pointsArr.flat(), 'x')
-    return sortBy(points, ['x'])
+  getUniqSortedPoints(axis) {
+    const points = uniqBy(this.pointsArr.flat(), axis)
+    return sortBy(points, [axis])
   }
 
-  getWidthDataByGap(gap, labels) {
-    const { ctx, xLabelGutter } = this
-    const length = labels.length
+  getLengthTotalData(gap, gutter, labels, measureLength) {
+
+    const labelCount = labels.length
     const marked = {}
 
     // mark the first and last
     marked[0] = true
-    marked[labels.length - 1] = true
+    marked[labelCount - 1] = true
 
     return labels.reduce((res, label, i) => {
 
       if (i === 0) {
-        const width = ctx.measureText(label).width
+        const length = measureLength(label)
+        const lengthTotal = res.lengthTotal + length + gutter
         const rows = res.rows.slice()
-        rows.push({ label, width })
-        return {
-          widthTotal: res.widthTotal + width + xLabelGutter,
-          rows
-        }
+        rows.push({ label, length })
+        return { lengthTotal, rows }
       }
-      if (i === (length - 1)) {
-        const width = ctx.measureText(label).width
+      if (i === (labelCount - 1)) {
+        const length = measureLength(label)
+        const lengthTotal = res.lengthTotal + length
         const rows = res.rows.slice()
-        rows.push({ label, width })
-        return {
-          widthTotal: res.widthTotal + width,
-          rows
-        }
+        rows.push({ label, length })
+        return { lengthTotal, rows }
       }
       if (isUndef(marked[i - gap]) && isUndef(marked[i + gap])) {
         marked[i] = true
-        const width = ctx.measureText(label).width
+        const length = measureLength(label)
+        const lengthTotal = res.lengthTotal + length + gutter
         const rows = res.rows.slice()
-        rows.push({ label, width })
-        return {
-          widthTotal: res.widthTotal + ctx.measureText(label).width + xLabelGutter,
-          rows
-        }
+        rows.push({ label, length })
+        return { lengthTotal, rows }
       }
       return res
     }, {
-      widthTotal: 0,
+      lengthTotal: 0,
       rows: []
     })
   }
 
-  getXLabelRows() {
-    const { xStep, xLabel, ctx } = this
-    const points = this.getSortedPointsByXAxis()
+  getStepRows(options = {}) {
+
+    const axis = options.axis || 'x'
+    const step = options.step || this.xStep
+    const gutter = options.gutter || this.xLabelGutter
+    const contentLength = options.contentLength || this.getContentWidth()
+    const toLabel = options.toLabel || this.xLabel
+    const measureLength = options.measureLength || (v => this.ctx.measureText(v).width)
+
+    const { ctx } = this
+    const points = this.getUniqSortedPoints(axis)
     const firstPoint = points[0]
     const lastPoint = points[points.length - 1]
-    const stepStart = parseInt(firstPoint.x / xStep, 10) * xStep
-    let stepEnd = parseInt(lastPoint.x / xStep, 10) * xStep
 
-    if (stepEnd < lastPoint.x) {
-      stepEnd += xStep
-    }
-    const xLabels = range(stepStart, stepEnd + xStep, xStep)
-      .map(v => xLabel(v))
-
-    if (xLabels.length <= 2) {
-      return xLabels
+    if (points.length <= 2) {
+      return points.map(p => {
+        const label = toLabel(p[axis])
+        const length = measureLength(label)
+        return { label, length }
+      })
     }
 
-    const contentWidth = this.getContentWidth()
-    const length = xLabels.length
-    const initialGap = parseInt((length - 2) / 2, 10)
-    const firstLabel = xLabels[0]
-    const lastLabel = xLabels[xLabels.length - 1]
-    let resRows = [
-      { label: firstLabel, width: ctx.measureText(firstLabel).width },
-      { label: lastLabel, width: ctx.measureText(lastLabel).width },
+    const stepStart = parseInt(firstPoint[axis] / step, 10) * step
+    let stepEnd = parseInt(lastPoint[axis] / step, 10) * step
+
+    if (stepEnd < lastPoint[axis]) {
+      stepEnd += step
+    }
+
+    const labels = range(stepStart, stepEnd + step, step)
+      .map(v => toLabel(v))
+
+    const labelCount = labels.length
+    const initialGap = parseInt((labelCount - 2) / 2, 10)
+
+    const firstLabel = labels[0]
+    const lastLabel = labels[labelCount - 1]
+
+    let stepRows = [
+      { label: firstLabel, length: measureLength(firstLabel) },
+      { label: lastLabel, length: measureLength(lastLabel) },
     ]
 
     for (let gap = initialGap; gap >= 0; gap--) {
-      const { widthTotal, rows } = this.getWidthDataByGap(gap, xLabels)
-      if (widthTotal <= contentWidth) {
-        resRows = rows
+      const { lengthTotal, rows } = this.getLengthTotalData(gap, gutter, labels, measureLength)
+      if (lengthTotal <= contentLength) {
+        stepRows = rows
         continue
       }
-      return resRows
+      return stepRows
     }
-    return resRows
+    return stepRows
   }
 
   drawXAxis() {
-    const { ctx, xLabelGutter } = this
-    let x = this.xPadding
+    const { ctx } = this
     const contentWidth = this.getContentWidth()
-    const y = this.height - this.yPadding - this.fontSize
-    const rows = this.getXLabelRows()
-    const labelWidth = rows.reduce((w, row) => w + row.width, 0)
+    const rows = this.getStepRows()
+    const labelWidth = rows.reduce((w, row) => w + row.length, 0)
     const gutter = parseInt((contentWidth - labelWidth) / (rows.length - 1), 10)
+
+    let x = this.xPadding
+    const y = this.height - this.yPadding - this.fontSize
 
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#000'
 
     rows.forEach((row, i) => {
-      const { label } = row
-      ctx.fillText(label, x, y)
-      x += gutter + row.width
+      ctx.fillText(row.label, x, y)
+      x += gutter + row.length
     })
   }
 
   drawYAxis() {
+    const { ctx } = this
+    const contentHeight = this.getContentHeight()
+    const rows = this.getYLabelRows()
+    const labelHeight = rows.reduce((w, row) => w + row.height, 0)
+    const gutter = parseInt((contentHeight - labelHeight) / (rows.length - 1), 10)
+
+    const x = this.width - this.xPadding - this.yLabelWidth - this.yLabelGutter
+    let y = this.height - this.yPadding - (this.fontSize * 2)
+
+    ctx.textBaseline = 'top'
+    ctx.fillStyle = '#000'
+
+    rows.forEach((row, i) => {
+      ctx.fillText(row.label, x, y)
+      y -= (gutter + row.height)
+    })
   }
 
   setPoints(pointsArr) {
     this.pointsArr = pointsArr
     this.setLabelWidths()
     this.drawXAxis()
-    this.drawYAxis()
+    // this.drawYAxis()
     this.drawPoints()
   }
 
