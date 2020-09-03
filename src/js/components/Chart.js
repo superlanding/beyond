@@ -144,7 +144,7 @@ export default class Chart {
     })
   }
 
-  getXLabels() {
+  getXLabelRows() {
     const { xStep, xLabel, ctx } = this
     const points = this.getSortedPointsByXAxis()
     const firstPoint = points[0]
@@ -188,7 +188,7 @@ export default class Chart {
     let x = this.xPadding
     const contentWidth = this.getContentWidth()
     const y = this.height - this.yPadding - this.fontSize
-    const rows = this.getXLabels()
+    const rows = this.getXLabelRows()
     const labelWidth = rows.reduce((w, row) => w + row.width, 0)
     const gutter = parseInt((contentWidth - labelWidth) / (rows.length - 1), 10)
 
