@@ -53,7 +53,7 @@ export default class LineChart {
     this.yLabelWidth = options.yLabelWidth
     this.yLabelHeight = options.yLabelHeight
 
-    this.xGutter = isDef(options.xGutter) ? options.xGutter : 10
+    this.xGutter = isDef(options.xGutter) ? options.xGutter : 100
     this.yGutter = isDef(options.yGutter) ? options.yGutter : 10
 
     this.xLabelMargin = isDef(options.xLabelMargin) ? options.xLabelMargin : 10
