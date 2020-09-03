@@ -26,6 +26,11 @@ import { uniqBy, sortBy, range, toPixel, mem } from '../utils'
  *                                            v                                                     |
  * --------------------------------------------------------------------------------------------------
  **/
+const defaultLineStyles = [
+  '#5469d4',
+  '#7c54d4',
+  '#a254d4'
+]
 
 @supportDom
 export default class LineChart {
@@ -44,13 +49,17 @@ export default class LineChart {
     this.yPadding = isDef(options.yPadding) ? options.yPadding : 20
 
     this.xLabelWidth = options.xLabelWidth
+    this.xLabelHeight = options.xLabelHeight
     this.yLabelWidth = options.yLabelWidth
+    this.yLabelHeight = options.yLabelHeight
 
     this.xGutter = isDef(options.xGutter) ? options.xGutter : 10
     this.yGutter = isDef(options.yGutter) ? options.yGutter : 10
 
     this.xLabelMargin = isDef(options.xLabelMargin) ? options.xLabelMargin : 10
     this.yLabelMargin = isDef(options.yLanelMargin) ? options.yLabelMargin : 10
+
+    this.lineStyles = options.lineStyles || defaultLineStyles
 
     this.bgColor = options.bgColor || '#fff'
     this.fontSize = options.fontSize || 12
@@ -96,7 +105,7 @@ export default class LineChart {
   }
 
   getContentHeight() {
-    return this.height - (this.yPadding * 2) - this.xLabelMargin - this.fontSize
+    return this.height - (this.yPadding * 2) - this.xLabelMargin - this.xLabelHeight
   }
 
   getUniqSortedPoints(axis) {
@@ -216,12 +225,13 @@ export default class LineChart {
     return stepRows
   }
 
-  drawXAxis() {
+  getGutter(rows, contentLength) {
+    const labelLength = rows.reduce((w, row) => w + row.length, 0)
+    return parseInt((contentLength - labelLength) / (rows.length - 1), 10)
+  }
+
+  drawXAxis(rows, gutter) {
     const { ctx } = this
-    const contentWidth = this.getContentWidth()
-    const rows = this.getLabelRows({ step: this.xStep })
-    const labelWidth = rows.reduce((w, row) => w + row.length, 0)
-    const gutter = parseInt((contentWidth - labelWidth) / (rows.length - 1), 10)
 
     let x = this.xPadding
     const y = this.height - this.yPadding - this.fontSize
@@ -235,20 +245,8 @@ export default class LineChart {
     })
   }
 
-  drawYAxis() {
+  drawYAxis(rows, gutter) {
     const { ctx } = this
-    const contentHeight = this.getContentHeight()
-    const rows = this.getLabelRows({
-      axis: 'y',
-      step: this.yStep,
-      gutter: this.yGutter,
-      contentLength: contentHeight,
-      toLabel: this.toYLabel,
-      measureLength: () => this.fontSize
-    })
-    const labelHeight = rows.reduce((w, row) => w + row.length, 0)
-    const gutter = parseInt((contentHeight - labelHeight) / (rows.length - 1), 10)
-
     const x = this.width - this.xPadding
     let y = this.height - this.yPadding - this.fontSize - this.xLabelMargin - this.fontSize
 
@@ -260,7 +258,6 @@ export default class LineChart {
       ctx.fillText(row.label, x, y)
       y -= (gutter + row.length)
     })
-    this.drawBgLines(rows, gutter)
   }
 
   drawBgLines(rows, gutter) {
@@ -270,6 +267,7 @@ export default class LineChart {
     let y = this.height - this.yPadding - this.fontSize - this.xLabelMargin - (this.fontSize / 2)
 
     ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
+    ctx.lineWidth = 1
 
     rows.forEach(row => {
       ctx.beginPath()
@@ -288,14 +286,44 @@ export default class LineChart {
     return fn()
   }
 
+  setLabelHeights() {
+    if (isUndef(this.xLabelHeight)) {
+      this.xLabelHeight = this.fontSize
+    }
+    if (isUndef(this.yLabelHeight)) {
+      this.yLabelHeight = this.fontSize
+    }
+  }
+
   setPoints(pointsArr) {
     this.pointsArr = pointsArr
     this.setLabelWidths()
+    this.setLabelHeights()
 
     this.raf(() => {
-      this.drawXAxis()
-      this.drawYAxis()
-      this.drawPoints()
+
+      const contentWidth = this.getContentWidth()
+      const xLabelRows = this.getLabelRows({ step: this.xStep })
+      const xGutter = this.getGutter(xLabelRows, contentWidth)
+
+      this.drawXAxis(xLabelRows, xGutter)
+
+      const contentHeight = this.getContentHeight()
+      const yLabelRows = this.getLabelRows({
+        axis: 'y',
+        step: this.yStep,
+        gutter: this.yGutter,
+        contentLength: contentHeight,
+        toLabel: this.toYLabel,
+        measureLength: () => this.yLabelHeight
+      })
+      const labelHeight = yLabelRows.reduce((w, row) => w + row.length, 0)
+      const yGutter = this.getGutter(yLabelRows, contentHeight)
+
+      this.drawYAxis(yLabelRows, yGutter)
+      this.drawBgLines(yLabelRows, yGutter)
+
+      this.drawLines()
     })
   }
 
@@ -336,8 +364,43 @@ export default class LineChart {
     }
   }
 
-  drawPoints() {
-    this.pointsArr.forEach(points => {
+  drawLines() {
+    const { ctx, xPadding, yPadding, xLabelWidth,
+      xLabelHeight, yLabelHeight, xLabelMargin, lineStyles } = this
+
+    const halfXlabelWidth = parseInt(xLabelWidth / 2, 10)
+    const halfYlabelHeight = parseInt(yLabelHeight / 2, 10)
+
+    const contentWidth = this.getContentWidth() - xLabelWidth
+    const xPoints = this.getUniqSortedPoints('x')
+    const firstX = xPoints[0].x
+    const lastX = xPoints[xPoints.length - 1].x
+    const xDelta = lastX - firstX
+
+    const contentHeight = this.getContentHeight() - yLabelHeight
+    const yPoints = this.getUniqSortedPoints('y')
+    const firstY = yPoints[0].y
+    const lastY = yPoints[yPoints.length - 1].y
+    const yDelta = lastY - firstY
+    const canvasHeight = this.height
+
+    ctx.lineWidth = 2
+
+    this.pointsArr.forEach((points, i) => {
+      ctx.beginPath()
+      ctx.strokeStyle = lineStyles[i] ? lineStyles[i] : '#000'
+      points.forEach(p => {
+        const xRatio = (p.x - firstX) / xDelta
+        const x = contentWidth * xRatio
+
+        const yRatio = (p.y - firstY) / yDelta
+        const y = contentHeight * yRatio
+        const posX = x + xPadding + halfXlabelWidth
+        const posY = canvasHeight - yPadding - xLabelHeight - xLabelMargin - halfYlabelHeight - y
+        ctx.lineTo(posX, posY)
+      })
+      ctx.stroke()
+      ctx.closePath()
     })
   }
 
