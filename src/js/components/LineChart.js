@@ -46,7 +46,7 @@ export default class LineChart {
     this.toYLabel = isDef(options.toYLabel) ? mem(options.toYLabel) : (v => v)
 
     this.xPadding = isDef(options.xPadding) ? options.xPadding : 20
-    this.yPadding = isDef(options.yPadding) ? options.yPadding : 20
+    this.yPadding = isDef(options.yPadding) ? options.yPadding : 16
 
     this.xLabelWidth = options.xLabelWidth
     this.xLabelHeight = options.xLabelHeight
@@ -67,19 +67,43 @@ export default class LineChart {
     this.xStep = options.xStep
     this.yStep = options.yStep
 
+    this.lineLabels = options.lineLabels || []
+    this.lineLabelMargin = isDef(options.lineLabelMargin) ? options.lineLabelMargin : 14
+
     this.init()
   }
 
   init() {
+    this.setDpr()
     this.setCanvas()
     this.clear()
+    this.bindMedia()
   }
 
-  setCanvas() {
-    const dpr = window.devicePixelRatio || 1
-    const canvas = document.createElement('canvas')
-    const ctx = canvas.getContext('2d')
-    const { width, height } = this
+  setDpr() {
+    this.dpr = window.devicePixelRatio || 1
+  }
+
+  handleDprChange() {
+    this.setDpr()
+    this.bindMedia()
+  }
+
+  bindMedia() {
+    if (this.media) {
+      this.unbindMedia()
+    }
+    this.media = window.matchMedia(`(resolution: ${this.dpr}dppx)`)
+    this._handleDprChange = this.handleDprChange.bind(this)
+    this.media.addListener(this._handleDprChange)
+  }
+
+  unbindMedia() {
+    this.media.removeListener(this._handleDprChange)
+  }
+
+  setCanvasSizeByDpr() {
+    const { canvas, dpr, ctx, width, height } = this
 
     // https://coderwall.com/p/vmkk6a/how-to-make-the-canvas-not-look-like-crap-on-retina
     canvas.width = width * dpr
@@ -87,10 +111,17 @@ export default class LineChart {
     canvas.style.width = toPixel(width)
     canvas.style.height = toPixel(height)
     ctx.scale(dpr, dpr)
+  }
+
+  setCanvas() {
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
 
     this.canvas = canvas
     this.ctx = ctx
     this.setFontSize()
+    this.setCanvasSizeByDpr()
+
     this.dom.appendChild(canvas)
   }
 
@@ -105,7 +136,8 @@ export default class LineChart {
   }
 
   getContentHeight() {
-    return this.height - (this.yPadding * 2) - this.xLabelMargin - this.xLabelHeight
+    return this.height - (this.yPadding * 2) - this.xLabelMargin -
+      this.xLabelHeight - this.getLineLabelBoxHeight()
   }
 
   getUniqSortedPoints(axis) {
@@ -234,7 +266,7 @@ export default class LineChart {
     const { ctx } = this
 
     let x = this.xPadding
-    const y = this.height - this.yPadding - this.fontSize
+    const y = this.height - this.yPadding - this.fontSize - this.getLineLabelBoxHeight()
 
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#3c4257'
@@ -248,7 +280,8 @@ export default class LineChart {
   drawYAxis(rows, gutter) {
     const { ctx } = this
     const x = this.width - this.xPadding
-    let y = this.height - this.yPadding - this.fontSize - this.xLabelMargin - this.fontSize
+    let y = this.height - this.yPadding - this.fontSize -
+      this.xLabelMargin - this.fontSize - this.getLineLabelBoxHeight()
 
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#3c4257'
@@ -264,7 +297,8 @@ export default class LineChart {
     const { ctx } = this
     const contentWidth = this.getContentWidth()
     const x = this.xPadding
-    let y = this.height - this.yPadding - this.fontSize - this.xLabelMargin - (this.fontSize / 2)
+    let y = this.height - this.yPadding - this.fontSize -
+      this.xLabelMargin - (this.fontSize / 2) - this.getLineLabelBoxHeight()
 
     ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
     ctx.lineWidth = 1
@@ -276,6 +310,41 @@ export default class LineChart {
       ctx.stroke()
       ctx.closePath
       y -= (gutter + row.length)
+    })
+  }
+
+  getLineLabelHeight() {
+    return this.fontSize
+  }
+
+  getLineLabelBoxHeight() {
+    if (this.lineLabels.length > 0) {
+      return this.lineLabelMargin + this.getLineLabelHeight()
+    }
+    return 0
+  }
+
+  drawLineLables() {
+    const { ctx, lineStyles } = this
+    const rectSize = 7
+
+    const rectGutter = 7
+    const labelGutter = 14
+    const rectMargin = 2
+    const y = this.height - this.yPadding
+    const labelHeight = this.getLineLabelHeight()
+    let x = this.xPadding
+
+    this.lineLabels.forEach((name, i) => {
+      ctx.fillStyle = lineStyles[i] || '#000'
+      ctx.fillRect(x, y - labelHeight + rectMargin, rectSize, rectSize)
+
+      x += (rectSize + rectGutter)
+      ctx.fillStyle = '#000'
+      ctx.textAlign = 'left'
+      ctx.textBaseline = 'top'
+      ctx.fillText(name, x, y - labelHeight)
+      x += (ctx.measureText(name).width + labelGutter)
     })
   }
 
@@ -317,13 +386,13 @@ export default class LineChart {
         toLabel: this.toYLabel,
         measureLength: () => this.yLabelHeight
       })
-      const labelHeight = yLabelRows.reduce((w, row) => w + row.length, 0)
       const yGutter = this.getGutter(yLabelRows, contentHeight)
 
       this.drawYAxis(yLabelRows, yGutter)
       this.drawBgLines(yLabelRows, yGutter)
 
       this.drawLines()
+      this.drawLineLables()
     })
   }
 
@@ -386,6 +455,8 @@ export default class LineChart {
 
     ctx.lineWidth = 2
 
+    const labelBoxHeight = this.getLineLabelBoxHeight()
+
     this.pointsArr.forEach((points, i) => {
       ctx.beginPath()
       ctx.strokeStyle = lineStyles[i] ? lineStyles[i] : '#000'
@@ -396,7 +467,8 @@ export default class LineChart {
         const yRatio = (p.y - firstY) / yDelta
         const y = contentHeight * yRatio
         const posX = x + xPadding + halfXlabelWidth
-        const posY = canvasHeight - yPadding - xLabelHeight - xLabelMargin - halfYlabelHeight - y
+        const posY = canvasHeight - yPadding - xLabelHeight -
+          xLabelMargin - halfYlabelHeight - y - labelBoxHeight
         ctx.lineTo(posX, posY)
       })
       ctx.stroke()
