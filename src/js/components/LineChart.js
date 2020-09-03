@@ -1,7 +1,7 @@
 import supportDom from '../utils/supportDom'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
-import { uniqBy, sortBy, range, toPixel, mem } from '../utils'
+import { uniqBy, sortBy, range, toPixel, mem, throttle } from '../utils'
 
 /**
  * -------------------------------------------------------------------------------------------------
@@ -78,6 +78,20 @@ export default class LineChart {
     this.setCanvas()
     this.clear()
     this.bindMedia()
+    this.bindPointVisibleEvent()
+  }
+
+  handleMouseMove() {
+  }
+
+  bindPointVisibleEvent() {
+    if (isUndef(this.options.onPointVisible)) {
+      return
+    }
+    if (! ('onmousemove' in this.canvas)) {
+      return
+    }
+    this.addEvent(this.canvas, 'mousemove', throttle(this.handleMouseMove, 100))
   }
 
   setDpr() {
@@ -96,6 +110,14 @@ export default class LineChart {
   handleDprChange() {
     this.setDpr()
     this.refresh()
+  }
+
+  getMousePos(event) {
+    const rect = this.canvas.getBoundingClientRect()
+    return {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
+    }
   }
 
   bindMedia() {
@@ -406,6 +428,7 @@ export default class LineChart {
     this.pointsArr = pointsArr
     this.setLabelWidths()
     this.setLabelHeights()
+    this.setPointsPos()
     this.raf(() => this.draw())
   }
 
@@ -446,9 +469,9 @@ export default class LineChart {
     }
   }
 
-  drawLines() {
-    const { ctx, xPadding, yPadding, xLabelWidth,
-      xLabelHeight, yLabelHeight, xLabelMargin, lineStyles } = this
+  setPointsPos() {
+    const { xPadding, yPadding, xLabelWidth,
+      xLabelHeight, yLabelHeight, xLabelMargin } = this
 
     const halfXlabelWidth = parseInt(xLabelWidth / 2, 10)
     const halfYlabelHeight = parseInt(yLabelHeight / 2, 10)
@@ -466,13 +489,9 @@ export default class LineChart {
     const yDelta = lastY - firstY
     const canvasHeight = this.height
 
-    ctx.lineWidth = 2
-
     const labelBoxHeight = this.getLineLabelBoxHeight()
 
     this.pointsArr.forEach((points, i) => {
-      ctx.beginPath()
-      ctx.strokeStyle = lineStyles[i] ? lineStyles[i] : '#000'
       points.forEach(p => {
         const xRatio = (p.x - firstX) / xDelta
         const x = contentWidth * xRatio
@@ -482,7 +501,26 @@ export default class LineChart {
         const posX = x + xPadding + halfXlabelWidth
         const posY = canvasHeight - yPadding - xLabelHeight -
           xLabelMargin - halfYlabelHeight - y - labelBoxHeight
-        ctx.lineTo(posX, posY)
+        p._pos = {
+          x: posX,
+          y: posY
+        }
+      })
+    })
+  }
+
+  drawLines() {
+    const { ctx, lineStyles } = this
+    ctx.lineWidth = 2
+
+    this.pointsArr.forEach((points, i) => {
+      ctx.beginPath()
+      ctx.strokeStyle = lineStyles[i] ? lineStyles[i] : '#000'
+      points.forEach(p => {
+        if (p._pos) {
+          const pos = p._pos
+          ctx.lineTo(pos.x, pos.y)
+        }
       })
       ctx.stroke()
       ctx.closePath()
