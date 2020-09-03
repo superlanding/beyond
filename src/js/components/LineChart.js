@@ -113,6 +113,18 @@ export default class LineChart {
     marked[0] = true
     marked[valueCount - 1] = true
 
+    // Check whether a value can be marked next
+    // For example, gap is 2
+    //
+    // values: 1 2 3 4 5 6 7
+    // marked: v           v
+    //
+    // 4 will only be marked because it has enough gap on left and right side.
+    const hasGap = index => {
+      return range(index - gap, index).every(i => isUndef(marked[i])) &&
+        range(index + 1, index + gap + 1).every(i => isUndef(marked[i]))
+    }
+
     return values.reduce((res, value, i) => {
 
       if (i === 0) {
@@ -131,7 +143,7 @@ export default class LineChart {
         rows.push({ label, length })
         return { lengthTotal, rows }
       }
-      if (isUndef(marked[i - gap]) && isUndef(marked[i + gap])) {
+      if (hasGap(i)) {
         const label = toLabel(value)
         marked[i] = true
         const length = measureLength(label)
@@ -150,7 +162,6 @@ export default class LineChart {
   getLabelRows(options = {}) {
 
     const axis = options.axis || 'x'
-    const step = options.step || this.xStep
     const gutter = options.gutter || this.xGutter
     const contentLength = options.contentLength || this.getContentWidth()
     const toLabel = options.toLabel || this.toXLabel
@@ -168,6 +179,12 @@ export default class LineChart {
       })
     }
 
+    let step = options.step
+
+    if (isUndef(step)) {
+      step = parseInt((lastPoint[axis] - firstPoint[axis]) / (points.length - 1), 10)
+    }
+
     const stepStart = parseInt(firstPoint[axis] / step, 10) * step
     let stepEnd = parseInt(lastPoint[axis] / step, 10) * step
 
@@ -176,6 +193,7 @@ export default class LineChart {
     }
 
     const values = range(stepStart, stepEnd + step, step)
+
     const valueCount = values.length
     const initialGap = parseInt((valueCount - 2) / 2, 10)
 
@@ -201,7 +219,7 @@ export default class LineChart {
   drawXAxis() {
     const { ctx } = this
     const contentWidth = this.getContentWidth()
-    const rows = this.getLabelRows()
+    const rows = this.getLabelRows({ step: this.xStep })
     const labelWidth = rows.reduce((w, row) => w + row.length, 0)
     const gutter = parseInt((contentWidth - labelWidth) / (rows.length - 1), 10)
 
