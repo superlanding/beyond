@@ -43,5 +43,6 @@ function bindAll() {
 
 function unbindAll() {
   unbinds.forEach(unbind => unbind())
+  unbinds.length = 0
   beyond.unbindAll()
 }
