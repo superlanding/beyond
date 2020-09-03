@@ -31,6 +31,7 @@ export default function bindCharts() {
   const c = new LineChart(dom, {
     toXLabel,
     toYLabel,
+    lineLabels: ['線段1', '線段2', '線段3'],
     xStep: fiveMins,
     yStep: 2 * 10000
   })
