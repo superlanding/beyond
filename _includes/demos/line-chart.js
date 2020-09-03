@@ -10,14 +10,21 @@ export default function bindCharts() {
     return padZero(d.getHours()) + ':' + padZero(d.getMinutes())
   }
   const yLabel = v => {
-    return (v / 10000).toFixed(1) + '萬'
+    const numStr = (v / 10000).toFixed(1)
+    const [firstNum, secondNum] = numStr.split('.')
+    if ((firstNum === '0') && (secondNum === '0')) {
+      return '0'
+    }
+    if (secondNum === '0') {
+      return firstNum + '萬'
+    }
+    return numStr + '萬'
   }
 
   const fiveMins = 5 * 60 * 1000
   const c = new Chart(dom, {
     xLabel,
     yLabel,
-    width: 400,
     xStep: fiveMins,
     yStep: 2 * 10000
   })
@@ -34,7 +41,7 @@ export default function bindCharts() {
     .map(i => {
       return {
         x: now + (i * fiveMins),
-        y: i * 5000
+        y: i * 5200
       }
     })
 

@@ -38,17 +38,17 @@ export default class Chart {
     this.xLabel = options.xLabel || (v => v)
     this.yLabel = options.yLabel || (v => v)
 
-    this.xPadding = options.xPadding || 20
-    this.yPadding = options.yPadding || 20
+    this.xPadding = isDef(options.xPadding) ? options.xPadding : 20
+    this.yPadding = isDef(options.yPadding) ? options.yPadding : 20
 
     this.xLabelWidth = options.xLabelWidth
     this.yLabelWidth = options.yLabelWidth
 
-    this.xLabelGutter = options.xLabelGutter || 10
-    this.yLabelGutter = options.yLabelGutter || 10
+    this.xLabelGutter = isDef(options.xLabelGutter) ? options.xLabelGutter : 10
+    this.yLabelGutter = isDef(options.yLabelGutter) ? options.yLabelGutter : 10
 
-    this.xLabelMargin = options.xLabelMargin || 10
-    this.yLabelMargin = options.yLabelMargin || 10
+    this.xLabelMargin = isDef(options.xLabelMargin) ? options.xLabelMargin : 10
+    this.yLabelMargin = isDef(options.yLanelMargin) ? options.yLabelMargin : 10
 
     this.bgColor = options.bgColor || '#fff'
     this.fontSize = options.fontSize || 12
@@ -90,7 +90,7 @@ export default class Chart {
   }
 
   getContentHeight() {
-    return this.height - (this.yPadding * 2)
+    return this.height - (this.yPadding * 2) - this.xLabelMargin - this.fontSize
   }
 
   getUniqSortedPoints(axis) {
@@ -214,19 +214,27 @@ export default class Chart {
   drawYAxis() {
     const { ctx } = this
     const contentHeight = this.getContentHeight()
-    const rows = this.getYLabelRows()
-    const labelHeight = rows.reduce((w, row) => w + row.height, 0)
+    const rows = this.getStepRows({
+      axis: 'y',
+      step: this.yStep,
+      gutter: this.yLabelGutter,
+      contentLength: contentHeight,
+      toLabel: this.yLabel,
+      measureLength: () => this.fontSize
+    })
+    const labelHeight = rows.reduce((w, row) => w + row.length, 0)
     const gutter = parseInt((contentHeight - labelHeight) / (rows.length - 1), 10)
 
-    const x = this.width - this.xPadding - this.yLabelWidth - this.yLabelGutter
-    let y = this.height - this.yPadding - (this.fontSize * 2)
+    const x = this.width - this.xPadding
+    let y = this.height - this.yPadding - this.fontSize - this.xLabelMargin - this.fontSize
 
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#000'
+    ctx.textAlign = 'right'
 
     rows.forEach((row, i) => {
       ctx.fillText(row.label, x, y)
-      y -= (gutter + row.height)
+      y -= (gutter + row.length)
     })
   }
 
@@ -234,7 +242,7 @@ export default class Chart {
     this.pointsArr = pointsArr
     this.setLabelWidths()
     this.drawXAxis()
-    // this.drawYAxis()
+    this.drawYAxis()
     this.drawPoints()
   }
 
