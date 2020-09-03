@@ -260,12 +260,22 @@ export default class LineChart {
     })
   }
 
+  raf(fn) {
+    if (isDef(window.requestAnimationFrame)) {
+      return window.requestAnimationFrame(fn)
+    }
+    return fn()
+  }
+
   setPoints(pointsArr) {
     this.pointsArr = pointsArr
     this.setLabelWidths()
-    this.drawXAxis()
-    this.drawYAxis()
-    this.drawPoints()
+
+    this.raf(() => {
+      this.drawXAxis()
+      this.drawYAxis()
+      this.drawPoints()
+    })
   }
 
   setLabelWidths() {
