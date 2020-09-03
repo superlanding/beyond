@@ -85,10 +85,12 @@ export default class LineChart {
   }
 
   refresh() {
-    this.setCanvasSize()
-    this.setLabelWidths()
-    this.setLabelHeights()
-    this.draw()
+    this.raf(() => {
+      this.setCanvasSize()
+      this.setLabelWidths()
+      this.setLabelHeights()
+      this.draw()
+    })
   }
 
   handleDprChange() {
@@ -375,38 +377,36 @@ export default class LineChart {
   }
 
   draw() {
-    this.raf(() => {
-      this.clear()
-      const contentWidth = this.getContentWidth()
-      const xLabelRows = this.getLabelRows({ step: this.xStep })
-      const xGutter = this.getGutter(xLabelRows, contentWidth)
+    this.clear()
+    const contentWidth = this.getContentWidth()
+    const xLabelRows = this.getLabelRows({ step: this.xStep })
+    const xGutter = this.getGutter(xLabelRows, contentWidth)
 
-      this.drawXAxis(xLabelRows, xGutter)
+    this.drawXAxis(xLabelRows, xGutter)
 
-      const contentHeight = this.getContentHeight()
-      const yLabelRows = this.getLabelRows({
-        axis: 'y',
-        step: this.yStep,
-        gutter: this.yGutter,
-        contentLength: contentHeight,
-        toLabel: this.toYLabel,
-        measureLength: () => this.yLabelHeight
-      })
-      const yGutter = this.getGutter(yLabelRows, contentHeight)
-
-      this.drawYAxis(yLabelRows, yGutter)
-      this.drawBgLines(yLabelRows, yGutter)
-
-      this.drawLines()
-      this.drawLineLables()
+    const contentHeight = this.getContentHeight()
+    const yLabelRows = this.getLabelRows({
+      axis: 'y',
+      step: this.yStep,
+      gutter: this.yGutter,
+      contentLength: contentHeight,
+      toLabel: this.toYLabel,
+      measureLength: () => this.yLabelHeight
     })
+    const yGutter = this.getGutter(yLabelRows, contentHeight)
+
+    this.drawYAxis(yLabelRows, yGutter)
+    this.drawBgLines(yLabelRows, yGutter)
+
+    this.drawLines()
+    this.drawLineLables()
   }
 
   setPoints(pointsArr) {
     this.pointsArr = pointsArr
     this.setLabelWidths()
     this.setLabelHeights()
-    this.draw()
+    this.raf(() => this.draw())
   }
 
   setLabelWidths() {
