@@ -84,12 +84,16 @@ export default class LineChart {
     this.dpr = window.devicePixelRatio || 1
   }
 
-  handleDprChange() {
-    this.setDpr()
-    this.setCanvasSizeByDpr()
+  refresh() {
+    this.setCanvasSize()
     this.setLabelWidths()
     this.setLabelHeights()
     this.draw()
+  }
+
+  handleDprChange() {
+    this.setDpr()
+    this.refresh()
   }
 
   bindMedia() {
@@ -105,7 +109,10 @@ export default class LineChart {
     this.media.removeListener(this._handleDprChange)
   }
 
-  setCanvasSizeByDpr() {
+  setCanvasSize() {
+    if (isUndef(this.options.width)) {
+      this.width = this.dom.offsetWidth
+    }
     const { canvas, dpr, ctx, width, height } = this
 
     // https://coderwall.com/p/vmkk6a/how-to-make-the-canvas-not-look-like-crap-on-retina
@@ -123,7 +130,7 @@ export default class LineChart {
     this.canvas = canvas
     this.ctx = ctx
     this.setFontSize()
-    this.setCanvasSizeByDpr()
+    this.setCanvasSize()
 
     this.dom.appendChild(canvas)
   }
@@ -369,7 +376,7 @@ export default class LineChart {
 
   draw() {
     this.raf(() => {
-
+      this.clear()
       const contentWidth = this.getContentWidth()
       const xLabelRows = this.getLabelRows({ step: this.xStep })
       const xGutter = this.getGutter(xLabelRows, contentWidth)
