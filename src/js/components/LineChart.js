@@ -142,7 +142,7 @@ export default class LineChart {
     })
   }
 
-  getStepRows(options = {}) {
+  getLabelRows(options = {}) {
 
     const axis = options.axis || 'x'
     const step = options.step || this.xStep
@@ -199,7 +199,7 @@ export default class LineChart {
   drawXAxis() {
     const { ctx } = this
     const contentWidth = this.getContentWidth()
-    const rows = this.getStepRows()
+    const rows = this.getLabelRows()
     const labelWidth = rows.reduce((w, row) => w + row.length, 0)
     const gutter = parseInt((contentWidth - labelWidth) / (rows.length - 1), 10)
 
@@ -218,7 +218,7 @@ export default class LineChart {
   drawYAxis() {
     const { ctx } = this
     const contentHeight = this.getContentHeight()
-    const rows = this.getStepRows({
+    const rows = this.getLabelRows({
       axis: 'y',
       step: this.yStep,
       gutter: this.yLabelGutter,
@@ -314,5 +314,11 @@ export default class LineChart {
   clear() {
     this.ctx.fillStyle = this.bgColor
     this.ctx.fillRect(0, 0, this.width, this.height)
+  }
+
+  destroy() {
+    if (this.dom.contains(this.canvas)) {
+      this.dom.removeChild(this.canvas)
+    }
   }
 }
