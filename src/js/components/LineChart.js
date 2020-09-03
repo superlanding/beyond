@@ -81,7 +81,82 @@ export default class LineChart {
     this.bindPointVisibleEvent()
   }
 
-  handleMouseMove() {
+  inDetectedZone(mousePos, pointPos) {
+    const zoneLength = 14
+    const { x: mouseX, y: mouseY } = mousePos
+    const { x: pointX, y: pointY } = pointPos
+    /**
+     * # is mousePos
+     * see if PointPos is landed in the zone below
+     *
+     * A -------- B
+     * |          |
+     * |          |
+     *      #
+     * |          |
+     * |          |
+     * C -------- D
+     */
+    const a = {
+      x: mouseX - zoneLength,
+      y: mouseY - zoneLength
+    }
+    const b = {
+      x: mouseX + zoneLength,
+      y: mouseY - zoneLength
+    }
+    const c = {
+      x: mouseX - zoneLength,
+      y: mouseY + zoneLength
+    }
+    return (a.x <= pointX) && (pointX <= b.x) &&
+      (a.y <= pointY) && (pointY <= c.y)
+  }
+
+  findClosetPoint(mousePos) {
+    const { pointsArr } = this
+    let i = 0
+    for (const points of pointsArr) {
+      for (const p of points) {
+        if (isUndef(p._pos)) {
+          continue
+        }
+        if (this.inDetectedZone(mousePos, p._pos)) {
+          return {
+            index: i,
+            point: p
+          }
+        }
+      }
+      i++
+    }
+  }
+
+  drawVerticalLine(point, index) {
+    const { ctx } = this
+    const pos = point._pos
+    ctx.strokeStyle = this.lineStyles[index] || '#000'
+    ctx.lineWidth = 1
+    ctx.beginPath()
+    ctx.moveTo(pos.x, 0)
+    ctx.lineTo(pos.x, this.height)
+    ctx.stroke()
+    ctx.closePath()
+  }
+
+  handleMouseMove(event) {
+    const mousePos = this.getMousePos(event)
+    const res = this.findClosetPoint(mousePos)
+    if (res) {
+      const { point, index } = res
+      this.raf(() => {
+        this.draw()
+        this.drawVerticalLine(point, index)
+      })
+    }
+    else {
+      this.raf(() => this.draw())
+    }
   }
 
   bindPointVisibleEvent() {
@@ -91,7 +166,7 @@ export default class LineChart {
     if (! ('onmousemove' in this.canvas)) {
       return
     }
-    this.addEvent(this.canvas, 'mousemove', throttle(this.handleMouseMove, 100))
+    this.addEvent(this.canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
   }
 
   setDpr() {
