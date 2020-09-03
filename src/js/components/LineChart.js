@@ -15,10 +15,10 @@ import { uniqBy, sortBy, range, toPixel } from '../utils'
  * <- xPadding -> ----------------------------------------------------------- yLabel <- xPadding -> |
  *                ----------------------------------------------------------- yLabel                |
  *                                                                              ^                   |
- *                                                                          yLabelGutter            |
+ *                                                                           yGutter                |
  *                                                                              v                   |
  *                ----------------------------------------------------------- yLabel                |
- *                xLabel <- xLabelGutter -> xLabel <- xLabelGutter ->  xLabel                       |
+ *                xLabel   <- xGutter ->    xLabel   <- xGutter ->     xLabel                       |
  *                                            ^                                                     |
  *                                            |                                                     |
  *                                         yPadding                                                 |
@@ -44,8 +44,8 @@ export default class LineChart {
     this.xLabelWidth = options.xLabelWidth
     this.yLabelWidth = options.yLabelWidth
 
-    this.xLabelGutter = isDef(options.xLabelGutter) ? options.xLabelGutter : 10
-    this.yLabelGutter = isDef(options.yLabelGutter) ? options.yLabelGutter : 10
+    this.xGutter = isDef(options.xGutter) ? options.xGutter : 10
+    this.yGutter = isDef(options.yGutter) ? options.yGutter : 10
 
     this.xLabelMargin = isDef(options.xLabelMargin) ? options.xLabelMargin : 10
     this.yLabelMargin = isDef(options.yLanelMargin) ? options.yLabelMargin : 10
@@ -146,7 +146,7 @@ export default class LineChart {
 
     const axis = options.axis || 'x'
     const step = options.step || this.xStep
-    const gutter = options.gutter || this.xLabelGutter
+    const gutter = options.gutter || this.xGutter
     const contentLength = options.contentLength || this.getContentWidth()
     const toLabel = options.toLabel || this.toXLabel
     const measureLength = options.measureLength || (v => this.ctx.measureText(v).width)
@@ -220,7 +220,7 @@ export default class LineChart {
     const rows = this.getLabelRows({
       axis: 'y',
       step: this.yStep,
-      gutter: this.yLabelGutter,
+      gutter: this.yGutter,
       contentLength: contentHeight,
       toLabel: this.toYLabel,
       measureLength: () => this.fontSize
