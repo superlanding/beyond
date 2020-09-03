@@ -1,7 +1,7 @@
 import supportDom from '../utils/supportDom'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
-import { uniqBy, sortBy, range } from '../utils'
+import { uniqBy, sortBy, range, toPixel } from '../utils'
 
 /**
  * -------------------------------------------------------------------------------------------------
@@ -68,9 +68,13 @@ export default class Chart {
     const dpr = window.devicePixelRatio || 1
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
-    canvas.width = this.width * dpr
-    canvas.height = this.height * dpr
+    const { width, height } = this
 
+    // https://coderwall.com/p/vmkk6a/how-to-make-the-canvas-not-look-like-crap-on-retina
+    canvas.width = width * dpr
+    canvas.height = height * dpr
+    canvas.style.width = toPixel(width)
+    canvas.style.height = toPixel(height)
     ctx.scale(dpr, dpr)
 
     this.canvas = canvas
@@ -203,7 +207,7 @@ export default class Chart {
     const y = this.height - this.yPadding - this.fontSize
 
     ctx.textBaseline = 'top'
-    ctx.fillStyle = '#000'
+    ctx.fillStyle = '#3c4257'
 
     rows.forEach((row, i) => {
       ctx.fillText(row.label, x, y)
@@ -229,11 +233,30 @@ export default class Chart {
     let y = this.height - this.yPadding - this.fontSize - this.xLabelMargin - this.fontSize
 
     ctx.textBaseline = 'top'
-    ctx.fillStyle = '#000'
+    ctx.fillStyle = '#3c4257'
     ctx.textAlign = 'right'
 
-    rows.forEach((row, i) => {
+    rows.forEach(row => {
       ctx.fillText(row.label, x, y)
+      y -= (gutter + row.length)
+    })
+    this.drawLines(rows, gutter)
+  }
+
+  drawLines(rows, gutter) {
+    const { ctx } = this
+    const contentWidth = this.getContentWidth()
+    const x = this.xPadding
+    let y = this.height - this.yPadding - this.fontSize - this.xLabelMargin - (this.fontSize / 2)
+
+    ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
+
+    rows.forEach(row => {
+      ctx.beginPath()
+      ctx.moveTo(x, y)
+      ctx.lineTo(x + contentWidth, y)
+      ctx.stroke()
+      ctx.closePath
       y -= (gutter + row.length)
     })
   }
