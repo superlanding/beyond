@@ -2,7 +2,7 @@ import range from 'lodash.range'
 
 export default function bindCharts() {
 
-  const { Chart } = window.beyond
+  const { LineChart } = window.beyond
   const dom = document.getElementById('line-chart')
   const padZero = v => v.toString().padStart(2, '0')
   const xLabel = v => {
@@ -22,7 +22,7 @@ export default function bindCharts() {
   }
 
   const fiveMins = 5 * 60 * 1000
-  const c = new Chart(dom, {
+  const c = new LineChart(dom, {
     xLabel,
     yLabel,
     xStep: fiveMins,

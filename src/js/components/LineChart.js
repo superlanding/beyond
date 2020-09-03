@@ -28,7 +28,7 @@ import { uniqBy, sortBy, range, toPixel } from '../utils'
  **/
 
 @supportDom
-export default class Chart {
+export default class LineChart {
 
   constructor(dom, options = {}) {
     this.dom = dom
