@@ -36,6 +36,8 @@ import throttle from 'lodash.throttle'
 import uniqBy from 'lodash.uniqby'
 import sortBy from 'lodash.sortby'
 
+import mem from 'mem'
+
 export {
   // @superlanding
   dateToTimestamp,
@@ -73,5 +75,8 @@ export {
   range,
   throttle,
   uniqBy,
-  sortBy
+  sortBy,
+
+  // others
+  mem
 }
