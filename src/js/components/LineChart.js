@@ -1,7 +1,7 @@
 import supportDom from '../utils/supportDom'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
-import { uniqBy, sortBy, range, toPixel } from '../utils'
+import { uniqBy, sortBy, range, toPixel, mem } from '../utils'
 
 /**
  * -------------------------------------------------------------------------------------------------
@@ -32,11 +32,13 @@ export default class LineChart {
 
   constructor(dom, options = {}) {
     this.dom = dom
+    this.options = options
     this.pointsArr = []
     this.height = options.height || 150
     this.width = options.width || dom.offsetWidth
-    this.toXLabel = options.toXLabel || (v => v)
-    this.toYLabel = options.toYLabel || (v => v)
+
+    this.toXLabel = isDef(options.toXLabel) ? mem(options.toXLabel) : (v => v)
+    this.toYLabel = isDef(options.toYLabel) ? mem(options.toYLabel) : (v => v)
 
     this.xPadding = isDef(options.xPadding) ? options.xPadding : 20
     this.yPadding = isDef(options.yPadding) ? options.yPadding : 20
@@ -102,25 +104,27 @@ export default class LineChart {
     return sortBy(points, [axis])
   }
 
-  getLengthTotalData(gap, gutter, labels, measureLength) {
+  getLengthTotalData(gap, gutter, values, measureLength, toLabel) {
 
-    const labelCount = labels.length
+    const valueCount = values.length
     const marked = {}
 
     // mark the first and last
     marked[0] = true
-    marked[labelCount - 1] = true
+    marked[valueCount - 1] = true
 
-    return labels.reduce((res, label, i) => {
+    return values.reduce((res, value, i) => {
 
       if (i === 0) {
+        const label = toLabel(value)
         const length = measureLength(label)
         const lengthTotal = res.lengthTotal + length + gutter
         const rows = res.rows.slice()
         rows.push({ label, length })
         return { lengthTotal, rows }
       }
-      if (i === (labelCount - 1)) {
+      if (i === (valueCount - 1)) {
+        const label = toLabel(value)
         const length = measureLength(label)
         const lengthTotal = res.lengthTotal + length
         const rows = res.rows.slice()
@@ -128,6 +132,7 @@ export default class LineChart {
         return { lengthTotal, rows }
       }
       if (isUndef(marked[i - gap]) && isUndef(marked[i + gap])) {
+        const label = toLabel(value)
         marked[i] = true
         const length = measureLength(label)
         const lengthTotal = res.lengthTotal + length + gutter
@@ -170,14 +175,12 @@ export default class LineChart {
       stepEnd += step
     }
 
-    const labels = range(stepStart, stepEnd + step, step)
-      .map(v => toLabel(v))
+    const values = range(stepStart, stepEnd + step, step)
+    const valueCount = values.length
+    const initialGap = parseInt((valueCount - 2) / 2, 10)
 
-    const labelCount = labels.length
-    const initialGap = parseInt((labelCount - 2) / 2, 10)
-
-    const firstLabel = labels[0]
-    const lastLabel = labels[labelCount - 1]
+    const firstLabel = toLabel(values[0])
+    const lastLabel = toLabel(values[valueCount - 1])
 
     let stepRows = [
       { label: firstLabel, length: measureLength(firstLabel) },
@@ -185,7 +188,7 @@ export default class LineChart {
     ]
 
     for (let gap = initialGap; gap >= 0; gap--) {
-      const { lengthTotal, rows } = this.getLengthTotalData(gap, gutter, labels, measureLength)
+      const { lengthTotal, rows } = this.getLengthTotalData(gap, gutter, values, measureLength, toLabel)
       if (lengthTotal <= contentLength) {
         stepRows = rows
         continue
@@ -326,6 +329,13 @@ export default class LineChart {
   }
 
   destroy() {
+    const { toXLabel, toYLabel } = this.options
+    if (isDef(toXLabel)) {
+      mem.clear(this.toXLabel)
+    }
+    if (isDef(toYLabel)) {
+      mem.clear(this.toYLabel)
+    }
     if (this.dom.contains(this.canvas)) {
       this.dom.removeChild(this.canvas)
     }
