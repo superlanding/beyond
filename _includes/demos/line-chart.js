@@ -34,7 +34,10 @@ export default function bindCharts() {
     toYLabel,
     lineLabels: ['線段1', '線段2', '線段3'],
     xStep: fiveMins,
-    yStep: 2 * 10000
+    yStep: 2 * 10000,
+    onPointVisible(res) {
+      console.log('onPointVisible', res)
+    }
   })
 
   const now = +new Date()
