@@ -1,4 +1,5 @@
 import range from 'lodash.range'
+import sample from 'lodash.sample'
 
 export default function bindCharts() {
 
@@ -35,22 +36,32 @@ export default function bindCharts() {
   })
 
   const now = +new Date()
+  const getSampleValue = () => sample([1000, 2000, 3000, 4000, 500])
   const points1 = range(1, 20 + 1)
     .map(i => {
       return {
         x: now + (i * fiveMins),
-        y: i * 5000
+        y: i * getSampleValue()
       }
     })
+
   const points2 = range(1, 20 + 1)
     .map(i => {
       return {
         x: now + (i * fiveMins),
-        y: i * 5200
+        y: i * getSampleValue()
       }
     })
 
-  c.setPoints([points1, points2])
+  const points3 = range(1, 20 + 1)
+    .map(i => {
+      return {
+        x: now + (i * fiveMins),
+        y: i * getSampleValue()
+      }
+    })
+
+  c.setPoints([points1, points2, points3])
 
   return function unbindCharts() {
     c.destroy()
