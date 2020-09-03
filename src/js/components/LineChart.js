@@ -330,7 +330,7 @@ export default class LineChart {
 
     const rectGutter = 7
     const labelGutter = 14
-    const rectMargin = 2
+    const rectMargin = 1
     const y = this.height - this.yPadding
     const labelHeight = this.getLineLabelHeight()
     let x = this.xPadding
