@@ -4,12 +4,17 @@ export default function bindCharts() {
 
   const { LineChart } = window.beyond
   const dom = document.getElementById('line-chart')
+
+  if (! dom) {
+    return () => {}
+  }
+
   const padZero = v => v.toString().padStart(2, '0')
-  const xLabel = v => {
+  const toXLabel = v => {
     const d = new Date(v)
     return padZero(d.getHours()) + ':' + padZero(d.getMinutes())
   }
-  const yLabel = v => {
+  const toYLabel = v => {
     const numStr = (v / 10000).toFixed(1)
     const [firstNum, secondNum] = numStr.split('.')
     if ((firstNum === '0') && (secondNum === '0')) {
@@ -23,8 +28,8 @@ export default function bindCharts() {
 
   const fiveMins = 5 * 60 * 1000
   const c = new LineChart(dom, {
-    xLabel,
-    yLabel,
+    toXLabel,
+    toYLabel,
     xStep: fiveMins,
     yStep: 2 * 10000
   })
@@ -48,5 +53,6 @@ export default function bindCharts() {
   c.setPoints([points1, points2])
 
   return function unbindCharts() {
+    c.destroy()
   }
 }
