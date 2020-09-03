@@ -260,10 +260,10 @@ export default class LineChart {
       ctx.fillText(row.label, x, y)
       y -= (gutter + row.length)
     })
-    this.drawLines(rows, gutter)
+    this.drawBgLines(rows, gutter)
   }
 
-  drawLines(rows, gutter) {
+  drawBgLines(rows, gutter) {
     const { ctx } = this
     const contentWidth = this.getContentWidth()
     const x = this.xPadding
