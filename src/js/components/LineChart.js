@@ -151,7 +151,6 @@ export default class LineChart {
     const toLabel = options.toLabel || this.toXLabel
     const measureLength = options.measureLength || (v => this.ctx.measureText(v).width)
 
-    const { ctx } = this
     const points = this.getUniqSortedPoints(axis)
     const firstPoint = points[0]
     const lastPoint = points[points.length - 1]
