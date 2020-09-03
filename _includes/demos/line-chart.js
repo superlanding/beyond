@@ -1,5 +1,6 @@
 import range from 'lodash.range'
 import sample from 'lodash.sample'
+import throttle from 'lodash.throttle'
 
 export default function bindCharts() {
 
@@ -64,7 +65,18 @@ export default function bindCharts() {
 
   c.setPoints([points1, points2, points3])
 
+  let domWidth = dom.offsetWidth
+
+  const handleResize = throttle(() => {
+    if (dom.offsetWidth !== domWidth) {
+      c.refresh()
+    }
+    domWidth = dom.offsetWidth
+  }, 300)
+  window.addEventListener('resize', handleResize)
+
   return function unbindCharts() {
+    window.removeEventListener('resize', handleResize)
     c.destroy()
   }
 }
