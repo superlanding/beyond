@@ -35,8 +35,8 @@ export default class LineChart {
     this.pointsArr = []
     this.height = options.height || 150
     this.width = options.width || dom.offsetWidth
-    this.xLabel = options.xLabel || (v => v)
-    this.yLabel = options.yLabel || (v => v)
+    this.toXLabel = options.toXLabel || (v => v)
+    this.toYLabel = options.toYLabel || (v => v)
 
     this.xPadding = isDef(options.xPadding) ? options.xPadding : 20
     this.yPadding = isDef(options.yPadding) ? options.yPadding : 20
@@ -148,7 +148,7 @@ export default class LineChart {
     const step = options.step || this.xStep
     const gutter = options.gutter || this.xLabelGutter
     const contentLength = options.contentLength || this.getContentWidth()
-    const toLabel = options.toLabel || this.xLabel
+    const toLabel = options.toLabel || this.toXLabel
     const measureLength = options.measureLength || (v => this.ctx.measureText(v).width)
 
     const { ctx } = this
@@ -223,7 +223,7 @@ export default class LineChart {
       step: this.yStep,
       gutter: this.yLabelGutter,
       contentLength: contentHeight,
-      toLabel: this.yLabel,
+      toLabel: this.toYLabel,
       measureLength: () => this.fontSize
     })
     const labelHeight = rows.reduce((w, row) => w + row.length, 0)
@@ -275,7 +275,7 @@ export default class LineChart {
       return
     }
 
-    const { xLabel, yLabel, ctx } = this
+    const { toXLabel, toYLabel, ctx } = this
     const { round } = Math
     const res = this.pointsArr.map(points => points[points.length - 1])
       .filter(p => p)
@@ -283,8 +283,8 @@ export default class LineChart {
 
         const { xLabelWidth, yLabelWidth } = o
 
-        const xLabelSize = ctx.measureText(xLabel(p.x))
-        const yLabelSize = ctx.measureText(yLabel(p.y))
+        const xLabelSize = ctx.measureText(toXLabel(p.x))
+        const yLabelSize = ctx.measureText(toYLabel(p.y))
 
         const measuredXLabelWidth = round(xLabelSize.width)
         const measuredYLabelWidth = round(yLabelSize.width)
