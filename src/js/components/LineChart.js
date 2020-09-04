@@ -79,7 +79,24 @@ export default class LineChart {
     this.setCanvas()
     this.clear()
     this.bindMedia()
-    this.bindPointVisibleEvent()
+    this.bindPointVisible()
+  }
+
+  addLayer() {
+    const { dom } = this
+    const canvas = document.createElement('canvas')
+    canvas.style.position = 'absolute'
+    canvas.style.top = 0
+    canvas.style.left = 0
+    canvas.style.right = 0
+    canvas.style.bottom = 0
+    const ctx = canvas.getContext('2d')
+
+    this.setCanvasSize(canvas)
+    this.layers.push({ canvas, ctx })
+
+    dom.style.position = 'relative'
+    dom.appendChild(canvas)
   }
 
   bindMedia() {
@@ -91,13 +108,14 @@ export default class LineChart {
     this.media.addListener(this._handleDprChange)
   }
 
-  bindPointVisibleEvent() {
+  bindPointVisible() {
     if (isUndef(this.options.onPointVisible)) {
       return
     }
     if (! ('onmousemove' in this.canvas)) {
       return
     }
+    this.addLayer()
     this.addEvent(this.canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
   }
 
@@ -474,6 +492,16 @@ export default class LineChart {
     })
   }
 
+  removeAllLayers() {
+    const { dom } = this
+    this.layers.forEach(layer => {
+      const { canvas } = layer
+      if (dom.contains(canvas)) {
+        dom.removeChild(canvas)
+      }
+    })
+  }
+
   setCanvas() {
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
@@ -609,6 +637,7 @@ export default class LineChart {
   }
 
   destroy() {
+    const { dom } = this
     const { toXLabel, toYLabel } = this.options
     if (isDef(toXLabel)) {
       mem.clear(this.toXLabel)
@@ -616,8 +645,10 @@ export default class LineChart {
     if (isDef(toYLabel)) {
       mem.clear(this.toYLabel)
     }
-    if (this.dom.contains(this.canvas)) {
-      this.dom.removeChild(this.canvas)
+    this.removeAllLayers()
+    if (dom.contains(this.canvas)) {
+      dom.removeChild(this.canvas)
+      dom.style.removeProperty('position')
     }
   }
 }
