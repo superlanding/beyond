@@ -530,11 +530,6 @@ export default class LineChart {
     return stepRows
   }
 
-  getGutter(rows, contentLength) {
-    const labelLength = rows.reduce((w, row) => w + row.length, 0)
-    return parseInt((contentLength - labelLength) / (rows.length - 1), 10)
-  }
-
   raf(fn) {
     if (isDef(window.requestAnimationFrame)) {
       return window.requestAnimationFrame(fn)
