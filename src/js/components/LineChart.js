@@ -138,7 +138,7 @@ export default class LineChart {
   }
 
   getXAxisStart() {
-    return this.xPadding
+    return this.xPadding + (this.xLabelWidth / 2)
   }
 
   getXAxisEnd() {
@@ -169,7 +169,7 @@ export default class LineChart {
     const distance = this.getYDistance()
     const { ctx } = this
     const contentWidth = this.getContentWidth()
-    const x = this.xPadding
+    const x = this.getXAxisStart()
     let y = this.getYAxisStart()
 
     ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
@@ -382,7 +382,8 @@ export default class LineChart {
   }
 
   getContentWidth() {
-    return this.width - (this.xPadding * 2) - this.yLabelMargin - this.yLabelWidth
+    return this.width - (this.xPadding * 2) - this.yLabelMargin -
+      this.yLabelWidth - (this.xLabelWidth / 2)
   }
 
   getContentHeight() {
