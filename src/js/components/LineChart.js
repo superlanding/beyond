@@ -87,7 +87,14 @@ export default class LineChart {
 
   get contentHeight() {
     return this.height - (this.yPadding * 2) - this.xLabelMargin -
-      this.xLabelHeight - this.getLineLabelBoxHeight()
+      this.xLabelHeight - this.lineLabelBoxHeight
+  }
+
+  get lineLabelBoxHeight() {
+    if (this.lineLabels.length > 0) {
+      return this.lineLabelMargin + this.getLineLabelHeight()
+    }
+    return 0
   }
 
   addLayer() {
@@ -151,7 +158,7 @@ export default class LineChart {
   }
 
   getYAxisStart() {
-    return this.height - this.yPadding - this.getLineLabelBoxHeight() -
+    return this.height - this.yPadding - this.lineLabelBoxHeight -
       this.xLabelHeight - this.xLabelMargin + (this.yLabelHeight / 2)
   }
 
@@ -259,7 +266,7 @@ export default class LineChart {
     const xAxisStart = this.getXAxisStart()
     const xAxisEnd = this.getXAxisEnd()
 
-    const y = this.height - this.yPadding - this.getLineLabelBoxHeight()
+    const y = this.height - this.yPadding - this.lineLabelBoxHeight
 
     const scaleMargin = 4
     const scaleSize = 4
@@ -528,13 +535,6 @@ export default class LineChart {
 
   getLineLabelHeight() {
     return this.fontSize
-  }
-
-  getLineLabelBoxHeight() {
-    if (this.lineLabels.length > 0) {
-      return this.lineLabelMargin + this.getLineLabelHeight()
-    }
-    return 0
   }
 
   raf(fn) {
