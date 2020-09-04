@@ -90,9 +90,13 @@ export default class LineChart {
       this.xLabelHeight - this.lineLabelBoxHeight
   }
 
+  get lineLabelHeight() {
+    return this.fontSize
+  }
+
   get lineLabelBoxHeight() {
     if (this.lineLabels.length > 0) {
-      return this.lineLabelMargin + this.getLineLabelHeight()
+      return this.lineLabelMargin + this.lineLabelHeight
     }
     return 0
   }
@@ -214,25 +218,24 @@ export default class LineChart {
   }
 
   drawLineLables() {
-    const { ctx, lineStyles } = this
+    const { ctx, lineStyles, lineLabelHeight } = this
     const rectSize = 7
 
     const rectGutter = 7
     const labelGutter = 14
     const rectMargin = 1
     const y = this.height - this.yPadding
-    const labelHeight = this.getLineLabelHeight()
     let x = this.xPadding
 
     this.lineLabels.forEach((name, i) => {
       ctx.fillStyle = lineStyles[i] || '#000'
-      ctx.fillRect(x, y - labelHeight + rectMargin, rectSize, rectSize)
+      ctx.fillRect(x, y - lineLabelHeight + rectMargin, rectSize, rectSize)
 
       x += (rectSize + rectGutter)
       ctx.fillStyle = '#000'
       ctx.textAlign = 'left'
       ctx.textBaseline = 'top'
-      ctx.fillText(name, x, y - labelHeight)
+      ctx.fillText(name, x, y - lineLabelHeight)
       x += (ctx.measureText(name).width + labelGutter)
     })
   }
@@ -531,10 +534,6 @@ export default class LineChart {
   getGutter(rows, contentLength) {
     const labelLength = rows.reduce((w, row) => w + row.length, 0)
     return parseInt((contentLength - labelLength) / (rows.length - 1), 10)
-  }
-
-  getLineLabelHeight() {
-    return this.fontSize
   }
 
   raf(fn) {
