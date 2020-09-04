@@ -151,7 +151,7 @@ export default class LineChart {
   }
 
   getYAxisEnd() {
-    return this.getYAxisStart() - this.getContentHeight()
+    return this.getYAxisStart() - this.contentHeight
   }
 
   drawBgLines() {
@@ -396,7 +396,7 @@ export default class LineChart {
       this.yLabelWidth - (this.xLabelWidth / 2)
   }
 
-  getContentHeight() {
+  get contentHeight() {
     return this.height - (this.yPadding * 2) - this.xLabelMargin -
       this.xLabelHeight - this.getLineLabelBoxHeight()
   }
@@ -649,7 +649,7 @@ export default class LineChart {
       axis: 'y',
       step: this.yStep,
       gutter: this.yGutter,
-      contentLength: this.getContentHeight(),
+      contentLength: this.contentHeight,
       toLabel: this.toYLabel,
       measureLength: () => this.yLabelHeight
     })
