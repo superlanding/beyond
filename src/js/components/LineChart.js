@@ -137,14 +137,14 @@ export default class LineChart {
     this.drawLineLables()
   }
 
-  getStartY() {
+  getYAxisStart() {
     return this.height - this.yPadding - this.getLineLabelBoxHeight() -
       this.xLabelHeight - this.xLabelMargin + (this.yLabelHeight / 2)
   }
 
-  getEndY() {
+  getYAxisEnd() {
     const distance = this.getYDistance()
-    return this.getStartY() - ((this.yLabelRows.length - 1) * distance)
+    return this.getYAxisStart() - ((this.yLabelRows.length - 1) * distance)
   }
 
   getYDistance() {
@@ -157,7 +157,7 @@ export default class LineChart {
     const { ctx } = this
     const contentWidth = this.getContentWidth()
     const x = this.xPadding
-    let y = this.getStartY()
+    let y = this.getYAxisStart()
 
     ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
     ctx.lineWidth = 1
@@ -657,8 +657,8 @@ export default class LineChart {
     const xDelta = lastX - firstX
     const xRatio = xDelta / this.getLineWidth()
 
-    const startY = this.getStartY()
-    const endY = this.getEndY()
+    const startY = this.getYAxisStart()
+    const endY = this.getYAxisEnd()
 
     const lineHeight = Math.abs(startY - endY)
     const firstY = yLabelRows[0].value
