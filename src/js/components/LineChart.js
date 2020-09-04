@@ -312,7 +312,7 @@ export default class LineChart {
       }
       // only fires if res differs
       if (this.lastClosetPointRes !== res) {
-        this.options.onPointVisible(res)
+        this.options.onPointVisible(event, mousePos, res)
       }
       this.lastClosetPointRes = res
     })
