@@ -85,6 +85,11 @@ export default class LineChart {
     this.bindPointVisible()
   }
 
+  get contentHeight() {
+    return this.height - (this.yPadding * 2) - this.xLabelMargin -
+      this.xLabelHeight - this.getLineLabelBoxHeight()
+  }
+
   addLayer() {
     const { dom } = this
     const canvas = document.createElement('canvas')
@@ -394,11 +399,6 @@ export default class LineChart {
   getContentWidth() {
     return this.width - (this.xPadding * 2) - this.yLabelMargin -
       this.yLabelWidth - (this.xLabelWidth / 2)
-  }
-
-  get contentHeight() {
-    return this.height - (this.yPadding * 2) - this.xLabelMargin -
-      this.xLabelHeight - this.getLineLabelBoxHeight()
   }
 
   getUniqSortedPoints(axis) {
