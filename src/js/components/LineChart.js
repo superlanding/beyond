@@ -106,6 +106,23 @@ export default class LineChart {
     return 0
   }
 
+  getXAxisStart() {
+    return this.xPadding + (this.xLabelWidth / 2)
+  }
+
+  getXAxisEnd() {
+    return this.getXAxisStart() + this.contentWidth
+  }
+
+  getYAxisStart() {
+    return this.height - this.yPadding - this.lineLabelBoxHeight -
+      this.xLabelHeight - this.xLabelMargin + (this.yLabelHeight / 2)
+  }
+
+  getYAxisEnd() {
+    return this.getYAxisStart() - this.contentHeight
+  }
+
   addLayer() {
     const { dom } = this
     const canvas = document.createElement('canvas')
@@ -156,23 +173,6 @@ export default class LineChart {
     this.drawBgLines()
     this.drawLines()
     this.drawLineLables()
-  }
-
-  getXAxisStart() {
-    return this.xPadding + (this.xLabelWidth / 2)
-  }
-
-  getXAxisEnd() {
-    return this.getXAxisStart() + this.contentWidth
-  }
-
-  getYAxisStart() {
-    return this.height - this.yPadding - this.lineLabelBoxHeight -
-      this.xLabelHeight - this.xLabelMargin + (this.yLabelHeight / 2)
-  }
-
-  getYAxisEnd() {
-    return this.getYAxisStart() - this.contentHeight
   }
 
   drawBgLines() {
