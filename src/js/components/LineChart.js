@@ -137,6 +137,19 @@ export default class LineChart {
     this.drawLineLables()
   }
 
+  getXAxisStart() {
+    return this.xPadding
+  }
+
+  getXAxisEnd() {
+    const distance = this.getXDistance()
+    return this.getXAxisStart() + ((this.xLabelRows.length - 1) * distance)
+  }
+
+  getXDistance() {
+    return this.getContentWidth() / (this.xLabelRows.length - 1)
+  }
+
   getYAxisStart() {
     return this.height - this.yPadding - this.getLineLabelBoxHeight() -
       this.xLabelHeight - this.xLabelMargin + (this.yLabelHeight / 2)
@@ -240,8 +253,8 @@ export default class LineChart {
 
   drawXAxis() {
     const { ctx } = this
-    let x = this.xPadding
-    const distance = this.getContentWidth() / (this.xLabelRows.length - 1)
+    let x = this.getXAxisStart()
+    const distance = this.getXDistance()
     const y = this.height - this.yPadding - this.getLineLabelBoxHeight()
 
     const scaleMargin = 4
@@ -274,7 +287,7 @@ export default class LineChart {
     let y = this.height - this.yPadding - this.getLineLabelBoxHeight() -
       this.xLabelHeight - this.xLabelMargin
 
-    const distance = this.getContentHeight() / (this.yLabelRows.length - 1)
+    const distance = this.getYDistance()
 
     ctx.textBaseline = 'center'
     ctx.fillStyle = '#3c4257'
@@ -651,11 +664,16 @@ export default class LineChart {
   setPointsPos() {
     const { xLabelWidth, xLabelRows, yLabelRows, yLabelHeight } = this
 
+    const xAxisStart = this.getXAxisStart()
+    const xAxisEnd = this.getXAxisEnd()
+
+    const lineWidth = xAxisEnd - xAxisStart
+    console.log('here', xAxisStart, xAxisEnd)
     const halfXLabelWidth = (xLabelWidth / 2)
     const firstX = xLabelRows[0].value
     const lastX = xLabelRows[xLabelRows.length - 1].value
     const xDelta = lastX - firstX
-    const xRatio = xDelta / this.getLineWidth()
+    const xRatio = xDelta / lineWidth
 
     const yAxisStart = this.getYAxisStart()
     const yAxisEnd = this.getYAxisEnd()
@@ -670,10 +688,8 @@ export default class LineChart {
 
     this.pointsArr.forEach((points, i) => {
       points.forEach(p => {
-
-        const posX = (p.x - firstX) / xRatio + halfXLabelWidth
+        const posX = xAxisStart + ((p.x - firstX) / xRatio)
         const posY = yAxisStart - ((p.y - firstY) / yRatio)
-
         p._pos = {
           x: posX,
           y: posY
