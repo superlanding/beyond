@@ -81,6 +81,153 @@ export default class LineChart {
     this.bindPointVisibleEvent()
   }
 
+  clear() {
+    this.ctx.fillStyle = this.bgColor
+    this.ctx.fillRect(0, 0, this.width, this.height)
+  }
+
+  draw() {
+    this.clear()
+    const contentWidth = this.getContentWidth()
+    const xLabelRows = this.getLabelRows({ step: this.xStep })
+    const xGutter = this.getGutter(xLabelRows, contentWidth)
+
+    this.drawXAxis(xLabelRows, xGutter)
+
+    const contentHeight = this.getContentHeight()
+    const yLabelRows = this.getLabelRows({
+      axis: 'y',
+      step: this.yStep,
+      gutter: this.yGutter,
+      contentLength: contentHeight,
+      toLabel: this.toYLabel,
+      measureLength: () => this.yLabelHeight
+    })
+    const yGutter = this.getGutter(yLabelRows, contentHeight)
+
+    this.drawYAxis(yLabelRows, yGutter)
+    this.drawBgLines(yLabelRows, yGutter)
+
+    this.drawLines()
+    this.drawLineLables()
+  }
+
+  drawBgLines(rows, gutter) {
+    const { ctx } = this
+    const contentWidth = this.getContentWidth()
+    const x = this.xPadding
+    let y = this.height - this.yPadding - this.fontSize -
+      this.xLabelMargin - (this.fontSize / 2) - this.getLineLabelBoxHeight()
+
+    ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
+    ctx.lineWidth = 1
+
+    rows.forEach(row => {
+      ctx.beginPath()
+      ctx.moveTo(x, y)
+      ctx.lineTo(x + contentWidth, y)
+      ctx.stroke()
+      ctx.closePath
+      y -= (gutter + row.length)
+    })
+  }
+
+  drawLines() {
+    const { ctx, lineStyles } = this
+    ctx.lineWidth = 2
+
+    this.pointsArr.forEach((points, i) => {
+      ctx.beginPath()
+      ctx.strokeStyle = lineStyles[i] ? lineStyles[i] : '#000'
+      points.forEach(p => {
+        if (p._pos) {
+          const pos = p._pos
+          ctx.lineTo(pos.x, pos.y)
+        }
+      })
+      ctx.stroke()
+      ctx.closePath()
+    })
+  }
+
+  drawVerticalLine(point, index) {
+    const { ctx } = this
+    const pos = point._pos
+    ctx.strokeStyle = this.lineStyles[index] || '#000'
+    ctx.lineWidth = 1
+    ctx.beginPath()
+    ctx.moveTo(pos.x, 0)
+    ctx.lineTo(pos.x, this.height)
+    ctx.stroke()
+    ctx.closePath()
+  }
+
+  drawXAxis(rows, gutter) {
+    const { ctx } = this
+
+    let x = this.xPadding
+    const y = this.height - this.yPadding - this.fontSize - this.getLineLabelBoxHeight()
+
+    ctx.textBaseline = 'top'
+    ctx.fillStyle = '#3c4257'
+
+    rows.forEach((row, i) => {
+      ctx.fillText(row.label, x, y)
+      x += gutter + row.length
+    })
+  }
+
+  drawYAxis(rows, gutter) {
+    const { ctx } = this
+    const x = this.width - this.xPadding
+    let y = this.height - this.yPadding - this.fontSize -
+      this.xLabelMargin - this.fontSize - this.getLineLabelBoxHeight()
+
+    ctx.textBaseline = 'top'
+    ctx.fillStyle = '#3c4257'
+    ctx.textAlign = 'right'
+
+    rows.forEach(row => {
+      ctx.fillText(row.label, x, y)
+      y -= (gutter + row.length)
+    })
+  }
+
+  findClosetPoint(mousePos) {
+    const { pointsArr } = this
+    let i = 0
+    for (const points of pointsArr) {
+      for (const p of points) {
+        if (isUndef(p._pos)) {
+          continue
+        }
+        if (this.inDetectedZone(mousePos, p._pos)) {
+          return {
+            index: i,
+            point: p
+          }
+        }
+      }
+      i++
+    }
+  }
+
+  setDpr() {
+    this.dpr = window.devicePixelRatio || 1
+  }
+
+  setCanvas() {
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
+
+    this.canvas = canvas
+    this.ctx = ctx
+    this.setFontSize()
+    this.setCanvasSize()
+
+    this.dom.appendChild(canvas)
+  }
+
   inDetectedZone(mousePos, pointPos) {
     const zoneLength = 14
     const { x: mouseX, y: mouseY } = mousePos
@@ -113,37 +260,6 @@ export default class LineChart {
       (a.y <= pointY) && (pointY <= c.y)
   }
 
-  findClosetPoint(mousePos) {
-    const { pointsArr } = this
-    let i = 0
-    for (const points of pointsArr) {
-      for (const p of points) {
-        if (isUndef(p._pos)) {
-          continue
-        }
-        if (this.inDetectedZone(mousePos, p._pos)) {
-          return {
-            index: i,
-            point: p
-          }
-        }
-      }
-      i++
-    }
-  }
-
-  drawVerticalLine(point, index) {
-    const { ctx } = this
-    const pos = point._pos
-    ctx.strokeStyle = this.lineStyles[index] || '#000'
-    ctx.lineWidth = 1
-    ctx.beginPath()
-    ctx.moveTo(pos.x, 0)
-    ctx.lineTo(pos.x, this.height)
-    ctx.stroke()
-    ctx.closePath()
-  }
-
   handleMouseMove(event) {
     const mousePos = this.getMousePos(event)
     const res = this.findClosetPoint(mousePos)
@@ -167,10 +283,6 @@ export default class LineChart {
       return
     }
     this.addEvent(this.canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
-  }
-
-  setDpr() {
-    this.dpr = window.devicePixelRatio || 1
   }
 
   refresh() {
@@ -220,18 +332,6 @@ export default class LineChart {
     canvas.style.width = toPixel(width)
     canvas.style.height = toPixel(height)
     canvas.getContext('2d').scale(dpr, dpr)
-  }
-
-  setCanvas() {
-    const canvas = document.createElement('canvas')
-    const ctx = canvas.getContext('2d')
-
-    this.canvas = canvas
-    this.ctx = ctx
-    this.setFontSize()
-    this.setCanvasSize()
-
-    this.dom.appendChild(canvas)
   }
 
   setFontSize() {
@@ -371,57 +471,6 @@ export default class LineChart {
     return parseInt((contentLength - labelLength) / (rows.length - 1), 10)
   }
 
-  drawXAxis(rows, gutter) {
-    const { ctx } = this
-
-    let x = this.xPadding
-    const y = this.height - this.yPadding - this.fontSize - this.getLineLabelBoxHeight()
-
-    ctx.textBaseline = 'top'
-    ctx.fillStyle = '#3c4257'
-
-    rows.forEach((row, i) => {
-      ctx.fillText(row.label, x, y)
-      x += gutter + row.length
-    })
-  }
-
-  drawYAxis(rows, gutter) {
-    const { ctx } = this
-    const x = this.width - this.xPadding
-    let y = this.height - this.yPadding - this.fontSize -
-      this.xLabelMargin - this.fontSize - this.getLineLabelBoxHeight()
-
-    ctx.textBaseline = 'top'
-    ctx.fillStyle = '#3c4257'
-    ctx.textAlign = 'right'
-
-    rows.forEach(row => {
-      ctx.fillText(row.label, x, y)
-      y -= (gutter + row.length)
-    })
-  }
-
-  drawBgLines(rows, gutter) {
-    const { ctx } = this
-    const contentWidth = this.getContentWidth()
-    const x = this.xPadding
-    let y = this.height - this.yPadding - this.fontSize -
-      this.xLabelMargin - (this.fontSize / 2) - this.getLineLabelBoxHeight()
-
-    ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
-    ctx.lineWidth = 1
-
-    rows.forEach(row => {
-      ctx.beginPath()
-      ctx.moveTo(x, y)
-      ctx.lineTo(x + contentWidth, y)
-      ctx.stroke()
-      ctx.closePath
-      y -= (gutter + row.length)
-    })
-  }
-
   getLineLabelHeight() {
     return this.fontSize
   }
@@ -471,32 +520,6 @@ export default class LineChart {
     if (isUndef(this.yLabelHeight)) {
       this.yLabelHeight = this.fontSize
     }
-  }
-
-  draw() {
-    this.clear()
-    const contentWidth = this.getContentWidth()
-    const xLabelRows = this.getLabelRows({ step: this.xStep })
-    const xGutter = this.getGutter(xLabelRows, contentWidth)
-
-    this.drawXAxis(xLabelRows, xGutter)
-
-    const contentHeight = this.getContentHeight()
-    const yLabelRows = this.getLabelRows({
-      axis: 'y',
-      step: this.yStep,
-      gutter: this.yGutter,
-      contentLength: contentHeight,
-      toLabel: this.toYLabel,
-      measureLength: () => this.yLabelHeight
-    })
-    const yGutter = this.getGutter(yLabelRows, contentHeight)
-
-    this.drawYAxis(yLabelRows, yGutter)
-    this.drawBgLines(yLabelRows, yGutter)
-
-    this.drawLines()
-    this.drawLineLables()
   }
 
   setPoints(pointsArr) {
@@ -582,29 +605,6 @@ export default class LineChart {
         }
       })
     })
-  }
-
-  drawLines() {
-    const { ctx, lineStyles } = this
-    ctx.lineWidth = 2
-
-    this.pointsArr.forEach((points, i) => {
-      ctx.beginPath()
-      ctx.strokeStyle = lineStyles[i] ? lineStyles[i] : '#000'
-      points.forEach(p => {
-        if (p._pos) {
-          const pos = p._pos
-          ctx.lineTo(pos.x, pos.y)
-        }
-      })
-      ctx.stroke()
-      ctx.closePath()
-    })
-  }
-
-  clear() {
-    this.ctx.fillStyle = this.bgColor
-    this.ctx.fillRect(0, 0, this.width, this.height)
   }
 
   destroy() {
