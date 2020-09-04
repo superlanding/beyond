@@ -240,13 +240,27 @@ export default class LineChart {
   drawXAxis(rows, gutter) {
     const { ctx } = this
 
-    let x = this.xPadding
+    let x = this.xPadding + (this.xLabelWidth / 2)
     const y = this.height - this.yPadding - this.fontSize - this.getLineLabelBoxHeight()
+
+    const scaleMargin = 4
+    const scaleSize = 4
+    const scaleStart = y - scaleMargin - scaleSize
+    const scaleEnd = y - scaleMargin
 
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#3c4257'
+    ctx.textAlign = 'center'
+
+    ctx.strokeStyle = '#3c4257'
 
     rows.forEach((row, i) => {
+      ctx.beginPath()
+      ctx.moveTo(x, scaleStart)
+      ctx.lineTo(x, scaleEnd)
+      ctx.stroke()
+      ctx.closePath()
+
       ctx.fillText(row.label, x, y)
       x += gutter + row.length
     })
@@ -614,8 +628,8 @@ export default class LineChart {
     const { xPadding, yPadding, xLabelWidth,
       xLabelHeight, yLabelHeight, xLabelMargin } = this
 
-    const halfXlabelWidth = parseInt(xLabelWidth / 2, 10)
-    const halfYlabelHeight = parseInt(yLabelHeight / 2, 10)
+    const halfXlabelWidth = xLabelWidth / 2
+    const halfYlabelHeight = yLabelHeight / 2
 
     const contentWidth = this.getContentWidth() - xLabelWidth
     const xPoints = this.getUniqSortedPoints('x')
