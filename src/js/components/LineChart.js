@@ -657,10 +657,10 @@ export default class LineChart {
     const xDelta = lastX - firstX
     const xRatio = xDelta / this.getLineWidth()
 
-    const startY = this.getYAxisStart()
-    const endY = this.getYAxisEnd()
+    const yAxisStart = this.getYAxisStart()
+    const yAxisEnd = this.getYAxisEnd()
 
-    const lineHeight = Math.abs(startY - endY)
+    const lineHeight = Math.abs(yAxisStart - yAxisEnd)
     const firstY = yLabelRows[0].value
     const lastY = yLabelRows[yLabelRows.length - 1].value
     const yDelta = Math.abs(lastY - firstY)
@@ -672,7 +672,7 @@ export default class LineChart {
       points.forEach(p => {
 
         const posX = (p.x - firstX) / xRatio + halfXLabelWidth
-        const posY = startY - ((p.y - firstY) / yRatio)
+        const posY = yAxisStart - ((p.y - firstY) / yRatio)
 
         p._pos = {
           x: posX,
