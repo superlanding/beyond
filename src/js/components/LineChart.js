@@ -505,6 +505,7 @@ export default class LineChart {
       this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
       this.setLabelWidths()
       this.setLabelHeights()
+      this.setPointsPos()
       this.draw()
     })
   }
