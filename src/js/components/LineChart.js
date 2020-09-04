@@ -73,8 +73,6 @@ export default class LineChart {
 
     this.xLabelRows = []
     this.yLabelRows = []
-    this.caculatedXGutter = 0
-    this.caculatedYGutter = 0
 
     this.init()
   }
@@ -140,7 +138,12 @@ export default class LineChart {
   }
 
   drawBgLines() {
-    const gutter = this.caculatedYGutter
+
+    const yPoints = this.getUniqSortedPoints('y')
+    const firstY = yPoints[0]._pos.y
+    const lastY = yPoints[yPoints.length - 1]._pos.y
+    const distance = (firstY - lastY) / (this.yLabelRows.length - 1)
+
     const { ctx } = this
     const contentWidth = this.getContentWidth()
     const x = this.xPadding
@@ -156,7 +159,7 @@ export default class LineChart {
       ctx.lineTo(x + contentWidth, y)
       ctx.stroke()
       ctx.closePath
-      y -= (gutter + row.length)
+      y -= distance
     })
   }
 
@@ -228,8 +231,13 @@ export default class LineChart {
 
   drawXAxis() {
     const { ctx } = this
-    const gutter = this.caculatedXGutter
-    let x = this.xPadding + (this.xLabelWidth / 2)
+
+    const xPoints = this.getUniqSortedPoints('x')
+    const firstX = xPoints[0]._pos.x
+    const lastX = xPoints[xPoints.length - 1]._pos.x
+    const distance = (lastX - firstX) / (this.xLabelRows.length - 1)
+
+    let x = firstX
     const y = this.height - this.yPadding - this.fontSize - this.getLineLabelBoxHeight()
 
     const scaleMargin = 4
@@ -251,24 +259,29 @@ export default class LineChart {
       ctx.closePath()
 
       ctx.fillText(row.label, x, y)
-      x += gutter + row.length
+      x += distance
     })
   }
 
   drawYAxis() {
-    const gutter = this.caculatedYGutter
     const { ctx } = this
     const x = this.width - this.xPadding
-    let y = this.height - this.yPadding - this.fontSize -
-      this.xLabelMargin - this.fontSize - this.getLineLabelBoxHeight()
+
+    const yPoints = this.getUniqSortedPoints('y')
+    const firstY = yPoints[0]._pos.y
+    const lastY = yPoints[yPoints.length - 1]._pos.y
+    const distance = (firstY - lastY) / (this.yLabelRows.length - 1)
+    const halfYLabelHeight = this.yLabelHeight / 2
+
+    let y = firstY
 
     ctx.textBaseline = 'top'
     ctx.fillStyle = '#3c4257'
     ctx.textAlign = 'right'
 
     this.yLabelRows.forEach(row => {
-      ctx.fillText(row.label, x, y)
-      y -= (gutter + row.length)
+      ctx.fillText(row.label, x, (y - halfYLabelHeight))
+      y -= distance
     })
   }
 
@@ -396,7 +409,7 @@ export default class LineChart {
         const length = measureLength(label)
         const lengthTotal = res.lengthTotal + length + gutter
         const rows = res.rows.slice()
-        rows.push({ label, length })
+        rows.push({ label, length, value })
         return { lengthTotal, rows }
       }
       if (i === (valueCount - 1)) {
@@ -404,7 +417,7 @@ export default class LineChart {
         const length = measureLength(label)
         const lengthTotal = res.lengthTotal + length
         const rows = res.rows.slice()
-        rows.push({ label, length })
+        rows.push({ label, length, value })
         return { lengthTotal, rows }
       }
       if (hasGap(i)) {
@@ -413,7 +426,7 @@ export default class LineChart {
         const length = measureLength(label)
         const lengthTotal = res.lengthTotal + length + gutter
         const rows = res.rows.slice()
-        rows.push({ label, length })
+        rows.push({ label, length, value })
         return { lengthTotal, rows }
       }
       return res
@@ -437,9 +450,10 @@ export default class LineChart {
 
     if (points.length <= 2) {
       return points.map(p => {
-        const label = toLabel(p[axis])
+        const value = p[axis]
+        const label = toLabel(value)
         const length = measureLength(label)
-        return { label, length }
+        return { label, length, value }
       })
     }
 
@@ -461,12 +475,14 @@ export default class LineChart {
     const valueCount = values.length
     const initialGap = parseInt((valueCount - 2) / 2, 10)
 
-    const firstLabel = toLabel(values[0])
-    const lastLabel = toLabel(values[valueCount - 1])
+    const firstValue = values[0]
+    const lastValue = values[valueCount - 1]
+    const firstLabel = toLabel(firstValue)
+    const lastLabel = toLabel(lastValue)
 
     let stepRows = [
-      { label: firstLabel, length: measureLength(firstLabel) },
-      { label: lastLabel, length: measureLength(lastLabel) },
+      { label: firstLabel, length: measureLength(firstLabel), value: firstValue },
+      { label: lastLabel, length: measureLength(lastLabel), value: lastValue },
     ]
 
     for (let gap = initialGap; gap >= 0; gap--) {
@@ -577,18 +593,13 @@ export default class LineChart {
     }
 
     const { toXLabel, toYLabel, ctx } = this
-    const { round } = Math
-    const res = this.pointsArr.map(points => points[points.length - 1])
+    const res = this.pointsArr.flat()
       .filter(p => p)
       .reduce((o, p) => {
 
         const { xLabelWidth, yLabelWidth } = o
-
-        const xLabelSize = ctx.measureText(toXLabel(p.x))
-        const yLabelSize = ctx.measureText(toYLabel(p.y))
-
-        const measuredXLabelWidth = round(xLabelSize.width)
-        const measuredYLabelWidth = round(yLabelSize.width)
+        const measuredXLabelWidth = ctx.measureText(toXLabel(p.x)).width
+        const measuredYLabelWidth = ctx.measureText(toYLabel(p.y)).width
 
         return {
           xLabelWidth: (measuredXLabelWidth > xLabelWidth) ? measuredXLabelWidth : xLabelWidth,
@@ -608,21 +619,15 @@ export default class LineChart {
   }
 
   setAxisData() {
-    const contentWidth = this.getContentWidth()
-    const contentHeight = this.getContentHeight()
-
     this.xLabelRows = this.getLabelRows({ step: this.xStep })
-    this.caculatedXGutter = this.getGutter(this.xLabelRows, contentWidth)
-
     this.yLabelRows = this.getLabelRows({
       axis: 'y',
       step: this.yStep,
       gutter: this.yGutter,
-      contentLength: contentHeight,
+      contentLength: this.getContentHeight(),
       toLabel: this.toYLabel,
       measureLength: () => this.yLabelHeight
     })
-    this.caculatedYGutter = this.getGutter(this.yLabelRows, contentHeight)
   }
 
   setPoints(pointsArr) {
@@ -634,41 +639,39 @@ export default class LineChart {
     this.raf(() => this.draw())
   }
 
+  getLineWidth() {
+    return this.getContentWidth() - this.xLabelWidth
+  }
+
+  getLineHeight() {
+    return this.getContentHeight() - this.yLabelHeight
+  }
+
   setPointsPos() {
-    const { xPadding, yPadding, xLabelWidth,
-      xLabelHeight, yLabelHeight, xLabelMargin } = this
+    const { xLabelWidth, xLabelRows, yLabelRows, yLabelHeight } = this
 
-    const halfXlabelWidth = xLabelWidth / 2
-    const halfYlabelHeight = yLabelHeight / 2
-
-    const contentWidth = this.getContentWidth() - xLabelWidth
-    const xPoints = this.getUniqSortedPoints('x')
-    const firstX = xPoints[0].x
-    const lastX = xPoints[xPoints.length - 1].x
+    const halfXLabelWidth = (xLabelWidth / 2)
+    const firstX = xLabelRows[0].value
+    const lastX = xLabelRows[xLabelRows.length - 1].value
     const xDelta = lastX - firstX
+    const xRatio = xDelta / this.getLineWidth()
 
-    const contentHeight = this.getContentHeight() - yLabelHeight
-    const yPoints = this.getUniqSortedPoints('y')
-    const firstY = yPoints[0].y
-    const lastY = yPoints[yPoints.length - 1].y
+    const lineHeight = this.getLineHeight()
+    const firstY = yLabelRows[0].value
+    const lastY = yLabelRows[yLabelRows.length - 1].value
     const yDelta = lastY - firstY
-    const canvasHeight = this.height
-
-    const labelBoxHeight = this.getLineLabelBoxHeight()
+    const yRatio = yDelta / lineHeight
+    const halfYLabelHeight = (yLabelHeight / 2)
 
     this.pointsArr.forEach((points, i) => {
       points.forEach(p => {
-        const xRatio = (p.x - firstX) / xDelta
-        const x = contentWidth * xRatio
 
-        const yRatio = (p.y - firstY) / yDelta
-        const y = contentHeight * yRatio
-        const posX = x + xPadding + halfXlabelWidth
-        const posY = canvasHeight - yPadding - xLabelHeight -
-          xLabelMargin - halfYlabelHeight - y - labelBoxHeight
+        const posX = (p.x - firstX) / xRatio
+        const posY = lineHeight - ((p.y - firstY) / yRatio)
+
         p._pos = {
-          x: posX,
-          y: posY
+          x: posX + halfXLabelWidth,
+          y: posY + halfYLabelHeight
         }
       })
     })
