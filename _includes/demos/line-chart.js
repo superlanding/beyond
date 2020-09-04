@@ -35,12 +35,10 @@ export default function bindCharts() {
     toXLabel,
     toYLabel,
     lineLabels: ['線段1', '線段2', '線段3'],
-    xStep: fiveMins,
     yStep: 2 * 10000,
     onPointVisible(event, mousePos, res) {
       if (res) {
         const rect = dom.getBoundingClientRect()
-        console.log({ rect, event, mousePos })
         const { point, index } = res
         chartMenu.innerHTML = `
           <div>時間: ${toXLabel(point.x)}</div>
