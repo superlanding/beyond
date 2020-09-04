@@ -147,6 +147,12 @@ export default class LineChart {
     return this.yAxisStart - this.contentHeight
   }
 
+  get yRatio() {
+    const lineHeight = this.yAxisStart - this.yAxisEnd
+    const yDelta = Math.abs(this.lastY - this.firstY)
+    return yDelta / lineHeight
+  }
+
   addLayer() {
     const { dom } = this
     const canvas = document.createElement('canvas')
@@ -201,11 +207,7 @@ export default class LineChart {
 
   drawBgLines() {
 
-    const { ctx, yLabelRows, contentWidth, firstY, lastY, xAxisStart, yAxisStart, yAxisEnd } = this
-
-    const lineHeight = Math.abs(yAxisStart - yAxisEnd)
-    const yDelta = Math.abs(lastY - firstY)
-    const yRatio = yDelta / lineHeight
+    const { ctx, yLabelRows, contentWidth, firstY, xAxisStart, yAxisStart, yRatio } = this
 
     ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
     ctx.lineWidth = 1
@@ -318,13 +320,9 @@ export default class LineChart {
   }
 
   drawYAxis() {
-    const { ctx, firstY, lastY, yLabelRows, yAxisStart, yAxisEnd } = this
+    const { ctx, firstY, yLabelRows, yAxisStart, yRatio } = this
     const x = this.width - this.xPadding
     const halfYLabelHeight = this.yLabelHeight / 2
-
-    const lineHeight = Math.abs(yAxisStart - yAxisEnd)
-    const yDelta = Math.abs(lastY - firstY)
-    const yRatio = yDelta / lineHeight
 
     ctx.fillStyle = '#3c4257'
     ctx.textAlign = 'right'
@@ -665,11 +663,7 @@ export default class LineChart {
   }
 
   setPointsPos() {
-    const { firstX, firstY, lastY, xAxisStart, xRatio, yAxisStart, yAxisEnd } = this
-
-    const lineHeight = Math.abs(yAxisStart - yAxisEnd)
-    const yDelta = Math.abs(lastY - firstY)
-    const yRatio = yDelta / lineHeight
+    const { firstX, firstY, xAxisStart, xRatio, yAxisStart, yRatio } = this
 
     this.pointsArr.forEach((points, i) => {
       points.forEach(p => {
