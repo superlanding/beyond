@@ -208,18 +208,18 @@ export default class LineChart {
     this.media.removeListener(this._handleDprChange)
   }
 
-  setCanvasSize() {
+  setCanvasSize(canvas = this.canvas) {
     if (isUndef(this.options.width)) {
       this.width = this.dom.offsetWidth
     }
-    const { canvas, dpr, ctx, width, height } = this
+    const { dpr, width, height } = this
 
     // https://coderwall.com/p/vmkk6a/how-to-make-the-canvas-not-look-like-crap-on-retina
     canvas.width = width * dpr
     canvas.height = height * dpr
     canvas.style.width = toPixel(width)
     canvas.style.height = toPixel(height)
-    ctx.scale(dpr, dpr)
+    canvas.getContext('2d').scale(dpr, dpr)
   }
 
   setCanvas() {
