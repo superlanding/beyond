@@ -46,7 +46,7 @@ export default class LineChart {
     this.toYLabel = isDef(options.toYLabel) ? mem(options.toYLabel) : (v => v)
 
     this.xPadding = isDef(options.xPadding) ? options.xPadding : 20
-    this.yPadding = isDef(options.yPadding) ? options.yPadding : 16
+    this.yPadding = isDef(options.yPadding) ? options.yPadding : 20
 
     this.xLabelWidth = options.xLabelWidth
     this.xLabelHeight = options.xLabelHeight
@@ -68,7 +68,7 @@ export default class LineChart {
     this.yStep = options.yStep
 
     this.lineLabels = options.lineLabels || []
-    this.lineLabelMargin = isDef(options.lineLabelMargin) ? options.lineLabelMargin : 14
+    this.lineLabelMargin = isDef(options.lineLabelMargin) ? options.lineLabelMargin : 20
     this.layers = []
 
     this.xLabelRows = []
@@ -137,18 +137,27 @@ export default class LineChart {
     this.drawLineLables()
   }
 
+  getStartY() {
+    return this.height - this.yPadding - this.getLineLabelBoxHeight() -
+      this.xLabelHeight - this.xLabelMargin + (this.yLabelHeight / 2)
+  }
+
+  getEndY() {
+    const distance = this.getYDistance()
+    return this.getStartY() - ((this.yLabelRows.length - 1) * distance)
+  }
+
+  getYDistance() {
+    return this.getContentHeight() / (this.yLabelRows.length - 1)
+  }
+
   drawBgLines() {
 
-    const yPoints = this.getUniqSortedPoints('y')
-    const firstY = yPoints[0]._pos.y
-    const lastY = yPoints[yPoints.length - 1]._pos.y
-    const distance = (firstY - lastY) / (this.yLabelRows.length - 1)
-
+    const distance = this.getYDistance()
     const { ctx } = this
     const contentWidth = this.getContentWidth()
     const x = this.xPadding
-    let y = this.height - this.yPadding - this.fontSize -
-      this.xLabelMargin - (this.fontSize / 2) - this.getLineLabelBoxHeight()
+    let y = this.getStartY()
 
     ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
     ctx.lineWidth = 1
@@ -231,14 +240,9 @@ export default class LineChart {
 
   drawXAxis() {
     const { ctx } = this
-
-    const xPoints = this.getUniqSortedPoints('x')
-    const firstX = xPoints[0]._pos.x
-    const lastX = xPoints[xPoints.length - 1]._pos.x
-    const distance = (lastX - firstX) / (this.xLabelRows.length - 1)
-
-    let x = firstX
-    const y = this.height - this.yPadding - this.fontSize - this.getLineLabelBoxHeight()
+    let x = this.xPadding
+    const distance = this.getContentWidth() / (this.xLabelRows.length - 1)
+    const y = this.height - this.yPadding - this.getLineLabelBoxHeight()
 
     const scaleMargin = 4
     const scaleSize = 4
@@ -266,21 +270,18 @@ export default class LineChart {
   drawYAxis() {
     const { ctx } = this
     const x = this.width - this.xPadding
-
-    const yPoints = this.getUniqSortedPoints('y')
-    const firstY = yPoints[0]._pos.y
-    const lastY = yPoints[yPoints.length - 1]._pos.y
-    const distance = (firstY - lastY) / (this.yLabelRows.length - 1)
     const halfYLabelHeight = this.yLabelHeight / 2
+    let y = this.height - this.yPadding - this.getLineLabelBoxHeight() -
+      this.xLabelHeight - this.xLabelMargin
 
-    let y = firstY
+    const distance = this.getContentHeight() / (this.yLabelRows.length - 1)
 
-    ctx.textBaseline = 'top'
+    ctx.textBaseline = 'center'
     ctx.fillStyle = '#3c4257'
     ctx.textAlign = 'right'
 
     this.yLabelRows.forEach(row => {
-      ctx.fillText(row.label, x, (y - halfYLabelHeight))
+      ctx.fillText(row.label, x, y)
       y -= distance
     })
   }
@@ -640,11 +641,11 @@ export default class LineChart {
   }
 
   getLineWidth() {
-    return this.getContentWidth() - this.xLabelWidth
+    return this.getContentWidth()
   }
 
   getLineHeight() {
-    return this.getContentHeight() - this.yLabelHeight
+    return this.getContentHeight()
   }
 
   setPointsPos() {
@@ -656,22 +657,26 @@ export default class LineChart {
     const xDelta = lastX - firstX
     const xRatio = xDelta / this.getLineWidth()
 
-    const lineHeight = this.getLineHeight()
+    const startY = this.getStartY()
+    const endY = this.getEndY()
+
+    const lineHeight = Math.abs(startY - endY)
     const firstY = yLabelRows[0].value
     const lastY = yLabelRows[yLabelRows.length - 1].value
-    const yDelta = lastY - firstY
+    const yDelta = Math.abs(lastY - firstY)
     const yRatio = yDelta / lineHeight
     const halfYLabelHeight = (yLabelHeight / 2)
+
 
     this.pointsArr.forEach((points, i) => {
       points.forEach(p => {
 
-        const posX = (p.x - firstX) / xRatio
-        const posY = lineHeight - ((p.y - firstY) / yRatio)
+        const posX = (p.x - firstX) / xRatio + halfXLabelWidth
+        const posY = startY - ((p.y - firstY) / yRatio)
 
         p._pos = {
-          x: posX + halfXLabelWidth,
-          y: posY + halfYLabelHeight
+          x: posX,
+          y: posY
         }
       })
     })
