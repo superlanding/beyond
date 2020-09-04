@@ -114,13 +114,13 @@ export default class LineChart {
     return this.xAxisStart + this.contentWidth
   }
 
-  getYAxisStart() {
+  get yAxisStart() {
     return this.height - this.yPadding - this.lineLabelBoxHeight -
       this.xLabelHeight - this.xLabelMargin + (this.yLabelHeight / 2)
   }
 
   getYAxisEnd() {
-    return this.getYAxisStart() - this.contentHeight
+    return this.yAxisStart - this.contentHeight
   }
 
   addLayer() {
@@ -177,9 +177,8 @@ export default class LineChart {
 
   drawBgLines() {
 
-    const { ctx, yLabelRows, contentWidth, xAxisStart } = this
+    const { ctx, yLabelRows, contentWidth, xAxisStart, yAxisStart } = this
 
-    const yAxisStart = this.getYAxisStart()
     const yAxisEnd = this.getYAxisEnd()
     const lineHeight = Math.abs(yAxisStart - yAxisEnd)
     const firstY = yLabelRows[0].value
@@ -304,11 +303,10 @@ export default class LineChart {
   }
 
   drawYAxis() {
-    const { ctx, yLabelRows } = this
+    const { ctx, yLabelRows, yAxisStart } = this
     const x = this.width - this.xPadding
     const halfYLabelHeight = this.yLabelHeight / 2
 
-    const yAxisStart = this.getYAxisStart()
     const yAxisEnd = this.getYAxisEnd()
     const lineHeight = Math.abs(yAxisStart - yAxisEnd)
     const firstY = yLabelRows[0].value
@@ -655,7 +653,7 @@ export default class LineChart {
   }
 
   setPointsPos() {
-    const { xLabelRows, yLabelRows, xAxisStart, xAxisEnd } = this
+    const { xLabelRows, yLabelRows, xAxisStart, xAxisEnd, yAxisStart } = this
 
     const lineWidth = xAxisEnd - xAxisStart
     const firstX = xLabelRows[0].value
@@ -663,7 +661,6 @@ export default class LineChart {
     const xDelta = lastX - firstX
     const xRatio = xDelta / lineWidth
 
-    const yAxisStart = this.getYAxisStart()
     const yAxisEnd = this.getYAxisEnd()
 
     const lineHeight = Math.abs(yAxisStart - yAxisEnd)
