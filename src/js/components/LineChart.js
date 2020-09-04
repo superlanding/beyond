@@ -71,6 +71,11 @@ export default class LineChart {
     this.lineLabelMargin = isDef(options.lineLabelMargin) ? options.lineLabelMargin : 14
     this.layers = []
 
+    this.xLabelRows = []
+    this.yLabelRows = []
+    this.caculatedXGutter = 0
+    this.caculatedYGutter = 0
+
     this.init()
   }
 
@@ -127,31 +132,15 @@ export default class LineChart {
 
   draw() {
     this.clear()
-    const contentWidth = this.getContentWidth()
-    const xLabelRows = this.getLabelRows({ step: this.xStep })
-    const xGutter = this.getGutter(xLabelRows, contentWidth)
-
-    this.drawXAxis(xLabelRows, xGutter)
-
-    const contentHeight = this.getContentHeight()
-    const yLabelRows = this.getLabelRows({
-      axis: 'y',
-      step: this.yStep,
-      gutter: this.yGutter,
-      contentLength: contentHeight,
-      toLabel: this.toYLabel,
-      measureLength: () => this.yLabelHeight
-    })
-    const yGutter = this.getGutter(yLabelRows, contentHeight)
-
-    this.drawYAxis(yLabelRows, yGutter)
-    this.drawBgLines(yLabelRows, yGutter)
-
+    this.drawXAxis()
+    this.drawYAxis()
+    this.drawBgLines()
     this.drawLines()
     this.drawLineLables()
   }
 
-  drawBgLines(rows, gutter) {
+  drawBgLines() {
+    const gutter = this.caculatedYGutter
     const { ctx } = this
     const contentWidth = this.getContentWidth()
     const x = this.xPadding
@@ -161,7 +150,7 @@ export default class LineChart {
     ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
     ctx.lineWidth = 1
 
-    rows.forEach(row => {
+    this.yLabelRows.forEach(row => {
       ctx.beginPath()
       ctx.moveTo(x, y)
       ctx.lineTo(x + contentWidth, y)
@@ -237,9 +226,9 @@ export default class LineChart {
     ctx.closePath()
   }
 
-  drawXAxis(rows, gutter) {
+  drawXAxis() {
     const { ctx } = this
-
+    const gutter = this.caculatedXGutter
     let x = this.xPadding + (this.xLabelWidth / 2)
     const y = this.height - this.yPadding - this.fontSize - this.getLineLabelBoxHeight()
 
@@ -254,7 +243,7 @@ export default class LineChart {
 
     ctx.strokeStyle = '#3c4257'
 
-    rows.forEach((row, i) => {
+    this.xLabelRows.forEach((row, i) => {
       ctx.beginPath()
       ctx.moveTo(x, scaleStart)
       ctx.lineTo(x, scaleEnd)
@@ -266,7 +255,8 @@ export default class LineChart {
     })
   }
 
-  drawYAxis(rows, gutter) {
+  drawYAxis() {
+    const gutter = this.caculatedYGutter
     const { ctx } = this
     const x = this.width - this.xPadding
     let y = this.height - this.yPadding - this.fontSize -
@@ -276,7 +266,7 @@ export default class LineChart {
     ctx.fillStyle = '#3c4257'
     ctx.textAlign = 'right'
 
-    rows.forEach(row => {
+    this.yLabelRows.forEach(row => {
       ctx.fillText(row.label, x, y)
       y -= (gutter + row.length)
     })
@@ -519,6 +509,7 @@ export default class LineChart {
       this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
       this.setLabelWidths()
       this.setLabelHeights()
+      this.setAxisData()
       this.setPointsPos()
       this.draw()
     })
@@ -616,10 +607,29 @@ export default class LineChart {
     }
   }
 
+  setAxisData() {
+    const contentWidth = this.getContentWidth()
+    const contentHeight = this.getContentHeight()
+
+    this.xLabelRows = this.getLabelRows({ step: this.xStep })
+    this.caculatedXGutter = this.getGutter(this.xLabelRows, contentWidth)
+
+    this.yLabelRows = this.getLabelRows({
+      axis: 'y',
+      step: this.yStep,
+      gutter: this.yGutter,
+      contentLength: contentHeight,
+      toLabel: this.toYLabel,
+      measureLength: () => this.yLabelHeight
+    })
+    this.caculatedYGutter = this.getGutter(this.yLabelRows, contentHeight)
+  }
+
   setPoints(pointsArr) {
     this.pointsArr = pointsArr
     this.setLabelWidths()
     this.setLabelHeights()
+    this.setAxisData()
     this.setPointsPos()
     this.raf(() => this.draw())
   }
