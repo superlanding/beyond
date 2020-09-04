@@ -69,6 +69,7 @@ export default class LineChart {
 
     this.lineLabels = options.lineLabels || []
     this.lineLabelMargin = isDef(options.lineLabelMargin) ? options.lineLabelMargin : 14
+    this.layers = []
 
     this.init()
   }
@@ -79,6 +80,25 @@ export default class LineChart {
     this.clear()
     this.bindMedia()
     this.bindPointVisibleEvent()
+  }
+
+  bindMedia() {
+    if (this.media) {
+      return
+    }
+    this.media = window.matchMedia(`(resolution: ${this.dpr}dppx)`)
+    this._handleDprChange = this.handleDprChange.bind(this)
+    this.media.addListener(this._handleDprChange)
+  }
+
+  bindPointVisibleEvent() {
+    if (isUndef(this.options.onPointVisible)) {
+      return
+    }
+    if (! ('onmousemove' in this.canvas)) {
+      return
+    }
+    this.addEvent(this.canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
   }
 
   clear() {
@@ -150,6 +170,30 @@ export default class LineChart {
     })
   }
 
+  drawLineLables() {
+    const { ctx, lineStyles } = this
+    const rectSize = 7
+
+    const rectGutter = 7
+    const labelGutter = 14
+    const rectMargin = 1
+    const y = this.height - this.yPadding
+    const labelHeight = this.getLineLabelHeight()
+    let x = this.xPadding
+
+    this.lineLabels.forEach((name, i) => {
+      ctx.fillStyle = lineStyles[i] || '#000'
+      ctx.fillRect(x, y - labelHeight + rectMargin, rectSize, rectSize)
+
+      x += (rectSize + rectGutter)
+      ctx.fillStyle = '#000'
+      ctx.textAlign = 'left'
+      ctx.textBaseline = 'top'
+      ctx.fillText(name, x, y - labelHeight)
+      x += (ctx.measureText(name).width + labelGutter)
+    })
+  }
+
   drawVerticalLine(point, index) {
     const { ctx } = this
     const pos = point._pos
@@ -212,20 +256,32 @@ export default class LineChart {
     }
   }
 
-  setDpr() {
-    this.dpr = window.devicePixelRatio || 1
+  getMousePos(event) {
+    const rect = this.canvas.getBoundingClientRect()
+    return {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
+    }
   }
 
-  setCanvas() {
-    const canvas = document.createElement('canvas')
-    const ctx = canvas.getContext('2d')
+  handleDprChange() {
+    this.setDpr()
+    this.refresh()
+  }
 
-    this.canvas = canvas
-    this.ctx = ctx
-    this.setFontSize()
-    this.setCanvasSize()
-
-    this.dom.appendChild(canvas)
+  handleMouseMove(event) {
+    const mousePos = this.getMousePos(event)
+    const res = this.findClosetPoint(mousePos)
+    if (res) {
+      const { point, index } = res
+      this.raf(() => {
+        this.draw()
+        this.drawVerticalLine(point, index)
+      })
+    }
+    else {
+      this.raf(() => this.draw())
+    }
   }
 
   inDetectedZone(mousePos, pointPos) {
@@ -258,86 +314,6 @@ export default class LineChart {
     }
     return (a.x <= pointX) && (pointX <= b.x) &&
       (a.y <= pointY) && (pointY <= c.y)
-  }
-
-  handleMouseMove(event) {
-    const mousePos = this.getMousePos(event)
-    const res = this.findClosetPoint(mousePos)
-    if (res) {
-      const { point, index } = res
-      this.raf(() => {
-        this.draw()
-        this.drawVerticalLine(point, index)
-      })
-    }
-    else {
-      this.raf(() => this.draw())
-    }
-  }
-
-  bindPointVisibleEvent() {
-    if (isUndef(this.options.onPointVisible)) {
-      return
-    }
-    if (! ('onmousemove' in this.canvas)) {
-      return
-    }
-    this.addEvent(this.canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
-  }
-
-  refresh() {
-    this.raf(() => {
-      this.setCanvasSize()
-      this.setLabelWidths()
-      this.setLabelHeights()
-      this.draw()
-    })
-  }
-
-  handleDprChange() {
-    this.setDpr()
-    this.refresh()
-  }
-
-  getMousePos(event) {
-    const rect = this.canvas.getBoundingClientRect()
-    return {
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top
-    }
-  }
-
-  bindMedia() {
-    if (this.media) {
-      return
-    }
-    this.media = window.matchMedia(`(resolution: ${this.dpr}dppx)`)
-    this._handleDprChange = this.handleDprChange.bind(this)
-    this.media.addListener(this._handleDprChange)
-  }
-
-  unbindMedia() {
-    this.media.removeListener(this._handleDprChange)
-  }
-
-  setCanvasSize(canvas = this.canvas) {
-    if (isUndef(this.options.width)) {
-      this.width = this.dom.offsetWidth
-    }
-    const { dpr, width, height } = this
-
-    // https://coderwall.com/p/vmkk6a/how-to-make-the-canvas-not-look-like-crap-on-retina
-    canvas.width = width * dpr
-    canvas.height = height * dpr
-    canvas.style.width = toPixel(width)
-    canvas.style.height = toPixel(height)
-    canvas.getContext('2d').scale(dpr, dpr)
-  }
-
-  setFontSize() {
-    const { ctx } = this
-    const args = ctx.font.split(' ')
-    ctx.font = this.fontSize + 'px ' + args[args.length - 1]
   }
 
   getContentWidth() {
@@ -482,35 +458,56 @@ export default class LineChart {
     return 0
   }
 
-  drawLineLables() {
-    const { ctx, lineStyles } = this
-    const rectSize = 7
-
-    const rectGutter = 7
-    const labelGutter = 14
-    const rectMargin = 1
-    const y = this.height - this.yPadding
-    const labelHeight = this.getLineLabelHeight()
-    let x = this.xPadding
-
-    this.lineLabels.forEach((name, i) => {
-      ctx.fillStyle = lineStyles[i] || '#000'
-      ctx.fillRect(x, y - labelHeight + rectMargin, rectSize, rectSize)
-
-      x += (rectSize + rectGutter)
-      ctx.fillStyle = '#000'
-      ctx.textAlign = 'left'
-      ctx.textBaseline = 'top'
-      ctx.fillText(name, x, y - labelHeight)
-      x += (ctx.measureText(name).width + labelGutter)
-    })
-  }
-
   raf(fn) {
     if (isDef(window.requestAnimationFrame)) {
       return window.requestAnimationFrame(fn)
     }
     return fn()
+  }
+
+  refresh() {
+    this.raf(() => {
+      this.setCanvasSize()
+      this.setLabelWidths()
+      this.setLabelHeights()
+      this.draw()
+    })
+  }
+
+  setCanvas() {
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
+
+    this.canvas = canvas
+    this.ctx = ctx
+    this.setFontSize()
+    this.setCanvasSize()
+
+    this.dom.appendChild(canvas)
+  }
+
+  setCanvasSize(canvas = this.canvas) {
+    if (isUndef(this.options.width)) {
+      this.width = this.dom.offsetWidth
+    }
+    const { dpr, width, height } = this
+
+    // https://coderwall.com/p/vmkk6a/how-to-make-the-canvas-not-look-like-crap-on-retina
+    canvas.width = width * dpr
+    canvas.height = height * dpr
+    canvas.style.width = toPixel(width)
+    canvas.style.height = toPixel(height)
+    canvas.getContext('2d').scale(dpr, dpr)
+  }
+
+  setDpr() {
+    this.dpr = window.devicePixelRatio || 1
+  }
+
+  setFontSize() {
+    const { ctx } = this
+    const args = ctx.font.split(' ')
+    ctx.font = this.fontSize + 'px ' + args[args.length - 1]
   }
 
   setLabelHeights() {
@@ -520,14 +517,6 @@ export default class LineChart {
     if (isUndef(this.yLabelHeight)) {
       this.yLabelHeight = this.fontSize
     }
-  }
-
-  setPoints(pointsArr) {
-    this.pointsArr = pointsArr
-    this.setLabelWidths()
-    this.setLabelHeights()
-    this.setPointsPos()
-    this.raf(() => this.draw())
   }
 
   setLabelWidths() {
@@ -565,6 +554,14 @@ export default class LineChart {
     if (isUndef(this.yLabelWidth)) {
       this.yLabelWidth = res.yLabelWidth
     }
+  }
+
+  setPoints(pointsArr) {
+    this.pointsArr = pointsArr
+    this.setLabelWidths()
+    this.setLabelHeights()
+    this.setPointsPos()
+    this.raf(() => this.draw())
   }
 
   setPointsPos() {
@@ -605,6 +602,10 @@ export default class LineChart {
         }
       })
     })
+  }
+
+  unbindMedia() {
+    this.media.removeListener(this._handleDprChange)
   }
 
   destroy() {
