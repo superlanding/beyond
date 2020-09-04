@@ -132,6 +132,12 @@ export default class LineChart {
     return this.xAxisStart + this.contentWidth
   }
 
+  get xRatio() {
+    const lineWidth = this.xAxisEnd - this.xAxisStart
+    const xDelta = this.lastX - this.firstX
+    return xDelta / lineWidth
+  }
+
   get yAxisStart() {
     return this.height - this.yPadding - this.lineLabelBoxHeight -
       this.xLabelHeight - this.xLabelMargin + (this.yLabelHeight / 2)
@@ -282,7 +288,7 @@ export default class LineChart {
   }
 
   drawXAxis() {
-    const { ctx, firstX, lastX, xLabelRows, xAxisStart, xAxisEnd } = this
+    const { ctx, firstX, xLabelRows, xAxisStart, xRatio } = this
 
     const y = this.height - this.yPadding - this.lineLabelBoxHeight
 
@@ -296,10 +302,6 @@ export default class LineChart {
     ctx.textAlign = 'center'
 
     ctx.strokeStyle = '#3c4257'
-
-    const lineWidth = xAxisEnd - xAxisStart
-    const xDelta = lastX - firstX
-    const xRatio = xDelta / lineWidth
 
     xLabelRows.forEach((row, i) => {
 
@@ -663,11 +665,7 @@ export default class LineChart {
   }
 
   setPointsPos() {
-    const { firstX, lastX, firstY, lastY, xAxisStart, xAxisEnd, yAxisStart, yAxisEnd } = this
-
-    const lineWidth = xAxisEnd - xAxisStart
-    const xDelta = lastX - firstX
-    const xRatio = xDelta / lineWidth
+    const { firstX, firstY, lastY, xAxisStart, xRatio, yAxisStart, yAxisEnd } = this
 
     const lineHeight = Math.abs(yAxisStart - yAxisEnd)
     const yDelta = Math.abs(lastY - firstY)
