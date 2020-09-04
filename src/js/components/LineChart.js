@@ -95,6 +95,15 @@ export default class LineChart {
       this.xLabelHeight - this.lineLabelBoxHeight
   }
 
+  get firstX() {
+    return this.xLabelRows[0].value
+  }
+
+  get lastX() {
+    const { xLabelRows } = this
+    return xLabelRows[xLabelRows.length - 1].value
+  }
+
   get firstY() {
     return this.yLabelRows[0].value
   }
@@ -273,7 +282,7 @@ export default class LineChart {
   }
 
   drawXAxis() {
-    const { ctx, xLabelRows, xAxisStart, xAxisEnd } = this
+    const { ctx, firstX, lastX, xLabelRows, xAxisStart, xAxisEnd } = this
 
     const y = this.height - this.yPadding - this.lineLabelBoxHeight
 
@@ -289,8 +298,6 @@ export default class LineChart {
     ctx.strokeStyle = '#3c4257'
 
     const lineWidth = xAxisEnd - xAxisStart
-    const firstX = xLabelRows[0].value
-    const lastX = xLabelRows[xLabelRows.length - 1].value
     const xDelta = lastX - firstX
     const xRatio = xDelta / lineWidth
 
@@ -656,11 +663,9 @@ export default class LineChart {
   }
 
   setPointsPos() {
-    const { firstY, lastY, xLabelRows, xAxisStart, xAxisEnd, yAxisStart, yAxisEnd } = this
+    const { firstX, lastX, firstY, lastY, xAxisStart, xAxisEnd, yAxisStart, yAxisEnd } = this
 
     const lineWidth = xAxisEnd - xAxisStart
-    const firstX = xLabelRows[0].value
-    const lastX = xLabelRows[xLabelRows.length - 1].value
     const xDelta = lastX - firstX
     const xRatio = xDelta / lineWidth
 
