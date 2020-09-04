@@ -116,7 +116,8 @@ export default class LineChart {
       return
     }
     this.addLayer()
-    this.addEvent(this.canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
+    const highestLayer = this.layers[this.layers.length - 1]
+    this.addEvent(highestLayer.canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
   }
 
   clear() {
@@ -212,15 +213,27 @@ export default class LineChart {
     })
   }
 
+  clearVerticalLine() {
+    const { ctx } = this.layers[0]
+    ctx.clearRect(0, 0, this.width, this.height)
+  }
+
   drawVerticalLine(point, index) {
-    const { ctx } = this
+    const { ctx } = this.layers[0]
     const pos = point._pos
-    ctx.strokeStyle = this.lineStyles[index] || '#000'
+    const style = this.lineStyles[index] || '#000'
+    ctx.strokeStyle = style
     ctx.lineWidth = 1
     ctx.beginPath()
     ctx.moveTo(pos.x, 0)
     ctx.lineTo(pos.x, this.height)
     ctx.stroke()
+    ctx.closePath()
+
+    ctx.beginPath()
+    ctx.arc(pos.x, pos.y, 4, 0, 2 * Math.PI)
+    ctx.fillStyle = style
+    ctx.fill()
     ctx.closePath()
   }
 
@@ -288,18 +301,21 @@ export default class LineChart {
   }
 
   handleMouseMove(event) {
+
     const mousePos = this.getMousePos(event)
     const res = this.findClosetPoint(mousePos)
-    if (res) {
-      const { point, index } = res
-      this.raf(() => {
-        this.draw()
-        this.drawVerticalLine(point, index)
-      })
-    }
-    else {
-      this.raf(() => this.draw())
-    }
+
+    this.raf(() => {
+      this.clearVerticalLine()
+      if (res) {
+        this.drawVerticalLine(res.point, res.index)
+      }
+      // only fires if res differs
+      if (this.lastClosetPointRes !== res) {
+        this.options.onPointVisible(res)
+      }
+      this.lastClosetPointRes = res
+    })
   }
 
   inDetectedZone(mousePos, pointPos) {
