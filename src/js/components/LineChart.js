@@ -95,6 +95,15 @@ export default class LineChart {
       this.xLabelHeight - this.lineLabelBoxHeight
   }
 
+  get firstY() {
+    return this.yLabelRows[0].value
+  }
+
+  get lastY() {
+    const { yLabelRows } = this
+    return yLabelRows[yLabelRows.length - 1].value
+  }
+
   get lineLabelHeight() {
     return this.fontSize
   }
@@ -177,11 +186,9 @@ export default class LineChart {
 
   drawBgLines() {
 
-    const { ctx, yLabelRows, contentWidth, xAxisStart, yAxisStart, yAxisEnd } = this
+    const { ctx, yLabelRows, contentWidth, firstY, lastY, xAxisStart, yAxisStart, yAxisEnd } = this
 
     const lineHeight = Math.abs(yAxisStart - yAxisEnd)
-    const firstY = yLabelRows[0].value
-    const lastY = yLabelRows[yLabelRows.length - 1].value
     const yDelta = Math.abs(lastY - firstY)
     const yRatio = yDelta / lineHeight
 
@@ -302,13 +309,11 @@ export default class LineChart {
   }
 
   drawYAxis() {
-    const { ctx, yLabelRows, yAxisStart, yAxisEnd } = this
+    const { ctx, firstY, lastY, yLabelRows, yAxisStart, yAxisEnd } = this
     const x = this.width - this.xPadding
     const halfYLabelHeight = this.yLabelHeight / 2
 
     const lineHeight = Math.abs(yAxisStart - yAxisEnd)
-    const firstY = yLabelRows[0].value
-    const lastY = yLabelRows[yLabelRows.length - 1].value
     const yDelta = Math.abs(lastY - firstY)
     const yRatio = yDelta / lineHeight
 
@@ -651,7 +656,7 @@ export default class LineChart {
   }
 
   setPointsPos() {
-    const { xLabelRows, yLabelRows, xAxisStart, xAxisEnd, yAxisStart, yAxisEnd } = this
+    const { firstY, lastY, xLabelRows, xAxisStart, xAxisEnd, yAxisStart, yAxisEnd } = this
 
     const lineWidth = xAxisEnd - xAxisStart
     const firstX = xLabelRows[0].value
@@ -660,8 +665,6 @@ export default class LineChart {
     const xRatio = xDelta / lineWidth
 
     const lineHeight = Math.abs(yAxisStart - yAxisEnd)
-    const firstY = yLabelRows[0].value
-    const lastY = yLabelRows[yLabelRows.length - 1].value
     const yDelta = Math.abs(lastY - firstY)
     const yRatio = yDelta / lineHeight
 
