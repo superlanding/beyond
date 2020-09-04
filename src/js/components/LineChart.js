@@ -110,7 +110,7 @@ export default class LineChart {
     return this.xPadding + (this.xLabelWidth / 2)
   }
 
-  getXAxisEnd() {
+  get xAxisEnd() {
     return this.xAxisStart + this.contentWidth
   }
 
@@ -268,8 +268,7 @@ export default class LineChart {
   }
 
   drawXAxis() {
-    const { ctx, xLabelRows, xAxisStart } = this
-    const xAxisEnd = this.getXAxisEnd()
+    const { ctx, xLabelRows, xAxisStart, xAxisEnd } = this
 
     const y = this.height - this.yPadding - this.lineLabelBoxHeight
 
@@ -656,9 +655,7 @@ export default class LineChart {
   }
 
   setPointsPos() {
-    const { xLabelRows, yLabelRows, xAxisStart } = this
-
-    const xAxisEnd = this.getXAxisEnd()
+    const { xLabelRows, yLabelRows, xAxisStart, xAxisEnd } = this
 
     const lineWidth = xAxisEnd - xAxisStart
     const firstX = xLabelRows[0].value
