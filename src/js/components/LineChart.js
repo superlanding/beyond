@@ -654,14 +654,6 @@ export default class LineChart {
     this.raf(() => this.draw())
   }
 
-  getLineWidth() {
-    return this.getContentWidth()
-  }
-
-  getLineHeight() {
-    return this.getContentHeight()
-  }
-
   setPointsPos() {
     const { xLabelWidth, xLabelRows, yLabelRows, yLabelHeight } = this
 
