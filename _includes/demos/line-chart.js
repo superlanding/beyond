@@ -1,6 +1,7 @@
 import range from 'lodash.range'
 import sample from 'lodash.sample'
 import throttle from 'lodash.throttle'
+import toPixel from '@superlanding/topixel'
 
 export default function bindCharts() {
 
@@ -29,14 +30,29 @@ export default function bindCharts() {
   }
 
   const fiveMins = 5 * 60 * 1000
+  const chartMenu = document.getElementById('chart-menu')
   const c = new LineChart(dom, {
     toXLabel,
     toYLabel,
     lineLabels: ['線段1', '線段2', '線段3'],
     xStep: fiveMins,
     yStep: 2 * 10000,
-    onPointVisible(res) {
-      console.log('onPointVisible', res)
+    onPointVisible(event, mousePos, res) {
+      if (res) {
+        const rect = dom.getBoundingClientRect()
+        console.log({ rect, event, mousePos })
+        const { point, index } = res
+        chartMenu.innerHTML = `
+          <div>時間: ${toXLabel(point.x)}</div>
+          <div>金錢: ${point.y}</div>
+        `
+        chartMenu.style.left = toPixel(rect.left + mousePos.x)
+        chartMenu.style.top = toPixel(rect.top + mousePos.y + 20)
+        chartMenu.style.display = 'block'
+      }
+      else {
+        chartMenu.style.display = 'none'
+      }
     }
   })
 
