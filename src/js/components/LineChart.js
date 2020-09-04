@@ -85,6 +85,11 @@ export default class LineChart {
     this.bindPointVisible()
   }
 
+  get contentWidth() {
+    return this.width - (this.xPadding * 2) - this.yLabelMargin -
+      this.yLabelWidth - (this.xLabelWidth / 2)
+  }
+
   get contentHeight() {
     return this.height - (this.yPadding * 2) - this.xLabelMargin -
       this.xLabelHeight - this.lineLabelBoxHeight
@@ -158,7 +163,7 @@ export default class LineChart {
   }
 
   getXAxisEnd() {
-    return this.getXAxisStart() + this.getContentWidth()
+    return this.getXAxisStart() + this.contentWidth
   }
 
   getYAxisStart() {
@@ -172,8 +177,7 @@ export default class LineChart {
 
   drawBgLines() {
 
-    const { ctx, yLabelRows } = this
-    const contentWidth = this.getContentWidth()
+    const { ctx, yLabelRows, contentWidth } = this
     const x = this.getXAxisStart()
 
     const yAxisStart = this.getYAxisStart()
@@ -406,11 +410,6 @@ export default class LineChart {
       (a.y <= pointY) && (pointY <= c.y)
   }
 
-  getContentWidth() {
-    return this.width - (this.xPadding * 2) - this.yLabelMargin -
-      this.yLabelWidth - (this.xLabelWidth / 2)
-  }
-
   getUniqSortedPoints(axis) {
     const points = uniqBy(this.pointsArr.flat(), axis)
     return sortBy(points, [axis])
@@ -475,7 +474,7 @@ export default class LineChart {
 
     const axis = options.axis || 'x'
     const gutter = options.gutter || this.xGutter
-    const contentLength = options.contentLength || this.getContentWidth()
+    const contentLength = options.contentLength || this.contentWidth
     const toLabel = options.toLabel || this.toXLabel
     const measureLength = options.measureLength || (v => this.ctx.measureText(v).width)
 
