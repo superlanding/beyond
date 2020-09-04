@@ -486,6 +486,7 @@ export default class LineChart {
   refresh() {
     this.raf(() => {
       this.setCanvasSize()
+      this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
       this.setLabelWidths()
       this.setLabelHeights()
       this.draw()
