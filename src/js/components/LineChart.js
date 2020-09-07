@@ -40,7 +40,7 @@ export default class LineChart {
     this.options = options
     this.pointsArr = []
     this.height = options.height || 150
-    this.width = options.width || dom.offsetWidth
+    this.width = options.width
 
     this.toXLabel = isDef(options.toXLabel) ? mem(options.toXLabel) : (v => v)
     this.toYLabel = isDef(options.toYLabel) ? mem(options.toYLabel) : (v => v)
@@ -79,6 +79,7 @@ export default class LineChart {
 
   init() {
     this.setDpr()
+    this.setDomWidthToWidth()
     this.setCanvas()
     this.clear()
     this.bindMedia()
@@ -544,6 +545,7 @@ export default class LineChart {
 
   refresh() {
     this.raf(() => {
+      this.setDomWidthToWidth()
       this.setCanvasSize()
       this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
       this.setLabelWidths()
@@ -577,9 +579,6 @@ export default class LineChart {
   }
 
   setCanvasSize(canvas = this.canvas) {
-    if (isUndef(this.options.width)) {
-      this.width = this.dom.offsetWidth
-    }
     const { dpr, width, height } = this
 
     // https://coderwall.com/p/vmkk6a/how-to-make-the-canvas-not-look-like-crap-on-retina
@@ -588,6 +587,12 @@ export default class LineChart {
     canvas.style.width = toPixel(width)
     canvas.style.height = toPixel(height)
     canvas.getContext('2d').scale(dpr, dpr)
+  }
+
+  setDomWidthToWidth() {
+    if (isUndef(this.options.width)) {
+      this.width = this.dom.offsetWidth
+    }
   }
 
   setDpr() {
