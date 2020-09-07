@@ -80,7 +80,7 @@ export default function bindLineCharts() {
       }
     })
 
-  c.setPoints([points1, points2, points3])
+  c.setData([points1, points2, points3])
 
   let domWidth = dom.offsetWidth
 

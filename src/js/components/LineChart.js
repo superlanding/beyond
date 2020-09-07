@@ -578,7 +578,7 @@ export default class LineChart {
     })
   }
 
-  setPoints(pointsArr) {
+  setData(pointsArr) {
     this.pointsArr = pointsArr
     this.setLabelWidths()
     this.setLabelHeights()
