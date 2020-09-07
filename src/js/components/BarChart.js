@@ -53,7 +53,7 @@ export default class BarChart {
 
   get contentWidth() {
     return this.width - (this.xPadding * 2) - this.yLabelMargin -
-      this.yLabelWidth - (this.xLabelWidth / 2)
+      this.yLabelWidth - this.halfXLabelWidth
   }
 
   get contentHeight() {
@@ -64,12 +64,17 @@ export default class BarChart {
     return this.yLabelRows[0].value
   }
 
+  get halfXLabelWidth() {
+    return this.xLabelWidth / 2
+  }
+
   get xAxisStart() {
-    return this.xPadding + (this.xLabelWidth / 2)
+    return this.xPadding + this.halfXLabelWidth
   }
 
   get xAxisEnd() {
-    return this.width - this.xPadding - this.yLabelWidth - this.yLabelMargin
+    return this.width - this.xPadding - this.yLabelWidth -
+      this.yLabelMargin - this.halfXLabelWidth
   }
 
   get yAxisStart() {
@@ -97,11 +102,47 @@ export default class BarChart {
     this.drawXAxis()
     this.drawYAxis()
     this.drawBgLines()
+    this.drawBars()
+  }
+
+  drawBars() {
+    const barWidth = 45
+    const halfBarWidth = parseInt(barWidth / 2, 10)
+    const { barStyles, ctx, firstY, xLabelRows, xAxisStart, xAxisEnd, yAxisStart, yRatio } = this
+    const totalWidth = xLabelRows.reduce((w, row) => w + row.length, 0)
+    const contentWidth = xAxisEnd - xAxisStart
+    const gutter = (contentWidth - totalWidth) / (xLabelRows.length - 1)
+
+    const { centerPoints } = xLabelRows.reduce((res, row, i) => {
+      const { x } = res
+      const centerPoints = res.centerPoints.slice()
+      const width = row.length
+      const halfWidth = parseInt(width / 2, 10)
+      centerPoints.push(x + halfWidth)
+      return {
+        x: x + (width + gutter),
+        centerPoints
+      }
+    }, {
+      x: xAxisStart,
+      centerPoints: []
+    })
+
+    xLabelRows.forEach((row, i) => {
+      ctx.fillStyle = barStyles[i] || '#000'
+      const barHeight = (row.value - firstY) / yRatio
+      const centerPoint = centerPoints[i]
+      const x = centerPoint - halfBarWidth
+      const y = yAxisStart - barHeight
+      ctx.fillRect(x, y, barWidth, barHeight)
+    })
   }
 
   drawBgLines() {
 
-    const { ctx, yLabelRows, contentWidth, firstY, xAxisStart, yAxisStart, yRatio } = this
+    const { ctx, yLabelRows, contentWidth, firstY, yAxisStart, yRatio } = this
+    const xStart = this.xPadding
+    const xEnd = this.width - this.xPadding - this.yLabelWidth - this.yLabelMargin
 
     ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
     ctx.lineWidth = 1
@@ -111,8 +152,8 @@ export default class BarChart {
       const y = yAxisStart - ((row.value - firstY) / yRatio)
 
       ctx.beginPath()
-      ctx.moveTo(xAxisStart, y)
-      ctx.lineTo(xAxisStart + contentWidth, y)
+      ctx.moveTo(xStart, y)
+      ctx.lineTo(xEnd, y)
       ctx.stroke()
       ctx.closePath
     })
@@ -160,7 +201,8 @@ export default class BarChart {
       const label = bar.name
       return {
         label,
-        length: ctx.measureText(label).width
+        length: ctx.measureText(label).width,
+        value: bar.value
       }
     })
   }
@@ -237,7 +279,6 @@ export default class BarChart {
   setAxisData() {
     this.xLabelRows = this.getXLabelRows()
     this.yLabelRows = this.getYLabelRows()
-    console.log('here', this.xLabelRows)
   }
 
   setData(bars) {
