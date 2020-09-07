@@ -530,18 +530,6 @@ export default class LineChart {
     })
   }
 
-  setCanvas() {
-    const canvas = document.createElement('canvas')
-    const ctx = canvas.getContext('2d')
-
-    this.canvas = canvas
-    this.ctx = ctx
-    this.setCanvasFontSize(this.canvas, this.fontSize)
-    this.setCanvasSize(canvas)
-
-    this.dom.appendChild(canvas)
-  }
-
   setLabelHeights() {
     if (isUndef(this.xLabelHeight)) {
       this.xLabelHeight = this.fontSize
