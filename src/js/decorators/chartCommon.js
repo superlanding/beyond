@@ -39,7 +39,7 @@ export default function chartCommon(target) {
     }
 
     getAutoStep(firstValue, lastValue, pointsLength) {
-      return parseInt((lastValue - firstValue) / (pointsLength - 1), 10)
+      return (lastValue - firstValue) / (pointsLength - 1)
     }
 
     getLengthTotalData(gap, gutter, values, measureLength, toLabel) {
