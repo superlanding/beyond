@@ -9,7 +9,10 @@ export default function bindBarCharts() {
     return () => {}
   }
 
-  const b = new BarChart(dom)
+  const b = new BarChart(dom, {
+    onBarVisible() {
+    }
+  })
 
   b.setData([
     { name: '1 個月內', value: 0.8 },
