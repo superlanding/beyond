@@ -1,4 +1,4 @@
-import supportDom from '../utils/supportDom'
+import supportDom from '../decorators/supportDom'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
 import { uniqBy, sortBy, range, toPixel, mem, throttle } from '../utils'

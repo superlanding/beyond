@@ -2,7 +2,7 @@ import DateInput from './DateInput'
 import TimeInput from './TimeInput'
 import DateMenu from './DateMenu'
 import TimeMenu from './TimeMenu'
-import supportDom from '../utils/supportDom'
+import supportDom from '../decorators/supportDom'
 import { DEFAULT_TIMEZONE } from '../consts'
 import {
   dateToTimestamp,
