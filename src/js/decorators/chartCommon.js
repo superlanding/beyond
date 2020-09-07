@@ -38,6 +38,17 @@ export default function chartCommon(target) {
       ctx.fillRect(0, 0, this.width, this.height)
     }
 
+    fillCircle(ctx, x, y, radius, style, alpha) {
+      ctx.save()
+      ctx.beginPath()
+      ctx.arc(x, y, radius, 0, 2 * Math.PI)
+      ctx.fillStyle = style
+      ctx.globalAlpha = alpha || 1
+      ctx.fill()
+      ctx.closePath()
+      ctx.restore()
+    }
+
     getAutoStep(firstValue, lastValue, pointsLength) {
       return (lastValue - firstValue) / (pointsLength - 1)
     }
