@@ -71,8 +71,8 @@ export default class LineChart {
 
     this.lineLabels = options.lineLabels || []
     this.lineLabelMargin = isDef(options.lineLabelMargin) ? options.lineLabelMargin : 20
-    this.layers = []
 
+    this.layers = []
     this.xLabelRows = []
     this.yLabelRows = []
 
