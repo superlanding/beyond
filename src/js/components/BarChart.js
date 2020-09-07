@@ -68,6 +68,10 @@ export default class BarChart {
     return this.xLabelWidth / 2
   }
 
+  get halfYLabelHeight() {
+    return this.yLabelHeight / 2
+  }
+
   get xAxisStart() {
     return this.xPadding + this.halfXLabelWidth
   }
@@ -79,7 +83,7 @@ export default class BarChart {
 
   get yAxisStart() {
     return this.height - this.yPadding - this.xLabelHeight -
-      this.xLabelMargin + (this.yLabelHeight / 2)
+      this.xLabelMargin + this.halfYLabelHeight
   }
 
   get yAxisEnd() {
