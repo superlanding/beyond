@@ -31,6 +31,21 @@ export default function chartCommon(target) {
       this.media.addListener(this._handleDprChange)
     }
 
+    getAutoStep(firstValue, lastValue, pointsLength) {
+      return parseInt((lastValue - firstValue) / (pointsLength - 1), 10)
+    }
+
+    getStepStartEnd(step, firstValue, lastValue) {
+
+      const stepStart = parseInt(firstValue / step, 10) * step
+      let stepEnd = parseInt(lastValue / step, 10) * step
+
+      if (stepEnd < lastValue) {
+        stepEnd += step
+      }
+      return [stepStart, stepEnd]
+    }
+
     removeAllLayers() {
       const { dom } = this
       this.layers.forEach(layer => {

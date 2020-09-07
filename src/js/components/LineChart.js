@@ -473,19 +473,17 @@ export default class LineChart {
       })
     }
 
+    const firstPointValue = firstPoint[axis]
+    const lastPointValue = lastPoint[axis]
+    const pointLength = points.length
+
     let step = options.step
 
     if (isUndef(step)) {
-      step = parseInt((lastPoint[axis] - firstPoint[axis]) / (points.length - 1), 10)
+      step = this.getAutoStep(firstPointValue, lastPointValue, pointLength)
     }
 
-    const stepStart = parseInt(firstPoint[axis] / step, 10) * step
-    let stepEnd = parseInt(lastPoint[axis] / step, 10) * step
-
-    if (stepEnd < lastPoint[axis]) {
-      stepEnd += step
-    }
-
+    const [stepStart, stepEnd] = this.getStepStartEnd(step, firstPointValue, lastPointValue)
     const values = range(stepStart, stepEnd + step, step)
 
     const valueCount = values.length
