@@ -272,6 +272,15 @@ export default class BarChart {
   }
 
   refresh() {
+    this.raf(() => {
+      this.setDomWidthIfNeeded()
+      this.setCanvasSize(this.canvas)
+      this.setLabelWidths()
+      this.setLabelHeights()
+      this.setAxisData()
+      this.setBarPos()
+      this.draw()
+    })
   }
 
   setAxisData() {
@@ -323,5 +332,7 @@ export default class BarChart {
   }
 
   handleDprChange() {
+    this.setDpr()
+    this.refresh()
   }
 }

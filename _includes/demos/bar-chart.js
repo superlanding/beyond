@@ -1,7 +1,13 @@
+import throttle from 'lodash.throttle'
+
 export default function bindBarCharts() {
 
   const { BarChart } = window.beyond
   const dom = document.getElementById('bar-chart')
+
+  if (! dom) {
+    return () => {}
+  }
 
   const b = new BarChart(dom)
 
@@ -11,10 +17,18 @@ export default function bindBarCharts() {
     { name: '6 個月內', value: 1.1 }
   ])
 
-  if (! dom) {
-    return () => {}
-  }
+  let domWidth = dom.offsetWidth
+
+  const handleResize = throttle(() => {
+    if (dom.offsetWidth !== domWidth) {
+      b.refresh()
+    }
+    domWidth = dom.offsetWidth
+  }, 300)
+  window.addEventListener('resize', handleResize)
 
   return function unbindBarCharts() {
+    window.removeEventListener('resize', handleResize)
+    b.destroy()
   }
 }
