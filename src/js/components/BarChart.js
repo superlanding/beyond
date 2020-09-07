@@ -3,7 +3,7 @@ import chartCommon from '../decorators/chartCommon'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
 import isInt from '../utils/isInt'
-import { mem, range, sortBy, uniqBy } from '../utils'
+import { mem, range, sortBy, throttle, uniqBy } from '../utils'
 
 const defaultBarStyles = [
   '#5469d4',
@@ -39,6 +39,8 @@ export default class BarChart {
     this.barStyles = options.barStyles || defaultBarStyles
 
     this.yLabelRows = []
+    this.layers = []
+    this.barPos = new Map()
 
     this.init()
   }
@@ -49,6 +51,7 @@ export default class BarChart {
     this.setCanvas()
     this.clear()
     this.bindMedia()
+    this.bindBarVisible()
   }
 
   get contentWidth() {
@@ -101,6 +104,18 @@ export default class BarChart {
     return yDelta / lineHeight
   }
 
+  bindBarVisible() {
+    if (isUndef(this.options.onBarVisible)) {
+      return
+    }
+    if (! ('onmousemove' in this.canvas)) {
+      return
+    }
+    this.addLayer()
+    const highestLayer = this.layers[this.layers.length - 1]
+    this.addEvent(highestLayer.canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
+  }
+
   draw() {
     this.clear()
     this.drawXAxis()
@@ -110,35 +125,14 @@ export default class BarChart {
   }
 
   drawBars() {
-    const barWidth = 45
-    const halfBarWidth = parseInt(barWidth / 2, 10)
-    const { barStyles, ctx, firstY, xLabelRows, xAxisStart, xAxisEnd, yAxisStart, yRatio } = this
-    const totalWidth = xLabelRows.reduce((w, row) => w + row.length, 0)
-    const contentWidth = xAxisEnd - xAxisStart
-    const gutter = (contentWidth - totalWidth) / (xLabelRows.length - 1)
-
-    const { centerPoints } = xLabelRows.reduce((res, row, i) => {
-      const { x } = res
-      const centerPoints = res.centerPoints.slice()
-      const width = row.length
-      const halfWidth = parseInt(width / 2, 10)
-      centerPoints.push(x + halfWidth)
-      return {
-        x: x + (width + gutter),
-        centerPoints
-      }
-    }, {
-      x: xAxisStart,
-      centerPoints: []
-    })
-
+    const { barPos, barStyles, ctx, xLabelRows } = this
     xLabelRows.forEach((row, i) => {
-      ctx.fillStyle = barStyles[i] || '#000'
-      const barHeight = (row.value - firstY) / yRatio
-      const centerPoint = centerPoints[i]
-      const x = centerPoint - halfBarWidth
-      const y = yAxisStart - barHeight
-      ctx.fillRect(x, y, barWidth, barHeight)
+      const pos = barPos.get(row)
+      if (pos) {
+        const { x, y, width, height } = pos
+        ctx.fillStyle = barStyles[i] || '#000'
+        ctx.fillRect(x, y, width, height)
+      }
     })
   }
 
@@ -192,6 +186,10 @@ export default class BarChart {
       const y = yAxisStart - ((row.value - firstY) / yRatio)
       ctx.fillText(row.label, x, y - delta)
     })
+  }
+
+  handleMouseMove(event) {
+    const mousePos = this.getMousePos(event)
   }
 
   getUniqSortedBars() {
@@ -284,14 +282,41 @@ export default class BarChart {
   }
 
   setAxisData() {
+    this.xLabelRows = this.getXLabelRows()
+    this.yLabelRows = this.getYLabelRows()
   }
 
   setBarPos() {
-  }
+    const barWidth = 45
+    const halfBarWidth = parseInt(barWidth / 2, 10)
+    const { barPos, firstY, xLabelRows, xAxisStart, xAxisEnd, yAxisStart, yRatio } = this
+    const totalWidth = xLabelRows.reduce((w, row) => w + row.length, 0)
+    const contentWidth = xAxisEnd - xAxisStart
+    const gutter = (contentWidth - totalWidth) / (xLabelRows.length - 1)
 
-  setAxisData() {
-    this.xLabelRows = this.getXLabelRows()
-    this.yLabelRows = this.getYLabelRows()
+    const { centerPoints } = xLabelRows.reduce((res, row, i) => {
+      const { x } = res
+      const centerPoints = res.centerPoints.slice()
+      const width = row.length
+      const halfWidth = parseInt(width / 2, 10)
+      centerPoints.push(x + halfWidth)
+      return {
+        x: x + (width + gutter),
+        centerPoints
+      }
+    }, {
+      x: xAxisStart,
+      centerPoints: []
+    })
+
+    xLabelRows.forEach((row, i) => {
+      const barHeight = (row.value - firstY) / yRatio
+      const centerPoint = centerPoints[i]
+      const x = centerPoint - halfBarWidth
+      const y = yAxisStart - barHeight
+      const pos = { x, y, width: barWidth, height: barHeight }
+      barPos.set(row, pos)
+    })
   }
 
   setData(bars) {
@@ -334,5 +359,21 @@ export default class BarChart {
   handleDprChange() {
     this.setDpr()
     this.refresh()
+  }
+
+  destroy() {
+    const { dom, canvas } = this
+    const { toYLabel } = this.options
+
+    if (isDef(toYLabel)) {
+      mem.clear(this.toYLabel)
+    }
+    this.unbindMedia()
+    this.removeAllLayers()
+
+    if (dom.contains(canvas)) {
+      dom.removeChild(canvas)
+      dom.style.removeProperty('position')
+    }
   }
 }
