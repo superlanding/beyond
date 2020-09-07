@@ -144,7 +144,7 @@ export default class BarChart {
 
   drawBgLines() {
 
-    const { ctx, yLabelRows, contentWidth, firstY, yAxisStart, yRatio } = this
+    const { ctx, yLabelRows, firstY, yAxisStart, yRatio } = this
     const xStart = this.xPadding
     const xEnd = this.width - this.xPadding - this.yLabelWidth - this.yLabelMargin
 
@@ -213,7 +213,7 @@ export default class BarChart {
 
   getYLabelRows() {
 
-    const { contentHeight, ctx } = this
+    const { contentHeight } = this
     const gutter = this.yGutter
     const toLabel = this.toYLabel
     const measureLength = () => this.fontSize
