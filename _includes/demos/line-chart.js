@@ -3,7 +3,7 @@ import sample from 'lodash.sample'
 import throttle from 'lodash.throttle'
 import toPixel from '@superlanding/topixel'
 
-export default function bindCharts() {
+export default function bindLineCharts() {
 
   const { LineChart } = window.beyond
   const dom = document.getElementById('line-chart')
@@ -92,7 +92,7 @@ export default function bindCharts() {
   }, 300)
   window.addEventListener('resize', handleResize)
 
-  return function unbindCharts() {
+  return function unbindLineCharts() {
     window.removeEventListener('resize', handleResize)
     c.destroy()
   }
