@@ -620,8 +620,9 @@ export default class LineChart {
   }
 
   destroy() {
-    const { dom } = this
+    const { dom, canvas } = this
     const { toXLabel, toYLabel } = this.options
+
     if (isDef(toXLabel)) {
       mem.clear(this.toXLabel)
     }
@@ -630,8 +631,9 @@ export default class LineChart {
     }
     this.unbindMedia()
     this.removeAllLayers()
-    if (dom.contains(this.canvas)) {
-      dom.removeChild(this.canvas)
+
+    if (dom.contains(canvas)) {
+      dom.removeChild(canvas)
       dom.style.removeProperty('position')
     }
   }
