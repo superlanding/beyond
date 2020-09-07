@@ -168,11 +168,6 @@ export default class LineChart {
     this.addEvent(highestLayer.canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
   }
 
-  clear() {
-    this.ctx.fillStyle = this.bgColor
-    this.ctx.fillRect(0, 0, this.width, this.height)
-  }
-
   draw() {
     this.clear()
     this.drawXAxis()

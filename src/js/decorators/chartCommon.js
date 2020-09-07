@@ -31,6 +31,12 @@ export default function chartCommon(target) {
       this.media.addListener(this._handleDprChange)
     }
 
+    clear() {
+      const { ctx } = this
+      ctx.fillStyle = this.bgColor
+      ctx.fillRect(0, 0, this.width, this.height)
+    }
+
     getAutoStep(firstValue, lastValue, pointsLength) {
       return parseInt((lastValue - firstValue) / (pointsLength - 1), 10)
     }
