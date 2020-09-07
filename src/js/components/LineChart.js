@@ -79,7 +79,7 @@ export default class LineChart {
 
   init() {
     this.setDpr()
-    this.setDomWidthToWidth()
+    this.setDomWidthIfNeeded()
     this.setCanvas()
     this.clear()
     this.bindMedia()
@@ -545,7 +545,7 @@ export default class LineChart {
 
   refresh() {
     this.raf(() => {
-      this.setDomWidthToWidth()
+      this.setDomWidthIfNeeded()
       this.setCanvasSize()
       this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
       this.setLabelWidths()
@@ -589,7 +589,7 @@ export default class LineChart {
     canvas.getContext('2d').scale(dpr, dpr)
   }
 
-  setDomWidthToWidth() {
+  setDomWidthIfNeeded() {
     if (isUndef(this.options.width)) {
       this.width = this.dom.offsetWidth
     }
