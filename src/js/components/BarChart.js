@@ -188,8 +188,64 @@ export default class BarChart {
     })
   }
 
+  findMouseOverBarPos(mousePos) {
+    const { barPos, xLabelRows } = this
+    const { x: mouseX, y: mouseY } = mousePos
+    let index = 0
+    for (const row of xLabelRows) {
+      const pos = barPos.get(row)
+      const { x, y, width, height } = pos
+      if ((x <= mouseX) && (mouseX <= (x + width)) &&
+        (y <= mouseY) && (mouseY <= (y + height))) {
+        return { index, row, pos }
+      }
+      ++index
+    }
+  }
+
+  drawBarGlow(res) {
+    this.clearBarGlow()
+    const ctx = this.layers[0].canvas.getContext('2d')
+    ctx.save()
+    const { x, y, width, height } = res.pos
+    const glowWidth = width * 1.4
+    const glowHeight = ((glowWidth - width) / 2) + height
+    const glowX = x - ((glowWidth - width) / 2)
+    const glowY = y - (glowHeight - height)
+    ctx.globalAlpha = 0.2
+    ctx.fillStyle = this.barStyles[res.index]
+    ctx.fillRect(glowX, glowY, glowWidth, glowHeight)
+    ctx.restore()
+  }
+
+  clearBarGlow() {
+    const ctx = this.layers[0].canvas.getContext('2d')
+    ctx.clearRect(0, 0, this.width, this.height)
+  }
+
   handleMouseMove(event) {
     const mousePos = this.getMousePos(event)
+    const res = this.findMouseOverBarPos(mousePos)
+    const { lastMouseOverRes } = this
+
+    // don't repaint the same index
+    if (lastMouseOverRes && res && (lastMouseOverRes.index === res.index)) {
+      return
+    }
+
+    // don't re-clear
+    if (isUndef(res) && isUndef(lastMouseOverRes)) {
+      return
+    }
+
+    if (res) {
+      this.drawBarGlow(res)
+    }
+    else {
+      this.clearBarGlow()
+    }
+    this.options.onBarVisible(event, mousePos, res)
+    this.lastMouseOverRes = res
   }
 
   getUniqSortedBars() {
