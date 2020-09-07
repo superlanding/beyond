@@ -628,6 +628,7 @@ export default class LineChart {
     if (isDef(toYLabel)) {
       mem.clear(this.toYLabel)
     }
+    this.unbindMedia()
     this.removeAllLayers()
     if (dom.contains(this.canvas)) {
       dom.removeChild(this.canvas)
