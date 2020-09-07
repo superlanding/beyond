@@ -1,7 +1,8 @@
 import supportDom from '../decorators/supportDom'
+import chartCommon from '../decorators/chartCommon'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
-import { uniqBy, sortBy, range, toPixel, mem, throttle } from '../utils'
+import { uniqBy, sortBy, range, mem, throttle } from '../utils'
 
 /**
  * -------------------------------------------------------------------------------------------------
@@ -33,6 +34,7 @@ const defaultLineStyles = [
 ]
 
 @supportDom
+@chartCommon
 export default class LineChart {
 
   constructor(dom, options = {}) {
@@ -152,32 +154,6 @@ export default class LineChart {
     const lineHeight = this.yAxisStart - this.yAxisEnd
     const yDelta = Math.abs(this.lastY - this.firstY)
     return yDelta / lineHeight
-  }
-
-  addLayer() {
-    const { dom } = this
-    const canvas = document.createElement('canvas')
-    canvas.style.position = 'absolute'
-    canvas.style.top = 0
-    canvas.style.left = 0
-    canvas.style.right = 0
-    canvas.style.bottom = 0
-    const ctx = canvas.getContext('2d')
-
-    this.setCanvasSize(canvas)
-    this.layers.push({ canvas, ctx })
-
-    dom.style.position = 'relative'
-    dom.appendChild(canvas)
-  }
-
-  bindMedia() {
-    if (this.media) {
-      return
-    }
-    this.media = window.matchMedia(`(resolution: ${this.dpr}dppx)`)
-    this._handleDprChange = this.handleDprChange.bind(this)
-    this.media.addListener(this._handleDprChange)
   }
 
   bindPointVisible() {
@@ -546,23 +522,13 @@ export default class LineChart {
   refresh() {
     this.raf(() => {
       this.setDomWidthIfNeeded()
-      this.setCanvasSize()
+      this.setCanvasSize(this.canvas)
       this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
       this.setLabelWidths()
       this.setLabelHeights()
       this.setAxisData()
       this.setPointsPos()
       this.draw()
-    })
-  }
-
-  removeAllLayers() {
-    const { dom } = this
-    this.layers.forEach(layer => {
-      const { canvas } = layer
-      if (dom.contains(canvas)) {
-        dom.removeChild(canvas)
-      }
     })
   }
 
@@ -573,36 +539,9 @@ export default class LineChart {
     this.canvas = canvas
     this.ctx = ctx
     this.setCanvasFontSize(this.canvas, this.fontSize)
-    this.setCanvasSize()
+    this.setCanvasSize(canvas)
 
     this.dom.appendChild(canvas)
-  }
-
-  setCanvasSize(canvas = this.canvas) {
-    const { dpr, width, height } = this
-
-    // https://coderwall.com/p/vmkk6a/how-to-make-the-canvas-not-look-like-crap-on-retina
-    canvas.width = width * dpr
-    canvas.height = height * dpr
-    canvas.style.width = toPixel(width)
-    canvas.style.height = toPixel(height)
-    canvas.getContext('2d').scale(dpr, dpr)
-  }
-
-  setDomWidthIfNeeded() {
-    if (isUndef(this.options.width)) {
-      this.width = this.dom.offsetWidth
-    }
-  }
-
-  setDpr() {
-    this.dpr = window.devicePixelRatio || 1
-  }
-
-  setCanvasFontSize(canvas, fontSize) {
-    const ctx = canvas.getContext('2d')
-    const args = ctx.font.split(' ')
-    ctx.font = fontSize + 'px ' + args[args.length - 1]
   }
 
   setLabelHeights() {
@@ -680,10 +619,6 @@ export default class LineChart {
         }
       })
     })
-  }
-
-  unbindMedia() {
-    this.media.removeListener(this._handleDprChange)
   }
 
   destroy() {
