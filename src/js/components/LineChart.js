@@ -392,61 +392,6 @@ export default class LineChart {
     return sortBy(points, [axis])
   }
 
-  getLengthTotalData(gap, gutter, values, measureLength, toLabel) {
-
-    const valueCount = values.length
-    const marked = {}
-
-    // mark the first and last
-    marked[0] = true
-    marked[valueCount - 1] = true
-
-    // Check whether a value can be marked next
-    // For example, gap is 2
-    //
-    // values: 1 2 3 4 5 6 7
-    // marked: v           v
-    //
-    // 4 will only be marked because it has enough gap on left and right side.
-    const hasGap = index => {
-      return range(index - gap, index).every(i => isUndef(marked[i])) &&
-        range(index + 1, index + gap + 1).every(i => isUndef(marked[i]))
-    }
-
-    return values.reduce((res, value, i) => {
-
-      if (i === 0) {
-        const label = toLabel(value)
-        const length = measureLength(label)
-        const lengthTotal = res.lengthTotal + length + gutter
-        const rows = res.rows.slice()
-        rows.push({ label, length, value })
-        return { lengthTotal, rows }
-      }
-      if (i === (valueCount - 1)) {
-        const label = toLabel(value)
-        const length = measureLength(label)
-        const lengthTotal = res.lengthTotal + length
-        const rows = res.rows.slice()
-        rows.push({ label, length, value })
-        return { lengthTotal, rows }
-      }
-      if (hasGap(i)) {
-        const label = toLabel(value)
-        marked[i] = true
-        const length = measureLength(label)
-        const lengthTotal = res.lengthTotal + length + gutter
-        const rows = res.rows.slice()
-        rows.push({ label, length, value })
-        return { lengthTotal, rows }
-      }
-      return res
-    }, {
-      lengthTotal: 0,
-      rows: []
-    })
-  }
-
   getLabelRows(options = {}) {
 
     const axis = options.axis || 'x'
@@ -503,13 +448,6 @@ export default class LineChart {
       return stepRows
     }
     return stepRows
-  }
-
-  raf(fn) {
-    if (isDef(window.requestAnimationFrame)) {
-      return window.requestAnimationFrame(fn)
-    }
-    return fn()
   }
 
   refresh() {
