@@ -6,6 +6,7 @@ import './polyfills/nodeRemove'
 import './polyfills/elementDataset'
 import Alert from './components/Alert'
 import Autocomplete from './components/Autocomplete'
+import BarChart from './components/BarChart'
 import Btn from './components/Btn'
 import Checkbox from './components/Checkbox'
 import DateTimeRanger from './components/DateTimeRanger'
@@ -29,6 +30,7 @@ import unbindAll from './utils/unbindAll'
 export {
   Alert,
   Autocomplete,
+  BarChart,
   Btn,
   Checkbox,
   DateTimeRanger,
