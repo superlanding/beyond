@@ -570,7 +570,7 @@ export default class LineChart {
 
     this.canvas = canvas
     this.ctx = ctx
-    this.setFontSize()
+    this.setCanvasFontSize(this.canvas, this.fontSize)
     this.setCanvasSize()
 
     this.dom.appendChild(canvas)
@@ -594,10 +594,10 @@ export default class LineChart {
     this.dpr = window.devicePixelRatio || 1
   }
 
-  setFontSize() {
-    const { ctx } = this
+  setCanvasFontSize(canvas, fontSize) {
+    const ctx = canvas.getContext('2d')
     const args = ctx.font.split(' ')
-    ctx.font = this.fontSize + 'px ' + args[args.length - 1]
+    ctx.font = fontSize + 'px ' + args[args.length - 1]
   }
 
   setLabelHeights() {
