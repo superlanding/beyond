@@ -139,20 +139,26 @@ const lineChart = new LineChart(dom, options)
       <tr>
         <td>options.xLabelMargin</td>
         <td>integer</td>
-        <td>如下圖，xLabel 到圖表的距離</td>
+        <td>xLabel 到圖表的距離</td>
         <td>10</td>
       </tr>
       <tr>
         <td>options.yLabelMargin</td>
         <td>integer</td>
-        <td>如下圖，yLabel 到圖表的距離</td>
+        <td>yLabel 到圖表的距離</td>
         <td>10</td>
       </tr>
       <tr>
         <td>options.lineLabelMargin</td>
         <td>integer</td>
-        <td>如下圖，lineLabel 到圖表的距離</td>
+        <td>lineLabel 到圖表的距離</td>
         <td>20</td>
+      </tr>
+      <tr>
+        <td>options.onPointVisible</td>
+        <td>function</td>
+        <td>當滑鼠接近某個數值的點的時候的事件 ( 通常用來顯示 tooltip )，回傳 event ( mouseover )、 mousePos ( 在 canvas 上的座標 ) 與 res ( 節點的資料，res 有可能是 undefined，這時隱藏 tooltip 即可 )</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
