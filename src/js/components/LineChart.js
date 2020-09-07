@@ -254,11 +254,8 @@ export default class LineChart {
     ctx.stroke()
     ctx.closePath()
 
-    ctx.beginPath()
-    ctx.arc(pos.x, pos.y, 4, 0, 2 * Math.PI)
-    ctx.fillStyle = style
-    ctx.fill()
-    ctx.closePath()
+    this.fillCircle(ctx, pos.x, pos.y, 8, style, .2)
+    this.fillCircle(ctx, pos.x, pos.y, 4, style)
   }
 
   drawXAxis() {
