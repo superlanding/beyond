@@ -42,6 +42,15 @@ export default function chartCommon(target) {
       return (lastValue - firstValue) / (pointsLength - 1)
     }
 
+    getMousePos(event) {
+      const canvas = (this.layers.length > 0) ? this.layers[this.layers.length - 1].canvas : this.canvas
+      const rect = canvas.getBoundingClientRect()
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+      }
+    }
+
     getLengthTotalData(gap, gutter, values, measureLength, toLabel) {
 
       const valueCount = values.length

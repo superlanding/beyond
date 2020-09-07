@@ -324,14 +324,6 @@ export default class LineChart {
     }
   }
 
-  getMousePos(event) {
-    const rect = this.canvas.getBoundingClientRect()
-    return {
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top
-    }
-  }
-
   handleDprChange() {
     this.setDpr()
     this.refresh()
