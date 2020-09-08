@@ -301,7 +301,7 @@ export default class LineChart {
     })
   }
 
-  findClosetPoint(mousePos) {
+  findClosetPoint(canvasMousePos) {
     const { pointsArr } = this
     let i = 0
     for (const points of pointsArr) {
@@ -309,7 +309,7 @@ export default class LineChart {
         if (isUndef(p._pos)) {
           continue
         }
-        if (this.inDetectedZone(mousePos, p._pos)) {
+        if (this.inDetectedZone(canvasMousePos, p._pos)) {
           return {
             index: i,
             point: p
@@ -327,8 +327,8 @@ export default class LineChart {
 
   handleMouseMove(event) {
 
-    const mousePos = this.getMousePos(event)
-    const res = this.findClosetPoint(mousePos)
+    const canvasMousePos = this.getMousePosInCanvas(event)
+    const res = this.findClosetPoint(canvasMousePos)
 
     this.raf(() => {
       this.clearVerticalLine()
@@ -337,18 +337,18 @@ export default class LineChart {
       }
       // only fires if res differs
       if (this.lastClosetPointRes !== res) {
-        this.options.onPointVisible(event, mousePos, res)
+        this.options.onPointVisible(event, canvasMousePos, res)
       }
       this.lastClosetPointRes = res
     })
   }
 
-  inDetectedZone(mousePos, pointPos) {
+  inDetectedZone(canvasMousePos, pointPos) {
     const zoneLength = 14
-    const { x: mouseX, y: mouseY } = mousePos
+    const { x: mouseX, y: mouseY } = canvasMousePos
     const { x: pointX, y: pointY } = pointPos
     /**
-     * # is mousePos
+     * # is canvasMousePos
      * see if PointPos is landed in the zone below
      *
      * A -------- B

@@ -187,9 +187,9 @@ export default class BarChart {
     })
   }
 
-  findMouseOverBarPos(mousePos) {
+  findMouseOverBarPos(canvasMousePos) {
     const { barPos, xLabelRows } = this
-    const { x: mouseX, y: mouseY } = mousePos
+    const { x: mouseX, y: mouseY } = canvasMousePos
     let index = 0
     for (const row of xLabelRows) {
       const pos = barPos.get(row)
@@ -223,8 +223,8 @@ export default class BarChart {
   }
 
   handleMouseMove(event) {
-    const mousePos = this.getMousePos(event)
-    const res = this.findMouseOverBarPos(mousePos)
+    const canvasMousePos = this.getMousePosInCanvas(event)
+    const res = this.findMouseOverBarPos(canvasMousePos)
     const { lastMouseOverRes } = this
 
     // don't repaint the same index
@@ -243,7 +243,7 @@ export default class BarChart {
     else {
       this.clearBarGlow()
     }
-    this.options.onBarVisible(event, mousePos, res)
+    this.options.onBarVisible(event, canvasMousePos, res)
     this.lastMouseOverRes = res
   }
 

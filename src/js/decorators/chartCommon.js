@@ -72,7 +72,7 @@ export default function chartCommon(target) {
       return layers[layers.length - 1].canvas
     }
 
-    getMousePos(event) {
+    getMousePosInCanvas(event) {
       const rect = this.canvas.getBoundingClientRect()
       return {
         x: event.clientX - rect.left,
