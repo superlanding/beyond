@@ -13,6 +13,10 @@ export default function chartCommon(target) {
       }
     }
 
+    get firstLayer() {
+      return this.layers[0]
+    }
+
     addLayer() {
       const { dom } = this
       const canvas = document.createElement('canvas')

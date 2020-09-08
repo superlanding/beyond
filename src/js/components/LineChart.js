@@ -237,12 +237,12 @@ export default class LineChart {
   }
 
   clearVerticalLine() {
-    const { ctx } = this.layers[0]
+    const { ctx } = this.firstLayer
     ctx.clearRect(0, 0, this.width, this.height)
   }
 
   drawVerticalLine(point, index) {
-    const { ctx } = this.layers[0]
+    const { ctx } = this.firstLayer
     const pos = point._pos
     const style = this.lineStyles[index] || '#000'
     ctx.strokeStyle = style

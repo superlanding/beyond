@@ -204,7 +204,7 @@ export default class BarChart {
 
   drawBarGlow(res) {
     this.clearBarGlow()
-    const ctx = this.layers[0].canvas.getContext('2d')
+    const ctx = this.firstLayer.canvas.getContext('2d')
     ctx.save()
     const { x, y, width, height } = res.pos
     const glowWidth = width * 1.4
@@ -218,7 +218,7 @@ export default class BarChart {
   }
 
   clearBarGlow() {
-    const ctx = this.layers[0].canvas.getContext('2d')
+    const ctx = this.firstLayer.canvas.getContext('2d')
     ctx.clearRect(0, 0, this.width, this.height)
   }
 
