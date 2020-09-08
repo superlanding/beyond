@@ -1,6 +1,6 @@
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
-import { range, toPixel, isFunction } from '../utils'
+import { getDomPos, range, toPixel, isFunction } from '../utils'
 
 export default function chartCommon(target) {
 
@@ -70,6 +70,15 @@ export default function chartCommon(target) {
         return canvas
       }
       return layers[layers.length - 1].canvas
+    }
+
+    // real position in window including scrolling distance
+    getMousePos(canvasMousePos) {
+      const domPos = getDomPos(this.dom)
+      return {
+        x: domPos.x + canvasMousePos.x,
+        y: domPos.y + canvasMousePos.y
+      }
     }
 
     getMousePosInCanvas(event) {
