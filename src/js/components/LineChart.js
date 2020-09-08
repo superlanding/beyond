@@ -50,11 +50,6 @@ export default class LineChart {
     this.xPadding = isDef(options.xPadding) ? options.xPadding : 20
     this.yPadding = isDef(options.yPadding) ? options.yPadding : 20
 
-    this.xLabelWidth = options.xLabelWidth
-    this.xLabelHeight = options.xLabelHeight
-    this.yLabelWidth = options.yLabelWidth
-    this.yLabelHeight = options.yLabelHeight
-
     this.xGutter = isDef(options.xGutter) ? options.xGutter : 100
     this.yGutter = isDef(options.yGutter) ? options.yGutter : 10
 
@@ -455,22 +450,14 @@ export default class LineChart {
   }
 
   setLabelHeights() {
-    if (isUndef(this.xLabelHeight)) {
-      this.xLabelHeight = this.fontSize
-    }
-    if (isUndef(this.yLabelHeight)) {
-      this.yLabelHeight = this.fontSize
-    }
+    this.xLabelHeight = this.fontSize
+    this.yLabelHeight = this.fontSize
   }
 
   setLabelWidths() {
 
-    if (isDef(this.xLabelWidth) && isDef(this.yLabelWidth)) {
-      return
-    }
-
     const { toXLabel, toYLabel, ctx } = this
-    const res = this.pointsArr.flat()
+    const { xLabelWidth, yLabelWidth } = this.pointsArr.flat()
       .filter(p => p)
       .reduce((o, p) => {
 
@@ -487,12 +474,8 @@ export default class LineChart {
         yLabelWidth: 0
       })
 
-    if (isUndef(this.xLabelWidth)) {
-      this.xLabelWidth = res.xLabelWidth
-    }
-    if (isUndef(this.yLabelWidth)) {
-      this.yLabelWidth = res.yLabelWidth
-    }
+    this.xLabelWidth = xLabelWidth
+    this.yLabelWidth = yLabelWidth
   }
 
   setAxisData() {
