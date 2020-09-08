@@ -111,8 +111,8 @@ export default class BarChart {
       return
     }
     this.addLayer()
-    const highestLayer = this.layers[this.layers.length - 1]
-    this.addEvent(highestLayer.canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
+    const canvas = this.getHighestCanvas()
+    this.addEvent(canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
   }
 
   draw() {
