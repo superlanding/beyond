@@ -270,7 +270,7 @@ export default class BarChart {
   getXLabelRows() {
     const { ctx } = this
     return this.bars.map(bar => {
-      const label = bar.name
+      const { label } = bar
       return {
         label,
         length: ctx.measureText(label).width,
@@ -407,7 +407,7 @@ export default class BarChart {
       .reduce((o, bar) => {
 
         const { xLabelWidth, yLabelWidth } = o
-        const measuredXLabelWidth = ctx.measureText(bar.name).width
+        const measuredXLabelWidth = ctx.measureText(bar.label).width
         const measuredYLabelWidth = ctx.measureText(toYLabel(bar.value)).width
 
         return {

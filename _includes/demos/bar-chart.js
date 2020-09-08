@@ -32,9 +32,9 @@ export default function bindBarCharts() {
   })
 
   b.setData([
-    { name: '1 個月內', value: 0.8 },
-    { name: '3 個月內', value: 1.7 },
-    { name: '6 個月內', value: 1.1 }
+    { label: '1 個月內', value: 0.8 },
+    { label: '3 個月內', value: 1.7 },
+    { label: '6 個月內', value: 1.1 }
   ])
 
   let domWidth = dom.offsetWidth
