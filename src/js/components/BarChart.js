@@ -39,7 +39,7 @@ export default class BarChart {
     this.barStyles = options.barStyles || defaultBarStyles
 
     this.yLabelRows = []
-    this.barPos = new Map()
+    this.barPosMap = new Map()
 
     this.init()
   }
@@ -124,9 +124,9 @@ export default class BarChart {
   }
 
   drawBars() {
-    const { barPos, barStyles, ctx, xLabelRows } = this
+    const { barPosMap, barStyles, ctx, xLabelRows } = this
     xLabelRows.forEach((row, i) => {
-      const pos = barPos.get(row)
+      const pos = barPosMap.get(row)
       if (pos) {
         const { x, y, width, height } = pos
         ctx.fillStyle = barStyles[i] || '#000'
@@ -188,11 +188,11 @@ export default class BarChart {
   }
 
   findMouseOverBarPos(canvasMousePos) {
-    const { barPos, xLabelRows } = this
+    const { barPosMap, xLabelRows } = this
     const { x: mouseX, y: mouseY } = canvasMousePos
     let index = 0
     for (const row of xLabelRows) {
-      const pos = barPos.get(row)
+      const pos = barPosMap.get(row)
       const { x, y, width, height } = pos
       if ((x <= mouseX) && (mouseX <= (x + width)) &&
         (y <= mouseY) && (mouseY <= (y + height))) {
@@ -355,7 +355,7 @@ export default class BarChart {
   setBarPos() {
     const barWidth = 45
     const halfBarWidth = parseInt(barWidth / 2, 10)
-    const { barPos, firstY, xLabelRows, xAxisStart, xAxisEnd, yAxisStart, yRatio } = this
+    const { barPosMap, firstY, xLabelRows, xAxisStart, xAxisEnd, yAxisStart, yRatio } = this
     const totalWidth = xLabelRows.reduce((w, row) => w + row.length, 0)
     const contentWidth = xAxisEnd - xAxisStart
     const gutter = (contentWidth - totalWidth) / (xLabelRows.length - 1)
@@ -381,7 +381,7 @@ export default class BarChart {
       const x = centerPoint - halfBarWidth
       const y = yAxisStart - barHeight
       const pos = { x, y, width: barWidth, height: barHeight }
-      barPos.set(row, pos)
+      barPosMap.set(row, pos)
     })
   }
 
