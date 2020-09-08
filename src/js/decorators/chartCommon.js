@@ -65,7 +65,7 @@ export default function chartCommon(target) {
       if (layers.length === 0) {
         return canvas
       }
-      return layers[layers.length - 1]
+      return layers[layers.length - 1].canvas
     }
 
     getMousePos(event) {
