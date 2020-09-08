@@ -168,6 +168,10 @@ export default class LineChart {
     this.addEvent(canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
   }
 
+  clearPointPos() {
+    this.pointPosMap.clear()
+  }
+
   draw() {
     this.clear()
     this.drawXAxis()
@@ -438,6 +442,7 @@ export default class LineChart {
 
   refresh() {
     this.raf(() => {
+      this.clearPointPos()
       this.setDomWidthIfNeeded()
       this.setCanvasSize(this.canvas)
       this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
@@ -504,6 +509,7 @@ export default class LineChart {
 
   setData(pointsArr) {
     this.pointsArr = pointsArr
+    this.clearPointPos()
     this.setLabelWidths()
     this.setLabelHeights()
     this.setAxisData()
@@ -534,6 +540,7 @@ export default class LineChart {
     if (isDef(toYLabel)) {
       mem.clear(this.toYLabel)
     }
+    this.clearPointPos()
     this.unbindMedia()
     this.removeAllLayers()
 
