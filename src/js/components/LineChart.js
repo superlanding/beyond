@@ -157,7 +157,7 @@ export default class LineChart {
   }
 
   bindPointVisible() {
-    if (isUndef(this.options.onPointVisible)) {
+    if (isUndef(this.options.onPointMouseOver)) {
       return
     }
     if (! ('onmousemove' in this.canvas)) {
@@ -339,7 +339,7 @@ export default class LineChart {
       // only fires if res differs
       if (this.lastClosetPointRes !== res) {
         const mousePos = this.getMousePos(canvasMousePos)
-        this.options.onPointVisible(mousePos, res)
+        this.options.onPointMouseOver(mousePos, res)
       }
       this.lastClosetPointRes = res
     })

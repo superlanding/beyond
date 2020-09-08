@@ -36,7 +36,7 @@ export default function bindLineCharts() {
     toYLabel,
     lineLabels: ['線段1', '線段2', '線段3'],
     yStep: 2 * 10000,
-    onPointVisible(mousePos, res) {
+    onPointMouseOver(mousePos, res) {
       if (res) {
         const { point } = res
         chartMenu.innerHTML = `
