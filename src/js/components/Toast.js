@@ -1,4 +1,4 @@
-import supportDom from '../utils/supportDom'
+import supportDom from '../decorators/supportDom'
 import ToastItem from './ToastItem'
 
 @supportDom

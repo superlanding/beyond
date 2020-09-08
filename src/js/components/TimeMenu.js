@@ -1,5 +1,5 @@
 import getFloatedTargetPos from '../utils/getFloatedTargetPos'
-import supportDom from '../utils/supportDom'
+import supportDom from '../decorators/supportDom'
 import { getHours, getMinutes, range, toPixel } from '../utils'
 
 @supportDom

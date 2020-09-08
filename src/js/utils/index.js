@@ -33,6 +33,10 @@ import isFunction from 'lodash.isfunction'
 import noop from 'lodash.noop'
 import range from 'lodash.range'
 import throttle from 'lodash.throttle'
+import uniqBy from 'lodash.uniqby'
+import sortBy from 'lodash.sortby'
+
+import mem from 'mem'
 
 export {
   // @superlanding
@@ -69,5 +73,10 @@ export {
   isFunction,
   noop,
   range,
-  throttle
+  throttle,
+  uniqBy,
+  sortBy,
+
+  // others
+  mem
 }

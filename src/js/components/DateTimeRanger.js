@@ -5,7 +5,7 @@ import TimeMenu from './TimeMenu'
 import DatepickerBtnArrow from './DatepickerBtnArrow'
 import dateGt from '../utils/dateGt'
 import dateLt from '../utils/dateLt'
-import supportDom from '../utils/supportDom'
+import supportDom from '../decorators/supportDom'
 import {
   endOfDay,
   dateToTimestamp,
