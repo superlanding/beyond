@@ -2,7 +2,7 @@ import getFloatedTargetPos from '../utils/getFloatedTargetPos'
 import isTouchDevice from '../utils/isTouchDevice'
 import dateLt from '../utils/dateLt'
 import dateEq from '../utils/dateEq'
-import supportDom from '../utils/supportDom'
+import supportDom from '../decorators/supportDom'
 import {
   addDays,
   addMonths,

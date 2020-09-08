@@ -1,4 +1,4 @@
-import supportDom from '../utils/supportDom'
+import supportDom from '../decorators/supportDom'
 import { noop } from '../utils'
 
 let globalModalId = 0

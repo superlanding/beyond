@@ -1,4 +1,4 @@
-import supportDom from '../utils/supportDom'
+import supportDom from '../decorators/supportDom'
 
 @supportDom
 export default class Navbar {

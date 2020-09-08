@@ -1,5 +1,5 @@
 import { DEFAULT_TIMEZONE } from '../consts'
-import supportDom from '../utils/supportDom'
+import supportDom from '../decorators/supportDom'
 import isTouchDevice from '../utils/isTouchDevice'
 import { format } from '../utils'
 

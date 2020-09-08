@@ -1,4 +1,4 @@
-import { isFunction } from './index'
+import { isFunction } from '../utils'
 import createdComponents from '../consts/createdComponents'
 
 export default function supportDom(target) {

@@ -1,6 +1,6 @@
 {
   "name": "@superlanding/beyond",
-  "version": "0.0.189",
+  "version": "0.0.190",
   "description": "The best frontend framework for super-landing.com",
   "browserslist": [
     "defaults",
@@ -61,7 +61,11 @@
     "lodash.isfunction": "3.0.9",
     "lodash.noop": "3.0.1",
     "lodash.range": "3.2.0",
+    "lodash.sample": "4.2.1",
+    "lodash.sortby": "4.7.0",
     "lodash.throttle": "4.1.1",
+    "lodash.uniqby": "4.7.0",
+    "mem": "6.1.1",
     "node.normalize.scss": "3.0.3",
     "regenerator-runtime": "0.13.3"
   },
