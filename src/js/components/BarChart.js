@@ -115,6 +115,10 @@ export default class BarChart {
     this.addEvent(canvas, 'mousemove', throttle(this.handleMouseMove.bind(this), 30))
   }
 
+  clearBarPos() {
+    this.barPosMap.clear()
+  }
+
   draw() {
     this.clear()
     this.drawXAxis()
@@ -337,6 +341,7 @@ export default class BarChart {
 
   refresh() {
     this.raf(() => {
+      this.clearBarPos()
       this.setDomWidthIfNeeded()
       this.setCanvasSize(this.canvas)
       this.setLabelWidths()
@@ -386,6 +391,7 @@ export default class BarChart {
   }
 
   setData(bars) {
+    this.clearBarPos()
     this.bars = bars
     this.setLabelWidths()
     this.setLabelHeights()
@@ -434,6 +440,7 @@ export default class BarChart {
     if (isDef(toYLabel)) {
       mem.clear(this.toYLabel)
     }
+    this.clearBarPos()
     this.unbindMedia()
     this.removeAllLayers()
 
