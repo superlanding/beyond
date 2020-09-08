@@ -38,7 +38,6 @@ export default function bindLineCharts() {
     yStep: 2 * 10000,
     onPointVisible(mousePos, res) {
       if (res) {
-        console.log('res', res)
         const { point } = res
         chartMenu.innerHTML = `
           <div>時間: ${toXLabel(point.x)}</div>
