@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
     
-      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1598954492">
+      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1599548724">
     
 
-    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1598954492">
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1599548724">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32"
@@ -27,9 +27,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
 
     
-      <script src="/beyond/dist/beyond.js?v=1598954492"></script>
-      <script src="/beyond/dist/beyond-jquery.js?v=1598954492"></script>
-      <script src="/beyond/dist/web.js?v=1598954492"></script>
+      <script src="/beyond/dist/beyond.js?v=1599548724"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1599548724"></script>
+      <script src="/beyond/dist/web.js?v=1599548724"></script>
     
   </head>
   <body class="container bg-admin">
@@ -281,6 +281,30 @@
 
         
           <div class="nav-folder"
+               data-menu-toggle="Charts"
+               data-default-visible>Charts<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Charts">
+            
+              <li>
+                
+                  <a href="/beyond/charts/bar-chart.html" class="nav-item">Bar Chart</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/charts/line-chart.html" class="nav-item">Line Chart</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
                data-menu-toggle="Integrations"
                data-default-visible>Integrations<i class="icon-chevron-down"></i></div>
            <ul class="nav-menu" data-menu="Integrations">
@@ -421,7 +445,7 @@
   <div class="code">
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">toast</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span></code></pre></figure>
   </div>
-  <table class="table">
+  <table class="table table-responsive">
     <thead>
       <tr>
         <th>名稱</th>
@@ -469,5 +493,6 @@
 
       </main>
     </div>
+    <div id="chart-menu" class="chart-menu"></div>
   </body>
 </html>
