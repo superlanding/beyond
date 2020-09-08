@@ -155,14 +155,48 @@ const lineChart = new LineChart(dom, options)
         <td>20</td>
       </tr>
       <tr>
-        <td>options.onPointVisible</td>
+        <td>options.onPointMouseOver</td>
         <td>function</td>
-        <td>當滑鼠接近某個數值的點的時候的事件 ( 通常用來顯示 tooltip )，回傳 event ( mouseover )、 mousePos ( 在 canvas 上的座標 ) 與 res ( 節點的資料，res 有可能是 undefined，這時隱藏 tooltip 即可 )</td>
+        <td>當滑鼠接近某個數值的點的時候的事件 ( 通常用來顯示 tooltip )，回傳 mousePos ( 在視窗上的座標 ) 與 res ( 節點的資料，res 有可能是 undefined，這時隱藏 tooltip 即可 )</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <img class="doc-img" src="{{ '/assets/img/line-chart.png' | relative_url }}" alt="Line Chart Intro" />
+
+  <h3>setData</h3>
+  <div class="code">
+{% highlight js %}
+// const line1 = [{ x, y }, ...]
+// const line2 = [{ x, y }, ...]
+// const pointsArr = [line1, line2]
+lineChart.setData(pointsArr)
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>pointsArr</td>
+        <td>array</td>
+        <td>要設定的線段資料陣列</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>refresh</h3>
+  <p>重畫圖表 (如果 canvas 外框寬高有變的話，可以用此方法重畫)</p>
+  <div class="code">
+{% highlight js %}
+lineChart.refresh()
+{% endhighlight %}
+  </div>
 
   <h3>destroy</h3>
   <p>移除 LineChart 產生的 dom 元素與 event listeners</p>

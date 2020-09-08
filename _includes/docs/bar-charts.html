@@ -1,0 +1,155 @@
+<div class="doc">
+  <h2>Bar Chart</h2>
+  <h3>constructor</h3>
+  <div class="code">
+{% highlight js %}
+const barChart = new BarChart(dom, options)
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+        <th>預設值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>需要設定成 BarChart 的元素</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>object</td>
+        <td>選項</td>
+        <td>{}</td>
+      </tr>
+      <tr>
+        <td>options.height</td>
+        <td>integer</td>
+        <td>圖表的高</td>
+        <td>186</td>
+      </tr>
+      <tr>
+        <td>options.width</td>
+        <td>integer</td>
+        <td>圖表的寬</td>
+        <td>dom.offsetWidth</td>
+      </tr>
+      <tr>
+        <td>options.toYLabel</td>
+        <td>function</td>
+        <td>轉換成 y 軸標籤的方法</td>
+        <td>v =&gt; v</td>
+      </tr>
+      <tr>
+        <td>options.xPadding</td>
+        <td>integer</td>
+        <td>圖表外圍到上下邊界的距離</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>options.yPadding</td>
+        <td>integer</td>
+        <td>圖表外圍到左右邊界的距離</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>options.yStep</td>
+        <td>integer</td>
+        <td>y 軸標籤與標籤的間隔數，預設會根據 yGutter 計算最多可顯示的間隔數</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>options.yGutter</td>
+        <td>integer</td>
+        <td>y 軸標籤之間可允許的最小距離</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>options.fontSize</td>
+        <td>integer</td>
+        <td>圖表的字體大小</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>options.bgColor</td>
+        <td>string</td>
+        <td>圖表的背景顏色</td>
+        <td>'#fff'</td>
+      </tr>
+      <tr>
+        <td>options.barStyles</td>
+        <td>array</td>
+        <td>線段的色彩樣式</td>
+        <td>['#5469d4', '#7c54d4', '#a254d4']</td>
+      </tr>
+      <tr>
+        <td>options.xLabelMargin</td>
+        <td>integer</td>
+        <td>xLabel 到圖表的距離</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>options.yLabelMargin</td>
+        <td>integer</td>
+        <td>yLabel 到圖表的距離</td>
+        <td>14</td>
+      </tr>
+      <tr>
+        <td>options.onBarMouseOver</td>
+        <td>function</td>
+        <td>當滑鼠接近某個數值的點的時候的事件 ( 通常用來顯示 tooltip )，回傳 mousePos ( 在視窗上的座標 ) 與 res ( bar 的資料，res 有可能是 undefined，這時隱藏 tooltip 即可 )</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <img class="doc-img" src="{{ '/assets/img/bar-chart.png' | relative_url }}" alt="Bar Chart Intro" />
+
+  <h3>setData</h3>
+  <div class="code">
+{% highlight js %}
+// const data = [
+//   { label: 'Bar 1', value: 0 },
+//   { label: 'Bar 2', value: 1 }
+// ]
+barChart.setData(data)
+{% endhighlight %}
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data</td>
+        <td>array</td>
+        <td>要設定的長條圖資料陣列</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>refresh</h3>
+  <p>重畫圖表 (如果 canvas 外框寬高有變的話，可以用此方法重畫)</p>
+  <div class="code">
+{% highlight js %}
+barChart.refresh()
+{% endhighlight %}
+  </div>
+
+  <h3>destroy</h3>
+  <p>移除 BarChart 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+{% highlight js %}
+barChart.destroy()
+{% endhighlight %}
+  </div>
+</div><!-- .doc -->

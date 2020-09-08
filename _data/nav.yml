@@ -76,6 +76,13 @@
     - name: Tooltips
       link: /components/tooltips.html
 
+- folder: Charts
+  items:
+    - name: Bar Chart
+      link: /charts/bar-chart.html
+    - name: Line Chart
+      link: /charts/line-chart.html
+
 - folder: Integrations
   items:
     - name: Turbolinks
