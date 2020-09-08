@@ -1,10 +1,17 @@
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
-import { range, toPixel } from '../utils'
+import { range, toPixel, isFunction } from '../utils'
 
 export default function chartCommon(target) {
 
   return class extends target {
+
+    init() {
+      this.layers = []
+      if (isFunction(super.init)) {
+        super.init()
+      }
+    }
 
     addLayer() {
       const { dom } = this

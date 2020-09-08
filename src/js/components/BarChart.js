@@ -39,7 +39,6 @@ export default class BarChart {
     this.barStyles = options.barStyles || defaultBarStyles
 
     this.yLabelRows = []
-    this.layers = []
     this.barPos = new Map()
 
     this.init()
