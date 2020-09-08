@@ -85,7 +85,7 @@ export default class LineChart {
     this.setCanvas()
     this.clear()
     this.bindMedia()
-    this.bindPointVisible()
+    this.bindPointMouseOver()
   }
 
   get contentWidth() {
@@ -156,7 +156,7 @@ export default class LineChart {
     return yDelta / lineHeight
   }
 
-  bindPointVisible() {
+  bindPointMouseOver() {
     if (isUndef(this.options.onPointMouseOver)) {
       return
     }
