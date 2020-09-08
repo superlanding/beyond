@@ -13,7 +13,7 @@ export default function bindBarCharts() {
   const chartMenu = document.getElementById('chart-menu')
 
   const b = new BarChart(dom, {
-    onBarVisible(mousePos, res) {
+    onBarMouseOver(mousePos, res) {
       if (res) {
         const { index, bar } = res
         chartMenu.innerHTML = `

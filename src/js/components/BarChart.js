@@ -104,7 +104,7 @@ export default class BarChart {
   }
 
   bindBarVisible() {
-    if (isUndef(this.options.onBarVisible)) {
+    if (isUndef(this.options.onBarMouseOver)) {
       return
     }
     if (! ('onmousemove' in this.canvas)) {
@@ -249,11 +249,11 @@ export default class BarChart {
     }
     this.lastMouseOverRes = mouseOverRes
     const mousePos = this.getMousePos(canvasMousePos)
-    const res = this.getBarVisibleRes(mouseOverRes)
-    this.options.onBarVisible(mousePos, res)
+    const res = this.getBarMouseOverRes(mouseOverRes)
+    this.options.onBarMouseOver(mousePos, res)
   }
 
-  getBarVisibleRes(res) {
+  getBarMouseOverRes(res) {
     if (res) {
       return {
         index: res.index,
