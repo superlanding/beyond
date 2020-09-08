@@ -270,6 +270,9 @@ td.code > pre {
 .table-resolution .strong {
   color: #111; }
 
+.doc .doc-img {
+  max-width: 100%;
+  height: auto; }
 .doc h2 {
   margin-top: 30px; }
 .doc h3 {
