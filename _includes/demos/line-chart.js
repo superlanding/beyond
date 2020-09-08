@@ -2,7 +2,6 @@ import range from 'lodash.range'
 import sample from 'lodash.sample'
 import throttle from 'lodash.throttle'
 import toPixel from '@superlanding/topixel'
-import getDomPos from '@superlanding/getdompos'
 
 export default function bindLineCharts() {
 
@@ -37,16 +36,16 @@ export default function bindLineCharts() {
     toYLabel,
     lineLabels: ['線段1', '線段2', '線段3'],
     yStep: 2 * 10000,
-    onPointVisible(event, mousePos, res) {
+    onPointVisible(mousePos, res) {
       if (res) {
-        const pos = getDomPos(dom)
+        console.log('res', res)
         const { point } = res
         chartMenu.innerHTML = `
           <div>時間: ${toXLabel(point.x)}</div>
           <div>金錢: ${point.y}</div>
         `
-        chartMenu.style.left = toPixel(pos.x + mousePos.x)
-        chartMenu.style.top = toPixel(pos.y + mousePos.y + 20)
+        chartMenu.style.left = toPixel(mousePos.x)
+        chartMenu.style.top = toPixel(mousePos.y + 20)
         chartMenu.style.display = 'block'
       }
       else {

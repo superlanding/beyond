@@ -2,7 +2,7 @@ import supportDom from '../decorators/supportDom'
 import chartCommon from '../decorators/chartCommon'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
-import { uniqBy, sortBy, range, mem, throttle } from '../utils'
+import { mem, range, sortBy, throttle, uniqBy } from '../utils'
 
 /**
  * -------------------------------------------------------------------------------------------------
@@ -337,7 +337,8 @@ export default class LineChart {
       }
       // only fires if res differs
       if (this.lastClosetPointRes !== res) {
-        this.options.onPointVisible(event, canvasMousePos, res)
+        const mousePos = this.getMousePos(canvasMousePos)
+        this.options.onPointVisible(mousePos, res)
       }
       this.lastClosetPointRes = res
     })

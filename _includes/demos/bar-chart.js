@@ -1,5 +1,4 @@
 import throttle from 'lodash.throttle'
-import getDomPos from '@superlanding/getdompos'
 import toPixel from '@superlanding/topixel'
 
 export default function bindBarCharts() {
@@ -14,16 +13,16 @@ export default function bindBarCharts() {
   const chartMenu = document.getElementById('chart-menu')
 
   const b = new BarChart(dom, {
-    onBarVisible(event, mousePos, res) {
+    onBarVisible(mousePos, res) {
       if (res) {
-        const pos = getDomPos(dom)
-        const { point } = res
+        const { index, bar } = res
         chartMenu.innerHTML = `
-          <div>時間: ${res.row.label}</div>
-          <div>數字: ${res.row.value}</div>
+          <div>index: ${index}</div>
+          <div>時間: ${bar.label}</div>
+          <div>數字: ${bar.value}</div>
         `
-        chartMenu.style.left = toPixel(pos.x + mousePos.x)
-        chartMenu.style.top = toPixel(pos.y + mousePos.y + 20)
+        chartMenu.style.left = toPixel(mousePos.x)
+        chartMenu.style.top = toPixel(mousePos.y + 20)
         chartMenu.style.display = 'block'
       }
       else {

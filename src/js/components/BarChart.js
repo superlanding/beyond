@@ -224,27 +224,38 @@ export default class BarChart {
 
   handleMouseMove(event) {
     const canvasMousePos = this.getMousePosInCanvas(event)
-    const res = this.findMouseOverBarPos(canvasMousePos)
+    const mouseOverRes = this.findMouseOverBarPos(canvasMousePos)
     const { lastMouseOverRes } = this
 
     // don't repaint the same index
-    if (lastMouseOverRes && res && (lastMouseOverRes.index === res.index)) {
+    if (lastMouseOverRes && mouseOverRes && (lastMouseOverRes.index === mouseOverRes.index)) {
       return
     }
 
     // don't re-clear
-    if (isUndef(res) && isUndef(lastMouseOverRes)) {
+    if (isUndef(mouseOverRes) && isUndef(lastMouseOverRes)) {
       return
     }
 
-    if (res) {
-      this.drawBarGlow(res)
+    if (mouseOverRes) {
+      this.drawBarGlow(mouseOverRes)
     }
     else {
       this.clearBarGlow()
     }
-    this.options.onBarVisible(event, canvasMousePos, res)
-    this.lastMouseOverRes = res
+    this.lastMouseOverRes = mouseOverRes
+    const mousePos = this.getMousePos(canvasMousePos)
+    const res = this.getBarVisibleRes(mouseOverRes)
+    this.options.onBarVisible(mousePos, res)
+  }
+
+  getBarVisibleRes(res) {
+    if (res) {
+      return {
+        index: res.index,
+        bar: res.row
+      }
+    }
   }
 
   getUniqSortedBars() {
