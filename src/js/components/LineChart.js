@@ -72,6 +72,7 @@ export default class LineChart {
     this.lineLabels = options.lineLabels || []
     this.lineLabelMargin = isDef(options.lineLabelMargin) ? options.lineLabelMargin : 20
 
+    this.pointPosMap = new Map()
     this.xLabelRows = []
     this.yLabelRows = []
 
@@ -196,17 +197,15 @@ export default class LineChart {
   }
 
   drawLines() {
-    const { ctx, lineStyles } = this
+    const { ctx, pointPosMap, lineStyles } = this
     ctx.lineWidth = 2
 
     this.pointsArr.forEach((points, i) => {
       ctx.beginPath()
       ctx.strokeStyle = lineStyles[i] ? lineStyles[i] : '#000'
       points.forEach(p => {
-        if (p._pos) {
-          const pos = p._pos
-          ctx.lineTo(pos.x, pos.y)
-        }
+        const pos = pointPosMap.get(p)
+        ctx.lineTo(pos.x, pos.y)
       })
       ctx.stroke()
       ctx.closePath()
@@ -243,7 +242,7 @@ export default class LineChart {
 
   drawVerticalLine(point, index) {
     const { ctx } = this.firstLayer
-    const pos = point._pos
+    const pos = this.pointPosMap.get(point)
     const style = this.lineStyles[index] || '#000'
     ctx.strokeStyle = style
     ctx.lineWidth = 1
@@ -302,21 +301,19 @@ export default class LineChart {
   }
 
   findClosetPoint(canvasMousePos) {
-    const { pointsArr } = this
-    let i = 0
+    const { pointsArr, pointPosMap } = this
+    let index = 0
     for (const points of pointsArr) {
-      for (const p of points) {
-        if (isUndef(p._pos)) {
-          continue
-        }
-        if (this.inDetectedZone(canvasMousePos, p._pos)) {
+      for (const point of points) {
+        const pos = pointPosMap.get(point)
+        if (this.inDetectedZone(canvasMousePos, pos)) {
           return {
-            index: i,
-            point: p
+            index,
+            point
           }
         }
       }
-      i++
+      index++
     }
   }
 
@@ -515,16 +512,14 @@ export default class LineChart {
   }
 
   setPointPos() {
-    const { firstX, firstY, xAxisStart, xRatio, yAxisStart, yRatio } = this
+    const { firstX, firstY, pointPosMap, xAxisStart, xRatio, yAxisStart, yRatio } = this
 
     this.pointsArr.forEach((points, i) => {
-      points.forEach(p => {
-        const posX = xAxisStart + ((p.x - firstX) / xRatio)
-        const posY = yAxisStart - ((p.y - firstY) / yRatio)
-        p._pos = {
-          x: posX,
-          y: posY
-        }
+      points.forEach(point => {
+        const x = xAxisStart + ((point.x - firstX) / xRatio)
+        const y = yAxisStart - ((point.y - firstY) / yRatio)
+        const pos = { x, y }
+        pointPosMap.set(point, pos)
       })
     })
   }
