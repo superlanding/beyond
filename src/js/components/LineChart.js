@@ -447,7 +447,7 @@ export default class LineChart {
       this.setLabelWidths()
       this.setLabelHeights()
       this.setAxisData()
-      this.setPointsPos()
+      this.setPointPos()
       this.draw()
     })
   }
@@ -510,11 +510,11 @@ export default class LineChart {
     this.setLabelWidths()
     this.setLabelHeights()
     this.setAxisData()
-    this.setPointsPos()
+    this.setPointPos()
     this.raf(() => this.draw())
   }
 
-  setPointsPos() {
+  setPointPos() {
     const { firstX, firstY, xAxisStart, xRatio, yAxisStart, yRatio } = this
 
     this.pointsArr.forEach((points, i) => {
