@@ -444,6 +444,7 @@ export default class LineChart {
       this.setLabelWidths()
       this.setLabelHeights()
       this.setAxisData()
+      this.updateLabelSizeForAutoStep()
       this.setPointPos()
       this.draw()
     })
@@ -496,6 +497,7 @@ export default class LineChart {
     this.setLabelWidths()
     this.setLabelHeights()
     this.setAxisData()
+    this.updateLabelSizeForAutoStep()
     this.setPointPos()
     this.raf(() => this.draw())
   }
@@ -511,6 +513,22 @@ export default class LineChart {
         pointPosMap.set(point, pos)
       })
     })
+  }
+
+  updateLabelSizeForAutoStep() {
+    const { measureWidth } = this
+    if (isUndef(this.xStep)) {
+      this.xLabelWidth = this.xLabelRows.reduce((width, row) => {
+        const measuredWidth = row.length
+        return (measuredWidth > width) ? measuredWidth : width
+      }, 0)
+    }
+    if (isUndef(this.yStep)) {
+      this.yLabelWidth = this.yLabelRows.reduce((width, row) => {
+        const measuredWidth = measureWidth.call(this, row.label)
+        return (measuredWidth > width) ? measuredWidth : width
+      }, 0)
+    }
   }
 
   destroy() {

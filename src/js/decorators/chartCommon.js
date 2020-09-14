@@ -155,6 +155,10 @@ export default function chartCommon(target) {
       return [stepStart, stepEnd]
     }
 
+    measureWidth(value) {
+      return this.ctx.measureText(value).width
+    }
+
     raf(fn) {
       if (isDef(window.requestAnimationFrame)) {
         return window.requestAnimationFrame(fn)
