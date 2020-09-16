@@ -6,6 +6,9 @@
     0 5px 15px 0 rgba(0, 0, 0, .08);
   background-color: #fff;
   white-space: nowrap;
+  &.static {
+    position: static;
+  }
   .date-menu-content {
     display: inline-block;
     position: relative;
