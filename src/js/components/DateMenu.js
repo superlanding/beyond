@@ -60,7 +60,8 @@ export default class DateMenu {
   }
 
   useSingleMenu() {
-    return isTouchDevice() || this.options.useSingleMenu
+    const { useSingleMenu, isStatic } = this.options
+    return isTouchDevice() || isStatic || useSingleMenu
   }
 
   setHoveredCell(data) {
@@ -204,7 +205,8 @@ export default class DateMenu {
 
   addMenu() {
     const dom = document.createElement('div')
-    dom.className = 'date-menu'
+    const className = this.options.isStatic ? 'date-menu static' : 'date-menu'
+    dom.className = className
 
     if (this.useSingleMenu()) {
       dom.innerHTML = `
@@ -350,8 +352,15 @@ export default class DateMenu {
   show(src) {
     const { dom } = this
     dom.style.opacity = 0
-    dom.style.display = 'block'
     this.pos(src)
+
+    if (this.options.isStatic) {
+      dom.style.display = 'inline-block'
+    }
+    else {
+      dom.style.display = 'block'
+    }
+
     dom.style.opacity = 1
     this.isVisible = true
   }
