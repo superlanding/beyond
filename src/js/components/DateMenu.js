@@ -259,7 +259,15 @@ export default class DateMenu {
       this.btnPrev = dom.querySelector('[data-btn-prev]')
       this.btnNext = dom.querySelector('[data-btn-next]')
     }
-    document.body.appendChild(dom)
+
+    const container = this.options.dom
+
+    if (container) {
+      container.appendChild(dom)
+    }
+    else {
+      document.body.appendChild(dom)
+    }
     this.dom = dom
   }
 
