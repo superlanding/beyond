@@ -360,7 +360,6 @@ export default class DateMenu {
   show(src) {
     const { dom } = this
     dom.style.opacity = 0
-    this.pos(src)
 
     if (this.options.isStatic) {
       dom.style.display = 'inline-block'
@@ -369,6 +368,9 @@ export default class DateMenu {
       dom.style.display = 'block'
     }
 
+    if (src) {
+      this.pos(src)
+    }
     dom.style.opacity = 1
     this.isVisible = true
   }
