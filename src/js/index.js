@@ -9,6 +9,7 @@ import Autocomplete from './components/Autocomplete'
 import BarChart from './components/BarChart'
 import Btn from './components/Btn'
 import Checkbox from './components/Checkbox'
+import DateMenu from './components/DateMenu'
 import DateTimeRanger from './components/DateTimeRanger'
 import Datepicker from './components/Datepicker'
 import Dropdown from './components/Dropdown'
@@ -33,6 +34,7 @@ export {
   BarChart,
   Btn,
   Checkbox,
+  DateMenu,
   DateTimeRanger,
   Datepicker,
   Dropdown,
