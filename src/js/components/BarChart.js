@@ -20,7 +20,7 @@ export default class BarChart {
     this.options = options
     this.bars = []
 
-    this.height = options.height || 186
+    this.height = options.height
     this.width = options.width
 
     this.toYLabel = isDef(options.toYLabel) ? mem(options.toYLabel) : (v => v)
@@ -46,7 +46,7 @@ export default class BarChart {
 
   init() {
     this.setDpr()
-    this.setDomWidthIfNeeded()
+    this.setDomSizeIfNeeded()
     this.setCanvas()
     this.clear()
     this.bindMedia()
@@ -342,7 +342,7 @@ export default class BarChart {
   refresh() {
     this.raf(() => {
       this.clearBarPos()
-      this.setDomWidthIfNeeded()
+      this.setDomSizeIfNeeded()
       this.setCanvasSize(this.canvas)
       this.setLabelWidths()
       this.setLabelHeights()

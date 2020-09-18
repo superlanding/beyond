@@ -41,7 +41,7 @@ export default class LineChart {
     this.dom = dom
     this.options = options
     this.pointsArr = []
-    this.height = options.height || 150
+    this.height = options.height
     this.width = options.width
 
     this.toXLabel = isDef(options.toXLabel) ? mem(options.toXLabel) : (v => v)
@@ -76,7 +76,7 @@ export default class LineChart {
 
   init() {
     this.setDpr()
-    this.setDomWidthIfNeeded()
+    this.setDomSizeIfNeeded()
     this.setCanvas()
     this.clear()
     this.bindMedia()
@@ -438,7 +438,7 @@ export default class LineChart {
   refresh() {
     this.raf(() => {
       this.clearPointPos()
-      this.setDomWidthIfNeeded()
+      this.setDomSizeIfNeeded()
       this.setCanvasSize(this.canvas)
       this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
       this.setLabelWidths()
