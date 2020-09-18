@@ -569,3 +569,9 @@ td.code > pre {
 .page-badges .btn {
   margin-right: 1rem;
   margin-bottom: 1rem; }
+
+.page-line-chart .chart {
+  min-height: 300px; }
+
+.page-bar-chart .chart {
+  min-height: 300px; }
