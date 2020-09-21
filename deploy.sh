@@ -5,7 +5,7 @@ git add _data/version.yml
 git commit -m "update version.yml"
 
 git co github
-git merge -X --no-ff --no-edit theirs master
+git merge -X theirs --no-ff --no-edit master
 
 yarn build
 git add -f _site dist
