@@ -26,7 +26,7 @@ export default function bindDatepickers() {
 
       dateMenus = Array.from(document.querySelectorAll('[data-date-menu]'))
         .map(dom => new DateMenu({ date, options: { dom, isStatic: true } }))
-        .forEach(d => {
+        .map(d => {
           d.on('td-click', (event, res) => {
             const { year, month, date } = res
             const newDate = set(new Date(), { year, month, date })
@@ -34,6 +34,7 @@ export default function bindDatepickers() {
           })
           d.setDate({ date, startDate: date })
           d.show()
+          return d
         })
     })
 
