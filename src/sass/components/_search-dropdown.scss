@@ -14,6 +14,7 @@
     -webkit-overflow-scrolling: touch;
   }
   .search-dropdown-menu-item {
+    display: flex;
     border: 3px solid transparent;
     &.selected {
       border: 3px solid $bg-outline;
@@ -23,6 +24,10 @@
     padding: 7px 11px;
     strong {
       color: #6772e5;
+      margin-right: .7em;
+    }
+    > span {
+      max-width: 420px;
     }
   }
 }
