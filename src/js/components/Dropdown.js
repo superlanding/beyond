@@ -34,8 +34,17 @@ export default class Dropdown {
   }
 
   init() {
+
+    if (! this.dom) {
+      throw new Error('dom is missing in Dropdown class')
+    }
+
     this.id = this.dom.dataset.target
     this.menu = document.querySelector(`[data-dropdown-menu="${this.id}"]`)
+
+    if (! this.menu) {
+      throw new Error(`menu ${this.id} is missing in Dropdown class`)
+    }
     this.place = this.menu.dataset.place || 'bottom'
     this.align = this.menu.dataset.align
     this.menu.remove()
