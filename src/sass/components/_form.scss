@@ -220,7 +220,7 @@ label {
   font-size: 80%;
   margin-top: .35rem;
   &:before {
-    font-family: 'icomoon';
+    font-family: $beyond-icon-font-name;
     display: inline-block;
   }
 }
