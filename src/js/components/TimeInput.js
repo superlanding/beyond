@@ -14,6 +14,7 @@ export default class TimeInput {
     this.options = options
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.timePattern = options.timePattern || 'HH:mm'
+    this._skipDomChecking = true
 
     this.init()
   }
