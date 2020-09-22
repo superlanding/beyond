@@ -67,7 +67,7 @@
     cursor: not-allowed;
   }
   .icon {
-    margin-right: .7em;
+    margin-right: .4em;
   }
 }
 .btn-loader {
@@ -112,6 +112,9 @@
   }
   &:focus {
     @include focus-outline;
+  }
+  &.active {
+    background-color: #f3f3f7;
   }
 }
 
