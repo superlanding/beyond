@@ -6,35 +6,12 @@ export default function supportDom(target) {
   return class extends target {
 
     init() {
-      if (this.beyondBound) {
-        return
-      }
-      this.markBound()
       this._listeners = []
       this._externalListeners = []
       if (isFunction(super.init)) {
         super.init()
       }
       createdComponents.push(this)
-    }
-
-    get beyondBound() {
-      const { dom } = this
-      return dom && (dom.dataset.beyondBound === 'true')
-    }
-
-    markBound() {
-      const { dom } = this
-      if (dom) {
-        dom.dataset.beyondBound = true
-      }
-    }
-
-    markUnbind() {
-      const { dom } = this
-      if (dom) {
-        delete dom.dataset.beyondBound
-      }
     }
 
     on(name, func) {
@@ -61,7 +38,6 @@ export default function supportDom(target) {
     destroy() {
       this._externalListeners.length = 0
       this.removeEvents()
-      this.markUnbind()
       if (isFunction(super.destroy)) {
         super.destroy()
       }
