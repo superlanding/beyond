@@ -104,7 +104,7 @@ label.required {
 .hint.hint-danger {
   color: #e03953;
   &:before {
-    font-family: 'icomoon';
+    font-family: $beyond-icon-font-name;
     margin-right: 4px;
     display: inline-block;
     transform: translateY(1px);
