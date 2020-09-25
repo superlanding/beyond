@@ -1,5 +1,6 @@
 import supportDom from '../decorators/supportDom'
 import { noop } from '../utils'
+import domEval from '../utils/domEval'
 
 let globalModalId = 0
 
@@ -93,6 +94,9 @@ export default class Modal {
     this.dom = dom
     this.dom._modal = this
     this.init()
+
+    Array.from(dom.querySelectorAll('script'))
+      .forEach(script => domEval(script.text))
   }
 
   visible() {
