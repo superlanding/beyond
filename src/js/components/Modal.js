@@ -75,6 +75,13 @@ export default class Modal {
     const div = document.createElement('div')
     div.innerHTML = html.trim()
     const dom = div.firstChild
+
+    // keep the id that is created by $.uniqModal()
+    const originalDomId = this.dom.id
+    if (originalDomId === 'beyond-uniq-modal') {
+      dom.id = originalDomId
+    }
+
     this.dom.parentNode.replaceChild(dom, this.dom)
 
     this.dom = dom
