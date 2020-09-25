@@ -1,5 +1,6 @@
 import supportDom from '../decorators/supportDom'
 import { noop } from '../utils'
+import domEval from '../utils/domEval'
 
 let globalModalId = 0
 
@@ -56,6 +57,9 @@ export default class Modal {
     this.modal.style.display = 'block'
     setTimeout(() => {
       this.modal.classList.add('js-active')
+      if (typeof $ === 'function') {
+        $(this.dom).trigger('beyond.modal.show')
+      }
     }, 50)
   }
 
@@ -64,6 +68,9 @@ export default class Modal {
     this.modal.classList.remove('js-active')
     setTimeout(() => {
       this.modal.style.display = 'none'
+      if (typeof $ === 'function') {
+        $(this.dom).trigger('beyond.modal.hide')
+      }
     }, 300)
   }
 
@@ -87,6 +94,9 @@ export default class Modal {
     this.dom = dom
     this.dom._modal = this
     this.init()
+
+    Array.from(dom.querySelectorAll('script'))
+      .forEach(script => domEval(script.text))
   }
 
   visible() {
