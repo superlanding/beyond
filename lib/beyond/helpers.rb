@@ -1,8 +1,10 @@
 require "beyond/helpers/alert_box"
+require "beyond/helpers/attr"
 require "beyond/helpers/icon"
 module Beyond
   module Helpers
     include AlertBox
+    include Attr
     include Icon
   end
 end
