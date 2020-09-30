@@ -28,6 +28,8 @@ import bind from './utils/bind'
 import docReady from './utils/docReady'
 import unbindAll from './utils/unbindAll'
 import {
+  $,
+  $$,
   allOff,
   load,
   on,
@@ -57,6 +59,8 @@ export {
   Timepicker,
   Toast,
   Tooltip,
+  $,
+  $$,
   bind,
   allOff,
   docReady,
