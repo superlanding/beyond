@@ -1,6 +1,6 @@
-import offFns from '../consts/offFns'
+let offFns = []
 
-export default function on(dom, event, cb, useCapture = false) {
+export function on(dom, event, cb, useCapture = false) {
   dom.addEventListener(event, cb, useCapture)
   const off = () => dom.removeEventListener(event, cb, useCapture)
   offFns.push(off)
@@ -12,4 +12,9 @@ export default function on(dom, event, cb, useCapture = false) {
     }
     off()
   }
+}
+
+export default function allOff() {
+  offFns.forEach(fn => fn())
+  offFns.length = 0
 }
