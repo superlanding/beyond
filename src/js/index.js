@@ -26,6 +26,8 @@ import Toast from './components/Toast'
 import Tooltip from './components/Tooltip'
 import bind from './utils/bind'
 import docReady from './utils/docReady'
+import allOff from './utils/allOff'
+import on from './utils/on'
 import unbindAll from './utils/unbindAll'
 
 export {
@@ -51,5 +53,7 @@ export {
   Tooltip,
   bind,
   docReady,
+  on,
+  allOff,
   unbindAll
 }
