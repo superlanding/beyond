@@ -27,6 +27,14 @@ import Tooltip from './components/Tooltip'
 import bind from './utils/bind'
 import docReady from './utils/docReady'
 import unbindAll from './utils/unbindAll'
+import {
+  allOff,
+  load,
+  on,
+  onload,
+  onunload,
+  unload
+} from './utils/dom'
 
 export {
   Alert,
@@ -50,6 +58,12 @@ export {
   Toast,
   Tooltip,
   bind,
+  allOff,
   docReady,
-  unbindAll
+  load,
+  on,
+  onload,
+  onunload,
+  unbindAll,
+  unload
 }
