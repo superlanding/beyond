@@ -1,19 +1,20 @@
 import { isFunction } from '../utils'
-import isUndef from '../utils/isUndef'
 import createdComponents from '../consts/createdComponents'
 
 const domMap = new Map()
 
 export default function supportDom(target) {
 
+  const targetName = target.name
+
   return class extends target {
 
     init() {
-      if (domMap.has(this.dom) && isUndef(this._skipDomChecking)) {
-        console.warn('This dom has already been initialized.', this.dom)
+      if (this.classNameUsed) {
+        console.warn(`This dom has already been initialized by ${targetName}`, this.dom)
         return
       }
-      this.setDomToMap()
+      this.setClassNameByDom(target)
 
       this._listeners = []
       this._externalListeners = []
@@ -23,17 +24,37 @@ export default function supportDom(target) {
       createdComponents.push(this)
     }
 
-    setDomToMap() {
+    get classNameUsed() {
+      if (this._skipDomChecking) {
+        return false
+      }
+      const classnames = domMap.get(this.dom) || []
+      return classnames.includes(targetName)
+    }
+
+    setClassNameByDom(target) {
       const { dom } = this
       if (dom) {
-        domMap.set(dom, true)
+        const classes = domMap.get(dom) || []
+        classes.push(targetName)
+        domMap.set(dom, classes)
       }
     }
 
-    deleteDomFromMap() {
+    deleteClassNameByDom(target) {
       const { dom } = this
-      if (dom) {
+      if (! dom) {
+        return
+      }
+      const { name } = target
+      const classnames = (domMap.get(dom) || [])
+        .filter(classname => classname !== name)
+
+      if (classnames.length === 0) {
         domMap.delete(dom)
+      }
+      else {
+        domMap.set(dom, classnames)
       }
     }
 
@@ -59,7 +80,7 @@ export default function supportDom(target) {
     }
 
     destroy() {
-      this.deleteDomFromMap()
+      this.deleteClassNameByDom(target)
       this._externalListeners.length = 0
       this.removeEvents()
       if (isFunction(super.destroy)) {
