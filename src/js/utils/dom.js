@@ -1,6 +1,6 @@
-let offFns = []
+const offFns = []
 
-export function on(dom, event, cb, useCapture = false) {
+export const on = (dom, event, cb, useCapture = false) => {
   dom.addEventListener(event, cb, useCapture)
   const off = () => dom.removeEventListener(event, cb, useCapture)
   offFns.push(off)
@@ -14,7 +14,7 @@ export function on(dom, event, cb, useCapture = false) {
   }
 }
 
-export default function allOff() {
+export const allOff = () => {
   offFns.forEach(fn => fn())
   offFns.length = 0
 }
