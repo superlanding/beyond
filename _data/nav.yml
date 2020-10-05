@@ -87,3 +87,8 @@
       link: /integrations/turbolinks.html
     - name: jQuery
       link: /integrations/jquery.html
+
+- folder: Others
+  items:
+    - name: Utils
+      link: /others/utils.html

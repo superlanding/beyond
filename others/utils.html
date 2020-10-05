@@ -1,0 +1,77 @@
+---
+layout: default
+title: Utils
+---
+<div>
+  <h1>Utils</h1>
+  <div class="doc">
+    <h3>b_attr</h3>
+    <div class="code-label">為了方便辨識單頁形式的 JavaScript，b_attr 會產生一個可以套用在 dataset 的 Hash 包含 rails 的 controller 名稱與 action 名稱</div>
+    <div class="code">
+{% highlight haml %}
+%html
+  %head
+  %body{b_attr}
+{% endhighlight %}
+    </div>
+  </div>
+
+  <div class="doc">
+    <h3>DOM 相關</h3>
+    <div class="code">
+{% highlight js %}
+const { Turbolinks } = window
+const { bind, unbindAll, on, onload, load, onunload, unload } = window.beyond
+
+Turbolinks.start()
+
+// 這裡不會馬上執行
+// 只是先把要在 /home 執行的方法收集起來
+// home, index 分別對應到 body 標籤上的 data-controller 與 data-action
+onload('home', 'index', () => {
+
+  on(document.body, 'click', () => {
+    alert('document.body 被點擊了')
+  })
+  // 上面的寫法等同於 document.body.addEventListener('click', ...)
+  // 只是透過一個方法紀錄註冊的對象、事件與方法
+  // 方便在之後 turbolinks:before-cache 事件觸發時
+  // 移除已經監聽的事件，避免 memory leak
+})
+
+// https://github.com/turbolinks/turbolinks/issues/167#issuecomment-313526256
+// 如果覺得 onload(controller, action, ...) 這種寫法很麻煩
+// 想要用 inline js 實作，必須注意 inline 的 js 有可能會被連續執行兩次
+// 在 inline js 裡也必須實作解除事件的行為，例如透過 on 與 onunload 方法
+
+// https://github.com/turbolinks/turbolinks#full-list-of-events
+// 當 turbolinks:load 事件發生時
+// 把之前 onload 收集的方法按照順序觸發
+// 符合 controller & action 名稱的才會執行
+document.addEventListener('turbolinks:load', () => {
+  bind()    // beyond 元件的綁定最好放在 load 之前
+  load()
+})
+
+onunload('home', 'index', () => {
+  // 要離開 /home 時，要移除 jQuery 或其他 library 綁定的事件可以在這裡做
+  // 例如 jQuery 曾經綁定過的 click, change 等事件
+  // $('body').off('click')
+})
+
+document.addEventListener('turbolinks:before-cache', () => {
+
+  // 解除曾經透過 on 綁定的事件
+  offAll()
+
+  // 觸發 onunload 收集的方法
+  unload()
+
+  // 最後解除 beyond 元件
+  unbindAll()
+})
+
+{% endhighlight %}
+    </div>
+  </div>
+</div>
