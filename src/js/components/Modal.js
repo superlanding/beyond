@@ -49,7 +49,19 @@ export default class Modal {
     this.modal = this.dom
   }
 
+  triggerShowEventIfNeeded() {
+    if (typeof $ === 'function') {
+      $(this.dom).trigger('beyond.modal.show')
+    }
+  }
+
   show(html) {
+
+    if (this.isVisible && html) {
+      this.replace(html)
+      return this.triggerShowEventIfNeeded()
+    }
+
     if (html) {
       this.replace(html)
     }
@@ -57,9 +69,7 @@ export default class Modal {
     this.modal.style.display = 'block'
     setTimeout(() => {
       this.modal.classList.add('js-active')
-      if (typeof $ === 'function') {
-        $(this.dom).trigger('beyond.modal.show')
-      }
+      this.triggerShowEventIfNeeded()
     }, 50)
   }
 
