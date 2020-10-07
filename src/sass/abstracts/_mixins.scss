@@ -90,27 +90,27 @@
 
   .#{$classname} {
     @if $side == '' {
-      #{$prop}: $space;
+      #{$prop}: $space !important;
     }
     @else if $side == 't' {
-      #{$prop}-top: $space;
+      #{$prop}-top: $space !important;
     }
     @else if $side == 'b' {
-      #{$prop}-bottom: $space;
+      #{$prop}-bottom: $space !important;
     }
     @else if $side == 'l' {
-      #{$prop}-left: $space;
+      #{$prop}-left: $space !important;
     }
     @else if $side == 'r' {
-      #{$prop}-right: $space;
+      #{$prop}-right: $space !important;
     }
     @else if $side == 'x' {
-      #{$prop}-left: $space;
-      #{$prop}-right: $space;
+      #{$prop}-left: $space !important;
+      #{$prop}-right: $space !important;
     }
     @else if $side == 'y' {
-      #{$prop}-top: $space;
-      #{$prop}-bottom: $space;
+      #{$prop}-top: $space !important;
+      #{$prop}-bottom: $space !important;
     }
     @else {
       @error "Unknown side #{$side}.";
