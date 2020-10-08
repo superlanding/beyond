@@ -83,6 +83,10 @@ export default class LineChart {
     this.bindPointMouseOver()
   }
 
+  get noData() {
+    return (this.xLabelRows.length === 0) && (this.yLabelRows.length === 0)
+  }
+
   get contentWidth() {
     return this.width - (this.xPadding * 2) - this.yLabelMargin -
       this.yLabelWidth - (this.xLabelWidth / 2)
@@ -469,8 +473,13 @@ export default class LineChart {
       this.setLabelHeights()
       this.setAxisData()
       this.updateLabelSizeForAutoStep()
+
+      if (this.noData) {
+        return this.raf(() => this.clear())
+      }
+
       this.setPointPos()
-      this.draw()
+      this.raf(() => this.draw())
     })
   }
 
@@ -522,6 +531,10 @@ export default class LineChart {
     this.setLabelHeights()
     this.setAxisData()
     this.updateLabelSizeForAutoStep()
+
+    if (this.noData) {
+      return this.raf(() => this.clear())
+    }
     this.setPointPos()
     this.raf(() => this.draw())
   }
