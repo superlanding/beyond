@@ -149,6 +149,10 @@ export default class LineChart {
     return this.yAxisStart - this.contentHeight
   }
 
+  get yAxisMiddle() {
+    return (this.yAxisStart - this.yAxisEnd) / 2
+  }
+
   get yRatio() {
     const lineHeight = this.yAxisStart - this.yAxisEnd
     const yDelta = Math.abs(this.lastY - this.firstY)
