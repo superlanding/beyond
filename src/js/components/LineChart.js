@@ -130,6 +130,10 @@ export default class LineChart {
     return this.xAxisStart + this.contentWidth
   }
 
+  get xAxisMiddle() {
+    return (this.xAxisEnd - this.xAxisStart) / 2
+  }
+
   get xRatio() {
     const lineWidth = this.xAxisEnd - this.xAxisStart
     const xDelta = this.lastX - this.firstX
