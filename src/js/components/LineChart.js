@@ -208,8 +208,17 @@ export default class LineChart {
     ctx.lineWidth = 2
 
     this.pointsArr.forEach((points, i) => {
+      const style = lineStyles[i] ? lineStyles[i] : '#000'
+
+      // only one point in a line
+      if (points.length === 1) {
+        const pos = pointPosMap.get(points[0])
+        this.fillCircle(ctx, pos.x, pos.y, 2, style)
+        return
+      }
+
       ctx.beginPath()
-      ctx.strokeStyle = lineStyles[i] ? lineStyles[i] : '#000'
+      ctx.strokeStyle = style
       points.forEach(p => {
         const pos = pointPosMap.get(p)
         ctx.lineTo(pos.x, pos.y)
