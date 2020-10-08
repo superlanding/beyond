@@ -130,6 +130,10 @@ export default class LineChart {
     return this.xAxisStart + this.contentWidth
   }
 
+  get xAxisMiddle() {
+    return (this.xAxisEnd - this.xAxisStart) / 2
+  }
+
   get xRatio() {
     const lineWidth = this.xAxisEnd - this.xAxisStart
     const xDelta = this.lastX - this.firstX
@@ -143,6 +147,10 @@ export default class LineChart {
 
   get yAxisEnd() {
     return this.yAxisStart - this.contentHeight
+  }
+
+  get yAxisMiddle() {
+    return (this.yAxisStart - this.yAxisEnd) / 2
   }
 
   get yRatio() {
@@ -200,8 +208,17 @@ export default class LineChart {
     ctx.lineWidth = 2
 
     this.pointsArr.forEach((points, i) => {
+      const style = lineStyles[i] ? lineStyles[i] : '#000'
+
+      // only one point in a line
+      if (points.length === 1) {
+        const pos = pointPosMap.get(points[0])
+        this.fillCircle(ctx, pos.x, pos.y, 2, style)
+        return
+      }
+
       ctx.beginPath()
-      ctx.strokeStyle = lineStyles[i] ? lineStyles[i] : '#000'
+      ctx.strokeStyle = style
       points.forEach(p => {
         const pos = pointPosMap.get(p)
         ctx.lineTo(pos.x, pos.y)
@@ -271,10 +288,13 @@ export default class LineChart {
 
     ctx.strokeStyle = '#3c4257'
 
+    let x = this.xAxisMiddle
+
     xLabelRows.forEach((row, i) => {
 
-      const x = xAxisStart + ((row.value - firstX) / xRatio)
-
+      if (xRatio !== 0) {
+        x = xAxisStart + ((row.value - firstX) / xRatio)
+      }
       ctx.beginPath()
       ctx.moveTo(x, scaleStart)
       ctx.lineTo(x, scaleEnd)
@@ -293,8 +313,12 @@ export default class LineChart {
     ctx.fillStyle = '#3c4257'
     ctx.textAlign = 'right'
 
+    let y = this.yAxisMiddle
+
     yLabelRows.forEach(row => {
-      const y = yAxisStart - ((row.value - firstY) / yRatio)
+      if (yRatio !== 0) {
+        y = yAxisStart - ((row.value - firstY) / yRatio)
+      }
       ctx.fillText(row.label, x, y - halfYLabelHeight)
     })
   }
@@ -505,10 +529,20 @@ export default class LineChart {
   setPointPos() {
     const { firstX, firstY, pointPosMap, xAxisStart, xRatio, yAxisStart, yRatio } = this
 
+    // edge case: only one point
+    let x = this.xAxisMiddle
+    let y = this.yAxisMiddle
+
     this.pointsArr.forEach((points, i) => {
       points.forEach(point => {
-        const x = xAxisStart + ((point.x - firstX) / xRatio)
-        const y = yAxisStart - ((point.y - firstY) / yRatio)
+
+        if (xRatio !== 0) {
+          x = xAxisStart + ((point.x - firstX) / xRatio)
+        }
+        if (yRatio !== 0) {
+          y = yAxisStart - ((point.y - firstY) / yRatio)
+        }
+
         const pos = { x, y }
         pointPosMap.set(point, pos)
       })
