@@ -153,6 +153,15 @@ $color-active: #5469d4;
   border: 0;
 }
 
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-top: 1px solid #e3e8ee;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
 input[type=file], /* FF, IE7+, chrome (except button) */
 input[type=file]::-webkit-file-upload-button { /* chromes and blink button */
   cursor: pointer;
