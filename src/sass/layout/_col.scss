@@ -54,7 +54,7 @@
     @extend %col-basic;
   }
   @for $j from 1 through $col-total {
-    .col-#{$i},
+    .col-#{$j},
     .col-#{$size}-#{$j} {
       @extend %col-basic;
     }
