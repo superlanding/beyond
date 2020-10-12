@@ -4,6 +4,14 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+%disabled-td {
+  cursor: not-allowed;
+  background-color: #ddd;
+  color: #333;
+  box-shadow: inset 0 -1px #c7c7c7;
+}
+
 .table {
   width: 100%;
   margin-bottom: 1rem;
@@ -51,6 +59,11 @@
     padding: 7px;
     box-shadow: inset 0 -1px #e3e8ee;
   }
+  tr.disabled {
+    > td {
+      @extend %disabled-td;
+    }
+  }
   tr {
     transition: .3s all;
   }
@@ -60,6 +73,9 @@
   &.striped {
     tr:nth-child(even) td {
       background-color: #f7fafc;
+    }
+    tr.disabled:nth-child(even) td {
+      @extend %disabled-td;
     }
   }
 }
