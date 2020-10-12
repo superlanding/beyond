@@ -97,6 +97,11 @@
   @include ripple(48px, 0, 0);
 }
 
+.btn.btn-outline,
+a.btn.btn-outline {
+  color: $text-color;
+}
+
 .btn.btn-outline {
   background-color: #fff;
   font-size: 13px;
