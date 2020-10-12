@@ -51,15 +51,28 @@ export default class Dropdown {
     this.addEvents()
   }
 
-  hideMenu() {
+  restoreMenuAttrs() {
+    const { menu, place, align } = this
+    if (place) {
+      menu.dataset.place = place
+    }
+    if (align) {
+      menu.dataset.align = align
+    }
+  }
+
+  hideMenu(immediate = false) {
     const { menu } = this
     menu.style.transform = 'scale(.8)'
     menu.style.opacity = 0
-    setTimeout(() => menu.remove(), 300)
 
-    // recover
-    menu.dataset.place = this.place
-    menu.dataset.align = this.align
+    if (immediate) {
+      menu.remove()
+    }
+    else {
+      setTimeout(() => menu.remove(), 300)
+    }
+    this.restoreMenuAttrs()
     this.isMenuVisible = false
   }
 
@@ -144,5 +157,14 @@ export default class Dropdown {
       }
       this.adjustMenuPos()
     }, 300))
+  }
+
+  destroy() {
+    // prevent next re-bind error
+    const { menu } = this
+    if (menu) {
+      this.hideMenu(true)
+      document.body.appendChild(menu)
+    }
   }
 }
