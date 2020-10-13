@@ -1,10 +1,15 @@
-import isDef from '../utils/isDef'
+import raf from '../utils/raf'
 import isUndef from '../utils/isUndef'
 import { getDomPos, range, toPixel, isFunction } from '../utils'
 
 export default function chartCommon(target) {
 
   return class extends target {
+
+    constructor(...args) {
+      super(...args)
+      this.raf = raf
+    }
 
     init() {
       this.layers = []
@@ -157,13 +162,6 @@ export default function chartCommon(target) {
 
     measureWidth(value) {
       return this.ctx.measureText(value).width
-    }
-
-    raf(fn) {
-      if (isDef(window.requestAnimationFrame)) {
-        return window.requestAnimationFrame(fn)
-      }
-      return fn()
     }
 
     removeAllLayers() {
