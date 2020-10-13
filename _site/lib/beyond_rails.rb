@@ -1,5 +1,6 @@
 require "beyond/version"
 require "beyond_form"
+require "beyond_pagination"
 module Beyond
 
   class << self
