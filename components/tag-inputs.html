@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
-    <title>Selects | Beyond</title>
+    <title>Tag Inputs | Beyond</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
@@ -203,7 +203,7 @@
            
               <li>
                 
-                  <a href="/beyond/components/selects.html" class="nav-item active">Selects</a>
+                  <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
                 
               </li>
            
@@ -263,7 +263,7 @@
            
               <li>
                 
-                  <a href="/beyond/components/tag-inputs.html" class="nav-item">Tag Inputs</a>
+                  <a href="/beyond/components/tag-inputs.html" class="nav-item active">Tag Inputs</a>
                 
               </li>
            
@@ -353,8 +353,8 @@
 </nav>
 
       <main class="col-md-8 col-xl-10 main">
-        <div class="page-selects">
-  <h1>下拉式選單 - Selects</h1>
+        <div class="page-tag-input">
+  <h1>標籤輸入框 - Tag Inputs</h1>
   <div class="codebox" data-codebox>
   <div class="codebox-tabs" data-tabs>
     <a>Result</a>
@@ -362,34 +362,28 @@
       <a>HTML</a>
     
     
+      <a>JS</a>
+    
     
   </div>
   <div class="codebox-panes" data-panes>
     <div class="codebox-result">
-      <select class="select">
-  <option value="">請選擇</option>
-  <option value="">請選擇</option>
-  <option value="1">燙青菜</option>
-  <option value="2">燒肉</option>
-  <option value="3">滿漢全席</option>
-</select>
-<select class="select select-outline">
-  <option value="">請選擇</option>
-  <option value="1">燙青菜</option>
-  <option value="2">燒肉</option>
-  <option value="3">滿漢全席</option>
-</select>
-<select class="select select-outline-strong">
-  <option value="">請選擇</option>
-  <option value="1">燙青菜</option>
-  <option value="2">燒肉</option>
-  <option value="3">滿漢全席</option>
-</select>
+      <p>Valid keywords are: apple, lemon, love</p>
+<div data-tag-input class="tag-input"></div>
 
     </div>
     
       <div>
         <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre><span class="nt">&lt;p&gt;</span>Valid keywords are: apple, lemon, love<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-tag-input</span> <span class="na">class=</span><span class="s">"tag-input"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -408,32 +402,91 @@
 17
 18
 19
-</pre></td><td class="code"><pre><span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>燙青菜<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>燒肉<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>滿漢全席<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select select-outline"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>燙青菜<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>燒肉<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>滿漢全席<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"select select-outline-strong"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>請選擇<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>燙青菜<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>燒肉<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>滿漢全席<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
+20
+21
+22
+23
+24
+</pre></td><td class="code"><pre><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindTagInput</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">TagInput</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+
+  <span class="kd">const</span> <span class="nx">tagInputs</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tag-input]</span><span class="dl">'</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">tagInput</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TagInput</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">validate</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">([</span><span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">lemon</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">love</span><span class="dl">'</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">v</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">{</span> <span class="na">isTag</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">classname</span><span class="p">:</span> <span class="dl">'</span><span class="s1">tag-extra</span><span class="dl">'</span> <span class="p">}</span>
+          <span class="p">}</span>
+          <span class="k">return</span> <span class="p">{</span> <span class="na">isTag</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">change</span><span class="p">(</span><span class="nx">tags</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">tags</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">})</span>
+      <span class="k">return</span> <span class="nx">tagInput</span>
+    <span class="p">})</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">unbindTagInput</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">tagInputs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">input</span> <span class="o">=&gt;</span> <span class="nx">input</span><span class="p">.</span><span class="nx">destroy</span><span class="p">())</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></figure>
       </div>
     
     
-    
   </div>
 </div>
+
+  <div class="doc">
+  <h2>Tag Input</h2>
+  <h3>constructor</h3>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">tagInput</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TagInput</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span></code></pre></figure>
+  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+        <th>預設值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>需要設定成 TagInput 的元素</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>object</td>
+        <td>選項</td>
+        <td>{}</td>
+      </tr>
+      <tr>
+        <td>options.validate</td>
+        <td>function | async function</td>
+        <td>驗證輸入的字串是否可以變為標籤，回傳物件 { isTag: Boolean }，如果有指定標籤的 classname 可以回傳 { isTag: Boolean, classname: String }</td>
+        <td>() =&gt; ({ isTag: true })</td>
+      </tr>
+      <tr>
+        <td>options.change</td>
+        <td>function</td>
+        <td>標籤有異動時會呼叫這個 callback，回傳標籤陣列 [{ elem, remove, res }...]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>destroy</h3>
+  <p>移除 TagInput 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">tagInput</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+  </div>
+</div><!-- .doc -->
 
 </div>
 
