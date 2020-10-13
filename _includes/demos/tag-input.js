@@ -3,7 +3,7 @@ export default function bindTagInput() {
   const { TagInput } = window.beyond
 
   const tagInputs = Array.from(document.querySelectorAll('[data-tag-input]'))
-    .forEach(dom => {
+    .map(dom => {
       const tagInput = new TagInput(dom)
       return tagInput
     })
