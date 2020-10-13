@@ -16,7 +16,9 @@ module Beyond
           options = args.shift
         end
 
-        klass = options.delete(:class) { nil }
+        klass = options.delete(:class) { "" }
+        klass = "icon #{klass}" if options.delete(:icon) { false }
+
         tag = content_tag(:i, "", options.merge(class: "icon-#{i} #{klass}"))
         text ? [tag, text].join(" ").html_safe : tag
       end
