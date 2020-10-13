@@ -4,7 +4,17 @@ export default function bindTagInput() {
 
   const tagInputs = Array.from(document.querySelectorAll('[data-tag-input]'))
     .map(dom => {
-      const tagInput = new TagInput(dom)
+      const tagInput = new TagInput(dom, {
+        validate(v) {
+          if (['apple', 'lemon', 'love'].includes(v)) {
+            return { isTag: true, classname: 'tag-extra' }
+          }
+          return { isTag: false }
+        },
+        change(tags) {
+          console.log('change', tags)
+        }
+      })
       return tagInput
     })
 
