@@ -51,6 +51,7 @@
     "@superlanding/getscrolltop": "0.0.22",
     "@superlanding/timestamptodate": "0.0.22",
     "@superlanding/topixel": "0.0.22",
+    "autosize": "4.0.2",
     "core-js": "3.6.4",
     "date-fns": "2.9.0",
     "date-fns-tz": "1.0.9",
