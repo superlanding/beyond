@@ -16,9 +16,18 @@ module Beyond
           options = args.shift
         end
 
-        klass = options.delete(:class) { nil }
+        klass = options.delete(:class) { "" }
+        klass = "icon #{klass}" if options.delete(:icon) { false }
+
         tag = content_tag(:i, "", options.merge(class: "icon-#{i} #{klass}"))
         text ? [tag, text].join(" ").html_safe : tag
+      end
+    end
+
+    def icon_link_to(icon, *args)
+      text = args.shift
+      link_to(*args) do
+        b_icon(icon, text, icon: true)
       end
     end
   end

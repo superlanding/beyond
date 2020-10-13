@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
     
-      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1602495714">
+      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1602561095">
     
 
-    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1602495714">
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1602561095">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32"
@@ -27,9 +27,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
 
     
-      <script src="/beyond/dist/beyond.js?v=1602495714"></script>
-      <script src="/beyond/dist/beyond-jquery.js?v=1602495714"></script>
-      <script src="/beyond/dist/web.js?v=1602495714"></script>
+      <script src="/beyond/dist/beyond.js?v=1602561095"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1602561095"></script>
+      <script src="/beyond/dist/web.js?v=1602561095"></script>
     
   </head>
   <body class="container bg-admin">
@@ -4822,9 +4822,11 @@
   <h2>Rails View Helper</h2>
 
   <div class="code">
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="cp">&lt;%=</span> <span class="n">b_icon</span><span class="p">(</span><span class="s2">"seven-eleven"</span><span class="p">)</span> <span class="cp">%&gt;</span>
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="cp">&lt;%=</span> <span class="n">b_icon</span><span class="p">(</span><span class="s2">"lock"</span><span class="p">,</span> <span class="ss">icon: </span><span class="kp">true</span><span class="p">)</span> <span class="c1"># 增加 class="icon" </span><span class="cp">%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="n">b_icon</span><span class="p">(</span><span class="s2">"seven-eleven"</span><span class="p">)</span> <span class="cp">%&gt;</span>
 <span class="cp">&lt;%=</span> <span class="n">b_icon</span><span class="p">(</span><span class="ss">:cross</span><span class="p">,</span> <span class="s2">"Fail"</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"txt-danger"</span><span class="p">)</span> <span class="cp">%&gt;</span>
-<span class="cp">&lt;%=</span> <span class="n">b_icon</span><span class="p">(</span><span class="ss">:check</span><span class="p">,</span> <span class="s2">"OK"</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"txt-primary"</span><span class="p">)</span> <span class="cp">%&gt;</span></code></pre></figure>
+<span class="cp">&lt;%=</span> <span class="n">b_icon</span><span class="p">(</span><span class="ss">:check</span><span class="p">,</span> <span class="s2">"OK"</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"txt-primary"</span><span class="p">)</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="n">icon_link_to</span><span class="p">(</span><span class="s2">"lock"</span><span class="p">,</span> <span class="s2">"Eddie Account"</span><span class="p">,</span> <span class="n">root_path</span><span class="p">)</span> <span class="cp">%&gt;</span></code></pre></figure>
   </div>
 </div>
 
