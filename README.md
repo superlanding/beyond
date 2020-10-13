@@ -11,6 +11,17 @@ foreman start
 # http://localhost:4000/
 ```
 
+## Release to NPM & RubyGems
+Make sure the following accounts have been signed-in in terminal
+1. npm ( via `npm login` command )
+2. gem ( via `gem signin` command )
+
+<br>
+
+1. yarn build; git add .; git cm -m “yarn build”; git push; ( If js files were modified )
+2. yarn release ( This will release to npm and rubygems )
+3. yarn deploy ( Update github website )
+
 ## Site Deployment
 
 ```bash

@@ -1,0 +1,26 @@
+.tag-input {
+  cursor: text;
+  background-color: #fff;
+  padding: .4em .4em 0 .4em;
+  min-height: 40px;
+  > input {
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+  }
+  .tag {
+    padding-right: 0;
+    display: inline-flex;
+    align-items: center;
+    margin-right: .7em;
+    margin-bottom: .7em;
+    > button {
+      border: 0;
+      background-color: transparent;
+    }
+  }
+  &.shake {
+    animation: shake .5s;
+  }
+}
