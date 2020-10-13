@@ -1,0 +1,8 @@
+.tag-input-box {
+  > input {
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+  }
+}
