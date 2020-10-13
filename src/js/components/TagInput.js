@@ -9,7 +9,7 @@ export default class TagInput {
   constructor(dom, options = {}) {
     this.dom = dom
     this.defaultInputWidth = 128
-    this.isTag = options.isTag || (() => true)
+    this.validate = options.validate || (() => ({ isTag: true }))
     this.change = options.change || (() => {})
     this.isComposing = false
     this.raf = raf
@@ -59,11 +59,11 @@ export default class TagInput {
   async addTagIfNeeded(value) {
     const { input } = this
     const inputValue = input.value
-    const isValidTag = await this.isTag(inputValue)
-    if (! isValidTag) {
+    const res = await this.validate(inputValue)
+    if (! res.isTag) {
       return this.shake()
     }
-    const classname = isStr(isValidTag) ? ` ${isValidTag}` : ''
+    const classname = res.classname ? ` ${res.classname}` : ''
     const tag = document.createElement('div')
 
     tag.className = 'tag' + classname
@@ -78,15 +78,16 @@ export default class TagInput {
       this.tags = this.tags.filter(row => row.elem !== tag)
       btn.removeEventListener('click', handleBtnClick)
       tag.remove()
+      this.change(this.tags.slice())
     }
     btn.addEventListener('click', handleBtnClick)
     tag.appendChild(btn)
 
-    this.tags.push({ elem: tag, remove: handleBtnClick })
-
+    this.tags.push({ elem: tag, remove: handleBtnClick, res })
     this.dom.insertBefore(tag, input)
-
     input.value = ''
+
+    this.change(this.tags.slice())
   }
 
   removeTagIfNeeded() {
@@ -135,5 +136,10 @@ export default class TagInput {
         input.style.width = nextWidth + 'px'
       })
     })
+  }
+
+  destroy() {
+    this.tags.forEach(tag => tag.remove())
+    this.input.remove()
   }
 }
