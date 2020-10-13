@@ -20,4 +20,7 @@
       background-color: transparent;
     }
   }
+  &.shake {
+    animation: shake .5s;
+  }
 }
