@@ -23,5 +23,12 @@ module Beyond
         text ? [tag, text].join(" ").html_safe : tag
       end
     end
+
+    def icon_link_to(icon, *args)
+      text = args.shift
+      link_to(*args) do
+        b_icon(icon, text, icon: true)
+      end
+    end
   end
 end
