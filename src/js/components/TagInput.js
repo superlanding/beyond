@@ -1,13 +1,19 @@
 import raf from '../utils/raf'
+import isStr from '../utils/isStr'
 import supportDom from '../decorators/supportDom'
+import getKey from '../utils/getKey'
 
 @supportDom
 export default class TagInput {
 
-  constructor(dom) {
+  constructor(dom, options = {}) {
     this.dom = dom
     this.defaultInputWidth = 128
+    this.isTag = options.isTag || (() => true)
+    this.change = options.change || (() => {})
+    this.isComposing = false
     this.raf = raf
+    this.tags = []
     this.init()
   }
 
@@ -43,12 +49,79 @@ export default class TagInput {
     return nextWidth
   }
 
+  async addTagIfNeeded(value) {
+    const { input } = this
+    const inputValue = input.value
+    const isValidTag = await this.isTag(inputValue)
+    if (! isValidTag) {
+      return
+    }
+    const classname = isStr(isValidTag) ? ` ${isValidTag}` : ''
+    const tag = document.createElement('div')
+
+    tag.className = 'tag' + classname
+    tag.textContent = inputValue
+
+    const btn = document.createElement('button')
+    btn.type = 'button'
+
+    // https://wesbos.com/times-html-entity-close-button
+    btn.textContent = '×'
+    const handleBtnClick = () => {
+      this.tags = this.tags.filter(row => row.elem !== tag)
+      btn.removeEventListener('click', handleBtnClick)
+      tag.remove()
+    }
+    btn.addEventListener('click', handleBtnClick)
+    tag.appendChild(btn)
+
+    this.tags.push({ elem: tag, remove: handleBtnClick })
+
+    this.dom.insertBefore(tag, input)
+
+    input.value = ''
+  }
+
+  removeTagIfNeeded() {
+    const lastTag = this.tags[this.tags.length - 1]
+    if ((this.input.value === '') && lastTag) {
+      lastTag.remove()
+    }
+  }
+
   addEvents() {
     const { input } = this
     const font = window.getComputedStyle(input)
       .getPropertyValue('font')
 
-    this.addEvent(input, 'input', () => {
+    this.addEvent(this.dom, 'click', event => {
+      if (event.target === this.dom) {
+        this.input.focus()
+      }
+    })
+
+    this.addEvent(input, 'compositionstart', event => {
+      this.isComposing = true
+    })
+
+    this.addEvent(input, 'compositionend', event => {
+      this.isComposing = false
+    })
+
+    let lastValue = ''
+
+    this.addEvent(input, 'keydown', async event => {
+      const key = getKey(event)
+      if ((key === 'enter') && (! this.isComposing)) {
+        await this.addTagIfNeeded(input.value)
+      }
+      else if ((key === 'backspace') && (lastValue === '')) {
+        this.removeTagIfNeeded()
+      }
+      lastValue = input.value
+    })
+
+    this.addEvent(input, 'input', event => {
       this.raf(() => {
         const textWidth = this.getTextWidth(input.value, font)
         const nextWidth = this.getNextInputWidth(textWidth)
