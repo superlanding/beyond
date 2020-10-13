@@ -11,9 +11,11 @@ title: Icons
 
   <div class="code">
 {% highlight erb %}
+<%= b_icon("lock", icon: true) # 增加 class="icon" %>
 <%= b_icon("seven-eleven") %>
 <%= b_icon(:cross, "Fail", class: "txt-danger") %>
 <%= b_icon(:check, "OK", class: "txt-primary") %>
+<%= icon_link_to("lock", "Eddie Account", root_path) %>
 {% endhighlight %}
   </div>
 </div>
