@@ -12,15 +12,15 @@ foreman start
 ```
 
 ## Release to NPM & RubyGems
-在發布之前要確認已在 terminal 登入以下帳號
 Make sure the following accounts have been signed-in in terminal
 1. npm ( via `npm login` command )
 2. gem ( via `gem signin` command )
 
+<br>
 
-1. yarn build; git add .; git cm -m “yarn build”; git push;
-2. yarn release
-3. yarn deploy
+1. yarn build; git add .; git cm -m “yarn build”; git push; ( If js files were modified )
+2. yarn release ( This will release to npm and rubygems )
+3. yarn deploy ( Update github website )
 
 ## Site Deployment
 
