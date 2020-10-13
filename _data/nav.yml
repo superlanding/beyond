@@ -69,6 +69,8 @@
       link: /components/tabboxes.html
     - name: Tags
       link: /components/tags.html
+    - name: Tag Inputs
+      link: /components/tag-inputs.html
     - name: Toasts
       link: /components/toasts.html
     - name: Tooltips

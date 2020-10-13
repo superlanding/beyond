@@ -5,6 +5,7 @@
 @import './vendor/_turbolink';
 @import './base/_background';
 @import './base/_typography';
+@import './_animations';
 @import './_main';
 @import './layout/_border-util';
 @import './layout/_col';
@@ -44,6 +45,7 @@
 @import './components/_tabbox';
 @import './components/_table';
 @import './components/_tag';
+@import './components/_tag-input';
 @import './components/_time-input';
 @import './components/_time-menu';
 @import './components/_toast';
