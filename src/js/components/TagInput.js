@@ -49,12 +49,19 @@ export default class TagInput {
     return nextWidth
   }
 
+  shake() {
+    this.dom.classList.add('shake')
+    setTimeout(() => {
+      this.dom.classList.remove('shake')
+    }, 500)
+  }
+
   async addTagIfNeeded(value) {
     const { input } = this
     const inputValue = input.value
     const isValidTag = await this.isTag(inputValue)
     if (! isValidTag) {
-      return
+      return this.shake()
     }
     const classname = isStr(isValidTag) ? ` ${isValidTag}` : ''
     const tag = document.createElement('div')
