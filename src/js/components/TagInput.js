@@ -1,5 +1,4 @@
 import raf from '../utils/raf'
-import isStr from '../utils/isStr'
 import supportDom from '../decorators/supportDom'
 import getKey from '../utils/getKey'
 

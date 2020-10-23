@@ -1,4 +1,5 @@
 .search-dropdown.dropdown-menu {
+  width: 420px;
   padding: 0;
   .search-dropdown-input-wrap {
     padding: 14px;
@@ -25,9 +26,6 @@
     strong {
       color: #6772e5;
       margin-right: .7em;
-    }
-    > span {
-      max-width: 420px;
     }
   }
 }

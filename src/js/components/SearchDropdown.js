@@ -20,8 +20,11 @@ export default class SearchDropdown {
     this.options.itemClick = options.itemClick || itemClick
     this.options.change = options.change || noop
     this.options.wait = options.wait || 50
-    this.place = 'bottom'
-    this.align = 'left'
+    this.place = options.place || 'bottom'
+    this.align = options.align || 'left'
+    this.offset = options.offset || 14
+    this.offsetTop = options.offsetTop || 0
+    this.offsetLeft = options.offsetLeft || 0
     this.isMenuVisible = false
     this.lastKeyword = null
     this.selectedIndex = 0
@@ -53,7 +56,16 @@ export default class SearchDropdown {
   }
 
   appendMenu() {
+
     const menu = document.createElement('div')
+    const { dataset } = menu
+
+    dataset.place = this.place
+    dataset.align = this.align
+    dataset.offset = this.offset
+    dataset.offsetTop = this.offsetTop
+    dataset.offsetLeft = this.offsetLeft
+
     menu.className = 'search-dropdown dropdown-menu'
 
     const inputWrap = document.createElement('div')
@@ -100,15 +112,19 @@ export default class SearchDropdown {
   showMenu() {
     const { input, menu } = this
     this.getData(input.value)
+
     menu.style.display = 'block'
     menu.style.opacity = 0
     menu.style.transform = 'scale(.8)'
     document.body.appendChild(menu)
-    this.adjustMenuPos()
-    menu.style.transform = 'scale(1)'
-    menu.style.opacity = 1
-    this.isMenuVisible = true
-    this.input.focus()
+
+    setTimeout(() => {
+      this.adjustMenuPos()
+      menu.style.transform = 'scale(1)'
+      menu.style.opacity = 1
+      this.isMenuVisible = true
+      this.input.focus()
+    }, 0)
   }
 
   toggleMenu() {
@@ -116,22 +132,18 @@ export default class SearchDropdown {
   }
 
   adjustMenuPos() {
-    const { menu, dom } = this
-    const { dataset } = menu
-    const offsetLeft = ('offsetLeft' in dataset) ? parseInt(dataset.offsetLeft, 10) : 0
-    const offsetTop = ('offsetTop' in dataset) ? parseInt(dataset.offsetTop, 10) : 0
-
+    const { menu, dom, offset, offsetLeft, offsetTop } = this
     const { pos, place, align } = getFloatedTargetPos({
       src: dom,
       target: menu,
       place: this.place,
       align: this.align,
-      offset: parseInt(dom.dataset.offset, 10) || 14,
+      offset,
       offsetLeft,
       offsetTop
     })
-    dataset.place = place
-    dataset.align = align
+    menu.dataset.place = place
+    menu.dataset.align = align
     menu.style.left = toPixel(pos.left)
     menu.style.top = toPixel(pos.top)
   }
