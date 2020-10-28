@@ -1,6 +1,7 @@
 import raf from '../utils/raf'
 import supportDom from '../decorators/supportDom'
 import getKey from '../utils/getKey'
+import noop from '../utils/noop'
 
 @supportDom
 export default class TagInput {
@@ -9,7 +10,8 @@ export default class TagInput {
     this.dom = dom
     this.defaultInputWidth = 128
     this.validate = options.validate || (() => ({ isTag: true }))
-    this.change = options.change || (() => {})
+    this.suggest = options.suggest || noop
+    this.change = options.change || noop
     this.isComposing = false
     this.raf = raf
     this.tags = []
@@ -22,12 +24,29 @@ export default class TagInput {
   }
 
   setup() {
+    const { defaultInputWidth } = this
+    const inputDiv = document.createElement('div')
+    inputDiv.className = 'tag-input-box'
+
+    const suggestInput = document.createElement('input')
+    suggestInput.type = 'text'
+    suggestInput.style.width = defaultInputWidth + 'px'
+    suggestInput.className = 'tag-suggest-input'
+
     const input = document.createElement('input')
     input.type = 'text'
-    input.style.width = this.defaultInputWidth + 'px'
+    input.style.width = defaultInputWidth + 'px'
+    input.className = 'tag-main-input'
+
+    inputDiv.appendChild(input)
+    inputDiv.appendChild(suggestInput)
+
     this.input = input
+    this.suggestInput = suggestInput
     this.canvas = document.createElement('canvas')
-    this.dom.append(input)
+    this.inputDiv = inputDiv
+
+    this.dom.append(inputDiv)
   }
 
   getTextWidth(text, font) {
@@ -55,9 +74,9 @@ export default class TagInput {
     }, 500)
   }
 
-  async addTagIfNeeded(value) {
-    const { input } = this
-    const inputValue = input.value
+  async addTagIfNeeded() {
+    const { input, suggestInput, inputDiv } = this
+    const inputValue = suggestInput.value || input.value
     const res = await this.validate(inputValue)
     if (! res.isTag) {
       return this.shake()
@@ -83,8 +102,9 @@ export default class TagInput {
     tag.appendChild(btn)
 
     this.tags.push({ elem: tag, remove: handleBtnClick, res })
-    this.dom.insertBefore(tag, input)
+    this.dom.insertBefore(tag, inputDiv)
     input.value = ''
+    suggestInput.value = ''
 
     this.change(this.tags.slice())
   }
@@ -120,7 +140,7 @@ export default class TagInput {
     this.addEvent(input, 'keydown', async event => {
       const key = getKey(event)
       if ((key === 'enter') && (! this.isComposing)) {
-        await this.addTagIfNeeded(input.value)
+        await this.addTagIfNeeded()
       }
       else if ((key === 'backspace') && (lastValue === '')) {
         this.removeTagIfNeeded()
@@ -129,6 +149,7 @@ export default class TagInput {
     })
 
     this.addEvent(input, 'input', event => {
+      this.suggestInputIfNeeded(input.value)
       this.raf(() => {
         const textWidth = this.getTextWidth(input.value, font)
         const nextWidth = this.getNextInputWidth(textWidth)
@@ -137,8 +158,21 @@ export default class TagInput {
     })
   }
 
+  async suggestInputIfNeeded(value) {
+    const suggestValue = await this.suggest(value)
+    this.raf(() => {
+      if (this.input.value === value) {
+        this.suggestInput.value = (suggestValue || '')
+      }
+    })
+  }
+
   destroy() {
     this.tags.forEach(tag => tag.remove())
-    this.input.remove()
+    this.inputDiv.remove()
+    this.canvas = null
+    this.input = null
+    this.suggestInput = null
+    this.inputDiv = null
   }
 }
