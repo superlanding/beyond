@@ -149,15 +149,21 @@ export default class TagInput {
     })
 
     this.addEvent(input, 'input', event => {
+      this.suggestInputIfNeeded(input.value)
       this.raf(() => {
-
-        const suggestValue = this.suggest(input.value) || ''
-        this.suggestInput.value = suggestValue
-
         const textWidth = this.getTextWidth(input.value, font)
         const nextWidth = this.getNextInputWidth(textWidth)
         input.style.width = nextWidth + 'px'
       })
+    })
+  }
+
+  async suggestInputIfNeeded(value) {
+    const suggestValue = await this.suggest(value)
+    this.raf(() => {
+      if (this.input.value === value) {
+        this.suggestInput.value = (suggestValue || '')
+      }
     })
   }
 
