@@ -3,10 +3,24 @@
   background-color: #fff;
   padding: .4em .4em 0 .4em;
   min-height: 40px;
-  > input {
-    border: 0;
-    &:focus {
-      outline: none;
+
+  .tag-suggest-input {
+    color: rgba(60, 66, 87, .41);
+  }
+
+  .tag-main-input {
+    position: absolute;
+    background-color: transparent;
+  }
+
+  .tag-input-box {
+    display: inline-block;
+    position: relative;
+    > input {
+      border: 0;
+      &:focus {
+        outline: none;
+      }
     }
   }
   .tag {
