@@ -29,6 +29,12 @@ const tagInput = new TagInput(dom, options)
         <td>{}</td>
       </tr>
       <tr>
+        <td>options.suggest</td>
+        <td>function | async function</td>
+        <td>是否要顯示輸入提示文字，有指定這個方法需回傳提示文字字串</td>
+        <td>() =&gt; ()</td>
+      </tr>
+      <tr>
         <td>options.validate</td>
         <td>function | async function</td>
         <td>驗證輸入的字串是否可以變為標籤，回傳物件 { isTag: Boolean }，如果有指定標籤的 classname 可以回傳 { isTag: Boolean, classname: String }</td>
