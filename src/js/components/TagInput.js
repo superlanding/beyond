@@ -1,7 +1,7 @@
-import raf from '../utils/raf'
-import supportDom from '../decorators/supportDom'
 import getKey from '../utils/getKey'
 import noop from '../utils/noop'
+import raf from '../utils/raf'
+import supportDom from '../decorators/supportDom'
 
 @supportDom
 export default class TagInput {
