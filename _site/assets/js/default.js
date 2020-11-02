@@ -18,7 +18,13 @@ const { beyond, Turbolinks, $ } = window
 const bindJQuery = window['beyond-jquery'].default
 const unbinds = []
 
-Turbolinks.start()
+if (typeof Turbolinks === 'undefined') {
+  bindAll()
+}
+else {
+  Turbolinks.start()
+}
+
 bindJQuery(beyond, $)
 
 document.addEventListener('turbolinks:before-cache', () => unbindAll())
