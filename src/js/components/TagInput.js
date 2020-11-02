@@ -100,7 +100,7 @@ export default class TagInput {
   }
 
   async addTagIfNeeded() {
-    const { input, suggestInput, inputDiv } = this
+    const { input, suggestInput } = this
     const inputValue = suggestInput.value || input.value
     const res = await this.validate(inputValue)
     if (! res.isTag) {
