@@ -1,7 +1,7 @@
-import raf from '../utils/raf'
-import supportDom from '../decorators/supportDom'
 import getKey from '../utils/getKey'
 import noop from '../utils/noop'
+import raf from '../utils/raf'
+import supportDom from '../decorators/supportDom'
 
 @supportDom
 export default class TagInput {
@@ -74,13 +74,7 @@ export default class TagInput {
     }, 500)
   }
 
-  async addTagIfNeeded() {
-    const { input, suggestInput, inputDiv } = this
-    const inputValue = suggestInput.value || input.value
-    const res = await this.validate(inputValue)
-    if (! res.isTag) {
-      return this.shake()
-    }
+  addTag(inputValue, res) {
     const classname = res.classname ? ` ${res.classname}` : ''
     const tag = document.createElement('div')
 
@@ -102,7 +96,18 @@ export default class TagInput {
     tag.appendChild(btn)
 
     this.tags.push({ elem: tag, remove: handleBtnClick, res })
-    this.dom.insertBefore(tag, inputDiv)
+    this.dom.insertBefore(tag, this.inputDiv)
+  }
+
+  async addTagIfNeeded() {
+    const { input, suggestInput } = this
+    const inputValue = suggestInput.value || input.value
+    const res = await this.validate(inputValue)
+    if (! res.isTag) {
+      return this.shake()
+    }
+    this.addTag(inputValue, res)
+
     input.value = ''
     suggestInput.value = ''
 
