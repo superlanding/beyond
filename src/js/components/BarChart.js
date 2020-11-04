@@ -342,8 +342,11 @@ export default class BarChart {
   refresh() {
     this.raf(() => {
       this.clearBarPos()
+      this.clearCanvasSize(this.canvas)
+      this.layers.forEach(layer => this.clearCanvasSize(layer.canvas))
       this.setDomSizeIfNeeded()
       this.setCanvasSize(this.canvas)
+      this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
       this.setLabelWidths()
       this.setLabelHeights()
       this.setAxisData()

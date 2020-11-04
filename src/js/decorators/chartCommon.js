@@ -203,6 +203,13 @@ export default function chartCommon(target) {
       canvas.getContext('2d').scale(dpr, dpr)
     }
 
+    clearCanvasSize(canvas) {
+      canvas.width = 0
+      canvas.height = 0
+      canvas.style.width = 0
+      canvas.style.height = 0
+    }
+
     setDomSizeIfNeeded() {
       if (isUndef(this.options.width)) {
         this.width = this.dom.offsetWidth
