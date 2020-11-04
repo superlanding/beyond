@@ -466,6 +466,8 @@ export default class LineChart {
   refresh() {
     this.raf(() => {
       this.clearPointPos()
+      this.clearCanvasSize(this.canvas)
+      this.layers.forEach(layer => this.clearCanvasSize(layer.canvas))
       this.setDomSizeIfNeeded()
       this.setCanvasSize(this.canvas)
       this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
