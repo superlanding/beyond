@@ -20,6 +20,12 @@ module BeyondForm
       end
     end
 
+    def form_group_with_validation(*args, &block)
+      form_group(*args) do
+        input_with_error(args.first, &block)
+      end
+    end
+
     private
 
     def form_group_content_tag(name, field_name, without_field_name, options, html_options)
