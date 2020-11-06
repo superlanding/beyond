@@ -37,8 +37,7 @@ function bindAll() {
   unbinds.push(bindWidthPad())
 
   unbinds.push(bindAutocompletes())
-  //unbinds.push(bindBtns())
-  $('.btn-outline').btn('loading')
+  unbinds.push(bindBtns())
   unbinds.push(bindLineCharts())
   unbinds.push(bindBarCharts())
   unbinds.push(bindDateTimeRangers())
