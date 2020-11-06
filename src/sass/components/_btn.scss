@@ -123,6 +123,10 @@ a.btn.btn-outline {
   }
 }
 
+.btn-outline .ring-loader div {
+  border-color: $text-color-light transparent transparent transparent;
+}
+
 .btn .badge {
   margin-left: .5rem;
   font-weight: 400;
