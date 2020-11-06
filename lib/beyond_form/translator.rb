@@ -3,14 +3,14 @@ module BeyondForm
 
     SCOPE = [:activerecord, :attributes]
 
-    # 讓 BootstrapForm 的 form helper 支援 i18n, ex: f.select(..., label: :i18n_key_name)
+    # 讓 BeyondForm 的 form helper 支援 i18n, ex: f.select(..., label: :i18n_key_name)
     # override:
     #   color_field date_field datetime_field datetime_local_field email_field month_field
     #   number_field password_field phone_field range_field search_field telephone_field
     #   text_area text_field time_field url_field week_field
     #
     # https://github.com/bootstrap-ruby/bootstrap_form/blob/v2.6.0/lib/bootstrap_form/form_builder.rb
-    BootstrapForm::FormBuilder::FIELD_HELPERS.each do |method_name|
+    BeyondForm::FormBuilder::FIELD_HELPERS.each do |method_name|
       define_method(method_name) do |name, options = {}|
         label = options[:label]
 
