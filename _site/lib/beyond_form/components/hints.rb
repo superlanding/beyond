@@ -13,7 +13,6 @@ module BeyondForm
         help_klass ||= "form-txt txt-muted"
         help_text ||= get_help_text_by_i18n_key(name)
         help_tag ||= :small
-
         content_tag(help_tag, help_text, class: help_klass) if help_text.present?
       end
 
