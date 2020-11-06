@@ -5,7 +5,17 @@ const unloadRows = []
 const onPage = row => {
   const { controller, action } = row
   const { dataset } = document.body
-  return (dataset.controller === controller) && (dataset.action === action)
+
+  let controllerMatched = (dataset.controller === controller)
+  let actionMatched = (dataset.action === action)
+
+  if (controller === '*') {
+    controllerMatched = true
+  }
+  if (action === '*') {
+    actionMatched = true
+  }
+  return controllerMatched && actionMatched
 }
 
 export const $ = (selector, dom = document) => dom.querySelector(selector)
