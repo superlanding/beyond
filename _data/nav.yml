@@ -82,6 +82,8 @@
       link: /charts/bar-chart.html
     - name: Line Chart
       link: /charts/line-chart.html
+    - name: Pie Chart
+      link: /charts/pie-chart.html
 
 - folder: Integrations
   items:
