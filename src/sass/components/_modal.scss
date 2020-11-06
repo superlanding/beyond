@@ -20,8 +20,22 @@
     background-color: #fff;
     margin: 20px auto 0;
     max-width: 600px;
+    &.modal-sm {
+      max-width: 400px;
+    }
+    &.modal-lg {
+      max-width: 900px;
+    }
+    &.modal-xl {
+      max-width: 1140px;
+    }
     @media (max-width: $screen-sm) {
       max-width: 90%;
+      &.modal-sm,
+      &.modal-lg,
+      &.modal-xl {
+        max-width: 90%;
+      }
     }
   }
   &.js-active {
