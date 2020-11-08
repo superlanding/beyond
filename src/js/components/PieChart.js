@@ -2,6 +2,7 @@ import supportDom from '../decorators/supportDom'
 import chartCommon from '../decorators/chartCommon'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
+import { throttle } from '../utils'
 
 const defaultStyles = [
   '#5469d4',
@@ -16,6 +17,7 @@ export default class PieChart {
   constructor(dom, options = {}) {
     this.dom = dom
     this.data = []
+    this.total = 0
 
     this.options = options
     this.height = options.height
@@ -52,7 +54,7 @@ export default class PieChart {
     return this.radius * .3
   }
 
-  get circleRadius() {
+  get centerCircleRadius() {
     return this.radius - this.pieWidth
   }
 
@@ -65,7 +67,7 @@ export default class PieChart {
   }
 
   bindPointMouseOver() {
-    if (isUndef(this.options.onPointMouseOver)) {
+    if (isUndef(this.options.onPieMouseOver)) {
       return
     }
     if (! ('onmousemove' in this.canvas)) {
@@ -82,8 +84,8 @@ export default class PieChart {
   }
 
   drawPie() {
-    const total = this.data.reduce((t, row) => t + row.value, 0)
-    const { x, y, radius, circleRadius, ctx, contentWidth, width, height } = this
+    const { x, y, radius, centerCircleRadius,
+      ctx, contentWidth, width, height, total } = this
 
     let distance = 0
 
@@ -100,7 +102,7 @@ export default class PieChart {
       distance += ratio
     })
 
-    this.fillCircle(ctx, x, y, circleRadius, '#fff')
+    this.fillCircle(ctx, x, y, centerCircleRadius, '#fff')
   }
 
   handleDprChange() {
@@ -108,7 +110,82 @@ export default class PieChart {
     this.refresh()
   }
 
+  getPosAngle(x1, y1, x2, y2) {
+
+    let x = x2
+    let y = y2
+
+    if (x1 >= 0) {
+      x -= x1
+    }
+    if (y1 >= 0) {
+      y -= y1
+    }
+    if (x1 < 0) {
+      x += x1
+    }
+    if (y2 < 0) {
+      y += y2
+    }
+
+    let angle = Math.atan2(y, x) * 180 / Math.PI
+    if (angle < 0) {
+      angle = 180 + (180 + angle)
+    }
+    return (angle + 90) % 360
+  }
+
   handleMouseMove(event) {
+
+    const { x, y } = this
+    const { x: mouseX, y: mouseY } = this.getMousePosInCanvas(event)
+
+    const distanceToCenterPoint = Math.sqrt(Math.pow(mouseX - x, 2) +
+      Math.pow(mouseY - y, 2))
+
+    const inCenterCircle = distanceToCenterPoint <= this.centerCircleRadius
+
+    this.clearSliceGlow()
+
+    if (inCenterCircle) {
+      return
+    }
+
+    const inPieCircle = distanceToCenterPoint <= this.radius
+    if (! inPieCircle) {
+      return
+    }
+    const angle = this.getPosAngle(x, y, mouseX, mouseY)
+    const index = this.data.findIndex(row => {
+      return (row.startAngle <= angle) && (angle <= row.endAngle)
+    })
+    const matchedRow = this.data[index]
+    if (matchedRow) {
+      this.drawSliceGlow(matchedRow, index)
+    }
+  }
+
+  drawSliceGlow(row, index) {
+    this.clearSliceGlow()
+    const { x, y, radius, centerCircleRadius, total } = this
+    const ctx = this.firstLayer.canvas.getContext('2d')
+
+    const delta = 90 * Math.PI / 180
+    const startAngle = (row.startAngle * Math.PI / 180) - delta
+    const endAngle = (row.endAngle * Math.PI / 180) - delta
+
+    const options = {
+      style: this.styles[index],
+      alpha: .3
+    }
+    const radiusDelta = (radius - centerCircleRadius) * .3
+    this.fillArc(ctx, x, y, radius + radiusDelta, startAngle, endAngle, options)
+    this.fillCircle(this.firstLayer.ctx, x, y, centerCircleRadius, '#fff')
+  }
+
+  clearSliceGlow() {
+    const ctx = this.firstLayer.canvas.getContext('2d')
+    ctx.clearRect(0, 0, this.width, this.height)
   }
 
   refresh() {
@@ -122,8 +199,20 @@ export default class PieChart {
     })
   }
 
+  setAngles(data) {
+    const { total } = this
+    let startAngle = 0
+    return data.map(row => {
+      const endAngle = startAngle + ((row.value / total) * 360)
+      const nextRow = Object.assign({}, row, { startAngle, endAngle })
+      startAngle = endAngle
+      return nextRow
+    })
+  }
+
   setData(data) {
-    this.data = data
+    this.total = data.reduce((t, row) => t + row.value, 0)
+    this.data = this.setAngles(data)
     this.raf(() => this.draw())
   }
 

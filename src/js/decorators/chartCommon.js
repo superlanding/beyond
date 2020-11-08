@@ -54,6 +54,11 @@ export default function chartCommon(target) {
       ctx.fillRect(0, 0, this.width, this.height)
     }
 
+    getHypotenuse(x1, y1, x2, y2) {
+      return Math.sqrt(Math.pow(x2 - x1, 2) +
+        Math.pow(y2 - y1, 2))
+    }
+
     fillCircle(ctx, x, y, radius, style, alpha) {
       ctx.save()
       ctx.beginPath()

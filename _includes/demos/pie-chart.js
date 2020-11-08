@@ -16,9 +16,9 @@ export default function bindPieCharts() {
   })
 
   b.setData([
-    { label: '1 個月內', value: 0.8 },
-    { label: '3 個月內', value: 1.7 },
-    { label: '6 個月內', value: 1.1 }
+    { label: '1 個月內', value: 20 },
+    { label: '3 個月內', value: 50 },
+    { label: '6 個月內', value: 30 }
   ])
 
   return function unbindPieCharts() {
