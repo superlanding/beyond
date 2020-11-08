@@ -84,8 +84,7 @@ export default class PieChart {
   }
 
   drawPie() {
-    const { x, y, radius, centerCircleRadius,
-      ctx, contentWidth, width, height, total } = this
+    const { x, y, radius, centerCircleRadius, ctx, total } = this
 
     let distance = 0
 
@@ -167,7 +166,7 @@ export default class PieChart {
 
   drawSliceGlow(row, index) {
     this.clearSliceGlow()
-    const { x, y, radius, centerCircleRadius, total } = this
+    const { x, y, radius, centerCircleRadius } = this
     const ctx = this.firstLayer.canvas.getContext('2d')
 
     const delta = 90 * Math.PI / 180
