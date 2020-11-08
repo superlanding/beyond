@@ -4,12 +4,7 @@ import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
 import isInt from '../utils/isInt'
 import { mem, range, sortBy, throttle, uniqBy } from '../utils'
-
-const defaultBarStyles = [
-  '#5469d4',
-  '#7c54d4',
-  '#a254d4'
-]
+import { DEFAULT_CHART_STYLES } from '../consts'
 
 @supportDom
 @chartCommon
@@ -36,7 +31,7 @@ export default class BarChart {
 
     this.fontSize = options.fontSize || 12
     this.bgColor = options.bgColor || '#fff'
-    this.barStyles = options.barStyles || defaultBarStyles
+    this.barStyles = options.barStyles || DEFAULT_CHART_STYLES
 
     this.yLabelRows = []
     this.barPosMap = new Map()

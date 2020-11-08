@@ -3,12 +3,7 @@ import chartCommon from '../decorators/chartCommon'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
 import { throttle } from '../utils'
-
-const defaultStyles = [
-  '#5469d4',
-  '#7c54d4',
-  '#a254d4'
-]
+import { DEFAULT_CHART_STYLES } from '../consts'
 
 @supportDom
 @chartCommon
@@ -23,7 +18,7 @@ export default class PieChart {
     this.height = options.height
     this.width = options.width
     this.padding = isDef(options.padding) ? options.padding : 40
-    this.styles = options.styles || defaultStyles
+    this.styles = options.styles || DEFAULT_CHART_STYLES
     this.bgColor = options.bgColor || '#fff'
 
     this.init()

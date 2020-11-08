@@ -3,6 +3,7 @@ import chartCommon from '../decorators/chartCommon'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
 import { mem, range, sortBy, throttle, uniqBy } from '../utils'
+import { DEFAULT_CHART_STYLES } from '../consts'
 
 /**
  * -------------------------------------------------------------------------------------------------
@@ -56,7 +57,7 @@ export default class LineChart {
     this.xLabelMargin = isDef(options.xLabelMargin) ? options.xLabelMargin : 10
     this.yLabelMargin = isDef(options.yLanelMargin) ? options.yLabelMargin : 10
 
-    this.lineStyles = options.lineStyles || defaultLineStyles
+    this.lineStyles = options.lineStyles || DEFAULT_CHART_STYLES
 
     this.bgColor = options.bgColor || '#fff'
     this.fontSize = options.fontSize || 12
