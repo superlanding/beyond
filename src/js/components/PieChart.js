@@ -15,14 +15,12 @@ export default class PieChart {
 
   constructor(dom, options = {}) {
     this.dom = dom
-    this.options = options
     this.data = []
+
+    this.options = options
     this.height = options.height
     this.width = options.width
-
-    this.xPadding = isDef(options.xPadding) ? options.xPadding : 20
-    this.yPadding = isDef(options.yPadding) ? options.yPadding : 20
-
+    this.padding = isDef(options.padding) ? options.padding : 40
     this.styles = options.styles || defaultStyles
     this.bgColor = options.bgColor || '#fff'
 
@@ -38,12 +36,32 @@ export default class PieChart {
     this.bindPointMouseOver()
   }
 
+  get x() {
+    return this.width / 2
+  }
+
+  get y() {
+    return this.height / 2
+  }
+
+  get radius() {
+    return this.contentWidth / 2
+  }
+
+  get pieWidth() {
+    return this.radius * .3
+  }
+
+  get circleRadius() {
+    return this.radius - this.pieWidth
+  }
+
   get contentWidth() {
-    return this.width - (this.xPadding * 2)
+    return this.width - (this.padding * 2)
   }
 
   get contentHeight() {
-    return this.height - (this.yPadding * 2)
+    return this.height - (this.padding * 2)
   }
 
   bindPointMouseOver() {
@@ -60,6 +78,29 @@ export default class PieChart {
 
   draw() {
     this.clear()
+    this.drawPie()
+  }
+
+  drawPie() {
+    const total = this.data.reduce((t, row) => t + row.value, 0)
+    const { x, y, radius, circleRadius, ctx, contentWidth, width, height } = this
+
+    let distance = 0
+
+    this.data.forEach((row, i) => {
+
+      const ratio = (row.value / total)
+      const startAngle = Math.PI * (-.5 + 2 * distance)
+      const endAngle = Math.PI * (-.5 + 2 * (distance + ratio))
+
+      const options = {
+        style: this.styles[i]
+      }
+      this.fillArc(ctx, x, y, radius, startAngle, endAngle, options)
+      distance += ratio
+    })
+
+    this.fillCircle(ctx, x, y, circleRadius, '#fff')
   }
 
   handleDprChange() {
@@ -71,10 +112,19 @@ export default class PieChart {
   }
 
   refresh() {
+    this.raf(() => {
+      this.clearCanvasSize(this.canvas)
+      this.layers.forEach(layer => this.clearCanvasSize(layer.canvas))
+      this.setDomSizeIfNeeded()
+      this.setCanvasSize(this.canvas)
+      this.layers.forEach(layer => this.setCanvasSize(layer.canvas))
+      this.draw()
+    })
   }
 
   setData(data) {
     this.data = data
+    this.raf(() => this.draw())
   }
 
   destroy() {

@@ -65,6 +65,18 @@ export default function chartCommon(target) {
       ctx.restore()
     }
 
+    fillArc(ctx, x, y, radius, startAngle = 0, endAngle = 2 * Math.PI, options = {}) {
+      ctx.save()
+      ctx.beginPath()
+      ctx.arc(x, y, radius, startAngle, endAngle)
+      ctx.fillStyle = options.style || '#555'
+      ctx.globalAlpha = options.alpha || 1
+      ctx.lineTo(x, y)
+      ctx.fill()
+      ctx.closePath()
+      ctx.restore()
+    }
+
     getAutoStep(firstValue, lastValue, pointsLength) {
       return (lastValue - firstValue) / (pointsLength - 1)
     }
