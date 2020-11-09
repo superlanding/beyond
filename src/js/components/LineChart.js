@@ -61,7 +61,6 @@ export default class LineChart {
     this.yStep = options.yStep
 
     this.lineLabels = options.lineLabels || []
-    this.lineLabelMargin = isDef(options.lineLabelMargin) ? options.lineLabelMargin : 20
 
     this.pointPosMap = new Map()
     this.xLabelRows = []
@@ -74,6 +73,7 @@ export default class LineChart {
     this.setDpr()
     this.setDomSizeIfNeeded()
     this.setCanvas()
+    this.setLabelBox()
     this.clear()
     this.bindMedia()
     this.bindPointMouseOver()
@@ -89,8 +89,7 @@ export default class LineChart {
   }
 
   get contentHeight() {
-    return this.height - (this.yPadding * 2) - this.xLabelMargin -
-      this.xLabelHeight - this.lineLabelBoxHeight
+    return this.height - (this.yPadding * 2) - this.xLabelMargin - this.xLabelHeight
   }
 
   get firstX() {
@@ -109,17 +108,6 @@ export default class LineChart {
   get lastY() {
     const { yLabelRows } = this
     return yLabelRows[yLabelRows.length - 1].value
-  }
-
-  get lineLabelHeight() {
-    return this.fontSize
-  }
-
-  get lineLabelBoxHeight() {
-    if (this.lineLabels.length > 0) {
-      return this.lineLabelMargin + this.lineLabelHeight
-    }
-    return 0
   }
 
   get xAxisStart() {
@@ -141,7 +129,7 @@ export default class LineChart {
   }
 
   get yAxisStart() {
-    return this.height - this.yPadding - this.lineLabelBoxHeight -
+    return this.height - this.yPadding -
       this.xLabelHeight - this.xLabelMargin + (this.yLabelHeight / 2)
   }
 
@@ -181,7 +169,6 @@ export default class LineChart {
     this.drawYAxis()
     this.drawBgLines()
     this.drawLines()
-    this.drawLineLables()
   }
 
   drawBgLines() {
@@ -228,29 +215,6 @@ export default class LineChart {
     })
   }
 
-  drawLineLables() {
-    const { ctx, lineStyles, lineLabelHeight } = this
-    const rectSize = 7
-
-    const rectGutter = 7
-    const labelGutter = 14
-    const rectMargin = 1
-    const y = this.height - this.yPadding
-    let x = this.xPadding
-
-    this.lineLabels.forEach((name, i) => {
-      ctx.fillStyle = lineStyles[i] || '#000'
-      ctx.fillRect(x, y - lineLabelHeight + rectMargin, rectSize, rectSize)
-
-      x += (rectSize + rectGutter)
-      ctx.fillStyle = '#000'
-      ctx.textAlign = 'left'
-      ctx.textBaseline = 'top'
-      ctx.fillText(name, x, y - lineLabelHeight)
-      x += (ctx.measureText(name).width + labelGutter)
-    })
-  }
-
   clearVerticalLine() {
     const { ctx } = this.firstLayer
     ctx.clearRect(0, 0, this.width, this.height)
@@ -275,7 +239,7 @@ export default class LineChart {
   drawXAxis() {
     const { ctx, firstX, xLabelRows, xAxisStart, xRatio } = this
 
-    const y = this.height - this.yPadding - this.lineLabelBoxHeight
+    const y = this.height - this.yPadding
 
     const scaleMargin = 4
     const scaleSize = 4
@@ -534,7 +498,10 @@ export default class LineChart {
       return this.raf(() => this.clear())
     }
     this.setPointPos()
-    this.raf(() => this.draw())
+    this.raf(() => {
+      this.drawLabels(this.lineLabels, this.lineStyles)
+      this.draw()
+    })
   }
 
   setPointPos() {
