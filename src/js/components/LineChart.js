@@ -28,11 +28,6 @@ import { DEFAULT_CHART_STYLES } from '../consts'
  *                                            v                                                     |
  * --------------------------------------------------------------------------------------------------
  **/
-const defaultLineStyles = [
-  '#5469d4',
-  '#7c54d4',
-  '#a254d4'
-]
 
 @supportDom
 @chartCommon
