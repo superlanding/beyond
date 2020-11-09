@@ -1,9 +1,9 @@
 <div class="doc">
-  <h2>Bar Chart</h2>
+  <h2>Pie Chart</h2>
   <h3>constructor</h3>
   <div class="code">
 {% highlight js %}
-const barChart = new BarChart(dom, options)
+const pieChart = new PieChart(dom, options)
 {% endhighlight %}
   </div>
   <table class="table table-responsive">
@@ -19,7 +19,7 @@ const barChart = new BarChart(dom, options)
       <tr>
         <td>dom</td>
         <td>HTMLElement</td>
-        <td>需要設定成 BarChart 的元素</td>
+        <td>需要設定成 PieChart 的元素</td>
         <td></td>
       </tr>
       <tr>
@@ -41,40 +41,10 @@ const barChart = new BarChart(dom, options)
         <td>dom.offsetWidth</td>
       </tr>
       <tr>
-        <td>options.toYLabel</td>
-        <td>function</td>
-        <td>轉換成 y 軸標籤的方法</td>
-        <td>v =&gt; v</td>
-      </tr>
-      <tr>
-        <td>options.xPadding</td>
+        <td>options.padding</td>
         <td>integer</td>
-        <td>圖表外圍到上下邊界的距離</td>
+        <td>圖表到邊界的距離</td>
         <td>20</td>
-      </tr>
-      <tr>
-        <td>options.yPadding</td>
-        <td>integer</td>
-        <td>圖表外圍到左右邊界的距離</td>
-        <td>20</td>
-      </tr>
-      <tr>
-        <td>options.yStep</td>
-        <td>integer</td>
-        <td>y 軸標籤與標籤的間隔數，預設會根據 yGutter 計算最多可顯示的間隔數</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>options.yGutter</td>
-        <td>integer</td>
-        <td>y 軸標籤之間可允許的最小距離</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>options.fontSize</td>
-        <td>integer</td>
-        <td>圖表的字體大小</td>
-        <td>12</td>
       </tr>
       <tr>
         <td>options.bg</td>
@@ -83,41 +53,28 @@ const barChart = new BarChart(dom, options)
         <td>'#fff'</td>
       </tr>
       <tr>
-        <td>options.barStyles</td>
+        <td>options.styles</td>
         <td>array</td>
-        <td>線段的色彩樣式</td>
+        <td>圓餅圖的色彩樣式</td>
         <td>['#5469d4', '#7c54d4', '#a254d4']</td>
       </tr>
       <tr>
-        <td>options.xLabelMargin</td>
-        <td>integer</td>
-        <td>xLabel 到圖表的距離</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>options.yLabelMargin</td>
-        <td>integer</td>
-        <td>yLabel 到圖表的距離</td>
-        <td>14</td>
-      </tr>
-      <tr>
-        <td>options.onBarMouseOver</td>
+        <td>options.onPieMouseOver</td>
         <td>function</td>
-        <td>當滑鼠接近某個數值的點的時候的事件 ( 通常用來顯示 tooltip )，回傳 mousePos ( 在視窗上的座標 ) 與 res ( bar 的資料，res 有可能是 undefined，這時隱藏 tooltip 即可 )</td>
+        <td>當滑鼠接近圓餅圖時的事件 ( 通常用來顯示 tooltip )，回傳 mousePos ( 在視窗上的座標 ) 與 res ( pie 的資料，res 有可能是 undefined，這時隱藏 tooltip 即可 )</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <img class="doc-img" src="{{ '/assets/img/bar-chart.png' | relative_url }}" alt="Bar Chart Intro" />
 
   <h3>setData</h3>
   <div class="code">
 {% highlight js %}
 // const data = [
-//   { label: 'Bar 1', value: 0 },
-//   { label: 'Bar 2', value: 1 }
+//   { label: 'Pie 1', value: 0 },
+//   { label: 'Pie 2', value: 1 }
 // ]
-barChart.setData(data)
+pieChart.setData(data)
 {% endhighlight %}
   </div>
   <table class="table table-responsive">
@@ -132,7 +89,7 @@ barChart.setData(data)
       <tr>
         <td>data</td>
         <td>array</td>
-        <td>要設定的長條圖資料陣列</td>
+        <td>要設定的圓餅圖資料陣列</td>
       </tr>
     </tbody>
   </table>
@@ -141,15 +98,15 @@ barChart.setData(data)
   <p>重畫圖表 (如果 canvas 外框寬高有變的話，可以用此方法重畫)</p>
   <div class="code">
 {% highlight js %}
-barChart.refresh()
+pieChart.refresh()
 {% endhighlight %}
   </div>
 
   <h3>destroy</h3>
-  <p>移除 BarChart 產生的 dom 元素與 event listeners</p>
+  <p>移除 PieChart 產生的 dom 元素與 event listeners</p>
   <div class="code">
 {% highlight js %}
-barChart.destroy()
+pieChart.destroy()
 {% endhighlight %}
   </div>
 </div><!-- .doc -->
