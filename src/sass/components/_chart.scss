@@ -12,3 +12,24 @@
   z-index: 1;
   border: 1px solid #e8e8e8;
 }
+
+.chart-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-bottom: 10px;
+  .chart-box-item {
+    cursor: default;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1.4em;
+    .chart-box-square {
+      transform: translateY(1px);
+      @include size(10px);
+      margin-right: .5em;
+    }
+  }
+}
