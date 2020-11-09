@@ -573,5 +573,9 @@ td.code > pre {
 .page-line-chart .chart {
   min-height: 300px; }
 
+.page-pie-chart .chart {
+  width: 300px;
+  min-height: 300px; }
+
 .page-bar-chart .chart {
   min-height: 300px; }
