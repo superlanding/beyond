@@ -30,7 +30,7 @@ export default class BarChart {
     this.yLabelMargin = isDef(options.yLanelMargin) ? options.yLabelMargin : 14
 
     this.fontSize = options.fontSize || 12
-    this.bgColor = options.bgColor || '#fff'
+    this.bg = options.bg || '#fff'
     this.barStyles = options.barStyles || DEFAULT_CHART_STYLES
 
     this.yLabelRows = []

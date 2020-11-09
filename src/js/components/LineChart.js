@@ -54,7 +54,7 @@ export default class LineChart {
 
     this.lineStyles = options.lineStyles || DEFAULT_CHART_STYLES
 
-    this.bgColor = options.bgColor || '#fff'
+    this.bg = options.bg || '#fff'
     this.fontSize = options.fontSize || 12
 
     this.xStep = options.xStep

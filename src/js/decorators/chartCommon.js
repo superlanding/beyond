@@ -50,7 +50,7 @@ export default function chartCommon(target) {
 
     clear() {
       const { ctx } = this
-      ctx.fillStyle = this.bgColor
+      ctx.fillStyle = this.bg
       ctx.fillRect(0, 0, this.width, this.height)
     }
 

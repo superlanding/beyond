@@ -19,7 +19,7 @@ export default class PieChart {
     this.width = options.width
     this.padding = isDef(options.padding) ? options.padding : 40
     this.styles = options.styles || DEFAULT_CHART_STYLES
-    this.bgColor = options.bgColor || '#fff'
+    this.bg = options.bg || '#fff'
 
     this.init()
   }
