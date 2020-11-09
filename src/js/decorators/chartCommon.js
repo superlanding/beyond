@@ -242,11 +242,11 @@ export default function chartCommon(target) {
         labelBox.appendChild(div)
 
         if (isFn(handleLabelMouseOver)) {
-          const off = this.addEvent(div, 'mouseover', () => this.handleLabelMouseOver(i))
+          const off = this.addEvent(div, 'mouseover', event => this.handleLabelMouseOver(event, i))
           this.offLabels.push(off)
         }
         if (isFn(handleLabelMouseLeave)) {
-          const off = this.addEvent(div, 'mouseleave', () => this.handleLabelMouseLeave(i))
+          const off = this.addEvent(div, 'mouseleave', event => this.handleLabelMouseLeave(event, i))
           this.offLabels.push(off)
         }
       })
