@@ -28,6 +28,7 @@ export default class PieChart {
     this.setDpr()
     this.setDomSizeIfNeeded()
     this.setCanvas()
+    this.setLabelBox()
     this.clear()
     this.bindMedia()
     this.bindPointMouseOver()
@@ -150,16 +151,16 @@ export default class PieChart {
       return
     }
     const angle = this.getPosAngle(x, y, mouseX, mouseY)
-    const index = this.data.findIndex(row => {
+    const matchedRow = this.data.find(row => {
       return (row.startAngle <= angle) && (angle <= row.endAngle)
     })
-    const matchedRow = this.data[index]
     if (matchedRow) {
-      this.drawSliceGlow(matchedRow, index)
+      this.drawSliceGlow(matchedRow)
     }
   }
 
-  drawSliceGlow(row, index) {
+  drawSliceGlow(row) {
+    const index = this.data.findIndex(r => r === row)
     this.clearSliceGlow()
     const { x, y, radius, centerCircleRadius } = this
     const ctx = this.firstLayer.canvas.getContext('2d')
@@ -204,10 +205,22 @@ export default class PieChart {
     })
   }
 
+  handleLabelMouseOver(index) {
+    this.drawSliceGlow(this.data[index])
+  }
+
+  handleLabelMouseLeave(index) {
+    this.clearSliceGlow()
+  }
+
   setData(data) {
     this.total = data.reduce((t, row) => t + row.value, 0)
     this.data = this.setAngles(data)
-    this.raf(() => this.draw())
+    this.raf(() => {
+      const labels = this.data.map(row => row.label)
+      this.drawLabels(labels, this.styles)
+      this.draw()
+    })
   }
 
   destroy() {
