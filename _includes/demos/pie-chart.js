@@ -1,4 +1,3 @@
-import throttle from 'lodash.throttle'
 import toPixel from '@superlanding/topixel'
 
 export default function bindPieCharts() {
