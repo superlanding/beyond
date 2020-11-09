@@ -25,7 +25,12 @@ export default function supportDom(target) {
 
     addEvent(dom, name, func) {
       dom.addEventListener(name, func)
-      this._listeners.push({ dom, name, func })
+      const listener = { dom, name, func }
+      this._listeners.push(listener)
+
+      return () => {
+        this._listeners = this._listeners.filter(l => l !== listener)
+      }
     }
 
     removeEvents() {
