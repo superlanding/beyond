@@ -17,7 +17,7 @@ export default class PieChart {
     this.options = options
     this.height = options.height
     this.width = options.width
-    this.padding = isDef(options.padding) ? options.padding : 40
+    this.padding = isDef(options.padding) ? options.padding : 30
     this.styles = options.styles || DEFAULT_CHART_STYLES
     this.bg = options.bg || '#fff'
 
@@ -133,7 +133,10 @@ export default class PieChart {
   handleMouseMove(event) {
 
     const { x, y } = this
-    const { x: mouseX, y: mouseY } = this.getMousePosInCanvas(event)
+    const canvasMousePos = this.getMousePosInCanvas(event)
+    const mousePos = this.getMousePos(canvasMousePos)
+    const mouseX = canvasMousePos.x
+    const mouseY = canvasMousePos.y
 
     const distanceToCenterPoint = Math.sqrt(Math.pow(mouseX - x, 2) +
       Math.pow(mouseY - y, 2))
@@ -143,12 +146,12 @@ export default class PieChart {
     this.clearSliceGlow()
 
     if (inCenterCircle) {
-      return
+      return this.options.onPieMouseOver(mousePos, null)
     }
 
     const inPieCircle = distanceToCenterPoint <= this.radius
     if (! inPieCircle) {
-      return
+      return this.options.onPieMouseOver(mousePos, null)
     }
     const angle = this.getPosAngle(x, y, mouseX, mouseY)
     const matchedRow = this.data.find(row => {
@@ -156,6 +159,7 @@ export default class PieChart {
     })
     if (matchedRow) {
       this.drawSliceGlow(matchedRow)
+      this.options.onPieMouseOver(mousePos, matchedRow)
     }
   }
 
