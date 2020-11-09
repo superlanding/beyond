@@ -214,6 +214,9 @@ export default function chartCommon(target) {
     }
 
     drawLabels(labels, styles = DEFAULT_CHART_STYLES) {
+      if (labels.length <= 0) {
+        return
+      }
       const { labelBox, handleLabelMouseOver, handleLabelMouseLeave } = this
       this.dom.style.backgroundColor = this.bg
 
