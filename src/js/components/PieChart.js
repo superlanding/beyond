@@ -1,5 +1,6 @@
 import supportDom from '../decorators/supportDom'
 import chartCommon from '../decorators/chartCommon'
+import isFn from '../utils/isFn'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
 import { throttle } from '../utils'
@@ -209,12 +210,25 @@ export default class PieChart {
     })
   }
 
-  handleLabelMouseOver(index) {
-    this.drawSliceGlow(this.data[index])
+  handleLabelMouseOver(event, index) {
+    const row = this.data[index]
+    this.drawSliceGlow(row)
+
+    if (isFn(this.options.onLabelMouseOver)) {
+      const canvasMousePos = this.getMousePosInCanvas(event)
+      const mousePos = this.getMousePos(canvasMousePos)
+      this.options.onLabelMouseOver(mousePos, row)
+    }
   }
 
-  handleLabelMouseLeave(index) {
+  handleLabelMouseLeave(event, index) {
     this.clearSliceGlow()
+
+    if (isFn(this.options.onLabelMouseOver)) {
+      const canvasMousePos = this.getMousePosInCanvas(event)
+      const mousePos = this.getMousePos(canvasMousePos)
+      this.options.onLabelMouseOver(mousePos)
+    }
   }
 
   setData(arr) {

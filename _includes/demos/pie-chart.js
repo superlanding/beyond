@@ -9,21 +9,24 @@ export default function bindPieCharts() {
     return () => {}
   }
 
+  const onMouseOver = (mousePos, res) => {
+    if (res) {
+      chartMenu.innerHTML = `
+        <div>${res.label}: ${res.value}</div>
+      `
+      chartMenu.style.left = toPixel(mousePos.x)
+      chartMenu.style.top = toPixel(mousePos.y + 20)
+      chartMenu.style.display = 'block'
+    }
+    else {
+      chartMenu.style.display = 'none'
+    }
+  }
+
   const chartMenu = document.getElementById('chart-menu')
   const b = new PieChart(dom, {
-    onPieMouseOver(mousePos, res) {
-      if (res) {
-        chartMenu.innerHTML = `
-          <div>${res.label}: ${res.value}</div>
-        `
-        chartMenu.style.left = toPixel(mousePos.x)
-        chartMenu.style.top = toPixel(mousePos.y + 20)
-        chartMenu.style.display = 'block'
-      }
-      else {
-        chartMenu.style.display = 'none'
-      }
-    }
+    onPieMouseOver: onMouseOver,
+    onLabelMouseOver: onMouseOver
   })
 
   b.setData([
