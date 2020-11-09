@@ -219,7 +219,6 @@ export default function chartCommon(target) {
 
       this.offLabels.forEach(off => off())
       labelBox.innerHTML = ''
-      console.log('wtf', this.offLabels.length)
 
       this.offLabels.length = 0
 
