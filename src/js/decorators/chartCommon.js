@@ -1,6 +1,8 @@
 import raf from '../utils/raf'
 import isUndef from '../utils/isUndef'
+import isFn from '../utils/isFn'
 import { getDomPos, range, toPixel, isFunction } from '../utils'
+import { DEFAULT_CHART_STYLES } from '../consts'
 
 export default function chartCommon(target) {
 
@@ -12,6 +14,7 @@ export default function chartCommon(target) {
     }
 
     init() {
+      this.offLabels = []
       this.layers = []
       if (isFunction(super.init)) {
         super.init()
@@ -201,6 +204,50 @@ export default function chartCommon(target) {
       this.setCanvasSize(canvas)
 
       this.dom.appendChild(canvas)
+    }
+
+    setLabelBox() {
+      const box = document.createElement('div')
+      box.className = 'chart-box'
+      this.labelBox = box
+      this.dom.appendChild(box)
+    }
+
+    drawLabels(labels, styles = DEFAULT_CHART_STYLES) {
+      const { labelBox, handleLabelMouseOver, handleLabelMouseLeave } = this
+      this.dom.style.backgroundColor = this.bg
+
+      this.offLabels.forEach(off => off())
+      labelBox.innerHTML = ''
+      console.log('wtf', this.offLabels.length)
+
+      this.offLabels.length = 0
+
+      labels.forEach((label, i) => {
+
+        const div = document.createElement('div')
+        div.className = 'chart-box-item'
+
+        const square = document.createElement('div')
+        square.className = 'chart-box-square'
+        square.style.backgroundColor = styles[i]
+        div.appendChild(square)
+
+        const span = document.createElement('span')
+        span.textContent = label
+        div.appendChild(span)
+
+        labelBox.appendChild(div)
+
+        if (isFn(handleLabelMouseOver)) {
+          const off = this.addEvent(div, 'mouseover', () => this.handleLabelMouseOver(i))
+          this.offLabels.push(off)
+        }
+        if (isFn(handleLabelMouseLeave)) {
+          const off = this.addEvent(div, 'mouseleave', () => this.handleLabelMouseLeave(i))
+          this.offLabels.push(off)
+        }
+      })
     }
 
     setCanvasFontSize(canvas, fontSize) {
