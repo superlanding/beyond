@@ -217,7 +217,8 @@ export default class PieChart {
     this.clearSliceGlow()
   }
 
-  setData(data) {
+  setData(arr) {
+    const data = arr || []
     this.total = data.reduce((t, row) => t + row.value, 0)
     this.data = this.setAngles(data)
     this.raf(() => {
