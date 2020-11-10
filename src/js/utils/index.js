@@ -9,6 +9,8 @@ import toPixel from '@superlanding/topixel'
 // date-fns
 import addDays from 'date-fns/addDays'
 import addMonths from 'date-fns/addMonths'
+import subYears from 'date-fns/subYears'
+import addYears from 'date-fns/addYears'
 import compareAsc from 'date-fns/compareAsc'
 import endOfDay from 'date-fns/endOfDay'
 import endOfMonth from 'date-fns/endOfMonth'
@@ -21,6 +23,7 @@ import getSeconds from 'date-fns/getSeconds'
 import getYear from 'date-fns/getYear'
 import parse from 'date-fns/parse'
 import set from 'date-fns/set'
+import setMonth from 'date-fns/setMonth'
 import startOfDay from 'date-fns/startOfDay'
 import startOfMonth from 'date-fns/startOfMonth'
 import subMonths from 'date-fns/subMonths'
@@ -28,6 +31,7 @@ import toDate from 'date-fns/toDate'
 import { format } from 'date-fns-tz'
 
 // lodash
+import chunk from 'lodash.chunk'
 import debounce from 'lodash.debounce'
 import isFunction from 'lodash.isfunction'
 import noop from 'lodash.noop'
@@ -50,6 +54,8 @@ export {
   // date-fns
   addDays,
   addMonths,
+  addYears,
+  subYears,
   compareAsc,
   endOfDay,
   endOfMonth,
@@ -62,6 +68,7 @@ export {
   getYear,
   parse,
   set,
+  setMonth,
   startOfDay,
   startOfMonth,
   subMonths,
@@ -69,6 +76,7 @@ export {
   format,
 
   // lodash
+  chunk,
   debounce,
   isFunction,
   noop,
