@@ -7,6 +7,7 @@ export default function bindDatepickers() {
 
   let datepickers = []
   let timepickers = []
+  let monthpickers = []
   let dateMenus = []
   let monthMenus = []
   let unbound = false
@@ -22,6 +23,13 @@ export default function bindDatepickers() {
 
       timepickers = Array.from(document.querySelectorAll('[data-timepicker]'))
         .map(dom => new Timepicker(dom, timestamp))
+
+
+      monthpickers = $$('[data-monthpicker]')
+        .map(dom => {
+          const date = new Date()
+          return new Monthpicker(dom, { date })
+        })
 
       const date = new Date()
 
@@ -51,6 +59,7 @@ export default function bindDatepickers() {
     unbound = true
     datepickers.forEach(d => d.destroy())
     timepickers.forEach(d => d.destroy())
+    monthpickers.forEach(d => d.destroy())
     dateMenus.forEach(d => d.destroy())
     monthMenus.forEach(d => d.destroy())
   }
