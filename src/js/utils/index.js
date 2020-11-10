@@ -20,6 +20,7 @@ import getHours from 'date-fns/getHours'
 import getMinutes from 'date-fns/getMinutes'
 import getMonth from 'date-fns/getMonth'
 import getSeconds from 'date-fns/getSeconds'
+import setYear from 'date-fns/setYear'
 import getYear from 'date-fns/getYear'
 import parse from 'date-fns/parse'
 import set from 'date-fns/set'
@@ -65,6 +66,7 @@ export {
   getMinutes,
   getMonth,
   getSeconds,
+  setYear,
   getYear,
   parse,
   set,
