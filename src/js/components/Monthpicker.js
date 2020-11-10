@@ -85,6 +85,6 @@ export default class Monthpicker {
 
   destroy() {
     this.monthInput.destroy()
-    this.dateMenu.destroy()
+    this.monthMenu.destroy()
   }
 }
