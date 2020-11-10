@@ -1,6 +1,6 @@
 {
   "name": "@superlanding/beyond",
-  "version": "0.0.245",
+  "version": "0.0.246",
   "description": "The best frontend framework for super-landing.com",
   "browserslist": [
     "defaults",
@@ -57,6 +57,7 @@
     "date-time-format-timezone": "1.0.21",
     "element-dataset": "2.2.6",
     "intl": "1.2.5",
+    "lodash.chunk": "4.2.0",
     "lodash.debounce": "4.0.8",
     "lodash.isfunction": "3.0.9",
     "lodash.noop": "3.0.1",

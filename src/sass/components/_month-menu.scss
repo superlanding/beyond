@@ -1,0 +1,70 @@
+.month-menu {
+  display: none;
+  position: absolute;
+  box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
+    0 15px 35px 0 rgba(49, 49, 93, .1),
+    0 5px 15px 0 rgba(0, 0, 0, .08);
+  background-color: #fff;
+  white-space: nowrap;
+  &.static {
+    display: inline-block;
+    position: static;
+  }
+  .month-menu-content {
+    display: inline-block;
+    position: relative;
+    padding: 0 14px 14px 14px;
+    width: 252px;
+  }
+  .month-menu-caption {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: #3c4257;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+  }
+  .month-menu-caption-btn {
+    border: 0;
+    background-color: transparent;
+    display: block;
+    @include size(50px);
+
+    .icon-chevron-left,
+    .icon-chevron-right {
+      font-size: 12px;
+    }
+  }
+  .month-menu-table {
+    font-size: 14px;
+    width: 100%;
+    margin-top: 2px;
+    th, td {
+      padding: 3px;
+    }
+    td {
+      text-align: center;
+      &.cell {
+        background-color: #f7fafc;
+        cursor: pointer;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #e3e8ee;
+      }
+      &.cell.today {
+        background-color: #fffef4;
+      }
+      &.cell.selected {
+        background-color: #6c8eef;
+        color: #fff;
+        border-color: #6c8eef;
+      }
+      &.cell.selected-ex {
+        background-color: #5469d4;
+        color: #fff;
+        border-color: #5469d4;
+      }
+    }
+  }
+}
