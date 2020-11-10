@@ -67,6 +67,7 @@ export default class MonthInput {
 
   addEvents() {
     const { dom } = this
+    this.addEvent(dom, 'click', event => this.fire('click', event))
     this.addEvent(dom, 'focus', event => this.fire('focus', event))
     this.addEvent(dom, 'keyup', event => this.fire('keyup', event))
     this.addEvent(dom, 'blur', event => this.fire('blur', event))
