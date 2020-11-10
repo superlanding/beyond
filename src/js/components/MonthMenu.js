@@ -52,7 +52,7 @@ export default class MonthMenu {
 
           const isCurrentMonth = (currentYear === getYear(d)) && (currentMonth === getMonth(d))
 
-          const classname = isCurrentMonth ? 'cell selected' : 'cell'
+          const classname = isCurrentMonth ? 'cell selected-ex' : 'cell'
           return `<td class="${classname}" data-month-td="${month}">${text}</td>`
         }).join('')
         return `<tr>${tds}</tr>`
