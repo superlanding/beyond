@@ -15,10 +15,6 @@
     position: relative;
     padding: 0 14px 14px 14px;
     width: 252px;
-
-    &.second-content {
-      padding: 0 14px 14px 0;
-    }
   }
   .month-menu-caption {
     display: flex;
@@ -28,14 +24,6 @@
     text-align: center;
     height: 50px;
     line-height: 50px;
-  }
-  .month-menu-week-header {
-    li {
-      display: inline-block;
-      padding: 7px 10px;
-      font-size: 11px;
-      color: #8792a2;
-    }
   }
   .month-menu-caption-btn {
     border: 0;
