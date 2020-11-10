@@ -253,5 +253,10 @@ export default class MonthMenu {
   }
 
   destroy() {
+    this.menuTitle = null
+    this.prevBtn = null
+    this.nextBtn = null
+    this.table = null
+    this.dom.remove()
   }
 }
