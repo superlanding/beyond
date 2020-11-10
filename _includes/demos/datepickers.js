@@ -2,12 +2,14 @@ import intlReady from '../../assets/js/intlReady'
 import set from 'date-fns/set'
 
 export default function bindDatepickers() {
-  const { DateMenu, Datepicker, Timepicker } = window.beyond
+  const { DateMenu, Datepicker, Timepicker, MonthMenu, Monthpicker, $$ } = window.beyond
   const dateToTimestamp = date => parseInt(+date / 1000, 10)
 
   let datepickers = []
   let timepickers = []
+  let monthpickers = []
   let dateMenus = []
+  let monthMenus = []
   let unbound = false
 
   intlReady()
@@ -21,6 +23,13 @@ export default function bindDatepickers() {
 
       timepickers = Array.from(document.querySelectorAll('[data-timepicker]'))
         .map(dom => new Timepicker(dom, timestamp))
+
+
+      monthpickers = $$('[data-monthpicker]')
+        .map(dom => {
+          const date = new Date()
+          return new Monthpicker(dom, { date })
+        })
 
       const date = new Date()
 
@@ -36,12 +45,22 @@ export default function bindDatepickers() {
           d.show()
           return d
         })
+
+      monthMenus = $$('[data-month-menu]')
+        .map(dom => {
+          return new MonthMenu({
+            dom,
+            date: new Date()
+          })
+        })
     })
 
   return function unbindDatepickers() {
     unbound = true
     datepickers.forEach(d => d.destroy())
     timepickers.forEach(d => d.destroy())
+    monthpickers.forEach(d => d.destroy())
     dateMenus.forEach(d => d.destroy())
+    monthMenus.forEach(d => d.destroy())
   }
 }

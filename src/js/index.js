@@ -14,6 +14,8 @@ import DateTimeRanger from './components/DateTimeRanger'
 import Datepicker from './components/Datepicker'
 import Dropdown from './components/Dropdown'
 import LineChart from './components/LineChart'
+import Monthpicker from './components/Monthpicker'
+import MonthMenu from './components/MonthMenu'
 import Menu from './components/Menu'
 import Modal from './components/Modal'
 import Navbar from './components/Navbar'
@@ -51,6 +53,8 @@ export {
   Datepicker,
   Dropdown,
   LineChart,
+  Monthpicker,
+  MonthMenu,
   Menu,
   Modal,
   Navbar,
