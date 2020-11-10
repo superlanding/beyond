@@ -17,6 +17,7 @@ import LineChart from './components/LineChart'
 import Menu from './components/Menu'
 import Modal from './components/Modal'
 import Navbar from './components/Navbar'
+import PieChart from './components/PieChart'
 import Radio from './components/Radio'
 import SearchDropdown from './components/SearchDropdown'
 import Sidebar from './components/Sidebar'
@@ -53,6 +54,7 @@ export {
   Menu,
   Modal,
   Navbar,
+  PieChart,
   Radio,
   SearchDropdown,
   Sidebar,

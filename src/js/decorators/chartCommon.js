@@ -1,6 +1,8 @@
 import raf from '../utils/raf'
 import isUndef from '../utils/isUndef'
+import isFn from '../utils/isFn'
 import { getDomPos, range, toPixel, isFunction } from '../utils'
+import { DEFAULT_CHART_STYLES } from '../consts'
 
 export default function chartCommon(target) {
 
@@ -12,6 +14,7 @@ export default function chartCommon(target) {
     }
 
     init() {
+      this.offLabels = []
       this.layers = []
       if (isFunction(super.init)) {
         super.init()
@@ -50,8 +53,13 @@ export default function chartCommon(target) {
 
     clear() {
       const { ctx } = this
-      ctx.fillStyle = this.bgColor
+      ctx.fillStyle = this.bg
       ctx.fillRect(0, 0, this.width, this.height)
+    }
+
+    getHypotenuse(x1, y1, x2, y2) {
+      return Math.sqrt(Math.pow(x2 - x1, 2) +
+        Math.pow(y2 - y1, 2))
     }
 
     fillCircle(ctx, x, y, radius, style, alpha) {
@@ -60,6 +68,18 @@ export default function chartCommon(target) {
       ctx.arc(x, y, radius, 0, 2 * Math.PI)
       ctx.fillStyle = style
       ctx.globalAlpha = alpha || 1
+      ctx.fill()
+      ctx.closePath()
+      ctx.restore()
+    }
+
+    fillArc(ctx, x, y, radius, startAngle = 0, endAngle = 2 * Math.PI, options = {}) {
+      ctx.save()
+      ctx.beginPath()
+      ctx.arc(x, y, radius, startAngle, endAngle)
+      ctx.fillStyle = options.style || '#555'
+      ctx.globalAlpha = options.alpha || 1
+      ctx.lineTo(x, y)
       ctx.fill()
       ctx.closePath()
       ctx.restore()
@@ -184,6 +204,52 @@ export default function chartCommon(target) {
       this.setCanvasSize(canvas)
 
       this.dom.appendChild(canvas)
+    }
+
+    setLabelBox() {
+      const box = document.createElement('div')
+      box.className = 'chart-box'
+      this.labelBox = box
+      this.dom.appendChild(box)
+    }
+
+    drawLabels(labels, styles = DEFAULT_CHART_STYLES) {
+      if (labels.length <= 0) {
+        return
+      }
+      const { labelBox, handleLabelMouseOver, handleLabelMouseLeave } = this
+      this.dom.style.backgroundColor = this.bg
+
+      this.offLabels.forEach(off => off())
+      labelBox.innerHTML = ''
+
+      this.offLabels.length = 0
+
+      labels.forEach((label, i) => {
+
+        const div = document.createElement('div')
+        div.className = 'chart-box-item'
+
+        const square = document.createElement('div')
+        square.className = 'chart-box-square'
+        square.style.backgroundColor = styles[i]
+        div.appendChild(square)
+
+        const span = document.createElement('span')
+        span.textContent = label
+        div.appendChild(span)
+
+        labelBox.appendChild(div)
+
+        if (isFn(handleLabelMouseOver)) {
+          const off = this.addEvent(div, 'mouseover', event => this.handleLabelMouseOver(event, i))
+          this.offLabels.push(off)
+        }
+        if (isFn(handleLabelMouseLeave)) {
+          const off = this.addEvent(div, 'mouseleave', event => this.handleLabelMouseLeave(event, i))
+          this.offLabels.push(off)
+        }
+      })
     }
 
     setCanvasFontSize(canvas, fontSize) {

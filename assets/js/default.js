@@ -5,6 +5,7 @@ import bindIcons from '../../_includes/demos/icons'
 import bindCodeboxes from './bindCodeboxes'
 import bindLineCharts from '../../_includes/demos/line-chart'
 import bindBarCharts from '../../_includes/demos/bar-chart'
+import bindPieCharts from '../../_includes/demos/pie-chart'
 import bindDateTimeRangers from '../../_includes/demos/date-time-rangers'
 import bindDatepickers from '../../_includes/demos/datepickers'
 import bindModals from '../../_includes/demos/modals'
@@ -37,10 +38,10 @@ function bindAll() {
   unbinds.push(bindWidthPad())
 
   unbinds.push(bindAutocompletes())
-  //unbinds.push(bindBtns())
-  $('.btn-outline').btn('loading')
+  unbinds.push(bindBtns())
   unbinds.push(bindLineCharts())
   unbinds.push(bindBarCharts())
+  unbinds.push(bindPieCharts())
   unbinds.push(bindDateTimeRangers())
   unbinds.push(bindDatepickers())
   unbinds.push(bindModals())
