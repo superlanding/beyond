@@ -2,12 +2,13 @@ import intlReady from '../../assets/js/intlReady'
 import set from 'date-fns/set'
 
 export default function bindDatepickers() {
-  const { DateMenu, Datepicker, Timepicker } = window.beyond
+  const { DateMenu, Datepicker, Timepicker, MonthMenu, Monthpicker, $$ } = window.beyond
   const dateToTimestamp = date => parseInt(+date / 1000, 10)
 
   let datepickers = []
   let timepickers = []
   let dateMenus = []
+  let monthMenus = []
   let unbound = false
 
   intlReady()
@@ -35,6 +36,14 @@ export default function bindDatepickers() {
           d.setDate({ date, startDate: date })
           d.show()
           return d
+        })
+
+      monthMenus = $$('[data-month-menu]')
+        .map(dom => {
+          return new MonthMenu({
+            dom,
+            date: new Date()
+          })
         })
     })
 
