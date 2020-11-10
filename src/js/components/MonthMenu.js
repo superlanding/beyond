@@ -19,8 +19,8 @@ export default class MonthMenu {
 
   constructor({ dom, date, options = {} }) {
     this.dom = dom
-    this.date = date || new Date()
-    this.menuDate = this.date
+    this.date = date
+    this.menuDate = this.date || new Date()
     this.options = options
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.locale = options.locale || DEFAULT_LOCALE
@@ -37,15 +37,18 @@ export default class MonthMenu {
 
   renderTableContent() {
     const { date, menuDate, locale } = this
-    const currentYear = getYear(date)
-    const currentMonth = getMonth(date)
+
+    const currentYear = date ? getYear(date) : null
+    const currentMonth = date ? getMonth(date) : null
 
     return chunk(range(0, 12), 3)
       .map(months => {
         const tds = months.map(month => {
           const d = setMonth(menuDate, month)
           const text = format(d, 'MMM', { locale })
+
           const isCurrentMonth = (currentYear === getYear(d)) && (currentMonth === getMonth(d))
+
           const classname = isCurrentMonth ? 'cell selected' : 'cell'
           return `<td class="${classname}" data-month-td="${month}">${text}</td>`
         }).join('')
@@ -177,6 +180,11 @@ export default class MonthMenu {
       if ('monthTd' in target.dataset) {
         const year = getYear(this.menuDate)
         const month = parseInt(target.dataset.monthTd, 10)
+
+        if (! this.date) {
+          this.date = new Date(this.menuDate.getTime())
+        }
+
         this.date = setYear(this.date, year)
         this.date = setMonth(this.date, month)
         this.updateTableContent()
