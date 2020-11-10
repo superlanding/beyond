@@ -35,12 +35,11 @@ export default class MonthMenu {
     return chunk(range(0, 12), 3)
       .map(months => {
         const tds = months.map(month => {
-        const d = setMonth(date, month)
-        const text = format(d, 'MMM', { locale })
-        return `<td class="cell">${text}</td>`
-       })
-       .join('')
-       return `<tr>${tds}</tr>`
+          const d = setMonth(date, month)
+          const text = format(d, 'MMM', { locale })
+          return `<td class="cell">${text}</td>`
+        }).join('')
+        return `<tr>${tds}</tr>`
       })
       .join('')
   }
