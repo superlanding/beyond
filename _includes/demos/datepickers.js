@@ -52,5 +52,6 @@ export default function bindDatepickers() {
     datepickers.forEach(d => d.destroy())
     timepickers.forEach(d => d.destroy())
     dateMenus.forEach(d => d.destroy())
+    monthMenus.forEach(d => d.destroy())
   }
 }
