@@ -5,10 +5,13 @@ import {
   chunk,
   format,
   range,
+  setYear,
   setMonth,
   getYear,
+  getMonth,
   addYears,
-  subYears
+  subYears,
+  noop
 } from '../utils'
 
 @supportDom
@@ -16,10 +19,12 @@ export default class MonthMenu {
 
   constructor({ dom, date, options = {} }) {
     this.dom = dom
-    this.date = date
+    this.date = date || new Date()
+    this.menuDate = this.date
     this.options = options
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.locale = options.locale || DEFAULT_LOCALE
+    this.change = options.change || noop
     this.isVisible = false
     this.loopIndex = 0
     this.init()
@@ -31,17 +36,26 @@ export default class MonthMenu {
   }
 
   renderTableContent() {
-    const { date, locale } = this
+    const { date, menuDate, locale } = this
+    const currentYear = getYear(date)
+    const currentMonth = getMonth(date)
+
     return chunk(range(0, 12), 3)
       .map(months => {
         const tds = months.map(month => {
-          const d = setMonth(date, month)
+          const d = setMonth(menuDate, month)
           const text = format(d, 'MMM', { locale })
-          return `<td class="cell">${text}</td>`
+          const isCurrentMonth = (currentYear === getYear(d)) && (currentMonth === getMonth(d))
+          const classname = isCurrentMonth ? 'cell selected' : 'cell'
+          return `<td class="${classname}" data-month-td="${month}">${text}</td>`
         }).join('')
         return `<tr>${tds}</tr>`
       })
       .join('')
+  }
+
+  updateTableContent() {
+    this.table.innerHTML = this.renderTableContent()
   }
 
   addMenu() {
@@ -51,7 +65,7 @@ export default class MonthMenu {
     if (isStatic) {
       dom.classList.add('static')
     }
-    const title = getYear(this.date)
+    const title = getYear(this.menuDate)
     dom.innerHTML = `
       <div class="month-menu-content">
         <div class="month-menu-caption">
@@ -67,16 +81,19 @@ export default class MonthMenu {
             <i class="icon-chevron-right"></i>
           </button>
         </div>
-        <table class="month-menu-table">
+        <table class="month-menu-table"
+               data-month-table>
           ${this.renderTableContent()}
         </table>
       </div>
     `
     if (isStatic) {
-      this.dom.appendChild(dom)
-      this.menuTitle = this.dom.querySelector('[data-month-menu-title]')
-      this.prevBtn = this.dom.querySelector('[data-prev-month-btn]')
-      this.nextBtn = this.dom.querySelector('[data-next-month-btn]')
+      const container = this.dom
+      container.appendChild(dom)
+      this.menuTitle = container.querySelector('[data-month-menu-title]')
+      this.prevBtn = container.querySelector('[data-prev-month-btn]')
+      this.nextBtn = container.querySelector('[data-next-month-btn]')
+      this.table = container.querySelector('[data-month-table]')
     }
   }
 
@@ -85,44 +102,47 @@ export default class MonthMenu {
   }
 
   addYear(year = 1) {
-    this.date = addYears(this.date, year)
-    this.setTitle(this.date)
-  }
-
-  subYear(year = 1) {
-    this.date = subYears(this.date, year)
-    this.setTitle(this.date)
-  }
-
-  subYearLoop() {
-    const duration = (this.loopIndex === 0) ? 500 : 100
-    this.subYearTimer = setTimeout(() => {
-      this.loopIndex += 1
-      const year = parseInt((this.loopIndex / 10) + 1, 5)
-      this.subYear(year)
-      this.subYearLoop()
-    }, duration)
-    this.loopIndex += 1
-  }
-
-  clearSubYearLoop() {
-    clearTimeout(this.subYearTimer)
-    this.loopIndex = 0
+    this.menuDate = addYears(this.menuDate, year)
+    this.setTitle(this.menuDate)
+    this.updateTableContent()
   }
 
   addYearLoop() {
     const duration = (this.loopIndex === 0) ? 500 : 100
     this.addYearTimer = setTimeout(() => {
       this.loopIndex += 1
-      const year = parseInt((this.loopIndex / 10) + 1, 5)
+      const year = parseInt((this.loopIndex / 5) + 1, 10)
       this.addYear(year)
       this.addYearLoop()
     }, duration)
-    this.loopIndex += 1
   }
 
   clearAddYearLoop() {
     clearTimeout(this.addYearTimer)
+    this.loopIndex = 0
+  }
+
+  subYear(year = 1) {
+    this.menuDate = subYears(this.menuDate, year)
+    this.setTitle(this.menuDate)
+    this.updateTableContent()
+  }
+
+  subYearLoop() {
+    const duration = (this.loopIndex === 0) ? 500 : 100
+    this.subYearTimer = setTimeout(() => {
+      this.loopIndex += 1
+      const year = parseInt((this.loopIndex / 5) + 1, 10)
+      const currentYear = getYear(this.menuDate)
+      if ((currentYear - year) > 0) {
+        this.subYear(year)
+        this.subYearLoop()
+      }
+    }, duration)
+  }
+
+  clearSubYearLoop() {
+    clearTimeout(this.subYearTimer)
     this.loopIndex = 0
   }
 
@@ -131,6 +151,10 @@ export default class MonthMenu {
     const downEvent = isTouch ? 'touchstart' : 'mousedown'
 
     this.addEvent(this.prevBtn, downEvent, () => {
+      const currentYear = getYear(this.menuDate)
+      if ((currentYear - 1) <= 0) {
+        return
+      }
       this.subYear()
       this.subYearLoop()
     })
@@ -147,6 +171,22 @@ export default class MonthMenu {
     this.addEvent(this.nextBtn, upEvent, () => {
       this.clearAddYearLoop()
     })
+
+    this.addEvent(this.table, 'click', event => {
+      const { target } = event
+      if ('monthTd' in target.dataset) {
+        const year = getYear(this.menuDate)
+        const month = parseInt(target.dataset.monthTd, 10)
+        this.date = setYear(this.date, year)
+        this.date = setMonth(this.date, month)
+        this.updateTableContent()
+        this.emitChange()
+      }
+    })
+  }
+
+  emitChange() {
+    this.change(this.date)
   }
 
   show() {
