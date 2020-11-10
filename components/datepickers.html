@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
     
-      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1604911372">
+      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1605028644">
     
 
-    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1604911372">
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1605028644">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32"
@@ -27,9 +27,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
 
     
-      <script src="/beyond/dist/beyond.js?v=1604911372"></script>
-      <script src="/beyond/dist/beyond-jquery.js?v=1604911372"></script>
-      <script src="/beyond/dist/web.js?v=1604911372"></script>
+      <script src="/beyond/dist/beyond.js?v=1605028644"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1605028644"></script>
+      <script src="/beyond/dist/web.js?v=1605028644"></script>
     
   </head>
   <body class="container bg-admin">
@@ -368,6 +368,8 @@
       <a>HTML</a>
     
     
+      <a>JS</a>
+    
     
   </div>
   <div class="codebox-panes" data-panes>
@@ -392,6 +394,16 @@
 <br>
 <div data-date-menu></div>
 
+
+<br>
+<br>
+<div class="monthpicker" data-monthpicker>
+  <input class="input date-input" data-month />
+</div>
+<br>
+<br>
+<div data-month-menu></div>
+
     </div>
     
       <div>
@@ -414,6 +426,16 @@
 17
 18
 19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
 </pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"datepicker"</span> <span class="na">data-datepicker</span><span class="nt">&gt;</span>
   <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"input date-input"</span> <span class="na">data-date</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
@@ -433,9 +455,155 @@
 <span class="nt">&lt;br&gt;</span>
 <span class="nt">&lt;br&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">data-date-menu</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"monthpicker"</span> <span class="na">data-monthpicker</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"input date-input"</span> <span class="na">data-month</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-month-menu</span><span class="nt">&gt;&lt;/div&gt;</span>
 </pre></td></tr></tbody></table></code></pre></figure>
       </div>
     
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+</pre></td><td class="code"><pre><span class="k">import</span> <span class="nx">intlReady</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../assets/js/intlReady</span><span class="dl">'</span>
+<span class="k">import</span> <span class="kd">set</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">date-fns/set</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindDatepickers</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">DateMenu</span><span class="p">,</span> <span class="nx">Datepicker</span><span class="p">,</span> <span class="nx">Timepicker</span><span class="p">,</span> <span class="nx">MonthMenu</span><span class="p">,</span> <span class="nx">Monthpicker</span><span class="p">,</span> <span class="nx">$$</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+  <span class="kd">const</span> <span class="nx">dateToTimestamp</span> <span class="o">=</span> <span class="nx">date</span> <span class="o">=&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="o">+</span><span class="nx">date</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+  <span class="kd">let</span> <span class="nx">datepickers</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="kd">let</span> <span class="nx">timepickers</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="kd">let</span> <span class="nx">monthpickers</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="kd">let</span> <span class="nx">dateMenus</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="kd">let</span> <span class="nx">monthMenus</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="kd">let</span> <span class="nx">unbound</span> <span class="o">=</span> <span class="kc">false</span>
+
+  <span class="nx">intlReady</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">unbound</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span>
+      <span class="p">}</span>
+      <span class="kd">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="nx">dateToTimestamp</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
+      <span class="nx">datepickers</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-datepicker]</span><span class="dl">'</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Datepicker</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">))</span>
+
+      <span class="nx">timepickers</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-timepicker]</span><span class="dl">'</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Timepicker</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">))</span>
+
+
+      <span class="nx">monthpickers</span> <span class="o">=</span> <span class="nx">$$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-monthpicker]</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+          <span class="k">return</span> <span class="k">new</span> <span class="nx">Monthpicker</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span> <span class="nx">date</span> <span class="p">})</span>
+        <span class="p">})</span>
+
+      <span class="kd">const</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+
+      <span class="nx">dateMenus</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-date-menu]</span><span class="dl">'</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">DateMenu</span><span class="p">({</span> <span class="nx">date</span><span class="p">,</span> <span class="na">options</span><span class="p">:</span> <span class="p">{</span> <span class="nx">dom</span><span class="p">,</span> <span class="na">isStatic</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span> <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">d</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">d</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">td-click</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="p">{</span> <span class="nx">year</span><span class="p">,</span> <span class="nx">month</span><span class="p">,</span> <span class="nx">date</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">res</span>
+            <span class="kd">const</span> <span class="nx">newDate</span> <span class="o">=</span> <span class="kd">set</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(),</span> <span class="p">{</span> <span class="nx">year</span><span class="p">,</span> <span class="nx">month</span><span class="p">,</span> <span class="nx">date</span> <span class="p">})</span>
+            <span class="nx">d</span><span class="p">.</span><span class="nx">setDate</span><span class="p">({</span> <span class="na">startDate</span><span class="p">:</span> <span class="nx">newDate</span> <span class="p">})</span>
+          <span class="p">})</span>
+          <span class="nx">d</span><span class="p">.</span><span class="nx">setDate</span><span class="p">({</span> <span class="nx">date</span><span class="p">,</span> <span class="na">startDate</span><span class="p">:</span> <span class="nx">date</span> <span class="p">})</span>
+          <span class="nx">d</span><span class="p">.</span><span class="nx">show</span><span class="p">()</span>
+          <span class="k">return</span> <span class="nx">d</span>
+        <span class="p">})</span>
+
+      <span class="nx">monthMenus</span> <span class="o">=</span> <span class="nx">$$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-month-menu]</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="k">new</span> <span class="nx">MonthMenu</span><span class="p">({</span>
+            <span class="nx">dom</span><span class="p">,</span>
+            <span class="na">date</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+          <span class="p">})</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">unbindDatepickers</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">unbound</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="nx">datepickers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">d</span> <span class="o">=&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">destroy</span><span class="p">())</span>
+    <span class="nx">timepickers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">d</span> <span class="o">=&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">destroy</span><span class="p">())</span>
+    <span class="nx">monthpickers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">d</span> <span class="o">=&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">destroy</span><span class="p">())</span>
+    <span class="nx">dateMenus</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">d</span> <span class="o">=&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">destroy</span><span class="p">())</span>
+    <span class="nx">monthMenus</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">d</span> <span class="o">=&gt;</span> <span class="nx">d</span><span class="p">.</span><span class="nx">destroy</span><span class="p">())</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
     
     
   </div>
