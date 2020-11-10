@@ -1,4 +1,5 @@
 import supportDom from '../decorators/supportDom'
+import getFloatedTargetPos from '../utils/getFloatedTargetPos'
 import isTouchDevice from '../utils/isTouchDevice'
 import { DEFAULT_TIMEZONE, DEFAULT_LOCALE } from '../consts'
 import {
@@ -10,6 +11,7 @@ import {
   getYear,
   getMonth,
   addYears,
+  toPixel,
   subYears,
   noop
 } from '../utils'
@@ -17,8 +19,9 @@ import {
 @supportDom
 export default class MonthMenu {
 
-  constructor({ dom, date, options = {} }) {
-    this.dom = dom
+  constructor(options = {}) {
+    const { dom, date } = options
+    this.container = dom
     this.date = date
     this.menuDate = this.date || new Date()
     this.options = options
@@ -62,10 +65,11 @@ export default class MonthMenu {
   }
 
   addMenu() {
-    const isStatic = (!! this.dom)
+    const { container } = this
     const dom = document.createElement('div')
     dom.classList.add('month-menu')
-    if (isStatic) {
+
+    if (container) {
       dom.classList.add('static')
     }
     const title = getYear(this.menuDate)
@@ -90,14 +94,17 @@ export default class MonthMenu {
         </table>
       </div>
     `
-    if (isStatic) {
-      const container = this.dom
+    if (container) {
       container.appendChild(dom)
-      this.menuTitle = container.querySelector('[data-month-menu-title]')
-      this.prevBtn = container.querySelector('[data-prev-month-btn]')
-      this.nextBtn = container.querySelector('[data-next-month-btn]')
-      this.table = container.querySelector('[data-month-table]')
     }
+    else {
+      document.body.appendChild(dom)
+    }
+    this.menuTitle = dom.querySelector('[data-month-menu-title]')
+    this.prevBtn = dom.querySelector('[data-prev-month-btn]')
+    this.nextBtn = dom.querySelector('[data-next-month-btn]')
+    this.table = dom.querySelector('[data-month-table]')
+    this.dom = dom
   }
 
   setTitle(date) {
@@ -149,11 +156,17 @@ export default class MonthMenu {
     this.loopIndex = 0
   }
 
+  stop(event) {
+    event.preventDefault()
+    event.stopPropagation()
+  }
+
   addEvents() {
     const isTouch = isTouchDevice()
     const downEvent = isTouch ? 'touchstart' : 'mousedown'
 
-    this.addEvent(this.prevBtn, downEvent, () => {
+    this.addEvent(this.prevBtn, downEvent, event => {
+      this.stop(event)
       const currentYear = getYear(this.menuDate)
       if ((currentYear - 1) <= 0) {
         return
@@ -162,20 +175,27 @@ export default class MonthMenu {
       this.subYearLoop()
     })
 
-    this.addEvent(this.nextBtn, downEvent, () => {
+    this.addEvent(this.nextBtn, 'click', event => event.stopPropagation())
+    this.addEvent(this.prevBtn, 'click', event => event.stopPropagation())
+
+    this.addEvent(this.nextBtn, downEvent, event => {
+      this.stop(event)
       this.addYear()
       this.addYearLoop()
     })
 
     const upEvent = isTouch ? 'touchend' : 'mouseup'
-    this.addEvent(this.prevBtn, upEvent, () => {
+    this.addEvent(this.prevBtn, upEvent, event => {
+      this.stop(event)
       this.clearSubYearLoop()
     })
-    this.addEvent(this.nextBtn, upEvent, () => {
+    this.addEvent(this.nextBtn, upEvent, event => {
+      this.stop(event)
       this.clearAddYearLoop()
     })
 
     this.addEvent(this.table, 'click', event => {
+      this.stop(event)
       const { target } = event
       if ('monthTd' in target.dataset) {
         const year = getYear(this.menuDate)
@@ -193,16 +213,43 @@ export default class MonthMenu {
     })
   }
 
+  setDate(date) {
+    this.date = date
+    this.menuDate = date
+    this.setTitle(date)
+    this.updateTableContent()
+  }
+
   emitChange() {
     this.change(this.date)
   }
 
-  show() {
-    this.dom.style.display = 'block'
+  pos(src) {
+    const { dom } = this
+    const { pos } = getFloatedTargetPos({
+      src,
+      target: dom,
+      place: 'bottom',
+      align: 'left',
+      offset: 4
+    })
+    dom.style.left = toPixel(pos.left)
+    dom.style.top = toPixel(pos.top)
+  }
+
+  show(src) {
+    const { dom } = this
+    dom.style.display = 'block'
+    if (src) {
+      this.pos(src)
+    }
+    dom.style.opacity = 1
+    this.isVisible = true
   }
 
   hide() {
     this.dom.style.display = 'none'
+    this.isVisible = false
   }
 
   destroy() {
