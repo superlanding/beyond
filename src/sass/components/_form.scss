@@ -75,7 +75,7 @@ fieldset {
   }
 }
 
-label.required {
+.required {
   &:after {
     display: inline-block;
     margin-left: 4px;
