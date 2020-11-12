@@ -71,10 +71,10 @@
     filter: brightness(95%);
   }
   &.striped {
-    tr:nth-child(even) td {
+    tr:nth-child(odd) td {
       background-color: #f7fafc;
     }
-    tr.disabled:nth-child(even) td {
+    tr.disabled:nth-child(odd) td {
       @extend %disabled-td;
     }
   }
