@@ -432,6 +432,12 @@
 .icon-youtube:before {
   content: "\e981";
 }
+.icon-bug:before {
+  content: "\e999";
+}
+.icon-target1:before {
+  content: "\e9b3";
+}
 
 @if $beyond-icon-font-name == 'beyond-full' {
 
