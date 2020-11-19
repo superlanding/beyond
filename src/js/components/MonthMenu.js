@@ -6,6 +6,7 @@ import {
   chunk,
   format,
   range,
+  isFuture,
   setYear,
   setMonth,
   getYear,
@@ -27,6 +28,7 @@ export default class MonthMenu {
     this.options = options
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.locale = options.locale || DEFAULT_LOCALE
+    this.futureDateDisabled = options.futureDateDisabled || true
     this.change = options.change || noop
     this.isVisible = false
     this.loopIndex = 0
@@ -39,7 +41,7 @@ export default class MonthMenu {
   }
 
   renderTableContent() {
-    const { date, menuDate, locale } = this
+    const { date, menuDate, locale, futureDateDisabled } = this
 
     const currentYear = date ? getYear(date) : null
     const currentMonth = date ? getMonth(date) : null
@@ -52,7 +54,15 @@ export default class MonthMenu {
 
           const isCurrentMonth = (currentYear === getYear(d)) && (currentMonth === getMonth(d))
 
-          const classname = isCurrentMonth ? 'cell selected-ex' : 'cell'
+          let classname = 'cell'
+
+          if (isCurrentMonth) {
+            classname = 'cell selected-ex'
+          }
+          else if (futureDateDisabled && isFuture(d)) {
+            classname = 'cell js-disabled'
+          }
+
           return `<td class="${classname}" data-month-td="${month}">${text}</td>`
         }).join('')
         return `<tr>${tds}</tr>`
@@ -200,6 +210,10 @@ export default class MonthMenu {
       if ('monthTd' in target.dataset) {
         const year = getYear(this.menuDate)
         const month = parseInt(target.dataset.monthTd, 10)
+
+        if (target.classList.contains('js-disabled')) {
+          return
+        }
 
         if (! this.date) {
           this.date = new Date(this.menuDate.getTime())
