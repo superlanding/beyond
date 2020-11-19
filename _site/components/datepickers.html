@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
     
-      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1605622265">
+      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1605765810">
     
 
-    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1605622265">
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1605765810">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32"
@@ -27,9 +27,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
 
     
-      <script src="/beyond/dist/beyond.js?v=1605622265"></script>
-      <script src="/beyond/dist/beyond-jquery.js?v=1605622265"></script>
-      <script src="/beyond/dist/web.js?v=1605622265"></script>
+      <script src="/beyond/dist/beyond.js?v=1605765810"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1605765810"></script>
+      <script src="/beyond/dist/web.js?v=1605765810"></script>
     
   </head>
   <body class="container bg-admin">
@@ -687,6 +687,78 @@
   <p>移除 datepicker 產生的 dom 元素與 event listeners</p>
   <div class="code">
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">datepicker</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+  </div>
+  <h2>Monthpicker HTML</h2>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"monthpicker"</span> <span class="na">data-monthpicker</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"input date-input"</span> <span class="na">data-month</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-monthpicker</td>
+        <td>指定為 Monthpicker 的 dom</td>
+      </tr>
+      <tr>
+        <td>data-month</td>
+        <td>指定為月份文字框</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Datepicker JS</h2>
+  <h3>constructor</h3>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">monthpicker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Matepicker</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span></code></pre></figure>
+  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>需要指定為 monthpicker 的元素</td>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>object</td>
+        <td>選項</td>
+      </tr>
+      <tr>
+        <td>options.date</td>
+        <td>Date</td>
+        <td>預設月份</td>
+      </tr>
+      <tr>
+        <td>options.noFuture</td>
+        <td>Date</td>
+        <td>是否可以選擇未來月份，預設不可以選 ( noFuture = true )</td>
+      </tr>
+      <tr>
+        <td>options.change</td>
+        <td>function</td>
+        <td>monthpicker 被更新時的 callback</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>destroy</h3>
+  <p>移除 monthpicker 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">monthpicker</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
   </div>
 </div><!-- .doc -->
 
