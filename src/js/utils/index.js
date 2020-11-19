@@ -29,6 +29,7 @@ import startOfDay from 'date-fns/startOfDay'
 import startOfMonth from 'date-fns/startOfMonth'
 import subMonths from 'date-fns/subMonths'
 import toDate from 'date-fns/toDate'
+import isFuture from 'date-fns/isFuture'
 import { format } from 'date-fns-tz'
 
 // lodash
@@ -75,6 +76,7 @@ export {
   startOfMonth,
   subMonths,
   toDate,
+  isFuture,
   format,
 
   // lodash
