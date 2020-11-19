@@ -15,7 +15,7 @@ export default class Monthpicker {
 
     this.options = options
     this.backdropMode = options.backdropMode || 'auto'
-    this.futureDateDisabled = options.futureDateDisabled || true
+    this.noFuture = options.noFuture || true
     this.change = options.change || noop
     this.init()
   }
@@ -34,7 +34,7 @@ export default class Monthpicker {
         this.monthInput.clearStatus()
         this.monthMenu.hide()
       },
-      futureDateDisabled: this.futureDateDisabled
+      noFuture: this.noFuture
     })
     this.addEvents()
   }

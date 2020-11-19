@@ -28,7 +28,7 @@ export default class MonthMenu {
     this.options = options
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.locale = options.locale || DEFAULT_LOCALE
-    this.futureDateDisabled = options.futureDateDisabled || true
+    this.noFuture = options.noFuture || true
     this.change = options.change || noop
     this.isVisible = false
     this.loopIndex = 0
@@ -41,7 +41,7 @@ export default class MonthMenu {
   }
 
   renderTableContent() {
-    const { date, menuDate, locale, futureDateDisabled } = this
+    const { date, menuDate, locale, noFuture } = this
 
     const currentYear = date ? getYear(date) : null
     const currentMonth = date ? getMonth(date) : null
@@ -59,7 +59,7 @@ export default class MonthMenu {
           if (isCurrentMonth) {
             classname = 'cell selected-ex'
           }
-          else if (futureDateDisabled && isFuture(d)) {
+          else if (noFuture && isFuture(d)) {
             classname = 'cell js-disabled'
           }
 
