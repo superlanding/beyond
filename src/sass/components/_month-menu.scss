@@ -60,6 +60,10 @@
         color: #fff;
         border-color: #6c8eef;
       }
+      &.cell.js-disabled {
+        opacity: .4;
+        cursor: not-allowed;
+      }
       &.cell.selected-ex {
         background-color: #5469d4;
         color: #fff;
