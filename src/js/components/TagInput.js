@@ -14,6 +14,7 @@ export default class TagInput {
     this.change = options.change || noop
     this.isComposing = false
     this.raf = raf
+    this.id = 0
     this.tags = []
     this.init()
   }
@@ -74,6 +75,24 @@ export default class TagInput {
     }, 500)
   }
 
+  setTag(id, options = {}) {
+    const tag = this.tags.find(tag => tag.id === id)
+    if (! tag) {
+      return
+    }
+    if (options.classname) {
+      const originalClassname = tag.elem.className
+      tag.elem.className = options.classname
+      if (options.classnameTimeout) {
+        setTimeout(() => {
+          if (document.body.contains(tag.elem)) {
+            tag.elem.className = originalClassname
+          }
+        }, options.classnameTimeout)
+      }
+    }
+  }
+
   addTag(inputValue, res) {
     const classname = res.classname ? ` ${res.classname}` : ''
     const tag = document.createElement('div')
@@ -95,7 +114,8 @@ export default class TagInput {
     btn.addEventListener('click', handleBtnClick)
     tag.appendChild(btn)
 
-    this.tags.push({ elem: tag, remove: handleBtnClick, res })
+    this.id += 1
+    this.tags.push({ id: this.id, elem: tag, remove: handleBtnClick, res })
     this.dom.insertBefore(tag, this.inputDiv)
   }
 
