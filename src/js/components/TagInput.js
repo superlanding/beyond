@@ -128,12 +128,10 @@ export default class TagInput {
   setTags(rows) {
     const { dom, inputDiv } = this
     const tags = rows.map(row => this.getTag(row.text, row))
-    const html = tags.map(tag => tag.elem.outerHTML)
-      .join('')
-    this.tags = tags
     tags.forEach(tag => {
       dom.insertBefore(tag.elem, inputDiv)
     })
+    this.tags = tags
   }
 
   addTag(inputValue, res) {
