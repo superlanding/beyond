@@ -75,21 +75,27 @@ export default class TagInput {
     }, 500)
   }
 
-  setTag(id, options = {}) {
+  setTagAttrs(id, rows = [], options = {}) {
     const tag = this.tags.find(tag => tag.id === id)
     if (! tag) {
       return
     }
-    if (options.classname) {
-      const originalClassname = tag.elem.className
-      tag.elem.className = options.classname
-      if (options.classnameTimeout) {
-        setTimeout(() => {
-          if (document.body.contains(tag.elem)) {
-            tag.elem.className = originalClassname
-          }
-        }, options.classnameTimeout)
-      }
+    const { elem } = tag
+    const { timeout } = options
+    const oldAttrs = rows.map(row => elem.getAttribute(row.name))
+
+    rows.forEach(row => {
+      elem.setAttribute(row.name, row.value)
+    })
+
+    if (timeout) {
+      setTimeout(() => {
+        if (document.body.contains(elem)) {
+          rows.forEach((row, i) => {
+            elem.setAttribute(row.name, oldAttrs[i])
+          })
+        }
+      }, timeout)
     }
   }
 
