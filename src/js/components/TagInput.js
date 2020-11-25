@@ -90,9 +90,11 @@ export default class TagInput {
 
     if (timeout) {
       setTimeout(() => {
-        rows.forEach((row, i) => {
-          elem.setAttribute(row.name, oldAttrs[i])
-        })
+        if (document.body.contains(elem)) {
+          rows.forEach((row, i) => {
+            elem.setAttribute(row.name, oldAttrs[i])
+          })
+        }
       }, timeout)
     }
   }
