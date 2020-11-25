@@ -125,6 +125,17 @@ export default class TagInput {
     return { id: this.id, elem: tag, remove: handleBtnClick, res }
   }
 
+  setTags(rows) {
+    const { dom, inputDiv } = this
+    const tags = rows.map(row => this.getTag(row.text, row))
+    const html = tags.map(tag => tag.elem.outerHTML)
+      .join('')
+    this.tags = tags
+    tags.forEach(tag => {
+      dom.insertBefore(tag.elem, inputDiv)
+    })
+  }
+
   addTag(inputValue, res) {
     const tag = this.getTag(inputValue, res)
     this.tags.push(tag)
