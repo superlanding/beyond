@@ -82,15 +82,23 @@ export default class TagInput {
     }
     const { elem } = tag
     const { timeout } = options
-    const oldAttrs = rows.map(row => elem.getAttribute(row.name))
+
+    if (this.timer) {
+      clearTimeout(this.timer)
+      this.timer = null
+    }
+    else {
+      this.oldAttrs = rows.map(row => elem.getAttribute(row.name))
+    }
 
     rows.forEach(row => {
       elem.setAttribute(row.name, row.value)
     })
 
     if (timeout) {
-      setTimeout(() => {
+      this.timer = setTimeout(() => {
         if (document.body.contains(elem)) {
+          const { oldAttrs } = this
           rows.forEach((row, i) => {
             elem.setAttribute(row.name, oldAttrs[i])
           })
@@ -148,10 +156,9 @@ export default class TagInput {
     if (! res.isTag) {
       return this.shake()
     }
-    this.addTag(inputValue, res)
-
     input.value = ''
     suggestInput.value = ''
+    this.addTag(inputValue, res)
   }
 
   removeTagIfNeeded() {
