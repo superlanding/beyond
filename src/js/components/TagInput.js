@@ -99,7 +99,8 @@ export default class TagInput {
     }
   }
 
-  addTag(inputValue, res) {
+  getTag(inputValue, res) {
+
     const classname = res.classname ? ` ${res.classname}` : ''
     const tag = document.createElement('div')
 
@@ -119,10 +120,15 @@ export default class TagInput {
     }
     btn.addEventListener('click', handleBtnClick)
     tag.appendChild(btn)
-
     this.id += 1
-    this.tags.push({ id: this.id, elem: tag, remove: handleBtnClick, res })
-    this.dom.insertBefore(tag, this.inputDiv)
+
+    return { id: this.id, elem: tag, remove: handleBtnClick, res }
+  }
+
+  addTag(inputValue, res) {
+    const tag = this.getTag(inputValue, res)
+    this.tags.push(tag)
+    this.dom.insertBefore(tag.elem, this.inputDiv)
   }
 
   async addTagIfNeeded() {
