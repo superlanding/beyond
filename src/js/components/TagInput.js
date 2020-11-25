@@ -99,9 +99,9 @@ export default class TagInput {
     }
   }
 
-  getTag(inputValue, res) {
+  getTag(inputValue, options = {}) {
 
-    const classname = res.classname ? ` ${res.classname}` : ''
+    const classname = options.classname ? ` ${options.classname}` : ''
     const tag = document.createElement('div')
 
     tag.className = 'tag' + classname
@@ -122,7 +122,7 @@ export default class TagInput {
     tag.appendChild(btn)
     this.id += 1
 
-    return { id: this.id, elem: tag, remove: handleBtnClick, res }
+    return { id: this.id, elem: tag, remove: handleBtnClick, options }
   }
 
   setTags(rows) {
@@ -134,8 +134,8 @@ export default class TagInput {
     this.tags = tags
   }
 
-  addTag(inputValue, res) {
-    const tag = this.getTag(inputValue, res)
+  addTag(inputValue, options = {}) {
+    const tag = this.getTag(inputValue, options)
     this.tags.push(tag)
     this.dom.insertBefore(tag.elem, this.inputDiv)
   }
