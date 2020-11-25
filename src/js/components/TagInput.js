@@ -138,6 +138,7 @@ export default class TagInput {
     const tag = this.getTag(inputValue, options)
     this.tags.push(tag)
     this.dom.insertBefore(tag.elem, this.inputDiv)
+    this.change(this.tags.slice())
   }
 
   async addTagIfNeeded() {
@@ -151,8 +152,6 @@ export default class TagInput {
 
     input.value = ''
     suggestInput.value = ''
-
-    this.change(this.tags.slice())
   }
 
   removeTagIfNeeded() {
