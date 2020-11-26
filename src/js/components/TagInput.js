@@ -190,8 +190,11 @@ export default class TagInput {
     let lastValue = ''
 
     this.addEvent(input, 'keydown', async event => {
+
       const key = getKey(event)
       if ((key === 'enter') && (! this.isComposing)) {
+        event.preventDefault()
+        event.stopPropagation()
         await this.addTagIfNeeded()
       }
       else if ((key === 'backspace') && (lastValue === '')) {
