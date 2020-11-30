@@ -140,6 +140,7 @@ export default class TagInput {
       dom.insertBefore(tag.elem, inputDiv)
     })
     this.tags = tags
+    this.change(this.tags.slice())
   }
 
   addTag(inputValue, options = {}) {
