@@ -12,6 +12,7 @@ export default class TagInput {
     this.validate = options.validate || (() => ({ isTag: true }))
     this.suggest = options.suggest || noop
     this.change = options.change || noop
+    this.remove = options.remove || noop
     this.isComposing = false
     this.raf = raf
     this.id = 0
@@ -109,6 +110,9 @@ export default class TagInput {
 
   getTag(inputValue, options = {}) {
 
+    this.id += 1
+
+    const id = this.id
     const classname = options.classname ? ` ${options.classname}` : ''
     const tag = document.createElement('div')
 
@@ -124,13 +128,13 @@ export default class TagInput {
       this.tags = this.tags.filter(row => row.elem !== tag)
       btn.removeEventListener('click', handleBtnClick)
       tag.remove()
+      this.remove(id)
       this.change(this.tags.slice())
     }
     btn.addEventListener('click', handleBtnClick)
     tag.appendChild(btn)
-    this.id += 1
 
-    return { id: this.id, elem: tag, remove: handleBtnClick, options }
+    return { id, elem: tag, remove: handleBtnClick, options }
   }
 
   setTags(rows) {
