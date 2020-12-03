@@ -107,6 +107,7 @@ export default class SearchDropdown {
     menu.dataset.place = this.place
     menu.dataset.align = this.align
     this.isMenuVisible = false
+    this.lastKeyword = null
   }
 
   showMenu() {
