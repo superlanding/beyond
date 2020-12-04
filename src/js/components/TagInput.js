@@ -12,7 +12,6 @@ export default class TagInput {
     this.validate = options.validate || (() => ({ isTag: true }))
     this.suggest = options.suggest || noop
     this.change = options.change || noop
-    this.remove = options.remove || noop
     this.isComposing = false
     this.raf = raf
     this.id = 0
@@ -69,11 +68,11 @@ export default class TagInput {
     return nextWidth
   }
 
-  shake() {
+  shake(duration = 500) {
     this.dom.classList.add('shake')
     setTimeout(() => {
       this.dom.classList.remove('shake')
-    }, 500)
+    }, duration)
   }
 
   setTagAttrs(id, rows = [], options = {}) {
@@ -108,50 +107,63 @@ export default class TagInput {
     }
   }
 
-  getTag(inputValue, options = {}) {
+  getTag(row) {
 
     this.id += 1
 
     const id = this.id
-    const classname = options.classname ? ` ${options.classname}` : ''
+    const classname = row.classname ? ` ${row.classname}` : ''
     const tag = document.createElement('div')
 
     tag.className = 'tag' + classname
-    tag.textContent = inputValue
+    tag.textContent = row.text
 
     const btn = document.createElement('button')
     btn.type = 'button'
 
     // https://wesbos.com/times-html-entity-close-button
     btn.textContent = '×'
-    const handleBtnClick = () => {
+    const handleBtnClick = event => {
       this.tags = this.tags.filter(row => row.elem !== tag)
       btn.removeEventListener('click', handleBtnClick)
       tag.remove()
-      this.remove(id)
-      this.change(this.tags.slice())
+
+      if (event) {
+        this.change({
+          type: 'remove',
+          removedId: id,
+          tags: this.tags.slice()
+        })
+      }
     }
     btn.addEventListener('click', handleBtnClick)
     tag.appendChild(btn)
 
-    return { id, elem: tag, remove: handleBtnClick, options }
+    return { id, elem: tag, remove: handleBtnClick, ...row }
   }
 
   setTags(rows) {
+    this.tags.forEach(tag => tag.remove())
     const { dom, inputDiv } = this
-    const tags = rows.map(row => this.getTag(row.text, row))
+    const tags = rows.map(row => this.getTag(row))
     tags.forEach(tag => {
       dom.insertBefore(tag.elem, inputDiv)
     })
     this.tags = tags
-    this.change(this.tags.slice())
+    this.change({
+      type: 'set',
+      tags: this.tags.slice()
+    })
   }
 
-  addTag(inputValue, options = {}) {
-    const tag = this.getTag(inputValue, options)
+  addTag(row, type = 'add') {
+    const tag = this.getTag(row)
     this.tags.push(tag)
     this.dom.insertBefore(tag.elem, this.inputDiv)
-    this.change(this.tags.slice())
+    this.change({
+      type,
+      tags: this.tags.slice()
+    })
   }
 
   async addTagIfNeeded() {
@@ -163,7 +175,9 @@ export default class TagInput {
     }
     input.value = ''
     suggestInput.value = ''
-    this.addTag(inputValue, res)
+
+    const row = Object.assign({}, res, { text: inputValue })
+    this.addTag(row, 'input')
   }
 
   removeTagIfNeeded() {
