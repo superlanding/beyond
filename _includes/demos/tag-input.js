@@ -20,10 +20,11 @@ export default function bindTagInput() {
           }
           return { isTag: false }
         },
-        change(tags) {
-          console.log('change', tags)
+        change(res) {
+          console.log('change', res)
         }
       })
+
       return tagInput
     })
 
