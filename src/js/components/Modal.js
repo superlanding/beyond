@@ -58,8 +58,8 @@ export default class Modal {
   show(html) {
 
     if (this.isVisible && html) {
-      this.modal.style.display = 'block'
       this.replace(html)
+      this.modal.style.display = 'block'
       return this.triggerShowEventIfNeeded()
     }
 
