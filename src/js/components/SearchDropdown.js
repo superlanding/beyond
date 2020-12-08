@@ -182,10 +182,17 @@ export default class SearchDropdown {
   renderMenu() {
     const { menuContent, items, selectedIndex } = this
     const { renderItem } = this.options
-    menuContent.innerHTML = items.map((item, i) => {
+
+    const menuItems = items.map((item, i) => {
       return renderItem(item, i, (selectedIndex === i))
     })
-      .join('')
+
+    if (this.noDataMsgVisible) {
+      menuItems.unshift(`<div class="search-dropdown-menu-item">${this.noDataMsg}</div>`)
+    }
+
+    menuContent.innerHTML = menuItems.join('')
+
     this.setMenuContentActive(items.length > 0)
 
     const menuItemEls = this.getMenuItemEls()
