@@ -107,6 +107,19 @@ export default class SearchDropdown {
     this.loader = loader
   }
 
+  setLoading(loading) {
+    this.loading = loading
+
+    if (loading) {
+      this.input.classList.add('loading')
+      this.loader.style.display = 'block'
+    }
+    else {
+      this.input.classList.remove('loading')
+      this.loader.style.display = 'none'
+    }
+  }
+
   setMenuContentActive(active) {
     if (active) {
       return this.menuContent.classList.add('active')
