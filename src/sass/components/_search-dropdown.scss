@@ -2,10 +2,24 @@
   width: 420px;
   padding: 0;
   .search-dropdown-input-wrap {
+    position: relative;
     padding: 14px;
   }
   .search-dropdown-input.input {
     width: 100%;
+    &.loading {
+      padding-right: 40px;
+    }
+  }
+  .search-dropdown-loader {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 32px;
   }
   .search-dropdown-menu.active {
     border-top: 1px solid rgba(60, 66, 87, .16);
