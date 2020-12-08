@@ -80,6 +80,19 @@ export default class SearchDropdown {
 
     inputWrap.appendChild(input)
 
+    const loader = document.createElement('div')
+    loader.className = 'search-dropdown-loader'
+
+    loader.innerHTML = `
+      <div class="fb-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    `
+
+    inputWrap.appendChild(loader)
+
     if (this.options.placeholder) {
       input.setAttribute('placeholder', this.options.placeholder)
     }
@@ -91,6 +104,7 @@ export default class SearchDropdown {
     this.menu = menu
     this.input = input
     this.menuContent = menuContent
+    this.loader = loader
   }
 
   setMenuContentActive(active) {
