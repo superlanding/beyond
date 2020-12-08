@@ -150,15 +150,16 @@ export default class SearchDropdown {
   }
 
   renderMenu() {
-    const { menuContent, items } = this
+    const { menuContent, items, selectedIndex } = this
+    const { renderItem } = this.options
     menuContent.innerHTML = items.map((item, i) => {
-      return this.options.renderItem(item, i, (this.selectedIndex === i))
+      return renderItem(item, i, (selectedIndex === i))
     })
       .join('')
     this.setMenuContentActive(items.length > 0)
 
     const menuItemEls = this.getMenuItemEls()
-    const selectedEl = menuItemEls[this.selectedIndex]
+    const selectedEl = menuItemEls[selectedIndex]
     if (selectedEl) {
       const scrollTop = menuContent.scrollTop
       const contentTop = menuContent.offsetTop
@@ -168,10 +169,10 @@ export default class SearchDropdown {
       const elBottom = elTop + elHeight
 
       if (elTop < contentTop) {
-        this.menuContent.scrollTop -= elHeight
+        menuContent.scrollTop -= elHeight
       }
       else if (elBottom > contentBottom) {
-        this.menuContent.scrollTop += elHeight
+        menuContent.scrollTop += elHeight
       }
     }
   }
