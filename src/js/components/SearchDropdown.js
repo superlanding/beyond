@@ -25,12 +25,15 @@ export default class SearchDropdown {
     this.offset = options.offset || 14
     this.offsetTop = options.offsetTop || 0
     this.offsetLeft = options.offsetLeft || 0
+    this.noDataMsg = options.noDataMsg || '沒有資料'
     this.isMenuVisible = false
     this.lastKeyword = null
     this.selectedIndex = 0
     this.items = []
     this.compositionStarted = false
     this.compositionJustEnded = false
+    this.noDataMsgVisible = false
+    this.loading = true
     this.init()
   }
 
