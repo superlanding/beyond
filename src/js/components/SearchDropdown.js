@@ -225,7 +225,18 @@ export default class SearchDropdown {
     }
     this.resetSelectedIndex()
     this.lastKeyword = keyword
+    this.noDataMsgVisible = false
+    this.setItems([])
+
+    this.setLoading(true)
+
     const items = await this.options.getData(keyword)
+
+    this.setLoading(false)
+
+    if (items.length === 0) {
+      this.noDataMsgVisible = true
+    }
 
     if (this.lastKeyword === this.input.value) {
       this.setItems(items)
