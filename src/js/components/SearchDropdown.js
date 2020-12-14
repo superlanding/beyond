@@ -251,7 +251,7 @@ export default class SearchDropdown {
     const rows = this.getMenuItemEls()
     let node = target
     while (node.parentNode !== parent) {
-      if ('item' in node.dataset) {
+      if (node.dataset && ('item' in node.dataset)) {
         const index = rows.findIndex(row => row === node)
         return this.items[index]
       }
