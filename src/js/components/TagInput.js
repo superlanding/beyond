@@ -170,6 +170,11 @@ export default class TagInput {
     const { input, suggestInput } = this
     const inputValue = suggestInput.value || input.value
     const res = await this.validate(inputValue)
+    if (res.clear) {
+      input.value = ''
+      suggestInput.value = ''
+      return
+    }
     if (! res.isTag) {
       return this.shake()
     }
