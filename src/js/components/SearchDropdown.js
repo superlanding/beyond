@@ -247,17 +247,10 @@ export default class SearchDropdown {
     return Array.from(this.menuContent.querySelectorAll('[data-item]'))
   }
 
-  findClickedItem(target, parent) {
-    const rows = this.getMenuItemEls()
-    let node = target
-    while (node.parentNode !== parent) {
-      if (node.dataset && ('item' in node.dataset)) {
-        const index = rows.findIndex(row => row === node)
-        return this.items[index]
-      }
-      node = node.parentNode
-    }
-    return null
+  findClickedItem(target) {
+    const index = this.getMenuItemEls()
+      .findIndex(item => (target === item) || (item.contains(target)))
+    return this.items[index]
   }
 
   isInputFocused() {
