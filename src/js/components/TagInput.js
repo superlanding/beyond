@@ -248,7 +248,7 @@ export default class TagInput {
 
   destroy() {
     this.tags.forEach(tag => tag.remove())
-    this.inputDiv.remove()
+    this.inputDiv && this.inputDiv.remove()
     this.canvas = null
     this.input = null
     this.suggestInput = null
