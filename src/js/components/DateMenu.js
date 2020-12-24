@@ -12,13 +12,13 @@ import {
   getDaysInMonth,
   getMonth,
   getYear,
-  throttle,
   isFuture,
   range,
   set,
   startOfDay,
   startOfMonth,
   subMonths,
+  throttle,
   toPixel,
   format
 } from '../utils'
