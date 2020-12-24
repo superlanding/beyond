@@ -59,6 +59,8 @@ export default class Modal {
 
     if (this.isVisible && html) {
       this.replace(html)
+      this.modal.classList.add('js-active')
+      this.modal.style.display = 'block'
       return this.triggerShowEventIfNeeded()
     }
 

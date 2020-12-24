@@ -43,7 +43,7 @@ const tagInput = new TagInput(dom, options)
       <tr>
         <td>options.change</td>
         <td>function</td>
-        <td>標籤有異動時會呼叫這個 callback，回傳標籤陣列 [{ elem, remove, res }...]</td>
+        <td>標籤有異動時會呼叫這個 callback</td>
         <td></td>
       </tr>
     </tbody>
@@ -53,7 +53,7 @@ const tagInput = new TagInput(dom, options)
   <p>新增標籤</p>
   <div class="code">
 {% highlight js %}
-tagInput.addTag('tag name', options)
+tagInput.addTag({ text: 'something' })
 {% endhighlight %}
   </div>
 

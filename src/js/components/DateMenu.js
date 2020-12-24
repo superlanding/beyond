@@ -12,12 +12,13 @@ import {
   getDaysInMonth,
   getMonth,
   getYear,
-  throttle,
+  isFuture,
   range,
   set,
   startOfDay,
   startOfMonth,
   subMonths,
+  throttle,
   toPixel,
   format
 } from '../utils'
@@ -46,6 +47,7 @@ export default class DateMenu {
     this.endDate = endDate
     this.hoveredCellData = null
     this.options = options
+    this.noFuture = options.noFuture || false
     this.tz = options.tz || DEFAULT_TIMEZONE
     this.locale = options.locale || DEFAULT_LOCALE
     this.captionPattern = options.captionPattern || 'yyyy MMMM'
@@ -74,7 +76,7 @@ export default class DateMenu {
 
   getTableRows(date) {
 
-    const { startDate, endDate } = this
+    const { noFuture, startDate, endDate } = this
 
     const daysInMonth = getDaysInMonth(date)
     const firstDateOfMonth = startOfMonth(date)
@@ -118,6 +120,7 @@ export default class DateMenu {
         isStartDate: dateEq(initialStartDate, d),
         isEndDate: dateEq(initialEndDate, d),
         isSelected: (resCompareStart <= 0) && (resCompareEnd >= 0),
+        isDisabled: noFuture && isFuture(d),
         isToday: (today === formatDate(d)),
         day
       }
@@ -190,6 +193,9 @@ export default class DateMenu {
   getTdHtml(row) {
     if (row.type === CELL_TYPE_EMPTY) {
       return '<td></td>'
+    }
+    if (row.isDisabled) {
+      return `<td class="cell js-disabled">${row.day}</td>`
     }
     if (row.isStartDate || row.isEndDate) {
       return `<td class="cell selected-ex" data-date-table-cell>${row.day}</td>`

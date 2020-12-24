@@ -25,12 +25,15 @@ export default class SearchDropdown {
     this.offset = options.offset || 14
     this.offsetTop = options.offsetTop || 0
     this.offsetLeft = options.offsetLeft || 0
+    this.noDataMsg = options.noDataMsg || '沒有資料'
     this.isMenuVisible = false
     this.lastKeyword = null
     this.selectedIndex = 0
     this.items = []
     this.compositionStarted = false
     this.compositionJustEnded = false
+    this.noDataMsgVisible = false
+    this.loading = true
     this.init()
   }
 
@@ -77,6 +80,19 @@ export default class SearchDropdown {
 
     inputWrap.appendChild(input)
 
+    const loader = document.createElement('div')
+    loader.className = 'search-dropdown-loader'
+
+    loader.innerHTML = `
+      <div class="fb-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    `
+
+    inputWrap.appendChild(loader)
+
     if (this.options.placeholder) {
       input.setAttribute('placeholder', this.options.placeholder)
     }
@@ -88,6 +104,20 @@ export default class SearchDropdown {
     this.menu = menu
     this.input = input
     this.menuContent = menuContent
+    this.loader = loader
+  }
+
+  setLoading(loading) {
+    this.loading = loading
+
+    if (loading) {
+      this.input.classList.add('loading')
+      this.loader.style.display = 'block'
+    }
+    else {
+      this.input.classList.remove('loading')
+      this.loader.style.display = 'none'
+    }
   }
 
   setMenuContentActive(active) {
@@ -107,6 +137,7 @@ export default class SearchDropdown {
     menu.dataset.place = this.place
     menu.dataset.align = this.align
     this.isMenuVisible = false
+    this.lastKeyword = null
   }
 
   showMenu() {
@@ -149,15 +180,23 @@ export default class SearchDropdown {
   }
 
   renderMenu() {
-    const { menuContent, items } = this
-    menuContent.innerHTML = items.map((item, i) => {
-      return this.options.renderItem(item, i, (this.selectedIndex === i))
+    const { menuContent, items, selectedIndex } = this
+    const { renderItem } = this.options
+
+    const menuItems = items.map((item, i) => {
+      return renderItem(item, i, (selectedIndex === i))
     })
-      .join('')
+
+    if (this.noDataMsgVisible) {
+      menuItems.unshift(`<div class="search-dropdown-menu-item">${this.noDataMsg}</div>`)
+    }
+
+    menuContent.innerHTML = menuItems.join('')
+
     this.setMenuContentActive(items.length > 0)
 
     const menuItemEls = this.getMenuItemEls()
-    const selectedEl = menuItemEls[this.selectedIndex]
+    const selectedEl = menuItemEls[selectedIndex]
     if (selectedEl) {
       const scrollTop = menuContent.scrollTop
       const contentTop = menuContent.offsetTop
@@ -167,10 +206,10 @@ export default class SearchDropdown {
       const elBottom = elTop + elHeight
 
       if (elTop < contentTop) {
-        this.menuContent.scrollTop -= elHeight
+        menuContent.scrollTop -= elHeight
       }
       else if (elBottom > contentBottom) {
-        this.menuContent.scrollTop += elHeight
+        menuContent.scrollTop += elHeight
       }
     }
   }
@@ -186,7 +225,18 @@ export default class SearchDropdown {
     }
     this.resetSelectedIndex()
     this.lastKeyword = keyword
+    this.noDataMsgVisible = false
+    this.setItems([])
+
+    this.setLoading(true)
+
     const items = await this.options.getData(keyword)
+
+    this.setLoading(false)
+
+    if (items.length === 0) {
+      this.noDataMsgVisible = true
+    }
 
     if (this.lastKeyword === this.input.value) {
       this.setItems(items)
@@ -197,17 +247,10 @@ export default class SearchDropdown {
     return Array.from(this.menuContent.querySelectorAll('[data-item]'))
   }
 
-  findClickedItem(target, parent) {
-    const rows = this.getMenuItemEls()
-    let node = target
-    while (node.parentNode !== parent) {
-      if ('item' in node.dataset) {
-        const index = rows.findIndex(row => row === node)
-        return this.items[index]
-      }
-      node = node.parentNode
-    }
-    return null
+  findClickedItem(target) {
+    const index = this.getMenuItemEls()
+      .findIndex(item => (target === item) || (item.contains(target)))
+    return this.items[index]
   }
 
   isInputFocused() {
@@ -349,5 +392,9 @@ export default class SearchDropdown {
 
   destroy() {
     this.menu.remove()
+    this.menu = null
+    this.input = null
+    this.menuContent = null
+    this.loader = null
   }
 }

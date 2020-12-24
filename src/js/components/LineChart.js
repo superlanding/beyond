@@ -553,6 +553,7 @@ export default class LineChart {
     if (isDef(toYLabel)) {
       mem.clear(this.toYLabel)
     }
+    this.pointsArr.length = 0
     this.clearPointPos()
     this.unbindMedia()
     this.removeAllLayers()

@@ -70,6 +70,10 @@
         border-style: solid;
         border-color: #e3e8ee;
       }
+      &.cell.js-disabled {
+        opacity: .4;
+        cursor: not-allowed;
+      }
       &.cell.today {
         background-color: #fffef4;
       }
