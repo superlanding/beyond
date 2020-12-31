@@ -59,6 +59,7 @@ module BeyondForm
                        end
       @acts_like_form_tag = options[:acts_like_form_tag]
       add_form_role_and_form_inline options
+      default_autocomplete_off options
       super
     end
     # rubocop:enable Metrics/AbcSize
@@ -70,6 +71,11 @@ module BeyondForm
       return unless options[:layout] == :inline
 
       options[:html][:class] = [options[:html][:class], "form-inline"].compact.join(" ")
+    end
+
+    def default_autocomplete_off(options)
+      options[:html] ||= {}
+      options[:html][:autocomplete] ||= "off"
     end
 
     def fields_for_with_beyond(record_name, record_object=nil, fields_options={}, &block)
