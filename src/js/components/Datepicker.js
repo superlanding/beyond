@@ -63,7 +63,12 @@ export default class Datepicker {
     this.focused = true
     this.clearInputStatus()
     this.dateInput.setActive(true)
-    this.dateMenu.setDate({ date: this.menuDate })
+
+    this.dateMenu.setDate({
+      date: this.menuDate,
+      startDate: this.date
+    })
+
     this.dateMenu.show(this.dom)
     this.timeMenu && this.timeMenu.hide()
   }
@@ -88,7 +93,8 @@ export default class Datepicker {
       return
     }
 
-    const res = parse(value, dateInput.datePattern, date)
+    const res = parse(value, dateInput.datePattern, date || new Date())
+
     this.nextDate = null
     if (res.toString() === 'Invalid Date') {
       return dateInput.setDanger(true)
@@ -107,16 +113,17 @@ export default class Datepicker {
   handleDateInputBlur() {
     const { nextDate, date, dateInput } = this
 
-    if (date === null) {
+    if ((date === null) && (nextDate === null)) {
       dateInput.setDate(null)
       this.timeInput && this.timeInput.setDate(null)
       this._blurTimer = setTimeout(() => this.emitChange(), 50)
     }
     else if (nextDate) {
       this.date = nextDate
+      this.menuDate = nextDate
       dateInput.setDate(nextDate)
-      this.dateMenu.setDate({ startDate: nextDate })
       this.nextDate = null
+      this.emitChange()
     }
     else {
       dateInput.setDate(date)
