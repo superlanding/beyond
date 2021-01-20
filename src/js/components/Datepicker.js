@@ -93,7 +93,8 @@ export default class Datepicker {
       return
     }
 
-    const res = parse(value, dateInput.datePattern, date)
+    const res = parse(value, dateInput.datePattern, date || new Date())
+
     this.nextDate = null
     if (res.toString() === 'Invalid Date') {
       return dateInput.setDanger(true)
@@ -112,7 +113,7 @@ export default class Datepicker {
   handleDateInputBlur() {
     const { nextDate, date, dateInput } = this
 
-    if (date === null) {
+    if ((date === null) && (nextDate === null)) {
       dateInput.setDate(null)
       this.timeInput && this.timeInput.setDate(null)
       this._blurTimer = setTimeout(() => this.emitChange(), 50)
@@ -121,7 +122,6 @@ export default class Datepicker {
       this.date = nextDate
       this.menuDate = nextDate
       dateInput.setDate(nextDate)
-      this.dateMenu.setDate({ startDate: nextDate })
       this.nextDate = null
       this.emitChange()
     }
