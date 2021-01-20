@@ -63,7 +63,12 @@ export default class Datepicker {
     this.focused = true
     this.clearInputStatus()
     this.dateInput.setActive(true)
-    this.dateMenu.setDate({ date: this.menuDate })
+
+    this.dateMenu.setDate({
+      date: this.menuDate,
+      startDate: this.date
+    })
+
     this.dateMenu.show(this.dom)
     this.timeMenu && this.timeMenu.hide()
   }
@@ -114,9 +119,11 @@ export default class Datepicker {
     }
     else if (nextDate) {
       this.date = nextDate
+      this.menuDate = nextDate
       dateInput.setDate(nextDate)
       this.dateMenu.setDate({ startDate: nextDate })
       this.nextDate = null
+      this.emitChange()
     }
     else {
       dateInput.setDate(date)
