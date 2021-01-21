@@ -16,6 +16,7 @@ export default class PieChart {
     this.total = 0
 
     this.options = options
+    this.labelVisible = isDef(options.labelVisible) ? options.labelVisible : true
     this.height = options.height
     this.width = options.width
     this.padding = isDef(options.padding) ? options.padding : 30
@@ -236,8 +237,10 @@ export default class PieChart {
     this.total = data.reduce((t, row) => t + row.value, 0)
     this.data = this.setAngles(data)
     this.raf(() => {
-      const labels = this.data.map(row => row.label)
-      this.drawLabels(labels, this.styles)
+      if (this.labelVisible) {
+        const labels = this.data.map(row => row.label)
+        this.drawLabels(labels, this.styles)
+      }
       this.draw()
     })
   }
