@@ -26,6 +26,7 @@ export default class SearchDropdown {
     this.offsetTop = options.offsetTop || 0
     this.offsetLeft = options.offsetLeft || 0
     this.noDataMsg = options.noDataMsg || '沒有資料'
+    this.getFloatedTargetPos = options.getFloatedTargetPos || getFloatedTargetPos
     this.isMenuVisible = false
     this.lastKeyword = null
     this.selectedIndex = 0
@@ -164,7 +165,7 @@ export default class SearchDropdown {
 
   adjustMenuPos() {
     const { menu, dom, offset, offsetLeft, offsetTop } = this
-    const { pos, place, align } = getFloatedTargetPos({
+    const { pos, place, align } = this.getFloatedTargetPos({
       src: dom,
       target: menu,
       place: this.place,
