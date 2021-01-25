@@ -1,77 +1,435 @@
----
-layout: default
-title: Utils
----
-<div>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
+    <title>Utils | Beyond</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+
+    
+      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1611563101">
+    
+
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1611563101">
+    <link rel="apple-touch-icon" sizes="180x180"
+      href="/beyond/assets/img/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+      href="/beyond/assets/img/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+      href="/beyond/assets/img/icons/favicon-16x16.png">
+<link rel="manifest" href="/beyond/assets/img/icons/manifest.json">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+
+    
+      <script src="/beyond/dist/beyond.js?v=1611563101"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1611563101"></script>
+      <script src="/beyond/dist/web.js?v=1611563101"></script>
+    
+  </head>
+  <body class="container bg-admin">
+    <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
+      <i class="icon-hamburger"></i>
+    </button>
+    <div class="row">
+      <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
+  <ul>
+    
+      <li>
+
+        
+          
+            <a href="/beyond/" class="nav-item">Home</a>
+          
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Layout"
+               data-default-visible>Layout<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Layout">
+            
+              <li>
+                
+                  <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/layout/visibility-utilities.html" class="nav-item">Visibility Utilities</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/layout/spacing-utilities.html" class="nav-item">Spacing Utilities</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Content"
+               data-default-visible>Content<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Content">
+            
+              <li>
+                
+                  <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/content/typography.html" class="nav-item">Typography</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Components"
+               data-default-visible>Components<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Components">
+            
+              <li>
+                
+                  <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/alerts.html" class="nav-item">Alerts</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/avatars.html" class="nav-item">Avatars</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/badges.html" class="nav-item">Badges</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/breadcrumbs.html" class="nav-item">Breadcrumbs</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/buttons.html" class="nav-item">Buttons</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/button-groups.html" class="nav-item">Button Groups</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/cards.html" class="nav-item">Cards</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/footers.html" class="nav-item">Footers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/forms.html" class="nav-item">Forms</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/pagination.html" class="nav-item">Pagination</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/search-dropdowns.html" class="nav-item">Search Dropdowns</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/icons.html" class="nav-item">Icons</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/lists.html" class="nav-item">Lists</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/modals.html" class="nav-item">Modals</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tables.html" class="nav-item">Tables</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tag-inputs.html" class="nav-item">Tag Inputs</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Charts"
+               data-default-visible>Charts<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Charts">
+            
+              <li>
+                
+                  <a href="/beyond/charts/bar-chart.html" class="nav-item">Bar Chart</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/charts/line-chart.html" class="nav-item">Line Chart</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/charts/pie-chart.html" class="nav-item">Pie Chart</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Integrations"
+               data-default-visible>Integrations<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Integrations">
+            
+              <li>
+                
+                  <a href="/beyond/integrations/turbolinks.html" class="nav-item">Turbolinks</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/integrations/jquery.html" class="nav-item">jQuery</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Others"
+               data-default-visible>Others<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Others">
+            
+              <li>
+                
+                  <a href="/beyond/others/utils.html" class="nav-item active">Utils</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+      <main class="col-md-8 col-xl-10 main">
+        <div>
   <h1>Utils</h1>
   <div class="doc">
     <h3>b_attr</h3>
     <div class="code-label">為了方便辨識單頁形式的 JavaScript，b_attr 會產生一個可以套用在 dataset 的 Hash 包含 rails 的 controller 名稱與 action 名稱</div>
     <div class="code">
-{% highlight haml %}
-%html
-  %head
-  %body{b_attr}
-{% endhighlight %}
+<figure class="highlight"><pre><code class="language-haml" data-lang="haml"><span class="nt">%html</span>
+  <span class="nt">%head</span>
+  <span class="nt">%body</span><span class="p">{</span><span class="n">b_attr</span><span class="p">}</span></code></pre></figure>
     </div>
   </div>
 
   <div class="doc">
     <h3>DOM 相關</h3>
     <div class="code">
-{% highlight js %}
-const { Turbolinks } = window
-const { bind, unbindAll, on, onload, load, onunload, unload } = window.beyond
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="p">{</span> <span class="nx">Turbolinks</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">bind</span><span class="p">,</span> <span class="nx">unbindAll</span><span class="p">,</span> <span class="nx">on</span><span class="p">,</span> <span class="nx">onload</span><span class="p">,</span> <span class="nx">load</span><span class="p">,</span> <span class="nx">onunload</span><span class="p">,</span> <span class="nx">unload</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
 
-Turbolinks.start()
+<span class="nx">Turbolinks</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
 
-// 這裡不會馬上執行
-// 只是先把要在 /home 執行的方法收集起來
-// home, index 分別對應到 body 標籤上的 data-controller 與 data-action
-onload('home', 'index', () => {
+<span class="c1">// 這裡不會馬上執行</span>
+<span class="c1">// 只是先把要在 /home 執行的方法收集起來</span>
+<span class="c1">// home, index 分別對應到 body 標籤上的 data-controller 與 data-action</span>
+<span class="nx">onload</span><span class="p">(</span><span class="dl">'</span><span class="s1">home</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">index</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
-  on(document.body, 'click', () => {
-    alert('document.body 被點擊了')
-  })
-  // 上面的寫法等同於 document.body.addEventListener('click', ...)
-  // 只是透過一個方法紀錄註冊的對象、事件與方法
-  // 方便在之後 turbolinks:before-cache 事件觸發時
-  // 移除已經監聽的事件，避免 memory leak
-})
+  <span class="nx">on</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">document.body 被點擊了</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="c1">// 上面的寫法等同於 document.body.addEventListener('click', ...)</span>
+  <span class="c1">// 只是透過一個方法紀錄註冊的對象、事件與方法</span>
+  <span class="c1">// 方便在之後 turbolinks:before-cache 事件觸發時</span>
+  <span class="c1">// 移除已經監聽的事件，避免 memory leak</span>
+<span class="p">})</span>
 
-// https://github.com/turbolinks/turbolinks/issues/167#issuecomment-313526256
-// 如果覺得 onload(controller, action, ...) 這種寫法很麻煩
-// 想要用 inline js 實作，必須注意 inline 的 js 有可能會被連續執行兩次
-// 在 inline js 裡也必須實作解除事件的行為，例如透過 on 與 onunload 方法
+<span class="c1">// https://github.com/turbolinks/turbolinks/issues/167#issuecomment-313526256</span>
+<span class="c1">// 如果覺得 onload(controller, action, ...) 這種寫法很麻煩</span>
+<span class="c1">// 想要用 inline js 實作，必須注意 inline 的 js 有可能會被連續執行兩次</span>
+<span class="c1">// 在 inline js 裡也必須實作解除事件的行為，例如透過 on 與 onunload 方法</span>
 
-// https://github.com/turbolinks/turbolinks#full-list-of-events
-// 當 turbolinks:load 事件發生時
-// 把之前 onload 收集的方法按照順序觸發
-// 符合 controller & action 名稱的才會執行
-document.addEventListener('turbolinks:load', () => {
-  bind()    // beyond 元件的綁定最好放在 load 之前
-  load()
-})
+<span class="c1">// https://github.com/turbolinks/turbolinks#full-list-of-events</span>
+<span class="c1">// 當 turbolinks:load 事件發生時</span>
+<span class="c1">// 把之前 onload 收集的方法按照順序觸發</span>
+<span class="c1">// 符合 controller &amp; action 名稱的才會執行</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">turbolinks:load</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">bind</span><span class="p">()</span>    <span class="c1">// beyond 元件的綁定最好放在 load 之前</span>
+  <span class="nx">load</span><span class="p">()</span>
+<span class="p">})</span>
 
-onunload('home', 'index', () => {
-  // 要離開 /home 時，要移除 jQuery 或其他 library 綁定的事件可以在這裡做
-  // 例如 jQuery 曾經綁定過的 click, change 等事件
-  // $('body').off('click')
-})
+<span class="nx">onunload</span><span class="p">(</span><span class="dl">'</span><span class="s1">home</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">index</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// 要離開 /home 時，要移除 jQuery 或其他 library 綁定的事件可以在這裡做</span>
+  <span class="c1">// 例如 jQuery 曾經綁定過的 click, change 等事件</span>
+  <span class="c1">// $('body').off('click')</span>
+<span class="p">})</span>
 
-document.addEventListener('turbolinks:before-cache', () => {
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">turbolinks:before-cache</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
-  // 解除曾經透過 on 綁定的事件
-  offAll()
+  <span class="c1">// 解除曾經透過 on 綁定的事件</span>
+  <span class="nx">offAll</span><span class="p">()</span>
 
-  // 觸發 onunload 收集的方法
-  unload()
+  <span class="c1">// 觸發 onunload 收集的方法</span>
+  <span class="nx">unload</span><span class="p">()</span>
 
-  // 最後解除 beyond 元件
-  unbindAll()
-})
-
-{% endhighlight %}
+  <span class="c1">// 最後解除 beyond 元件</span>
+  <span class="nx">unbindAll</span><span class="p">()</span>
+<span class="p">})</span></code></pre></figure>
     </div>
   </div>
 </div>
+
+      </main>
+    </div>
+    <div id="chart-menu" class="chart-menu"></div>
+  </body>
+</html>

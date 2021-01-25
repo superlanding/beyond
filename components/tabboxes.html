@@ -1,32 +1,1751 @@
----
-layout: default
-title: Tabboxes
----
-<div class="page-tabboxes">
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
+    <title>Tabboxes | Beyond</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+
+    
+      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1611563101">
+    
+
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1611563101">
+    <link rel="apple-touch-icon" sizes="180x180"
+      href="/beyond/assets/img/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+      href="/beyond/assets/img/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+      href="/beyond/assets/img/icons/favicon-16x16.png">
+<link rel="manifest" href="/beyond/assets/img/icons/manifest.json">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+
+    
+      <script src="/beyond/dist/beyond.js?v=1611563101"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1611563101"></script>
+      <script src="/beyond/dist/web.js?v=1611563101"></script>
+    
+  </head>
+  <body class="container bg-admin">
+    <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
+      <i class="icon-hamburger"></i>
+    </button>
+    <div class="row">
+      <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
+  <ul>
+    
+      <li>
+
+        
+          
+            <a href="/beyond/" class="nav-item">Home</a>
+          
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Layout"
+               data-default-visible>Layout<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Layout">
+            
+              <li>
+                
+                  <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/layout/visibility-utilities.html" class="nav-item">Visibility Utilities</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/layout/spacing-utilities.html" class="nav-item">Spacing Utilities</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Content"
+               data-default-visible>Content<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Content">
+            
+              <li>
+                
+                  <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/content/typography.html" class="nav-item">Typography</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Components"
+               data-default-visible>Components<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Components">
+            
+              <li>
+                
+                  <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/alerts.html" class="nav-item">Alerts</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/avatars.html" class="nav-item">Avatars</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/badges.html" class="nav-item">Badges</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/breadcrumbs.html" class="nav-item">Breadcrumbs</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/buttons.html" class="nav-item">Buttons</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/button-groups.html" class="nav-item">Button Groups</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/cards.html" class="nav-item">Cards</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/date-time-rangers.html" class="nav-item">DateTimeRangers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/footers.html" class="nav-item">Footers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/forms.html" class="nav-item">Forms</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/pagination.html" class="nav-item">Pagination</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/search-dropdowns.html" class="nav-item">Search Dropdowns</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/icons.html" class="nav-item">Icons</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/lists.html" class="nav-item">Lists</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/modals.html" class="nav-item">Modals</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tables.html" class="nav-item">Tables</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tabboxes.html" class="nav-item active">Tabboxes</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tag-inputs.html" class="nav-item">Tag Inputs</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Charts"
+               data-default-visible>Charts<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Charts">
+            
+              <li>
+                
+                  <a href="/beyond/charts/bar-chart.html" class="nav-item">Bar Chart</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/charts/line-chart.html" class="nav-item">Line Chart</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/charts/pie-chart.html" class="nav-item">Pie Chart</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Integrations"
+               data-default-visible>Integrations<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Integrations">
+            
+              <li>
+                
+                  <a href="/beyond/integrations/turbolinks.html" class="nav-item">Turbolinks</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/integrations/jquery.html" class="nav-item">jQuery</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Others"
+               data-default-visible>Others<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Others">
+            
+              <li>
+                
+                  <a href="/beyond/others/utils.html" class="nav-item">Utils</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+      <main class="col-md-8 col-xl-10 main">
+        <div class="page-tabboxes">
   <h1>過濾按鈕</h1>
-  {%
-    include codebox.html
-    result="demos/tabbox-uno.html"
-    html="demos/tabbox-uno.html"
-    js="demos/tabbox.js"
-  %}
-  {%
-    include codebox.html
-    result="demos/tabbox-sm.html"
-    html="demos/tabbox-sm.html"
-    js="demos/tabbox.js"
-  %}
-  {%
-    include codebox.html
-    result="demos/tabbox.html"
-    html="demos/tabbox.html"
-    js="demos/tabbox.js"
-  %}
-  {%
-    include codebox.html
-    result="demos/tabbox-lg.html"
-    html="demos/tabbox-lg.html"
-    js="demos/tabbox.js"
-  %}
-  {% include docs/tabboxes.html %}
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+      <a>JS</a>
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <div class="tabbox tabbox-uno" data-tabbox>
+   <button class="tab-btn" data-tabbox-item="all" data-default>全部</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="new">新訂單</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="waiting">等待中</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="confirming">確認中</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="confirmed">已確認</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="wait-for-shipping">待出貨</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="shipping"
+           >出貨中</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="shipped">已出貨</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="delay">延遲出貨</button><!--
+--><button class="tab-btn"
+           data-tabbox-dropdown
+           data-target="menu-md-exchange">
+           退換貨
+     <i class="icon-chevron-down"></i>
+   </button><!--
+--><button class="tab-btn"
+           data-tabbox-dropdown
+           data-target="menu-md-other">
+           其他
+     <i class="icon-chevron-down"></i>
+   </button><!--
+--><button class="tab-btn"
+           data-tabbox-item="invoice-unissued">未開發票</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="invoice-issued">已開發票</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="invoice-debited">發票折讓</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="invoice-voided">發票作廢</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="7days"
+           >七日內出貨</button>
 </div>
+
+<div class="dropdown-menu"
+     data-dropdown-menu="menu-md-other"
+     data-place="bottom">
+  <a class="dropdown-item"
+    data-dropdown-item
+    data-tabbox-item="temp">臨時</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="other">其他</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="cancelled">已取消</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="deleted">已刪除</a>
+</div>
+
+<div class="dropdown-menu"
+     data-dropdown-menu="menu-md-exchange"
+     data-place="bottom">
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="returning">退貨中</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="exchanging">換貨中</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="returned">已退貨</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="refunded">已退款</a>
+</div>
+
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tabbox tabbox-uno"</span> <span class="na">data-tabbox</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span> <span class="na">data-tabbox-item=</span><span class="s">"all"</span> <span class="na">data-default</span><span class="nt">&gt;</span>全部<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"new"</span><span class="nt">&gt;</span>新訂單<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"waiting"</span><span class="nt">&gt;</span>等待中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"confirming"</span><span class="nt">&gt;</span>確認中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"confirmed"</span><span class="nt">&gt;</span>已確認<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"wait-for-shipping"</span><span class="nt">&gt;</span>待出貨<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"shipping"</span>
+           <span class="nt">&gt;</span>出貨中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"shipped"</span><span class="nt">&gt;</span>已出貨<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"delay"</span><span class="nt">&gt;</span>延遲出貨<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-dropdown</span>
+           <span class="na">data-target=</span><span class="s">"menu-md-exchange"</span><span class="nt">&gt;</span>
+           退換貨
+     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-down"</span><span class="nt">&gt;&lt;/i&gt;</span>
+   <span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-dropdown</span>
+           <span class="na">data-target=</span><span class="s">"menu-md-other"</span><span class="nt">&gt;</span>
+           其他
+     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-down"</span><span class="nt">&gt;&lt;/i&gt;</span>
+   <span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"invoice-unissued"</span><span class="nt">&gt;</span>未開發票<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"invoice-issued"</span><span class="nt">&gt;</span>已開發票<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"invoice-debited"</span><span class="nt">&gt;</span>發票折讓<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"invoice-voided"</span><span class="nt">&gt;</span>發票作廢<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"7days"</span>
+           <span class="nt">&gt;</span>七日內出貨<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span>
+     <span class="na">data-dropdown-menu=</span><span class="s">"menu-md-other"</span>
+     <span class="na">data-place=</span><span class="s">"bottom"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+    <span class="na">data-dropdown-item</span>
+    <span class="na">data-tabbox-item=</span><span class="s">"temp"</span><span class="nt">&gt;</span>臨時<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"other"</span><span class="nt">&gt;</span>其他<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"cancelled"</span><span class="nt">&gt;</span>已取消<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"deleted"</span><span class="nt">&gt;</span>已刪除<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span>
+     <span class="na">data-dropdown-menu=</span><span class="s">"menu-md-exchange"</span>
+     <span class="na">data-place=</span><span class="s">"bottom"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"returning"</span><span class="nt">&gt;</span>退貨中<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"exchanging"</span><span class="nt">&gt;</span>換貨中<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"returned"</span><span class="nt">&gt;</span>已退貨<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"refunded"</span><span class="nt">&gt;</span>已退款<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="kd">const</span> <span class="p">{</span> <span class="nx">Tabbox</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tabbox]</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Tabbox</span><span class="p">(</span><span class="nx">dom</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+  </div>
+</div>
+
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+      <a>JS</a>
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <div class="tabbox tabbox-sm" data-tabbox>
+  <div class="separator">
+    <button class="tab-btn"
+            data-tabbox-item="all"
+            data-default>全部</button>
+    <div class="inline-separator"></div>
+      <button class="tab-btn tab-btn-type1"
+              data-tabbox-item="new"
+              data-active-color="#6dbc80">新訂單</button><!--
+      --><button class="tab-btn tab-btn-type1"
+                 data-tabbox-item="waiting"
+                 data-active-color="#ff5c5c">等待中</button><!--
+      --><button class="tab-btn tab-btn-type1"
+                 data-tabbox-item="confirming"
+                 data-active-color="#ff5c5c">確認中</button><!--
+      --><button class="tab-btn tab-btn-type1"
+                 data-tabbox-item="confirmed"
+                 data-active-color="#19af95">已確認</button>
+    <div class="inline-separator"></div>
+      <button class="tab-btn tab-btn-type2"
+              data-tabbox-item="wait-for-shipping"
+              data-active-color="#993192">待出貨</button><!--
+      --><button class="tab-btn tab-btn-type2"
+                 data-tabbox-item="shipping"
+                 data-active-color="#5d69e3">出貨中</button><!--
+      --><button class="tab-btn tab-btn-type2"
+                 data-tabbox-item="shipped"
+                 data-active-color="#8b8b9e">已出貨</button><!--
+      --><button class="tab-btn tab-btn-type2"
+                 data-tabbox-item="delay"
+                 data-active-color="#e03953">延遲出貨</button>
+     <div class="inline-separator"></div>
+     <button class="tab-btn"
+             data-tabbox-dropdown
+             data-target="menu-sm-exchange">退換貨<i class="icon-chevron-down"></i></button><!--
+     --><button class="tab-btn"
+                data-tabbox-dropdown
+                data-target="menu-sm-other">其他<i class="icon-chevron-down"></i></button><!--
+     --><button class="tab-btn"
+                data-tabbox-item="incompelte-order"
+                data-active-color="#5d69e3">未下單</button>
+  </div>
+  <div class="separator">
+    <button class="tab-btn tab-btn-type3"
+            data-tabbox-item="type3-unissued"
+            data-active-color="#5d69e3">未開發票</button><!--
+    --><button class="tab-btn tab-btn-type3"
+               data-tabbox-item="type3-issued"
+               data-active-color="#5d69e3">已開發票</button><!--
+    --><button class="tab-btn tab-btn-type3"
+               data-tabbox-item="type3-debited"
+               data-active-color="#5d69e3">發票折讓</button><!--
+    --><button class="tab-btn tab-btn-type3"
+               data-tabbox-item="type3-voided"
+               data-active-color="#5d69e3">發票作廢</button>
+    <div class="inline-separator"></div>
+    <button class="tab-btn tab-btn-others"
+            data-tabbox-item="7days"
+            data-active-color="#7d7d7d">七日內出貨</button>
+  </div>
+</div>
+
+<div class="dropdown-menu"
+     data-dropdown-menu="menu-sm-other"
+     data-place="bottom"
+     data-align="left">
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="temp"
+     data-active-color="#e03953">臨時</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="other"
+     data-active-color="#e03953">其他</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="cancelled"
+     data-active-color="#8b8b9e">已取消</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="deleted"
+     data-active-color="#313864">已刪除</a>
+</div>
+
+<div class="dropdown-menu"
+     data-dropdown-menu="menu-sm-exchange"
+     data-place="bottom"
+     data-align="left">
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="returning"
+     data-active-color="#19af95">退貨中</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="exchanging"
+     data-active-color="#19af95">換貨中</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="returned"
+     data-active-color="#8b8b9e">已退貨</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="refunded"
+     data-active-color="#8b8b9e">已退款</a>
+</div>
+
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tabbox tabbox-sm"</span> <span class="na">data-tabbox</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"separator"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+            <span class="na">data-tabbox-item=</span><span class="s">"all"</span>
+            <span class="na">data-default</span><span class="nt">&gt;</span>全部<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inline-separator"</span><span class="nt">&gt;&lt;/div&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+              <span class="na">data-tabbox-item=</span><span class="s">"new"</span>
+              <span class="na">data-active-color=</span><span class="s">"#6dbc80"</span><span class="nt">&gt;</span>新訂單<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+      --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+                 <span class="na">data-tabbox-item=</span><span class="s">"waiting"</span>
+                 <span class="na">data-active-color=</span><span class="s">"#ff5c5c"</span><span class="nt">&gt;</span>等待中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+      --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+                 <span class="na">data-tabbox-item=</span><span class="s">"confirming"</span>
+                 <span class="na">data-active-color=</span><span class="s">"#ff5c5c"</span><span class="nt">&gt;</span>確認中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+      --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+                 <span class="na">data-tabbox-item=</span><span class="s">"confirmed"</span>
+                 <span class="na">data-active-color=</span><span class="s">"#19af95"</span><span class="nt">&gt;</span>已確認<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inline-separator"</span><span class="nt">&gt;&lt;/div&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type2"</span>
+              <span class="na">data-tabbox-item=</span><span class="s">"wait-for-shipping"</span>
+              <span class="na">data-active-color=</span><span class="s">"#993192"</span><span class="nt">&gt;</span>待出貨<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+      --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type2"</span>
+                 <span class="na">data-tabbox-item=</span><span class="s">"shipping"</span>
+                 <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>出貨中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+      --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type2"</span>
+                 <span class="na">data-tabbox-item=</span><span class="s">"shipped"</span>
+                 <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已出貨<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+      --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type2"</span>
+                 <span class="na">data-tabbox-item=</span><span class="s">"delay"</span>
+                 <span class="na">data-active-color=</span><span class="s">"#e03953"</span><span class="nt">&gt;</span>延遲出貨<span class="nt">&lt;/button&gt;</span>
+     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inline-separator"</span><span class="nt">&gt;&lt;/div&gt;</span>
+     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+             <span class="na">data-tabbox-dropdown</span>
+             <span class="na">data-target=</span><span class="s">"menu-sm-exchange"</span><span class="nt">&gt;</span>退換貨<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-down"</span><span class="nt">&gt;&lt;/i&gt;&lt;/button&gt;</span><span class="c">&lt;!--
+     --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+                <span class="na">data-tabbox-dropdown</span>
+                <span class="na">data-target=</span><span class="s">"menu-sm-other"</span><span class="nt">&gt;</span>其他<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-down"</span><span class="nt">&gt;&lt;/i&gt;&lt;/button&gt;</span><span class="c">&lt;!--
+     --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+                <span class="na">data-tabbox-item=</span><span class="s">"incompelte-order"</span>
+                <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>未下單<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"separator"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+            <span class="na">data-tabbox-item=</span><span class="s">"type3-unissued"</span>
+            <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>未開發票<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+    --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+               <span class="na">data-tabbox-item=</span><span class="s">"type3-issued"</span>
+               <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>已開發票<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+    --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+               <span class="na">data-tabbox-item=</span><span class="s">"type3-debited"</span>
+               <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>發票折讓<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+    --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+               <span class="na">data-tabbox-item=</span><span class="s">"type3-voided"</span>
+               <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>發票作廢<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inline-separator"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-others"</span>
+            <span class="na">data-tabbox-item=</span><span class="s">"7days"</span>
+            <span class="na">data-active-color=</span><span class="s">"#7d7d7d"</span><span class="nt">&gt;</span>七日內出貨<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span>
+     <span class="na">data-dropdown-menu=</span><span class="s">"menu-sm-other"</span>
+     <span class="na">data-place=</span><span class="s">"bottom"</span>
+     <span class="na">data-align=</span><span class="s">"left"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"temp"</span>
+     <span class="na">data-active-color=</span><span class="s">"#e03953"</span><span class="nt">&gt;</span>臨時<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"other"</span>
+     <span class="na">data-active-color=</span><span class="s">"#e03953"</span><span class="nt">&gt;</span>其他<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"cancelled"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已取消<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"deleted"</span>
+     <span class="na">data-active-color=</span><span class="s">"#313864"</span><span class="nt">&gt;</span>已刪除<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span>
+     <span class="na">data-dropdown-menu=</span><span class="s">"menu-sm-exchange"</span>
+     <span class="na">data-place=</span><span class="s">"bottom"</span>
+     <span class="na">data-align=</span><span class="s">"left"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"returning"</span>
+     <span class="na">data-active-color=</span><span class="s">"#19af95"</span><span class="nt">&gt;</span>退貨中<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"exchanging"</span>
+     <span class="na">data-active-color=</span><span class="s">"#19af95"</span><span class="nt">&gt;</span>換貨中<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"returned"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退貨<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"refunded"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退款<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="kd">const</span> <span class="p">{</span> <span class="nx">Tabbox</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tabbox]</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Tabbox</span><span class="p">(</span><span class="nx">dom</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+  </div>
+</div>
+
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+      <a>JS</a>
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <div class="tabbox" data-tabbox>
+   <button class="tab-btn" data-tabbox-item="all" data-default>全部</button><!--
+--><button class="tab-btn tab-btn-type0"
+           data-tabbox-item="new"
+           data-active-color="#018972">新訂單</button><!--
+--><button class="tab-btn tab-btn-type0"
+           data-tabbox-item="waiting"
+           data-active-color="#018972">等待中</button><!--
+--><button class="tab-btn tab-btn-type0"
+           data-tabbox-item="confirming"
+           data-active-color="#018972">確認中</button><!--
+--><button class="tab-btn tab-btn-type0"
+           data-tabbox-item="confirmed"
+           data-active-color="#018972">已確認</button><!--
+--><button class="tab-btn tab-btn-type1"
+           data-tabbox-item="wait-for-shipping"
+           data-active-color="#018972">待出貨</button><!--
+--><button class="tab-btn tab-btn-type1"
+           data-tabbox-item="shipping"
+           data-active-color="#018972">出貨中</button><!--
+--><button class="tab-btn tab-btn-type1"
+           data-tabbox-item="shipped"
+           data-active-color="#018972">已出貨</button><!--
+--><button class="tab-btn tab-btn-type1"
+           data-tabbox-item="delay"
+           data-active-color="#018972">延遲出貨</button><!--
+--><button class="tab-btn"
+           data-tabbox-dropdown
+           data-target="menu-md-exchange">
+           退換貨
+     <i class="icon-chevron-down"></i>
+   </button><!--
+--><button class="tab-btn"
+           data-tabbox-dropdown
+           data-target="menu-md-other">
+           其他
+     <i class="icon-chevron-down"></i>
+   </button><!--
+--><button class="tab-btn tab-btn-type3"
+           data-tabbox-item="invoice-unissued"
+           data-active-color="#5d69e3">未開發票</button><!--
+--><button class="tab-btn tab-btn-type3"
+           data-tabbox-item="invoice-issued"
+           data-active-color="#5d69e3">已開發票</button><!--
+--><button class="tab-btn tab-btn-type3"
+           data-tabbox-item="invoice-debited"
+           data-active-color="#5d69e3">發票折讓</button><!--
+--><button class="tab-btn tab-btn-type3"
+           data-tabbox-item="invoice-voided"
+           data-active-color="#5d69e3">發票作廢</button><!--
+--><button class="tab-btn"
+           data-tabbox-item="7days"
+           data-active-color="#7d7d7d">七日內出貨</button>
+</div>
+
+<div class="dropdown-menu"
+     data-dropdown-menu="menu-md-other"
+     data-place="bottom">
+  <a class="dropdown-item"
+    data-dropdown-item
+    data-tabbox-item="temp"
+    data-active-color="#e03953">臨時</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="other"
+     data-active-color="#e03953">其他</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="cancelled"
+     data-active-color="#8b8b9e">已取消</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="deleted"
+     data-active-color="#313864">已刪除</a>
+</div>
+
+<div class="dropdown-menu"
+     data-dropdown-menu="menu-md-exchange"
+     data-place="bottom">
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="returning"
+     data-active-color="#19af95">退貨中</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="exchanging"
+     data-active-color="#19af95">換貨中</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="returned"
+     data-active-color="#8b8b9e">已退貨</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="refunded"
+     data-active-color="#8b8b9e">已退款</a>
+</div>
+
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tabbox"</span> <span class="na">data-tabbox</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span> <span class="na">data-tabbox-item=</span><span class="s">"all"</span> <span class="na">data-default</span><span class="nt">&gt;</span>全部<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type0"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"new"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>新訂單<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type0"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"waiting"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>等待中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type0"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"confirming"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>確認中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type0"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"confirmed"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>已確認<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"wait-for-shipping"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>待出貨<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"shipping"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>出貨中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"shipped"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>已出貨<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"delay"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>延遲出貨<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-dropdown</span>
+           <span class="na">data-target=</span><span class="s">"menu-md-exchange"</span><span class="nt">&gt;</span>
+           退換貨
+     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-down"</span><span class="nt">&gt;&lt;/i&gt;</span>
+   <span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-dropdown</span>
+           <span class="na">data-target=</span><span class="s">"menu-md-other"</span><span class="nt">&gt;</span>
+           其他
+     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-down"</span><span class="nt">&gt;&lt;/i&gt;</span>
+   <span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"invoice-unissued"</span>
+           <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>未開發票<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"invoice-issued"</span>
+           <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>已開發票<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"invoice-debited"</span>
+           <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>發票折讓<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"invoice-voided"</span>
+           <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>發票作廢<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"7days"</span>
+           <span class="na">data-active-color=</span><span class="s">"#7d7d7d"</span><span class="nt">&gt;</span>七日內出貨<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span>
+     <span class="na">data-dropdown-menu=</span><span class="s">"menu-md-other"</span>
+     <span class="na">data-place=</span><span class="s">"bottom"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+    <span class="na">data-dropdown-item</span>
+    <span class="na">data-tabbox-item=</span><span class="s">"temp"</span>
+    <span class="na">data-active-color=</span><span class="s">"#e03953"</span><span class="nt">&gt;</span>臨時<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"other"</span>
+     <span class="na">data-active-color=</span><span class="s">"#e03953"</span><span class="nt">&gt;</span>其他<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"cancelled"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已取消<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"deleted"</span>
+     <span class="na">data-active-color=</span><span class="s">"#313864"</span><span class="nt">&gt;</span>已刪除<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span>
+     <span class="na">data-dropdown-menu=</span><span class="s">"menu-md-exchange"</span>
+     <span class="na">data-place=</span><span class="s">"bottom"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"returning"</span>
+     <span class="na">data-active-color=</span><span class="s">"#19af95"</span><span class="nt">&gt;</span>退貨中<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"exchanging"</span>
+     <span class="na">data-active-color=</span><span class="s">"#19af95"</span><span class="nt">&gt;</span>換貨中<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"returned"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退貨<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"refunded"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退款<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="kd">const</span> <span class="p">{</span> <span class="nx">Tabbox</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tabbox]</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Tabbox</span><span class="p">(</span><span class="nx">dom</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+  </div>
+</div>
+
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+      <a>JS</a>
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <div class="tabbox tabbox-lg" data-tabbox>
+  <button class="tab-btn"
+          data-tabbox-item="all"
+          data-default>全部</button><!--
+--><button class="tab-btn tab-btn-type1"
+           data-tabbox-item="new"
+           data-active-color="#018972">新訂單</button><!--
+--><button class="tab-btn tab-btn-type1"
+           data-tabbox-item="waiting"
+           data-active-color="#018972">等待中</button><!--
+--><button class="tab-btn tab-btn-type1"
+           data-tabbox-item="confirming"
+           data-active-color="#018972">確認中</button><!--
+--><button class="tab-btn tab-btn-type1"
+           data-tabbox-item="confirmed"
+           data-active-color="#018972">已確認</button><!--
+--><button class="tab-btn tab-btn-type2"
+           data-tabbox-item="wait-for-shipping"
+           data-active-color="#018972">待出貨</button><!--
+--><button class="tab-btn tab-btn-type2"
+           data-tabbox-item="shipping"
+           data-active-color="#018972">出貨中</button><!--
+--><button class="tab-btn tab-btn-type2"
+           data-tabbox-item="shipped"
+           data-active-color="#018972">已出貨</button><!--
+--><button class="tab-btn"
+           data-tabbox-dropdown
+           data-target="menu-lg-other">其他<i class="icon-chevron-down"></i></button><!--
+--><button class="tab-btn"
+           data-tabbox-dropdown
+           data-target="menu-lg-exchange">退換貨<i class="icon-chevron-down"></i></button><!--
+--><button class="tab-btn"
+           data-tabbox-item="incompelte-order"
+           data-active-color="#5d69e3">未下單</button><!--
+--><button class="tab-btn tab-btn-type3"
+           data-tabbox-item="type3-unissued"
+           data-active-color="#5d69e3">未開發票</button><!--
+--><button class="tab-btn tab-btn-type3"
+           data-tabbox-item="type3-issued"
+           data-active-color="#5d69e3">已開發票</button><!--
+--><button class="tab-btn tab-btn-type3"
+           data-tabbox-item="type3-debited"
+           data-active-color="#5d69e3">發票折讓</button><!--
+--><button class="tab-btn tab-btn-type3"
+           data-tabbox-item="type3-voided"
+           data-active-color="#5d69e3">發票作廢</button><!--
+--><button class="tab-btn tab-btn-others"
+           data-tabbox-item="7days"
+           data-active-color="#7d7d7d">七日內出貨</button>
+</div>
+
+<div class="dropdown-menu"
+     data-dropdown-menu="menu-lg-other"
+     data-place="bottom">
+  <a class="dropdown-item"
+    data-tabbox-item="temp"
+    data-active-color="#e03953">臨時</a>
+  <a class="dropdown-item"
+     data-tabbox-item="other"
+     data-active-color="#e03953">其他</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-tabbox-item="cancelled"
+     data-active-color="#8b8b9e">已取消</a>
+  <a class="dropdown-item"
+     data-tabbox-item="deleted"
+     data-active-color="#313864">已刪除</a>
+</div>
+
+<div class="dropdown-menu"
+     data-dropdown-item
+     data-dropdown-menu="menu-lg-exchange"
+     data-place="bottom">
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="returning"
+     data-active-color="#19af95">退貨中</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="exchanging"
+     data-active-color="#19af95">換貨中</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="returned"
+     data-active-color="#8b8b9e">已退貨</a>
+  <a class="dropdown-item"
+     data-dropdown-item
+     data-tabbox-item="refunded"
+     data-active-color="#8b8b9e">已退款</a>
+</div>
+
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tabbox tabbox-lg"</span> <span class="na">data-tabbox</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+          <span class="na">data-tabbox-item=</span><span class="s">"all"</span>
+          <span class="na">data-default</span><span class="nt">&gt;</span>全部<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"new"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>新訂單<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"waiting"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>等待中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"confirming"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>確認中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type1"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"confirmed"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>已確認<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type2"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"wait-for-shipping"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>待出貨<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type2"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"shipping"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>出貨中<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type2"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"shipped"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>已出貨<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-dropdown</span>
+           <span class="na">data-target=</span><span class="s">"menu-lg-other"</span><span class="nt">&gt;</span>其他<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-down"</span><span class="nt">&gt;&lt;/i&gt;&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-dropdown</span>
+           <span class="na">data-target=</span><span class="s">"menu-lg-exchange"</span><span class="nt">&gt;</span>退換貨<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-down"</span><span class="nt">&gt;&lt;/i&gt;&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"incompelte-order"</span>
+           <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>未下單<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"type3-unissued"</span>
+           <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>未開發票<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"type3-issued"</span>
+           <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>已開發票<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"type3-debited"</span>
+           <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>發票折讓<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-type3"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"type3-voided"</span>
+           <span class="na">data-active-color=</span><span class="s">"#5d69e3"</span><span class="nt">&gt;</span>發票作廢<span class="nt">&lt;/button&gt;</span><span class="c">&lt;!--
+--&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn tab-btn-others"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"7days"</span>
+           <span class="na">data-active-color=</span><span class="s">"#7d7d7d"</span><span class="nt">&gt;</span>七日內出貨<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span>
+     <span class="na">data-dropdown-menu=</span><span class="s">"menu-lg-other"</span>
+     <span class="na">data-place=</span><span class="s">"bottom"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+    <span class="na">data-tabbox-item=</span><span class="s">"temp"</span>
+    <span class="na">data-active-color=</span><span class="s">"#e03953"</span><span class="nt">&gt;</span>臨時<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"other"</span>
+     <span class="na">data-active-color=</span><span class="s">"#e03953"</span><span class="nt">&gt;</span>其他<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"cancelled"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已取消<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"deleted"</span>
+     <span class="na">data-active-color=</span><span class="s">"#313864"</span><span class="nt">&gt;</span>已刪除<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-dropdown-menu=</span><span class="s">"menu-lg-exchange"</span>
+     <span class="na">data-place=</span><span class="s">"bottom"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"returning"</span>
+     <span class="na">data-active-color=</span><span class="s">"#19af95"</span><span class="nt">&gt;</span>退貨中<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"exchanging"</span>
+     <span class="na">data-active-color=</span><span class="s">"#19af95"</span><span class="nt">&gt;</span>換貨中<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"returned"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退貨<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"refunded"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退款<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-js" data-lang="js"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="kd">const</span> <span class="p">{</span> <span class="nx">Tabbox</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">beyond</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-tabbox]</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">dom</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Tabbox</span><span class="p">(</span><span class="nx">dom</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+  </div>
+</div>
+
+  <div class="doc">
+  <h2>Tabbox HTML</h2>
+  <p>按鈕 HTML 需要符合 button[data-tabbox-item]，dropdown button 元素須符合 button[data-tabbox-dropdown]</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tabbox"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span> <span class="na">data-tabbox-item=</span><span class="s">"all"</span> <span class="na">data-default</span><span class="nt">&gt;</span>全部<span class="nt">&lt;/button&gt;</span>
+   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-item=</span><span class="s">"new"</span>
+           <span class="na">data-active-color=</span><span class="s">"#018972"</span><span class="nt">&gt;</span>新訂單<span class="nt">&lt;/button&gt;</span>
+   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"tab-btn"</span>
+           <span class="na">data-tabbox-dropdown</span>
+           <span class="na">data-target=</span><span class="s">"menu-exchange"</span><span class="nt">&gt;</span>退換貨<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"icon-chevron-down"</span><span class="nt">&gt;&lt;/i&gt;&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span>
+     <span class="na">data-dropdown-menu=</span><span class="s">"menu-exchange"</span>
+     <span class="na">data-place=</span><span class="s">"bottom"</span>
+     <span class="na">data-align=</span><span class="s">"left"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"returning"</span>
+     <span class="na">data-active-color=</span><span class="s">"#19af95"</span><span class="nt">&gt;</span>退貨中<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"exchanging"</span>
+     <span class="na">data-active-color=</span><span class="s">"#19af95"</span><span class="nt">&gt;</span>換貨中<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"returned"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退貨<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span>
+     <span class="na">data-dropdown-item</span>
+     <span class="na">data-tabbox-item=</span><span class="s">"refunded"</span>
+     <span class="na">data-active-color=</span><span class="s">"#8b8b9e"</span><span class="nt">&gt;</span>已退款<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-default</td>
+        <td>預設要設定為 active 的項目</td>
+      </tr>
+      <tr>
+        <td>data-tabbox-item</td>
+        <td>tabbox 項目的 unique ID，會用在 options.change 的回傳，例如 <strong>data-tabbox-item="item1"</strong></td>
+      </tr>
+      <tr>
+        <td>data-active-color</td>
+        <td>指定項目 active 時的底線顏色</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Tabbox JS</h2>
+  <h3>constructor</h3>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">tabbox</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tabbox</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span></code></pre></figure>
+  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>需要顯示 tabbox 的元素</td>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>object</td>
+        <td>tabbox 的選項</td>
+      </tr>
+      <tr>
+        <td>options.change</td>
+        <td>function</td>
+        <td>tabbox 被更新時的 callback, 會回傳物件包含屬性<br>
+          id - string - data-tabbox-item 設定的值<br>
+          type - string - btn 或 dropdown</td>
+      </tr>
+      <tr>
+        <td>options.click</td>
+        <td>function</td>
+        <td>按鈕或選單被點擊時的 callback, 會回傳物件包含屬性<br>
+          id - string - data-tabbox-item 設定的值<br>
+          type - string - btn 或 dropdown</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>destroy</h3>
+  <p>移除 Tabbox 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">tabbox</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+  </div>
+</div><!-- .doc -->
+
+</div>
+
+      </main>
+    </div>
+    <div id="chart-menu" class="chart-menu"></div>
+  </body>
+</html>

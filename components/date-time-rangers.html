@@ -1,9 +1,524 @@
----
-layout: default
-title: DateTimeRangers
----
-<div class="page-date-time-rangers">
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no viewport-fit=cover">
+    <title>DateTimeRangers | Beyond</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+
+    
+      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1611563101">
+    
+
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1611563101">
+    <link rel="apple-touch-icon" sizes="180x180"
+      href="/beyond/assets/img/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+      href="/beyond/assets/img/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+      href="/beyond/assets/img/icons/favicon-16x16.png">
+<link rel="manifest" href="/beyond/assets/img/icons/manifest.json">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+
+    
+      <script src="/beyond/dist/beyond.js?v=1611563101"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1611563101"></script>
+      <script src="/beyond/dist/web.js?v=1611563101"></script>
+    
+  </head>
+  <body class="container bg-admin">
+    <button class="btn btn-sidebar visible-md-block" data-sidebar-opener="sidebar">
+      <i class="icon-hamburger"></i>
+    </button>
+    <div class="row">
+      <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
+  <ul>
+    
+      <li>
+
+        
+          
+            <a href="/beyond/" class="nav-item">Home</a>
+          
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Layout"
+               data-default-visible>Layout<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Layout">
+            
+              <li>
+                
+                  <a href="/beyond/layout/cols.html" class="nav-item">Cols</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/layout/containers.html" class="nav-item">Containers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/layout/visibility-utilities.html" class="nav-item">Visibility Utilities</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/layout/spacing-utilities.html" class="nav-item">Spacing Utilities</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Content"
+               data-default-visible>Content<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Content">
+            
+              <li>
+                
+                  <a href="/beyond/content/colors.html" class="nav-item">Colors</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/content/typography.html" class="nav-item">Typography</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Components"
+               data-default-visible>Components<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Components">
+            
+              <li>
+                
+                  <a href="/beyond/components/autocompletes.html" class="nav-item">Autocompletes</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/alerts.html" class="nav-item">Alerts</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/avatars.html" class="nav-item">Avatars</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/badges.html" class="nav-item">Badges</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/breadcrumbs.html" class="nav-item">Breadcrumbs</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/buttons.html" class="nav-item">Buttons</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/button-groups.html" class="nav-item">Button Groups</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/cards.html" class="nav-item">Cards</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/date-time-rangers.html" class="nav-item active">DateTimeRangers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/datepickers.html" class="nav-item">Datepickers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/dropdowns.html" class="nav-item">Dropdowns</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/footers.html" class="nav-item">Footers</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/forms.html" class="nav-item">Forms</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/pagination.html" class="nav-item">Pagination</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/selects.html" class="nav-item">Selects</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/spinners.html" class="nav-item">Spinners</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/search-dropdowns.html" class="nav-item">Search Dropdowns</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/icons.html" class="nav-item">Icons</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/lists.html" class="nav-item">Lists</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/modals.html" class="nav-item">Modals</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/navbars.html" class="nav-item">Navbars</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tables.html" class="nav-item">Tables</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tabboxes.html" class="nav-item">Tabboxes</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tags.html" class="nav-item">Tags</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tag-inputs.html" class="nav-item">Tag Inputs</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/toasts.html" class="nav-item">Toasts</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/components/tooltips.html" class="nav-item">Tooltips</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Charts"
+               data-default-visible>Charts<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Charts">
+            
+              <li>
+                
+                  <a href="/beyond/charts/bar-chart.html" class="nav-item">Bar Chart</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/charts/line-chart.html" class="nav-item">Line Chart</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/charts/pie-chart.html" class="nav-item">Pie Chart</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Integrations"
+               data-default-visible>Integrations<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Integrations">
+            
+              <li>
+                
+                  <a href="/beyond/integrations/turbolinks.html" class="nav-item">Turbolinks</a>
+                
+              </li>
+           
+              <li>
+                
+                  <a href="/beyond/integrations/jquery.html" class="nav-item">jQuery</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+      <li>
+
+        
+          <div class="nav-folder"
+               data-menu-toggle="Others"
+               data-default-visible>Others<i class="icon-chevron-down"></i></div>
+           <ul class="nav-menu" data-menu="Others">
+            
+              <li>
+                
+                  <a href="/beyond/others/utils.html" class="nav-item">Utils</a>
+                
+              </li>
+           
+          </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+      <main class="col-md-8 col-xl-10 main">
+        <div class="page-date-time-rangers">
   <h1>日期範圍選擇器 - DateTimeRanger</h1>
-  {% include codebox.html result="demos/date-time-rangers.html" html="demos/date-time-rangers.html" %}
-  {% include docs/date-time-rangers.html %}
+  <div class="codebox" data-codebox>
+  <div class="codebox-tabs" data-tabs>
+    <a>Result</a>
+    
+      <a>HTML</a>
+    
+    
+    
+  </div>
+  <div class="codebox-panes" data-panes>
+    <div class="codebox-result">
+      <div class="date-time-ranger" data-date-time-ranger>
+  <input class="date-input" data-date-start /><!--
+  --><input class="time-input" data-time-start data-step="60" /><!--
+  --><button class="icon-arrow-right" data-btn-arrow tabindex="-1"></button><!--
+  --><input class="date-input" data-date-end /><!--
+  --><input class="time-input" data-time-end data-step="60" />
 </div>
+
+    </div>
+    
+      <div>
+        <figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"date-time-ranger"</span> <span class="na">data-date-time-ranger</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"date-input"</span> <span class="na">data-date-start</span> <span class="nt">/&gt;</span><span class="c">&lt;!--
+  --&gt;</span><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"time-input"</span> <span class="na">data-time-start</span> <span class="na">data-step=</span><span class="s">"60"</span> <span class="nt">/&gt;</span><span class="c">&lt;!--
+  --&gt;</span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"icon-arrow-right"</span> <span class="na">data-btn-arrow</span> <span class="na">tabindex=</span><span class="s">"-1"</span><span class="nt">&gt;&lt;/button&gt;</span><span class="c">&lt;!--
+  --&gt;</span><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"date-input"</span> <span class="na">data-date-end</span> <span class="nt">/&gt;</span><span class="c">&lt;!--
+  --&gt;</span><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"time-input"</span> <span class="na">data-time-end</span> <span class="na">data-step=</span><span class="s">"60"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+      </div>
+    
+    
+    
+  </div>
+</div>
+
+  <div class="doc">
+  <h2>DateTimeRanger HTML</h2>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"date-time-ranger"</span> <span class="na">data-date-time-ranger</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"date-input"</span> <span class="na">data-date-start</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"time-input"</span> <span class="na">data-time-start</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"icon-arrow-right"</span> <span class="na">data-btn-arrow</span> <span class="na">tabindex=</span><span class="s">"-1"</span><span class="nt">&gt;&lt;/button&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"date-input"</span> <span class="na">data-date-end</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"time-input"</span> <span class="na">data-time-end</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>屬性名稱</th>
+        <th>用途</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>data-date-start</td>
+        <td>指定為開始日期的輸入文字框</td>
+      </tr>
+      <tr>
+        <td>data-date-end</td>
+        <td>指定為結束日期的輸入文字框</td>
+      </tr>
+      <tr>
+        <td>data-time-start</td>
+        <td>指定為開始時間的輸入文字框</td>
+      </tr>
+      <tr>
+        <td>data-time-end</td>
+        <td>指定為結束時間的輸入文字框</td>
+      </tr>
+      <tr>
+        <td>data-btn-arrow</td>
+        <td>指定為 dateTimeRanger 的按鈕</td>
+      </tr>
+      <tr>
+        <td>data-step</td>
+        <td>指定時間選單的間隔，預設 30 分。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>DateTimeRanger JS</h2>
+  <h3>constructor</h3>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">dateTimeRanger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTimeRanger</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span></code></pre></figure>
+  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>型別</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>dom</td>
+        <td>HTMLElement</td>
+        <td>需要指定為 dateTimeRanger 的元素</td>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>object</td>
+        <td>選項</td>
+      </tr>
+      <tr>
+        <td>options.startAt</td>
+        <td>integer</td>
+        <td>開始時間，unix timestamp</td>
+      </tr>
+      <tr>
+        <td>options.endAt</td>
+        <td>integer</td>
+        <td>結束時間，unix timestamp</td>
+      </tr>
+      <tr>
+        <td>options.tz</td>
+        <td>string</td>
+        <td>時區，預設為 Asia/Taipei</td>
+      </tr>
+      <tr>
+        <td>options.locale</td>
+        <td>object</td>
+        <td>語系，預設為 zh-TW。可以從 date-fns/locale/ import</td>
+      </tr>
+      <tr>
+        <td>options.change</td>
+        <td>function</td>
+        <td>dateTimeRanger 時間被更新時的 callback</td>
+      </tr>
+      <tr>
+        <td>options.noFuture</td>
+        <td>Date</td>
+        <td>是否可以選擇未來月份，預設可以選 ( noFuture = false )</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>destroy</h3>
+  <p>移除 dateTimeRanger 產生的 dom 元素與 event listeners</p>
+  <div class="code">
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">dateTimeRanger</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></code></pre></figure>
+  </div>
+</div><!-- .doc -->
+
+</div>
+
+      </main>
+    </div>
+    <div id="chart-menu" class="chart-menu"></div>
+  </body>
+</html>
