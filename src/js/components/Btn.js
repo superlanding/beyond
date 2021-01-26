@@ -12,7 +12,7 @@ export default class Btn {
 
   showLoader() {
     const { dom } = this
-    this._innerHtml = dom.innerHTML
+    this.innerHtml = dom.innerHTML
     dom.style.height = toPixel(dom.offsetHeight)
     dom.style.width = toPixel(dom.offsetWidth)
     dom.innerHTML = `
@@ -32,10 +32,10 @@ export default class Btn {
     dom.style.removeProperty('width')
     dom.style.removeProperty('height')
 
-    const { _innerHtml } = this
+    const { innerHtml } = this
 
-    if (_innerHtml) {
-      dom.innerHTML = _innerHtml
+    if (innerHtml) {
+      dom.innerHTML = innerHtml
     }
   }
 
