@@ -31,7 +31,12 @@ export default class Btn {
     const { dom } = this
     dom.style.removeProperty('width')
     dom.style.removeProperty('height')
-    dom.innerHTML = this._innerHtml
+
+    const { _innerHtml } = this
+
+    if (_innerHtml) {
+      dom.innerHTML = _innerHtml
+    }
   }
 
   setLoading(loading) {
