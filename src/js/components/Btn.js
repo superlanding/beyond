@@ -11,6 +11,9 @@ export default class Btn {
   }
 
   showLoader() {
+    if (this.loading) {
+      return
+    }
     const { dom } = this
     this.innerHtml = dom.innerHTML
     dom.style.height = toPixel(dom.offsetHeight)
@@ -28,6 +31,10 @@ export default class Btn {
   }
 
   hideLoader() {
+
+    if (! this.loading) {
+      return
+    }
     const { dom } = this
     dom.style.removeProperty('width')
     dom.style.removeProperty('height')
@@ -40,7 +47,7 @@ export default class Btn {
   }
 
   setLoading(loading) {
-    this.loading = loading
     loading ? this.showLoader() : this.hideLoader()
+    this.loading = loading
   }
 }
