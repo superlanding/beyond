@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@superlanding/datetotimestamp": "0.0.22",
+    "@superlanding/extend": "0.0.26",
     "@superlanding/getdompos": "0.0.22",
     "@superlanding/getscrollleft": "0.0.22",
     "@superlanding/getscrolltop": "0.0.22",
