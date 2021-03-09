@@ -19,6 +19,7 @@ import MonthMenu from './components/MonthMenu'
 import Menu from './components/Menu'
 import Modal from './components/Modal'
 import Navbar from './components/Navbar'
+import Pagination from './components/Pagination'
 import PieChart from './components/PieChart'
 import Radio from './components/Radio'
 import SearchDropdown from './components/SearchDropdown'
@@ -58,6 +59,7 @@ export {
   Menu,
   Modal,
   Navbar,
+  Pagination,
   PieChart,
   Radio,
   SearchDropdown,
