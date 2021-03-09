@@ -1,5 +1,6 @@
 // @superlanding
 import dateToTimestamp from '@superlanding/datetotimestamp'
+import extend from '@superlanding/extend'
 import getDomPos from '@superlanding/getdompos'
 import getScrollLeft from '@superlanding/getscrollleft'
 import getScrollTop from '@superlanding/getscrolltop'
@@ -47,6 +48,7 @@ import mem from 'mem'
 export {
   // @superlanding
   dateToTimestamp,
+  extend,
   getDomPos,
   getScrollLeft,
   getScrollTop,
