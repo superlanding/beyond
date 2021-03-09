@@ -1,6 +1,7 @@
 .pagination {
   display: flex;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 %page-link {
