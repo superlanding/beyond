@@ -15,6 +15,7 @@
   &:disabled {
     cursor: not-allowed;
   }
+  &.js-active,
   &:hover {
     background-color: #3c4258;
     color: #fff;
