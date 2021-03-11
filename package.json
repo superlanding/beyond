@@ -1,6 +1,6 @@
 {
   "name": "@superlanding/beyond",
-  "version": "0.0.284",
+  "version": "0.0.285",
   "description": "The best frontend framework for super-landing.com",
   "browserslist": [
     "defaults",
@@ -46,11 +46,13 @@
   },
   "dependencies": {
     "@superlanding/datetotimestamp": "0.0.22",
+    "@superlanding/extend": "0.0.26",
     "@superlanding/getdompos": "0.0.22",
     "@superlanding/getscrollleft": "0.0.22",
     "@superlanding/getscrolltop": "0.0.22",
     "@superlanding/timestamptodate": "0.0.22",
     "@superlanding/topixel": "0.0.22",
+    "@superlanding/toint": "0.0.26",
     "core-js": "3.6.4",
     "date-fns": "2.9.0",
     "date-fns-tz": "1.0.9",
