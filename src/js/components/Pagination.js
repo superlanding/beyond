@@ -254,4 +254,8 @@ export default class Pagination {
       this.setActiveAndChangeInputViewIfNeeded(page)
     })
   }
+
+  destroy() {
+    this.clearPages()
+  }
 }
