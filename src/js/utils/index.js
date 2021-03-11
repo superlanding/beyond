@@ -1,9 +1,11 @@
 // @superlanding
 import dateToTimestamp from '@superlanding/datetotimestamp'
+import extend from '@superlanding/extend'
 import getDomPos from '@superlanding/getdompos'
 import getScrollLeft from '@superlanding/getscrollleft'
 import getScrollTop from '@superlanding/getscrolltop'
 import timestampToDate from '@superlanding/timestamptodate'
+import toInt from '@superlanding/toint'
 import toPixel from '@superlanding/topixel'
 
 // date-fns
@@ -47,10 +49,12 @@ import mem from 'mem'
 export {
   // @superlanding
   dateToTimestamp,
+  extend,
   getDomPos,
   getScrollLeft,
   getScrollTop,
   timestampToDate,
+  toInt,
   toPixel,
 
   // date-fns
