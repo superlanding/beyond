@@ -262,9 +262,18 @@ export default class Pagination {
       if (! this.isValidPage(page)) {
         return this.setInputDanger()
       }
+      if (page === this.page) {
+        return
+      }
       this.setInputNormal()
       this.setActiveAndChangeInputViewIfNeeded(page)
+      this.change(page)
     })
+  }
+
+  setTotal(total) {
+    this.total = total
+    this.drawPages()
   }
 
   destroy() {
