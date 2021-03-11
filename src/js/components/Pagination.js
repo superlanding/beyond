@@ -81,7 +81,17 @@ export default class Pagination {
     this.ul.insertBefore(li, this.nextBtn.parentNode)
   }
 
+  hideInput() {
+    this.input.parentNode.style.display = 'none'
+  }
+
+  showInput() {
+    this.input.parentNode.style.display = 'flex'
+  }
+
   drawRegularPages(currentPage = this.page) {
+
+    this.hideInput()
 
     range(1, this.total + 1)
       .forEach(page => {
@@ -94,6 +104,8 @@ export default class Pagination {
   drawPagesWithInput(page = this.page) {
 
     this.clearPages()
+
+    this.showInput()
 
     const { total } = this
     const beforeLast = total - 1
