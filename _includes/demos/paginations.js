@@ -17,5 +17,6 @@ export default function bindPaginations() {
   })
 
   return function unbindPaginations() {
+    pagination.destroy()
   }
 }
