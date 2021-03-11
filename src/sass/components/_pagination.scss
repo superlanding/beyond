@@ -20,6 +20,9 @@ $page-active-color: #3c4258;
 
 .pagination-wrap {
   display: flex;
+  .pagination-input {
+    display: none;
+  }
   > .input-group {
     width: initial;
   }
