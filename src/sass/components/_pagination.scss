@@ -1,8 +1,4 @@
-.pagination {
-  display: flex;
-  list-style: none;
-  flex-wrap: wrap;
-}
+$page-active-color: #3c4258;
 
 %page-link {
   border-radius: 3px;
@@ -17,8 +13,56 @@
   }
   &.js-active,
   &:hover {
-    background-color: #3c4258;
+    background-color: $page-active-color;
     color: #fff;
+  }
+}
+
+.pagination-wrap {
+  display: flex;
+  > .input-group {
+    width: initial;
+  }
+  > .input,
+  > .input-group > .input {
+    width: 7em;
+    &.is-invalid:focus {
+      box-shadow: 0 0 0 1px #cd3d64;
+      color: #cd3d64;
+    }
+  }
+  .input-group-append > .input-group-text {
+    background-color: $page-active-color;
+    color: #fff;
+    height: 100%;
+  }
+  @media (max-width: $screen-sm) {
+    display: block;
+    > .input-group {
+      margin-top: 1em;
+    }
+    > .pagination {
+      justify-content: space-between;
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  @media (max-width: $screen-sm) {
+    .page-link {
+      margin-left: 3px;
+      margin-right: 3px;
+    }
+    .page-link,
+    .page-link-btn {
+      padding: .2em .5em;
+      i {
+        font-size: 12px;
+      }
+    }
   }
 }
 
