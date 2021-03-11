@@ -271,6 +271,11 @@ export default class Pagination {
     })
   }
 
+  setTotal(total) {
+    this.total = total
+    this.drawPages()
+  }
+
   destroy() {
     this.clearPages()
   }
