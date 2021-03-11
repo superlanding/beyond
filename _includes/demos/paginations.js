@@ -9,8 +9,11 @@ export default function bindPaginations() {
 
   const pagination = new Pagination({
     dom,
-    page: 1,
-    total: 7
+    page: 2,
+    total: 10,
+    change(page) {
+      console.log('page', page)
+    }
   })
 
   return function unbindPaginations() {
