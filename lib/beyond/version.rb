@@ -1,3 +1,3 @@
 module Beyond
-  VERSION = '0.0.285'.freeze
+  VERSION = '0.0.286'.freeze
 end
