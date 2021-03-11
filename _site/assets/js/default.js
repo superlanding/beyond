@@ -9,6 +9,7 @@ import bindPieCharts from '../../_includes/demos/pie-chart'
 import bindDateTimeRangers from '../../_includes/demos/date-time-rangers'
 import bindDatepickers from '../../_includes/demos/datepickers'
 import bindModals from '../../_includes/demos/modals'
+import bindPaginations from '../../_includes/demos/paginations'
 import bindSearchDropdowns from '../../_includes/demos/search-dropdowns'
 import bindToasts from '../../_includes/demos/toasts'
 import bindWidthPad from './bindWidthPad'
@@ -45,6 +46,7 @@ function bindAll() {
   unbinds.push(bindDateTimeRangers())
   unbinds.push(bindDatepickers())
   unbinds.push(bindModals())
+  unbinds.push(bindPaginations())
   unbinds.push(bindSearchDropdowns())
   unbinds.push(bindToasts())
   unbinds.push(bindIcons())
