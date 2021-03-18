@@ -100,7 +100,8 @@
     "webpack-dev-server": "3.11.0"
   },
   "resolutions": {
-    "loader-fs-cache/mkdirp": "0.5.3"
+    "loader-fs-cache/mkdirp": "0.5.3",
+    "webpack/**/elliptic": "6.5.4"
   },
   "publishConfig": {
     "access": "public"
