@@ -38,6 +38,14 @@ label.radio {
     }
   }
   .icon-radio {
+
+    // prevent overriden by icomoon
+    font-family: inherit !important;
+    line-height: initial !important;
+    &:before {
+      content: ''
+    }
+
     transform: translateY(-1px);
     background-color: #fff;
     border: 0;
