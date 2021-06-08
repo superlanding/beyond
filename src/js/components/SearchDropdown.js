@@ -185,7 +185,7 @@ export default class SearchDropdown {
     const { renderItem } = this.options
 
     const menuItems = items.map((item, i) => {
-      return renderItem(item, i, (selectedIndex === i))
+      return renderItem(item, i, (selectedIndex === i), items)
     })
 
     if (this.noDataMsgVisible) {
