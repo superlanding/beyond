@@ -233,26 +233,24 @@ label {
   &:before {
     font-family: $beyond-icon-font-name;
     display: inline-block;
+    margin-right: 4px;
+    transform: translateY(1px);
   }
 }
 
 .valid-feedback {
   color: $txt-color-success;
   &:before {
-    margin-right: 4px;
-    transform: translateY(1px);
     color: $txt-color-success;
-    @extend .icon-check:before
+    @extend .icon-check:before;
   }
 }
 
 .invalid-feedback {
   color: $txt-color-danger;
   &:before {
-    margin-right: 4px;
-    transform: translateY(1px);
     color: $txt-color-danger;
-    @extend .icon-exclamation-triangle:before
+    @extend .icon-exclamation-triangle:before;
   }
 }
 
