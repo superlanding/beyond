@@ -189,6 +189,11 @@ export default class TagInput {
     const lastTag = this.tags[this.tags.length - 1]
     if ((this.input.value === '') && lastTag) {
       lastTag.remove()
+      this.change({
+        type: 'remove',
+        removedId: lastTag.id,
+        tags: this.tags.slice()
+      })
     }
   }
 
