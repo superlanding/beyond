@@ -33,7 +33,6 @@ export default class SearchDropdown {
     this.items = []
     this.compositionStarted = false
     this.compositionJustEnded = false
-    this.noDataMsgVisible = false
     this.loading = true
     this.init()
   }
@@ -184,12 +183,12 @@ export default class SearchDropdown {
     const { menuContent, items, selectedIndex } = this
     const { renderItem } = this.options
 
-    const menuItems = items.map((item, i) => {
+    let menuItems = items.map((item, i) => {
       return renderItem(item, i, (selectedIndex === i), items)
     })
 
-    if (this.noDataMsgVisible) {
-      menuItems.unshift(`<div class="search-dropdown-menu-item">${this.noDataMsg}</div>`)
+    if (menuItems.length === 0) {
+      menuItems = [`<div class="search-dropdown-menu-item">${this.noDataMsg}</div>`]
     }
 
     menuContent.innerHTML = menuItems.join('')
@@ -226,7 +225,6 @@ export default class SearchDropdown {
     }
     this.resetSelectedIndex()
     this.lastKeyword = keyword
-    this.noDataMsgVisible = false
     this.setItems([])
 
     this.setLoading(true)
@@ -234,10 +232,6 @@ export default class SearchDropdown {
     const items = await this.options.getData(keyword)
 
     this.setLoading(false)
-
-    if (items.length === 0) {
-      this.noDataMsgVisible = true
-    }
 
     if (this.lastKeyword === this.input.value) {
       this.setItems(items)
