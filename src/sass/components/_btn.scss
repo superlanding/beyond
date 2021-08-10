@@ -1,18 +1,36 @@
+$default-border: #e6e6e6;
+
 .btn {
   outline: 0;
   background-color: #fff;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #e6e6e6;
+  border: 1px solid $default-border;
   padding: 6px 12px 7px;
   border-radius: 3px;
   font-size: 14px;
   font-weight: 700;
   transition: all .3s;
+
   &:focus,
   &:hover:focus {
     @include focus-outline;
+  }
+  &.hover,
+  &:hover {
+    transform: translateY(-1px);
+  }
+  &.active,
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+    border: 1px solid darken($default-border, 20%);
+  }
+  &.disabled,
+  &:disabled {
+    transform: translateY(0);
+    cursor: not-allowed;
   }
   &.btn-sm {
     &, .icon:before {
@@ -47,20 +65,6 @@
         }
       }
     }
-  }
-  &.hover,
-  &:hover {
-    transform: translateY(-1px);
-  }
-  &.active,
-  &:active {
-    transform: translateY(0);
-    box-shadow: none;
-  }
-  &.disabled,
-  &:disabled {
-    transform: translateY(0);
-    cursor: not-allowed;
   }
   .icon {
     margin-right: .4em;
@@ -103,7 +107,7 @@
     background-color: $bg;
     color: $color;
     @if $classname == 'btn-secondary' {
-      border: 1px solid #e6e6e6;
+      border: 1px solid $default-border;
       box-shadow: none;
     }
     @else {
