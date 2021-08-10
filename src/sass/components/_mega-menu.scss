@@ -10,7 +10,7 @@ $mega-menu-text-color-ex: #8A8D90;
 }
 
 .mega-menu {
-  font-size: .9375rem;
+  font-size: .875rem;
 }
 .mega-menu-divider {
   border-bottom: 1px solid #ebebeb;
@@ -32,16 +32,16 @@ $mega-menu-text-color-ex: #8A8D90;
 .mega-menu-icon-box {
   display: table;
   width: 100%;
-  > div {
-    display: table-row;
-  }
 }
 .mega-menu-icon-box-item {
   cursor: pointer;
   transition: .3s all;
   display: table-cell;
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 1.2rem;
   text-align: center;
+  flex-basis: 33.3%;
+  flex-grow: 0;
+  flex-shrink: 0;
   @include mega-menu-text;
   &:hover {
     i {
@@ -50,7 +50,7 @@ $mega-menu-text-color-ex: #8A8D90;
   }
   i {
     transition: .3s color;
-    color: #88add2;
+    color: #40468a;
     display: block;
     margin-bottom: .4rem;
   }
