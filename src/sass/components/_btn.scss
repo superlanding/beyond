@@ -4,14 +4,12 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border: 0;
+  border: 1px solid #e6e6e6;
   padding: 6px 12px 7px;
   border-radius: 3px;
   font-size: 14px;
   font-weight: 700;
   transition: all .3s;
-  box-shadow: 0 4px 6px 0 rgba(50, 50, 93, .11),
-    0 1px 3px 0 rgba(0, 0, 0, .08);
   &:focus,
   &:hover:focus {
     @include focus-outline;
@@ -53,8 +51,6 @@
   &.hover,
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 0 7px 12px 0 rgba(50, 50, 93, .11),
-      0 3px 6px 0 rgba(0, 0, 0, .08);
   }
   &.active,
   &:active {
@@ -106,6 +102,21 @@
   .btn.#{$classname} {
     background-color: $bg;
     color: $color;
+    @if $classname == 'btn-secondary' {
+      border: 1px solid #e6e6e6;
+      box-shadow: none;
+    }
+    @else {
+      border: 0;
+      box-shadow: 0 4px 6px 0 rgba(50, 50, 93, .05),
+        0 1px 3px 0 rgba(0, 0, 0, .08);
+      &.hover,
+      &:hover {
+        box-shadow: 0 7px 12px 0 rgba(50, 50, 93, .05),
+          0 3px 6px 0 rgba(0, 0, 0, .08);
+      }
+    }
+
     &.hover,
     &:hover,
     &.active,
