@@ -197,20 +197,6 @@ $bg-tags: (
 $color-tag-danger-ex: #fff;
 $bg-tag-danger-ex: #e03953;
 
-$bg-avatar-type0: #a3d96e;
-$bg-avatar-type1: #ffb958;
-$bg-avatar-type2: #5956D6;
-$bg-avatar-type3: #ce4d94;
-$bg-avatar-type4: #56c4d6;
-
-$bg-avatars: (
-  (avatar-type0, $bg-avatar-type0),
-  (avatar-type1, $bg-avatar-type1),
-  (avatar-type2, $bg-avatar-type2),
-  (avatar-type3, $bg-avatar-type3),
-  (avatar-type4, $bg-avatar-type4)
-);
-
 $screen-sm: 576px;
 $screen-md: 768px;
 $screen-lg: 992px;
