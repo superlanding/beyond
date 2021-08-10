@@ -268,20 +268,31 @@ $alert-color-warn: #3c4257;
 $alert-color-link-warn: #3a1401;
 $alert-color-hr-warn: #3a1401;
 
-$alert-states: 'primary', 'secondary',
-  'danger', 'warn';
+$alert-states: 'primary', 'secondary', 'warn', 'danger';
 
-$alert-bgs: $alert-bg-primary, $alert-bg-secondary,
-  $alert-bg-danger, $alert-bg-warn;
+$alert-bgs:
+  $alert-bg-primary,
+  $alert-bg-secondary,
+  $alert-bg-warn,
+  $alert-bg-danger;
 
-$alert-colors: $alert-color-primary, $alert-color-secondary,
-  $alert-color-danger, $alert-color-warn;
+$alert-colors:
+  $alert-color-primary,
+  $alert-color-secondary,
+  $alert-color-warn,
+  $alert-color-danger;
 
-$alert-color-links: $alert-color-link-primary, $alert-color-link-secondary,
-  $alert-color-link-danger, $alert-color-link-warn;
+$alert-color-links:
+  $alert-color-link-primary,
+  $alert-color-link-secondary,
+  $alert-color-link-warn,
+  $alert-color-link-danger;
 
-$alert-color-hrs: $alert-color-hr-primary, $alert-color-hr-secondary,
-  $alert-color-hr-danger, $alert-color-hr-warn;
+$alert-color-hrs:
+  $alert-color-hr-primary,
+  $alert-color-hr-secondary,
+  $alert-color-hr-warn,
+  $alert-color-hr-danger;
 
 $sizes: 25, 50, 75, 100;
 
