@@ -62,6 +62,7 @@
 - name: arrow-up
 - name: b
 - name: bank
+- name: basket
 - name: bell
 - name: bell-alt
 - name: bh
@@ -88,12 +89,14 @@
 - name: code
 - name: cog
 - name: cogs
+- name: coin-dollar
 - name: comments
 - name: copy
 - name: credit-card
 - name: cross
 - name: cross-circle
 - name: crown
+- name: database-refresh
 - name: doc
 - name: dollar
 - name: dollar-alt
@@ -138,6 +141,7 @@
 - name: male
 - name: medium
 - name: medium-alt
+- name: meter
 - name: minus
 - name: move
 - name: ok-mart
@@ -146,6 +150,8 @@
 - name: pause
 - name: pelican
 - name: pencil
+- name: pencil-ruler
+- name: pencil7
 - name: phone
 - name: pie
 - name: pin
@@ -171,6 +177,7 @@
 - name: sticky
 - name: sticky-alt
 - name: store
+- name: store2
 - name: super-landing
 - name: super-landing-alt
 - name: tachometer
