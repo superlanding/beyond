@@ -263,25 +263,25 @@ $alert-color-danger: #3c4257;
 $alert-color-link-danger: #310101;
 $alert-color-hr-danger: #310101;
 
-$alert-bg-warning: #f9f1ea;
-$alert-color-warning: #3c4257;
-$alert-color-link-warning: #3a1401;
-$alert-color-hr-warning: #3a1401;
+$alert-bg-warn: #f9f1ea;
+$alert-color-warn: #3c4257;
+$alert-color-link-warn: #3a1401;
+$alert-color-hr-warn: #3a1401;
 
 $alert-states: 'primary', 'secondary',
-  'danger', 'warning';
+  'danger', 'warn';
 
 $alert-bgs: $alert-bg-primary, $alert-bg-secondary,
-  $alert-bg-danger, $alert-bg-warning;
+  $alert-bg-danger, $alert-bg-warn;
 
 $alert-colors: $alert-color-primary, $alert-color-secondary,
-  $alert-color-danger, $alert-color-warning;
+  $alert-color-danger, $alert-color-warn;
 
 $alert-color-links: $alert-color-link-primary, $alert-color-link-secondary,
-  $alert-color-link-danger, $alert-color-link-warning;
+  $alert-color-link-danger, $alert-color-link-warn;
 
 $alert-color-hrs: $alert-color-hr-primary, $alert-color-hr-secondary,
-  $alert-color-hr-danger, $alert-color-hr-warning;
+  $alert-color-hr-danger, $alert-color-hr-warn;
 
 $sizes: 25, 50, 75, 100;
 
