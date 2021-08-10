@@ -258,11 +258,6 @@ $alert-color-secondary: #3c4257;
 $alert-color-link-secondary: #121623;
 $alert-color-hr-secondary: #121623;
 
-$alert-bg-success: #e6f3e6;
-$alert-color-success: #3c4257;
-$alert-color-link-success: #022519;
-$alert-color-hr-success: #87b3a4;
-
 $alert-bg-danger: #f7e9e9;
 $alert-color-danger: #3c4257;
 $alert-color-link-danger: #310101;
@@ -288,21 +283,21 @@ $alert-color-dark: #ddd;
 $alert-color-link-dark: #fff;
 $alert-color-hr-dark: #fff;
 
-$alert-states: 'primary', 'secondary', 'success',
+$alert-states: 'primary', 'secondary',
   'danger', 'warning', 'info', 'light', 'dark';
 
-$alert-bgs: $alert-bg-primary, $alert-bg-secondary, $alert-bg-success,
+$alert-bgs: $alert-bg-primary, $alert-bg-secondary,
   $alert-bg-danger, $alert-bg-warning, $alert-bg-info, $alert-bg-light, $alert-bg-dark;
 
-$alert-colors: $alert-color-primary, $alert-color-secondary, $alert-color-success,
+$alert-colors: $alert-color-primary, $alert-color-secondary,
   $alert-color-danger, $alert-color-warning, $alert-color-info, $alert-color-light, $alert-color-dark;
 
 $alert-color-links: $alert-color-link-primary, $alert-color-link-secondary,
-  $alert-color-link-success, $alert-color-link-danger, $alert-color-link-warning,
+  $alert-color-link-danger, $alert-color-link-warning,
   $alert-color-link-info, $alert-color-link-light, $alert-color-link-dark;
 
 $alert-color-hrs: $alert-color-hr-primary, $alert-color-hr-secondary,
-  $alert-color-hr-success, $alert-color-hr-danger, $alert-color-hr-warning,
+  $alert-color-hr-danger, $alert-color-hr-warning,
   $alert-color-hr-info, $alert-color-hr-light, $alert-color-hr-dark;
 
 $sizes: 25, 50, 75, 100;
