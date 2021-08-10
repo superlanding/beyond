@@ -18,7 +18,7 @@ export default function bindJqueryModal() {
             換掉了...
           </div>
           <div class="modal-footer">
-            <button data-cancel class="btn btn-outline">取消</button>
+            <button data-cancel class="btn">取消</button>
             <button data-confirm class="btn btn-primary">確認</button>
           </div>
         </div>

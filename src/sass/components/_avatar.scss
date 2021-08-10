@@ -19,10 +19,9 @@
   line-height: 38px;
   font-size: 16px;
 }
-@each $classname, $bg in $bg-avatars {
-  .avatar.#{$classname} {
-    background-color: $bg;
-    border: 1px solid $bg;
-    color: #fff;
-  }
+.avatar-letter {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  color: #333;
+  font-weight: 900;
 }
