@@ -1,35 +1,30 @@
 .tooltip {
+  $border-color: #e8e8e8;
   max-width: 400px;
   border-radius: 4px;
   display: none;
   z-index: 1;
   position: absolute;
-  padding: 6px 12px;
-  line-height: 1.9;
-  color: #fff;
-  background-color: #555;
-}
-
-.tooltip.tooltip-popover {
-  $border-color: #e8e8e8;
-  background-color: #fff;
-  color: #3c4257;
   padding: 10px 13px;
+  line-height: 1.9;
+  color: #3c4257;
+  background-color: #fff;
   box-shadow: 4px 4px 15px 1px rgba(68,  68, 72, .12);
-  border: 1px solid $border-color;
+  border: 0;
+  box-shadow: 0 1px 2px 0 #ccc;
 
   &:after {
     content: ' ';
     display: block;
     border: 0;
-    border-top-left-radius: 4px;
-    @include size(12px);
+    border-top-left-radius: 1px;
+    @include size(8px);
     background-color: #fff;
     position: absolute;
     transform: rotate(45deg);
   }
   &.top:after {
-    bottom: -6px;
+    bottom: -4px;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -38,7 +33,7 @@
     border-bottom: 1px solid $border-color;
   }
   &.bottom:after {
-    top: -6px;
+    top: -4px;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -47,7 +42,7 @@
     border-top: 1px solid $border-color;
   }
   &.left:after {
-    right: -6px;
+    right: -4px;
     top: 0;
     bottom: 0;
     margin-top: auto;
@@ -56,7 +51,7 @@
     border-top: 1px solid $border-color;
   }
   &.right:after {
-    left: -6px;
+    left: -4px;
     top: 0;
     bottom: 0;
     margin-top: auto;
