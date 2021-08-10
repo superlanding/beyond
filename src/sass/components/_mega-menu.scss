@@ -28,6 +28,9 @@ $mega-menu-text-color-ex: #8A8D90;
   display: block;
   padding: .7rem 1.5rem;
   @include mega-menu-text;
+  i {
+    color: #40468a;
+  }
 }
 .mega-menu-icon-box {
   display: table;
