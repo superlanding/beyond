@@ -123,6 +123,10 @@
     &:active {
       background-color: $bg-ex;
     }
+    &.active,
+    &:active {
+      border: 1px solid darken($bg-ex, 20%);
+    }
     &.disabled,
     &:disabled {
       background-color: $bg-disabled;
