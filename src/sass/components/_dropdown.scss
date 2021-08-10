@@ -25,6 +25,7 @@
 .dropdown-menu {
   display: none;
   transition: .2s all;
+  border-radius: 5px;
 
   .dropdown-menu-scrollable {
     max-height: 186px;
@@ -152,4 +153,7 @@
 .dropdown-menu-content {
   padding: 14px;
   font-size: .9rem;
+}
+.dropdown-menu .dropdown-submenu .dropdown-item {
+  padding: .4rem 1.2rem .4rem 1.2rem;
 }
