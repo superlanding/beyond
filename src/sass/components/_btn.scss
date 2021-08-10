@@ -97,36 +97,6 @@
   @include ripple(48px, 0, 0);
 }
 
-.btn.btn-outline,
-a.btn.btn-outline {
-  color: $text-color;
-}
-
-.btn.btn-outline {
-  background-color: #fff;
-  font-size: 13px;
-  font-weight: 400;
-  padding: 4px 7px;
-  border: 1px solid #ccc;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
-  &.hover,
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 1px 2px 0 rgba(50, 50, 93, .11),
-      0 3px 6px 0 rgba(0, 0, 0, .08);
-  }
-  &:focus {
-    @include focus-outline;
-  }
-  &.active {
-    background-color: #f3f3f7;
-  }
-}
-
-.btn-outline .ring-loader div {
-  border-color: $text-color-light transparent transparent transparent;
-}
-
 .btn .badge {
   margin-left: .5rem;
   font-weight: 400;
