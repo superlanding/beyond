@@ -102,7 +102,7 @@
   font-weight: 400;
 }
 
-@each $classname, $bg, $color, $bg-ex, $bg-disabled, $outlined-color, $badge-bg, $badge-color in $btns {
+@each $classname, $bg, $color, $bg-ex, $bg-disabled, $badge-bg, $badge-color in $btns {
   .btn.#{$classname} {
     background-color: $bg;
     color: $color;
@@ -115,9 +115,6 @@
     &.disabled,
     &:disabled {
       background-color: $bg-disabled;
-    }
-    &.outlined {
-      border: 1px solid $outlined-color;
     }
     .badge {
       background-color: $badge-bg;
