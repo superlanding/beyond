@@ -1,6 +1,6 @@
 import getFloatedTargetPos from '../utils/getFloatedTargetPos'
 import supportDom from '../decorators/supportDom'
-import { isFunction, toPixel, throttle } from '../utils'
+import { isFunction, toPixel, throttle, noop } from '../utils'
 
 @supportDom
 export default class Dropdown {
@@ -14,6 +14,7 @@ export default class Dropdown {
     this.defaultTextNode = this.getDefaultTextNode(dom, options.textIndex)
     this.defaultText = this.defaultTextNode ? this.defaultTextNode.textContent.trim() : ''
     this.backdropMode = options.backdropMode || 'auto'
+    this.hidden = options.hidden || noop
     this.init()
   }
 
@@ -136,7 +137,12 @@ export default class Dropdown {
       })
     }
 
-    this.addEvent(this.dom, 'click', () => this.toggleMenu())
+    this.addEvent(this.dom, 'click', () => {
+      this.toggleMenu()
+      if (! this.isMenuVisible) {
+        this.hidden()
+      }
+    })
 
     this.addEvent(document, 'click', event => {
       if (! this.isMenuVisible) {
@@ -148,6 +154,7 @@ export default class Dropdown {
       // is backdrop
       if ((event.target !== this.dom) && (! this.dom.contains(event.target))) {
         this.hideMenu()
+        this.hidden()
       }
     })
 
