@@ -304,6 +304,8 @@ export default class SearchDropdown {
     this.addEvent(this.menuContent, 'click', event => {
       const item = this.findClickedItem(event.target)
       if (item) {
+        event.preventDefault()
+        event.stopPropagation()
         this.setItem(item)
       }
     })
