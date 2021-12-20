@@ -3,6 +3,7 @@ import bindAutocompletes from '../../_includes/demos/autocompletes'
 import bindBtns from '../../_includes/demos/btns'
 import bindIcons from '../../_includes/demos/icons'
 import bindCodeboxes from './bindCodeboxes'
+import bindThemeSelect from './bindThemeSelect'
 import bindLineCharts from '../../_includes/demos/line-chart'
 import bindBarCharts from '../../_includes/demos/bar-chart'
 import bindPieCharts from '../../_includes/demos/pie-chart'
@@ -36,6 +37,7 @@ function bindAll() {
   beyond.bind()
 
   unbinds.push(bindCodeboxes())
+  unbinds.push(bindThemeSelect())
   unbinds.push(bindWidthPad())
 
   unbinds.push(bindAutocompletes())
