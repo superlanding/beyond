@@ -1,5 +1,14 @@
 <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
   <ul>
+    <li>
+      <div class="theme-select">
+        Theme
+        <select class="select select-outline">
+          <option value="default">Default</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+    </li>
     {% for item in site.data.nav %}
       <li>
 
