@@ -6,6 +6,9 @@
 
   $bg-admin: #070b1f;
 
+
+  $color-primary: #769aff;
+
   // nav
   $nav-color: $text-color;
   $nav-color-ex: $text-color-strong;
@@ -22,4 +25,7 @@
   $select-color: $text-color;
   $select-bg: #282d47;
 
+  body {
+    color: $text-color;
+  }
 }
