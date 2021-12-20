@@ -1,11 +1,4 @@
 .navbar {
-  $bg-nav: rgb(227, 232, 238);
-  $color-nav-primary: rgb(60, 66, 87);
-  $color-nav-primary-ex: #101425;
-  $color-nav: rgb(105, 115, 150);
-  $color-nav-ex: #adb5d0;
-  $color-nav-disabled: #adb5d0;
-
   display: flex;
   background-color: $bg-nav;
   font-size: 12px;
@@ -49,7 +42,7 @@
       color: $color-nav-disabled;
       cursor: not-allowed;
       &:hover {
-        color: $color-nav-ex;
+        color: $color-nav-disabled;
       }
     }
   }
