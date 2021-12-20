@@ -1,19 +1,19 @@
 .select {
+  color: $select-color;
+  background: $select-bg;
+  box-shadow: 0 2px 5px 0 rgba(60, 66, 87, .12);
+  font-size: 14px;
+  appearance: none;
+  border: 0;
+  padding: 6px 34px 6px 10px;
+  background-image: url(beyond-image-path('#{$beyond-css-img-path}arrow-select.svg'));
+
   &:disabled {
     opacity: .5;
   }
   &::-ms-expand {
     display: none;
   }
-  font-size: 14px;
-  color: #3c4257;
-  appearance: none;
-  border: 0;
-  background: #fff;
-  box-shadow: 0 2px 5px 0 rgba(60, 66, 87, .12);
-  padding: 6px 34px 6px 10px;
-
-  background-image: url(beyond-image-path('#{$beyond-css-img-path}arrow-select.svg'));
   &.active {
     background-image: url(beyond-image-path('#{$beyond-css-img-path}arrow-select-ex.svg'));
   }
