@@ -1,8 +1,14 @@
+$bg: #141728;
+$code-bg: #202235;
+
 body.theme-dark {
-  .main {
-    background: #141728;
+  .main,
+  .no-nav-content > div {
+    background: $bg;
   }
-  .codebox-result {
-    background: #202235;
+  .codebox-result,
+  .code,
+  .highlight {
+    background: $code-bg;
   }
 }
