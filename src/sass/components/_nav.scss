@@ -7,7 +7,7 @@
     user-select: none;
     cursor: pointer;
     padding: 7px;
-    color: #1a1f36;
+    color: $nav-color-ex;
     font-size: 1.1rem;
     display: flex;
     align-items: center;
@@ -33,7 +33,7 @@
   }
   .nav-item {
     font-weight: 400;
-    color: #1a1f36;
+    color: $nav-color;
     text-decoration: none;
     display: flex;
     align-items: center;
