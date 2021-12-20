@@ -18,11 +18,13 @@ import bindJqueryModal from '../../_includes/demos/jquery-modal'
 import bindTagInputs from '../../_includes/demos/tag-input'
 
 const { beyond, Turbolinks, $ } = window
+const { docReady } = beyond
 const bindJQuery = window['beyond-jquery'].default
 const unbinds = []
 
 if (typeof Turbolinks === 'undefined') {
-  bindAll()
+  docReady()
+    .then(() => bindAll())
 }
 else {
   Turbolinks.start()
