@@ -1,5 +1,6 @@
 export default function bindThemeSelect() {
 
+  const cacheKey = 'beyond-official::theme'
   const select = document.getElementById('theme-select')
 
   if (! select) {
@@ -14,15 +15,20 @@ export default function bindThemeSelect() {
       }
     })
     classList.add(`theme-${theme}`)
+    localStorage.setItem(cacheKey, theme)
   }
 
-  let theme = select.value
+  const getInitialTheme = () => {
+    return localStorage.getItem(cacheKey) || 'default'
+  }
 
+  const theme = getInitialTheme(select)
+
+  select.value = theme
   setThemeClass(theme)
 
   const handleSelectChange = event => {
-    theme = event.target.value
-    setThemeClass(theme)
+    setThemeClass(event.target.value)
   }
 
   select.addEventListener('change', handleSelectChange)
