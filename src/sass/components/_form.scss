@@ -298,7 +298,7 @@ label {
     transform: translateY(-1px);
   }
   &.disabled {
-    color: #6c757d;
+    color: $form-check-disabled-color;
     cursor: not-allowed;
     .checkbox {
       @extend %checkbox-disabled;
