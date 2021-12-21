@@ -19,8 +19,10 @@ body.theme-dark {
     color: $brand-primary;
   }
 
+  $col-bg: #2e3245;
+  $col-bg-ex: #181928;
+
   .page-cols {
-    $col-bg: #2e3245;
     .row {
       border: 2px solid $col-bg;
       background-color: $col-bg;
@@ -28,8 +30,29 @@ body.theme-dark {
     .col,
     [class^="col-"] {
       text-align: center;
-      background-color: #181928;
-      border: 1px solid darken($col-bg, 20%);
+      background-color: $col-bg-ex;
+      border: 2px solid $col-bg;
+    }
+  }
+
+  .page-containers {
+    .container,
+    [class^="container-"] {
+      background-color: #3c4356;
+    }
+  }
+
+  .page-visibility-utilities {
+    .codebox-result {
+      .col-12 {
+        border: 1px solid #555;
+        background: #3c4356;
+
+        div[class^="hidden-"],
+        div[class^="visible-"] {
+          background: #212438;
+        }
+      }
     }
   }
 
