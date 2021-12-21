@@ -140,7 +140,7 @@ label {
     color: #a9aebf;
   }
   padding: 5px 7px 6px;
-  background-color: #fff;
+  background-color: $control-bg;
   background-clip: padding-box;
   border-radius: 4px;
   box-shadow: 0 0 0 1px rgba(60, 66, 87, .16),
@@ -216,8 +216,8 @@ label {
   }
   &:disabled,
   &[readonly] {
-    color: #111;
-    background-color: #e9ecef;
+    color: $control-disabled-color;
+    background: $control-disabled-bg;
   }
 }
 .form-control-plaintext {
