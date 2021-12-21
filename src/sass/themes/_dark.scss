@@ -6,8 +6,9 @@
 
   $bg-admin: #070b1f;
 
-
   $color-primary: #769aff;
+
+  $txt-color-primary: $color-primary;
 
   $color-muted: $text-color-light;
 
@@ -30,6 +31,8 @@
   // table
   $table-bg: #070b1f;
   $table-border: inset 0 -1px #181928;
+  $table-th-color: $text-color-light;
+  $table-td-color: $text-color;
 
   // form
   $control-bg: #2b2f40;

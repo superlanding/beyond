@@ -25,11 +25,11 @@
     color: #1a1f36;
   }
   th {
-    color: #697386;
+    color: $table-th-color;
     white-space: nowrap;
   }
   td {
-    color: #3c4257;
+    color: $table-td-color;
   }
   .title {
     font-size: 16px;

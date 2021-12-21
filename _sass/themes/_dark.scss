@@ -13,8 +13,24 @@ body.theme-dark {
   }
   .no-nav-content .table td.active,
   .no-nav-content .table th.active {
+    background: #22253c;
   }
   .codebox a.js-active {
     color: $brand-primary;
   }
+
+  .page-cols {
+    $col-bg: #2e3245;
+    .row {
+      border: 2px solid $col-bg;
+      background-color: $col-bg;
+    }
+    .col,
+    [class^="col-"] {
+      text-align: center;
+      background-color: #181928;
+      border: 1px solid darken($col-bg, 20%);
+    }
+  }
+
 }
