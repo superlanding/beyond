@@ -1,7 +1,7 @@
-$bg: #141728;
-$code-bg: #202235;
-
 body.theme-dark {
+  $bg: #141728;
+  $code-bg: #202235;
+  $brand-primary: #769aff;
   .main,
   .no-nav-content > div {
     background: $bg;
@@ -10,5 +10,11 @@ body.theme-dark {
   .code,
   .highlight {
     background: $code-bg;
+  }
+  .no-nav-content .table td.active,
+  .no-nav-content .table th.active {
+  }
+  .codebox a.js-active {
+    color: $brand-primary;
   }
 }
