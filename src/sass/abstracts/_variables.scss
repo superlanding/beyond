@@ -171,27 +171,25 @@ $alert-color-hr-warn: #3a1401;
 
 $alert-states: 'primary', 'secondary', 'warn', 'danger';
 
-
 $sizes: 25, 50, 75, 100;
 
 // border utils
 $border-color: #dee2e6;
 
 // buttons
-// classname, border, bg, color, bg-ex, bg-disabled, badge-bg, badge-color
+// classname, bg, color, bg-ex, bg-disabled, badge-bg, badge-color
 $btn-primary: 'btn-primary', #6772e5, #fff, #7795f8, #b2b7df, #6c8eef, #fff;
 $btn-secondary: 'btn-secondary', #fff, #6772e5, #fff, #ebebeb, lighten(#ccc, 12%), #6772e5;
 $btn-danger: 'btn-danger', #cd3d64, #fff, #ef6a8e, #b59ba7, lighten(#cd3d64, 10%), #fff;
 $btn-warn: 'btn-warn', #f1946a, #fff, #ffaf8c, #e5cec3, lighten(#f1946a, 7%), #fff;
 
-$btns:
-  $btn-primary,
-  $btn-secondary,
-  $btn-danger,
-  $btn-warn;
+$btn-link-border: #5469d4;
+$btn-border: #e6e6e6;
 
-// classname, bg, color, color-ex, color-disabled
-$btn-link: 'btn-link', #fff, #5469d4, #32325d, #bbb;
+// color, color-ex, color-disabled
+$btn-link: #5469d4, darken(#5469d4, 20%), #bbb;
+
+$ripple-bg: #e6e9ea;
 
 // ring-loader
 $ring-loader-size-lg: 16px;

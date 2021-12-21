@@ -41,7 +41,7 @@
     display: block;
     z-index: -1;
     @include size($size);
-    background-color: #e6e9ea;
+    background-color: $ripple-bg;
     opacity: 0;
     transform: scale(.6);
   }
