@@ -97,6 +97,9 @@
   $alert-color-hr-danger: $txt-color-danger;
 
   // buttons
+  $default-btn-bg: #333956;
+  $badge-bg: #181c2f;
+
   // classname, bg, color, bg-ex, bg-disabled, badge-bg, badge-color
   $btn-primary: 'btn-primary', #3b5dbd, #fff, lighten(#3b5dbd, 10%), #697baf, #6c8eef, #fff;
   $btn-secondary: 'btn-secondary', #262b45, #ddd, lighten(#262b45, 10%), #595c66, lighten(#ccc, 12%), #6772e5;

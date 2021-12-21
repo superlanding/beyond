@@ -3,10 +3,9 @@
   font-weight: 900;
   font-size: 12px;
   border-radius: 2px;
-  background-color: #eaeaea;
+  background-color: $badge-bg;
   padding: 1px 4px;
   white-space: nowrap;
-  transform: translateY(-8%);
 }
 
 .badge.badge-pill {
