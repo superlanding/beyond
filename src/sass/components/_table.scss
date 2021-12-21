@@ -47,8 +47,8 @@
     }
   }
   @for $i from 1 through length($color-txt-types) {
-    td.txt-type#{$i},
-    th.txt-type#{$i} {
+    td.txt-type#{$i - 1},
+    th.txt-type#{$i - 1} {
       color: nth($color-txt-types, $i);
     }
   }
