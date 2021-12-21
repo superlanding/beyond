@@ -195,8 +195,8 @@ $ring-loader-size-md: 14px;
 $ring-loader-size-sm: 12px;
 
 // nav
-$nav-color: #fff;
-$nav-color-ex: #fff;
+$nav-color: $text-color;
+$nav-color-ex: $text-color-strong;
 
 // navbar
 $bg-nav: rgb(227, 232, 238);
