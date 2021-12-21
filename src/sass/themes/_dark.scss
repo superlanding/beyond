@@ -6,12 +6,12 @@
 
   $bg-admin: #070b1f;
 
-  $color-primary: #769aff;
+  $color-primary: #88a8ff;
 
   $txt-color-primary: $color-primary;
   $txt-color-secondary: #aaa;
-  $txt-color-danger: #ea3a84;
-  $txt-color-warn: #f3a501;
+  $txt-color-danger: #ff4e99;
+  $txt-color-warn: #f39401;
   $txt-color-success: #85d996;
 
   $color-txt-type0: #b8bee1;
@@ -70,6 +70,31 @@
 
   $color-tag-danger-ex: #fff;
   $bg-tag-danger-ex: $txt-color-danger;
+
+  // alerts
+  $alert-bg-primary: transparent;
+  $alert-border-primary: $color-primary;
+  $alert-color-primary: $color-primary;
+  $alert-color-link-primary: #c3d1ff;
+  $alert-color-hr-primary: $color-primary;
+
+  $alert-bg-secondary: transparent;
+  $alert-border-secondary: #76ffcb;
+  $alert-color-secondary: #76ffcb;
+  $alert-color-link-secondary: #76ffcb;
+  $alert-color-hr-secondary: #76ffcb;
+
+  $alert-bg-warn: transparent;
+  $alert-border-warn: $txt-color-warn;
+  $alert-color-warn: $txt-color-warn;
+  $alert-color-link-warn: $txt-color-warn;
+  $alert-color-hr-warn: $txt-color-warn;
+
+  $alert-bg-danger: transparent;
+  $alert-border-danger: $txt-color-danger;
+  $alert-color-danger: $txt-color-danger;
+  $alert-color-link-danger: $txt-color-danger;
+  $alert-color-hr-danger: $txt-color-danger;
 
   body {
     color: $text-color;
