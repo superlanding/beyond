@@ -320,3 +320,13 @@ $select-outline-strong-shadow:
   0 1px 1px 0 rgba(0, 0, 0, 0.12),
   rgba(60, 66, 87, .16) 0 0 0 1px,
   rgba(60, 66, 87, .12) 0 2px 5px 0;
+
+// dropdown
+$dropdown-menu-bg: #fff;
+$dropdown-menu-bg-ex: #f7fafc;
+$dropdown-menu-color: #5469d4;
+$dropdown-menu-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
+  0 15px 35px 0 rgba(49, 49, 93, .1),
+  0 5px 15px 0 rgba(0, 0, 0, .08);
+$dropdown-divider-border: #d8d8d8;
+$dropdown-menu-title-bg: #f7fafc;

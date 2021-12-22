@@ -196,6 +196,17 @@
     0 0 0 1px rgba(255, 255, 255, .16),
     0 2px 5px 0 rgba(255, 255, 255, .12);
 
+  // dropdown
+  $dropdown-menu-bg: #2b2e3c;
+  $dropdown-menu-bg-ex: lighten(#2b2e3c, 10%);
+  $dropdown-menu-color: $text-color;
+  $dropdown-menu-shadow: 0 0 0 1px rgba(0, 0, 0, .1),
+    0 15px 35px 0 rgba(0, 0, 0, .1),
+    0 5px 15px 0 rgba(0, 0, 0, .08);
+
+  $dropdown-divider-border: rgba(255, 255, 255, .2);
+  $dropdown-menu-title-bg: #232532;
+
   body {
     color: $text-color;
   }
