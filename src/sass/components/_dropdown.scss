@@ -23,25 +23,24 @@
 }
 .dropdown-menu {
   display: none;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
+    0 15px 35px 0 rgba(49, 49, 93, .1),
+    0 5px 15px 0 rgba(0, 0, 0, .08);
   transition: .2s all;
   border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  padding: 8px 0;
 
   .dropdown-menu-scrollable {
     max-height: 186px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
   }
-
-  z-index: 1;
-  padding: 8px 0;
   &.no-padding {
     padding: 0;
   }
-  position: absolute;
-  background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
-    0 15px 35px 0 rgba(49, 49, 93, .1),
-    0 5px 15px 0 rgba(0, 0, 0, .08);
   .dropdown-divider {
     border-bottom: 1px solid #d8d8d8;
     margin: 10px 0;
