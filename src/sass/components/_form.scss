@@ -294,9 +294,6 @@ label {
     position: relative;
     margin-left: 4px;
   }
-  .checkbox .icon-checkbox {
-    transform: translateY(-1px);
-  }
   &.disabled {
     color: $form-check-disabled-color;
     cursor: not-allowed;

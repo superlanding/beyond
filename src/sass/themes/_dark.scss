@@ -7,6 +7,7 @@
   $bg-admin: #070b1f;
 
   $color-primary: #88a8ff;
+  $bg-primary: #3b5dbd;
 
   $txt-color-primary: $color-primary;
   $txt-color-secondary: #aaa;
@@ -25,7 +26,6 @@
 
   $color-muted: $text-color-light;
 
-  $bg-primary: #3b5dbd;
   $bg-secondary: #f00;
 
   // nav
@@ -206,6 +206,8 @@
 
   $dropdown-divider-border: rgba(255, 255, 255, .2);
   $dropdown-menu-title-bg: #232532;
+
+  $checkbox-bg: $control-bg;
 
   body {
     color: $text-color;

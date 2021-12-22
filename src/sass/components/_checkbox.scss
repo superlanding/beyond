@@ -38,16 +38,16 @@ label.checkbox {
   margin-bottom: initial;
 }
 .checkbox {
-  transform: translateY(3px);
-  &.focus {
-    @include focus-outline;
-  }
   $size: 14px;
-  @include size($size);
+  transform: translateY(4px);
   cursor: pointer;
   position: relative;
   display: inline-block;
+  @include size($size);
 
+  &.focus {
+    @include focus-outline;
+  }
   input[type="checkbox"] {
     @include size($size);
     cursor: pointer;
@@ -57,7 +57,7 @@ label.checkbox {
     display: block;
     bottom: 0;
     &:checked ~ .icon-checkbox {
-      background-color: #6772e5;
+      background-color: $checkbox-bg-ex;
       box-shadow: none;
       &:before {
         animation: .3s check1;
@@ -74,7 +74,7 @@ label.checkbox {
     }
   }
   .icon-checkbox {
-    background-color: #fff;
+    background-color: $checkbox-bg;
     transform: translateY(-2px);
     transition: .3s background-color;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12),
