@@ -44,7 +44,6 @@
   content: '';
 }
 .loader:after {
-  background-color: #f7f8f9;
   @include size(75%);
   border-radius: 50%;
   content: '';
