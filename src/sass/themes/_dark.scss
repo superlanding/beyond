@@ -113,7 +113,7 @@
     #fff,
     lighten(#3b5dbd, 10%),
     #697baf,
-    #6c8eef,
+    #243e87,
     #fff;
 
   $btn-secondary:
@@ -131,7 +131,7 @@
     #fff,
     lighten(#b36000, 10%),
     #7e5e39,
-    lighten(#f1946a, 7%),
+    #834809,
     #fff;
 
   $btn-danger:
@@ -140,7 +140,7 @@
     #fff,
     #ef6a8e,
     #743b4a,
-    lighten(#cd3d64, 10%),
+    #8d203d,
     #fff;
 
   $btn-border: #262b45;
@@ -169,6 +169,7 @@
     color: $text-color;
   }
   .btn .badge {
+    background: #000;
     box-shadow: 0 0 4px 0 rgba(255, 255, 255, .1);
   }
 }
