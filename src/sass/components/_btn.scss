@@ -117,7 +117,10 @@
           0 3px 6px 0 rgba(0, 0, 0, .08);
       }
     }
-
+    &:focus,
+    &:hover:focus {
+      @include focus-outline;
+    }
     &.hover,
     &:hover,
     &.active,
@@ -151,7 +154,10 @@
   &:active {
     color: nth($btn-link, 2);
   }
-
+  &:focus,
+  &:hover:focus {
+    @include focus-outline;
+  }
   &.active,
   &:active {
     box-shadow: inset 0 0 0 1px $btn-link-border;
