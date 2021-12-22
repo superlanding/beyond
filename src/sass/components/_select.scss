@@ -34,7 +34,7 @@
     box-shadow: 0 0 0 1px rgba(60, 66, 87, .16),
       0 0 0 1px rgba(60, 66, 87, .16),
       0 1px 1px 0 rgba(0, 0, 0, .12),
-      0 0 0 4px rgba(58, 151, 212, .28);
+      $focus-outline;
   }
 }
 
@@ -49,6 +49,6 @@
       rgba(60, 66, 87, .12) 0 2px 5px 0,
       0 0 0 1px rgba(60, 66, 87, .16),
       0 1px 1px 0 rgba(0, 0, 0, .12),
-      0 0 0 4px rgba(58, 151, 212, .28);
+      $focus-outline;
   }
 }

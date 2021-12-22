@@ -180,6 +180,8 @@
 
   $blockquote-footer-color: $text-color-light;
 
+  $focus-outline: 0 0 0 1px rgba(255, 255, 255, .8);
+
   body {
     color: $text-color;
   }
