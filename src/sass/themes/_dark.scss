@@ -186,6 +186,16 @@
   $bg-outline: rgba(255, 255, 255, .8);
   $focus-outline: 0 0 0 1px rgba(255, 255, 255, .8);
 
+  // select
+  $select-shadow:
+    0 2px 5px 0 rgba(255, 255, 255, .12);
+  $select-outline-shadow:
+    0 0 0 1px rgba(255, 255, 255, .16);
+  $select-outline-strong-shadow:
+    0 1px 1px 0 rgba(255, 255, 255, .12),
+    0 0 0 1px rgba(255, 255, 255, .16),
+    0 2px 5px 0 rgba(255, 255, 255, .12);
+
   body {
     color: $text-color;
   }
