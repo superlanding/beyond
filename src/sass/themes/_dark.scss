@@ -25,6 +25,9 @@
 
   $color-muted: $text-color-light;
 
+  $bg-primary: #3b5dbd;
+  $bg-secondary: #f00;
+
   // nav
   $nav-color: $text-color;
   $nav-color-ex: $text-color-strong;
@@ -109,7 +112,7 @@
   // badge-color
   $btn-primary:
     'btn-primary',
-    #3b5dbd,
+    $bg-primary,
     #fff,
     lighten(#3b5dbd, 10%),
     #697baf,
@@ -168,6 +171,12 @@
   // breadcrumb
   $breadcrumb-color: $text-color;
   $breadcrumb-color-ex: $color-primary;
+
+  // card
+  $card-bg: #282d47;
+  $card-color: $text-color;
+  $list-group-bg: #282d47;
+  $list-group-border: rgba(255, 255, 255, .2);
 
   body {
     color: $text-color;
