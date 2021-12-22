@@ -269,9 +269,11 @@ label {
   padding-left: 0;
   margin-right: .75rem;
 
-  .checkbox,
-  .radio {
+  .checkbox {
     transform: translateY(0);
+  }
+  .radio {
+    transform: translateY(1px);
   }
   .checkbox + span,
   .radio + span {
