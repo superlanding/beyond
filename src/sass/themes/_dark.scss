@@ -165,6 +165,10 @@
     ('badge-dark',      #000,     $text-color),
     ('badge-light',     #f8f9fa,  #555);
 
+  // breadcrumb
+  $breadcrumb-color: $text-color;
+  $breadcrumb-color-ex: $color-primary;
+
   body {
     color: $text-color;
   }
