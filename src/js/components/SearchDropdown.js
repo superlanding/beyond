@@ -389,8 +389,10 @@ export default class SearchDropdown {
   }
 
   destroy() {
-    this.menu.remove()
-    this.menu = null
+    if (this.menu) {
+      this.menu.remove()
+      this.menu = null
+    }
     this.input = null
     this.menuContent = null
     this.loader = null
