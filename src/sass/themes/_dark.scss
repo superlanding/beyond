@@ -108,48 +108,45 @@
   $default-btn-bg: #373b4a;
   $badge-bg: #181c2f;
 
-  // classname
-  // bg
-  // color
-  // bg-ex
-  // bg-disabled
-  // badge-bg
-  // badge-color
-  $btn-primary:
-    'btn-primary',
-    $bg-primary,
-    #fff,
-    lighten(#3b5dbd, 10%),
-    #697baf,
-    #243e87,
-    #fff;
+  $btn-primary: (
+    classname: 'btn-primary',
+    bg: $bg-primary,
+    txt: #fff,
+    bg-ex: lighten(#3b5dbd, 10%),
+    bg-disabled: #697baf,
+    badge-bg: #243e87,
+    badge-txt: #fff
+  );
 
-  $btn-secondary:
-    'btn-secondary',
-     #333956,
-     #8facff,
-     lighten(#333956, 10%),
-     #474954,
-     #181c2f,
-     $txt-primary;
+  $btn-secondary: (
+    classname: 'btn-secondary',
+    bg: #333956,
+    txt: #8facff,
+    bg-ex: lighten(#333956, 10%),
+    bg-disabled: #474954,
+    badge-bg: #181c2f,
+    badge-txt: $txt-primary
+  );
 
-  $btn-warn:
-    'btn-warn',
-    #b36000,
-    #fff,
-    lighten(#b36000, 10%),
-    #7e5e39,
-    #834809,
-    #fff;
+  $btn-warn: (
+    classname: 'btn-warn',
+    bg: #b36000,
+    txt: #fff,
+    bg-ex: lighten(#b36000, 10%),
+    bg-disabled: #7e5e39,
+    badge-bg: #834809,
+    badge-txt: #fff
+  );
 
-  $btn-danger:
-    'btn-danger',
-    #cd3d64,
-    #fff,
-    #ef6a8e,
-    #743b4a,
-    #8d203d,
-    #fff;
+  $btn-danger: (
+    classname: 'btn-danger',
+    bg: #cd3d64,
+    txt: #fff,
+    bg-ex: #ef6a8e,
+    bg-disabled: #743b4a,
+    badge-bg: #8d203d,
+    badge-txt: #fff
+  );
 
   $btn-border: #262b45;
   $btn-link-border: $txt-primary;

@@ -99,10 +99,13 @@
   font-weight: 400;
 }
 
-@each $classname, $bg, $color, $bg-ex, $bg-disabled, $badge-bg, $badge-color in $btns {
+@each $btn in $btns {
+
+  $classname: map-get($btn, classname);
+
   .btn.#{$classname} {
-    background-color: $bg;
-    color: $color;
+    background-color: map-get($btn, bg);
+    color: map-get($btn, txt);
     @if $classname == 'btn-secondary' {
       border: 1px solid $btn-border;
       box-shadow: none;
@@ -125,19 +128,19 @@
     &:hover,
     &.active,
     &:active {
-      background-color: $bg-ex;
+      background-color: map-get($btn, bg-ex);
     }
     &.active,
     &:active {
-      border: 1px solid darken($bg-ex, 20%);
+      border: 1px solid darken(map-get($btn, bg-ex), 20%);
     }
     &.disabled,
     &:disabled {
-      background-color: $bg-disabled;
+      background-color: map-get($btn, bg-disabled);
     }
     .badge {
-      background-color: $badge-bg;
-      color: $badge-color;
+      background-color: map-get($btn, badge-bg);
+      color: map-get($btn, badge-txt);
     }
   }
 }
@@ -162,7 +165,6 @@
   &:active {
     box-shadow: inset 0 0 0 1px $btn-link-border;
   }
-
   &.disabled,
   &:disabled {
     color: nth($btn-link, 3);
