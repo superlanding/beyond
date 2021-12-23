@@ -7,9 +7,9 @@
 
 %disabled-td {
   cursor: not-allowed;
-  background-color: #ddd;
-  color: #333;
-  box-shadow: inset 0 -1px #c7c7c7;
+  background: $table-td-disabled-bg;
+  color: $table-td-disabled-color;
+  box-shadow: $table-td-disabled-shadow;
 }
 
 .table {
@@ -54,7 +54,7 @@
   }
   th,
   td {
-    background-color: $table-bg;
+    background: $table-bg;
     box-shadow: $table-border;
     padding: 7px;
   }
@@ -71,7 +71,7 @@
   }
   &.striped {
     tr:nth-child(odd) td {
-      background-color: #f7fafc;
+      background: $table-bg-ex;
     }
     tr.disabled:nth-child(odd) td {
       @extend %disabled-td;

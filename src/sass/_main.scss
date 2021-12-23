@@ -59,13 +59,6 @@ th, td {
   padding: 7px;
 }
 
-hr {
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
-  border: 0;
-  border-top: 1px solid rgba(0, 0, 0, .1);
-}
-
 a {
   cursor: pointer;
   color: $color-anchor;
@@ -160,7 +153,7 @@ $color-active: #5469d4;
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
-  border-top: 1px solid #e3e8ee;
+  border-top: 1px solid $hr-border;
   border-left: 0;
   border-right: 0;
   border-bottom: 0;
