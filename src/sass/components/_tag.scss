@@ -28,7 +28,7 @@
     }
   }
 
-  @each $classname, $bg in $bg-tags {
+  @each $classname, $bg in $tags {
     &.#{$classname} {
       border-color: $bg;
       color: $bg;
