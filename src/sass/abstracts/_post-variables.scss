@@ -38,16 +38,6 @@ $bgs:
   ('bg-icon', $bg-icon),
   ('bg-disabled', $bg-disabled);
 
-$border-primary: $bg-primary;
-$border-secondary: #6c757d;
-$border-success: $bg-success;
-$border-danger: $bg-danger;
-$border-warning: $bg-warn;
-$border-info: $bg-info;
-$border-light: $bg-light;
-$border-dark: $bg-dark;
-$border-white: $bg-white;
-
 $borders:
  ('border-primary', $border-primary),
  ('border-secondary', $border-secondary),
@@ -67,19 +57,19 @@ $txt-types:
   $txt-type4;
 
 $tags: (
-  (tag-primary, $bg-tag-primary),
-  (tag-secondary, $bg-tag-secondary),
-  (tag-success, $bg-tag-success),
-  (tag-danger, $bg-tag-danger),
-  (tag-warn, $bg-tag-warn),
-  (tag-info, $bg-tag-info),
-  (tag-dark, $bg-tag-dark),
-  (tag-light, $bg-tag-light),
-  (tag-type0, $bg-tag-type0),
-  (tag-type1, $bg-tag-type1),
-  (tag-type2, $bg-tag-type2),
-  (tag-type3, $bg-tag-type3),
-  (tag-type4, $bg-tag-type4)
+  ('tag-primary', $bg-tag-primary),
+  ('tag-secondary', $bg-tag-secondary),
+  ('tag-success', $bg-tag-success),
+  ('tag-danger', $bg-tag-danger),
+  ('tag-warn', $bg-tag-warn),
+  ('tag-info', $bg-tag-info),
+  ('tag-dark', $bg-tag-dark),
+  ('tag-light', $bg-tag-light),
+  ('tag-type0', $bg-tag-type0),
+  ('tag-type1', $bg-tag-type1),
+  ('tag-type2', $bg-tag-type2),
+  ('tag-type3', $bg-tag-type3),
+  ('tag-type4', $bg-tag-type4)
 );
 
 $alert-bgs:
