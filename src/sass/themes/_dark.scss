@@ -258,6 +258,14 @@
 
   $hr-border: rgba(255, 255, 255, .2);
 
+  // tabbox
+  $tab-btn-bg: transparent;
+  $tab-btn-border: rgba(255, 255, 255, .3);
+  $tab-active-color: $color-primary;
+  $tab-hover-color: $text-color-strong;
+  $tab-focus-color: $text-color-strong;
+  $tab-uno-active-color: #6772e5;
+
   body {
     color: $text-color;
   }

@@ -1,20 +1,16 @@
 @mixin tab-active-text {
-  color: #1d2638;
+  color: $tab-active-color;
   font-weight: 700;
 }
-@mixin tab-active-border {
-  border-bottom-color: #3c4356;
-}
 @mixin tab-focus-style {
-
   &.js-current,
   &:focus.js-current {
     @include tab-active-text;
-    @include tab-active-border;
+    border-bottom-color: #3c4356;
   }
-
   &:focus {
-    @include tab-active-text;
+    color: $tab-focus-color;
+    font-weight: 700;
     border-bottom-color: rgba(58, 151, 212, .8);
   }
 }
@@ -43,7 +39,7 @@
     padding: 18px 50px;
   }
   .tab-btn {
-    background: #fff;
+    background: $tab-btn-bg;
     padding: 12px 25px;
     font-size: 13px;
     border-top: 0;
@@ -51,7 +47,7 @@
     border-left: 0;
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-bottom-color: #e3e8ee;
+    border-bottom-color: $tab-btn-border;
     outline: 0;
     transition: all .3s;
 
@@ -60,12 +56,11 @@
       font-size: 10px;
     }
     &:hover {
+      color: $tab-hover-color;
+      font-weight: 700;
       .icon-chevron-down:before {
         color: #1d2638;
       }
-    }
-    &:hover {
-      @include tab-active-text;
     }
     @include tab-focus-style;
 
@@ -86,12 +81,11 @@
   }
 }
 .tabbox.tabbox-uno {
-  $tab-active-color: #6772e5;
   .js-slider {
-    background-color: $tab-active-color;
+    background-color: $tab-uno-active-color;
   }
   .tab-btn.js-current {
-    color: $tab-active-color;
+    color: $tab-uno-active-color;
     font-weight: 700;
   }
 }
