@@ -143,32 +143,41 @@ $sides: (
   $side-y
 );
 
-// alerts
-$alert-bg-primary: #d7daea;
-$alert-border-primary: #d7daea;
-$alert-txt-primary: #3c4257;
-$alert-link-txt-primary: #020204;
-$alert-hr-txt-primary: #020204;
+$alert-primary: (
+  state: 'primary',
+  bg: #d7daea,
+  border: #d7daea,
+  txt: #3c4257,
+  link-txt: #020204,
+  hr-txt: #020204
+);
 
-$alert-bg-secondary: #e3e8ee;
-$alert-border-secondary: #e3e8ee;
-$alert-txt-secondary: #3c4257;
-$alert-link-txt-secondary: #121623;
-$alert-hr-txt-secondary: #121623;
+$alert-secondary: (
+  state: 'secondary',
+  bg: #e3e8ee,
+  border: #e3e8ee,
+  txt: #3c4257,
+  link-txt: #121623,
+  hr-txt: #121623
+);
 
-$alert-bg-danger: #f7e9e9;
-$alert-border-danger: #f7e9e9;
-$alert-txt-danger: #3c4257;
-$alert-link-txt-danger: #310101;
-$alert-hr-txt-danger: #310101;
+$alert-warn: (
+  state: 'warn',
+  bg: #f9f1ea,
+  border: #f9f1ea,
+  txt: #3c4257,
+  link-txt: #3a1401,
+  hr-txt: #3a1401
+);
 
-$alert-bg-warn: #f9f1ea;
-$alert-border-warn: #f9f1ea;
-$alert-txt-warn: #3c4257;
-$alert-link-txt-warn: #3a1401;
-$alert-hr-txt-warn: #3a1401;
-
-$alert-states: 'primary', 'secondary', 'warn', 'danger';
+$alert-danger: (
+  state: 'danger',
+  bg: #f7e9e9,
+  border: #f7e9e9,
+  txt: #3c4257,
+  link-txt: #310101,
+  hr-txt: #310101
+);
 
 $sizes: 25, 50, 75, 100;
 

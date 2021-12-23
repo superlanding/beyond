@@ -79,30 +79,43 @@
   $color-tag-danger-ex: #fff;
   $bg-tag-danger-ex: $txt-danger;
 
+
   // alerts
-  $alert-bg-primary: transparent;
-  $alert-border-primary: $txt-primary;
-  $alert-txt-primary: $txt-primary;
-  $alert-link-txt-primary: #c3d1ff;
-  $alert-hr-txt-primary: $txt-primary;
+  $alert-primary: (
+    state: 'primary',
+    bg: transparent,
+    border: $txt-primary,
+    txt: $txt-primary,
+    link-txt: $txt-primary,
+    hr-txt: $txt-primary
+  );
 
-  $alert-bg-secondary: transparent;
-  $alert-border-secondary: #76ffcb;
-  $alert-txt-secondary: #76ffcb;
-  $alert-link-txt-secondary: #76ffcb;
-  $alert-hr-txt-secondary: #76ffcb;
+  $alert-secondary: (
+    state: 'secondary',
+    bg: transparent,
+    border: #76ffcb,
+    txt: #76ffcb,
+    link-txt: #76ffcb,
+    hr-txt: #76ffcb
+  );
 
-  $alert-bg-warn: transparent;
-  $alert-border-warn: $txt-warn;
-  $alert-txt-warn: $txt-warn;
-  $alert-link-txt-warn: $txt-warn;
-  $alert-hr-txt-warn: $txt-warn;
+  $alert-warn: (
+    state: 'warn',
+    bg: transparent,
+    border: $txt-warn,
+    txt: $txt-warn,
+    link-txt: $txt-warn,
+    hr-txt: $txt-warn
+  );
 
-  $alert-bg-danger: transparent;
-  $alert-border-danger: $txt-danger;
-  $alert-txt-danger: $txt-danger;
-  $alert-link-txt-danger: $txt-danger;
-  $alert-hr-txt-danger: $txt-danger;
+  $alert-danger: (
+    state: 'danger',
+    bg: transparent,
+    border: $txt-danger,
+    txt: $txt-danger,
+    link-txt: $txt-danger,
+    hr-txt: $txt-danger
+  );
 
   // buttons
   $default-btn-bg: #373b4a;

@@ -72,35 +72,11 @@ $tags: (
   ('tag-type4', $bg-tag-type4)
 );
 
-$alert-bgs:
-  $alert-bg-primary,
-  $alert-bg-secondary,
-  $alert-bg-warn,
-  $alert-bg-danger;
-
-$alert-borders:
-  $alert-border-primary,
-  $alert-border-secondary,
-  $alert-border-warn,
-  $alert-border-danger;
-
-$alert-txts:
-  $alert-txt-primary,
-  $alert-txt-secondary,
-  $alert-txt-warn,
-  $alert-txt-danger;
-
-$alert-link-txts:
-  $alert-link-txt-primary,
-  $alert-link-txt-secondary,
-  $alert-link-txt-warn,
-  $alert-link-txt-danger;
-
-$alert-hr-txts:
-  $alert-hr-txt-primary,
-  $alert-hr-txt-secondary,
-  $alert-hr-txt-warn,
-  $alert-hr-txt-danger;
+$alerts:
+  $alert-primary,
+  $alert-secondary,
+  $alert-warn,
+  $alert-danger;
 
 $btns:
   $btn-primary,

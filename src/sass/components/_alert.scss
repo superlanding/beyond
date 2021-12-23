@@ -14,30 +14,22 @@
     font-weight: 900;
     margin-bottom: 0.5rem;
   }
-
   p {
     line-height: 1.5em;
   }
-
-  @for $i from 1 through length($alert-states) {
-    $state: nth($alert-states, $i);
-    $bg: nth($alert-bgs, $i);
-    $border: nth($alert-borders, $i);
-    $color: nth($alert-txts, $i);
-    $color-link:  nth($alert-link-txts, $i);
-    $color-hr: nth($alert-hr-txts, $i);
-    &.alert-#{$state} {
-      border: 1px solid $border;
-      background: $bg;
-      color: $color;
+  @each $alert in $alerts {
+    &.alert-#{map-get($alert, state)} {
+      border: 1px solid map-get($alert, border);
+      background: map-get($alert, bg);
+      color: map-get($alert, txt);
       .alert-link {
-        color: $color-link;
+        color: map-get($alert, link-txt);
         &:hover {
-          border-bottom: 1px solid $color-link;
+          border-bottom: 1px solid map-get($alert, link-txt);
         }
       }
       hr {
-        border-top-color: $color-hr;
+        border-top-color: map-get($alert, hr-txt);
       }
     }
   }
