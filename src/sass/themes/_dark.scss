@@ -11,6 +11,9 @@
   $txt-color-warn: #f39401;
   $txt-color-success: #85d996;
 
+  $txt-color-anchor: $color-primary;
+  $txt-color-anchor-ex: lighten($color-primary, 10%);
+
   $txt-color-type0: #b8bee1;
   $txt-color-type1: #80bfb2;
   $txt-color-type2: #909aff;
@@ -21,9 +24,6 @@
 
   $color-primary: #88a8ff;
   $bg-primary: #3b5dbd;
-
-  $color-anchor: $color-primary;
-  $color-anchor-ex: lighten($color-primary, 10%);
 
   $bg-secondary: #f00;
   $bg-content: #1f2332;

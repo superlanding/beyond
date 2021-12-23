@@ -43,7 +43,7 @@
   }
   .link {
     &:hover {
-      border-bottom: 1px solid $color-anchor-ex;
+      border-bottom: 1px solid $txt-color-anchor-ex;
     }
   }
   @for $i from 1 through length($txt-color-types) {
