@@ -5,14 +5,14 @@
   $txt-light: rgba(221, 221, 221, .8);
   $txt-muted: $txt-light;
 
-  $txt-primary: $color-primary;
+  $txt-primary: #769aff;
   $txt-secondary: #aaa;
   $txt-danger: #ff4e99;
   $txt-warn: #f39401;
   $txt-success: #85d996;
 
-  $txt-anchor: $color-primary;
-  $txt-anchor-ex: lighten($color-primary, 10%);
+  $txt-anchor: $txt-primary;
+  $txt-anchor-ex: lighten($txt-anchor, 10%);
 
   $txt-type0: #b8bee1;
   $txt-type1: #80bfb2;
@@ -22,21 +22,21 @@
 
   $bg-admin: #070b1f;
 
-  $color-primary: #88a8ff;
   $bg-primary: #3b5dbd;
 
-  $bg-secondary: #f00;
+  $bg-secondary: #fff;
   $bg-content: #1f2332;
   $bg-content-shadow: none;
 
   // nav
   $nav-color: $txt;
   $nav-color-ex: $txt-strong;
+  $nav-color-active: $txt-primary;
 
   // navbar
   $bg-nav: #070b1f;
   $color-nav-primary: $txt-strong;
-  $color-nav-primary-ex: $color-primary;
+  $color-nav-primary-ex: $txt-primary;
   $color-nav: $txt;
   $color-nav-ex: $txt-strong;
   $color-nav-disabled: #959595;
@@ -64,7 +64,7 @@
   $form-check-disabled-color: #888;
 
   // tag
-  $bg-tag-primary: $color-primary;
+  $bg-tag-primary: $bg-primary;
   $bg-tag-secondary: #9a7bf7;
   $bg-tag-success: $bg-success;
   $bg-tag-danger: $txt-danger;
@@ -81,10 +81,10 @@
 
   // alerts
   $alert-bg-primary: transparent;
-  $alert-border-primary: $color-primary;
-  $alert-color-primary: $color-primary;
+  $alert-border-primary: $txt-primary;
+  $alert-color-primary: $txt-primary;
   $alert-color-link-primary: #c3d1ff;
-  $alert-color-hr-primary: $color-primary;
+  $alert-color-hr-primary: $txt-primary;
 
   $alert-bg-secondary: transparent;
   $alert-border-secondary: #76ffcb;
@@ -127,11 +127,11 @@
   $btn-secondary:
     'btn-secondary',
      #333956,
-     $color-primary,
+     #8facff,
      lighten(#333956, 10%),
      #474954,
      #181c2f,
-     $color-primary;
+     $txt-primary;
 
   $btn-warn:
     'btn-warn',
@@ -152,10 +152,10 @@
     #fff;
 
   $btn-border: #262b45;
-  $btn-link-border: $color-primary;
+  $btn-link-border: $txt-primary;
 
   // color, color-ex, color-disabled
-  $btn-link: $color-primary, lighten($color-primary, 10%), #aaa;
+  $btn-link: $txt-primary, lighten($txt-primary, 10%), #aaa;
 
   $ripple-bg: #000;
 
@@ -163,7 +163,7 @@
   // classname,         bg,       color
   $badges:
     ('badge-primary',   #3b5dbd,  $txt),
-    ('badge-secondary', #333956,  $color-primary),
+    ('badge-secondary', #333956,  $txt-primary),
     ('badge-success',   #1a343a,  $txt),
     ('badge-danger',    #581927,  $txt),
     ('badge-warn',      #b36000,  $txt),
@@ -175,7 +175,7 @@
 
   // breadcrumb
   $breadcrumb-color: $txt;
-  $breadcrumb-color-ex: $color-primary;
+  $breadcrumb-color-ex: $txt-primary;
 
   // card
   $card-bg: #282d47;
@@ -274,7 +274,7 @@
   $tab-slider-default-bg: $txt-strong;
 
   // tabbox uno
-  $tab-uno-active-color: $color-primary;
+  $tab-uno-active-color: $txt-primary;
 
   body {
     color: $txt;

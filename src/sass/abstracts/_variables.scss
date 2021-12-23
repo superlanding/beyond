@@ -9,7 +9,7 @@ $txt-strong: #1a1f36;
 $txt-light: #828695;
 $txt-muted: #495763;
 
-$txt-primary: #6772e5;
+$txt-primary: #3e51b7;
 $txt-secondary: #969696;
 $txt-success: #25b47e;
 $txt-warn: #f1946a;
@@ -77,8 +77,6 @@ $bg-dark-ex2: #b7b7b7;
 
 $bg-icon: #8892b3;
 $bg-disabled: #f1f1f1;
-
-$color-primary: #5469d4;
 
 $color-secondary: #6772e5;
 $color-secondary-ex: #7795f8;
@@ -232,6 +230,7 @@ $ring-loader-size-sm: 12px;
 // nav
 $nav-color: $txt;
 $nav-color-ex: $txt-strong;
+$nav-color-active: $txt-primary;
 
 // navbar
 $bg-nav: rgb(227, 232, 238);
@@ -298,7 +297,7 @@ $badges:
 
 // breadcrumb
 $breadcrumb-color: $txt-strong;
-$breadcrumb-color-ex: $color-primary;
+$breadcrumb-color-ex: $txt-primary;
 
 // card
 $card-bg: #fff;
