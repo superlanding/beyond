@@ -261,10 +261,22 @@
   // tabbox
   $tab-btn-bg: transparent;
   $tab-btn-border: rgba(255, 255, 255, .3);
-  $tab-active-color: $color-primary;
+  $tab-active-color: $text-color-strong;
+  $tab-active-border: $text-color-strong;
   $tab-hover-color: $text-color-strong;
   $tab-focus-color: $text-color-strong;
-  $tab-uno-active-color: #6772e5;
+
+  $tab-btn-borders: (
+    (tab-btn-type0, rgba(109, 188, 128, .3)),
+    (tab-btn-type1, rgba(108, 255, 230, .26)),
+    (tab-btn-type2, rgba(0, 151, 122, .44)),
+    (tab-btn-type3, rgba(142, 151, 243, .4)),
+    (tab-btn-type4, rgba(205, 205, 205, 1)),
+  );
+  $tab-slider-default-bg: $text-color-strong;
+
+  // tabbox uno
+  $tab-uno-active-color: $color-primary;
 
   body {
     color: $text-color;
