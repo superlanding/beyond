@@ -3,13 +3,13 @@
   $txt: #ddd;
   $txt-strong: #fff;
   $txt-light: rgba(221, 221, 221, .8);
-  $txt-muted: $txt-light;
 
   $txt-primary: #769aff;
   $txt-secondary: #aaa;
-  $txt-danger: #ff4e99;
-  $txt-warn: #f39401;
   $txt-success: #85d996;
+  $txt-warn: #f39401;
+  $txt-danger: #ff4e99;
+  $txt-muted: $txt-light;
 
   $txt-anchor: $txt-primary;
   $txt-anchor-ex: lighten($txt-anchor, 10%);
