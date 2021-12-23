@@ -5,11 +5,6 @@
   $txt-color-light: rgba(221, 221, 221, .8);
   $txt-color-muted: $txt-color-light;
 
-  $bg-admin: #070b1f;
-
-  $color-primary: #88a8ff;
-  $bg-primary: #3b5dbd;
-
   $txt-color-primary: $color-primary;
   $txt-color-secondary: #aaa;
   $txt-color-danger: #ff4e99;
@@ -21,6 +16,11 @@
   $txt-color-type2: #909aff;
   $txt-color-type3: #74bdff;
   $txt-color-type4: #97bde5;
+
+  $bg-admin: #070b1f;
+
+  $color-primary: #88a8ff;
+  $bg-primary: #3b5dbd;
 
   $color-anchor: $color-primary;
   $color-anchor-ex: lighten($color-primary, 10%);
