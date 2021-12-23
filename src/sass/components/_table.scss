@@ -43,13 +43,13 @@
   }
   .link {
     &:hover {
-      border-bottom: 1px solid $txt-color-anchor-ex;
+      border-bottom: 1px solid $txt-anchor-ex;
     }
   }
-  @for $i from 1 through length($txt-color-types) {
+  @for $i from 1 through length($txt-types) {
     td.txt-type#{$i - 1},
     th.txt-type#{$i - 1} {
-      color: nth($txt-color-types, $i);
+      color: nth($txt-types, $i);
     }
   }
   th,

@@ -61,10 +61,10 @@ th, td {
 
 a {
   cursor: pointer;
-  color: $txt-color-anchor;
+  color: $txt-anchor;
   text-decoration: none;
   &:hover {
-    color: $txt-color-anchor-ex;
+    color: $txt-anchor-ex;
   }
 }
 

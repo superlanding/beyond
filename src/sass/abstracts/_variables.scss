@@ -4,25 +4,25 @@ $theme: dark;
 
 $theme: default !default;
 
-$txt-color: #3c4257;
-$txt-color-strong: #1a1f36;
-$txt-color-light: #828695;
-$txt-color-muted: #495763;
+$txt: #3c4257;
+$txt-strong: #1a1f36;
+$txt-light: #828695;
+$txt-muted: #495763;
 
-$txt-color-primary: #6772e5;
-$txt-color-secondary: #969696;
-$txt-color-success: #25b47e;
-$txt-color-warn: #f1946a;
-$txt-color-danger: #cd3d64;
+$txt-primary: #6772e5;
+$txt-secondary: #969696;
+$txt-success: #25b47e;
+$txt-warn: #f1946a;
+$txt-danger: #cd3d64;
 
-$txt-color-anchor: #5469d4;
-$txt-color-anchor-ex: #1a1f36;
+$txt-anchor: #5469d4;
+$txt-anchor-ex: #1a1f36;
 
-$txt-color-type0: #5c5f72;
-$txt-color-type1: #63a396;
-$txt-color-type2: #6772e5;
-$txt-color-type3: #4191d9;
-$txt-color-type4: #6382a3;
+$txt-type0: #5c5f72;
+$txt-type1: #63a396;
+$txt-type2: #6772e5;
+$txt-type3: #4191d9;
+$txt-type4: #6382a3;
 
 // backgrounds
 $bg-transparent: transparent;
@@ -230,8 +230,8 @@ $ring-loader-size-md: 14px;
 $ring-loader-size-sm: 12px;
 
 // nav
-$nav-color: $txt-color;
-$nav-color-ex: $txt-color-strong;
+$nav-color: $txt;
+$nav-color-ex: $txt-strong;
 
 // navbar
 $bg-nav: rgb(227, 232, 238);
@@ -297,7 +297,7 @@ $badges:
   ('badge-light',     #f8f9fa,  #666);
 
 // breadcrumb
-$breadcrumb-color: $txt-color-strong;
+$breadcrumb-color: $txt-strong;
 $breadcrumb-color-ex: $color-primary;
 
 // card
@@ -374,7 +374,7 @@ $search-dropdown-input-bg: $control-bg;
 // modal
 $modal-bg: #fff;
 $modal-header-color: #1a1f36;
-$modal-color: $txt-color;
+$modal-color: $txt;
 $modal-shadow: 0 7px 14px 0 rgba(60, 66, 87, .12),
   0 3px 6px 0 rgba(0, 0, 0, .12);
 

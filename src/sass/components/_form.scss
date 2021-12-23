@@ -206,10 +206,10 @@ label {
 .form-control-sm,
 .form-control-plaintext {
   &.is-valid {
-    box-shadow: 0 0 0 1px $txt-color-success;
+    box-shadow: 0 0 0 1px $txt-success;
   }
   &.is-invalid {
-    box-shadow: 0 0 0 1px $txt-color-danger;
+    box-shadow: 0 0 0 1px $txt-danger;
   }
   &:disabled {
     cursor: not-allowed;
@@ -239,17 +239,17 @@ label {
 }
 
 .valid-feedback {
-  color: $txt-color-success;
+  color: $txt-success;
   &:before {
-    color: $txt-color-success;
+    color: $txt-success;
     @extend .icon-check:before;
   }
 }
 
 .invalid-feedback {
-  color: $txt-color-danger;
+  color: $txt-danger;
   &:before {
-    color: $txt-color-danger;
+    color: $txt-danger;
     @extend .icon-exclamation-triangle:before;
   }
 }
@@ -289,7 +289,7 @@ label {
   cursor: pointer;
   margin-right: 25px;
   vertical-align: middle;
-  color: $txt-color;
+  color: $txt;
   font-size: 14px;
   .checkbox + span,
   .radio + span {
@@ -307,10 +307,10 @@ label {
     }
   }
   span.is-valid {
-    color: $txt-color-success;
+    color: $txt-success;
   }
   span.is-invalid {
-    color: $txt-color-danger;
+    color: $txt-danger;
   }
 }
 

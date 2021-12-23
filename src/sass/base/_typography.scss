@@ -33,19 +33,19 @@ h6 {
 }
 
 .txt-primary {
-  color: $txt-color-primary !important;
+  color: $txt-primary !important;
 }
 .txt-secondary {
-  color: $txt-color-secondary !important;
+  color: $txt-secondary !important;
 }
 .txt-success {
-  color: $txt-color-success !important;
+  color: $txt-success !important;
 }
 .txt-warn {
-  color: $txt-color-warn !important;
+  color: $txt-warn !important;
 }
 .txt-danger {
-  color: $txt-color-danger !important;
+  color: $txt-danger !important;
 }
 
 .txt-white {
@@ -53,7 +53,7 @@ h6 {
 }
 
 code {
-  color: $txt-color-primary;
+  color: $txt-primary;
 }
 
 .txt-lg {
@@ -112,10 +112,10 @@ a.txt-type0,
 a.txt-type0:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: $txt-color-type0;
+  color: $txt-type0;
 }
 body a.txt-type0:hover {
-  border-bottom: 1px solid $txt-color-type0;
+  border-bottom: 1px solid $txt-type0;
 }
 
 .txt-type1,
@@ -123,10 +123,10 @@ a.txt-type1,
 a.txt-type1:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: $txt-color-type1;
+  color: $txt-type1;
 }
 body a.txt-type1:hover {
-  border-bottom: 1px solid $txt-color-type1;
+  border-bottom: 1px solid $txt-type1;
 }
 
 .txt-type2,
@@ -134,34 +134,34 @@ a.txt-type2,
 a.txt-type2:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: $txt-color-type2;
+  color: $txt-type2;
 }
 body a.txt-type2:hover {
-  border-bottom: 1px solid $txt-color-type2;
+  border-bottom: 1px solid $txt-type2;
 }
 
 .txt-type3,
 a.txt-type3,
 a.txt-type3:hover {
   font-family: 'Roboto', sans-serif;
-  color: $txt-color-type3;
+  color: $txt-type3;
 }
 body a.txt-type3:hover {
-  border-bottom: 1px solid $txt-color-type3;
+  border-bottom: 1px solid $txt-type3;
 }
 
 .txt-type4,
 a.txt-type4,
 a.txt-type4:hover {
   font-family: 'PingFang TC';
-  color: $txt-color-type4;
+  color: $txt-type4;
 }
 body a.txt-type4:hover {
-  border-bottom: 1px solid $txt-color-type4;
+  border-bottom: 1px solid $txt-type4;
 }
 
 .txt-muted {
-  color: $txt-color-muted;
+  color: $txt-muted;
   font-weight: 500;
 }
 
