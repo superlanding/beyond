@@ -1,5 +1,5 @@
 %checkbox-disabled {
-  background-color: #eee;
+  background-color: $checkbox-disabled-bg;
   cursor: not-allowed;
   input[type="checkbox"] {
     cursor: not-allowed;
@@ -13,7 +13,7 @@
 }
 
 %radio-disabled {
-  background-color: #eee;
+  background-color: $radio-disabled-bg;
   cursor: not-allowed;
   input[type="radio"] {
     cursor: not-allowed;
