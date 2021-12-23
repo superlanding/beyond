@@ -5,6 +5,5 @@
 }
 
 .bg-content {
-  box-shadow: 0 -1px 3px 0 rgba(227, 232, 238, 1),
-    0 1px 3px 0 rgba(227, 232, 238, 1);
+  box-shadow: $bg-content-shadow;
 }

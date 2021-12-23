@@ -28,6 +28,9 @@
 
   $bg-secondary: #f00;
 
+  $bg-content: #1f2332;
+  $bg-content-shadow: none;
+
   // nav
   $nav-color: $text-color;
   $nav-color-ex: $text-color-strong;
@@ -100,7 +103,7 @@
   $alert-color-hr-danger: $txt-color-danger;
 
   // buttons
-  $default-btn-bg: #333956;
+  $default-btn-bg: #373b4a;
   $badge-bg: #181c2f;
 
   // classname
@@ -241,6 +244,11 @@
   $page-hover-color: #fff;
 
   $search-dropdown-input-bg: #1b1e2a;
+
+  // modal
+  $modal-bg: #2b2f40;
+  $modal-header-color: $text-color-strong;
+  $modal-color: $text-color;
 
   body {
     color: $text-color;

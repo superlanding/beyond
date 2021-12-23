@@ -16,6 +16,8 @@ $bg-transparent: transparent;
 $bg-admin: #e3e8ee;
 $bg-outline: rgba(58, 151, 212, .28);
 $bg-content: #f7fafc;
+$bg-content-shadow: 0 -1px 3px 0 rgba(227, 232, 238, 1),
+  0 1px 3px 0 rgba(227, 232, 238, 1);
 
 $bg-primary: #6772e5;
 $bg-primary-ex: #7795f8;
@@ -365,3 +367,8 @@ $page-hover-bg: lighten($page-active-bg, 7%);
 $page-hover-color: #fff;
 
 $search-dropdown-input-bg: $control-bg;
+
+// modal
+$modal-bg: #fff;
+$modal-header-color: #1a1f36;
+$modal-color: $text-color;
