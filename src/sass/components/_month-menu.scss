@@ -58,7 +58,7 @@
       &.cell.selected {
         background: $date-menu-cell-selected-bg;
         border-color: $date-menu-cell-selected-border;
-        color: $text-color;
+        color: $txt-color;
       }
       &.cell.js-disabled {
         opacity: .4;
@@ -67,7 +67,7 @@
       &.cell.selected-ex {
         background: $date-menu-cell-selected-ex-bg;
         border-color: $date-menu-cell-selected-ex-border;
-        color: $text-color;
+        color: $txt-color;
       }
     }
   }

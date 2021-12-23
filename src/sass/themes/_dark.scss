@@ -1,9 +1,9 @@
 @if $theme == dark {
 
-  $text-color: #ddd;
-  $text-color-strong: #fff;
-  $text-color-light: rgba(221, 221, 221, .8);
-  $text-color-muted: $text-color-light;
+  $txt-color: #ddd;
+  $txt-color-strong: #fff;
+  $txt-color-light: rgba(221, 221, 221, .8);
+  $txt-color-muted: $txt-color-light;
 
   $bg-admin: #070b1f;
 
@@ -32,27 +32,27 @@
   $bg-content-shadow: none;
 
   // nav
-  $nav-color: $text-color;
-  $nav-color-ex: $text-color-strong;
+  $nav-color: $txt-color;
+  $nav-color-ex: $txt-color-strong;
 
   // navbar
   $bg-nav: #070b1f;
-  $color-nav-primary: $text-color-strong;
+  $color-nav-primary: $txt-color-strong;
   $color-nav-primary-ex: $color-primary;
-  $color-nav: $text-color;
-  $color-nav-ex: $text-color-strong;
+  $color-nav: $txt-color;
+  $color-nav-ex: $txt-color-strong;
   $color-nav-disabled: #959595;
 
   // select
-  $select-color: $text-color;
+  $select-color: $txt-color;
   $select-bg: #282d47;
 
   // table
   $table-bg: #070b1f;
   $table-bg-ex: #191c2e;
   $table-border: inset 0 -1px #181928;
-  $table-th-color: $text-color-light;
-  $table-td-color: $text-color;
+  $table-th-color: $txt-color-light;
+  $table-td-color: $txt-color;
   $table-td-disabled-bg: #686868;
   $table-td-disabled-color: #333;
   $table-td-disabled-shadow: inset 0 -1px #333;
@@ -164,31 +164,31 @@
   // badges
   // classname,         bg,       color
   $badges:
-    ('badge-primary',   #3b5dbd,  $text-color),
+    ('badge-primary',   #3b5dbd,  $txt-color),
     ('badge-secondary', #333956,  $color-primary),
-    ('badge-success',   #1a343a,  $text-color),
-    ('badge-danger',    #581927,  $text-color),
-    ('badge-warn',      #b36000,  $text-color),
-    ('badge-info',      #1e5d72,  $text-color),
-    ('badge-type1',     #8b438d,  $text-color),
+    ('badge-success',   #1a343a,  $txt-color),
+    ('badge-danger',    #581927,  $txt-color),
+    ('badge-warn',      #b36000,  $txt-color),
+    ('badge-info',      #1e5d72,  $txt-color),
+    ('badge-type1',     #8b438d,  $txt-color),
     ('badge-type2',     #fdd85f,  #3c4c68),
-    ('badge-dark',      #000,     $text-color),
+    ('badge-dark',      #000,     $txt-color),
     ('badge-light',     #f8f9fa,  #555);
 
   // breadcrumb
-  $breadcrumb-color: $text-color;
+  $breadcrumb-color: $txt-color;
   $breadcrumb-color-ex: $color-primary;
 
   // card
   $card-bg: #282d47;
-  $card-color: $text-color;
+  $card-color: $txt-color;
   $list-group-bg: #282d47;
   $card-border: rgba(255, 255, 255, .2);
 
-  $blockquote-footer-color: $text-color-light;
+  $blockquote-footer-color: $txt-color-light;
 
   $nav-link-bg: #333956;
-  $nav-link-color: $text-color;
+  $nav-link-color: $txt-color;
 
   $bg-outline: rgba(255, 255, 255, .8);
   $focus-outline: 0 0 0 1px rgba(255, 255, 255, .8);
@@ -206,7 +206,7 @@
   // dropdown
   $dropdown-menu-bg: #2b2e3c;
   $dropdown-menu-bg-ex: lighten(#2b2e3c, 10%);
-  $dropdown-menu-color: $text-color;
+  $dropdown-menu-color: $txt-color;
   $dropdown-menu-shadow: 0 0 0 1px rgba(0, 0, 0, .1),
     0 15px 35px 0 rgba(0, 0, 0, .1),
     0 5px 15px 0 rgba(0, 0, 0, .08);
@@ -233,7 +233,7 @@
   $date-menu-cell-selected-ex-bg: #3f4f9b;
   $date-menu-cell-selected-ex-border: #3f4f9b;
 
-  $date-menu-caption-color: $text-color-strong;
+  $date-menu-caption-color: $txt-color-strong;
   $date-menu-week-header-color: #9da8b9;
 
   $time-menu-bg: #2b2e3c;
@@ -241,7 +241,7 @@
   $time-menu-bg-active: darken($time-menu-bg-hover, 7%);
 
   // pagination
-  $page-color: $text-color;
+  $page-color: $txt-color;
   $page-active-bg: #3c4258;
   $page-active-color: #fff;
   $page-hover-bg: darken($page-active-bg, 7%);
@@ -251,8 +251,8 @@
 
   // modal
   $modal-bg: #2b2f40;
-  $modal-header-color: $text-color-strong;
-  $modal-color: $text-color;
+  $modal-header-color: $txt-color-strong;
+  $modal-color: $txt-color;
   $modal-shadow: 0 7px 14px 0 rgba(0, 0, 0, .12),
     0 3px 6px 0 rgba(0, 0, 0, .12);
 
@@ -261,10 +261,10 @@
   // tabbox
   $tab-btn-bg: transparent;
   $tab-btn-border: rgba(255, 255, 255, .3);
-  $tab-active-color: $text-color-strong;
-  $tab-active-border: $text-color-strong;
-  $tab-hover-color: $text-color-strong;
-  $tab-focus-color: $text-color-strong;
+  $tab-active-color: $txt-color-strong;
+  $tab-active-border: $txt-color-strong;
+  $tab-hover-color: $txt-color-strong;
+  $tab-focus-color: $txt-color-strong;
 
   $tab-btn-borders: (
     (tab-btn-type0, rgba(109, 188, 128, .3)),
@@ -273,13 +273,13 @@
     (tab-btn-type3, rgba(142, 151, 243, .4)),
     (tab-btn-type4, rgba(205, 205, 205, 1)),
   );
-  $tab-slider-default-bg: $text-color-strong;
+  $tab-slider-default-bg: $txt-color-strong;
 
   // tabbox uno
   $tab-uno-active-color: $color-primary;
 
   body {
-    color: $text-color;
+    color: $txt-color;
   }
   .btn .badge {
     background: #000;
