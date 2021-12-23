@@ -1,4 +1,4 @@
-@each $classname, $bg in $backgrounds {
+@each $classname, $bg in $bgs {
   .#{$classname} {
     background-color: $bg !important;
   }
