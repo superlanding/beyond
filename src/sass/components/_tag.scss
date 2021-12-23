@@ -36,8 +36,8 @@
   }
 
   &.tag-danger-ex {
-    color: $color-tag-danger-ex;
-    background-color: $bg-tag-danger-ex;
-    border: 1px solid $bg-tag-danger-ex;
+    color: $tag-danger-color-ex;
+    background-color: $tag-danger-bg-ex;
+    border: 1px solid $tag-danger-bg-ex;
   }
 }

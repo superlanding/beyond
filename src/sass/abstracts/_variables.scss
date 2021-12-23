@@ -101,15 +101,6 @@ $color-txt-type2: #6772e5;
 $color-txt-type3: #4191d9;
 $color-txt-type4: #6382a3;
 
-$bg-tag-type0: #19af95;
-$bg-tag-type1: #005b4a;
-$bg-tag-type2: #865260;
-$bg-tag-type3: #993192;
-$bg-tag-type4: #a74c9e;
-
-$color-tag-danger-ex: #fff;
-$bg-tag-danger-ex: #c32e45;
-
 $screen-sm: 576px;
 $screen-md: 768px;
 $screen-lg: 992px;
@@ -282,6 +273,15 @@ $bg-tag-warn: #a15735;
 $bg-tag-info: #20728d;
 $bg-tag-light: #676776;
 $bg-tag-dark: $bg-dark;
+
+$bg-tag-type0: #19af95;
+$bg-tag-type1: #005b4a;
+$bg-tag-type2: #865260;
+$bg-tag-type3: #993192;
+$bg-tag-type4: #a74c9e;
+
+$tag-danger-color-ex: #fff;
+$tag-danger-bg-ex: #c32e45;
 
 // badges
 // classname,         bg,       color
