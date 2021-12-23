@@ -30,9 +30,9 @@
   }
   .search-dropdown-menu-item {
     display: flex;
-    border: 3px solid transparent;
+    border: 1px solid transparent;
     &.selected {
-      border: 3px solid $bg-outline;
+      border-color: $bg-outline;
     }
     cursor: pointer;
     font-size: 13px;
