@@ -112,10 +112,10 @@ a.txt-type0,
 a.txt-type0:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: $color-txt-type0;
+  color: $txt-color-type0;
 }
 body a.txt-type0:hover {
-  border-bottom: 1px solid $color-txt-type0;
+  border-bottom: 1px solid $txt-color-type0;
 }
 
 .txt-type1,
@@ -123,10 +123,10 @@ a.txt-type1,
 a.txt-type1:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: $color-txt-type1;
+  color: $txt-color-type1;
 }
 body a.txt-type1:hover {
-  border-bottom: 1px solid $color-txt-type1;
+  border-bottom: 1px solid $txt-color-type1;
 }
 
 .txt-type2,
@@ -134,30 +134,30 @@ a.txt-type2,
 a.txt-type2:hover {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
-  color: $color-txt-type2;
+  color: $txt-color-type2;
 }
 body a.txt-type2:hover {
-  border-bottom: 1px solid $color-txt-type2;
+  border-bottom: 1px solid $txt-color-type2;
 }
 
 .txt-type3,
 a.txt-type3,
 a.txt-type3:hover {
   font-family: 'Roboto', sans-serif;
-  color: $color-txt-type3;
+  color: $txt-color-type3;
 }
 body a.txt-type3:hover {
-  border-bottom: 1px solid $color-txt-type3;
+  border-bottom: 1px solid $txt-color-type3;
 }
 
 .txt-type4,
 a.txt-type4,
 a.txt-type4:hover {
   font-family: 'PingFang TC';
-  color: $color-txt-type4;
+  color: $txt-color-type4;
 }
 body a.txt-type4:hover {
-  border-bottom: 1px solid $color-txt-type4;
+  border-bottom: 1px solid $txt-color-type4;
 }
 
 .txt-muted {

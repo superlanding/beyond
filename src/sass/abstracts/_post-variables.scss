@@ -60,12 +60,12 @@ $borders:
  ('border-dark', $border-dark),
  ('border-white', $border-white);
 
-$color-txt-types:
-  $color-txt-type0,
-  $color-txt-type1,
-  $color-txt-type2,
-  $color-txt-type3,
-  $color-txt-type4;
+$txt-color-types:
+  $txt-color-type0,
+  $txt-color-type1,
+  $txt-color-type2,
+  $txt-color-type3,
+  $txt-color-type4;
 
 $tags: (
   (tag-primary, $bg-tag-primary),

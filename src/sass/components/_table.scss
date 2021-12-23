@@ -46,10 +46,10 @@
       border-bottom: 1px solid $color-anchor-ex;
     }
   }
-  @for $i from 1 through length($color-txt-types) {
+  @for $i from 1 through length($txt-color-types) {
     td.txt-type#{$i - 1},
     th.txt-type#{$i - 1} {
-      color: nth($color-txt-types, $i);
+      color: nth($txt-color-types, $i);
     }
   }
   th,
