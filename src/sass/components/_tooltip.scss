@@ -1,6 +1,5 @@
 .tooltip {
-  background-color: #fff;
-  $border: #e8e8e8;
+  background: $tooltip-bg;
   max-width: 400px;
   border-radius: 4px;
   display: none;
@@ -8,10 +7,8 @@
   position: absolute;
   padding: 10px 13px;
   line-height: 1.9;
-  color: #3c4257;
-  box-shadow: 4px 4px 15px 1px rgba(68,  68, 72, .12);
+  box-shadow: $tooltip-shadow;
   border: 0;
-  box-shadow: 0 1px 2px 0 #ccc;
 
   &:after {
     content: ' ';
@@ -19,7 +16,7 @@
     border: 0;
     border-top-left-radius: 1px;
     @include size(8px);
-    background-color: #fff;
+    background: $tooltip-bg;
     position: absolute;
     transform: rotate(45deg);
   }
@@ -29,8 +26,8 @@
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    border-right: 1px solid $border;
-    border-bottom: 1px solid $border;
+    border-right: 1px solid $tooltip-border;
+    border-bottom: 1px solid $tooltip-border;
   }
   &.bottom:after {
     top: -4px;
@@ -38,8 +35,8 @@
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    border-left: 1px solid $border;
-    border-top: 1px solid $border;
+    border-left: 1px solid $tooltip-border;
+    border-top: 1px solid $tooltip-border;
   }
   &.left:after {
     right: -4px;
@@ -47,8 +44,8 @@
     bottom: 0;
     margin-top: auto;
     margin-bottom: auto;
-    border-right: 1px solid $border;
-    border-top: 1px solid $border;
+    border-right: 1px solid $tooltip-border;
+    border-top: 1px solid $tooltip-border;
   }
   &.right:after {
     left: -4px;
@@ -56,7 +53,7 @@
     bottom: 0;
     margin-top: auto;
     margin-bottom: auto;
-    border-left: 1px solid $border;
-    border-bottom: 1px solid $border;
+    border-left: 1px solid $tooltip-border;
+    border-bottom: 1px solid $tooltip-border;
   }
 }
