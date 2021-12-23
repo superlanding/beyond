@@ -215,6 +215,22 @@
   $switch-knob-bg: #a3a3a3;
   $switch-knob-bg-ex: #6772e5;
 
+  $date-menu-bg: #2b2e3c;
+  $date-menu-cell-bg: lighten($date-menu-bg, 5%);
+  $date-menu-cell-border: $date-menu-cell-bg;
+  $date-menu-cell-today-bg: #28557c;
+  $date-menu-cell-selected-bg: #516bb7;
+  $date-menu-cell-selected-border: #516bb7;
+  $date-menu-cell-selected-ex-bg: #3f4f9b;
+  $date-menu-cell-selected-ex-border: #3f4f9b;
+
+  $date-menu-caption-color: $text-color-strong;
+  $date-menu-week-header-color: #9da8b9;
+
+  $time-menu-bg: #2b2e3c;
+  $time-menu-bg-hover: darken($time-menu-bg, 7%);
+  $time-menu-bg-active: darken($time-menu-bg-hover, 7%);
+
   body {
     color: $text-color;
   }
