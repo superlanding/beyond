@@ -1,20 +1,21 @@
-$page-active-color: #3c4258;
-
 %page-link {
+  color: $page-color;
   border-radius: 3px;
   transition: .3s all;
   margin: 0 7px;
-  color: #1a1f36;
   display: block;
   cursor: pointer;
   padding: .5rem .75rem;
   &:disabled {
     cursor: not-allowed;
   }
-  &.js-active,
+  &.js-active {
+    background: $page-active-bg;
+    color: $page-active-color;
+  }
   &:hover {
-    background-color: $page-active-color;
-    color: #fff;
+    background: $page-hover-bg;
+    color: $page-hover-color;
   }
 }
 
@@ -35,8 +36,8 @@ $page-active-color: #3c4258;
     }
   }
   .input-group-append > .input-group-text {
-    background-color: $page-active-color;
-    color: #fff;
+    background: $page-active-bg;
+    color: $page-active-color;
     height: 100%;
   }
   @media (max-width: $screen-sm) {

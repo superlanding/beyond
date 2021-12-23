@@ -233,6 +233,13 @@
   $time-menu-bg-hover: darken($time-menu-bg, 7%);
   $time-menu-bg-active: darken($time-menu-bg-hover, 7%);
 
+  // pagination
+  $page-color: $text-color;
+  $page-active-bg: #3c4258;
+  $page-active-color: #fff;
+  $page-hover-bg: darken($page-active-bg, 7%);
+  $page-hover-color: #fff;
+
   body {
     color: $text-color;
   }

@@ -356,3 +356,10 @@ $date-menu-week-header-color: #8792a2;
 $time-menu-bg: #fff;
 $time-menu-bg-hover: #f7fafc;
 $time-menu-bg-active: #eef0f3;
+
+// pagination
+$page-color: #1a1f36;
+$page-active-bg: #3c4258;
+$page-active-color: #fff;
+$page-hover-bg: lighten($page-active-bg, 7%);
+$page-hover-color: #fff;
