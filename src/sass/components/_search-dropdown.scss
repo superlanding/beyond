@@ -6,6 +6,7 @@
     padding: 14px;
   }
   .search-dropdown-input.input {
+    background: $search-dropdown-input-bg;
     width: 100%;
     &.loading {
       padding-right: 40px;
