@@ -1,8 +1,9 @@
 @if $theme == dark {
-  // texts
-  $text-color-strong: #fff;
+
   $text-color: #ddd;
+  $text-color-strong: #fff;
   $text-color-light: rgba(221, 221, 221, .8);
+  $text-color-muted: $text-color-light;
 
   $bg-admin: #070b1f;
 
@@ -24,7 +25,6 @@
   $color-anchor: $color-primary;
   $color-anchor-ex: lighten($color-primary, 10%);
 
-  $color-muted: $text-color-light;
 
   $bg-secondary: #f00;
 
