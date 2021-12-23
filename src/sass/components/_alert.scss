@@ -23,9 +23,9 @@
     $state: nth($alert-states, $i);
     $bg: nth($alert-bgs, $i);
     $border: nth($alert-borders, $i);
-    $color: nth($alert-colors, $i);
-    $color-link:  nth($alert-txt-links, $i);
-    $color-hr: nth($alert-txt-hrs, $i);
+    $color: nth($alert-txts, $i);
+    $color-link:  nth($alert-link-txts, $i);
+    $color-hr: nth($alert-hr-txts, $i);
     &.alert-#{$state} {
       border: 1px solid $border;
       background: $bg;
