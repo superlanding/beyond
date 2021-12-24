@@ -25,18 +25,10 @@ const unbinds = []
 
 Theme.setCssLink()
 
-if (typeof Turbolinks === 'undefined') {
-  docReady()
-    .then(() => bindAll())
-}
-else {
-  Turbolinks.start()
-}
+docReady()
+  .then(() => bindAll())
 
 bindJQuery(beyond, $)
-
-document.addEventListener('turbolinks:before-cache', () => unbindAll())
-document.addEventListener('turbolinks:load', () => bindAll())
 
 function bindAll() {
   beyond.bind()
