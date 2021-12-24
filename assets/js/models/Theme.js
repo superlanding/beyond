@@ -16,14 +16,15 @@ class Theme {
   }
 
   static findOrCreateLink() {
-    const existedLink = $(linkId)
+    const existedLink = $(`#${linkId}`)
     if (existedLink) {
       return existedLink
     }
     const link = document.createElement('link')
     link.id = linkId
     link.rel = 'stylesheet'
-    document.head.appendChild(link)
+    const { head } = document
+    head.insertBefore(link, head.firstChild)
     return link
   }
 
