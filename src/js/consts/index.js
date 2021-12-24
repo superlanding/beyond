@@ -35,10 +35,10 @@ export const CHART_STYLE = {
     line: 'rgba(255, 255, 255, .3)',
     glowAlpha: .3,
     variants: [
-      '#5469d4',
-      '#7c54d4',
-      '#a254d4',
-      '#c040a2',
+      '#769aff',
+      '#9e72ff',
+      '#c66cff',
+      '#ff5ed9',
       '#ff5604',
       '#0be4e3',
       '#00d924'
