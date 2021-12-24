@@ -3,7 +3,7 @@ import chartCommon from '../decorators/chartCommon'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
 import { mem, range, sortBy, throttle, uniqBy } from '../utils'
-import { DEFAULT_CHART_STYLES } from '../consts'
+import { THEME_DEFAULT, CHART_STYLE } from '../consts'
 
 /**
  * -------------------------------------------------------------------------------------------------
@@ -52,10 +52,8 @@ export default class LineChart {
     this.xLabelMargin = isDef(options.xLabelMargin) ? options.xLabelMargin : 10
     this.yLabelMargin = isDef(options.yLanelMargin) ? options.yLabelMargin : 10
 
-    this.lineStyles = options.lineStyles || DEFAULT_CHART_STYLES
-
-    this.bg = options.bg || '#fff'
     this.fontSize = options.fontSize || 12
+    this.setTheme(options)
 
     this.xStep = options.xStep
     this.yStep = options.yStep
@@ -77,6 +75,16 @@ export default class LineChart {
     this.clear()
     this.bindMedia()
     this.bindPointMouseOver()
+  }
+
+  setTheme(options) {
+    const theme = options.theme || THEME_DEFAULT
+    const style = CHART_STYLE[theme]
+    this.theme = theme
+    this.bg = options.bg || style.bg
+    this.line = options.line || style.line
+    this.txt = options.txt || style.txt
+    this.lineStyles = options.lineStyles || style.variants
   }
 
   get noData() {
@@ -175,7 +183,7 @@ export default class LineChart {
 
     const { ctx, yLabelRows, contentWidth, firstY, xAxisStart, yAxisStart, yRatio } = this
 
-    ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
+    ctx.strokeStyle = this.line
     ctx.lineWidth = 1
 
     yLabelRows.forEach(row => {
@@ -247,10 +255,10 @@ export default class LineChart {
     const scaleEnd = y - scaleMargin
 
     ctx.textBaseline = 'top'
-    ctx.fillStyle = '#3c4257'
+    ctx.fillStyle = this.txt
     ctx.textAlign = 'center'
 
-    ctx.strokeStyle = '#3c4257'
+    ctx.strokeStyle = this.txt
 
     let x = this.xAxisMiddle
 
@@ -274,7 +282,7 @@ export default class LineChart {
     const x = this.width - this.xPadding
     const halfYLabelHeight = this.yLabelHeight / 2
 
-    ctx.fillStyle = '#3c4257'
+    ctx.fillStyle = this.txt
     ctx.textAlign = 'right'
 
     let y = this.yAxisMiddle
