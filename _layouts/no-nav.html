@@ -11,11 +11,11 @@
     {% if jekyll.environment == "development" %}
       <link id="beyond-theme-link"
             rel="stylesheet"
-            href="{{ site.webpack_url }}/beyond.css">
+            href="{{ site.webpack_url }}/beyond-default.css">
     {% else %}
       <link id="beyond-theme-link"
             rel="stylesheet"
-            href="{{ '/dist/beyond.css' | relative_url }}?v={{ site.data.version }}">
+            href="{{ '/dist/beyond-default.css' | relative_url }}?v={{ site.data.version }}">
     {% endif %}
 
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ site.data.version }}">
