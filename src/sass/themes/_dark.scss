@@ -294,6 +294,11 @@ $autocomplete-item-bg-ex: darken($autocomplete-item-bg, 10%);
 $page-prefix-txt: $txt-primary;
 $page-title-txt: $txt-strong;
 
+$chart-menu-bg: #2b2e3c;
+$chart-menu-txt: $txt;
+$chart-menu-border: 1px solid $chart-menu-bg;
+$chart-menu-shadow: 4px 4px 15px 1px rgba(0,  0, 0, .12);
+
 .btn .badge {
   background: #000;
   box-shadow: 0 0 4px 0 rgba(255, 255, 255, .1);
