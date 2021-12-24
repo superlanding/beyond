@@ -288,6 +288,12 @@ $tooltip-bg: #2b2e3c;
 $tooltip-border: rgba(0, 0, 0, .5);
 $tooltip-shadow: 0 1px 2px 0 $tooltip-border;
 
+$autocomplete-item-bg: #2b2e3c;
+$autocomplete-item-bg-ex: darken($autocomplete-item-bg, 10%);
+
+$page-prefix-txt: $txt-primary;
+$page-title-txt: $txt-strong;
+
 .btn .badge {
   background: #000;
   box-shadow: 0 0 4px 0 rgba(255, 255, 255, .1);

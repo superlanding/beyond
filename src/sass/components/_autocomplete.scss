@@ -1,5 +1,4 @@
 .autocomplete-menu {
-  background-color: #fff;
   position: absolute;
   box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
     0 15px 35px 0 rgba(49, 49, 93, .1),
@@ -7,23 +6,23 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   .item {
-    background-color: #fff;
+    background: $autocomplete-item-bg;
     cursor: default;
     padding: 12px 15px;
     font-size: 12px;
     &:hover {
-      background-color: #f7fafc;
+      background-color: $autocomplete-item-bg-ex;
     }
     .page-prefix {
+      color: $page-prefix-txt;
       display: inline-block;
-      color: #6772e5;
       margin-right: 7px;
       vertical-align: top;
     }
     .page-title {
+      color: $page-title-txt;
       max-width: 300px;
       display: inline-block;
-      color: #697396;
     }
   }
 }
