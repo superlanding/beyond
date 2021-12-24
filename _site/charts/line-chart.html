@@ -9,10 +9,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
     
-      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1638429168">
+      <link id="beyond-theme-link"
+            rel="stylesheet"
+            href="/beyond/dist/beyond-default.css?v=1640340320">
     
 
-    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1638429168">
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1640340320">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32"
@@ -24,12 +26,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
 
     
-      <script src="/beyond/dist/beyond.js?v=1638429168"></script>
-      <script src="/beyond/dist/beyond-jquery.js?v=1638429168"></script>
-      <script src="/beyond/dist/web.js?v=1638429168"></script>
+      <script src="/beyond/dist/beyond.js?v=1640340320"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1640340320"></script>
+      <script src="/beyond/dist/web.js?v=1640340320"></script>
     
   </head>
   <body class="container bg-admin">
@@ -39,6 +40,15 @@
     <div class="row">
       <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
   <ul>
+    <li>
+      <div class="theme-select">
+        Theme
+        <select id="theme-select" class="select select-outline">
+          <option value="default">Default</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+    </li>
     
       <li>
 
@@ -484,10 +494,22 @@
 96
 97
 98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
 </pre></td><td class="code"><pre><span class="k">import</span> <span class="nx">range</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">lodash.range</span><span class="dl">'</span>
 <span class="k">import</span> <span class="nx">sample</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">lodash.sample</span><span class="dl">'</span>
 <span class="k">import</span> <span class="nx">throttle</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">lodash.throttle</span><span class="dl">'</span>
 <span class="k">import</span> <span class="nx">toPixel</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@superlanding/topixel</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Theme</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../assets/js/models/Theme</span><span class="dl">'</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">bindLineCharts</span><span class="p">()</span> <span class="p">{</span>
 
@@ -517,7 +539,9 @@
 
   <span class="kd">const</span> <span class="nx">fiveMins</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span>
   <span class="kd">const</span> <span class="nx">chartMenu</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">chart-menu</span><span class="dl">'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">theme</span> <span class="o">=</span> <span class="nx">Theme</span><span class="p">.</span><span class="kd">get</span><span class="p">()</span>
   <span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LineChart</span><span class="p">(</span><span class="nx">dom</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">theme</span><span class="p">,</span>
     <span class="nx">toXLabel</span><span class="p">,</span>
     <span class="nx">toYLabel</span><span class="p">,</span>
     <span class="na">lineLabels</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">線段1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">線段2</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">線段3</span><span class="dl">'</span><span class="p">],</span>
@@ -577,8 +601,16 @@
   <span class="p">},</span> <span class="mi">300</span><span class="p">)</span>
   <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">resize</span><span class="dl">'</span><span class="p">,</span> <span class="nx">handleResize</span><span class="p">)</span>
 
+  <span class="kd">const</span> <span class="nx">handleThemeChange</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">theme</span> <span class="o">=</span> <span class="nx">Theme</span><span class="p">.</span><span class="kd">get</span><span class="p">()</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">setTheme</span><span class="p">({</span> <span class="nx">theme</span> <span class="p">})</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">refresh</span><span class="p">()</span>
+  <span class="p">}</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">beyond-theme-change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">handleThemeChange</span><span class="p">)</span>
+
   <span class="k">return</span> <span class="kd">function</span> <span class="nx">unbindLineCharts</span><span class="p">()</span> <span class="p">{</span>
     <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">resize</span><span class="dl">'</span><span class="p">,</span> <span class="nx">handleResize</span><span class="p">)</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">beyond-theme-change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">handleThemeChange</span><span class="p">)</span>
     <span class="nx">c</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span>
   <span class="p">}</span>
 <span class="p">}</span>

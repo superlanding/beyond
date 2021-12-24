@@ -9,10 +9,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
     
-      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1638429168">
+      <link id="beyond-theme-link"
+            rel="stylesheet"
+            href="/beyond/dist/beyond-default.css?v=1640340320">
     
 
-    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1638429168">
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1640340320">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32"
@@ -24,12 +26,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
 
     
-      <script src="/beyond/dist/beyond.js?v=1638429168"></script>
-      <script src="/beyond/dist/beyond-jquery.js?v=1638429168"></script>
-      <script src="/beyond/dist/web.js?v=1638429168"></script>
+      <script src="/beyond/dist/beyond.js?v=1640340320"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1640340320"></script>
+      <script src="/beyond/dist/web.js?v=1640340320"></script>
     
   </head>
   <body class="container bg-admin">
@@ -39,6 +40,15 @@
     <div class="row">
       <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
   <ul>
+    <li>
+      <div class="theme-select">
+        Theme
+        <select id="theme-select" class="select select-outline">
+          <option value="default">Default</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+    </li>
     
       <li>
 

@@ -5,7 +5,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   mode,
   devtool: 'source-map',
-  entry: './src/js/index.js',
+  entry: {
+    'beyond': './src/js/index.js',
+    'beyond-default': './src/sass/_beyond.scss',
+    'beyond-dark': './src/sass/_beyond-dark.scss'
+  },
   module: {
     rules: [
       {
@@ -72,12 +76,12 @@ module.exports = {
   output: {
     library: 'beyond',
     libraryTarget: 'umd',
-    filename: 'beyond.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, '../dist')
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'beyond.css',
+      filename: '[name].css',
       chunkFilename: '[id].css',
       ignoreOrder: false
     })
