@@ -213,12 +213,15 @@ export default function chartCommon(target) {
       this.dom.appendChild(box)
     }
 
+    setBg() {
+      this.dom.style.backgroundColor = this.bg
+    }
+
     drawLabels(labels, styles = DEFAULT_CHART_STYLES) {
       if (labels.length <= 0) {
         return
       }
       const { labelBox, handleLabelMouseOver, handleLabelMouseLeave } = this
-      this.dom.style.backgroundColor = this.bg
 
       this.offLabels.forEach(off => off())
       labelBox.innerHTML = ''

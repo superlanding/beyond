@@ -1,13 +1,6 @@
 .navbar {
-  $bg-nav: rgb(227, 232, 238);
-  $color-nav-primary: rgb(60, 66, 87);
-  $color-nav-primary-ex: #101425;
-  $color-nav: rgb(105, 115, 150);
-  $color-nav-ex: #adb5d0;
-  $color-nav-disabled: #adb5d0;
-
   display: flex;
-  background-color: $bg-nav;
+  background-color: $navbar-bg;
   font-size: 12px;
   padding: 8px 14px 8px 8px;
   @media (max-width: $screen-md) {
@@ -17,11 +10,11 @@
     }
   }
   &, a {
-    color: $color-nav;
+    color: $nav-txt;
   }
   .navbar-brand {
     display: inline-block;
-    color: $color-nav-primary;
+    color: $nav-txt-primary;
     font-size: 16px;
     padding: 4px 14px;
   }
@@ -40,16 +33,16 @@
   .nav-item.js-active,
   .nav-item:hover  {
     .nav-link {
-      color: $color-nav-primary-ex;
+      color: $nav-txt-primary-ex;
     }
   }
   .nav-link {
     padding: 7px 14px;
     &.disabled {
-      color: $color-nav-disabled;
+      color: $nav-txt-disabled;
       cursor: not-allowed;
       &:hover {
-        color: $color-nav-ex;
+        color: $nav-txt-disabled;
       }
     }
   }
@@ -100,7 +93,7 @@
       &:before,
       &:after {
         transition: .3s all;
-        background-color: $color-nav-primary;
+        background-color: $nav-txt-primary;
         display: block;
         position: absolute;
         width: 24px;
@@ -139,15 +132,15 @@
   }
 
   &.navbar-type1 {
-    $bg-nav-type1: #1a1f36;
-    $color-nav-primary-type1: #fff;
-    $color-nav-type1: #6c8eef;
-    $color-nav-ex-type1: #b9d2ff;
-    $color-nav-disabled-type1: #9193ce;
+    $navbar-bg-type1: #1a1f36;
+    $nav-txt-primary-type1: #fff;
+    $nav-txt-type1: #6c8eef;
+    $nav-txt-ex-type1: #b9d2ff;
+    $nav-txt-disabled-type1: #9193ce;
 
-    background: $bg-nav-type1;
+    background: $navbar-bg-type1;
     &, & a {
-      color: $color-nav-type1;
+      color: $nav-txt-type1;
     }
     .navbar-brand {
       color: #fff;
@@ -155,17 +148,17 @@
     .nav-item.js-active,
     .nav-item:hover  {
       .nav-link {
-        color: $color-nav-ex-type1;
+        color: $nav-txt-ex-type1;
       }
     }
     .nav-link.disabled,
     .nav-link.disabled:hover {
-      color: $color-nav-disabled-type1;
+      color: $nav-txt-disabled-type1;
     }
     .navbar-toggler-icon,
     .navbar-toggler-icon:before,
     .navbar-toggler-icon:after {
-      background-color: $color-nav-primary-type1;
+      background-color: $nav-txt-primary-type1;
     }
     .search-input {
       box-shadow: none;
@@ -173,10 +166,10 @@
   }
 
   &.navbar-type2 {
-    $color-nav-primary-type2: #fff;
-    $color-nav-type2: #e3e0e8;
-    $color-nav-ex-type2: #fff;
-    $color-nav-disabled-type2: #b5b6dc;
+    $nav-txt-primary-type2: #fff;
+    $nav-txt-type2: #e3e0e8;
+    $nav-txt-ex-type2: #fff;
+    $nav-txt-disabled-type2: #b5b6dc;
 
     background: rgb(84,73,255);
     background: linear-gradient(125deg,
@@ -184,25 +177,25 @@
       rgba(29,205,255,1) 80%,
       rgba(166,255,203,1) 100%);
     &, & a {
-      color: $color-nav-type2;
+      color: $nav-txt-type2;
     }
     .navbar-brand {
-      color: $color-nav-primary-type2;
+      color: $nav-txt-primary-type2;
     }
     .nav-item.js-active,
     .nav-item:hover  {
       .nav-link {
-        color: $color-nav-ex-type2;
+        color: $nav-txt-ex-type2;
       }
     }
     .nav-link.disabled,
     .nav-link.disabled:hover {
-      color: $color-nav-disabled-type2;
+      color: $nav-txt-disabled-type2;
     }
     .navbar-toggler-icon,
     .navbar-toggler-icon:before,
     .navbar-toggler-icon:after {
-      background-color: $color-nav-primary-type2;
+      background-color: $nav-txt-primary-type2;
     }
     .search-input {
       box-shadow: none;

@@ -9,9 +9,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
     {% if jekyll.environment == "development" %}
-      <link rel="stylesheet" href="{{ site.webpack_url }}/beyond.css">
+      <link id="beyond-theme-link"
+            rel="stylesheet"
+            href="{{ site.webpack_url }}/beyond-default.css">
     {% else %}
-      <link rel="stylesheet" href="{{ '/dist/beyond.css' | relative_url }}?v={{ site.data.version }}">
+      <link id="beyond-theme-link"
+            rel="stylesheet"
+            href="{{ '/dist/beyond-default.css' | relative_url }}?v={{ site.data.version }}">
     {% endif %}
 
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ site.data.version }}">
@@ -19,7 +23,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
 
     {% if jekyll.environment == "development" %}
       <script src="{{ site.webpack_url }}/beyond.js"></script>

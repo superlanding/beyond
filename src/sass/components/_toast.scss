@@ -22,13 +22,14 @@
     }
   }
   .toast-item {
+    background: $toast-bg;
+    box-shadow: $toast-shadow;
+    color: $toast-txt;
     line-height: 1;
     display: inline-block;
     border-radius: 2px;
     margin: 7px auto;
     padding: 8px 12px;
-    background-color: #3c4257;
-    color: #fff;
     white-space: nowrap;
   }
   .toast-message {
@@ -48,6 +49,6 @@
     border-bottom: 0;
     border-left: 1px solid #a3acb9;
     background-color: transparent;
-    color: #7dabf8;
+    color: $toast-btn-txt;
   }
 }

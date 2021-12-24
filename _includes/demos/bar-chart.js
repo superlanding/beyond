@@ -1,5 +1,6 @@
 import throttle from 'lodash.throttle'
 import toPixel from '@superlanding/topixel'
+import Theme from '../../assets/js/models/Theme'
 
 export default function bindBarCharts() {
 
@@ -11,8 +12,10 @@ export default function bindBarCharts() {
   }
 
   const chartMenu = document.getElementById('chart-menu')
+  const theme = Theme.get()
 
   const b = new BarChart(dom, {
+    theme,
     onBarMouseOver(mousePos, res) {
       if (res) {
         const { index, bar } = res
@@ -47,8 +50,16 @@ export default function bindBarCharts() {
   }, 300)
   window.addEventListener('resize', handleResize)
 
+  const handleThemeChange = () => {
+    const theme = Theme.get()
+    b.setTheme({ theme })
+    b.refresh()
+  }
+  document.addEventListener('beyond-theme-change', handleThemeChange)
+
   return function unbindBarCharts() {
     window.removeEventListener('resize', handleResize)
+    document.removeEventListener('beyond-theme-change', handleThemeChange)
     b.destroy()
   }
 }

@@ -335,9 +335,10 @@ export default class SearchDropdown {
       if (! this.isMenuVisible) {
         return
       }
-      const isBackdrop = (event.target !== this.dom) &&
-        (! this.dom.contains(event.target)) &&
-        (! this.menu.contains(event.target))
+      const { target } = event
+      const isBackdrop = (target !== this.dom) &&
+        (! this.dom.contains(target)) &&
+        (! this.menu.contains(target))
 
       if (isBackdrop) {
         this.hideMenu()
@@ -388,8 +389,10 @@ export default class SearchDropdown {
   }
 
   destroy() {
-    this.menu.remove()
-    this.menu = null
+    if (this.menu) {
+      this.menu.remove()
+      this.menu = null
+    }
     this.input = null
     this.menuContent = null
     this.loader = null

@@ -1,0 +1,309 @@
+$txt: #ddd;
+$txt-strong: #fff;
+$txt-light: rgba(221, 221, 221, .8);
+
+$txt-primary: #769aff;
+$txt-secondary: #aaa;
+$txt-success: #85d996;
+$txt-warn: #f39401;
+$txt-danger: #ff4e99;
+$txt-muted: $txt-light;
+
+$txt-anchor: $txt-primary;
+$txt-anchor-ex: lighten($txt-anchor, 10%);
+
+$txt-type0: #b8bee1;
+$txt-type1: #80bfb2;
+$txt-type2: #909aff;
+$txt-type3: #74bdff;
+$txt-type4: #97bde5;
+
+$bg-admin: #070b1f;
+
+$bg-primary: #3b5dbd;
+
+$bg-secondary: #fff;
+$bg-content: #1f2332;
+$bg-content-shadow: none;
+
+// nav
+$nav-color: $txt;
+$nav-color-ex: $txt-strong;
+$nav-color-active: $txt-primary;
+
+// navbar
+$navbar-bg: #070b1f;
+$nav-txt-primary: $txt-strong;
+$nav-txt-primary-ex: $txt-primary;
+$nav-txt: $txt;
+$nav-txt-ex: $txt-strong;
+$nav-txt-disabled: #959595;
+
+// select
+$select-color: $txt;
+$select-bg: #282d47;
+
+// table
+$table-bg: #070b1f;
+$table-bg-ex: #191c2e;
+$table-border: inset 0 -1px #181928;
+$table-th-color: $txt-light;
+$table-td-color: $txt;
+$table-td-disabled-bg: #686868;
+$table-td-disabled-color: #333;
+$table-td-disabled-shadow: inset 0 -1px #333;
+
+// form
+$control-bg: #2b2f40;
+$control-color: #fff;
+$control-disabled-bg: #2b2f40;
+$control-disabled-color: #888;
+
+$form-check-disabled-color: #888;
+
+// tag
+$bg-tag-primary: $bg-primary;
+$bg-tag-secondary: #9a7bf7;
+$bg-tag-success: $bg-success;
+$bg-tag-danger: $txt-danger;
+$bg-tag-warn: $txt-warn;
+$bg-tag-info: $bg-info;
+$bg-tag-light: #fff;
+$bg-tag-dark: #aaa;
+$bg-tag-type1: #159f84;
+$bg-tag-type2: #b37082;
+$bg-tag-type3: #e15dd8;
+
+$color-tag-danger-ex: #fff;
+$bg-tag-danger-ex: $txt-danger;
+
+
+// alerts
+$alert-primary: (
+  state: 'primary',
+  bg: transparent,
+  border: $txt-primary,
+  txt: $txt-primary,
+  link-txt: $txt-primary,
+  hr-txt: $txt-primary
+);
+
+$alert-secondary: (
+  state: 'secondary',
+  bg: transparent,
+  border: #76ffcb,
+  txt: #76ffcb,
+  link-txt: #76ffcb,
+  hr-txt: #76ffcb
+);
+
+$alert-warn: (
+  state: 'warn',
+  bg: transparent,
+  border: $txt-warn,
+  txt: $txt-warn,
+  link-txt: $txt-warn,
+  hr-txt: $txt-warn
+);
+
+$alert-danger: (
+  state: 'danger',
+  bg: transparent,
+  border: $txt-danger,
+  txt: $txt-danger,
+  link-txt: $txt-danger,
+  hr-txt: $txt-danger
+);
+
+// buttons
+$default-btn-bg: #373b4a;
+$badge-bg: #181c2f;
+$btn-badge-bg: darken($default-btn-bg, 10%);
+$btn-badge-shadow: 0 0 4px 0 rgba(255, 255, 255, .1);
+
+$btn-primary: (
+  classname: 'btn-primary',
+  bg: $bg-primary,
+  txt: #fff,
+  bg-ex: lighten(#3b5dbd, 10%),
+  bg-disabled: #697baf,
+  badge-bg: #243e87,
+  badge-txt: #fff
+);
+
+$btn-secondary: (
+  classname: 'btn-secondary',
+  bg: #333956,
+  txt: #8facff,
+  bg-ex: lighten(#333956, 10%),
+  bg-disabled: #474954,
+  badge-bg: #181c2f,
+  badge-txt: $txt-primary
+);
+
+$btn-warn: (
+  classname: 'btn-warn',
+  bg: #b36000,
+  txt: #fff,
+  bg-ex: lighten(#b36000, 10%),
+  bg-disabled: #7e5e39,
+  badge-bg: #834809,
+  badge-txt: #fff
+);
+
+$btn-danger: (
+  classname: 'btn-danger',
+  bg: #cd3d64,
+  txt: #fff,
+  bg-ex: #ef6a8e,
+  bg-disabled: #743b4a,
+  badge-bg: #8d203d,
+  badge-txt: #fff
+);
+
+$btn-border: #262b45;
+$btn-link-border: $txt-primary;
+
+// color, color-ex, color-disabled
+$btn-link: $txt-primary, lighten($txt-primary, 10%), #aaa;
+
+$ripple-bg: #000;
+
+// badges
+// classname,         bg,       color
+$badges:
+  ('badge-primary',   #3b5dbd,  $txt),
+  ('badge-secondary', #333956,  $txt-primary),
+  ('badge-success',   #1a343a,  $txt),
+  ('badge-danger',    #581927,  $txt),
+  ('badge-warn',      #b36000,  $txt),
+  ('badge-info',      #1e5d72,  $txt),
+  ('badge-type1',     #8b438d,  $txt),
+  ('badge-type2',     #fdd85f,  #3c4c68),
+  ('badge-dark',      #000,     $txt),
+  ('badge-light',     #f8f9fa,  #555);
+
+// breadcrumb
+$breadcrumb-color: $txt;
+$breadcrumb-color-ex: $txt-primary;
+
+// card
+$card-bg: #282d47;
+$card-color: $txt;
+$list-group-bg: #282d47;
+$card-border: rgba(255, 255, 255, .2);
+
+$blockquote-footer-color: $txt-light;
+
+$nav-link-bg: #333956;
+$nav-link-color: $txt;
+
+$bg-outline: rgba(255, 255, 255, .8);
+$focus-outline: 0 0 0 1px rgba(255, 255, 255, .8);
+
+// select
+$select-shadow:
+  0 2px 5px 0 rgba(255, 255, 255, .12);
+$select-outline-shadow:
+  0 0 0 1px rgba(255, 255, 255, .16);
+$select-outline-strong-shadow:
+  0 1px 1px 0 rgba(255, 255, 255, .12),
+  0 0 0 1px rgba(255, 255, 255, .16),
+  0 2px 5px 0 rgba(255, 255, 255, .12);
+
+// dropdown
+$dropdown-menu-bg: #2b2e3c;
+$dropdown-menu-bg-ex: lighten(#2b2e3c, 10%);
+$dropdown-menu-color: $txt;
+$dropdown-menu-shadow: 0 0 0 1px rgba(0, 0, 0, .1),
+  0 15px 35px 0 rgba(0, 0, 0, .1),
+  0 5px 15px 0 rgba(0, 0, 0, .08);
+
+$dropdown-divider-border: rgba(255, 255, 255, .2);
+$dropdown-menu-title-bg: #232532;
+
+$checkbox-bg: $control-bg;
+$checkbox-bg-ex: #6772e5;
+$checkbox-disabled-bg: #858585;
+$radio-disabled-bg: #858585;
+
+$switch-bg: #3b3f4c;
+$switch-bg-ex: rgba(103, 114, 229, .3);
+$switch-knob-bg: #a3a3a3;
+$switch-knob-bg-ex: #6772e5;
+
+$date-menu-bg: #2b2e3c;
+$date-menu-cell-bg: lighten($date-menu-bg, 5%);
+$date-menu-cell-border: $date-menu-cell-bg;
+$date-menu-cell-today-bg: #28557c;
+$date-menu-cell-selected-bg: #516bb7;
+$date-menu-cell-selected-border: #516bb7;
+$date-menu-cell-selected-ex-bg: #3f4f9b;
+$date-menu-cell-selected-ex-border: #3f4f9b;
+
+$date-menu-caption-color: $txt-strong;
+$date-menu-week-header-color: #9da8b9;
+
+$time-menu-bg: #2b2e3c;
+$time-menu-bg-hover: darken($time-menu-bg, 7%);
+$time-menu-bg-active: darken($time-menu-bg-hover, 7%);
+
+// pagination
+$page-color: $txt;
+$page-active-bg: #3c4258;
+$page-active-color: #fff;
+$page-hover-bg: darken($page-active-bg, 7%);
+$page-hover-color: #fff;
+
+$search-dropdown-input-bg: #1b1e2a;
+
+// modal
+$modal-bg: #2b2f40;
+$modal-header-color: $txt-strong;
+$modal-color: $txt;
+$modal-shadow: 0 7px 14px 0 rgba(0, 0, 0, .12),
+  0 3px 6px 0 rgba(0, 0, 0, .12);
+
+$hr-border: rgba(255, 255, 255, .2);
+
+// tabbox
+$tab-btn-bg: transparent;
+$tab-btn-border: rgba(255, 255, 255, .3);
+$tab-active-color: $txt-strong;
+$tab-active-border: $txt-strong;
+$tab-hover-color: $txt-strong;
+$tab-focus-color: $txt-strong;
+
+$tab-btn-borders: (
+  (tab-btn-type0, rgba(109, 188, 128, .3)),
+  (tab-btn-type1, rgba(108, 255, 230, .26)),
+  (tab-btn-type2, rgba(0, 151, 122, .44)),
+  (tab-btn-type3, rgba(142, 151, 243, .4)),
+  (tab-btn-type4, rgba(205, 205, 205, 1)),
+);
+$tab-slider-default-bg: $txt-strong;
+
+// tabbox uno
+$tab-uno-active-color: $txt-primary;
+
+$tooltip-bg: #2b2e3c;
+$tooltip-border: rgba(0, 0, 0, .5);
+$tooltip-shadow: 0 1px 2px 0 $tooltip-border;
+
+$autocomplete-item-bg: #2b2e3c;
+$autocomplete-item-bg-ex: darken($autocomplete-item-bg, 10%);
+
+$page-prefix-txt: $txt-primary;
+$page-title-txt: $txt-strong;
+
+$chart-menu-bg: #2b2e3c;
+$chart-menu-txt: $txt;
+$chart-menu-border: 1px solid $chart-menu-bg;
+$chart-menu-shadow: 4px 4px 15px 1px rgba(0,  0, 0, .12);
+
+$sidebar-bg: #1d1f28;
+
+$toast-bg: lighten(#2b2e3c, 10%);
+$toast-shadow: 0 0 1px 1px rgba(0, 0, 0, .1);
+$toast-txt: #fff;
+$toast-btn-txt: $txt-primary;

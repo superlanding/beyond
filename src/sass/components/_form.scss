@@ -140,7 +140,7 @@ label {
     color: #a9aebf;
   }
   padding: 5px 7px 6px;
-  background-color: #fff;
+  background-color: $control-bg;
   background-clip: padding-box;
   border-radius: 4px;
   box-shadow: 0 0 0 1px rgba(60, 66, 87, .16),
@@ -206,18 +206,18 @@ label {
 .form-control-sm,
 .form-control-plaintext {
   &.is-valid {
-    box-shadow: 0 0 0 1px $txt-color-success;
+    box-shadow: 0 0 0 1px $txt-success;
   }
   &.is-invalid {
-    box-shadow: 0 0 0 1px $txt-color-danger;
+    box-shadow: 0 0 0 1px $txt-danger;
   }
   &:disabled {
     cursor: not-allowed;
   }
   &:disabled,
   &[readonly] {
-    color: #111;
-    background-color: #e9ecef;
+    color: $control-disabled-color;
+    background: $control-disabled-bg;
   }
 }
 .form-control-plaintext {
@@ -239,17 +239,17 @@ label {
 }
 
 .valid-feedback {
-  color: $txt-color-success;
+  color: $txt-success;
   &:before {
-    color: $txt-color-success;
+    color: $txt-success;
     @extend .icon-check:before;
   }
 }
 
 .invalid-feedback {
-  color: $txt-color-danger;
+  color: $txt-danger;
   &:before {
-    color: $txt-color-danger;
+    color: $txt-danger;
     @extend .icon-exclamation-triangle:before;
   }
 }
@@ -269,9 +269,11 @@ label {
   padding-left: 0;
   margin-right: .75rem;
 
-  .checkbox,
-  .radio {
+  .checkbox {
     transform: translateY(0);
+  }
+  .radio {
+    transform: translateY(1px);
   }
   .checkbox + span,
   .radio + span {
@@ -287,18 +289,15 @@ label {
   cursor: pointer;
   margin-right: 25px;
   vertical-align: middle;
-  color: #3c4257;
+  color: $txt;
   font-size: 14px;
   .checkbox + span,
   .radio + span {
     position: relative;
     margin-left: 4px;
   }
-  .checkbox .icon-checkbox {
-    transform: translateY(-1px);
-  }
   &.disabled {
-    color: #6c757d;
+    color: $form-check-disabled-color;
     cursor: not-allowed;
     .checkbox {
       @extend %checkbox-disabled;
@@ -308,10 +307,10 @@ label {
     }
   }
   span.is-valid {
-    color: $txt-color-success;
+    color: $txt-success;
   }
   span.is-invalid {
-    color: $txt-color-danger;
+    color: $txt-danger;
   }
 }
 

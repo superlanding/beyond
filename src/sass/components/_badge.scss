@@ -1,12 +1,10 @@
 .badge {
   font-family: 'Roboto', sans-serif;
-  font-weight: 900;
   font-size: 12px;
   border-radius: 2px;
-  background-color: #eaeaea;
-  padding: 1px 4px;
+  background-color: $badge-bg;
+  padding: 2px 4px;
   white-space: nowrap;
-  transform: translateY(-8%);
 }
 
 .badge.badge-pill {

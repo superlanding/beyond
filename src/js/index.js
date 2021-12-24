@@ -1,4 +1,3 @@
-import './../sass/_beyond.scss'
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import './polyfills/classList'

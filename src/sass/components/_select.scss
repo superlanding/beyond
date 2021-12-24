@@ -1,19 +1,19 @@
 .select {
+  color: $select-color;
+  background: $control-bg;
+  box-shadow: $select-shadow;
+  font-size: 14px;
+  appearance: none;
+  border: 0;
+  padding: 6px 34px 6px 10px;
+  background-image: url(beyond-image-path('#{$beyond-css-img-path}arrow-select.svg'));
+
   &:disabled {
     opacity: .5;
   }
   &::-ms-expand {
     display: none;
   }
-  font-size: 14px;
-  color: #3c4257;
-  appearance: none;
-  border: 0;
-  background: #fff;
-  box-shadow: 0 2px 5px 0 rgba(60, 66, 87, .12);
-  padding: 6px 34px 6px 10px;
-
-  background-image: url(beyond-image-path('#{$beyond-css-img-path}arrow-select.svg'));
   &.active {
     background-image: url(beyond-image-path('#{$beyond-css-img-path}arrow-select-ex.svg'));
   }
@@ -28,27 +28,19 @@
 }
 
 .select.select-outline {
-  box-shadow: 0 0 0 1px rgba(60, 66, 87, .16);
+  box-shadow: $select-outline-shadow;
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 1px rgba(60, 66, 87, .16),
-      0 0 0 1px rgba(60, 66, 87, .16),
-      0 1px 1px 0 rgba(0, 0, 0, .12),
-      0 0 0 4px rgba(58, 151, 212, .28);
+    box-shadow: $select-outline-shadow,
+      $focus-outline;
   }
 }
 
 .select.select-outline-strong {
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12),
-    rgba(60, 66, 87, .16) 0 0 0 1px,
-    rgba(60, 66, 87, .12) 0 2px 5px 0;
+  box-shadow: $select-outline-strong-shadow;
   &:focus {
     outline: 0;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12),
-      rgba(60, 66, 87, .16) 0 0 0 1px,
-      rgba(60, 66, 87, .12) 0 2px 5px 0,
-      0 0 0 1px rgba(60, 66, 87, .16),
-      0 1px 1px 0 rgba(0, 0, 0, .12),
-      0 0 0 4px rgba(58, 151, 212, .28);
+    box-shadow: $select-outline-strong-shadow,
+      $focus-outline;
   }
 }

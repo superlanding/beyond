@@ -1,10 +1,10 @@
 .date-menu {
+  background: $date-menu-bg;
   display: none;
   position: absolute;
   box-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
     0 15px 35px 0 rgba(49, 49, 93, .1),
     0 5px 15px 0 rgba(0, 0, 0, .08);
-  background-color: #fff;
   white-space: nowrap;
   &.static {
     position: static;
@@ -19,18 +19,18 @@
     }
   }
   .date-menu-caption {
+    color: $date-menu-caption-color;
     font-size: 15px;
-    color: #3c4257;
     text-align: center;
     height: 50px;
     line-height: 50px;
   }
   .date-menu-week-header {
     li {
+      color: $date-menu-week-header-color;
       display: inline-block;
       padding: 7px 10px;
       font-size: 11px;
-      color: #8792a2;
     }
   }
   .date-menu-btn-prev,
@@ -64,28 +64,28 @@
     td {
       text-align: center;
       &.cell {
-        background-color: #f7fafc;
+        background: $date-menu-cell-bg;
+        border-color: $date-menu-cell-border;
         cursor: pointer;
         border-width: 1px;
         border-style: solid;
-        border-color: #e3e8ee;
       }
       &.cell.js-disabled {
         opacity: .4;
         cursor: not-allowed;
       }
       &.cell.today {
-        background-color: #fffef4;
+        background: $date-menu-cell-today-bg;
       }
       &.cell.selected {
-        background-color: #6c8eef;
+        background: $date-menu-cell-selected-bg;
+        border-color: $date-menu-cell-selected-border;
         color: #fff;
-        border-color: #6c8eef;
       }
       &.cell.selected-ex {
-        background-color: #5469d4;
+        background: $date-menu-cell-selected-ex-bg;
+        border-color: $date-menu-cell-selected-ex-border;
         color: #fff;
-        border-color: #5469d4;
       }
     }
   }
