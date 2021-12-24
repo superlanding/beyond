@@ -20,10 +20,10 @@ class Theme {
       return
     }
     const theme = Theme.get()
-    const filename = `beyond-${theme}.css`
-    const parts = url.parse(link.getAttribute('href'))
-    const search = parts.search || ''
-    const href = [parts.protocol, '//', parts.host, '/', filename, search].join('')
+    const oldHref = link.getAttribute('href')
+    const search = url.parse(oldHref).search || ''
+    const filename = `beyond-${theme}.css` + search
+    const href = url.resolve(oldHref, filename)
     link.href = href
   }
 }
