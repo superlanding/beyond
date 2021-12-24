@@ -7,9 +7,9 @@
 
 %disabled-td {
   cursor: not-allowed;
-  background-color: #ddd;
-  color: #333;
-  box-shadow: inset 0 -1px #c7c7c7;
+  background: $table-td-disabled-bg;
+  color: $table-td-disabled-color;
+  box-shadow: $table-td-disabled-shadow;
 }
 
 .table {
@@ -22,15 +22,14 @@
   text-align: left;
 
   thead {
-    background-color: #f7fafc;
     color: #1a1f36;
   }
   th {
-    color: #697386;
+    color: $table-th-color;
     white-space: nowrap;
   }
   td {
-    color: #3c4257;
+    color: $table-td-color;
   }
   .title {
     font-size: 16px;
@@ -44,20 +43,20 @@
   }
   .link {
     &:hover {
-      border-bottom: 1px solid $color-anchor-ex;
+      border-bottom: 1px solid $txt-anchor-ex;
     }
   }
-  @for $i from 1 through length($color-txt-types) {
-    td.txt-type#{$i},
-    th.txt-type#{$i} {
-      color: nth($color-txt-types, $i);
+  @for $i from 1 through length($txt-types) {
+    td.txt-type#{$i - 1},
+    th.txt-type#{$i - 1} {
+      color: nth($txt-types, $i);
     }
   }
   th,
   td {
-    background-color: #fff;
+    background: $table-bg;
+    box-shadow: $table-border;
     padding: 7px;
-    box-shadow: inset 0 -1px #e3e8ee;
   }
   tr.disabled {
     > td {
@@ -72,7 +71,7 @@
   }
   &.striped {
     tr:nth-child(odd) td {
-      background-color: #f7fafc;
+      background: $table-bg-ex;
     }
     tr.disabled:nth-child(odd) td {
       @extend %disabled-td;

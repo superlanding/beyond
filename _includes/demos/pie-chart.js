@@ -1,4 +1,5 @@
 import toPixel from '@superlanding/topixel'
+import Theme from '../../assets/js/models/Theme'
 
 export default function bindPieCharts() {
 
@@ -24,7 +25,9 @@ export default function bindPieCharts() {
   }
 
   const chartMenu = document.getElementById('chart-menu')
+  const theme = Theme.get()
   const b = new PieChart(dom, {
+    theme,
     onPieMouseOver: onMouseOver,
     onLabelMouseOver: onMouseOver
   })
@@ -35,7 +38,15 @@ export default function bindPieCharts() {
     { label: '6 個月內', value: 30 }
   ])
 
+  const handleThemeChange = () => {
+    const theme = Theme.get()
+    b.setTheme({ theme })
+    b.refresh()
+  }
+  document.addEventListener('beyond-theme-change', handleThemeChange)
+
   return function unbindPieCharts() {
+    document.removeEventListener('beyond-theme-change', handleThemeChange)
     b.destroy()
   }
 }

@@ -1,176 +1,56 @@
-html {
-  height: 100%;
-}
-body {
-  box-sizing: border-box;
-  font-family: 'Noto Sans CJK TC', 'PingFang TC', 'Microsoft JhengHei',
-    'Helvetica Neue', Helvetica, Verdana, 'Open Sans', sans-serif;
-  font-size: 16px;
-
-  .content {
-    flex: 1;
-  }
-  &.with-footer {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-:focus {
-  outline: 3px solid $bg-outline;
-  outline-offset: 2px;
-}
-
-// for ie11
-body:focus {
-  outline: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-p {
-  line-height: 2.1em;
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-small {
-  font-size: 70%;
-}
-blockquote {
-  margin: 0 0 1rem;
-}
-
-th, td {
-  padding: 7px;
-}
-
-hr {
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
-  border: 0;
-  border-top: 1px solid rgba(0, 0, 0, .1);
-}
-
-a {
-  cursor: pointer;
-  color: $color-anchor;
-  text-decoration: none;
-  &:hover {
-    color: $color-anchor-ex;
-  }
-}
-
-// active style
-$color-active: #5469d4;
-
-.select,
-.select.select-outline,
-.select.select-outline-strong,
-.btn.btn-dropdown,
-.search-input,
-.input {
-  &.active {
-    color: $color-active;
-    box-shadow: 0 1px 1px 0 rgba(54, 59, 255, .6),
-      rgba(14, 48, 173, .3) 0 0 0 1px,
-      rgba(14, 26, 62, .12) 0 2px 5px 0;
-  }
-}
-.search-input.active .input,
-.search-input.active .icon-search:before {
-  color: $color-active;
-}
-
-.input,
-.select,
-.select.select-outline,
-.select.select-outline-strong {
-  &:focus.active {
-    color: $color-active;
-    box-shadow: 0 1px 1px 0 rgba(54, 59, 255, .6),
-      rgba(14, 48, 173, .3) 0 0 0 1px,
-      rgba(14, 26, 62, .12) 0 2px 5px 0,
-      0 0 0 4px rgba(58, 151, 212, .28);
-  }
-}
-.search-input.active.outline {
-  color: $color-active;
-  box-shadow: 0 1px 1px 0 rgba(54, 59, 255, .6),
-    rgba(14, 48, 173, .3) 0 0 0 1px,
-    rgba(14, 26, 62, .12) 0 2px 5px 0,
-    0 0 0 4px rgba(58, 151, 212, .28);
-}
-
-.scrollable {
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-
-.align-left {
-  text-align: left !important;
-}
-.align-right {
-  text-align: right !important;
-}
-.align-center {
-  text-align: center !important;
-}
-
-.float-left {
-  float: left !important;
-}
-.float-right {
-  float: right !important;
-}
-.float-none {
-  float: none !important;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  clip-path: inset(50%);
-  border: 0;
-}
-
-.full-width {
-  width: 100% !important;
-}
-
-hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-top: 1px solid #e3e8ee;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 0;
-}
-
-input[type=file], /* FF, IE7+, chrome (except button) */
-input[type=file]::-webkit-file-upload-button { /* chromes and blink button */
-  cursor: pointer;
-}
-
-.nowrap {
-  white-space: nowrap !important;
-}
+@import './abstracts/_post-variables';
+@import './abstracts/_placeholders';
+@import './abstracts/_mixins';
+@import './vendor/_normalize';
+@import './vendor/_turbolink';
+@import './base/_background';
+@import './base/_typography';
+@import './_animations';
+@import './_base';
+@import './layout/_border-util';
+@import './layout/_col';
+@import './layout/_container';
+@import './layout/_offset-util';
+@import './layout/_sizing-util';
+@import './layout/_spacing-util';
+@import './layout/_visibility-util';
+@import './layout/_flex-util';
+@import './components/_alert';
+@import './components/_autocomplete';
+@import './components/_avatar';
+@import './components/_badge';
+@import './components/_breadcrumb';
+@import './components/_btn';
+@import './components/_btn-group';
+@import './components/_card';
+@import './components/_checkbox';
+@import './components/_date-input';
+@import './components/_date-menu';
+@import './components/_month-menu';
+@import './components/_date-time-ranger';
+@import './components/_datepicker';
+@import './components/_dropdown';
+@import './components/_form';
+@import './components/_icon';
+@import './components/_input';
+@import './components/_list';
+@import './components/_modal';
+@import './components/_nav';
+@import './components/_navbar';
+@import './components/_pagination';
+@import './components/_radio';
+@import './components/_search-dropdown';
+@import './components/_select';
+@import './components/_sidebar';
+@import './components/_spinner';
+@import './components/_tabbox';
+@import './components/_table';
+@import './components/_tag';
+@import './components/_tag-input';
+@import './components/_time-input';
+@import './components/_time-menu';
+@import './components/_toast';
+@import './components/_tooltip';
+@import './components/_switch';
+@import './components/_mega-menu';
+@import './components/_chart';

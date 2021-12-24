@@ -1,15 +1,32 @@
 $beyond-use-helper: false !default;
 
-// texts
-$text-color-strong: #1a1f36;
-$text-color: #3c4257;
-$text-color-light: #828695;
+$txt: #3c4257;
+$txt-strong: #1a1f36;
+$txt-light: #828695;
 
-// backgrounds
+$txt-primary: #3e51b7;
+$txt-secondary: #969696;
+$txt-success: #25b47e;
+$txt-warn: #f1946a;
+$txt-danger: #cd3d64;
+$txt-muted: #495763;
+
+$txt-anchor: #5469d4;
+$txt-anchor-ex: #1a1f36;
+
+$txt-type0: #5c5f72;
+$txt-type1: #63a396;
+$txt-type2: #6772e5;
+$txt-type3: #4191d9;
+$txt-type4: #6382a3;
+
 $bg-transparent: transparent;
 $bg-admin: #e3e8ee;
 $bg-outline: rgba(58, 151, 212, .28);
 $bg-content: #f7fafc;
+$bg-content-shadow:
+  0 -1px 3px 0 rgba(227, 232, 238, 1),
+  0 1px 3px 0 rgba(227, 232, 238, 1);
 
 $bg-primary: #6772e5;
 $bg-primary-ex: #7795f8;
@@ -56,47 +73,6 @@ $bg-dark-ex2: #b7b7b7;
 $bg-icon: #8892b3;
 $bg-disabled: #f1f1f1;
 
-$backgrounds:
-  ('bg-transparent', $bg-transparent),
-  ('bg-admin', $bg-admin),
-  ('bg-outline', $bg-outline),
-  ('bg-content', $bg-content),
-  ('bg-primary', $bg-primary),
-  ('bg-primary-ex', $bg-primary-ex),
-  ('bg-primary-ex2', $bg-primary-ex2),
-  ('bg-secondary', $bg-secondary),
-  ('bg-secondary-ex', $bg-secondary-ex),
-  ('bg-secondary-ex2', $bg-secondary-ex2),
-  ('bg-success', $bg-success),
-  ('bg-success-ex', $bg-success-ex),
-  ('bg-success-ex2', $bg-success-ex2),
-  ('bg-danger', $bg-danger),
-  ('bg-danger-ex', $bg-danger-ex),
-  ('bg-danger-ex2', $bg-danger-ex2),
-  ('bg-warn', $bg-warn),
-  ('bg-warning', $bg-warn),
-  ('bg-warn-ex', $bg-warn-ex),
-  ('bg-warn-ex2', $bg-warn-ex2),
-  ('bg-info', $bg-info),
-  ('bg-info-ex', $bg-info-ex),
-  ('bg-info-ex2', $bg-info-ex2),
-  ('bg-white', $bg-white),
-  ('bg-type1', $bg-type1),
-  ('bg-type1-ex', $bg-type1-ex),
-  ('bg-type1-ex2', $bg-type1-ex2),
-  ('bg-type2', $bg-type2),
-  ('bg-type2-ex', $bg-type2-ex),
-  ('bg-type2-ex2', $bg-type2-ex2),
-  ('bg-light', $bg-light),
-  ('bg-light-ex', $bg-light-ex),
-  ('bg-light-ex2', $bg-light-ex2),
-  ('bg-dark', $bg-dark),
-  ('bg-dark-ex', $bg-dark-ex),
-  ('bg-dark-ex2', $bg-dark-ex2),
-  ('bg-icon', $bg-icon),
-  ('bg-disabled', $bg-disabled);
-
-// borders
 $border-primary: $bg-primary;
 $border-secondary: #6c757d;
 $border-success: $bg-success;
@@ -106,22 +82,6 @@ $border-info: $bg-info;
 $border-light: $bg-light;
 $border-dark: $bg-dark;
 $border-white: $bg-white;
-
-$borders:
- ('border-primary', $border-primary),
- ('border-secondary', $border-secondary),
- ('border-success', $border-success),
- ('border-danger', $border-danger),
- ('border-warning', $border-warning),
- ('border-info', $border-info),
- ('border-light', $border-light),
- ('border-dark', $border-dark),
- ('border-white', $border-white);
-
-$color-anchor: #5469d4;
-$color-anchor-ex: #1a1f36;
-
-$color-primary: #5469d4;
 
 $color-secondary: #6772e5;
 $color-secondary-ex: #7795f8;
@@ -142,60 +102,6 @@ $color-link-ex: #32325d;
 $color-link-ex2: #bbb;
 
 $color-avatar: #000;
-
-$txt-color-primary: #6772e5;
-$txt-color-secondary: #969696;
-$txt-color-success: #25b47e;
-$txt-color-warn: #f1946a;
-$txt-color-danger: #cd3d64;
-
-$color-txt-type0: #5c5f72;
-$color-txt-type1: #63a396;
-$color-txt-type2: #6772e5;
-$color-txt-type3: #4191d9;
-$color-txt-type4: #6382a3;
-
-$color-txt-types:
-  $color-txt-type0,
-  $color-txt-type1,
-  $color-txt-type2,
-  $color-txt-type3,
-  $color-txt-type4;
-
-// tags
-$bg-tag-primary: #6782e5;
-$bg-tag-secondary: #7d5ae8;
-$bg-tag-success: $bg-success;
-$bg-tag-danger: $bg-danger;
-$bg-tag-warn: $bg-warn;
-$bg-tag-info: $bg-info;
-$bg-tag-dark: $bg-dark;
-$bg-tag-light: #8b8b9e;
-
-$bg-tag-type0: #19af95;
-$bg-tag-type1: #005b4a;
-$bg-tag-type2: #865260;
-$bg-tag-type3: #993192;
-$bg-tag-type4: #e682dc;
-
-$bg-tags: (
-  (tag-primary, $bg-tag-primary),
-  (tag-secondary, $bg-tag-secondary),
-  (tag-success, $bg-tag-success),
-  (tag-danger, $bg-tag-danger),
-  (tag-warn, $bg-tag-warn),
-  (tag-info, $bg-tag-info),
-  (tag-dark, $bg-tag-dark),
-  (tag-light, $bg-tag-light),
-  (tag-type0, $bg-tag-type0),
-  (tag-type1, $bg-tag-type1),
-  (tag-type2, $bg-tag-type2),
-  (tag-type3, $bg-tag-type3),
-  (tag-type4, $bg-tag-type4)
-);
-
-$color-tag-danger-ex: #fff;
-$bg-tag-danger-ex: #e03953;
 
 $screen-sm: 576px;
 $screen-md: 768px;
@@ -233,89 +139,296 @@ $sides: (
   $side-y
 );
 
-// alerts
-$alert-bg-primary: #d7daea;
-$alert-color-primary: #3c4257;
-$alert-color-link-primary: #020204;
-$alert-color-hr-primary: #020204;
+$alert-primary: (
+  state: 'primary',
+  bg: #d7daea,
+  border: #d7daea,
+  txt: #3c4257,
+  link-txt: #020204,
+  hr-txt: #020204
+);
 
-$alert-bg-secondary: #e3e8ee;
-$alert-color-secondary: #3c4257;
-$alert-color-link-secondary: #121623;
-$alert-color-hr-secondary: #121623;
+$alert-secondary: (
+  state: 'secondary',
+  bg: #e3e8ee,
+  border: #e3e8ee,
+  txt: #3c4257,
+  link-txt: #121623,
+  hr-txt: #121623
+);
 
-$alert-bg-danger: #f7e9e9;
-$alert-color-danger: #3c4257;
-$alert-color-link-danger: #310101;
-$alert-color-hr-danger: #310101;
+$alert-warn: (
+  state: 'warn',
+  bg: #f9f1ea,
+  border: #f9f1ea,
+  txt: #3c4257,
+  link-txt: #3a1401,
+  hr-txt: #3a1401
+);
 
-$alert-bg-warn: #f9f1ea;
-$alert-color-warn: #3c4257;
-$alert-color-link-warn: #3a1401;
-$alert-color-hr-warn: #3a1401;
-
-$alert-states: 'primary', 'secondary', 'warn', 'danger';
-
-$alert-bgs:
-  $alert-bg-primary,
-  $alert-bg-secondary,
-  $alert-bg-warn,
-  $alert-bg-danger;
-
-$alert-colors:
-  $alert-color-primary,
-  $alert-color-secondary,
-  $alert-color-warn,
-  $alert-color-danger;
-
-$alert-color-links:
-  $alert-color-link-primary,
-  $alert-color-link-secondary,
-  $alert-color-link-warn,
-  $alert-color-link-danger;
-
-$alert-color-hrs:
-  $alert-color-hr-primary,
-  $alert-color-hr-secondary,
-  $alert-color-hr-warn,
-  $alert-color-hr-danger;
+$alert-danger: (
+  state: 'danger',
+  bg: #f7e9e9,
+  border: #f7e9e9,
+  txt: #3c4257,
+  link-txt: #310101,
+  hr-txt: #310101
+);
 
 $sizes: 25, 50, 75, 100;
-
-// badges
-// classname, bg, color
-$badges:
-  ('badge-primary', #6772e5, #fff),
-  ('badge-secondary', #fff, #6772e5),
-  ('badge-success', #25b47e, #fff),
-  ('badge-danger', #cd3d64, #fff),
-  ('badge-warn', #f1946a, #fff),
-  ('badge-info', #5ecdf1, #fff),
-  ('badge-light', #f8f9fa, #666),
-  ('badge-dark', #000, #fff),
-  ('badge-type1', #d681d8, #fff),
-  ('badge-type2', #fdd85f, #516487);
 
 // border utils
 $border-color: #dee2e6;
 
 // buttons
-// classname, border, bg, color, bg-ex, bg-disabled, badge-bg, badge-color
-$btn-primary: 'btn-primary', #6772e5, #fff, #7795f8, #b2b7df, #6c8eef, #fff;
-$btn-secondary: 'btn-secondary', #fff, #6772e5, #fff, #ebebeb, lighten(#ccc, 12%), #6772e5;
-$btn-danger: 'btn-danger', #cd3d64, #fff, #ef6a8e, #b59ba7, lighten(#cd3d64, 10%), #fff;
-$btn-warn: 'btn-warn', #f1946a, #fff, #ffaf8c, #e5cec3, lighten(#f1946a, 7%), #fff;
+$default-btn-bg: #fff;
+$badge-bg: #eaeaea;
+$btn-badge-bg: darken($default-btn-bg, 7%);
+$btn-badge-shadow: 0 0 4px 0 rgba(255, 255, 255, .1);
 
-$btns:
-  $btn-primary,
-  $btn-secondary,
-  $btn-danger,
-  $btn-warn;
+$btn-primary: (
+  classname: 'btn-primary',
+  bg: #6772e5,
+  txt: #fff,
+  bg-ex: #7795f8,
+  bg-disabled: #b2b7df,
+  badge-bg: #6c8eef,
+  badge-txt: #fff
+);
 
-// classname, bg, color, color-ex, color-disabled
-$btn-link: 'btn-link', #fff, #5469d4, #32325d, #bbb;
+$btn-secondary: (
+  classname: 'btn-secondary',
+  bg: #fff,
+  txt: #6772e5,
+  bg-ex: #fff,
+  bg-disabled: #ebebeb,
+  badge-bg: lighten(#ccc, 12%),
+  badge-txt: #6772e5
+);
+
+$btn-warn: (
+  classname: 'btn-warn',
+  bg: #f1946a,
+  txt: #fff,
+  bg-ex: #ffaf8c,
+  bg-disabled: #e5cec3,
+  badge-bg: lighten(#f1946a, 7%),
+  badge-txt: #fff
+);
+
+$btn-danger: (
+  classname: 'btn-danger',
+  bg: #cd3d64,
+  txt: #fff,
+  bg-ex: #ef6a8e,
+  bg-disabled: #b59ba7,
+  badge-bg: lighten(#cd3d64, 10%),
+  badge-txt: #fff
+);
+
+$btn-link-border: #5469d4;
+$btn-border: #e6e6e6;
+
+// color, color-ex, color-disabled
+$btn-link: #5469d4, darken(#5469d4, 20%), #bbb;
+
+$ripple-bg: #e6e9ea;
 
 // ring-loader
 $ring-loader-size-lg: 16px;
 $ring-loader-size-md: 14px;
 $ring-loader-size-sm: 12px;
+
+// nav
+$nav-color: $txt;
+$nav-color-ex: $txt-strong;
+$nav-color-active: $txt-primary;
+
+// navbar
+$navbar-bg: rgb(227, 232, 238);
+$nav-txt-primary: rgb(60, 66, 87);
+$nav-txt-primary-ex: #101425;
+$nav-txt: rgb(105, 115, 150);
+$nav-txt-ex: #adb5d0;
+$nav-txt-disabled: #adb5d0;
+
+// select
+$select-color: #3c4257;
+$select-bg: #fff;
+
+// table
+$table-bg: #fff;
+$table-bg-ex: #f7fafc;
+$table-border: inset 0 -1px #e3e8ee;
+$table-th-color: #697386;
+$table-td-color: #3c4257;
+$table-td-disabled-bg: #ddd;
+$table-td-disabled-color: #333;
+$table-td-disabled-shadow: inset 0 -1px #c7c7c7;
+
+// form
+$control-bg: #fff;
+$control-color: #495057;
+$control-disabled-bg: #e9ecef;
+$control-disabled-color: #111;
+
+$form-check-disabled-color: #6c757d;
+
+// tags
+$bg-tag-primary: #4b64bf;
+$bg-tag-secondary: #6a4cc5;
+$bg-tag-success: #197653;
+$bg-tag-danger: #b13355;
+$bg-tag-warn: #a15735;
+$bg-tag-info: #20728d;
+$bg-tag-light: #676776;
+$bg-tag-dark: $bg-dark;
+
+$bg-tag-type0: #19af95;
+$bg-tag-type1: #005b4a;
+$bg-tag-type2: #865260;
+$bg-tag-type3: #993192;
+$bg-tag-type4: #a74c9e;
+
+$tag-danger-color-ex: #fff;
+$tag-danger-bg-ex: #c32e45;
+
+// badges
+// classname,         bg,       color
+$badges:
+  ('badge-primary',   #6772e5,  #fff),
+  ('badge-secondary', #fff,     #6772e5),
+  ('badge-success',   #25b47e,  #fff),
+  ('badge-danger',    #cd3d64,  #fff),
+  ('badge-warn',      #f1946a,  #fff),
+  ('badge-info',      #5ecdf1,  #fff),
+  ('badge-type1',     #d681d8,  #fff),
+  ('badge-type2',     #fdd85f,  #516487),
+  ('badge-dark',      #000,     #fff),
+  ('badge-light',     #f8f9fa,  #666);
+
+// breadcrumb
+$breadcrumb-color: $txt-strong;
+$breadcrumb-color-ex: $txt-primary;
+
+// card
+$card-bg: #fff;
+$card-color: #000;
+$card-border: rgba(0, 0, 0, .125);
+$list-group-bg: #fff;
+
+$blockquote-footer-color: #6c757d;
+
+$nav-link-bg: #fff;
+$nav-link-color: #495057;
+
+// for btn or any UIs that use focus-outline mixin
+$focus-outline: 0 0 0 1px rgba(60, 66, 87, .16),
+  0 1px 1px 0 rgba(0, 0, 0, .12),
+  0 0 0 4px rgba(58, 151, 212, .28);
+
+// select
+$select-shadow:
+  0 2px 5px 0 rgba(60, 66, 87, .12);
+$select-outline-shadow:
+  0 0 0 1px rgba(60, 66, 87, .16);
+$select-outline-strong-shadow:
+  0 1px 1px 0 rgba(0, 0, 0, 0.12),
+  rgba(60, 66, 87, .16) 0 0 0 1px,
+  rgba(60, 66, 87, .12) 0 2px 5px 0;
+
+// dropdown
+$dropdown-menu-bg: #fff;
+$dropdown-menu-bg-ex: #f7fafc;
+$dropdown-menu-color: #5469d4;
+$dropdown-menu-shadow: 0 0 0 1px rgba(136, 152, 170, .1),
+  0 15px 35px 0 rgba(49, 49, 93, .1),
+  0 5px 15px 0 rgba(0, 0, 0, .08);
+$dropdown-divider-border: #d8d8d8;
+$dropdown-menu-title-bg: #f7fafc;
+
+$checkbox-bg: #fff;
+$checkbox-bg-ex: #6772e5;
+$checkbox-disabled-bg: #eee;
+
+$radio-disabled-bg: #eee;
+
+$switch-bg: #e2e2e2;
+$switch-bg-ex: #cfd1e2;
+$switch-knob-bg: #a3a3a3;
+$switch-knob-bg-ex: #60659d;
+
+$date-menu-bg: #fff;
+$date-menu-cell-bg: #f7fafc;
+$date-menu-cell-border: #e3e8ee;
+$date-menu-cell-today-bg: #fffef4;
+$date-menu-cell-selected-bg: #6c8eef;
+$date-menu-cell-selected-border: #6c8eef;
+$date-menu-cell-selected-ex-bg: #5469d4;
+$date-menu-cell-selected-ex-border: #5469d4;
+$date-menu-caption-color: #3c4257;
+$date-menu-week-header-color: #8792a2;
+
+$time-menu-bg: #fff;
+$time-menu-bg-hover: #f7fafc;
+$time-menu-bg-active: #eef0f3;
+
+// pagination
+$page-color: #1a1f36;
+$page-active-bg: #3c4258;
+$page-active-color: #fff;
+$page-hover-bg: lighten($page-active-bg, 7%);
+$page-hover-color: #fff;
+
+$search-dropdown-input-bg: $control-bg;
+
+// modal
+$modal-bg: #fff;
+$modal-header-color: #1a1f36;
+$modal-color: $txt;
+$modal-shadow: 0 7px 14px 0 rgba(60, 66, 87, .12),
+  0 3px 6px 0 rgba(0, 0, 0, .12);
+
+$hr-border: rgba(0, 0, 0, .1);
+
+// tabbox
+$tab-btn-bg: #fff;
+$tab-btn-border: #e3e8ee;
+$tab-active-color: #1d2638;
+$tab-active-border: #3c4356;
+$tab-hover-color: #1d2638;
+$tab-focus-color: #1d2638;
+
+$tab-btn-borders: (
+  (tab-btn-type0, rgba(109, 188, 128, .3)),
+  (tab-btn-type1, rgba(1, 137, 114, .2)),
+  (tab-btn-type2, rgba(0, 91, 74, .2)),
+  (tab-btn-type3, rgba(93, 105, 227, .3)),
+  (tab-btn-type4, rgba(205, 205, 205, 1)),
+);
+$tab-slider-default-bg: #858585;
+
+// tabbox uno
+$tab-uno-active-color: #6772e5;
+
+$tooltip-bg: #fff;
+$tooltip-border: #e8e8e8;
+$tooltip-shadow: 0 1px 2px 0 #ccc;
+
+$autocomplete-item-bg: #fff;
+$autocomplete-item-bg-ex: #f7fafc;
+
+$page-prefix-txt: #6772e5;
+$page-title-txt: #697396;
+
+$chart-menu-bg: #fff;
+$chart-menu-txt: #3c4257;
+$chart-menu-border: 1px solid #e8e8e8;
+$chart-menu-shadow: 4px 4px 15px 1px rgba(68,  68, 72, .12);
+
+$sidebar-bg: #fff;
+
+$toast-bg: #3c4257;
+$toast-shadow: 0 0 0 1px rgba(136, 152, 170, .1);
+$toast-txt: #fff;
+$toast-btn-txt: #7dabf8;

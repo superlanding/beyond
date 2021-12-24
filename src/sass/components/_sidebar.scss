@@ -5,11 +5,11 @@
   padding-top: 10px;
   padding-bottom: 40px;
   @media (max-width: $screen-md) {
+    background: $sidebar-bg;
     padding-left: 10px;
     width: 240px;
     z-index: 20;
     transition: .2s all;
-    background-color: #fff;
     margin: 0;
     position: fixed;
     left: 0;

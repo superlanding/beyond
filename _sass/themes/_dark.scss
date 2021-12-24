@@ -1,0 +1,63 @@
+body.theme-dark {
+  $bg: #141728;
+  $code-bg: #202235;
+  $brand-primary: #769aff;
+  .main,
+  .no-nav-content > div {
+    background: $bg;
+  }
+  .codebox-result,
+  .code,
+  .highlight {
+    background: $code-bg;
+  }
+  .no-nav-content .table td.active,
+  .no-nav-content .table th.active {
+    background: #22253c;
+  }
+  .codebox-tabs a.js-active {
+    color: $brand-primary;
+  }
+
+  $col-bg: #2e3245;
+  $col-bg-ex: #181928;
+
+  .page-cols {
+    .row {
+      border: 2px solid $col-bg;
+      background-color: $col-bg;
+    }
+    .col,
+    [class^="col-"] {
+      text-align: center;
+      background-color: $col-bg-ex;
+      border: 2px solid $col-bg;
+    }
+  }
+
+  .page-containers {
+    .container,
+    [class^="container-"] {
+      background-color: #3c4356;
+    }
+  }
+
+  .page-visibility-utilities {
+    .codebox-result {
+      .col-12 {
+        border: 1px solid #555;
+        background: #3c4356;
+
+        div[class^="hidden-"],
+        div[class^="visible-"] {
+          background: #212438;
+        }
+      }
+    }
+  }
+
+  .page-icons .codebox-result .icon-content {
+    background: #292b42;
+  }
+
+}

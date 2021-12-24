@@ -1,5 +1,5 @@
 .form-switch {
-  color: #3c4257;
+  color: $txt;
   cursor: pointer;
   margin-bottom: 1rem;
   font-size: 14px;
@@ -19,9 +19,9 @@
     width: 38px;
     height: 20px;
     &:checked + .switch {
-      background-color: #cfd1e2;
+      background-color: $switch-bg-ex;
       &:after {
-        background-color: #60659d;
+        background-color: $switch-knob-bg-ex;
         right: -1px;
         left: initial;
       }
@@ -37,14 +37,14 @@
   height: 20px;
   position: relative;
   display: inline-block;
-  background-color: #e2e2e2;
+  background-color: $switch-bg;
   border-radius: 20px;
   &:after {
     transition: .3s all;
     position: absolute;
     content: '';
     display: block;
-    background-color: #a3a3a3;
+    background-color: $switch-knob-bg;
     @include size(25px);
     left: -1px;
     top: -2px;
