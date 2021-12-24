@@ -2,6 +2,7 @@ import range from 'lodash.range'
 import sample from 'lodash.sample'
 import throttle from 'lodash.throttle'
 import toPixel from '@superlanding/topixel'
+import Theme from '../../assets/js/models/Theme'
 
 export default function bindLineCharts() {
 
@@ -31,7 +32,9 @@ export default function bindLineCharts() {
 
   const fiveMins = 5 * 60 * 1000
   const chartMenu = document.getElementById('chart-menu')
+  const theme = Theme.get()
   const c = new LineChart(dom, {
+    theme,
     toXLabel,
     toYLabel,
     lineLabels: ['線段1', '線段2', '線段3'],

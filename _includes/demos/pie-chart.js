@@ -1,4 +1,5 @@
 import toPixel from '@superlanding/topixel'
+import Theme from '../../assets/js/models/Theme'
 
 export default function bindPieCharts() {
 
@@ -24,7 +25,9 @@ export default function bindPieCharts() {
   }
 
   const chartMenu = document.getElementById('chart-menu')
+  const theme = Theme.get()
   const b = new PieChart(dom, {
+    theme,
     onPieMouseOver: onMouseOver,
     onLabelMouseOver: onMouseOver
   })
