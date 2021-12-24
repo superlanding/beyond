@@ -97,6 +97,8 @@
 .btn .badge {
   margin-left: .5rem;
   font-weight: 400;
+  background: $btn-badge-bg;
+  box-shadow: $btn-badge-shadow;
 }
 
 @each $btn in $btns {

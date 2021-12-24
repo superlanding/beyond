@@ -183,16 +183,8 @@ $border-color: #dee2e6;
 // buttons
 $default-btn-bg: #fff;
 $badge-bg: #eaeaea;
-
-$row-primary: (
-  classname: 'btn-primary',
-  bg: #6772e5,
-  txt: #fff,
-  bg-ex: #7795f8,
-  bg-disabled: #b2b7df,
-  badge-bg: #6c8eef,
-  badge-txt: #fff
-);
+$btn-badge-bg: darken($default-btn-bg, 7%);
+$btn-badge-shadow: 0 0 4px 0 rgba(255, 255, 255, .1);
 
 $btn-primary: (
   classname: 'btn-primary',
