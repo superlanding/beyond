@@ -30,7 +30,7 @@ export const CHART_STYLE = {
     ]
   },
   [THEME_DARK]: {
-    bg: '#000',
+    bg: '#070B1F',
     txt: '#fff',
     line: 'rgba(255, 255, 255, .3)',
     glowAlpha: .3,
