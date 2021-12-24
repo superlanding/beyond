@@ -9,10 +9,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
     
-      <link rel="stylesheet" href="/beyond/dist/beyond.css?v=1638429168">
+      <link id="beyond-theme-link"
+            rel="stylesheet"
+            href="/beyond/dist/beyond-default.css?v=1640340320">
     
 
-    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1638429168">
+    <link rel="stylesheet" href="/beyond/assets/css/styles.css?v=1640340320">
     <link rel="apple-touch-icon" sizes="180x180"
       href="/beyond/assets/img/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32"
@@ -24,12 +26,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
 
     
-      <script src="/beyond/dist/beyond.js?v=1638429168"></script>
-      <script src="/beyond/dist/beyond-jquery.js?v=1638429168"></script>
-      <script src="/beyond/dist/web.js?v=1638429168"></script>
+      <script src="/beyond/dist/beyond.js?v=1640340320"></script>
+      <script src="/beyond/dist/beyond-jquery.js?v=1640340320"></script>
+      <script src="/beyond/dist/web.js?v=1640340320"></script>
     
   </head>
   <body class="container bg-admin">
@@ -39,6 +40,15 @@
     <div class="row">
       <nav class="col-xl-2 col-md-3 nav sidebar" data-sidebar="sidebar">
   <ul>
+    <li>
+      <div class="theme-select">
+        Theme
+        <select id="theme-select" class="select select-outline">
+          <option value="default">Default</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+    </li>
     
       <li>
 
@@ -1567,7 +1577,7 @@
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
 </div>
-<div class="card txt-white bg-secondary mb-3" style="max-width: 18rem;">
+<div class="card txt-secondary bg-secondary mb-3" style="max-width: 18rem;">
   <div class="card-header">Header</div>
   <div class="card-body">
     <h5 class="card-title">Secondary card title</h5>
@@ -1683,7 +1693,7 @@
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card txt-white bg-secondary mb-3"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card txt-secondary bg-secondary mb-3"</span> <span class="na">style=</span><span class="s">"max-width: 18rem;"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Header<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Secondary card title<span class="nt">&lt;/h5&gt;</span>
