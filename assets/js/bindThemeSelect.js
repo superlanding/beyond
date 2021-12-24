@@ -1,6 +1,7 @@
+import Theme from './models/Theme'
+
 export default function bindThemeSelect() {
 
-  const cacheKey = 'beyond-official::theme'
   const select = document.getElementById('theme-select')
 
   const setThemeClass = theme => {
@@ -11,10 +12,9 @@ export default function bindThemeSelect() {
       }
     })
     classList.add(`theme-${theme}`)
-    localStorage.setItem(cacheKey, theme)
+    Theme.set(theme)
   }
-  const getInitialTheme = () => localStorage.getItem(cacheKey) || 'default'
-  const theme = getInitialTheme()
+  const theme = Theme.get()
   setThemeClass(theme)
 
   if (! select) {

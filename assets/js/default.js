@@ -14,6 +14,7 @@ import bindPaginations from '../../_includes/demos/paginations'
 import bindSearchDropdowns from '../../_includes/demos/search-dropdowns'
 import bindToasts from '../../_includes/demos/toasts'
 import bindWidthPad from './bindWidthPad'
+import Theme from './models/Theme'
 import bindJqueryModal from '../../_includes/demos/jquery-modal'
 import bindTagInputs from '../../_includes/demos/tag-input'
 
@@ -21,6 +22,8 @@ const { beyond, Turbolinks, $ } = window
 const { docReady } = beyond
 const bindJQuery = window['beyond-jquery'].default
 const unbinds = []
+
+Theme.setCssLink()
 
 if (typeof Turbolinks === 'undefined') {
   docReady()

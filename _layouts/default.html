@@ -9,9 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
     {% if jekyll.environment == "development" %}
-      <link rel="stylesheet" href="{{ site.webpack_url }}/beyond.css">
+      <meta name="dist" content="{{ site.webpack_url }}">
     {% else %}
-      <link rel="stylesheet" href="{{ '/dist/beyond.css' | relative_url }}?v={{ site.data.version }}">
+      <meta name="dist" content="{{ '/dist' | relative_url }}">
+      <meta name="version" content="{{ site.data.version }}">
     {% endif %}
 
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ site.data.version }}">
