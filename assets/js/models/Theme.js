@@ -2,7 +2,6 @@ import url from 'url'
 
 const { $ } = window.beyond
 const cacheKey = 'beyond-official::theme'
-const linkId = 'beyond-theme-link'
 
 class Theme {
 
@@ -15,32 +14,16 @@ class Theme {
     return localStorage.getItem(cacheKey) || 'default'
   }
 
-  static findOrCreateLink() {
-    const existedLink = $(`#${linkId}`)
-    if (existedLink) {
-      return existedLink
-    }
-    const link = document.createElement('link')
-    link.id = linkId
-    link.rel = 'stylesheet'
-    const { head } = document
-    head.insertBefore(link, head.firstChild)
-    return link
-  }
-
   static setCssLink() {
-    const distMeta = $('meta[name="dist"]')
-    if (! distMeta) {
+    const link = $('#beyond-theme-link')
+    if (! link) {
       return
     }
-    const versionMeta = $('meta[name="version"]')
     const theme = Theme.get()
-    const dist = distMeta.getAttribute('content')
-    let href = url.resolve(dist, `beyond-${theme}.css`)
-    if (versionMeta) {
-      href += `?v=${versionMeta.getAttribute('content')}`
-    }
-    const link = Theme.findOrCreateLink()
+    const filename = `beyond-${theme}.css`
+    const parts = url.parse(link.getAttribute('href'))
+    const search = parts.search || ''
+    const href = [parts.protocol, '//', parts.host, '/', filename, search].join('')
     link.href = href
   }
 }
