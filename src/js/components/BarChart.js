@@ -4,7 +4,7 @@ import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
 import isInt from '../utils/isInt'
 import { mem, range, sortBy, throttle, uniqBy } from '../utils'
-import { DEFAULT_CHART_STYLES } from '../consts'
+import { THEME_DEFAULT, CHART_STYLE } from '../consts'
 
 @supportDom
 @chartCommon
@@ -30,8 +30,7 @@ export default class BarChart {
     this.yLabelMargin = isDef(options.yLanelMargin) ? options.yLabelMargin : 14
 
     this.fontSize = options.fontSize || 12
-    this.bg = options.bg || '#fff'
-    this.barStyles = options.barStyles || DEFAULT_CHART_STYLES
+    this.setTheme(options)
 
     this.yLabelRows = []
     this.barPosMap = new Map()
@@ -46,6 +45,17 @@ export default class BarChart {
     this.clear()
     this.bindMedia()
     this.bindBarVisible()
+  }
+
+  setTheme(options) {
+    const theme = options.theme || THEME_DEFAULT
+    const style = CHART_STYLE[theme]
+    this.theme = theme
+    this.bg = options.bg || style.bg
+    this.line = options.line || style.line
+    this.txt = options.txt || style.txt
+    this.glowAlpha = options.glowAlpha || style.glowAlpha
+    this.barStyles = options.barStyles || style.variants
   }
 
   get contentWidth() {
@@ -140,7 +150,7 @@ export default class BarChart {
     const xStart = this.xPadding
     const xEnd = this.width - this.xPadding - this.yLabelWidth - this.yLabelMargin
 
-    ctx.strokeStyle = 'rgba(224, 224, 224, .5)'
+    ctx.strokeStyle = this.line
     ctx.lineWidth = 1
 
     yLabelRows.forEach(row => {
@@ -164,7 +174,7 @@ export default class BarChart {
     let x = xAxisStart
 
     ctx.textBaseline = 'top'
-    ctx.fillStyle = '#3c4257'
+    ctx.fillStyle = this.txt
 
     xLabelRows.forEach((row, i) => {
       ctx.fillText(row.label, x, y)
@@ -177,7 +187,7 @@ export default class BarChart {
     const x = this.width - this.xPadding
     const delta = yLabelHeight * .45
 
-    ctx.fillStyle = '#3c4257'
+    ctx.fillStyle = this.txt
     ctx.textAlign = 'right'
 
     yLabelRows.forEach(row => {
@@ -210,7 +220,7 @@ export default class BarChart {
     const glowHeight = ((glowWidth - width) / 2) + height
     const glowX = x - ((glowWidth - width) / 2)
     const glowY = y - (glowHeight - height)
-    ctx.globalAlpha = 0.2
+    ctx.globalAlpha = this.glowAlpha
     ctx.fillStyle = this.barStyles[res.index]
     ctx.fillRect(glowX, glowY, glowWidth, glowHeight)
     ctx.restore()
