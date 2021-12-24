@@ -47,7 +47,8 @@ export default class BarChart {
     this.bindBarVisible()
   }
 
-  setTheme(options) {
+  setTheme(opts) {
+    const options = Object.assign({}, this.options, opts)
     const theme = options.theme || THEME_DEFAULT
     const style = CHART_STYLE[theme]
     this.theme = theme
@@ -56,6 +57,7 @@ export default class BarChart {
     this.txt = options.txt || style.txt
     this.glowAlpha = options.glowAlpha || style.glowAlpha
     this.barStyles = options.barStyles || style.variants
+    this.setBg()
   }
 
   get contentWidth() {

@@ -77,7 +77,8 @@ export default class LineChart {
     this.bindPointMouseOver()
   }
 
-  setTheme(options) {
+  setTheme(opts) {
+    const options = Object.assign({}, this.options, opts)
     const theme = options.theme || THEME_DEFAULT
     const style = CHART_STYLE[theme]
     this.theme = theme
@@ -85,6 +86,7 @@ export default class LineChart {
     this.line = options.line || style.line
     this.txt = options.txt || style.txt
     this.lineStyles = options.lineStyles || style.variants
+    this.setBg()
   }
 
   get noData() {

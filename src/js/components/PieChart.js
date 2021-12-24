@@ -35,13 +35,15 @@ export default class PieChart {
     this.bindPointMouseOver()
   }
 
-  setTheme(options) {
+  setTheme(opts) {
+    const options = Object.assign({}, this.options, opts)
     const theme = options.theme || THEME_DEFAULT
     const style = CHART_STYLE[theme]
     this.theme = theme
     this.bg = options.bg || style.bg
     this.glowAlpha = options.glowAlpha || style.glowAlpha
     this.styles = options.styles || style.variants
+    this.setBg()
   }
 
   get x() {
