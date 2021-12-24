@@ -4,7 +4,7 @@ import isFn from '../utils/isFn'
 import isDef from '../utils/isDef'
 import isUndef from '../utils/isUndef'
 import { throttle } from '../utils'
-import { DEFAULT_CHART_STYLES } from '../consts'
+import { THEME_DEFAULT, CHART_STYLE } from '../consts'
 
 @supportDom
 @chartCommon
@@ -20,8 +20,7 @@ export default class PieChart {
     this.height = options.height
     this.width = options.width
     this.padding = isDef(options.padding) ? options.padding : 30
-    this.styles = options.styles || DEFAULT_CHART_STYLES
-    this.bg = options.bg || '#fff'
+    this.setTheme(options)
 
     this.init()
   }
@@ -34,6 +33,15 @@ export default class PieChart {
     this.clear()
     this.bindMedia()
     this.bindPointMouseOver()
+  }
+
+  setTheme(options) {
+    const theme = options.theme || THEME_DEFAULT
+    const style = CHART_STYLE[theme]
+    this.theme = theme
+    this.bg = options.bg || style.bg
+    this.glowAlpha = options.glowAlpha || style.glowAlpha
+    this.styles = options.styles || style.variants
   }
 
   get x() {
@@ -99,7 +107,7 @@ export default class PieChart {
       distance += ratio
     })
 
-    this.fillCircle(ctx, x, y, centerCircleRadius, '#fff')
+    this.fillCircle(ctx, x, y, centerCircleRadius, this.bg)
   }
 
   handleDprChange() {
@@ -177,11 +185,11 @@ export default class PieChart {
 
     const options = {
       style: this.styles[index],
-      alpha: .3
+      alpha: this.glowAlpha
     }
     const radiusDelta = (radius - centerCircleRadius) * .3
     this.fillArc(ctx, x, y, radius + radiusDelta, startAngle, endAngle, options)
-    this.fillCircle(this.firstLayer.ctx, x, y, centerCircleRadius, '#fff')
+    this.fillCircle(this.firstLayer.ctx, x, y, centerCircleRadius, this.bg)
   }
 
   clearSliceGlow() {
