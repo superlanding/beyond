@@ -59,7 +59,7 @@ export default function bindBarCharts() {
 
   return function unbindBarCharts() {
     window.removeEventListener('resize', handleResize)
-  document.removeEventListener('beyond-theme-change', handleThemeChange)
+    document.removeEventListener('beyond-theme-change', handleThemeChange)
     b.destroy()
   }
 }
