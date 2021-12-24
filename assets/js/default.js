@@ -18,7 +18,7 @@ import Theme from './models/Theme'
 import bindJqueryModal from '../../_includes/demos/jquery-modal'
 import bindTagInputs from '../../_includes/demos/tag-input'
 
-const { beyond, Turbolinks, $ } = window
+const { beyond, $ } = window
 const { docReady } = beyond
 const bindJQuery = window['beyond-jquery'].default
 const unbinds = []
@@ -52,10 +52,4 @@ function bindAll() {
 
   unbinds.push(bindJqueryModal())
   unbinds.push(bindTagInputs())
-}
-
-function unbindAll() {
-  unbinds.forEach(unbind => unbind())
-  unbinds.length = 0
-  beyond.unbindAll()
 }
