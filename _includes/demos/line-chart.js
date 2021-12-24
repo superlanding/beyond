@@ -94,8 +94,16 @@ export default function bindLineCharts() {
   }, 300)
   window.addEventListener('resize', handleResize)
 
+  const handleThemeChange = () => {
+    const theme = Theme.get()
+    c.setTheme({ theme })
+    c.refresh()
+  }
+  document.addEventListener('beyond-theme-change', handleThemeChange)
+
   return function unbindLineCharts() {
     window.removeEventListener('resize', handleResize)
+    document.removeEventListener('beyond-theme-change', handleThemeChange)
     c.destroy()
   }
 }

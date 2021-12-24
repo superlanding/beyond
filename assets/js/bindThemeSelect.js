@@ -13,6 +13,10 @@ export default function bindThemeSelect() {
     })
     classList.add(`theme-${theme}`)
     Theme.set(theme)
+    if (typeof CustomEvent === 'function') {
+      const event = new CustomEvent('beyond-theme-change')
+      document.dispatchEvent(event)
+    }
   }
   const theme = Theme.get()
   setThemeClass(theme)

@@ -38,7 +38,15 @@ export default function bindPieCharts() {
     { label: '6 個月內', value: 30 }
   ])
 
+  const handleThemeChange = () => {
+    const theme = Theme.get()
+    b.setTheme({ theme })
+    b.refresh()
+  }
+  document.addEventListener('beyond-theme-change', handleThemeChange)
+
   return function unbindPieCharts() {
+    document.removeEventListener('beyond-theme-change', handleThemeChange)
     b.destroy()
   }
 }

@@ -50,8 +50,16 @@ export default function bindBarCharts() {
   }, 300)
   window.addEventListener('resize', handleResize)
 
+  const handleThemeChange = () => {
+    const theme = Theme.get()
+    b.setTheme({ theme })
+    b.refresh()
+  }
+  document.addEventListener('beyond-theme-change', handleThemeChange)
+
   return function unbindBarCharts() {
     window.removeEventListener('resize', handleResize)
+  document.removeEventListener('beyond-theme-change', handleThemeChange)
     b.destroy()
   }
 }
