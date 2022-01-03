@@ -9,6 +9,8 @@ $txt-warn: #f39401;
 $txt-danger: #ff4e99;
 $txt-muted: $txt-light;
 
+$txt-active: $txt-primary;
+
 $txt-anchor: $txt-primary;
 $txt-anchor-ex: lighten($txt-anchor, 10%);
 
