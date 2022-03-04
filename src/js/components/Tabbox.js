@@ -117,11 +117,12 @@ export default class Tabbox {
       return
     }
     if ('tabboxDropdown' in node.dataset) {
+      const { optionEl } = this
       return this.moveSlider({
         top: node.offsetTop,
         left: node.offsetLeft,
         width: node.offsetWidth,
-        color: this.optionEl.dataset.activeColor
+        color: optionEl ? optionEl.dataset.activeColor : node.dataset.activeColor
       })
     }
     this.moveSlider({
