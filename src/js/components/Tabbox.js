@@ -17,8 +17,8 @@ export default class Tabbox {
 
   init() {
     const { dom } = this
-    this.btns = Array.from(dom.querySelectorAll('button[data-tabbox-item]'))
-    this.dropdownBtns = Array.from(dom.querySelectorAll('button[data-tabbox-dropdown]'))
+    this.btns = Array.from(dom.querySelectorAll('[data-tabbox-item]'))
+    this.dropdownBtns = Array.from(dom.querySelectorAll('[data-tabbox-dropdown]'))
     this.addEvents()
     this.appendSlider()
   }
