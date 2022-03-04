@@ -39,6 +39,7 @@
     padding: 18px 50px;
   }
   .tab-btn {
+    color: $txt;
     background: $tab-btn-bg;
     padding: 12px 25px;
     font-size: 13px;
@@ -54,13 +55,12 @@
     .icon-chevron-down {
       margin-left: 7px;
       font-size: 10px;
+      transform: translateY(1px);
+      display: inline-block;
     }
     &:hover {
       color: $tab-hover-color;
       font-weight: 700;
-      .icon-chevron-down:before {
-        color: #1d2638;
-      }
     }
     @include tab-focus-style;
 
