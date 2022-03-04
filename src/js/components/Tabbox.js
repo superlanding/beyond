@@ -41,6 +41,17 @@ export default class Tabbox {
       this.moveToCurrentNode()
       this.addCurrentClass()
     }
+    else {
+      this.eachDropdownOption(({ dropdownBtn, dropdownInstance, optionEl }) => {
+        if (optionEl.dataset.tabboxItem === name) {
+          this.setDropdown({
+            dropdownBtn,
+            optionEl,
+            dropdownInstance
+          })
+        }
+      })
+    }
   }
 
   eachDropdownOption(fn) {
