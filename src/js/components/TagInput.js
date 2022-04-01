@@ -13,6 +13,7 @@ export default class TagInput {
     this.validate = options.validate || (() => ({ isTag: true }))
     this.suggest = options.suggest || noop
     this.change = options.change || noop
+    this.inputId = options.inputId
     this.isComposing = false
     this.raf = raf
     this.id = 0
@@ -26,7 +27,7 @@ export default class TagInput {
   }
 
   setup() {
-    const { defaultInputWidth } = this
+    const { defaultInputWidth, inputId } = this
     const inputDiv = document.createElement('div')
     inputDiv.className = 'tag-input-box'
 
@@ -36,6 +37,9 @@ export default class TagInput {
     suggestInput.className = 'tag-suggest-input'
 
     const input = document.createElement('input')
+    if (inputId) {
+      input.id = inputId
+    }
     input.type = 'text'
     input.style.width = defaultInputWidth + 'px'
     input.className = 'tag-main-input'
