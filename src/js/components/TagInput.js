@@ -1,6 +1,7 @@
 import getKey from '../utils/getKey'
 import noop from '../utils/noop'
 import raf from '../utils/raf'
+import isDef from '../utils/isDef'
 import supportDom from '../decorators/supportDom'
 
 @supportDom
@@ -181,6 +182,10 @@ export default class TagInput {
     input.value = ''
     suggestInput.value = ''
 
+    if (isDef(res.text)) {
+      this.addTag(res, 'input')
+      return
+    }
     const row = Object.assign({}, res, { text: inputValue })
     this.addTag(row, 'input')
   }
