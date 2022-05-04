@@ -3,6 +3,10 @@
   .date-input,
   .time-input {
     background: $control-bg;
+    &.active {
+      background: $control-active-bg;
+      color: $control-active-color;
+    }
   }
   box-shadow: 0 0 0 1px rgba(42, 47, 69, .1),
     0 2px 5px 0 rgba(42, 47, 69, .1),
