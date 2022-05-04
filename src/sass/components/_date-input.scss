@@ -12,8 +12,8 @@
     color: hsla(0, 0%, 100%, .6);
   }
   &.active {
-    background-color: #5469d4;
-    color: #fff
+    background-color: $control-active-bg;
+    color: $control-active-color;
   }
   &.input.active {
     color: #fff
