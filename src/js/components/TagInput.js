@@ -171,9 +171,9 @@ export default class TagInput {
     })
   }
 
-  async addTagIfNeeded() {
+  async addTagIfNeeded(options = {}) {
     const { input, suggestInput } = this
-    const inputValue = suggestInput.value || input.value
+    const inputValue = options.skipSuggest ? input.value : (suggestInput.value || input.value)
     const res = await this.validate(inputValue)
     if (res.clear) {
       input.value = ''
@@ -242,7 +242,7 @@ export default class TagInput {
     })
 
     this.addEvent(input, 'blur', () => {
-      this.addTagIfNeeded()
+      this.addTagIfNeeded({ skipSuggest: true })
     })
 
     this.addEvent(input, 'input', event => {
