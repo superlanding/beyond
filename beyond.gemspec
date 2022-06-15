@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = ["lib"]
 
-  s.add_dependency("actionpack", "~> 5.0")
-  s.add_dependency("activemodel", "~> 5.0")
+  s.add_dependency("actionpack", ">= 5.0", "< 7.0")
+  s.add_dependency("activemodel", ">= 5.0", "< 7.0")
   s.add_dependency("will_paginate", ">= 3.3.0")
 end

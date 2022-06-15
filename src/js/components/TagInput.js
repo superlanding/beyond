@@ -241,6 +241,10 @@ export default class TagInput {
       lastValue = input.value
     })
 
+    this.addEvent(input, 'blur', () => {
+      this.addTagIfNeeded()
+    })
+
     this.addEvent(input, 'input', event => {
       this.suggestInputIfNeeded(input.value)
       this.raf(() => {
