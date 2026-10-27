@@ -6,15 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Release dates are the dates the gem was published on [rubygems.org](https://rubygems.org/gems/beyond-rails).
-Entries before 1.0.19 were reconstructed from the git history (`vX.Y.Z` tags and commit messages);
+Entries before 2.0.0 were reconstructed from the git history (`vX.Y.Z` tags and commit messages);
 the `dist/` rebuilds and `version.yml` bumps that accompany almost every release are omitted.
 
 ## [Unreleased]
 
-## [1.0.19] - 2026-10-27
+## [2.0.0] - 2026-10-27
 
 > Not on rubygems.org yet. This section is dated by the pull request that bumps the version;
 > adjust the date to the day it is actually merged and published.
+> 1.0.19 was never published; its changes are part of 2.0.0.
 
 ### Added
 - Ruby test suite (minitest) for the Rails helpers, the `beyond_form` form builder and the
@@ -30,6 +31,10 @@ the `dist/` rebuilds and `version.yml` bumps that accompany almost every release
 ### Changed
 - **Breaking:** the gem now requires Ruby >= 3.0 and Rails (`actionpack` / `activemodel`) >= 7.0, < 8.2
   (previously `>= 5.0, < 7.0`). Stay on 1.0.18 if you are still on Rails 5/6.
+
+### Removed
+- **Breaking:** Rails 5 and Rails 6 support. The `Rails::VERSION` checks in `beyond_form` that only guarded
+  Rails 5 (the `actiontext` helper require and the `RichTextArea` input) are gone; both are now always loaded.
 
 ### Fixed
 - Ruby 3 compatibility: `Fixnum` replaced by `Integer`; `beyond_form_with` now calls `form_with(**options)`.
@@ -161,8 +166,8 @@ First release of the 1.0 design refresh (the version bump to "1.0.0" in `version
 145 pre-1.0 releases (0.0.139 on 2020-04-22 up to 0.0.295 on 2021-07-15) were published without release notes.
 See the `v0.0.x` tags in git for the individual changes.
 
-[Unreleased]: https://github.com/superlanding/beyond/compare/v1.0.18...HEAD
-[1.0.19]: https://github.com/superlanding/beyond/compare/v1.0.18...HEAD
+[Unreleased]: https://github.com/superlanding/beyond/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/superlanding/beyond/compare/v1.0.18...HEAD
 [1.0.18]: https://github.com/superlanding/beyond/compare/v1.0.17...v1.0.18
 [1.0.17]: https://github.com/superlanding/beyond/compare/v1.0.16...v1.0.17
 [1.0.16]: https://github.com/superlanding/beyond/compare/v1.0.15...v1.0.16

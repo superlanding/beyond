@@ -31,7 +31,7 @@ module BeyondForm
     include BeyondForm::Inputs::PhoneField
     include BeyondForm::Inputs::RadioButton
     include BeyondForm::Inputs::RangeField
-    include BeyondForm::Inputs::RichTextArea if Rails::VERSION::MAJOR >= 6
+    include BeyondForm::Inputs::RichTextArea
     include BeyondForm::Inputs::SearchField
     include BeyondForm::Inputs::Select
     include BeyondForm::Inputs::TelephoneField

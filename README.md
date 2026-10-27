@@ -34,7 +34,7 @@ Same as the CI matrix in [`.github/workflows/test.yml`](.github/workflows/test.y
 - Ruby >= 3.0 (`required_ruby_version`).
 - `actionpack` and `activemodel` >= 7.0, < 8.2.
 - Runtime dependencies installed with the gem: `sassc`, `autoprefixer-rails`, `will_paginate`.
-- Beyond 1.0.18 and earlier supported Rails 5/6; stay on those versions if you cannot upgrade.
+- Beyond 2.0.0 dropped Rails 5 and 6 support. Beyond 1.0.18 and earlier support Rails 5/6; stay on those versions if you cannot upgrade.
 
 > **Packaging note.** `beyond.gemspec` currently builds the gem with `s.files = git ls-files -- src/*`, so the gem published
 > on RubyGems (checked on 1.0.18) contains only `src/` (Sass, JS sources, fonts, images). It does **not** contain

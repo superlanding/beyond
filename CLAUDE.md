@@ -8,6 +8,7 @@
 - 版號只改在 PR 裡。AI 帳號只能開 branch 與 PR，不得合併到 master；只有真人帳號可以合併。合併就等於批准發佈。
 - 這個 workflow 只發佈 Ruby gem；npm 套件（`package.json`）仍由 `release.sh` 手動發佈，不在自動流程內。
 - 不得為了讓測試通過而改變程式原本的行為。
+- 支援範圍以 CI 矩陣為準（Ruby 3.0–3.4 × Rails 7.0–8.1）；2.0.0 起已移除 Rails 5 / 6 支援，不要再加入 Rails 5 / 6 的相容程式碼。調整支援範圍時，要同步更新 gemspec、`gemfiles/`、`.github/workflows/test.yml`、README 與 CHANGELOG。
 
 ## 文件與更新紀錄（README / CHANGELOG）
 
