@@ -10,3 +10,7 @@ yarn-error.log
 // nyc
 .nyc_output
 coverage
+
+# gem 測試用（gemfiles/*.gemfile 由 CI 解析，不追蹤 lockfile）
+/gemfiles/*.gemfile.lock
+/gemfiles/.bundle/
