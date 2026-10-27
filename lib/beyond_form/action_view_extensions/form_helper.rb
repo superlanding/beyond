@@ -29,7 +29,7 @@ module BeyondForm
         options.reverse_merge!(builder: BeyondForm::FormBuilder)
 
         with_beyond_form_field_error_proc do
-          form_with(options, &block)
+          form_with(**options, &block)
         end
       end
 

@@ -3,7 +3,7 @@ module BeyondPagination
     def to_html
       list_items = pagination.map do |item|
         case item
-        when Fixnum
+        when Integer
           page_number(item)
         else
           send(item)
