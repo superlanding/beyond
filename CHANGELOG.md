@@ -1,170 +1,171 @@
-# Changelog
+# 更新紀錄（Changelog）
 
-All notable changes to this project are documented in this file.
+本檔記錄此專案所有值得注意的變更。
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+格式參考 [Keep a Changelog](https://keepachangelog.com/zh-TW/1.1.0/)，版本號遵循 [Semantic Versioning](https://semver.org/lang/zh-TW/)。
 
-Release dates are the dates the gem was published on [rubygems.org](https://rubygems.org/gems/beyond-rails).
-Entries before 2.0.0 were reconstructed from the git history (`vX.Y.Z` tags and commit messages);
-the `dist/` rebuilds and `version.yml` bumps that accompany almost every release are omitted.
+日期為該版本 gem 發佈到 [rubygems.org](https://rubygems.org/gems/beyond-rails) 的日期。
+2.0.0 以前的條目是根據 git 歷史（`vX.Y.Z` tag 與 commit message）回溯整理的；
+幾乎每次發版都會附帶的 `dist/` 重新建置與 `version.yml` 跳版號，則不列入。
 
 ## [Unreleased]
 
 ## [2.0.0] - 2026-10-27
 
-> Not on rubygems.org yet. This section is dated by the pull request that bumps the version;
-> adjust the date to the day it is actually merged and published.
-> 1.0.19 was never published; its changes are part of 2.0.0.
+> 還沒有發佈到 rubygems.org。這個區塊的日期是跳版號的 pull request 的日期；
+> 請在實際合併並發佈的那天修正成當天日期。
+> 1.0.19 從未發佈；它的變更包含在 2.0.0 裡。
 
 ### Added
-- Ruby test suite (minitest) for the Rails helpers, the `beyond_form` form builder and the
-  `will_paginate` renderers. Run it with `bundle exec rake t`.
-- GitHub Actions test matrix: Ruby 3.0–3.4 × Rails 7.0–8.1 (only the combinations each Rails version supports),
-  with one `gemfiles/rails_X.Y.gemfile` per Rails version.
-- `.github/workflows/publish.yml`: merging a new `lib/beyond/version.rb` version to `master` publishes the gem
-  to rubygems.org automatically through RubyGems Trusted Publishing (no API key stored).
-- `CLAUDE.md` rules for releasing and for keeping `README.md` and `CHANGELOG.md` up to date.
-- `README.md` rewritten: requirements, installation, usage of the Rails helpers, form builder and pagination,
-  development, testing and release instructions.
+- Rails helper、`beyond_form` form builder 與
+  `will_paginate` renderer 的 Ruby 測試（minitest）。以 `bundle exec rake t` 執行。
+- GitHub Actions 測試矩陣：Ruby 3.0–3.4 × Rails 7.0–8.1（只跑各 Rails 版本支援的組合），
+  每個 Rails 版本各有一個 `gemfiles/rails_X.Y.gemfile`。
+- `.github/workflows/publish.yml`：把新的 `lib/beyond/version.rb` 版本號合併到 `master` 後，會透過
+  RubyGems Trusted Publishing 自動發佈 gem 到 rubygems.org（不存放 API key）。
+- `CLAUDE.md` 加入發版規則，以及維護 `README.md` 與 `CHANGELOG.md` 的規則。
+- `CLAUDE.md` 規定 `README.md` 與 `CHANGELOG.md` 一律用繁體中文（zh-TW）撰寫，程式碼、識別字與指令維持英文。
+- 重寫 `README.md`：環境需求、安裝、Rails helper / form builder / 分頁的用法、
+  開發、測試與發版說明。
 
 ### Changed
-- **Breaking:** the gem now requires Ruby >= 3.0 and Rails (`actionpack` / `activemodel`) >= 7.0, < 8.2
-  (previously `>= 5.0, < 7.0`). Stay on 1.0.18 if you are still on Rails 5/6.
+- **不相容變更：** gem 現在需要 Ruby >= 3.0 與 Rails（`actionpack` / `activemodel`）>= 7.0，< 8.2
+  （先前是 `>= 5.0, < 7.0`）。如果仍在使用 Rails 5/6，請停留在 1.0.18。
+- `README.md`、`CHANGELOG.md` 改以繁體中文（zh-TW）撰寫。
 
 ### Removed
-- **Breaking:** Rails 5 and Rails 6 support. The `Rails::VERSION` checks in `beyond_form` that only guarded
-  Rails 5 (the `actiontext` helper require and the `RichTextArea` input) are gone; both are now always loaded.
+- **不相容變更：** 移除 Rails 5 與 Rails 6 支援。`beyond_form` 裡只用來保護
+  Rails 5 的 `Rails::VERSION` 檢查（`actiontext` helper 的 require 與 `RichTextArea` input）已移除；這兩者現在一律載入。
 
 ### Fixed
-- Ruby 3 compatibility: `Fixnum` replaced by `Integer`; `beyond_form_with` now calls `form_with(**options)`.
+- Ruby 3 相容性：以 `Integer` 取代 `Fixnum`；`beyond_form_with` 現在改呼叫 `form_with(**options)`。
 
 ## [1.0.18] - 2022-06-15
 
 ### Added
-- `skipSuggest` option (JS).
-- Sass variable `control-hint-color`.
+- `skipSuggest` 選項（JS）。
+- Sass 變數 `control-hint-color`。
 
 ## [1.0.17] - 2022-06-15
 
 ### Changed
-- Updated the browserslist / caniuse database and rebuilt `dist/`.
+- 更新 browserslist / caniuse 資料庫並重新建置 `dist/`。
 
 ## [1.0.16] - 2022-06-15
 
 ### Added
-- `blur` event for `TagInput`.
+- `TagInput` 的 `blur` 事件。
 
 ## [1.0.15] - 2022-05-04
 
 ### Fixed
-- Active style of form controls.
+- 表單控制項的 active 樣式。
 
 ## [1.0.14] - 2022-04-01
 
 ### Added
-- `options.inputId` for `TagInput`.
+- `TagInput` 的 `options.inputId`。
 
 ## [1.0.13] - 2022-04-01
 
 ### Added
-- `res.text` support in the `validate` method.
+- `validate` 方法支援 `res.text`。
 
 ## [1.0.12] - 2022-03-04
 
 ### Changed
-- Rebuilt `dist/` (no source changes since 1.0.11).
+- 重新建置 `dist/`（自 1.0.11 以來沒有原始碼變更）。
 
 ## [1.0.11] - 2022-03-04
 
 ### Fixed
-- Dropdown option value is now handled in `moveTo`.
+- `moveTo` 現在會處理 Dropdown 選項的值。
 
 ## [1.0.10] - 2022-03-04
 
 ### Fixed
-- Empty `optionEl` is now blocked.
+- 現在會擋掉空的 `optionEl`。
 
 ## [1.0.9] - 2022-03-04
 
 ### Fixed
-- Empty `optionEl` handling.
+- 空的 `optionEl` 的處理。
 
 ## [1.0.8] - 2022-03-04
 
 ### Changed
-- The `button` tag is no longer part of the selectors of `btns` and `dropdownBtns`.
-- Added `.ruby-version`.
+- `button` tag 不再包含在 `btns` 與 `dropdownBtns` 的 selector 裡。
+- 新增 `.ruby-version`。
 
 ### Fixed
-- `tabbox` style.
+- `tabbox` 樣式。
 
 ## [1.0.7] - 2022-01-04
 
 ### Fixed
-- Inline checkbox style.
+- 行內（inline）checkbox 樣式。
 
 ## [1.0.6] - 2022-01-03
 
 ### Added
-- Sass variable `txt-active`.
+- Sass 變數 `txt-active`。
 
 ## [1.0.5] - 2021-12-28
 
 ### Added
-- `bg-warn` and `bg-danger` variables for the dark theme.
+- 深色主題用的 `bg-warn` 與 `bg-danger` 變數。
 
 ### Fixed
-- `Theme.js`.
+- `Theme.js`。
 
 ## [1.0.4] - 2021-12-24
 
 ### Added
-- Dark theme (`THEME_DARK`, `setTheme` / `setBg`), including theme support for `LineChart`, `BarChart` and `PieChart`.
-- Sass variable `sidebar-bg`.
+- 深色主題（`THEME_DARK`、`setTheme` / `setBg`），包含 `LineChart`、`BarChart` 與 `PieChart` 的主題支援。
+- Sass 變數 `sidebar-bg`。
 
 ### Changed
-- Refactored the button, badge and toast style variables.
+- 重構按鈕、badge 與 toast 的樣式變數。
 
 ### Fixed
-- Autocomplete style in the dark theme.
+- 深色主題下的 autocomplete 樣式。
 
 ## [1.0.3] - 2021-12-02
 
 ### Fixed
-- Clicking an item now calls `preventDefault` and `stopPropagation` when the item is found.
-- Alert demos.
+- 找到項目時，點擊項目現在會呼叫 `preventDefault` 與 `stopPropagation`。
+- Alert demo。
 
 ### Changed
-- Updated caniuse-lite.
+- 更新 caniuse-lite。
 
 ## [1.0.2] - 2021-11-02
 
 ### Added
-- `options.hidden` for `Dropdown`.
+- `Dropdown` 的 `options.hidden`。
 
 ## [1.0.1] - 2021-08-10
 
-First release of the 1.0 design refresh (the version bump to "1.0.0" in `version.yml` was never published as a gem).
+1.0 改版設計的第一個發佈版本（`version.yml` 裡跳到 "1.0.0" 的版本號從未發佈成 gem）。
 
 ### Added
-- `avatar-letter`.
+- `avatar-letter`。
 
 ### Changed
-- Updated the icon set.
-- Restyled buttons, dropdowns, mega menu and tooltips; `alert-warning` is now `alert-warn`.
-- Updated the `txt-muted` color.
+- 更新圖示集。
+- 重新設計按鈕、dropdown、mega menu 與 tooltip 的樣式；`alert-warning` 現在改為 `alert-warn`。
+- 更新 `txt-muted` 的顏色。
 
 ### Removed
-- Button types `success`, `warning`, `info`, `light`, `dark`, `type1` and `type2`, plus `.btn-outline` / `.outlined`.
-- Alert types `success`, `info`, `light` and `dark`.
-- `avatar-types` (replaced by `avatar-letter`).
-- Popover style and demo.
+- 按鈕類型 `success`、`warning`、`info`、`light`、`dark`、`type1` 與 `type2`，以及 `.btn-outline` / `.outlined`。
+- Alert 類型 `success`、`info`、`light` 與 `dark`。
+- `avatar-types`（由 `avatar-letter` 取代）。
+- Popover 樣式與 demo。
 
 ## [0.0.139 – 0.0.295] - 2020-04-22 – 2021-07-15
 
-145 pre-1.0 releases (0.0.139 on 2020-04-22 up to 0.0.295 on 2021-07-15) were published without release notes.
-See the `v0.0.x` tags in git for the individual changes.
+1.0 以前的 145 個版本（2020-04-22 的 0.0.139 到 2021-07-15 的 0.0.295）發佈時都沒有附 release note。
+各版本的變更請參考 git 裡的 `v0.0.x` tag。
 
 [Unreleased]: https://github.com/superlanding/beyond/compare/v2.0.0...HEAD
 [2.0.0]: https://github.com/superlanding/beyond/compare/v1.0.18...HEAD
