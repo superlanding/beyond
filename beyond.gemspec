@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.license  = 'MIT'
 
   s.add_runtime_dependency 'sassc', '~> 2.0', '>= 2.0.0'
-  s.add_runtime_dependency 'autoprefixer-rails', '~> 9.7', '>= 9.7.6'
+  s.add_runtime_dependency 'autoprefixer-rails', '>= 9.7.6', '< 11.0'
 
   s.files    = `git ls-files -- src/*`.split("\n")
 
